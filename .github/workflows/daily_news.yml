@@ -1,0 +1,44 @@
+name: Global Market Intelligence Bot
+
+on:
+  schedule:
+    # 午报 (北京时间 12:00) - 覆盖 A 股/港股午间休市动态、亚太地缘突发
+    - cron: '0 4 * * *'  # UTC时间4点，即北京时间中午12点
+    # 晚报 (北京时间 23:30) - 每天晚上23:30运行
+    - cron: '30 15 * * *'  # UTC时间15:30，即北京时间晚上23:30
+    # 紧急监控 (每30分钟一次) - 检测重大事件，只有当Abs(情绪分) >= 8时才推送
+    - cron: '*/30 * * * *'  # 每30分钟运行一次
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  run-news-bot:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run urgent news monitor (for scheduled triggers every 30 minutes)
+      if: github.event_name == 'schedule' && contains(github.event.schedule, '*/30')
+      env:
+        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      run: |
+        python urgent_news_monitor.py
+
+    - name: Run regular news bot (for other scheduled times)
+      if: github.event_name == 'schedule' && !contains(github.event.schedule, '*/30')
+      env:
+        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      run: |
+        python daily_news_bot.py
