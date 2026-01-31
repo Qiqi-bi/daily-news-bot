@@ -41,13 +41,13 @@
 ### 环境变量
 ```bash
 # DeepSeek API
-DEEPSEEK_API_KEY=your_api_key_here
+DEEPSEEK_API_KEY=
 
 # 飞书应用配置
-LARK_APP_ID=your_app_id
-LARK_APP_SECRET=your_app_secret
-LARK_CHAT_ID=your_chat_id  # 可选
-LARK_USER_ID=your_user_id  # 可选
+LARK_APP_ID=
+LARK_APP_SECRET=
+LARK_CHAT_ID=  # 可选
+LARK_USER_ID=  # 可选
 ```
 
 ### RSS源列表

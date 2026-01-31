@@ -16,6 +16,7 @@ import requests
 import json
 import time
 import logging
+import random
 from typing import List, Dict, Optional
 from urllib.parse import urljoin
 import os
@@ -24,7 +25,7 @@ import os
 # 请根据实际情况修改以下配置
 
 # LLM API 配置 - 从环境变量读取
-API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'YOUR_DEEPSEEK_API_KEY_HERE')
+API_KEY = os.environ.get('DEEPSEEK_API_KEY', '')
 BASE_URL = "https://api.deepseek.com"
 
 # 智能代理配置 - 检查是否在GitHub Actions环境中
@@ -224,7 +225,7 @@ def send_to_feishu_webhook(message: str, max_retries: int = MAX_RETRIES) -> bool
         发送是否成功
     """
     # 从环境变量获取webhook URL，如果不存在则使用占位符
-    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', 'YOUR_FEISHU_WEBHOOK_URL_HERE')
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')
     # 准备消息内容（转换为适合富文本的格式）
     # 移除可能引起问题的特殊字符和格式，优化排版
     clean_message = message.replace('\ud83d', '').replace('\ude0a', '')  # 移除某些emoji
@@ -305,32 +306,84 @@ def fetch_rss_feed(url: str, max_retries: int = MAX_RETRIES) -> Optional[feedpar
     Returns:
         feedparser解析结果或None
     """
+    from urllib.parse import urlparse
+    domain = urlparse(url).netloc
+    
+    # 智能延迟，避免请求过于频繁
+    time.sleep(random.uniform(1.0, 3.0))
+    
     for attempt in range(max_retries):
         try:
             logger.info(f"正在抓取RSS源: {url} (尝试 {attempt + 1}/{max_retries})")
+            
+            # 使用更真实的请求头，模拟浏览器行为
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+            }
             
             # 使用代理抓取RSS（如果启用）
             response = requests.get(
                 url, 
                 proxies=PROXIES, 
-                timeout=10,
-                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+                timeout=15,  # 增加超时时间
+                headers=headers
             )
-            response.raise_for_status()
             
-            # 解析RSS
-            feed = feedparser.parse(response.content)
-            logger.info(f"成功抓取 {len(feed.entries)} 条新闻")
-            return feed
-            
-        except Exception as e:
-            logger.warning(f"抓取RSS失败 (尝试 {attempt + 1}): {e}")
-            if attempt < max_retries - 1:
-                time.sleep(RETRY_DELAY)
+            # 根据HTTP状态码进行不同处理
+            if response.status_code == 200:
+                # 成功，解析RSS
+                feed = feedparser.parse(response.content)
+                logger.info(f"成功抓取 {len(feed.entries)} 条新闻")
+                return feed
+            elif response.status_code == 403:
+                # 403错误：服务器拒绝访问，可能是反爬虫机制
+                logger.warning(f"403错误 - 访问被拒绝: {url}")
+                # 更换User-Agent再试
+                headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                if attempt < max_retries - 1:
+                    time.sleep(5 * (attempt + 1))  # 递增延迟
+                continue
+            elif response.status_code == 404:
+                # 404错误：资源不存在
+                logger.error(f"404错误 - RSS源不存在: {url}")
+                return None  # 不重试，直接返回
+            elif response.status_code == 429:
+                # 429错误：请求过多
+                logger.warning(f"429错误 - 请求频率过高: {url}")
+                # 获取重试时间（如果有Retry-After头）
+                retry_after = response.headers.get('Retry-After', 60)
+                try:
+                    delay = int(retry_after)
+                except ValueError:
+                    delay = 60  # 默认等待60秒
+                if attempt < max_retries - 1:
+                    time.sleep(delay * (attempt + 1))
+                continue
             else:
-                logger.error(f"RSS抓取最终失败: {url}")
-                return None
+                # 其他错误
+                logger.warning(f"HTTP错误 {response.status_code}: {url}")
+                if attempt < max_retries - 1:
+                    time.sleep(3 * (attempt + 1))
+                    
+        except requests.exceptions.ConnectionError:
+            logger.warning(f"连接错误 (尝试 {attempt + 1}): {url}")
+            if attempt < max_retries - 1:
+                time.sleep(5 * (attempt + 1))
+        except requests.exceptions.Timeout:
+            logger.warning(f"请求超时 (尝试 {attempt + 1}): {url}")
+            if attempt < max_retries - 1:
+                time.sleep(10 * (attempt + 1))
+        except Exception as e:
+            logger.warning(f"其他错误 (尝试 {attempt + 1}): {e}")
+            if attempt < max_retries - 1:
+                time.sleep(3 * (attempt + 1))
     
+    logger.error(f"RSS抓取最终失败: {url}")
     return None
 
 def extract_news_items() -> List[Dict[str, str]]:

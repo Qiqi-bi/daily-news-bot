@@ -3,8 +3,8 @@ import json
 
 # 新闻来源（只使用中文新闻源以确保内容为中文）
 news_sources = [
-    f"https://newsapi.org/v2/top-headlines?country=CN&apiKey={os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')}",
-    f"https://newsapi.org/v2/top-headlines?country=CN&category=technology&apiKey={os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')}"
+    f"https://newsapi.org/v2/top-headlines?country=CN&apiKey={os.environ.get('NEWS_API_KEY', '')}",
+    f"https://newsapi.org/v2/top-headlines?country=CN&category=technology&apiKey={os.environ.get('NEWS_API_KEY', '')}"
 ]
 
 # 使用新的应用认证方式，不再需要webhook URL

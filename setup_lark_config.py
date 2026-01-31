@@ -31,11 +31,11 @@ def setup_lark_config():
     # 获取配置信息
     app_id = input("请输入 App ID (留空使用默认值): ").strip()
     if not app_id:
-        app_id = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')  # 从环境变量获取或使用占位符
+        app_id = os.environ.get('LARK_APP_ID', '')  # 从环境变量获取或使用占位符
     
     app_secret = input("请输入 App Secret (留空使用默认值): ").strip()
     if not app_secret:
-        app_secret = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE')  # 从环境变量获取或使用占位符
+        app_secret = os.environ.get('LARK_APP_SECRET', '')  # 从环境变量获取或使用占位符
     
     chat_id = input("请输入 Chat ID (可选，留空跳过): ").strip()
     user_id = input("请输入 User ID (可选，留空跳过): ").strip()
@@ -61,8 +61,8 @@ def setup_lark_config():
     # 显示使用说明
     print("\n📖 使用说明:")
     print("1. 在运行机器人脚本前，需要设置环境变量:")
-    print("   Windows: set LARK_APP_ID=your_app_id")
-    print("            set LARK_APP_SECRET=your_app_secret")
+    print("   Windows: set LARK_APP_ID=")
+    print("            set LARK_APP_SECRET=")
     print("   或者使用配置文件方式运行")
     
     print("\n2. 如果您使用的是GitHub Actions，需要在仓库设置中添加Secrets:")

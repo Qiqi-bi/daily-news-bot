@@ -12,8 +12,8 @@
 
 1. 在应用详情页面找到"凭证与基础信息"
 2. 记录以下信息：
-   - App ID: `YOUR_LARK_APP_ID_HERE`
-   - App Secret: `YOUR_LARK_APP_SECRET_HERE`
+   - App ID: ``
+   - App Secret: ``
    - 租户Token（如果需要）
 
 ## 权限配置
@@ -43,23 +43,22 @@
 ```bash
 # 飞书应用凭证
 
-- App ID: `YOUR_LARK_APP_ID_HERE`
-- App Secret: `YOUR_LARK_APP_SECRET_HERE`
+- App ID: ``
 - 租户Token（如果需要）
 
 ## 环境变量设置
 
 ### Linux/macOS
 ```bash
-export LARK_APP_ID=YOUR_LARK_APP_ID_HERE
-export LARK_APP_SECRET=YOUR_LARK_APP_SECRET_HERE
+export LARK_APP_ID=
+export LARK_APP_SECRET=
 ```
 
 ### Windows (命令提示符)
 ```batch
-set LARK_APP_ID=YOUR_LARK_APP_ID_HERE
+set LARK_APP_ID=
 REM 设置飞书机器人环境变量
-set LARK_APP_SECRET=YOUR_LARK_APP_SECRET_HERE
+set LARK_APP_SECRET=
 ```
 
 ### GitHub Actions

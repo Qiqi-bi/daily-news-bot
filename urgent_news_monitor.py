@@ -26,7 +26,7 @@ import re
 # 请根据实际情况修改以下配置
 
 # LLM API 配置 - 从环境变量读取
-API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'YOUR_DEEPSEEK_API_KEY_HERE')
+API_KEY = os.environ.get('DEEPSEEK_API_KEY', '')
 BASE_URL = "https://api.deepseek.com"
 
 # 智能代理配置 - 检查是否在GitHub Actions环境中
@@ -211,7 +211,7 @@ def send_to_feishu(message: str, max_retries: int = MAX_RETRIES) -> bool:
         发送是否成功
     """
     # 从环境变量获取webhook URL，如果不存在则使用占位符
-    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', 'YOUR_FEISHU_WEBHOOK_URL_HERE')
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')
     # 准备消息内容（转换为适合富文本的格式）
     # 移除可能引起问题的特殊字符和格式，优化排版
     clean_message = message.replace('\ud83d', '').replace('\ude0a', '')  # 移除某些emoji
@@ -286,7 +286,7 @@ def send_error_alert(error_message: str, max_retries: int = MAX_RETRIES):
     alert_msg = f"🚨 机器人故障警报\n\n错误详情：{error_message}\n\n请及时检查机器人状态！\n\nDeepSeek-V3 监控系统"
     
     # 从环境变量获取webhook URL，如果不存在则使用占位符
-    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', 'YOUR_FEISHU_WEBHOOK_URL_HERE')
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')
     # 构建富文本消息（使用interactive类型实现卡片效果）
     data = {
         "msg_type": "interactive",

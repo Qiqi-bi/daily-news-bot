@@ -12,6 +12,8 @@
 - ✅ **紧急新闻监控**：独立的紧急监控系统，仅在检测到高情绪分新闻时推送
 - ✅ **实时价格注入**：自动获取比特币、黄金、英伟达股票等资产的实时价格
 - ✅ **富文本卡片格式**：美观的飞书卡片消息展示，支持多种交互元素
+- ✅ **增强错误处理**：解决403、404、429等常见HTTP错误，提高抓取成功率
+- ✅ **智能频率控制**：域名级请求频率限制，避免触发反爬虫机制
 
 ## 新闻源覆盖
 
@@ -48,11 +50,10 @@ pip install -r requirements.txt
 需要在环境变量中设置：
 
 - `DEEPSEEK_API_KEY`: DeepSeek API密钥 (或其他AI模型API密钥)
-- `NEWS_API_KEY`: NewsAPI密钥
+- `NEWS_API_KEY`: NewsAPI密钥 (可选)
 - `LARK_APP_ID`: 飞书应用ID
 - `LARK_APP_SECRET`: 飞书应用密钥
 - `LARK_CHAT_ID`: 目标群组ID (可选)
-- `LARK_USER_ID`: 目标用户ID (可选)
 
 ## 使用方法
 

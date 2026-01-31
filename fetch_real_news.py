@@ -19,11 +19,11 @@ class RealNewsFetcher:
             # NewsAPI (需要有效API密钥)
             {
                 'name': 'newsapi_cn',
-                'url': 'https://newsapi.org/v2/top-headlines?country=cn&category=technology&apiKey=YOUR_API_KEY'
+                'url': 'https://newsapi.org/v2/top-headlines?country=cn&category=technology&apiKey={os.environ.get("NEWS_API_KEY", "")}'
             },
             {
                 'name': 'newsapi_us',
-                'url': 'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=YOUR_API_KEY'
+                'url': 'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={os.environ.get("NEWS_API_KEY", "")}'
             }
         ]
         

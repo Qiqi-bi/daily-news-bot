@@ -2,7 +2,7 @@ import requests
 import os
 
 # 检查API密钥
-api_key = os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')
+api_key = os.environ.get('NEWS_API_KEY', '')
 url = f"https://newsapi.org/v2/top-headlines?country=CN&apiKey={api_key}"
 
 print("检查NewsAPI密钥...")
