@@ -3,9 +3,9 @@ import json
 
 # 新闻来源列表
 news_sources = [
-    "https://newsapi.org/v2/top-headlines?country=CN&apiKey=20d102607aea4b37a7ee10f1f76fb91a",
-    "https://newsapi.org/v2/top-headlines?country=US&apiKey=20d102607aea4b37a7ee10f1f76fb91a",
-    "https://newsapi.org/v2/top-headlines?category=technology&apiKey=20d102607aea4b37a7ee10f1f76fb91a"
+    f"https://newsapi.org/v2/top-headlines?country=CN&apiKey={os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')}",
+    f"https://newsapi.org/v2/top-headlines?country=US&apiKey={os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')}",
+    f"https://newsapi.org/v2/top-headlines?category=technology&apiKey={os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')}"
 ]
 
 # 使用新的应用认证方式，不再需要webhook URL

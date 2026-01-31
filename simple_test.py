@@ -1,8 +1,9 @@
 import requests
 import json
+import os
 
 # 测试NewsAPI是否正常工作
-api_key = "20d102607aea4b37a7ee10f1f76fb91a"
+api_key = os.environ.get('NEWS_API_KEY', 'YOUR_NEWS_API_KEY_HERE')
 test_url = f"https://newsapi.org/v2/top-headlines?country=CN&apiKey={api_key}"
 
 print("测试NewsAPI连接...")

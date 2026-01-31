@@ -3,8 +3,8 @@ import json
 
 # ================= 配置区 =================
 # 请把您的 App ID 和 Secret 填在这里
-APP_ID = "cli_a9f6280dd5389bd8"  # 您的 App ID
-APP_SECRET = "VHN4Eag0koh7rwEkKXeHSgHzLnH1140x" # 您的 App Secret (注意：这里填您截图里那个长的，不要填星号)
+APP_ID = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')  # 您的 App ID
+APP_SECRET = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE') # 您的 App Secret (注意：这里填您截图里那个长的，不要填星号)
 # =========================================
 
 def get_tenant_access_token():

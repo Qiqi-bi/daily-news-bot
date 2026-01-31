@@ -55,6 +55,8 @@ RSS_SOURCES = [
 
     # --- 5. 加密货币 (Crypto) ---
     "https://www.coindesk.com/arc/outboundfeeds/rss/",  # CoinDesk
+    "https://cointelegraph.com/rss",  # Cointelegraph
+    "https://crypto-slate.com/feed/",  # Crypto Slate
 
     # --- 6. 能源与战争 (Energy) ---
     "https://oilprice.com/rss/main",  # OilPrice.com
@@ -73,6 +75,7 @@ RSS_SOURCES = [
     
     # --- 10. 学术/AI研究 (新增) ---
     "http://arxiv.org/rss/cs.AI",  # ArXiv AI Paper Daily (学术源)
+    "https://mittechnologyreview.com/feed/",  # MIT Technology Review (科技趋势分析)
     
     # --- 11. 国内主流新闻源 (新增) ---
     "http://news.baidu.com/n?cmd=file&format=rss&tn=rss&sub=0",  # 百度新闻
@@ -88,6 +91,70 @@ RSS_SOURCES = [
     "https://www.36kr.com/feed",  # 36氪
     "https://news.qq.com/rss/channels/finance/rss.xml",  # 腾讯财经
     "https://rss.sina.com.cn/news/china/focus15.xml",  # 新浪新闻-国内焦点
+
+    # --- 13. 主要科技公司官网 (新增) ---
+    "https://blog.google/rss/",  # Google Blog
+    "https://openai.com/blog/rss/",  # OpenAI Blog
+    "https://blogs.microsoft.com/feed/",  # Microsoft Blog
+    "https://www.apple.com/newsroom/rss-feed.rss",  # Apple Newsroom
+    "https://nvidianews.nvidia.com/rss.xml",  # NVIDIA Newsroom
+    "https://about.meta.com/rss/feed/",  # Meta Newsroom
+
+    # --- 14. 主流财经媒体 (新增) ---
+    "https://feeds.reuters.com/reuters/topNews",  # Reuters Top News
+    "https://feeds.reuters.com/reuters/businessNews",  # Reuters Business
+    "https://feeds.reuters.com/reuters/technologyNews",  # Reuters Technology
+    "https://bloomberg.com/feed",  # Bloomberg (可能需要适配)
+    "https://www.wsj.com/xml/rss/3_7085.xml",  # Wall Street Journal (可能需要适配)
+
+    # --- 15. 科技媒体 (新增) ---
+    "https://www.theverge.com/rss/index.xml",  # The Verge
+    "https://arstechnica.com/feed/",  # Ars Technica
+
+    # --- 16. 投资机构和数据库 (新增) ---
+    "https://www.cbinsights.com/blog/feed/",  # CB Insights
+    "https://techcrunch.com/startups/",  # TechCrunch Startups
+    "https://www.crunchbase.com/feed",  # Crunchbase (可能需要适配)
+
+    # --- 17. AI研究机构 (新增) ---
+    "https://stability.ai/rss",  # Stability AI
+    "https://huggingface.co/blog/feed.xml",  # Hugging Face Blog
+
+    # --- 18. 商业领袖和企业高管 (新增) ---
+    "https://www.tesla.com/blog/rss",  # Tesla Blog
+    "https://about.twitter.com/content/dam/about-twitter/company/news/rss-feeds/official-company-blog-rss.xml",  # Twitter Blog (X)
+    "https://www.spacex.com/static/releases/feed.xml",  # SpaceX Releases
+
+    # --- 19. 加密货币和区块链 (新增) ---
+    "https://cointelegraph.com/feed",  # Cointelegraph
+    "https://decrypt.co/feed",  # Decrypt
+    "https://messari.io/feed.xml",  # Messari
+    "https://theblock.co/rss",  # The Block
+
+    # --- 20. 交易和投资平台 (新增) ---
+    "https://www.binance.com/en/blog/rss",  # Binance Blog
+    "https://blog.coinbase.com/feed",  # Coinbase Blog
+
+    # --- 21. 区块链协议 (新增) ---
+    "https://blog.ethereum.org/feed.xml",  # Ethereum Blog
+    "https://polkadot.network/feed/",  # Polkadot Blog
+
+    # --- 22. 金融和投资 (新增) ---
+    "https://seekingalpha.com/feed.xml",  # Seeking Alpha
+    "https://www.ft.com/?format=rss",  # Financial Times (可能需要适配)
+
+    # --- 23. 亚马逊相关 (新增) ---
+    "https://www.aboutamazon.com/news/rss-feed.xml",  # Amazon Newsroom
+
+    # --- 24. 马斯克相关 (新增) ---
+    "https://www.neuralink.com/blog.rss",  # Neuralink Blog
+    "https://www.boringcompany.com/blog",  # The Boring Company Blog (可能需要适配)
+
+    # --- 25. 其他AI公司 (新增) ---
+    "https://www.anthropic.com/rss",  # Anthropic Blog
+    "https://deepmind.google/rss/",  # DeepMind Blog
+    "https://aws.amazon.com/blogs/aws/feed/",  # AWS Blog
+    "https://www.amd.com/en/press-room/press-releases.rss",  # AMD Press Releases
 ]
 
 # 重试配置
@@ -437,36 +504,41 @@ def analyze_news_with_llm(news_items: List[Dict[str, str]], report_type: str = '
         news_content += f"**ID**: {i+1}\n**标题**: {item['title']}{price_info}\n**摘要**: {item['summary']}\n**链接**: {item['link']}\n\n"
     
     # 根据报告类型生成定制化的系统提示词
-    SYSTEM_PROMPT = """# Role
-你是由高盛全球宏观组与顶级游资操盘手联合训练的首席策略分析师。
-你的服务对象：身在中国的资深打工人/个体创业者，极其厌恶被主流媒体忽悠。
-任务：**透视新闻表象，拆解利就益链条，给出冷血判断。**
+    SYSTEM_PROMPT = """你是一名顶级游资操盘手和宏观策略师。你的读者是时间宝贵的中国投资者/打工人。
+你的任务是：**透过新闻表象，直接拆解利益链条，给出最冷血的判断。**
 
 # Constraints
-1. **极度精简**：全篇严格控制在 300 字以内，电报风格。
-2. **严禁废话**：只要结论，不要背景。
-3. **时间精确**：必须输出 **北京时间 (YYYY-MM-DD HH:mm)**。
-4. **严禁分割线**：不要输出任何 "---" 或横线。
-5. **严禁描述图片**：绝对不要输出任何图片描述文字。
-6. **阴谋论视角**：默认市场是残酷的，新闻是资本的工具。
+1. **详细分析**：全篇控制在 600 字左右，提供深入的分析和见解。
+2. **通俗易懂**：使用简单明了的语言，避免复杂的箭头符号，让普通用户也能理解。
+3. **格式严格**：必须遵守下方的 Markdown 格式。
+4. **中国视角**：所有影响分析必须紧扣中国国运、A股/港股和打工人的钱袋子。
+5. **严禁描述图片**：不要输出任何图片描述。
 
 # Analysis Framework (Markdown Output)
-请按以下格式输出：
+请对筛选出的 Top 新闻按以下结构输出：
 
 ### [情绪分 | 分数] 新闻标题 (中文，加粗)
 
-> [🔗 直达原新闻](新闻URL) | 来源：新闻Source
+> [🔗 点击直达原新闻](新闻URL) | 来源：新闻Source
 
-* **⏰ 发布时间**：YYYY-MM-DD HH:mm (北京时间)
-* **📍 核心事实**：一句话概括 (Who + What)。
-* **🧠 底层逻辑**：庄家真实意图与资金传导 (用 `->` 表示)。
-* **🇨🇳 中国影响**：
-    * **⚡ 短期**：对汇率/情绪/具体行业的直接冲击。
-    * **⏳ 长期**：是否改变国运或打工人生存环境？
-* **📉 股市钱包**：
-    * **利好**：[代码/板块]
-    * **利空**：[代码/板块]
-* **🛑 操作建议**：[空仓/止盈/抄底/观望] + 一句话具体理由（拒绝模棱两可）。"""
+**核心要点**：一句话概括新闻的核心内容
+
+**事件详情**：详细介绍发生了什么事情，涉及哪些关键人物、公司或组织，以及具体的时间、地点、数据等。
+
+**深层解读**：深入分析这则新闻背后的动机和原因。为什么会出现这种情况？是出于商业考虑、政策驱动、市场竞争还是技术突破？解释清楚事件发生的根本原因。
+
+**对中国的潜在影响**：
+- **短期影响**：对中国经济、金融市场、相关行业或消费者的直接影响
+- **长期影响**：对未来发展趋势、产业布局、国际地位等方面的深远影响
+
+**对股市和投资的影响**：
+- **可能受益的板块或股票**：列出可能因此受益的行业、公司或投资标的
+- **可能受损的板块或股票**：指出可能面临负面影响的领域
+- **投资策略建议**：基于此新闻，投资者应该如何调整策略
+
+**未来展望**：预测这一事件可能带来的后续发展，以及我们应该如何应对。
+
+**关联信息**：如果这则新闻与其他事件有关联，说明它们之间的联系。"""
 
     system_prompt = SYSTEM_PROMPT
 
@@ -658,3 +730,5 @@ def send_error_alert(error_message: str, max_retries: int = MAX_RETRIES):
 
 if __name__ == "__main__":
     main()
+
+

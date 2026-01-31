@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 向指定飞书群组发送测试消息
-使用您提供的Chat ID: oc_efc1ffb36158b2254f263e20b1fef768
+使用您提供的Chat ID: YOUR_LARK_CHAT_ID_HERE
 """
 
 import os
@@ -18,11 +18,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # 从环境变量获取配置
-APP_ID = os.environ.get('LARK_APP_ID', 'cli_a9f6280dd5389bd8')
-APP_SECRET = os.environ.get('LARK_APP_SECRET', 'VHN4Eag0koh7rwEkKXeHSgHzLnH1140x')
+APP_ID = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')
+APP_SECRET = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE')
 
 # 使用您提供的Chat ID
-CHAT_ID = "oc_efc1ffb36158b2254f263e20b1fef768"
+CHAT_ID = os.environ.get('LARK_CHAT_ID', 'YOUR_LARK_CHAT_ID_HERE')
 
 def get_access_token():
     """

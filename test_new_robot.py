@@ -28,8 +28,8 @@ def test_new_robot():
     print("🚀 开始测试新版飞书机器人...")
     
     # 检查必要的环境变量
-    app_id = os.environ.get('LARK_APP_ID', 'cli_a9f6280dd5389bd8')
-    app_secret = os.environ.get('LARK_APP_SECRET', 'VHN4Eag0koh7rwEkKXeHSgHzLnH1140x')
+    app_id = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')
+    app_secret = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE')
     
     print(f"📋 使用的App ID: {app_id}")
     print(f"📋 使用的App Secret: {'*' * len(app_secret) if app_secret else '未设置'}")

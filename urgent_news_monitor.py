@@ -6,7 +6,7 @@
 功能：
 1. 每30分钟从RSS源抓取最新新闻
 2. 快速调用DeepSeek大模型API进行情绪评分
-3. 只有当Abs(情绪分) >= 8（极度重要）时，才触发推送
+3. 只有当Abs(情绪分) >= 9（极度重要）时，才触发推送
 4. 平时不打扰，一旦响铃，必是大事
 
 作者：Python高级工程师
@@ -25,13 +25,9 @@ import re
 # ==================== 配置区域 ====================
 # 请根据实际情况修改以下配置
 
-# LLM API 配置 - 优先从环境变量读取，如果不存在则使用默认值
-API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'sk-1034e8c1dad248ea90ff08fddf2b5bd5')
+# LLM API 配置 - 从环境变量读取
+API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'YOUR_DEEPSEEK_API_KEY_HERE')
 BASE_URL = "https://api.deepseek.com"
-
-# 飞书应用认证配置
-APP_ID = os.environ.get('LARK_APP_ID', 'cli_a9f6280dd5389bd8')
-APP_SECRET = os.environ.get('LARK_APP_SECRET', 'VHN4Eag0koh7rwEkKXeHSgHzLnH1140x')
 
 # 智能代理配置 - 检查是否在GitHub Actions环境中
 if os.environ.get('GITHUB_ACTIONS'):
@@ -44,33 +40,123 @@ else:
         'https': 'http://127.0.0.1:7897'
     }
 
-# RSS源列表（紧急监控专用，只监控最重要的源）
+# RSS源列表（紧急监控专用，使用完整的新闻源列表）
 URGENT_RSS_SOURCES = [
-    # --- 顶级国际新闻 ---
+    # --- 1. 国际顶流 (BBC/NYT) ---
     "https://feeds.bbci.co.uk/news/world/rss.xml",  # BBC World
     "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",  # NYT World
     
-    # --- 金融市场 ---
+    # --- 2. 华尔街/金融 (CNBC) ---
     "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664",  # CNBC Finance
 
-    # --- 重大事件 ---
-    "https://www.reddit.com/r/worldnews/top/.rss?t=day",  # Reddit WorldNews - 全球网民最热议的突发事件
+    # --- 3. 硅谷/科技 (TechCrunch) ---
+    "https://techcrunch.com/feed/",  # TechCrunch AI & Startup
+
+    # --- 4. 雅虎财经 (新增) ---
+    "https://finance.yahoo.com/news/rssindex",  # Yahoo Finance
+
+    # --- 5. 加密货币 (Crypto) ---
+    "https://www.coindesk.com/arc/outboundfeeds/rss/",  # CoinDesk
+    "https://cointelegraph.com/rss",  # Cointelegraph
+    "https://crypto-slate.com/feed/",  # Crypto Slate
+
+    # --- 6. 能源与战争 (Energy) ---
+    "https://oilprice.com/rss/main",  # OilPrice.com
+
+    # --- 7. 社交与黑客动向 (替代 Twitter/GitHub) ---
+    # Hacker News (全球极客都在讨论什么，是 GitHub 最好的风向标)
+    "https://news.ycombinator.com/rss",
+    # Reddit WorldNews (全球网民最热议的突发事件)
+    "https://www.reddit.com/r/worldnews/top/.rss?t=day",
     
-    # --- 亚洲/中国 ---
+    # --- 8. Reddit 视频聚合 (新增) ---
+    "https://www.reddit.com/r/videos/top/.rss?t=day",  # Reddit 视频聚合 - 全球24小时内最热门的视频集合
+    
+    # --- 9. 亚洲/中国商业 (新增) ---
     "https://www.scmp.com/rss/2/feed",  # South China Morning Post (南华早报 - 中国商业版块)
     
-    # --- 国内主流新闻源 (新增) ---
+    # --- 10. 学术/AI研究 (新增) ---
+    "http://arxiv.org/rss/cs.AI",  # ArXiv AI Paper Daily (学术源)
+    "https://mittechnologyreview.com/feed/",  # MIT Technology Review (科技趋势分析)
+    
+    # --- 11. 国内主流新闻源 (新增) ---
     "http://news.baidu.com/n?cmd=file&format=rss&tn=rss&sub=0",  # 百度新闻
     "http://rss.people.com.cn/GB/303140/index.xml",  # 人民网
     "http://www.xinhuanet.com/politics/news_politics.xml",  # 新华网 - 时政
     "http://www.chinanews.com/rss/scroll-news.xml",  # 中国新闻网
     "https://www.thepaper.cn/rss.jsp",  # 澎湃新闻
     "http://www.ce.cn/cysc/jg/zxbd/rss2.xml",  # 中国经济网
+    "https://www.cls.cn/v3/highlights?app_id=70301d300f0f95a1&platform=pc",  # 财联社 (需要适配)
     
-    # --- 国内科技新闻 (新增) ---
+    # --- 12. 国内科技新闻 (新增) ---
+    "https://www.zhihu.com/rss",  # 知乎每日精选
     "https://www.36kr.com/feed",  # 36氪
     "https://news.qq.com/rss/channels/finance/rss.xml",  # 腾讯财经
     "https://rss.sina.com.cn/news/china/focus15.xml",  # 新浪新闻-国内焦点
+
+    # --- 13. 主要科技公司官网 (新增) ---
+    "https://blog.google/rss/",  # Google Blog
+    "https://openai.com/blog/rss/",  # OpenAI Blog
+    "https://blogs.microsoft.com/feed/",  # Microsoft Blog
+    "https://www.apple.com/newsroom/rss-feed.rss",  # Apple Newsroom
+    "https://nvidianews.nvidia.com/rss.xml",  # NVIDIA Newsroom
+    "https://about.meta.com/rss/feed/",  # Meta Newsroom
+
+    # --- 14. 主流财经媒体 (新增) ---
+    "https://feeds.reuters.com/reuters/topNews",  # Reuters Top News
+    "https://feeds.reuters.com/reuters/businessNews",  # Reuters Business
+    "https://feeds.reuters.com/reuters/technologyNews",  # Reuters Technology
+    "https://bloomberg.com/feed",  # Bloomberg (可能需要适配)
+    "https://www.wsj.com/xml/rss/3_7085.xml",  # Wall Street Journal (可能需要适配)
+
+    # --- 15. 科技媒体 (新增) ---
+    "https://www.theverge.com/rss/index.xml",  # The Verge
+    "https://arstechnica.com/feed/",  # Ars Technica
+
+    # --- 16. 投资机构和数据库 (新增) ---
+    "https://www.cbinsights.com/blog/feed/",  # CB Insights
+    "https://techcrunch.com/startups/",  # TechCrunch Startups
+    "https://www.crunchbase.com/feed",  # Crunchbase (可能需要适配)
+
+    # --- 17. AI研究机构 (新增) ---
+    "https://stability.ai/rss",  # Stability AI
+    "https://huggingface.co/blog/feed.xml",  # Hugging Face Blog
+
+    # --- 18. 商业领袖和企业高管 (新增) ---
+    "https://www.tesla.com/blog/rss",  # Tesla Blog
+    "https://about.twitter.com/content/dam/about-twitter/company/news/rss-feeds/official-company-blog-rss.xml",  # Twitter Blog (X)
+    "https://www.spacex.com/static/releases/feed.xml",  # SpaceX Releases
+
+    # --- 19. 加密货币和区块链 (新增) ---
+    "https://cointelegraph.com/feed",  # Cointelegraph
+    "https://decrypt.co/feed",  # Decrypt
+    "https://messari.io/feed.xml",  # Messari
+    "https://theblock.co/rss",  # The Block
+
+    # --- 20. 交易和投资平台 (新增) ---
+    "https://www.binance.com/en/blog/rss",  # Binance Blog
+    "https://blog.coinbase.com/feed",  # Coinbase Blog
+
+    # --- 21. 区块链协议 (新增) ---
+    "https://blog.ethereum.org/feed.xml",  # Ethereum Blog
+    "https://polkadot.network/feed/",  # Polkadot Blog
+
+    # --- 22. 金融和投资 (新增) ---
+    "https://seekingalpha.com/feed.xml",  # Seeking Alpha
+    "https://www.ft.com/?format=rss",  # Financial Times (可能需要适配)
+
+    # --- 23. 亚马逊相关 (新增) ---
+    "https://www.aboutamazon.com/news/rss-feed.xml",  # Amazon Newsroom
+
+    # --- 24. 马斯克相关 (新增) ---
+    "https://www.neuralink.com/blog.rss",  # Neuralink Blog
+    "https://www.boringcompany.com/blog",  # The Boring Company Blog (可能需要适配)
+
+    # --- 25. 其他AI公司 (新增) ---
+    "https://www.anthropic.com/rss",  # Anthropic Blog
+    "https://deepmind.google/rss/",  # DeepMind Blog
+    "https://aws.amazon.com/blogs/aws/feed/",  # AWS Blog
+    "https://www.amd.com/en/press-room/press-releases.rss",  # AMD Press Releases
 ]
 
 # 重试配置
@@ -113,44 +199,9 @@ def save_cache(processed_urls: set):
     except Exception as e:
         logger.error(f"保存缓存失败: {e}")
 
-# ==================== 飞书应用认证 ====================
-
-def get_access_token() -> str:
-    """
-    获取飞书访问令牌
-    """
-    url = "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal"
-    headers = {
-        "Content-Type": "application/json; charset=utf-8"
-    }
-    data = {
-        "app_id": APP_ID,
-        "app_secret": APP_SECRET
-    }
-
-    for attempt in range(MAX_RETRIES):
-        try:
-            logger.info(f"正在获取飞书访问令牌 (尝试 {attempt + 1}/{MAX_RETRIES})")
-            response = requests.post(url, headers=headers, json=data, timeout=10)
-            if response.status_code == 200:
-                result = response.json()
-                if result.get('code') == 0:
-                    access_token = result.get('tenant_access_token')
-                    logger.info("✅ 成功获取飞书访问令牌")
-                    return access_token
-                else:
-                    logger.error(f"获取访问令牌失败: {result.get('msg')}")
-            else:
-                logger.error(f"HTTP错误: {response.status_code} - {response.text}")
-        except Exception as e:
-            logger.error(f"获取访问令牌异常 (尝试 {attempt + 1}): {e}")
-        if attempt < MAX_RETRIES - 1:
-            time.sleep(RETRY_DELAY)
-    return ""
-
 def send_to_feishu(message: str, max_retries: int = MAX_RETRIES) -> bool:
     """
-    使用飞书应用认证发送消息到群组（支持表格等的丰富格式）
+    使用飞书webhook发送消息到群组（富文本格式）
     
     Args:
         message: 要发送的消息内容
@@ -159,163 +210,92 @@ def send_to_feishu(message: str, max_retries: int = MAX_RETRIES) -> bool:
     Returns:
         发送是否成功
     """
-    # 获取访问令牌
-    access_token = get_access_token()
-    if not access_token:
-        logger.error("❌ 无法获取访问令牌，消息发送失败")
-        return False
+    # 从环境变量获取webhook URL，如果不存在则使用占位符
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', 'YOUR_FEISHU_WEBHOOK_URL_HERE')
+    # 准备消息内容（转换为适合富文本的格式）
+    # 移除可能引起问题的特殊字符和格式，优化排版
+    clean_message = message.replace('\ud83d', '').replace('\ude0a', '')  # 移除某些emoji
+    clean_message = clean_message.replace('---', '\n──────\n')  # 只保留一条简洁的分隔线
+    clean_message = clean_message.replace('####', '###')  # 统一标题层级
+    clean_message = clean_message.replace('###', '\n● ')  # 将三级标题改为圆点
+    clean_message = clean_message.replace('##', '\n◆ ')  # 将二级标题改为菱形符号
+    clean_message = clean_message.replace('#', '\n★ ')  # 将一级标题改为星号
 
-    # 检测是否包含表格格式，如果是则使用card格式发送
-    contains_table = '|' in message and '-' in message
-
-    # 先尝试发送到群组，如果失败再尝试发送给用户
-    targets = []
-    chat_id = os.environ.get('LARK_CHAT_ID', '')
-    user_id = os.environ.get('LARK_USER_ID', '')
-    
-    if chat_id:
-        targets.append(('chat_id', chat_id))
-    if user_id:
-        targets.append(('user_id', user_id))
-    # 如果都没有设置，默认尝试发送给用户
-    if not chat_id and not user_id:
-        targets.append(('user_id', ''))
-
-    headers = {
-        "Content-Type": "application/json; charset=utf-8",
-        "Authorization": f"Bearer {access_token}"
+    # 构建富文本消息（使用interactive类型实现卡片效果）
+    data = {
+        "msg_type": "interactive",
+        "card": {
+            "config": {
+                "wide_screen_mode": True
+            },
+            "header": {
+                "template": "red",  # 紧急事件使用红色标题
+                "title": {
+                    "content": "🚨 全球紧急事件警报",
+                    "tag": "plain_text"
+                }
+            },
+            "elements": [
+                {
+                    "tag": "markdown",
+                    "content": clean_message
+                },
+                {
+                    "tag": "note",
+                    "elements": [
+                        {
+                            "tag": "plain_text",
+                            "content": "🤖 DeepSeek-V3 智能分析系统 | 📅 " + time.strftime("%Y-%m-%d %H:%M:%S")
+                        }
+                    ]
+                }
+            ]
+        }
     }
 
-    for receive_id_type, receive_id in targets:
-        url = f"https://open.feishu.cn/open-apis/im/v1/messages?receive_id_type={receive_id_type}"
-        
-        # 根据内容类型选择消息格式
-        if contains_table:
-            # 如果包含表格，构建更复杂的卡片消息
-            data = {
-                "receive_id": receive_id,
-                "msg_type": "interactive",
-                "content": json.dumps({
-                    "config": {
-                        "wide_screen_mode": True,
-                        "update_multi": False,
-                        "enable_forward": True
-                    },
-                    "header": {
-                        "template": "red",  # 紧急事件使用红色标题
-                        "title": {
-                            "content": "🚨 全球紧急事件警报",
-                            "tag": "plain_text"
-                        }
-                    },
-                    "elements": [
-                        {
-                            "tag": "markdown",
-                            "content": message
-                        },
-                        {
-                            "tag": "hr"
-                        },
-                        {
-                            "tag": "action",
-                            "actions": [
-                                {
-                                    "tag": "button",
-                                    "text": {
-                                        "content": "查看详情",
-                                        "tag": "plain_text"
-                                    },
-                                    "type": "danger",  # 紧急按钮样式
-                                    "value": {}
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
-        else:
-            # 普通消息格式
-            data = {
-                "receive_id": receive_id,
-                "msg_type": "interactive",
-                "content": json.dumps({
-                    "config": {
-                        "wide_screen_mode": True
-                    },
-                    "header": {
-                        "template": "red",  # 紧急事件使用红色标题
-                        "title": {
-                            "content": "🚨 全球紧急事件警报",
-                            "tag": "plain_text"
-                        }
-                    },
-                    "elements": [
-                        {
-                            "tag": "markdown",
-                            "content": message
-                        },
-                        {
-                            "tag": "action",
-                            "actions": [
-                                {
-                                    "tag": "button",
-                                    "text": {
-                                        "content": "查看详情",
-                                        "tag": "plain_text"
-                                    },
-                                    "type": "danger",  # 紧急按钮样式
-                                    "value": {}
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
+    headers = {
+        "Content-Type": "application/json; charset=utf-8"
+    }
 
-        for attempt in range(max_retries):
-            try:
-                logger.info(f"正在发送紧急消息到飞书 (目标类型: {receive_id_type}, 尝试 {attempt + 1}/{max_retries})")
-                response = requests.post(url, headers=headers, json=data, timeout=10)
-                if response.status_code == 200:
-                    result = response.json()
-                    if result.get('code') == 0:
-                        logger.info("🚨 紧急消息成功发送到飞书！")
-                        return True
-                    else:
-                        logger.error(f"飞书API返回错误: {result.get('msg')} (code: {result.get('code')})")
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"正在发送紧急消息到飞书webhook (尝试 {attempt + 1}/{max_retries})")
+            response = requests.post(webhook_url, headers=headers, json=data, timeout=10)
+            if response.status_code == 200:
+                result = response.json()
+                if result.get('StatusCode') == 0 or result.get('code') == 0:
+                    logger.info("🚨 紧急消息成功发送到飞书！")
+                    return True
                 else:
-                    logger.error(f"HTTP错误: {response.status_code} - {response.text}")
-            except Exception as e:
-                logger.error(f"发送飞书消息异常 (尝试 {attempt + 1}): {e}")
-            if attempt < max_retries - 1:
-                time.sleep(RETRY_DELAY)
+                    logger.error(f"飞书webhook返回错误: {result.get('msg') or result.get('message')}")
+            else:
+                logger.error(f"HTTP错误: {response.status_code} - {response.text}")
+        except Exception as e:
+            logger.error(f"发送飞书webhook消息异常 (尝试 {attempt + 1}): {e}")
+        if attempt < max_retries - 1:
+            time.sleep(RETRY_DELAY)
     
     logger.error("❌ 紧急消息发送最终失败")
     return False
 
 def send_error_alert(error_message: str, max_retries: int = MAX_RETRIES):
     """
-    发送错误警报到飞书（使用应用认证）
+    发送错误警报到飞书（使用webhook方式）
     """
-    access_token = get_access_token()
-    if not access_token:
-        logger.error("❌ 无法获取访问令牌，错误警报发送失败")
-        return False
-
     # 构建错误警报消息
-    alert_msg = f"**🚨 机器人故障警报**\n\n**错误详情**：{error_message}\n\n请及时检查机器人状态！\n\n*DeepSeek-V3 监控系统*"
-
-    # 发送错误警报
-    url = "https://open.feishu.cn/open-apis/im/v1/messages?receive_id_type=user_id"  # 可以根据需要修改为chat_id
-    user_id = os.environ.get('LARK_USER_ID', '')
+    alert_msg = f"🚨 机器人故障警报\n\n错误详情：{error_message}\n\n请及时检查机器人状态！\n\nDeepSeek-V3 监控系统"
+    
+    # 从环境变量获取webhook URL，如果不存在则使用占位符
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', 'YOUR_FEISHU_WEBHOOK_URL_HERE')
+    # 构建富文本消息（使用interactive类型实现卡片效果）
     data = {
-        "receive_id": user_id,
-        "content": json.dumps({
+        "msg_type": "interactive",
+        "card": {
             "config": {
                 "wide_screen_mode": True
             },
             "header": {
-                "template": "red",
+                "template": "red",  # 紧急事件使用红色标题
                 "title": {
                     "content": "🚨 机器人故障警报",
                     "tag": "plain_text"
@@ -324,42 +304,40 @@ def send_error_alert(error_message: str, max_retries: int = MAX_RETRIES):
             "elements": [
                 {
                     "tag": "markdown",
-                    "content": f"**错误详情**：{error_message}\n\n请及时检查机器人状态！"
+                    "content": alert_msg
                 },
                 {
                     "tag": "note",
                     "elements": [
                         {
                             "tag": "plain_text",
-                            "content": "DeepSeek-V3 监控系统 | 📅 " + time.strftime("%Y-%m-%d %H:%M:%S")
+                            "content": "🤖 DeepSeek-V3 监控系统 | 📅 " + time.strftime("%Y-%m-%d %H:%M:%S")
                         }
                     ]
                 }
             ]
-        }),
-        "msg_type": "interactive"
+        }
     }
 
     headers = {
-        "Content-Type": "application/json; charset=utf-8",
-        "Authorization": f"Bearer {access_token}"
+        "Content-Type": "application/json; charset=utf-8"
     }
 
     for attempt in range(max_retries):
         try:
-            logger.info(f"正在发送错误警报到飞书 (尝试 {attempt + 1}/{max_retries})")
-            response = requests.post(url, headers=headers, json=data, timeout=10)
+            logger.info(f"正在发送错误警报到飞书webhook (尝试 {attempt + 1}/{max_retries})")
+            response = requests.post(webhook_url, headers=headers, json=data, timeout=10)
             if response.status_code == 200:
                 result = response.json()
-                if result.get('code') == 0:
+                if result.get('StatusCode') == 0 or result.get('code') == 0:
                     logger.info("🚨 错误警报成功发送到飞书！")
                     return True
                 else:
-                    logger.error(f"飞书API返回错误: {result.get('msg')} (code: {result.get('code')})")
+                    logger.error(f"飞书webhook返回错误: {result.get('msg') or result.get('message')}")
             else:
                 logger.error(f"HTTP错误: {response.status_code} - {response.text}")
         except Exception as e:
-            logger.error(f"发送飞书错误警报异常 (尝试 {attempt + 1}): {e}")
+            logger.error(f"发送飞书webhook错误警报异常 (尝试 {attempt + 1}): {e}")
         if attempt < max_retries - 1:
             time.sleep(RETRY_DELAY)
     logger.error("❌ 错误警报发送失败")
@@ -476,27 +454,41 @@ def analyze_urgent_news_with_llm(news_items: List[Dict[str, str]]) -> tuple:
         news_content += f"**ID**: {i+1}\n**标题**: {item['title']}\n**摘要**: {item['summary']}\n**链接**: {item['link']}\n\n"
     
     # 紧急监控的系统提示词 - 专注快速情绪评分
-    system_prompt = """你是桥水基金 (Bridgewater) 和高盛 (Goldman Sachs) 联合训练的首席宏观经济分析师。你的服务对象是高净值投资者和跨境贸易商。你的核心能力是穿透新闻表象，直接指出其对资本市场和供应链的深层影响。
+    system_prompt = """你是一名顶级游资操盘手和宏观策略师。你的读者是时间宝贵的中国投资者/打工人。
+你的任务是：**透过新闻表象，直接拆解利益链条，给出最冷血的判断。**
 
-# Constraints & Style
-1. **严禁废话**：不要说"这则新闻很有趣"、"综上所述"等空话。
-2. **极度冷酷**：保持客观、冷静、专业的语调，类似《彭博终端》(Bloomberg Terminal) 或《经济学人》的风格。
-3. **数据驱动**：如果新闻中有数字，必须高亮并分析其背后的含义。
-4. **拒绝模糊**：不要给模棱两可的建议。如果不确定，指出风险点。
-5. **严禁描述图片**：绝对不要在输出中包含 "📸 图片：" 或任何对新闻配图的文字描述。图片由外部系统处理，你只负责文字分析。
+# Constraints
+1. **详细分析**：全篇控制在 600 字左右，提供深入的分析和见解。
+2. **通俗易懂**：使用简单明了的语言，避免复杂的箭头符号，让普通用户也能理解。
+3. **格式严格**：必须遵守下方的 Markdown 格式。
+4. **中国视角**：所有影响分析必须紧扣中国国运、A股/港股和打工人的钱袋子。
+5. **严禁描述图片**：不要输出任何图片描述。
 
-# Analysis Framework (必须严格遵守)
-请对每条新闻按照以下结构进行输出（Markdown格式）：
+# Analysis Framework (Markdown Output)
+请对筛选出的 Top 新闻按以下结构输出：
 
-### [情绪分 | 1-10] 新闻核心标题 (简练有力，直击痛点)
-* **📍 核心事实**：用 1-2 句话概括发生了什么（Who, What, When）。
-* **📉 底层逻辑**：为什么这件事重要？（例如：这是政策转向的信号，还是短期噪音？）
-* **💰 财富影响 (关键)**：
-    * **对跨境电商/贸易**：利好还是利空？（汇率波动、物流成本、关税风险）。
-    * **对金融市场**：具体影响哪些资产？（例如：做多黄金、做空美债、关注 A 股光伏板块）如果有少的你也可以自行加上去让他分析的新闻更加专业就可以
+### [情绪分 | 分数] 新闻标题 (中文，加粗)
 
----
-"""
+> [🔗 点击直达原新闻](新闻URL) | 来源：新闻Source
+
+**核心要点**：一句话概括新闻的核心内容
+
+**事件详情**：详细介绍发生了什么事情，涉及哪些关键人物、公司或组织，以及具体的时间、地点、数据等。
+
+**深层解读**：深入分析这则新闻背后的动机和原因。为什么会出现这种情况？是出于商业考虑、政策驱动、市场竞争还是技术突破？解释清楚事件发生的根本原因。
+
+**对中国的潜在影响**：
+- **短期影响**：对中国经济、金融市场、相关行业或消费者的直接影响
+- **长期影响**：对未来发展趋势、产业布局、国际地位等方面的深远影响
+
+**对股市和投资的影响**：
+- **可能受益的板块或股票**：列出可能因此受益的行业、公司或投资标的
+- **可能受损的板块或股票**：指出可能面临负面影响的领域
+- **投资策略建议**：基于此新闻，投资者应该如何调整策略
+
+**未来展望**：预测这一事件可能带来的后续发展，以及我们应该如何应对。
+
+**关联信息**：如果这则新闻与其他事件有关联，说明它们之间的联系。"""
 
     # 用户消息
     user_message = f"请快速分析以下新闻的情绪倾向，并为每条新闻添加情绪评分（只分析最重要的新闻）：\n\n{news_content}"

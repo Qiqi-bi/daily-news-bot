@@ -8,9 +8,9 @@ import os
 import sys
 
 # 设置环境变量
-os.environ['LARK_APP_ID'] = 'cli_a9f6280dd5389bd8'
-os.environ['LARK_APP_SECRET'] = 'VHN4Eag0koh7rwEkKXeHSgHzLnH1140x'
-os.environ['LARK_CHAT_ID'] = 'oc_efc1ffb36158b2254f263e20b1fef768'
+os.environ['LARK_APP_ID'] = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')
+os.environ['LARK_APP_SECRET'] = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE')
+os.environ['LARK_CHAT_ID'] = os.environ.get('LARK_CHAT_ID', 'YOUR_LARK_CHAT_ID_HERE')
 
 # 现在导入并运行主程序
 import daily_news_bot

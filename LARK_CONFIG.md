@@ -12,8 +12,8 @@
 
 1. 在应用详情页面找到"凭证与基础信息"
 2. 记录以下信息：
-   - App ID: `cli_a9f6280dd5389bd8`
-   - App Secret: `VHN4Eag0koh7rwEkKXeHSgHzLnH1140x`
+   - App ID: `YOUR_LARK_APP_ID_HERE`
+   - App Secret: `YOUR_LARK_APP_SECRET_HERE`
    - 租户Token（如果需要）
 
 ## 权限配置
@@ -42,24 +42,24 @@
 
 ```bash
 # 飞书应用凭证
-export LARK_APP_ID=cli_a9f6280dd5389bd8
-export LARK_APP_SECRET=VHN4Eag0koh7rwEkKXeHSgHzLnH1140x
 
-# 可选：指定发送消息的目标
-export LARK_CHAT_ID="your_chat_id_here"  # 发送到特定群组
-export LARK_USER_ID="your_user_id_here"  # 发送到特定用户
+- App ID: `YOUR_LARK_APP_ID_HERE`
+- App Secret: `YOUR_LARK_APP_SECRET_HERE`
+- 租户Token（如果需要）
+
+## 环境变量设置
+
+### Linux/macOS
+```bash
+export LARK_APP_ID=YOUR_LARK_APP_ID_HERE
+export LARK_APP_SECRET=YOUR_LARK_APP_SECRET_HERE
 ```
 
-## 使用方法
-
-### 本地运行
-```bash
-# 设置环境变量
-export LARK_APP_ID=cli_a9f6280dd5389bd8
-export LARK_APP_SECRET=VHN4Eag0koh7rwEkKXeHSgHzLnH1140x
-
-# 运行程序
-python daily_news_bot.py
+### Windows (命令提示符)
+```batch
+set LARK_APP_ID=YOUR_LARK_APP_ID_HERE
+REM 设置飞书机器人环境变量
+set LARK_APP_SECRET=YOUR_LARK_APP_SECRET_HERE
 ```
 
 ### GitHub Actions

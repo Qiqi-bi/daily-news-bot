@@ -31,11 +31,11 @@ def setup_lark_config():
     # 获取配置信息
     app_id = input("请输入 App ID (留空使用默认值): ").strip()
     if not app_id:
-        app_id = "cli_a9f6280dd5389bd8"  # 默认值
+        app_id = os.environ.get('LARK_APP_ID', 'YOUR_LARK_APP_ID_HERE')  # 从环境变量获取或使用占位符
     
     app_secret = input("请输入 App Secret (留空使用默认值): ").strip()
     if not app_secret:
-        app_secret = "VHN4Eag0koh7rwEkKXeHSgHzLnH1140x"  # 默认值
+        app_secret = os.environ.get('LARK_APP_SECRET', 'YOUR_LARK_APP_SECRET_HERE')  # 从环境变量获取或使用占位符
     
     chat_id = input("请输入 Chat ID (可选，留空跳过): ").strip()
     user_id = input("请输入 User ID (可选，留空跳过): ").strip()
