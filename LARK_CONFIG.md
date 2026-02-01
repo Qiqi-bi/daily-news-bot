@@ -13,20 +13,24 @@
 只需要设置以下环境变量：
 
 ```bash
-FEISHU_WEBHOOK_URL=你的webhook地址
+FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
 ```
 
 ## 环境变量设置
 
 ### Linux/macOS
 ```bash
-export LARK_APP_ID=
-export LARK_APP_SECRET=
+export FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
 ```
 
 ### Windows (命令提示符)
 ```batch
-set FEISHU_WEBHOOK_URL=你的webhook地址
+set FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
+```
+
+### Windows (PowerShell)
+```powershell
+$env:FEISHU_WEBHOOK_URL="your_feishu_webhook_url_here"
 ```
 
 ### GitHub Actions

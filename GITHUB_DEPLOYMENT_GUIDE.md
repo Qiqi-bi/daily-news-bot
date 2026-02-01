@@ -12,8 +12,8 @@
 2. 在 `.env` 文件中配置你的密钥：
 
 ```env
-DEEPSEEK_API_KEY=your_actual_deepseek_api_key
-FEISHU_WEBHOOK_URL=your_actual_feishu_webhook_url
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
 ```
 
 3. 安装依赖并运行：

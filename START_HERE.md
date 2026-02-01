@@ -13,10 +13,7 @@ pip install -r requirements.txt
 ### 2. 配置API密钥
 在系统环境变量中设置：
 - `DEEPSEEK_API_KEY`: DeepSeek API密钥
-- `LARK_APP_ID`: 飞书应用ID
-- `LARK_APP_SECRET`: 飞书应用密钥
-- `LARK_CHAT_ID`: 飞书群聊ID（可选）
-- `LARK_USER_ID`: 飞书用户ID（可选）
+- `FEISHU_WEBHOOK_URL`: 飞书Webhook URL（推荐使用Webhook方式，无需复杂认证）
 
 ### 3. 运行机器人
 ```bash

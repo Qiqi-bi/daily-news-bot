@@ -165,7 +165,11 @@ def send_card_news_template():
     """
     发送卡片式新闻模板到飞书群
     """
-    webhook_url = "https://open.feishu.cn/open-apis/bot/v2/hook/5379d0cd-e7d6-41cf-9465-14956a56cf45"
+    import os
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')
+    if not webhook_url:
+        print("❌ 未配置FEISHU_WEBHOOK_URL环境变量")
+        return False
     
     card_data = get_card_news_template()
     

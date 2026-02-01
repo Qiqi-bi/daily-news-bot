@@ -12,8 +12,12 @@ def send_updated_news_template():
     """
     使用Webhook发送更新版新闻模板到飞书群
     """
-    # 您提供的Webhook地址
-    webhook_url = "https://open.feishu.cn/open-apis/bot/v2/hook/5379d0cd-e7d6-41cf-9465-14956a56cf45"
+    import os
+    # 从环境变量获取Webhook地址
+    webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')
+    if not webhook_url:
+        print("❌ 未配置FEISHU_WEBHOOK_URL环境变量")
+        return False
     
     # 更新版新闻模板内容
     news_template = {

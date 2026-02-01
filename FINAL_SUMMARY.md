@@ -41,13 +41,10 @@
 ### 环境变量
 ```bash
 # DeepSeek API
-DEEPSEEK_API_KEY=
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
-# 飞书应用配置
-LARK_APP_ID=
-LARK_APP_SECRET=
-LARK_CHAT_ID=  # 可选
-LARK_USER_ID=  # 可选
+# 飞书Webhook配置（推荐使用Webhook方式，无需复杂认证）
+FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
 ```
 
 ### RSS源列表

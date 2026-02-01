@@ -67,14 +67,14 @@ playwright install chromium  # 安装Playwright浏览器
 
 ```env
 # DeepSeek API密钥
-DEEPSEEK_API_KEY=your_deepseek_api_key
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
 # 飞书webhook URL
-FEISHU_WEBHOOK_URL=your_feishu_webhook_url
+FEISHU_WEBHOOK_URL=your_feishu_webhook_url_here
 
 # 可选：金融API密钥
-MARKETAUX_API_KEY=your_marketaux_api_key
-POLYGON_API_KEY=your_polygon_api_key
+MARKETAUX_API_KEY=your_marketaux_api_key_here
+POLYGON_API_KEY=your_polygon_api_key_here
 ```
 
 ### 运行机器人

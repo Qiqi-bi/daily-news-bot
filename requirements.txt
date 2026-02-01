@@ -4,3 +4,4 @@ fake-useragent>=1.5.1
 httpx>=0.25.2
 playwright>=1.40.0
 lxml>=4.9.3
+python-dotenv>=1.0.0
