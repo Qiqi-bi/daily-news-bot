@@ -1,105 +1,71 @@
-# 🚀 每日AI新闻机器人
+# 每日AI新闻机器人
 
-## 项目简介
-这是一个基于DeepSeek大模型的智能新闻分析机器人，能够自动抓取全球新闻、进行深度分析，并将结果发送到飞书。
+这是一个自动抓取、分析和推送AI及相关领域新闻的机器人。它使用增强版RSS采集器，通过多层策略确保最大程度获取有效新闻。
 
-## 🌍 一日三报时间安排
+## 功能特点
 
-机器人会根据当前时间自动判断发送哪种类型的报告：
-- **早报**: 北京时间 8:00 - 关注美股收盘、昨夜欧美大事
-- **午报**: 北京时间 13:00 - 关注A股/港股午间动态、亚太地缘
-- **晚报**: 北京时间 21:00 - 关注欧股开盘、美股盘前动态
-- **日终汇总**: 北京时间 00:00 - 全天总结和明日前瞻
-- **紧急监控**: 每30分钟一次，仅在检测到重大事件（情绪分≥9）时推送
+- **多层采集策略**：API优先、更新后RSS源、Playwright浏览器抓取、传统RSS源四层策略
+- **智能分析**：使用LLM进行智能分析和摘要
+- **飞书推送**：推送到飞书群组
+- **智能去重**：基于标题和链接的智能去重
+- **重要性排序**：根据来源和关键词对新闻进行重要性排序
 
-## 📋 功能特色
+## 安装依赖
 
-- ✅ 智能新闻抓取与去重
-- ✅ AI深度分析与情绪评分
-- ✅ 实时资产价格注入
-- ✅ 飞书webhook认证推送
-- ✅ 支持富文本卡片格式
-- ✅ 一日四报策略
-- ✅ 错误监控与警报
-- ✅ 紧急事件检测
-
-## 🛠️ 技术栈
-
-- Python 3.9+
-- DeepSeek API
-- Feedparser (RSS解析)
-- Requests (HTTP请求)
-- 飞书webhook
-
-## 📁 重要文件说明
-
-- `daily_news_bot.py` - 核心程序文件
-- `urgent_news_monitor.py` - 紧急监控脚本
-- `requirements.txt` - 项目依赖
-- `.github/workflows/daily_news.yml` - GitHub Actions自动运行配置
-- `LARK_CONFIG.md` - 飞书机器人配置指南
-- `FINAL_SUMMARY.md` - 详细项目说明
-
-## 🚀 快速开始
-
-### 1. 安装依赖
 ```bash
 pip install -r requirements.txt
+playwright install chromium  # 安装Playwright浏览器
 ```
 
-### 2. 配置API密钥
-在系统环境变量中设置：
-- `DEEPSEEK_API_KEY`: DeepSeek API密钥
-- `FEISHU_WEBHOOK_URL`: 飞书webhook地址
+## 配置
 
-### 3. 运行机器人
+1. 复制 `.env` 为 `.env` 并填入你的API密钥和飞书Webhook URL：
+
 ```bash
-# 直接运行
-python daily_news_bot.py
-
-# 或使用自动安装脚本
-python setup_and_run.py
+MARKETAUX_API_KEY=your_marketax_api_key_here
+POLYGON_API_KEY=your_polygon_api_key_here
+LARK_WEBHOOK_URL=your_lark_webhook_url_here
 ```
 
-## ⚙️ 自动化部署
+2. 或者直接在 `lark_config.json` 中配置飞书机器人的Webhook URL。
 
-使用GitHub Actions实现自动化运行：
-1. Fork此仓库
-2. 在仓库Settings → Secrets and variables → Actions中添加上述环境变量
-3. 启用Actions（默认已启用）
+## 运行
 
-## 📊 分析框架
+```bash
+python daily_news_bot.py
+```
 
-机器人采用专业分析框架：
-- **情绪分**：量化新闻影响程度
-- **核心事实**：一句话概括关键信息
-- **幕后真相**：揭示事件背后逻辑
-- **对中国影响**：短期与长期影响分析
-- **股市影响**：板块与个股影响预测
-- **操作建议**：具体投资策略建议
+或者使用批处理脚本：
 
-## 🔒 安全特性
+```bash
+# Windows
+start_news_bot.bat
 
-- 敏感信息通过环境变量管理
-- 无硬编码密钥
-- 自动过滤敏感内容
-- 错误信息脱敏处理
+# PowerShell
+./run_robot.ps1
+```
 
-## 🤖 智能特性
+## 采集策略
 
-- **新闻去重**：避免重复推送相同内容
-- **重要性排序**：按新闻影响力排序
-- **价格注入**：自动获取相关资产价格
-- **情绪分析**：量化新闻情感倾向
-- **紧急检测**：高影响事件即时推送
+机器人采用四层采集策略：
 
-## 📞 技术支持
+1. **API采集**：优先从MarketAxess、Polygon等API获取数据
+2. **更新后RSS源**：抓取已更新的RSS源
+3. **Playwright浏览器抓取**：使用无头浏览器抓取反爬虫网站
+4. **传统RSS源**：抓取标准RSS源
 
-如需帮助，请参考：
-- `LARK_CONFIG.md` - 飞书配置说明
-- `FINAL_SUMMARY.md` - 详细功能说明
-- `START_HERE.md` - 快速开始指南
+## 支持的新闻源
 
----
+- AI/ML博客（Google DeepMind、OpenAI、Anthropic等）
+- 科技新闻（TechCrunch、The Verge等）
+- 金融新闻（FT、WSJ等）
+- 加密货币新闻（CoinDesk、Cointelegraph等）
+- 学术论文（arXiv等）
 
-*让AI成为您的专属新闻分析师！🎉*
+## 系统架构
+
+- `daily_news_bot.py` - 主程序文件
+- `enhanced_rss_fetcher.py` - 增强版RSS采集器
+- `lark_config.json` - 飞书配置
+- `history.json` - 新闻缓存记录
+- `requirements.txt` - 依赖包列表

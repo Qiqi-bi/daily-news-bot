@@ -25,6 +25,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import urllib3
 from fake_useragent import UserAgent
+from enhanced_rss_fetcher import EnhancedRSSFetcher
 
 # 禁用SSL警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -416,89 +417,72 @@ def fetch_rss_feed(url: str, max_retries: int = MAX_RETRIES) -> Optional[feedpar
     logger.error(f"RSS抓取最终失败: {url}")
     return None
 
-def extract_news_items() -> List[Dict[str, str]]:
+async def extract_news_items() -> List[Dict[str, str]]:
     """
     从多个RSS源提取新闻条目，并按重要性排序
+    使用增强版采集器，支持API优先、Playwright抓取等多种策略
     
     Returns:
         新闻条目列表，每个包含title, summary, link, importance_score
     """
-    all_news = []
-    seen_titles = set()  # 用于去重
-    processed_urls = load_cache()  # 加载已处理的URL缓存
-    
-    # 定义RSS源权重，权威性越高的源权重越大
-    source_weights = {
-        "https://feeds.bbci.co.uk/news/world/rss.xml": 1.0,  # BBC World
-        "https://rss.nytimes.com/services/xml/rss/nyt/World.xml": 1.0,  # NYT World
-        "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664": 0.9,  # CNBC Finance
-        "https://techcrunch.com/feed/": 0.8,  # TechCrunch AI & Startup
-        "https://finance.yahoo.com/news/rssindex": 0.8,  # Yahoo Finance
-        "https://www.coindesk.com/arc/outboundfeeds/rss/": 0.7,  # CoinDesk
-        "https://oilprice.com/rss/main": 0.7,  # OilPrice.com
-        "https://news.ycombinator.com/rss": 0.7,  # Hacker News
-        "https://www.reddit.com/r/worldnews/top/.rss?t=day": 0.6,  # Reddit WorldNews
-        "https://www.reddit.com/r/videos/top/.rss?t=day": 0.5,  # Reddit 视频聚合
-        "https://www.scmp.com/rss/2/feed": 0.8,  # South China Morning Post
-        "http://arxiv.org/rss/cs.AI": 0.6,  # ArXiv AI Paper Daily
-        "http://news.baidu.com/n?cmd=file&format=rss&tn=rss&sub=0": 0.7,  # 百度新闻
-        "http://rss.people.com.cn/GB/303140/index.xml": 0.9,  # 人民网
-        "http://www.xinhuanet.com/politics/news_politics.xml": 0.9,  # 新华网 - 时政
-        "http://www.chinanews.com/rss/scroll-news.xml": 0.7,  # 中国新闻网
-        "https://www.thepaper.cn/rss.jsp": 0.6,  # 澎湃新闻
-        "https://www.cls.cn/v3/highlights?app_id=70301d300f0f95a1&platform=pc": 0.7,  # 财联社
-        "https://www.zhihu.com/rss": 0.5,  # 知乎每日精选
-        "https://www.36kr.com/feed": 0.6,  # 36氪
-        "https://news.qq.com/rss/channels/finance/rss.xml": 0.7,  # 腾讯财经
-        "https://rss.sina.com.cn/news/china/focus15.xml": 0.7,  # 新浪新闻-国内焦点
+    # 从环境变量获取API密钥
+    api_keys = {
+        'MARKETAUX_API_KEY': os.environ.get('MARKETAUX_API_KEY', ''),
+        'POLYGON_API_KEY': os.environ.get('POLYGON_API_KEY', '')
     }
     
-    for rss_url in RSS_SOURCES:
-        feed = fetch_rss_feed(rss_url)
-        if not feed or not feed.entries:
+    # 创建增强版采集器实例
+    fetcher = EnhancedRSSFetcher(api_keys)
+    
+    # 执行多层采集策略
+    all_raw_articles = await fetcher.fetch_all()
+    
+    # 去重处理
+    unique_articles = fetcher.deduplicate_articles(all_raw_articles)
+    
+    # 加载已处理的URL缓存
+    processed_urls = load_cache()
+    
+    # 过滤掉已处理过的文章
+    fresh_articles = [article for article in unique_articles if article.get('link', '') not in processed_urls]
+    
+    # 为每篇文章计算重要性分数
+    articles_with_scores = []
+    for article in fresh_articles:
+        title = article.get('title', '').strip()
+        summary = article.get('description', '').strip()
+        link = article.get('link', '')
+        published_time = article.get('published', None)
+        
+        # 跳过空标题的文章
+        if not title:
             continue
             
-        for entry in feed.entries[:5]:  # 每个源最多取5条
-            title = entry.get('title', '').strip()
-            summary = entry.get('summary', '').strip()
-            link = entry.get('link', '')
-            published_time = entry.get('published_parsed', None)
-            
-            # 检查URL是否已处理过
-            if link in processed_urls:
-                continue
-            
-            # 去重检查
-            if not title or title in seen_titles:
-                continue
-                
-            seen_titles.add(title)
-            
-            # 清理summary中的HTML标签
-            import re
-            summary = re.sub(r'<[^>]+>', '', summary)
-            summary = summary[:200] + '...' if len(summary) > 200 else summary
-            
-            # 计算新闻重要性分数
-            importance_score = calculate_importance_score(title, summary, rss_url, published_time, source_weights)
-            
-            all_news.append({
-                'title': title,
-                'summary': summary,
-                'link': link,
-                'importance_score': importance_score
-            })
+        # 清理summary中的HTML标签
+        import re
+        summary = re.sub(r'<[^>]+>', '', summary)
+        summary = summary[:200] + '...' if len(summary) > 200 else summary
+        
+        # 计算新闻重要性分数
+        importance_score = calculate_importance_score(title, summary, link, published_time, {})
+        
+        articles_with_scores.append({
+            'title': title,
+            'summary': summary,
+            'link': link,
+            'importance_score': importance_score
+        })
     
     # 按重要性分数降序排序
-    all_news.sort(key=lambda x: x['importance_score'], reverse=True)
+    articles_with_scores.sort(key=lambda x: x['importance_score'], reverse=True)
     
     # 更新缓存，添加新处理的URL
-    for item in all_news:
+    for item in articles_with_scores:
         processed_urls.add(item['link'])
     save_cache(processed_urls)
     
-    logger.info(f"总共提取到 {len(all_news)} 条唯一新闻，并按重要性排序")
-    return all_news[:10]  # 最多处理10条新闻
+    logger.info(f"总共提取到 {len(articles_with_scores)} 条新鲜新闻，并按重要性排序")
+    return articles_with_scores[:10]  # 最多处理10条新闻
 
 def get_asset_price(asset_name: str) -> Optional[str]:
     """
@@ -842,7 +826,8 @@ def main():
     logger.info("🚀 启动每日新闻机器人...")
     try:
         # 1. 抓取新闻
-        news_items = extract_news_items()
+        import asyncio
+        news_items = asyncio.run(extract_news_items())
         if not news_items:
             logger.warning("未获取到任何新闻，跳过分析")
             # 即使没有新闻也要记录日志
