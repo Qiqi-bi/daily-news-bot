@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-飞书机器人配置设置脚本
+飞书Webhook配置设置脚本
 """
 
 import os
@@ -10,46 +10,29 @@ from pathlib import Path
 
 def setup_lark_config():
     """
-    设置飞书机器人配置
+    设置飞书Webhook配置
     """
-    print("🔧 飞书机器人配置设置向导")
+    print("🔧 飞书Webhook配置设置向导")
     print("=" * 50)
     
     print("\n📋 当前配置状态:")
-    print(f"App ID: {'已设置' if os.environ.get('LARK_APP_ID') else '未设置'}")
-    print(f"App Secret: {'已设置' if os.environ.get('LARK_APP_SECRET') else '未设置'}")
-    print(f"Chat ID: {'已设置' if os.environ.get('LARK_CHAT_ID') else '未设置'}")
-    print(f"User ID: {'已设置' if os.environ.get('LARK_USER_ID') else '未设置'}")
+    print(f"Webhook URL: {'已设置' if os.environ.get('FEISHU_WEBHOOK_URL') else '未设置'}")
     
     print("\n💡 配置说明:")
-    print("1. App ID 和 App Secret 是必需的，用于身份验证")
-    print("2. Chat ID 或 User ID 至少需要设置一个，用于指定消息发送目标")
-    print("3. 这些配置可以通过环境变量或配置文件设置")
+    print("1. Webhook URL 是必需的，用于发送消息到飞书群聊")
+    print("2. 这些配置通过环境变量设置")
     
-    print("\n🔐 请输入飞书应用配置信息:")
+    print("\n🔐 请输入飞书Webhook配置信息:")
     
     # 获取配置信息
-    app_id = input("请输入 App ID (留空使用默认值): ").strip()
-    if not app_id:
-        app_id = os.environ.get('LARK_APP_ID', '')  # 从环境变量获取或使用占位符
-    
-    app_secret = input("请输入 App Secret (留空使用默认值): ").strip()
-    if not app_secret:
-        app_secret = os.environ.get('LARK_APP_SECRET', '')  # 从环境变量获取或使用占位符
-    
-    chat_id = input("请输入 Chat ID (可选，留空跳过): ").strip()
-    user_id = input("请输入 User ID (可选，留空跳过): ").strip()
+    webhook_url = input("请输入 Webhook URL (留空使用环境变量): ").strip()
+    if not webhook_url:
+        webhook_url = os.environ.get('FEISHU_WEBHOOK_URL', '')  # 从环境变量获取或使用占位符
     
     # 创建配置字典
     config = {
-        "LARK_APP_ID": app_id,
-        "LARK_APP_SECRET": app_secret
+        "FEISHU_WEBHOOK_URL": webhook_url
     }
-    
-    if chat_id:
-        config["LARK_CHAT_ID"] = chat_id
-    if user_id:
-        config["LARK_USER_ID"] = user_id
     
     # 保存到配置文件
     config_path = Path("lark_config.json")
@@ -61,13 +44,13 @@ def setup_lark_config():
     # 显示使用说明
     print("\n📖 使用说明:")
     print("1. 在运行机器人脚本前，需要设置环境变量:")
-    print("   Windows: set LARK_APP_ID=")
-    print("            set LARK_APP_SECRET=")
+    print("   Windows: set FEISHU_WEBHOOK_URL=你的webhook地址")
+    print("   Linux/macOS: export FEISHU_WEBHOOK_URL=你的webhook地址")
     print("   或者使用配置文件方式运行")
     
     print("\n2. 如果您使用的是GitHub Actions，需要在仓库设置中添加Secrets:")
     print("   Settings → Secrets and variables → Actions → New repository secret")
-    print("   添加: LARK_APP_ID, LARK_APP_SECRET, LARK_CHAT_ID (可选), LARK_USER_ID (可选)")
+    print("   添加: FEISHU_WEBHOOK_URL")
     
     print("\n3. 验证配置是否正确:")
     print("   python check_config.py")
@@ -100,7 +83,7 @@ def test_configuration():
         if config:
             print("✅ 从配置文件加载成功")
             for key, value in config.items():
-                if 'SECRET' in key or 'ID' in key:
+                if 'WEBHOOK' in key or 'URL' in key:
                     # 隐藏敏感信息
                     display_value = '*' * len(value) if value else ''
                     print(f"   {key}: {display_value}")
@@ -120,29 +103,23 @@ def show_setup_options():
     print("\n⚙️  配置选项:")
     print("1. 使用环境变量 (推荐用于生产环境)")
     print("2. 使用配置文件 (推荐用于本地开发)")
-    print("3. 直接在代码中设置 (不推荐，安全性低)")
     
-    print("\n🌐 飞书应用创建步骤:")
-    print("   1. 访问 https://open.feishu.cn/")
-    print("   2. 登录后进入'开发者后台'")
-    print("   3. 点击'创建企业自建应用'")
-    print("   4. 填写应用名称（如'每日AI新闻机器人'）")
-    print("   5. 在应用详情页面的'凭证与基础信息'中获取App ID和App Secret")
-    
-    print("\n🔒 必需权限:")
-    print("   - im:message:send (发送消息权限)")
-    print("   - im:chat:read (读取群组信息权限)")
-    print("   - contact:user.employee_id:readonly (获取用户信息权限)")
+    print("\n🌐 飞书Webhook创建步骤:")
+    print("   1. 在飞书群聊中点击右上角群设置")
+    print("   2. 机器人 → 添加机器人 → 自定义机器人")
+    print("   3. 设置机器人名称（如'每日AI新闻机器人'）")
+    print("   4. 完善机器人图标和描述信息")
+    print("   5. 复制Webhook地址")
 
 if __name__ == "__main__":
-    print("🚀 飞书机器人配置助手")
+    print("🚀 飞书Webhook配置助手")
     print()
     
     # 显示设置选项
     show_setup_options()
     
     # 询问是否要进行配置
-    response = input("\n是否要开始配置飞书机器人？(y/n): ").strip().lower()
+    response = input("\n是否要开始配置飞书Webhook？(y/n): ").strip().lower()
     
     if response in ['y', 'yes', '是', '要']:
         config = setup_lark_config()

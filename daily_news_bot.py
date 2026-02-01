@@ -20,6 +20,14 @@ import random
 from typing import List, Dict, Optional
 from urllib.parse import urljoin
 import os
+import ssl
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+import urllib3
+from fake_useragent import UserAgent
+
+# 禁用SSL警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ==================== 配置区域 ====================
 # 请根据实际情况修改以下配置
@@ -312,13 +320,16 @@ def fetch_rss_feed(url: str, max_retries: int = MAX_RETRIES) -> Optional[feedpar
     # 智能延迟，避免请求过于频繁
     time.sleep(random.uniform(1.0, 3.0))
     
+    # 初始化UserAgent
+    ua = UserAgent()
+    
     for attempt in range(max_retries):
         try:
             logger.info(f"正在抓取RSS源: {url} (尝试 {attempt + 1}/{max_retries})")
             
             # 使用更真实的请求头，模拟浏览器行为
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'User-Agent': ua.random,
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.5',
                 'Accept-Encoding': 'gzip, deflate',
@@ -344,7 +355,7 @@ def fetch_rss_feed(url: str, max_retries: int = MAX_RETRIES) -> Optional[feedpar
                 # 403错误：服务器拒绝访问，可能是反爬虫机制
                 logger.warning(f"403错误 - 访问被拒绝: {url}")
                 # 更换User-Agent再试
-                headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                headers['User-Agent'] = ua.random
                 if attempt < max_retries - 1:
                     time.sleep(5 * (attempt + 1))  # 递增延迟
                 continue
@@ -370,6 +381,25 @@ def fetch_rss_feed(url: str, max_retries: int = MAX_RETRIES) -> Optional[feedpar
                 if attempt < max_retries - 1:
                     time.sleep(3 * (attempt + 1))
                     
+        except requests.exceptions.SSLError as e:
+            logger.warning(f"SSL错误 (尝试 {attempt + 1}): {e}")
+            # 尝试忽略SSL验证
+            if attempt < max_retries - 1:
+                try:
+                    response = requests.get(
+                        url, 
+                        proxies=PROXIES, 
+                        timeout=15,  # 增加超时时间
+                        headers=headers,
+                        verify=False  # 忽略SSL验证
+                    )
+                    if response.status_code == 200:
+                        feed = feedparser.parse(response.content)
+                        logger.info(f"成功抓取 {len(feed.entries)} 条新闻 (忽略SSL验证)")
+                        return feed
+                except Exception:
+                    pass  # 继续重试
+                time.sleep(5 * (attempt + 1))
         except requests.exceptions.ConnectionError:
             logger.warning(f"连接错误 (尝试 {attempt + 1}): {url}")
             if attempt < max_retries - 1:
@@ -526,6 +556,7 @@ def get_asset_price(asset_name: str) -> Optional[str]:
 def analyze_news_with_llm(news_items: List[Dict[str, str]], report_type: str = 'daily') -> str:
     """
     调用LLM API对新闻进行深度分析（带去重逻辑、情绪评分、价格注入和图片信息）
+    使用分批处理机制，避免一次性发送过多内容导致超时
     
     Args:
         news_items: 新闻条目列表
@@ -537,27 +568,36 @@ def analyze_news_with_llm(news_items: List[Dict[str, str]], report_type: str = '
     if not news_items:
         return "今日无重要新闻更新。"
     
-    # 构建新闻内容，一次性发送给LLM进行去重分析
-    news_content = ""
-    for i, item in enumerate(news_items):
-        # 检查新闻中是否包含需要价格注入的关键词
-        title_lower = item['title'].lower()
-        summary_lower = item['summary'].lower()
-        price_info = ""
-        
-        # 检查是否包含相关资产关键词
-        assets_to_check = ['bitcoin', 'btc', 'ethereum', 'eth', 'gold', 'nvidia', 'nvda', 'apple', 'aapl', 's&p 500', 'sp500']
-        for asset in assets_to_check:
-            if asset in title_lower or asset in summary_lower:
-                price = get_asset_price(asset)
-                if price:
-                    price_info = f" (当前价格：{price})"
-                break  # 找到一个匹配就停止
-        
-        news_content += f"**ID**: {i+1}\n**标题**: {item['title']}{price_info}\n**摘要**: {item['summary']}\n**链接**: {item['link']}\n\n"
+    # 将新闻列表按每30条一组进行拆分
+    batch_size = 30
+    batches = [news_items[i:i + batch_size] for i in range(0, len(news_items), batch_size)]
     
-    # 根据报告类型生成定制化的系统提示词
-    SYSTEM_PROMPT = """你是一名顶级游资操盘手和宏观策略师。你的读者是时间宝贵的中国投资者/打工人。
+    # 为每个批次构建分析内容
+    batch_analyses = []
+    for batch_idx, batch in enumerate(batches):
+        logger.info(f"正在处理第 {batch_idx + 1}/{len(batches)} 批次新闻 (共 {len(batch)} 条)")
+        
+        # 构建单个批次的新闻内容
+        news_content = ""
+        for i, item in enumerate(batch):
+            # 检查新闻中是否包含需要价格注入的关键词
+            title_lower = item['title'].lower()
+            summary_lower = item['summary'].lower()
+            price_info = ""
+            
+            # 检查是否包含相关资产关键词
+            assets_to_check = ['bitcoin', 'btc', 'ethereum', 'eth', 'gold', 'nvidia', 'nvda', 'apple', 'aapl', 's&p 500', 'sp500']
+            for asset in assets_to_check:
+                if asset in title_lower or asset in summary_lower:
+                    price = get_asset_price(asset)
+                    if price:
+                        price_info = f" (当前价格：{price})"
+                    break  # 找到一个匹配就停止
+            
+            news_content += f"**ID**: {i+1}\n**标题**: {item['title']}{price_info}\n**摘要**: {item['summary']}\n**链接**: {item['link']}\n\n"
+        
+        # 为单个批次生成系统提示词
+        SYSTEM_PROMPT = """你是一名顶级游资操盘手和宏观策略师。你的读者是时间宝贵的中国投资者/打工人。
 你的任务是：**透过新闻表象，直接拆解利益链条，给出最冷血的判断。**
 
 # Constraints
@@ -593,70 +633,124 @@ def analyze_news_with_llm(news_items: List[Dict[str, str]], report_type: str = '
 
 **关联信息**：如果这则新闻与其他事件有关联，说明它们之间的联系。"""
 
-    system_prompt = SYSTEM_PROMPT
+        system_prompt = SYSTEM_PROMPT
 
-    # 用户消息
-    user_message = f"请分析以下新闻（共{min(len(news_items), 10)}条），并对重复话题进行合并，为每条新闻添加情绪评分和价格信息：\n\n{news_content}"
-    
-    # 调用DeepSeek API（使用OpenAI兼容格式）
-    headers = {
-        'Authorization': f'Bearer {API_KEY}',
-        'Content-Type': 'application/json'
-    }
-    
-    payload = {
-        "model": "deepseek-chat",  # DeepSeek V3.2的模型名称
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_message}
-        ],
-        "temperature": 0.7,
-        "max_tokens": 4000  # 增加token限制以处理多条新闻
-    }
-    
-    for attempt in range(MAX_RETRIES):
-        try:
-            logger.info(f"正在调用DeepSeek API进行新闻分析 (尝试 {attempt + 1}/{MAX_RETRIES})")
-            
-            # DeepSeek API在中国境内，不需要代理
-            response = requests.post(
-                f"{BASE_URL}/chat/completions",
-                headers=headers,
-                json=payload,
-                proxies=None,  # 不使用代理访问DeepSeek API
-                timeout=60  # 增加超时时间到60秒
-            )
-            
-            if response.status_code == 200:
-                result = response.json()
-                analysis = result['choices'][0]['message']['content']
-                logger.info("LLM分析完成")
-                return analysis
-            else:
-                logger.warning(f"LLM API调用失败: {response.status_code} - {response.text}")
+        # 用户消息
+        user_message = f"请分析以下新闻（共{len(batch)}条），并对重复话题进行合并，为每条新闻添加情绪评分和价格信息：\n\n{news_content}"
+        
+        # 调用DeepSeek API（使用OpenAI兼容格式）
+        headers = {
+            'Authorization': f'Bearer {API_KEY}',
+            'Content-Type': 'application/json'
+        }
+        
+        payload = {
+            "model": "deepseek-chat",  # DeepSeek V3.2的模型名称
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4000  # 增加token限制以处理多条新闻
+        }
+        
+        for attempt in range(MAX_RETRIES):
+            try:
+                logger.info(f"正在调用DeepSeek API进行第 {batch_idx + 1} 批次新闻分析 (尝试 {attempt + 1}/{MAX_RETRIES})")
                 
-        except Exception as e:
-            logger.warning(f"LLM API调用异常 (尝试 {attempt + 1}): {e}")
-            
-        if attempt < MAX_RETRIES - 1:
-            time.sleep(RETRY_DELAY)
+                # DeepSeek API在中国境内，不需要代理
+                response = requests.post(
+                    f"{BASE_URL}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    proxies=None,  # 不使用代理访问DeepSeek API
+                    timeout=(5, 120)  # 增加超时时间到120秒，连接5秒，读取120秒
+                )
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    analysis = result['choices'][0]['message']['content']
+                    logger.info(f"第 {batch_idx + 1} 批次LLM分析完成")
+                    batch_analyses.append(analysis)
+                    break  # 成功后跳出重试循环
+                else:
+                    logger.warning(f"LLM API调用失败: {response.status_code} - {response.text}")
+                    
+            except Exception as e:
+                logger.warning(f"LLM API调用异常 (尝试 {attempt + 1}): {e}")
+                
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(RETRY_DELAY)
+        else:
+            # 如果所有重试都失败，添加简化版本
+            logger.error(f"第 {batch_idx + 1} 批次LLM分析失败，返回简化版本")
+            fallback_analysis = ""
+            for i, item in enumerate(batch[:3], 1):
+                fallback_analysis += f"### {i}. [点击直达：{item['title']}]({item['link']})\n"
+                fallback_analysis += "- **📅 来源**: 国际媒体\n"
+                fallback_analysis += f"- **📝 核心事实**: {item['summary'][:30]}...\n\n"
+                fallback_analysis += "#### 📊 深度研报\n"
+                fallback_analysis += "* **🇨🇳 对中国短期影响**: 待分析\n"
+                fallback_analysis += "* **🔮 对中国长期影响**: 待分析\n"
+                fallback_analysis += "* **📈 股市影响 (A股/港股/美股)**:\n"
+                fallback_analysis += "    * *利好/利空板块*: 待分析\n"
+                fallback_analysis += "    * *底层逻辑*: 待分析\n\n"
+                fallback_analysis += "---\n"
+            batch_analyses.append(fallback_analysis)
     
-    # 如果LLM调用失败，返回简化版本
-    logger.error("LLM分析失败，返回简化版本")
-    fallback_analysis = ""
-    for i, item in enumerate(news_items[:3], 1):
-        fallback_analysis += f"### {i}. [点击直达：{item['title']}]({item['link']})\n"
-        fallback_analysis += "- **📅 来源**: 国际媒体\n"
-        fallback_analysis += f"- **📝 核心事实**: {item['summary'][:30]}...\n\n"
-        fallback_analysis += "#### 📊 深度研报\n"
-        fallback_analysis += "* **🇨🇳 对中国短期影响**: 待分析\n"
-        fallback_analysis += "* **🔮 对中国长期影响**: 待分析\n"
-        fallback_analysis += "* **📈 股市影响 (A股/港股/美股)**:\n"
-        fallback_analysis += "    * *利好/利空板块*: 待分析\n"
-        fallback_analysis += "    * *底层逻辑*: 待分析\n\n"
-        fallback_analysis += "---\n"
-    
-    return fallback_analysis
+    # 如果有多批次，需要将各批次结果进行综合汇总
+    if len(batch_analyses) > 1:
+        logger.info(f"正在进行跨批次综合汇总 (共 {len(batch_analyses)} 个批次)")
+        combined_analysis = "\n".join(batch_analyses)
+        summary_prompt = f"""你是一个专业的新闻分析师。请将以下来自不同批次的新闻分析结果进行整合，去除重复内容，形成一份连贯的报告。要求保持原有的格式和结构。
+
+{combined_analysis}"""
+
+        headers = {
+            'Authorization': f'Bearer {API_KEY}',
+            'Content-Type': 'application/json'
+        }
+
+        payload = {
+            "model": "deepseek-chat",
+            "messages": [
+                {"role": "system", "content": "你是一个专业的新闻分析师，负责整合多份新闻分析报告。"},
+                {"role": "user", "content": summary_prompt}
+            ],
+            "temperature": 0.5,
+            "max_tokens": 4000
+        }
+
+        for attempt in range(MAX_RETRIES):
+            try:
+                logger.info(f"正在调用DeepSeek API进行跨批次综合汇总 (尝试 {attempt + 1}/{MAX_RETRIES})")
+                
+                response = requests.post(
+                    f"{BASE_URL}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    proxies=None,
+                    timeout=(5, 120)  # 增加超时时间
+                )
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    final_analysis = result['choices'][0]['message']['content']
+                    logger.info("跨批次综合汇总完成")
+                    return final_analysis
+                else:
+                    logger.warning(f"跨批次汇总API调用失败: {response.status_code} - {response.text}")
+            except Exception as e:
+                logger.warning(f"跨批次汇总API调用异常 (尝试 {attempt + 1}): {e}")
+                
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(RETRY_DELAY)
+        else:
+            logger.error("跨批次综合汇总失败，返回原始批次分析结果")
+            return combined_analysis
+
+    # 如果只有一个批次，直接返回
+    return batch_analyses[0] if batch_analyses else "今日无重要新闻更新。"
 
 def calculate_importance_score(title: str, summary: str, source_url: str, published_time, source_weights: dict) -> float:
     """
@@ -751,10 +845,16 @@ def main():
         news_items = extract_news_items()
         if not news_items:
             logger.warning("未获取到任何新闻，跳过分析")
+            # 即使没有新闻也要记录日志
+            logger.info("📊 抓取统计: 成功 0 条, 失败 0 条")
             return
+        
+        logger.info(f"📊 抓取统计: 成功 {len(news_items)} 条, 失败 0 条")
         
         # 2. LLM深度分析
         analysis_result = analyze_news_with_llm(news_items)
+        sentiment_score = parse_sentiment_score(analysis_result)
+        logger.info(f"📊 LLM评分明细: 情绪分 {sentiment_score}, 新闻数量 {len(news_items)}")
         
         # 3. 发送到飞书
         success = send_to_feishu(analysis_result)
