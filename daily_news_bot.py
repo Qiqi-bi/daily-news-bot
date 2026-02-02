@@ -486,7 +486,7 @@ async def extract_news_items() -> List[Dict[str, str]]:
     save_cache(processed_urls)
     
     logger.info(f"总共提取到 {len(articles_with_scores)} 条新鲜新闻，并按重要性排序")
-    return articles_with_scores[:10]  # 最多处理10条新闻
+    return articles_with_scores[:20]  # 最多处理20条新闻
 
 def get_asset_price(asset_name: str) -> Optional[str]:
     """
