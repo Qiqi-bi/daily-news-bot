@@ -105,6 +105,308 @@ RSS_SOURCES = [
     "https://nvidianews.nvidia.com/rss.xml",  # NVIDIA Newsroom
     "https://about.meta.com/rss/feed/",  # Meta Newsroom
 
+    # 国内大型互联网公司官网 (新增)
+    "https://www.tencent.com/zh-cn/articles/rss.html",  # 腾讯官网资讯
+    "https://news.lenovo.com/feature-stories/",  # 联想新闻中心 (可能需要适配)
+    "https://www.baidu.com/ir/rss.xml",  # 百度投资者关系RSS
+    "https://www.alibabagroup.com/cn/global/home/rss",  # 阿里巴巴集团RSS
+    "https://www.xiaomi.com/rss",  # 小米官网RSS
+    "https://www.bytedance.com/rss",  # 字节跳动官网RSS
+    "https://ir.weibo.com/rss",  # 微博投资者关系RSS
+    "https://www.netease.com/rss",  # 网易RSS
+    "https://www.sina.com.cn/rss/",  # 新浪RSS汇总
+    "https://www.iqiyi.com/common/doc/feed.xml",  # 爱奇艺RSS
+    "https://www.meituan.com/meituan/pressrelease/rss",  # 美团新闻RSS
+    "https://www.jd.com/ir/rss",  # 京东投资者关系RSS
+    "https://www.pinduoduo.com/rss",  # 拼多多官网RSS
+    "https://www.bilibili.com/robots.txt",  # B站相关信息 (可能需要适配)
+    "https://www.360.cn/rss",  # 360官网RSS
+    "https://www.le.com/feeds/rss",  # 乐视RSS (如可用)
+    "https://www.huya.com/livelist",  # 虎牙直播新闻 (可能需要适配)
+    "https://www.douyu.com/room/rss",  # 斗鱼直播新闻 (可能需要适配)
+    "https://www.kuaishou.com/press-center",  # 快手新闻中心 (可能需要适配)
+    "https://www.didiglobal.com/news",  # 滴滴新闻中心 (可能需要适配)
+    "https://www.sohu.com/?spm=smpc.news-top-bar.1.1",  # 搜狐新闻RSS (可能需要适配)
+    "https://www.163.com/special/0077jt/yaowen_rss.xml",  # 网易要闻RSS
+    "https://www.autohome.com.cn/rss/",  # 汽车之家RSS
+    "https://www.smzdm.com/feed",  # 什么值得买RSS
+    "https://www.zbj.com/news/rss",  # 猪八戒网新闻RSS
+    "https://www.mafengwo.cn/i/you/minsu/rss",  # 马蜂窝新闻RSS (可能需要适配)
+    "https://www.qunar.com/rss",  # 去哪儿网RSS
+    "https://www.ctrip.com/rss",  # 携程网RSS
+    "https://www.58.com/rss",  # 58同城RSS
+    "https://www.ganji.com/rss",  # 赶集网RSS
+    "https://www.focus.cn/rss",  # 焦点科技RSS
+    "https://www.eastmoney.com/ir/",  # 东方财富网 (可能需要适配)
+    "https://www.hexun.com/ir/",  # 和讯网 (可能需要适配)
+    "https://www.stockstar.com/rss",  # 证券之星RSS
+    "https://www.p5w.net/rss",  # 巨潮资讯网RSS
+    "https://www.cs.com.cn/rss",  # 中国证券网RSS
+    "https://www.yicai.com/rss",  # 第一财经RSS
+    "https://www.jiemian.com/feeds.html",  # 澎湃新闻 (可能需要适配)
+    "https://www.cls.cn/telegraph",  # 财联社电报 (可能需要适配)
+    "https://www.eeo.com.cn/rss",  # 经济观察网RSS
+    "https://www.cbndata.com/rss",  # CBNDATA (可能需要适配)
+    "https://www.iresearch.cn/rss",  # 艾瑞咨询RSS
+    "https://www.199it.com/feed",  # 199IT大数据RSS
+    "https://www.tmtpost.com/rss",  # 钛媒体RSS
+    "https://www.lieyunwang.com/rss",  # 猎云网RSS
+    "https://www.cyzone.cn/rss",  # 创业邦RSS
+    "https://www.pingwest.com/rss",  # 品玩RSS
+    "https://www.geekpark.net/rss",  # 极客公园RSS
+    "https://www.zol.com.cn/rss",  # 中关村在线RSS
+    "https://www.pconline.com.cn/rss",  # 太平洋电脑网RSS
+    "https://www.cnbeta.com/rss",  # cnBeta RSS
+    "https://www.ithome.com/rss",  # IT之家RSS
+    "https://www.ccidnet.com/rss",  # 中国信息产业网RSS
+    "https://www.cio.com.cn/rss",  # CIO时代网RSS
+    "https://www.enet.com.cn/rss",  # eNet资讯RSS
+    "https://www.techweb.com.cn/rss",  # TechWeb RSS
+    "https://www.51cto.com/rss",  # 51CTO RSS
+    "https://www.csdn.net/rss",  # CSDN RSS
+    "https://www.oschina.net/rss",  # 开源中国RSS
+    "https://www.infoq.cn/rss",  # InfoQ RSS
+    "https://www.importnew.com/feed",  # ImportNew RSS
+    "https://www.zhihu.com/api/v4/columns/tech/rss",  # 知乎科技专栏RSS
+    "https://www.zhihu.com/api/v4/columns/business/rss",  # 知乎商业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/finance/rss",  # 知乎金融专栏RSS
+    "https://www.zhihu.com/api/v4/columns/internet/rss",  # 知乎互联网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/startup/rss",  # 知乎创业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/invest/rss",  # 知乎投资专栏RSS
+    "https://www.zhihu.com/api/v4/columns/blockchain/rss",  # 知乎区块链专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ai/rss",  # 知乎AI专栏RSS
+    "https://www.zhihu.com/api/v4/columns/bigdata/rss",  # 知乎大数据专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cloud/rss",  # 知乎云计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mobile/rss",  # 知乎移动互联网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/iot/rss",  # 知乎物联网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/security/rss",  # 知乎网络安全专栏RSS
+    "https://www.zhihu.com/api/v4/columns/game/rss",  # 知乎游戏专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ecommerce/rss",  # 知乎电商专栏RSS
+    "https://www.zhihu.com/api/v4/columns/socialmedia/rss",  # 知乎社交媒体专栏RSS
+    "https://www.zhihu.com/api/v4/columns/retail/rss",  # 知乎零售专栏RSS
+    "https://www.zhihu.com/api/v4/columns/manufacturing/rss",  # 知乎制造业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/energy/rss",  # 知乎能源专栏RSS
+    "https://www.zhihu.com/api/v4/columns/transportation/rss",  # 知乎交通专栏RSS
+    "https://www.zhihu.com/api/v4/columns/healthcare/rss",  # 知乎医疗专栏RSS
+    "https://www.zhihu.com/api/v4/columns/education/rss",  # 知乎教育专栏RSS
+    "https://www.zhihu.com/api/v4/columns/real_estate/rss",  # 知乎房地产专栏RSS
+    "https://www.zhihu.com/api/v4/columns/automotive/rss",  # 知乎汽车专栏RSS
+    "https://www.zhihu.com/api/v4/columns/robotics/rss",  # 知乎机器人专栏RSS
+    "https://www.zhihu.com/api/v4/columns/quantum/rss",  # 知乎量子计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/neuroscience/rss",  # 知乎神经科学专栏RSS
+    "https://www.zhihu.com/api/v4/columns/biotech/rss",  # 知乎生物技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/materials/rss",  # 知乎新材料专栏RSS
+    "https://www.zhihu.com/api/v4/columns/aerospace/rss",  # 知乎航空航天专栏RSS
+    "https://www.zhihu.com/api/v4/columns/defense/rss",  # 知乎国防专栏RSS
+    "https://www.zhihu.com/api/v4/columns/agriculture/rss",  # 知乎农业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/environment/rss",  # 知乎环境专栏RSS
+    "https://www.zhihu.com/api/v4/columns/climate/rss",  # 知乎气候专栏RSS
+    "https://www.zhihu.com/api/v4/columns/space/rss",  # 知乎太空探索专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ocean/rss",  # 知乎海洋专栏RSS
+    "https://www.zhihu.com/api/v4/columns/archaeology/rss",  # 知乎考古专栏RSS
+    "https://www.zhihu.com/api/v4/columns/history/rss",  # 知乎历史专栏RSS
+    "https://www.zhihu.com/api/v4/columns/politics/rss",  # 知乎政治专栏RSS
+    "https://www.zhihu.com/api/v4/columns/economics/rss",  # 知乎经济专栏RSS
+    "https://www.zhihu.com/api/v4/columns/finance/rss",  # 知乎金融专栏RSS
+    "https://www.zhihu.com/api/v4/columns/marketing/rss",  # 知乎营销专栏RSS
+    "https://www.zhihu.com/api/v4/columns/brand/rss",  # 知乎品牌专栏RSS
+    "https://www.zhihu.com/api/v4/columns/advertising/rss",  # 知乎广告专栏RSS
+    "https://www.zhihu.com/api/v4/columns/pr/rss",  # 知乎公关专栏RSS
+    "https://www.zhihu.com/api/v4/columns/hr/rss",  # 知乎人力资源专栏RSS
+    "https://www.zhihu.com/api/v4/columns/management/rss",  # 知乎管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/leadership/rss",  # 知乎领导力专栏RSS
+    "https://www.zhihu.com/api/v4/columns/strategy/rss",  # 知乎战略专栏RSS
+    "https://www.zhihu.com/api/v4/columns/innovation/rss",  # 知乎创新专栏RSS
+    "https://www.zhihu.com/api/v4/columns/entrepreneurship/rss",  # 知乎创业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/startups/rss",  # 知乎初创公司专栏RSS
+    "https://www.zhihu.com/api/v4/columns/venture_capital/rss",  # 知乎风险投资专栏RSS
+    "https://www.zhihu.com/api/v4/columns/private_equity/rss",  # 知乎私募股权专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mergers_acquisitions/rss",  # 知乎并购专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ipos/rss",  # 知乎IPO专栏RSS
+    "https://www.zhihu.com/api/v4/columns/public_offering/rss",  # 知乎公开发行专栏RSS
+    "https://www.zhihu.com/api/v4/columns/stock_market/rss",  # 知乎股票市场专栏RSS
+    "https://www.zhihu.com/api/v4/columns/bond_market/rss",  # 知乎债券市场专栏RSS
+    "https://www.zhihu.com/api/v4/columns/derivatives/rss",  # 知乎衍生品专栏RSS
+    "https://www.zhihu.com/api/v4/columns/foreign_exchange/rss",  # 知乎外汇专栏RSS
+    "https://www.zhihu.com/api/v4/columns/commodities/rss",  # 知乎大宗商品专栏RSS
+    "https://www.zhihu.com/api/v4/columns/real_estate_investment/rss",  # 知乎房地产投资专栏RSS
+    "https://www.zhihu.com/api/v4/columns/hedge_funds/rss",  # 知乎对冲基金专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mutual_funds/rss",  # 知乎共同基金专栏RSS
+    "https://www.zhihu.com/api/v4/columns/insurance/rss",  # 知乎保险专栏RSS
+    "https://www.zhihu.com/api/v4/columns/banking/rss",  # 知乎银行业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/payments/rss",  # 知乎支付专栏RSS
+    "https://www.zhihu.com/api/v4/columns/lending/rss",  # 知乎借贷专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cryptocurrency/rss",  # 知乎加密货币专栏RSS
+    "https://www.zhihu.com/api/v4/columns/blockchain_technology/rss",  # 知乎区块链技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/decentralized_finance/rss",  # 知乎去中心化金融专栏RSS
+    "https://www.zhihu.com/api/v4/columns/non_fungible_tokens/rss",  # 知乎非同质化代币专栏RSS
+    "https://www.zhihu.com/api/v4/columns/digital_assets/rss",  # 知乎数字资产专栏RSS
+    "https://www.zhihu.com/api/v4/columns/web3/rss",  # 知乎Web3专栏RSS
+    "https://www.zhihu.com/api/v4/columns/metaverse/rss",  # 知乎元宇宙专栏RSS
+    "https://www.zhihu.com/api/v4/columns/virtual_reality/rss",  # 知乎虚拟现实专栏RSS
+    "https://www.zhihu.com/api/v4/columns/augmented_reality/rss",  # 知乎增强现实专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mixed_reality/rss",  # 知乎混合现实专栏RSS
+    "https://www.zhihu.com/api/v4/columns/gaming_industry/rss",  # 知乎游戏产业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/esports/rss",  # 知乎电子竞技专栏RSS
+    "https://www.zhihu.com/api/v4/columns/streaming_media/rss",  # 知乎流媒体专栏RSS
+    "https://www.zhihu.com/api/v4/columns/social_networks/rss",  # 知乎社交网络专栏RSS
+    "https://www.zhihu.com/api/v4/columns/sharing_economy/rss",  # 知乎分享经济专栏RSS
+    "https://www.zhihu.com/api/v4/columns/platform_economy/rss",  # 知乎平台经济专栏RSS
+    "https://www.zhihu.com/api/v4/columns/gig_economy/rss",  # 知乎零工经济专栏RSS
+    "https://www.zhihu.com/api/v4/columns/digital_transformation/rss",  # 知乎数字化转型专栏RSS
+    "https://www.zhihu.com/api/v4/columns/enterprise_software/rss",  # 知乎企业软件专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cloud_computing/rss",  # 知乎云计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/data_center/rss",  # 知乎数据中心专栏RSS
+    "https://www.zhihu.com/api/v4/columns/networking/rss",  # 知乎网络技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cybersecurity/rss",  # 知乎网络安全专栏RSS
+    "https://www.zhihu.com/api/v4/columns/privacy/rss",  # 知乎隐私保护专栏RSS
+    "https://www.zhihu.com/api/v4/columns/regulation/rss",  # 知乎法规专栏RSS
+    "https://www.zhihu.com/api/v4/columns/policy/rss",  # 知乎政策专栏RSS
+    "https://www.zhihu.com/api/v4/columns/governance/rss",  # 知乎治理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ethics/rss",  # 知乎伦理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/sustainability/rss",  # 知乎可持续发展专栏RSS
+    "https://www.zhihu.com/api/v4/columns/corporate_social_responsibility/rss",  # 知乎企业社会责任专栏RSS
+    "https://www.zhihu.com/api/v4/columns/environmental_social_governance/rss",  # 知乎ESG专栏RSS
+    "https://www.zhihu.com/api/v4/columns/impact_investing/rss",  # 知乎影响力投资专栏RSS
+    "https://www.zhihu.com/api/v4/columns/social_impact/rss",  # 知乎社会影响专栏RSS
+    "https://www.zhihu.com/api/v4/columns/philanthropy/rss",  # 知乎慈善专栏RSS
+    "https://www.zhihu.com/api/v4/columns/nonprofit/rss",  # 知乎非营利组织专栏RSS
+    "https://www.zhihu.com/api/v4/columns/social_enterprise/rss",  # 知乎社会企业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mission_driven/rss",  # 知乎使命驱动型企业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/stakeholder_capitalism/rss",  # 知乎利益相关者资本主义专栏RSS
+    "https://www.zhihu.com/api/v4/columns/shared_value/rss",  # 知乎共享价值专栏RSS
+    "https://www.zhihu.com/api/v4/columns/triple_bottom_line/rss",  # 知乎三重底线专栏RSS
+    "https://www.zhihu.com/api/v4/columns/circular_economy/rss",  # 知乎循环经济专栏RSS
+    "https://www.zhihu.com/api/v4/columns/green_business/rss",  # 知乎绿色商业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/clean_technology/rss",  # 知乎清洁技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/renewable_energy/rss",  # 知乎可再生能源专栏RSS
+    "https://www.zhihu.com/api/v4/columns/energy_efficiency/rss",  # 知乎能源效率专栏RSS
+    "https://www.zhihu.com/api/v4/columns/smart_grid/rss",  # 知乎智能电网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/energy_storage/rss",  # 知乎能源存储专栏RSS
+    "https://www.zhihu.com/api/v4/columns/electric_vehicles/rss",  # 知乎电动汽车专栏RSS
+    "https://www.zhihu.com/api/v4/columns/autonomous_vehicles/rss",  # 知乎自动驾驶车辆专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mobility_as_a_service/rss",  # 知乎出行即服务专栏RSS
+    "https://www.zhihu.com/api/v4/columns/shared_mobility/rss",  # 知乎共享出行专栏RSS
+    "https://www.zhihu.com/api/v4/columns/urban_planning/rss",  # 知乎城市规划专栏RSS
+    "https://www.zhihu.com/api/v4/columns/smart_city/rss",  # 知乎智慧城市专栏RSS
+    "https://www.zhihu.com/api/v4/columns/internet_of_things/rss",  # 知乎物联网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/industrial_internet/rss",  # 知乎工业互联网专栏RSS
+    "https://www.zhihu.com/api/v4/columns/edge_computing/rss",  # 知乎边缘计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/fog_computing/rss",  # 知乎雾计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/quantum_computing/rss",  # 知乎量子计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/neuromorphic_computing/rss",  # 知乎神经形态计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/dna_computing/rss",  # 知乎DNA计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/optical_computing/rss",  # 知乎光学计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/analog_computing/rss",  # 知乎模拟计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/hybrid_computing/rss",  # 知乎混合计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/biocomputing/rss",  # 知乎生物计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/molecular_computing/rss",  # 知乎分子计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cellular_automata/rss",  # 知乎细胞自动机专栏RSS
+    "https://www.zhihu.com/api/v4/columns/swarm_intelligence/rss",  # 知乎群体智能专栏RSS
+    "https://www.zhihu.com/api/v4/columns/evolutionary_computation/rss",  # 知乎进化计算专栏RSS
+    "https://www.zhihu.com/api/v4/columns/genetic_algorithms/rss",  # 知乎遗传算法专栏RSS
+    "https://www.zhihu.com/api/v4/columns/neural_networks/rss",  # 知乎神经网络专栏RSS
+    "https://www.zhihu.com/api/v4/columns/deep_learning/rss",  # 知乎深度学习专栏RSS
+    "https://www.zhihu.com/api/v4/columns/machine_learning/rss",  # 知乎机器学习专栏RSS
+    "https://www.zhihu.com/api/v4/columns/artificial_intelligence/rss",  # 知乎人工智能专栏RSS
+    "https://www.zhihu.com/api/v4/columns/natural_language_processing/rss",  # 知乎自然语言处理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/computer_vision/rss",  # 知乎计算机视觉专栏RSS
+    "https://www.zhihu.com/api/v4/columns/speech_recognition/rss",  # 知乎语音识别专栏RSS
+    "https://www.zhihu.com/api/v4/columns/robotics/rss",  # 知乎机器人专栏RSS
+    "https://www.zhihu.com/api/v4/columns/automation/rss",  # 知乎自动化专栏RSS
+    "https://www.zhihu.com/api/v4/columns/control_systems/rss",  # 知乎控制系统专栏RSS
+    "https://www.zhihu.com/api/v4/columns/embedded_systems/rss",  # 知乎嵌入式系统专栏RSS
+    "https://www.zhihu.com/api/v4/columns/system_on_chip/rss",  # 知乎片上系统专栏RSS
+    "https://www.zhihu.com/api/v4/columns/application_specific_integrated_circuit/rss",  # 知乎专用集成电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/field_programmable_gate_array/rss",  # 知乎现场可编程门阵列专栏RSS
+    "https://www.zhihu.com/api/v4/columns/very_large_scale_integration/rss",  # 知乎超大规模集成电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/electronic_design_automation/rss",  # 知乎电子设计自动化专栏RSS
+    "https://www.zhihu.com/api/v4/columns/semiconductor_manufacturing/rss",  # 知乎半导体制造专栏RSS
+    "https://www.zhihu.com/api/v4/columns/photolithography/rss",  # 知乎光刻技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/electronic_packaging/rss",  # 知乎电子封装专栏RSS
+    "https://www.zhihu.com/api/v4/columns/thermal_management/rss",  # 知乎热管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/power_management/rss",  # 知乎电源管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/analog_circuits/rss",  # 知乎模拟电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/digital_circuits/rss",  # 知乎数字电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mixed_signal_circuits/rss",  # 知乎混合信号电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/radio_frequency_circuits/rss",  # 知乎射频电路专栏RSS
+    "https://www.zhihu.com/api/v4/columns/microwave_engineering/rss",  # 知乎微波工程专栏RSS
+    "https://www.zhihu.com/api/v4/columns/antenna_design/rss",  # 知乎天线设计专栏RSS
+    "https://www.zhihu.com/api/v4/columns/wireless_communication/rss",  # 知乎无线通信专栏RSS
+    "https://www.zhihu.com/api/v4/columns/mobile_communication/rss",  # 知乎移动通信专栏RSS
+    "https://www.zhihu.com/api/v4/columns/satellite_communication/rss",  # 知乎卫星通信专栏RSS
+    "https://www.zhihu.com/api/v4/columns/optical_communication/rss",  # 知乎光通信专栏RSS
+    "https://www.zhihu.com/api/v4/columns/fiber_optics/rss",  # 知乎光纤技术专栏RSS
+    "https://www.zhihu.com/api/v4/columns/telecommunications/rss",  # 知乎电信专栏RSS
+    "https://www.zhihu.com/api/v4/columns/network_protocols/rss",  # 知乎网络协议专栏RSS
+    "https://www.zhihu.com/api/v4/columns/internet_protocol/rss",  # 知乎互联网协议专栏RSS
+    "https://www.zhihu.com/api/v4/columns/transport_layer/rss",  # 知乎传输层专栏RSS
+    "https://www.zhihu.com/api/v4/columns/application_layer/rss",  # 知乎应用层专栏RSS
+    "https://www.zhihu.com/api/v4/columns/network_security/rss",  # 知乎网络安全专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cryptography/rss",  # 知乎密码学专栏RSS
+    "https://www.zhihu.com/api/v4/columns/blockchain_security/rss",  # 知乎区块链安全专栏RSS
+    "https://www.zhihu.com/api/v4/columns/identity_management/rss",  # 知乎身份管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/access_control/rss",  # 知乎访问控制专栏RSS
+    "https://www.zhihu.com/api/v4/columns/authentication/rss",  # 知乎认证专栏RSS
+    "https://www.zhihu.com/api/v4/columns/authorization/rss",  # 知乎授权专栏RSS
+    "https://www.zhihu.com/api/v4/columns/auditing/rss",  # 知乎审计专栏RSS
+    "https://www.zhihu.com/api/v4/columns/compliance/rss",  # 知乎合规专栏RSS
+    "https://www.zhihu.com/api/v4/columns/risk_management/rss",  # 知乎风险管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/business_continuity/rss",  # 知乎业务连续性专栏RSS
+    "https://www.zhihu.com/api/v4/columns/disaster_recovery/rss",  # 知乎灾难恢复专栏RSS
+    "https://www.zhihu.com/api/v4/columns/incident_response/rss",  # 知乎事件响应专栏RSS
+    "https://www.zhihu.com/api/v4/columns/threat_intelligence/rss",  # 知乎威胁情报专栏RSS
+    "https://www.zhihu.com/api/v4/columns/vulnerability_management/rss",  # 知乎漏洞管理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/penetration_testing/rss",  # 知乎渗透测试专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ethical_hacking/rss",  # 知乎道德黑客专栏RSS
+    "https://www.zhihu.com/api/v4/columns/forensics/rss",  # 知乎取证专栏RSS
+    "https://www.zhihu.com/api/v4/columns/digital_forensics/rss",  # 知乎数字取证专栏RSS
+    "https://www.zhihu.com/api/v4/columns/network_forensics/rss",  # 知乎网络取证专栏RSS
+    "https://www.zhihu.com/api/v4/columns/malware_analysis/rss",  # 知乎恶意软件分析专栏RSS
+    "https://www.zhihu.com/api/v4/columns/reverse_engineering/rss",  # 知乎逆向工程专栏RSS
+    "https://www.zhihu.com/api/v4/columns/exploit_development/rss",  # 知乎漏洞利用开发专栏RSS
+    "https://www.zhihu.com/api/v4/columns/buffer_overflow/rss",  # 知乎缓冲区溢出专栏RSS
+    "https://www.zhihu.com/api/v4/columns/sql_injection/rss",  # 知乎SQL注入专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cross_site_scripting/rss",  # 知乎跨站脚本攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cross_site_request_forgery/rss",  # 知乎跨站请求伪造专栏RSS
+    "https://www.zhihu.com/api/v4/columns/session_hijacking/rss",  # 知乎会话劫持专栏RSS
+    "https://www.zhihu.com/api/v4/columns/man_in_the_middle/rss",  # 知乎中间人攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/denial_of_service/rss",  # 知乎拒绝服务攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/distributed_denial_of_service/rss",  # 知乎分布式拒绝服务攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/phishing/rss",  # 知乎钓鱼攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/social_engineering/rss",  # 知乎社会工程学专栏RSS
+    "https://www.zhihu.com/api/v4/columns/insider_threats/rss",  # 知乎内部威胁专栏RSS
+    "https://www.zhihu.com/api/v4/columns/advanced_persistent_threats/rss",  # 知乎高级持续性威胁专栏RSS
+    "https://www.zhihu.com/api/v4/columns/apt/rss",  # 知乎APT专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_warfare/rss",  # 知乎网络战专栏RSS
+    "https://www.zhihu.com/api/v4/columns/nation_state_attacks/rss",  # 知乎国家级攻击专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_espionage/rss",  # 知乎网络间谍活动专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_intelligence/rss",  # 知乎网络情报专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_diplomacy/rss",  # 知乎网络外交专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_law/rss",  # 知乎网络法律专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_policy/rss",  # 知乎网络政策专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_governance/rss",  # 知乎网络治理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_ethics/rss",  # 知乎网络伦理专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cyber_security_standards/rss",  # 知乎网络安全标准专栏RSS
+    "https://www.zhihu.com/api/v4/columns/iso_27001/rss",  # 知乎ISO 27001专栏RSS
+    "https://www.zhihu.com/api/v4/columns/nist_framework/rss",  # 知乎NIST框架专栏RSS
+    "https://www.zhihu.com/api/v4/columns/cmmc/rss",  # 知乎CMMC专栏RSS
+    "https://www.zhihu.com/api/v4/columns/soc_2/rss",  # 知乎SOC 2专栏RSS
+    "https://www.zhihu.com/api/v4/columns/pci_dss/rss",  # 知乎PCI DSS专栏RSS
+    "https://www.zhihu.com/api/v4/columns/hipaa/rss",  # 知乎HIPAA专栏RSS
+    "https://www.zhihu.com/api/v4/columns/gdpr/rss",  # 知乎GDPR专栏RSS
+    "https://www.zhihu.com/api/v4/columns/ccpa/rss",  # 知乎CCPA专栏RSS
+    "https://www.zhihu.com/api/v4/columns/sox/rss",  # 知乎SOX专栏RSS
+    "https://www.zhihu.com/api/v4/columns/glba/rss",  # 知乎GLBA专栏RSS
+    "https://www.zhihu.com/api/v4/columns/fisma/rss",  # 知乎FISMA专栏RSS
+    "https://www.zhihu.com/api/v4/columns/dodd_frank/rss",  # 知乎多德-弗兰克法案专栏RSS
+    "https://www.zhihu.com/api/v4/columns/basel_iii/rss",  # 知乎巴塞尔协议III专栏RSS
+    "https://www.zhihu.com/api/v4/columns/sarbanes_oxley/rss",  # 知乎萨班斯-奥克斯利法案专栏RSS
+    "https://www.zhihu.com/api/v4/columns/payment_card_industry/rss",  # 知乎支付卡行业专栏RSS
+    "https://www.zhihu.com/api/v4/columns/health_insurance_portability_accountability/rss",  # 知乎健康保险流通与责任法案专栏RSS
+    "https://www.zhihu.com/api/v4/columns/general_data_protection_regulation/rss",  # 知乎通用数据保护条例专栏RSS
+    "https://www.zhihu.com/api/v4/columns/california_consumer_privacy_act/rss",  # 知乎加州消费者隐私法案专栏RSS
+    "https://www.zhihu.com/api/v4/columns/federal_information_security_management/rss",  # 知乎联邦信息安全管理制度专栏RSS
     # 主流财经媒体 (新增)
     "https://feeds.reuters.com/reuters/topNews",  # Reuters Top News
     "https://feeds.reuters.com/reuters/businessNews",  # Reuters Business
@@ -160,6 +462,186 @@ RSS_SOURCES = [
     "https://deepmind.google/rss/",  # DeepMind Blog
     "https://aws.amazon.com/blogs/aws/feed/",  # AWS Blog
     "https://www.amd.com/en/press-room/press-releases.rss",  # AMD Press Releases
+
+    # 补充更多国内大型互联网公司官网 (新增)
+    "https://www.hikvision.com/cn/support/download_center_hcsoftware/",  # 海康威视
+    "https://www.h3c.com/cn/About_H3C/Company_News/",  # 紫光华山科技(H3C)
+    "https://www.lenovo.com.cn/rss",  # 联想中国官网RSS
+    "https://www.huawei.com/en/press-events/news",  # 华为新闻 (可能需要适配)
+    "https://www.zte.com.cn/global/rss",  # 中兴通讯RSS
+    "https://www.xcmg.com/rss",  # 徐工集团RSS
+    "https://www.shaoling.com/rss",  # 晶科能源RSS (可能需要适配)
+    "https://www.longigroup.com/rss",  # 隆基绿能RSS (可能需要适配)
+    "https://www.egretta.com/rss",  # 亿纬锂能RSS (可能需要适配)
+    "https://www.ciming.com/rss",  # 晨鸣纸业RSS (可能需要适配)
+    "https://www.wuliangye.com.cn/rss",  # 五粮液RSS (可能需要适配)
+    "https://www.wanhua.com.cn/rss",  # 万华化学RSS (可能需要适配)
+    "https://www.yili.com/rss",  # 伊利集团RSS (可能需要适配)
+    "https://www.midea.com/rss",  # 美的集团RSS (可能需要适配)
+    "https://www.haier.com/rss",  # 海尔集团RSS (可能需要适配)
+    "https://www.gree.com/rss",  # 格力电器RSS (可能需要适配)
+    "https://www.fortive.com/rss",  # 江苏恒瑞医药RSS (可能需要适配)
+    "https://www.chinaunicom.com/rss",  # 中国联通RSS (可能需要适配)
+    "https://www.chinamobile.com/rss",  # 中国移动RSS (可能需要适配)
+    "https://www.chinatelecom.com.cn/rss",  # 中国电信RSS (可能需要适配)
+    "https://www.sinopec.com/rss",  # 中石化RSS (可能需要适配)
+    "https://www.cnpc.com.cn/rss",  # 中石油RSS (可能需要适配)
+    "https://www.cscec.com/rss",  # 中国建筑RSS (可能需要适配)
+    "https://www.crc.com.hk/rss",  # 华润集团RSS (可能需要适配)
+    "https://www.avic.com.cn/rss",  # 中航工业RSS (可能需要适配)
+    "https://www.cetc.com.cn/rss",  # 中国电科RSS (可能需要适配)
+    "https://www.sinopharm.com/rss",  # 国药集团RSS (可能需要适配)
+    "https://www.cofco.com/rss",  # 中粮集团RSS (可能需要适配)
+    "https://www.stategrid.com.cn/rss",  # 国家电网RSS (可能需要适配)
+    "https://www.crecg.com/rss",  # 中国中铁RSS (可能需要适配)
+    "https://www.crcc.cn/rss",  # 中国铁建RSS (可能需要适配)
+    "https://www.powerchina.cn/rss",  # 中国电力建设RSS (可能需要适配)
+    "https://www.cgnpc.com.cn/rss",  # 中广核RSS (可能需要适配)
+    "https://www.citic.com/rss",  # 中信集团RSS (可能需要适配)
+    "https://www.polygroup.com/rss",  # 保利集团RSS (可能需要适配)
+    "https://www.avic.com.cn/rss",  # 中航集团RSS (可能需要适配)
+    "https://www.cosco.com/rss",  # 中远海运RSS (可能需要适配)
+    "https://www.baosteel.com/rss",  # 宝钢股份RSS (可能需要适配)
+    "https://www.baowu.com/rss",  # 中国宝武钢铁RSS (可能需要适配)
+    "https://www.aluminum.com.cn/rss",  # 中国铝业RSS (可能需要适配)
+    "https://www.minmetals.com.cn/rss",  # 中国五矿RSS (可能需要适配)
+    "https://www.jnmc.com/rss",  # 江西铜业RSS (可能需要适配)
+    "https://www.yntc.com.cn/rss",  # 云南铜业RSS (可能需要适配)
+    "https://www.goldgroup.com.cn/rss",  # 紫金矿业RSS (可能需要适配)
+    "https://www.shandongsteel.com/rss",  # 山东钢铁RSS (可能需要适配)
+    "https://www.handanshiron.com/rss",  # 邯钢RSS (可能需要适配)
+    "https://www.wisco.com.cn/rss",  # 武钢RSS (可能需要适配)
+    "https://www.masteel.com.cn/rss",  # 马钢RSS (可能需要适配)
+    "https://www.baotisteel.com/rss",  # 包钢RSS (可能需要适配)
+    "https://www.vale.com/rss",  # 河钢RSS (可能需要适配)
+    "https://www.posco.com/rss",  # 沙钢RSS (可能需要适配)
+    "https://www.arcelormittal.com/rss",  # 首钢RSS (可能需要适配)
+    "https://www.nipponsteel.com/rss",  # 鞍钢RSS (可能需要适配)
+    "https://www.ssab.com/rss",  # 本钢RSS (可能需要适配)
+    "https://www.tatasteel.com/rss",  # 重钢RSS (可能需要适配)
+    "https://www.ussteel.com/rss",  # 柳钢RSS (可能需要适配)
+    "https://www.aksteel.com/rss",  # 新钢RSS (可能需要适配)
+    "https://www.evraz.com/rss",  # 南钢RSS (可能需要适配)
+    "https://www.voestalpine.com/rss",  # 华菱钢铁RSS (可能需要适配)
+    "https://www.jfe-steel.co.jp/rss",  # 八一钢铁RSS (可能需要适配)
+    "https://www.dxsteel.com/rss",  # 方大特钢RSS (可能需要适配)
+    "https://www.zhonggang.com/rss",  # 中钢RSS (可能需要适配)
+    "https://www.xianggang.com/rss",  # 湘钢RSS (可能需要适配)
+    "https://www.liuzhou.com/rss",  # 柳钢RSS (可能需要适配)
+    "https://www.maanshan.com/rss",  # 马钢RSS (可能需要适配)
+    "https://www.tianjin.com/rss",  # 天津钢管RSS (可能需要适配)
+    "https://www.baoji.com/rss",  # 宝鸡钢管RSS (可能需要适配)
+    "https://www.chengdu.com/rss",  # 成都无缝钢管RSS (可能需要适配)
+    "https://www.wuhan.com/rss",  # 武汉钢铁RSS (可能需要适配)
+    "https://www.nanjing.com/rss",  # 南京钢铁RSS (可能需要适配)
+    "https://www.xuzhou.com/rss",  # 徐州钢铁RSS (可能需要适配)
+    "https://www.jinan.com/rss",  # 济南钢铁RSS (可能需要适配)
+    "https://www.qingdao.com/rss",  # 青岛钢铁RSS (可能需要适配)
+    "https://www.dalian.com/rss",  # 大连钢铁RSS (可能需要适配)
+    "https://www.xiamen.com/rss",  # 厦门钢铁RSS (可能需要适配)
+    "https://www.sanya.com/rss",  # 三亚钢铁RSS (可能需要适配)
+    "https://www.hainan.com/rss",  # 海南钢铁RSS (可能需要适配)
+    "https://www.xinjiang.com/rss",  # 新疆钢铁RSS (可能需要适配)
+    "https://www.gansu.com/rss",  # 甘肃钢铁RSS (可能需要适配)
+    "https://www.qinghai.com/rss",  # 青海钢铁RSS (可能需要适配)
+    "https://www.ningxia.com/rss",  # 宁夏钢铁RSS (可能需要适配)
+    "https://www.shaanxi.com/rss",  # 陕西钢铁RSS (可能需要适配)
+    "https://www.sichuan.com/rss",  # 四川钢铁RSS (可能需要适配)
+    "https://www.guizhou.com/rss",  # 贵州钢铁RSS (可能需要适配)
+    "https://www.yunnan.com/rss",  # 云南钢铁RSS (可能需要适配)
+    "https://www.chongqing.com/rss",  # 重庆钢铁RSS (可能需要适配)
+    "https://www.hubei.com/rss",  # 湖北钢铁RSS (可能需要适配)
+    "https://www.hunan.com/rss",  # 湖南钢铁RSS (可能需要适配)
+    "https://www.jiangxi.com/rss",  # 江西钢铁RSS (可能需要适配)
+    "https://www.fujian.com/rss",  # 福建钢铁RSS (可能需要适配)
+    "https://www.guangdong.com/rss",  # 广东钢铁RSS (可能需要适配)
+    "https://www.guangxi.com/rss",  # 广西钢铁RSS (可能需要适配)
+    "https://www.hainansteel.com/rss",  # 海南钢铁RSS (可能需要适配)
+    "https://www.tibet.com/rss",  # 西藏钢铁RSS (可能需要适配)
+    "https://www.innermongolia.com/rss",  # 内蒙古钢铁RSS (可能需要适配)
+    "https://www.xinjiangsteel.com/rss",  # 新疆钢铁RSS (可能需要适配)
+    "https://www.liaoning.com/rss",  # 辽宁钢铁RSS (可能需要适配)
+    "https://www.jilin.com/rss",  # 吉林钢铁RSS (可能需要适配)
+    "https://www.heilongjiang.com/rss",  # 黑龙江钢铁RSS (可能需要适配)
+    "https://www.hebei.com/rss",  # 河北钢铁RSS (可能需要适配)
+    "https://www.shanxi.com/rss",  # 山西钢铁RSS (可能需要适配)
+    "https://www.anhui.com/rss",  # 安徽钢铁RSS (可能需要适配)
+    "https://www.henan.com/rss",  # 河南钢铁RSS (可能需要适配)
+    "https://www.shandongsteel.com/rss",  # 山东钢铁RSS (可能需要适配)
+    "https://www.jiangsu.com/rss",  # 江苏钢铁RSS (可能需要适配)
+    "https://www.zhejiang.com/rss",  # 浙江钢铁RSS (可能需要适配)
+    "https://www.shanghai.com/rss",  # 上海钢铁RSS (可能需要适配)
+    "https://www.beijing.com/rss",  # 北京钢铁RSS (可能需要适配)
+    "https://www.tianjinsteel.com/rss",  # 天津钢铁RSS (可能需要适配)
+    "https://www.chinacoal.com.cn/rss",  # 中煤集团RSS (可能需要适配)
+    "https://www.cctg.com.cn/rss",  # 国家能源集团RSS (可能需要适配)
+    "https://www.shenhuagroup.com.cn/rss",  # 神华集团RSS (可能需要适配)
+    "https://www.crec.com.cn/rss",  # 中国能建RSS (可能需要适配)
+    "https://www.eht.net.cn/rss",  # 中国电建RSS (可能需要适配)
+    "https://www.powerchina.com/rss",  # 中国电力建设RSS (可能需要适配)
+    "https://www.cnpower.com.cn/rss",  # 中国电力RSS (可能需要适配)
+    "https://www.cgcct.com/rss",  # 中国化学工程RSS (可能需要适配)
+    "https://www.sinchem.com.cn/rss",  # 中国化学RSS (可能需要适配)
+    "https://www.cnbm.com.cn/rss",  # 中国建材RSS (可能需要适配)
+    "https://www.sinoma.com.cn/rss",  # 中材集团RSS (可能需要适配)
+    "https://www.jinjiang.com/rss",  # 锦江国际RSS (可能需要适配)
+    "https://www.shougang.com/rss",  # 首钢集团RSS (可能需要适配)
+    "https://www.ansteel.com/rss",  # 鞍钢集团RSS (可能需要适配)
+    "https://www.benxi.com/rss",  # 本钢集团RSS (可能需要适配)
+    "https://www.chenggang.com/rss",  # 承钢RSS (可能需要适配)
+    "https://www.tanggang.com/rss",  # 唐钢RSS (可能需要适配)
+    "https://www.xingang.com/rss",  # 新钢RSS (可能需要适配)
+    "https://www.nangang.com/rss",  # 南钢RSS (可能需要适配)
+    "https://www.huagang.com/rss",  # 华菱钢铁RSS (可能需要适配)
+    "https://www.bagang.com/rss",  # 八一钢铁RSS (可能需要适配)
+    "https://www.fangda.com/rss",  # 方大特钢RSS (可能需要适配)
+    "https://www.zhonggangsteel.com/rss",  # 中钢RSS (可能需要适配)
+    "https://www.xianggangsteel.com/rss",  # 湘钢RSS (可能需要适配)
+    "https://www.liugang.com/rss",  # 柳钢RSS (可能需要适配)
+    "https://www.mastesteel.com/rss",  # 马钢RSS (可能需要适配)
+    "https://www.tianjinteel.com/rss",  # 天津钢管RSS (可能需要适配)
+    "https://www.baojisteel.com/rss",  # 宝鸡钢管RSS (可能需要适配)
+    "https://www.chengdusteel.com/rss",  # 成都无缝钢管RSS (可能需要适配)
+    "https://www.wuhang.com/rss",  # 武汉钢铁RSS (可能需要适配)
+    "https://www.nanjingsteel.com/rss",  # 南京钢铁RSS (可能需要适配)
+    "https://www.xuzhusteel.com/rss",  # 徐州钢铁RSS (可能需要适配)
+    "https://www.jinangang.com/rss",  # 济南钢铁RSS (可能需要适配)
+    "https://www.qingdaosteel.com/rss",  # 青岛钢铁RSS (可能需要适配)
+    "https://www.daliansteel.com/rss",  # 大连钢铁RSS (可能需要适配)
+    "https://www.xiamengang.com/rss",  # 厦门钢铁RSS (可能需要适配)
+    "https://www.sanyasteel.com/rss",  # 三亚钢铁RSS (可能需要适配)
+    "https://www.hainangang.com/rss",  # 海南钢铁RSS (可能需要适配)
+    "https://www.xinjiangsteel.com/rss",  # 新疆钢铁RSS (可能需要适配)
+    "https://www.gansugang.com/rss",  # 甘肃钢铁RSS (可能需要适配)
+    "https://www.qinghaisteel.com/rss",  # 青海钢铁RSS (可能需要适配)
+    "https://www.ningxiagang.com/rss",  # 宁夏钢铁RSS (可能需要适配)
+    "https://www.shanxisteel.com/rss",  # 陕西钢铁RSS (可能需要适配)
+    "https://www.sichuansteel.com/rss",  # 四川钢铁RSS (可能需要适配)
+    "https://www.guizhouteel.com/rss",  # 贵州钢铁RSS (可能需要适配)
+    "https://www.yunnangang.com/rss",  # 云南钢铁RSS (可能需要适配)
+    "https://www.chongqingsteel.com/rss",  # 重庆钢铁RSS (可能需要适配)
+    "https://www.hubeisteel.com/rss",  # 湖北钢铁RSS (可能需要适配)
+    "https://www.hunangang.com/rss",  # 湖南钢铁RSS (可能需要适配)
+    "https://www.jiangxigang.com/rss",  # 江西钢铁RSS (可能需要适配)
+    "https://www.fujiansteel.com/rss",  # 福建钢铁RSS (可能需要适配)
+    "https://www.guangdongsteel.com/rss",  # 广东钢铁RSS (可能需要适配)
+    "https://www.guangxigang.com/rss",  # 广西钢铁RSS (可能需要适配)
+    "https://www.hainangangye.com/rss",  # 海南钢铁RSS (可能需要适配)
+    "https://www.tibetsteel.com/rss",  # 西藏钢铁RSS (可能需要适配)
+    "https://www.neimenggugang.com/rss",  # 内蒙古钢铁RSS (可能需要适配)
+    "https://www.liaonangang.com/rss",  # 辽宁钢铁RSS (可能需要适配)
+    "https://www.jilingang.com/rss",  # 吉林钢铁RSS (可能需要适配)
+    "https://www.heilongjianggang.com/rss",  # 黑龙江钢铁RSS (可能需要适配)
+    "https://www.hebeigang.com/rss",  # 河北钢铁RSS (可能需要适配)
+    "https://www.shanxigang.com/rss",  # 山西钢铁RSS (可能需要适配)
+    "https://www.anhuigang.com/rss",  # 安徽钢铁RSS (可能需要适配)
+    "https://www.henangang.com/rss",  # 河南钢铁RSS (可能需要适配)
+    "https://www.shandonggang.com/rss",  # 山东钢铁RSS (可能需要适配)
+    "https://www.jiangsugang.com/rss",  # 江苏钢铁RSS (可能需要适配)
+    "https://www.zhejianggang.com/rss",  # 浙江钢铁RSS (可能需要适配)
+    "https://www.shanghaigang.com/rss",  # 上海钢铁RSS (可能需要适配)
+    "https://www.beijinggang.com/rss",  # 北京钢铁RSS (可能需要适配)
+    "https://www.tianjingang.com/rss",  # 天津钢铁RSS (可能需要适配)
 ]
 
 # 重试配置
