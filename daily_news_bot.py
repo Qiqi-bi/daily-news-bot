@@ -241,7 +241,7 @@ def send_to_feishu_webhook(message: str, max_retries: int = MAX_RETRIES) -> bool
             "header": {
                 "template": "blue",
                 "title": {
-                    "content": "🌍 全球情报与金融分析日报",
+                    "content": f"🌍 全球情报与金融分析日报 | {time.strftime('%Y-%m-%d')}",
                     "tag": "plain_text"
                 }
             },
@@ -249,15 +249,6 @@ def send_to_feishu_webhook(message: str, max_retries: int = MAX_RETRIES) -> bool
                 {
                     "tag": "markdown",
                     "content": clean_message
-                },
-                {
-                    "tag": "note",
-                    "elements": [
-                        {
-                            "tag": "plain_text",
-                            "content": "🤖 DeepSeek-V3 智能分析系统 | 📅 " + time.strftime("%Y-%m-%d %H:%M:%S")
-                        }
-                    ]
                 }
             ]
         }
