@@ -1,0 +1,252 @@
+sources:
+  - name: Reuters World
+    url: https://feeds.reuters.com/reuters/worldNews
+    category: geopolitics
+    region: global
+    weight: 1.50
+
+  - name: Reuters Business
+    url: https://feeds.reuters.com/reuters/businessNews
+    category: macro
+    region: global
+    weight: 1.45
+
+  - name: Reuters Technology
+    url: https://feeds.reuters.com/reuters/technologyNews
+    category: technology
+    region: global
+    weight: 1.35
+
+  - name: BBC World
+    url: https://feeds.bbci.co.uk/news/world/rss.xml
+    category: geopolitics
+    region: global
+    weight: 1.30
+
+  - name: BBC Business
+    url: https://feeds.bbci.co.uk/news/business/rss.xml
+    category: macro
+    region: global
+    weight: 1.25
+
+  - name: NYT World
+    url: https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+    category: geopolitics
+    region: global
+    weight: 1.25
+
+  - name: NYT Business
+    url: https://rss.nytimes.com/services/xml/rss/nyt/Business.xml
+    category: macro
+    region: global
+    weight: 1.20
+
+  - name: NYT Technology
+    url: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+    category: technology
+    region: global
+    weight: 1.15
+
+  - name: CNBC World
+    url: https://www.cnbc.com/id/100727362/device/rss/rss.html
+    category: macro
+    region: us
+    weight: 1.20
+
+  - name: CNBC Markets
+    url: https://www.cnbc.com/id/19746125/device/rss/rss.html
+    category: markets
+    region: us
+    weight: 1.30
+
+  - name: CNBC Technology
+    url: https://www.cnbc.com/id/19854910/device/rss/rss.html
+    category: technology
+    region: us
+    weight: 1.20
+
+  - name: MarketWatch Top Stories
+    url: https://feeds.content.dowjones.io/public/rss/mw_topstories
+    category: markets
+    region: us
+    weight: 1.20
+
+  - name: WSJ World
+    url: https://feeds.a.dj.com/rss/RSSWorldNews.xml
+    category: geopolitics
+    region: global
+    weight: 1.30
+
+  - name: WSJ Markets
+    url: https://feeds.a.dj.com/rss/RSSMarketsMain.xml
+    category: markets
+    region: us
+    weight: 1.30
+
+  - name: FT World
+    url: https://www.ft.com/world?format=rss
+    category: geopolitics
+    region: global
+    weight: 1.35
+
+  - name: FT Markets
+    url: https://www.ft.com/markets?format=rss
+    category: markets
+    region: global
+    weight: 1.35
+
+  - name: Al Jazeera
+    url: https://www.aljazeera.com/xml/rss/all.xml
+    category: geopolitics
+    region: global
+    weight: 1.15
+
+  - name: Nikkei Asia
+    url: https://asia.nikkei.com/rss/feed/nar
+    category: asia
+    region: asia
+    weight: 1.20
+
+  - name: The Diplomat
+    url: https://thediplomat.com/feed/
+    category: geopolitics
+    region: asia
+    weight: 1.05
+
+  - name: Guardian World
+    url: https://www.theguardian.com/world/rss
+    category: geopolitics
+    region: global
+    weight: 1.15
+
+  - name: Guardian Business
+    url: https://www.theguardian.com/business/rss
+    category: macro
+    region: global
+    weight: 1.10
+
+  - name: Federal Reserve Press
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    category: macro
+    region: us
+    weight: 1.35
+    official: true
+
+  - name: Federal Reserve Monetary Policy
+    url: https://www.federalreserve.gov/feeds/press_monetary.xml
+    category: macro
+    region: us
+    weight: 1.45
+    official: true
+
+  - name: Federal Reserve Speeches Testimony
+    url: https://www.federalreserve.gov/feeds/speeches_and_testimony.xml
+    category: macro
+    region: us
+    weight: 1.30
+    official: true
+
+  - name: EIA Press Releases
+    url: https://www.eia.gov/rss/press_rss.xml
+    category: energy
+    region: us
+    weight: 1.25
+    official: true
+
+  - name: EIA Congressional Testimony
+    url: https://www.eia.gov/rss/testimony_rss.xml
+    category: energy
+    region: us
+    weight: 1.20
+    official: true
+
+  - name: ECB Press Releases
+    url: https://www.ecb.europa.eu/rss/press.html
+    category: macro
+    region: eu
+    weight: 1.35
+    official: true
+
+  - name: ECB Statistical Press Releases
+    url: https://www.ecb.europa.eu/rss/statpress.html
+    category: macro
+    region: eu
+    weight: 1.15
+    official: true
+
+  - name: Bank of England News
+    url: https://www.bankofengland.co.uk/news/rss
+    category: macro
+    region: uk
+    weight: 1.25
+    official: true
+
+  - name: Bank of England Speeches
+    url: https://www.bankofengland.co.uk/speeches/rss
+    category: macro
+    region: uk
+    weight: 1.15
+    official: true
+
+  - name: PBOC News
+    url: http://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.xml
+    category: macro
+    region: china
+    weight: 1.45
+    official: true
+
+  - name: CSRC News
+    url: http://www.csrc.gov.cn/csrc/c100028/common_list.shtml
+    category: markets
+    region: china
+    weight: 1.35
+    official: true
+
+  - name: Shanghai Stock Exchange News
+    url: https://www.sse.com.cn/rss/latestNews.xml
+    category: markets
+    region: china
+    weight: 1.25
+    official: true
+
+  - name: Shenzhen Stock Exchange News
+    url: https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=XML&CATALOGID=1803
+    category: markets
+    region: china
+    weight: 1.25
+    official: true
+
+  - name: NDRC News
+    url: https://www.ndrc.gov.cn/xwdt/xwfb/index.xml
+    category: macro
+    region: china
+    weight: 1.30
+    official: true
+
+  - name: MOFCOM News
+    url: http://www.mofcom.gov.cn/article/news.xml
+    category: macro
+    region: china
+    weight: 1.20
+    official: true
+
+  - name: IEA News
+    url: https://www.iea.org/rss/news
+    category: energy
+    region: global
+    weight: 1.30
+    official: true
+
+  - name: OPEC Press Releases
+    url: https://www.opec.org/opec_web/en/press_room/28.xml
+    category: energy
+    region: global
+    weight: 1.30
+    official: true
+
+  - name: US Treasury Press Releases
+    url: https://home.treasury.gov/news/press-releases/rss
+    category: macro
+    region: us
+    weight: 1.25
+    official: true

@@ -1,7 +1,6 @@
-requests>=2.25.1
-feedparser>=6.0.8
-fake-useragent>=1.5.1
-httpx>=0.25.2
-playwright>=1.40.0
-lxml>=4.9.3
-python-dotenv>=1.0.0
+﻿feedparser>=6.0.11
+python-dateutil>=2.9.0
+PyYAML>=6.0.2
+openai>=1.30.0
+requests>=2.32.0
+python-dotenv>=1.0.1

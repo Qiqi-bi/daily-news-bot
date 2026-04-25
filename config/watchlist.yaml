@@ -1,0 +1,86 @@
+# Structured reminders checked on every scheduled run.
+# Use enabled: false for examples you want to keep but not activate yet.
+watchlist:
+  - id: gold-position-below-target
+    enabled: true
+    type: portfolio_metric
+    title: 黄金仓位低于保险仓下限
+    metric: gold_pct
+    operator: "<"
+    threshold: 10
+    repeat: true
+    action: 复核是否需要把新增资金的一部分补回黄金保险仓；仍需看价格、溢价和组合整体仓位。
+
+  - id: gold-position-above-target
+    enabled: true
+    type: portfolio_metric
+    title: 黄金仓位高于保险仓上限
+    metric: gold_pct
+    operator: ">"
+    threshold: 15
+    repeat: true
+    action: 提醒不要把黄金当收益主攻；如继续上冲，优先复核是否只保留保险仓功能。
+
+  - id: direct-ai-exposure-cap
+    enabled: true
+    type: portfolio_metric
+    title: 直接 AI 暴露触及上限
+    metric: direct_ai_pct
+    operator: ">="
+    threshold: 35
+    repeat: true
+    action: 停止新增同类 AI/半导体/港股科技，优先复核重叠和单仓上限。
+
+  - id: growth-tech-exposure-cap
+    enabled: true
+    type: portfolio_metric
+    title: 广义成长科技暴露触及上限
+    metric: growth_tech_pct
+    operator: ">="
+    threshold: 55
+    repeat: true
+    action: 新增资金优先回流宽基、红利低波或黄金，不继续堆成长仓。
+
+  - id: gold-futures-big-up
+    enabled: true
+    type: price
+    title: 黄金期货单日大涨
+    symbol: GC=F
+    metric: change_pct
+    operator: ">="
+    threshold: 1.5
+    repeat: false
+    action: 只做保险仓复核，不追高；看美元指数和美债收益率是否同步支持。
+
+  - id: gold-futures-big-down
+    enabled: true
+    type: price
+    title: 黄金期货单日大跌
+    symbol: GC=F
+    metric: change_pct
+    operator: "<="
+    threshold: -1.5
+    repeat: false
+    action: 先确认是否是美元/实际利率驱动；如黄金仓位低于目标区间，再考虑是否分批补保险仓。
+
+  - id: oil-shock-watch
+    enabled: true
+    type: price
+    title: WTI 原油单日冲击
+    symbol: CL=F
+    metric: change_pct
+    operator: ">="
+    threshold: 3
+    repeat: false
+    action: 下次报告重点看能源、航运、电力、黄金的传导，不把新能源当第一反应。
+
+  - id: custom-gold-price-upper-example
+    enabled: false
+    type: price
+    title: 示例：黄金到指定价格
+    symbol: GC=F
+    metric: price
+    operator: ">="
+    threshold: 2450
+    repeat: false
+    action: 把 threshold 改成你要盯的价格，并把 enabled 改成 true。

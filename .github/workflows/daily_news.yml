@@ -2,47 +2,357 @@ name: Global Market Intelligence Bot
 
 on:
   schedule:
-    # 早报 (北京时间 8:00) - 关注美股收盘、昨夜欧美大事
-    - cron: '0 0 * * *'  # UTC时间0点，即北京时间早上8点
-    # 午报 (北京时间 13:00) - 关注 A 股/港股午间休市动态、亚太地缘突发
-    - cron: '0 5 * * *'  # UTC时间5点，即北京时间下午13点
-    # 晚报 (北京时间 21:00) - 关注欧股开盘、美股盘前动态
-    - cron: '0 13 * * *'  # UTC时间13点，即北京时间晚上21点
-    # 日终汇总 (北京时间 00:00) - 全天总结和明日前瞻
-    - cron: '0 16 * * *'  # UTC时间16点，即北京时间晚上24点(次日0点)
-    # 紧急监控 (每30分钟一次) - 检测重大事件，只有当Abs(情绪分) >= 9时才推送
-    - cron: '*/30 * * * *'  # 每30分钟运行一次
-  workflow_dispatch: # 允许手动触发
+    - cron: '0 13 * * *'  # Beijing 21:00 daily report
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-news-dashboard
+  cancel-in-progress: false
 
 jobs:
   run-news-bot:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Run urgent news monitor (for scheduled triggers every 30 minutes)
-      if: github.event_name == 'schedule' && contains(github.event.schedule, '*/30')
-      env:
-        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
-      run: |
-        python urgent_news_monitor.py
+      - name: Restore dashboard bot state
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        env:
+          DASHBOARD_ARCHIVE_BRANCH: ${{ vars.DASHBOARD_ARCHIVE_BRANCH || 'dashboard-archive' }}
+        run: |
+          set -euo pipefail
+          mkdir -p outputs
+          if ! git ls-remote --exit-code --heads origin "$DASHBOARD_ARCHIVE_BRANCH" >/dev/null 2>&1; then
+            echo "No dashboard archive branch yet; starting with empty state."
+            exit 0
+          fi
 
-    - name: Run regular news bot (for other scheduled times)
-      if: github.event_name == 'schedule' && !contains(github.event.schedule, '*/30')
-      env:
-        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
-      run: |
-        python daily_news_bot.py
+          git fetch --depth=1 origin "$DASHBOARD_ARCHIVE_BRANCH"
+          restore_state() {
+            local filename="$1"
+            if git show "FETCH_HEAD:state/${filename}" > "outputs/${filename}" 2>/dev/null; then
+              echo "Restored ${filename}"
+            else
+              rm -f "outputs/${filename}"
+            fi
+          }
+
+          restore_state watchlist.json
+          restore_state event_history.json
+          restore_state decision_journal.json
+          restore_state portfolio_history.json
+          restore_state fixed_buy_pool_history.json
+          restore_state fund_holdings_cache.json
+
+      - name: Run news bot
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+          MARKETAUX_API_KEY: ${{ secrets.MARKETAUX_API_KEY }}
+          NEWS_BASE_URL: ${{ vars.NEWS_BASE_URL }}
+          NEWS_MODEL: ${{ vars.NEWS_MODEL }}
+          NEWS_FALLBACK_MODELS: ${{ vars.NEWS_FALLBACK_MODELS }}
+          NEWS_TIMEOUT: ${{ vars.NEWS_TIMEOUT }}
+          TOP_EVENTS: ${{ vars.TOP_EVENTS }}
+          PER_SOURCE_LIMIT: ${{ vars.PER_SOURCE_LIMIT }}
+          API_SOURCE_LIMIT: ${{ vars.API_SOURCE_LIMIT }}
+          FINNHUB_NEWS_CATEGORIES: ${{ vars.FINNHUB_NEWS_CATEGORIES }}
+          DASHBOARD_PUBLIC_URL: ${{ vars.DASHBOARD_PUBLIC_URL || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}
+        run: |
+          set -euo pipefail
+
+          export NEWS_BASE_URL="${NEWS_BASE_URL:-https://api.edgefn.net/v1}"
+          export NEWS_MODEL="${NEWS_MODEL:-MiniMax-M2.5}"
+          export NEWS_FALLBACK_MODELS="${NEWS_FALLBACK_MODELS:-DeepSeek-V3.2}"
+          export NEWS_TIMEOUT="${NEWS_TIMEOUT:-120}"
+          export TOP_EVENTS="${TOP_EVENTS:-6}"
+          export PER_SOURCE_LIMIT="${PER_SOURCE_LIMIT:-8}"
+          export API_SOURCE_LIMIT="${API_SOURCE_LIMIT:-12}"
+          export FINNHUB_NEWS_CATEGORIES="${FINNHUB_NEWS_CATEGORIES:-general,forex,crypto,merger}"
+          export DASHBOARD_PUBLIC_URL="${DASHBOARD_PUBLIC_URL:-}"
+
+          RUN_STAMP="$(TZ=Asia/Shanghai date +%Y-%m-%d-%H%M%S)"
+          export DASHBOARD_ARCHIVE_PATH="runs/${RUN_STAMP}-run-${GITHUB_RUN_NUMBER}-attempt-${GITHUB_RUN_ATTEMPT}"
+          export DASHBOARD_ARCHIVE_URL=""
+          export DASHBOARD_ARCHIVE_INDEX_URL=""
+          if [ -n "$DASHBOARD_PUBLIC_URL" ]; then
+            export DASHBOARD_ARCHIVE_URL="${DASHBOARD_PUBLIC_URL%/}/${DASHBOARD_ARCHIVE_PATH}/"
+            export DASHBOARD_ARCHIVE_INDEX_URL="${DASHBOARD_PUBLIC_URL%/}/archive.html"
+          fi
+          {
+            echo "DASHBOARD_ARCHIVE_PATH=$DASHBOARD_ARCHIVE_PATH"
+            echo "DASHBOARD_ARCHIVE_URL=$DASHBOARD_ARCHIVE_URL"
+            echo "DASHBOARD_ARCHIVE_INDEX_URL=$DASHBOARD_ARCHIVE_INDEX_URL"
+          } >> "$GITHUB_ENV"
+
+          mkdir -p outputs
+          rm -f outputs/dashboard.html outputs/report.md outputs/report.json outputs/portfolio_brief.md outputs/portfolio_weekly.md
+
+          MODE="evening"
+          HOURS="24"
+          EXTRA_ARGS=()
+          BJT_WEEKDAY="$(TZ=Asia/Shanghai date +%u)"
+          if [ "$BJT_WEEKDAY" = "7" ]; then
+            EXTRA_ARGS+=(--weekly-review)
+          fi
+
+          python daily_news_bot.py \
+            --mode "$MODE" \
+            --hours "$HOURS" \
+            --top "$TOP_EVENTS" \
+            --per-source-limit "$PER_SOURCE_LIMIT" \
+            --output "outputs/report.md" \
+            --json-output "outputs/report.json" \
+            --portfolio-output "outputs/portfolio_brief.md" \
+            --weekly-review-output "outputs/portfolio_weekly.md" \
+            "${EXTRA_ARGS[@]}" \
+            --send-feishu
+
+      - name: Upload dashboard run artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-news-dashboard-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            outputs/dashboard.html
+            outputs/report.md
+            outputs/report.json
+            outputs/watchlist.json
+            outputs/portfolio_brief.md
+            outputs/portfolio_weekly.md
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Prepare and persist dashboard site
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && vars.DASHBOARD_PUBLISH_PAGES != 'false'
+        env:
+          DASHBOARD_ARCHIVE_BRANCH: ${{ vars.DASHBOARD_ARCHIVE_BRANCH || 'dashboard-archive' }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          rm -rf public
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+
+          if git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}.git" "$DASHBOARD_ARCHIVE_BRANCH" >/dev/null 2>&1; then
+            git clone --depth=1 --branch "$DASHBOARD_ARCHIVE_BRANCH" "https://github.com/${GITHUB_REPOSITORY}.git" public
+          else
+            mkdir -p public
+            git -C public init
+            git -C public checkout -B "$DASHBOARD_ARCHIVE_BRANCH"
+            git -C public remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          fi
+
+          copy_if_exists() {
+            local src="$1"
+            local dst="$2"
+            if [ -f "$src" ]; then
+              mkdir -p "$(dirname "$dst")"
+              cp "$src" "$dst"
+            fi
+          }
+
+          mkdir -p "public/$DASHBOARD_ARCHIVE_PATH"
+          touch public/.nojekyll
+
+          copy_if_exists outputs/dashboard.html public/index.html
+          copy_if_exists outputs/dashboard.html public/dashboard.html
+          copy_if_exists outputs/report.md public/report.md
+          copy_if_exists outputs/report.json public/report.json
+          copy_if_exists outputs/watchlist.json public/watchlist.json
+          copy_if_exists outputs/portfolio_brief.md public/portfolio_brief.md
+          copy_if_exists outputs/portfolio_weekly.md public/portfolio_weekly.md
+
+          mkdir -p public/state
+          copy_if_exists outputs/watchlist.json public/state/watchlist.json
+          copy_if_exists outputs/event_history.json public/state/event_history.json
+          copy_if_exists outputs/decision_journal.json public/state/decision_journal.json
+          copy_if_exists outputs/portfolio_history.json public/state/portfolio_history.json
+          copy_if_exists outputs/fixed_buy_pool_history.json public/state/fixed_buy_pool_history.json
+          copy_if_exists outputs/fund_holdings_cache.json public/state/fund_holdings_cache.json
+
+          copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/index.html"
+          copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/dashboard.html"
+          copy_if_exists outputs/report.md "public/$DASHBOARD_ARCHIVE_PATH/report.md"
+          copy_if_exists outputs/report.json "public/$DASHBOARD_ARCHIVE_PATH/report.json"
+          copy_if_exists outputs/watchlist.json "public/$DASHBOARD_ARCHIVE_PATH/watchlist.json"
+          copy_if_exists outputs/portfolio_brief.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_brief.md"
+          copy_if_exists outputs/portfolio_weekly.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_weekly.md"
+
+          mkdir -p public/runs
+          {
+            echo '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Daily News Dashboard Archive</title><style>body{font-family:system-ui,sans-serif;max-width:920px;margin:32px auto;padding:0 18px;line-height:1.55;color:#172033}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}li{margin:10px 0}.muted{color:#64748b}</style></head><body>'
+            echo '<h1>Daily News Dashboard Archive</h1>'
+            echo '<p class="muted">Latest dashboard is at <a href="./">the site root</a>. Historical runs are listed newest first.</p>'
+            echo '<ul>'
+            find public/runs -mindepth 1 -maxdepth 1 -type d | sort -r | while read -r dir; do
+              slug="${dir#public/runs/}"
+              echo "<li><a href=\"runs/${slug}/\">${slug}</a> <span class=\"muted\">(<a href=\"runs/${slug}/report.md\">report.md</a>, <a href=\"runs/${slug}/report.json\">report.json</a>, <a href=\"runs/${slug}/watchlist.json\">watchlist.json</a>)</span></li>"
+            done
+            echo '</ul></body></html>'
+          } > public/archive.html
+          cp public/archive.html public/runs/index.html
+
+          {
+            echo '['
+            first=1
+            find public/runs -mindepth 1 -maxdepth 1 -type d | sort -r | while read -r dir; do
+              slug="${dir#public/runs/}"
+              if [ "$first" -eq 0 ]; then
+                echo ','
+              fi
+              first=0
+              printf '  {"id":"%s","url":"runs/%s/","report":"runs/%s/report.md","json":"runs/%s/report.json","watchlist":"runs/%s/watchlist.json"}' "$slug" "$slug" "$slug" "$slug" "$slug"
+            done
+            echo
+            echo ']'
+          } > public/archive.json
+
+          git -C public add .
+          if git -C public diff --cached --quiet; then
+            echo "No dashboard archive changes to commit."
+          else
+            git -C public commit -m "Update dashboard archive for run ${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
+            git -C public push origin "HEAD:$DASHBOARD_ARCHIVE_BRANCH"
+          fi
+
+          rm -rf public/.git
+
+      - name: Add dashboard run summary
+        env:
+          DASHBOARD_PUBLIC_URL: ${{ vars.DASHBOARD_PUBLIC_URL || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}
+        run: |
+          {
+            echo "## Daily news dashboard"
+            echo "- Latest dashboard: ${DASHBOARD_PUBLIC_URL:-not configured}"
+            echo "- Archive index: ${DASHBOARD_ARCHIVE_INDEX_URL:-not configured}"
+            echo "- This run archive: ${DASHBOARD_ARCHIVE_URL:-not configured}"
+            echo "- Run artifact: daily-news-dashboard-${{ github.run_id }}-${{ github.run_attempt }}"
+            echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json"
+            if [ -f outputs/portfolio_brief.md ]; then
+              echo "- Portfolio brief: outputs/portfolio_brief.md"
+            fi
+            if [ -f outputs/portfolio_weekly.md ]; then
+              echo "- Weekly review: outputs/portfolio_weekly.md"
+            fi
+            if [ "${{ vars.DASHBOARD_PUBLISH_PAGES }}" = "false" ]; then
+              echo "- Pages publishing is disabled by DASHBOARD_PUBLISH_PAGES=false."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Configure GitHub Pages
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && vars.DASHBOARD_PUBLISH_PAGES != 'false'
+        uses: actions/configure-pages@v5
+
+      - name: Upload dashboard site
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && vars.DASHBOARD_PUBLISH_PAGES != 'false'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  publish-dashboard:
+    needs: run-news-bot
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && vars.DASHBOARD_PUBLISH_PAGES != 'false'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy dashboard to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Smoke test deployed dashboard
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          base="${PAGE_URL%/}"
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/" --output /tmp/dashboard.html
+          grep -qi '<html' /tmp/dashboard.html
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/report.md" --output /tmp/report.md
+          test -s /tmp/report.md
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/report.json" --output /tmp/report.json
+          python3 -m json.tool /tmp/report.json >/dev/null
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/watchlist.json" --output /tmp/watchlist.json
+          python3 -m json.tool /tmp/watchlist.json >/dev/null
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/archive.html" --output /tmp/archive.html
+          grep -qi 'Daily News Dashboard Archive' /tmp/archive.html
+
+  notify-failure:
+    needs:
+      - run-news-bot
+      - publish-dashboard
+    if: always() && (needs.run-news-bot.result == 'failure' || needs.run-news-bot.result == 'cancelled' || needs.publish-dashboard.result == 'failure' || needs.publish-dashboard.result == 'cancelled')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Feishu on workflow failure
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RUN_NEWS_RESULT: ${{ needs.run-news-bot.result }}
+          PUBLISH_RESULT: ${{ needs.publish-dashboard.result }}
+        run: |
+          set -euo pipefail
+          if [ -z "${FEISHU_WEBHOOK_URL:-}" ]; then
+            echo "FEISHU_WEBHOOK_URL is not configured; skipping failure notification."
+            exit 0
+          fi
+
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          text = "\n".join([
+              "Global Market Intelligence Bot failed.",
+              f"Run: {os.environ['RUN_URL']}",
+              f"run-news-bot: {os.environ['RUN_NEWS_RESULT']}",
+              f"publish-dashboard: {os.environ['PUBLISH_RESULT']}",
+          ])
+          payload = {
+              "msg_type": "post",
+              "content": {
+                  "post": {
+                      "zh_cn": {
+                          "title": "Daily news bot failure",
+                          "content": [[{"tag": "text", "text": text}]],
+                      }
+                  }
+              },
+          }
+          data = json.dumps(payload).encode("utf-8")
+          request = urllib.request.Request(
+              os.environ["FEISHU_WEBHOOK_URL"],
+              data=data,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=20) as response:
+              response.read()
+          PY
