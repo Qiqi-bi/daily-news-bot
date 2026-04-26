@@ -5,16 +5,16 @@ from typing import Any
 import requests
 
 
-CARD_TOTAL_LIMIT = 24000
-CARD_ELEMENT_LIMIT = 2800
-CARD_MAX_ELEMENTS = 10
-POST_TOTAL_LIMIT = 30000
+CARD_TOTAL_LIMIT = 18000
+CARD_ELEMENT_LIMIT = 1800
+CARD_MAX_ELEMENTS = 8
+POST_TOTAL_LIMIT = 24000
 
 
 def _trim_content(content: str, limit: int) -> str:
     if len(content) <= limit:
         return content
-    return content[: limit - 80].rstrip() + "\n\n---\n内容较长，已截断；完整内容请查看 outputs/report.md。"
+    return content[: limit - 80].rstrip() + "\n\n内容较长，已截断；完整内容请打开 Dashboard。"
 
 
 def _chunk_text(content: str, chunk_size: int = CARD_ELEMENT_LIMIT) -> list[str]:
@@ -25,9 +25,7 @@ def _chunk_text(content: str, chunk_size: int = CARD_ELEMENT_LIMIT) -> list[str]
             chunks.append(remaining)
             break
 
-        split_at = remaining.rfind("\n## ", 0, chunk_size)
-        if split_at <= 0:
-            split_at = remaining.rfind("\n### ", 0, chunk_size)
+        split_at = remaining.rfind("\n\n", 0, chunk_size)
         if split_at <= 0:
             split_at = remaining.rfind("\n", 0, chunk_size)
         if split_at <= 0:
@@ -37,7 +35,7 @@ def _chunk_text(content: str, chunk_size: int = CARD_ELEMENT_LIMIT) -> list[str]
         remaining = remaining[split_at:].strip()
 
     if remaining and chunks:
-        chunks[-1] = _trim_content(chunks[-1] + "\n\n---\n后续内容较长，已截断；完整内容请查看 outputs/report.md。", chunk_size)
+        chunks[-1] = _trim_content(chunks[-1] + "\n\n后续内容较长，已截断；完整内容请打开 Dashboard。", chunk_size)
     return [chunk for chunk in chunks if chunk]
 
 
@@ -53,20 +51,51 @@ def _raise_for_feishu_error(response: requests.Response) -> None:
         raise RuntimeError(f"Feishu webhook error {code}: {message}")
 
 
+def _button_url(content: str) -> str:
+    for line in content.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("https://") or stripped.startswith("http://"):
+            return stripped
+        if stripped.startswith("Dashboard："):
+            value = stripped.split("：", 1)[1].strip()
+            if value.startswith(("https://", "http://")):
+                return value
+    return ""
+
+
 def _build_card_payload(title: str, content: str) -> dict[str, Any]:
     trimmed = _trim_content(content, CARD_TOTAL_LIMIT)
     chunks = _chunk_text(trimmed)
     elements: list[dict[str, Any]] = [
         {
-            "tag": "markdown",
-            "content": "**快速阅读提示**：先看 30 秒总览，再看市场影响地图和明天 5 个信号。",
+            "tag": "div",
+            "text": {
+                "tag": "lark_md",
+                "content": "**快速阅读**：先看结论，再点 Dashboard 看完整事件和历史归档。",
+            },
         },
         {"tag": "hr"},
     ]
     for index, chunk in enumerate(chunks, start=1):
         if index > 1:
             elements.append({"tag": "hr"})
-        elements.append({"tag": "markdown", "content": chunk})
+        elements.append({"tag": "div", "text": {"tag": "lark_md", "content": chunk}})
+
+    dashboard_url = _button_url(trimmed)
+    if dashboard_url:
+        elements.append(
+            {
+                "tag": "action",
+                "actions": [
+                    {
+                        "tag": "button",
+                        "text": {"tag": "plain_text", "content": "打开 Dashboard"},
+                        "url": dashboard_url,
+                        "type": "primary",
+                    }
+                ],
+            }
+        )
 
     return {
         "msg_type": "interactive",

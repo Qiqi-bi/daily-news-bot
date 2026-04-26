@@ -396,6 +396,106 @@ def _build_feishu_content(report: str, payload: dict[str, Any]) -> str:
         "> 完整全球报告：outputs/report.md",
     ])
     return chr(10).join(lines)
+
+
+def _feishu_short(text: Any, limit: int = 90) -> str:
+    compact = " ".join(str(text or "").split())
+    if len(compact) <= limit:
+        return compact
+    return compact[: limit - 1].rstrip() + "…"
+
+
+def _feishu_translation_items(payload: dict[str, Any]) -> dict[str, Any]:
+    return (payload.get("translations") or {}).get("items") or {}
+
+
+def _feishu_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
+    representative = cluster.get("representative") or {}
+    cluster_id = str(cluster.get("cluster_id") or "")
+    translated = translations.get(cluster_id) or {}
+    return str(translated.get("title_zh") or representative.get("title") or cluster.get("theme") or "未命名事件")
+
+
+def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
+    raw_title = str(item.get("title") or "未命名提醒")
+    normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
+    for cluster in clusters:
+        representative = cluster.get("representative") or {}
+        original_title = str(representative.get("title") or cluster.get("theme") or "").strip()
+        if original_title and original_title.casefold() == normalized:
+            title = _feishu_title(cluster, translations)
+            return f"跟踪：{title}" if raw_title.startswith(("跟踪：", "跟踪:")) else title
+    return raw_title
+
+
+def _build_feishu_digest(payload: dict[str, Any]) -> str:
+    data_quality = payload.get("data_quality") or {}
+    coverage = data_quality.get("source_coverage") or {}
+    watchlist = payload.get("watchlist") or {}
+    clusters = payload.get("clusters") or []
+    translations = _feishu_translation_items(payload)
+    dashboard = payload.get("dashboard") or {}
+    dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
+
+    latest_age = data_quality.get("latest_article_age_hours")
+    latest_age_text = "未知" if latest_age is None else f"{float(latest_age):.1f} 小时"
+    global_line = _feishu_short(payload.get("global_30s_overview") or "日报已生成，请打开 Dashboard 查看完整内容。", 260)
+
+    lines: list[str] = [
+        "**今日结论**",
+        global_line,
+        "",
+        "**核心事件**",
+    ]
+    if clusters:
+        for index, cluster in enumerate(clusters[:5], start=1):
+            tags = "、".join(str(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
+            title = _feishu_short(_feishu_title(cluster, translations), 100)
+            lines.append(
+                f"{index}. {title}\n"
+                f"   方向：{cluster.get('direction') or '未知'}；可信：{cluster.get('credibility_label') or '未知'}；"
+                f"信源：{cluster.get('confirmed_source_count', 0)}；标签：{tags}"
+            )
+    else:
+        lines.append("暂无核心事件。")
+
+    market_items = (payload.get("market_snapshot") or {}).get("items") or []
+    if market_items:
+        lines.extend(["", "**市场快照**"])
+        for item in market_items[:6]:
+            pct = item.get("change_pct")
+            pct_text = "未知" if pct is None else f"{float(pct):+.2f}%"
+            lines.append(f"- {item.get('name') or item.get('symbol')}：{item.get('price')}，{pct_text}，{item.get('movement') or '未知'}")
+
+    lines.extend(
+        [
+            "",
+            "**提醒**",
+            f"- 触发 {watchlist.get('triggered_count', 0)} 条；新增 {watchlist.get('new_count', 0)} 条；有效 {watchlist.get('active_count', 0)} 条。",
+        ]
+    )
+    watch_items = list(watchlist.get("triggered_items") or []) + list(watchlist.get("new_items") or [])
+    for item in watch_items[:3]:
+        title = _feishu_short(_feishu_watch_title(item, clusters, translations), 90)
+        action = _feishu_short(item.get("action") or "", 90)
+        lines.append(f"- {title}" + (f"：{action}" if action else ""))
+
+    lines.extend(
+        [
+            "",
+            "**数据质量**",
+            f"- 最新新闻距生成约 {latest_age_text}；状态：{data_quality.get('freshness_status') or '未知'}。",
+            f"- RSS {coverage.get('rss_sources_with_articles', 0)}/{coverage.get('rss_sources_configured', 0)}；"
+            f"API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；"
+            f"官方 {coverage.get('official_sources_with_articles', 0)}/{coverage.get('configured_official_sources', 0)}；"
+            f"已过滤低可信内容 {data_quality.get('credibility_filtered_articles', 0)} 条。",
+            "",
+            f"Dashboard：{dashboard_url}",
+        ]
+    )
+    return "\n".join(lines)
+
+
 def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     settings = load_settings()
     generated_at = datetime.now(timezone.utc).replace(tzinfo=None, microsecond=0)
@@ -722,8 +822,8 @@ def main(argv: list[str] | None = None) -> int:
 
     settings = load_settings()
     if args.send_feishu and settings.feishu_webhook_url:
-        feishu_content = _build_feishu_content(report, payload)
-        send_feishu_webhook(settings.feishu_webhook_url, "å¨çéå¤§äºä»¶ä¸æçç»åå½±å", feishu_content)
+        feishu_content = _build_feishu_digest(payload)
+        send_feishu_webhook(settings.feishu_webhook_url, "每日投资雷达", feishu_content)
 
     print(f"Markdown report saved to: {report_path}")
     print(f"JSON metadata saved to: {json_path}")
