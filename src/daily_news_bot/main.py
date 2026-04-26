@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -576,6 +577,48 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _env_flag(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[str, Any]:
+    public_payload = copy.deepcopy(payload)
+    portfolio = public_payload.get("portfolio") or {}
+    if portfolio.get("enabled"):
+        public_payload["portfolio"] = {
+            "enabled": True,
+            "private_mode": True,
+            "public_note": "组合配置已接入，但持仓、成本、现金、交易流水和组合估值不发布到公开网页；具体动作看飞书推送。",
+        }
+        public_payload["portfolio_brief_markdown"] = ""
+
+    weekly = public_payload.get("weekly_review") or {}
+    if weekly.get("enabled"):
+        public_payload["weekly_review"] = {
+            "enabled": True,
+            "private_mode": True,
+            "public_note": "周复盘已按私密组合生成，但不发布到公开网页。",
+        }
+        public_payload["weekly_review_markdown"] = ""
+
+    output_paths = public_payload.get("output_paths") or {}
+    output_paths.update(
+        {
+            "portfolio_md_generated": False,
+            "portfolio_md_url": "",
+            "portfolio_md_uri": "",
+            "weekly_md_generated": False,
+            "weekly_md_url": "",
+            "weekly_md_uri": "",
+        }
+    )
+    public_payload["output_paths"] = output_paths
+    return public_payload
+
+
 def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     settings = load_settings()
     generated_at = datetime.now(timezone.utc).replace(tzinfo=None, microsecond=0)
@@ -803,6 +846,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "portfolio_brief_markdown": portfolio_brief,
         "weekly_review": weekly_review_payload,
         "weekly_review_markdown": weekly_review_markdown,
+        "_global_report_markdown": global_report,
         "global_30s_overview": _extract_30s_overview(global_report),
         "tag_distribution": summarize_tag_distribution(top_clusters),
         "translations": translations,
@@ -845,6 +889,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     report, payload = run_pipeline(args)
+    global_report = str(payload.pop("_global_report_markdown", "") or "")
 
     report_path = Path(args.output).resolve()
     json_path = Path(args.json_output).resolve()
@@ -852,6 +897,12 @@ def main(argv: list[str] | None = None) -> int:
     weekly_path = Path(args.weekly_review_output).resolve()
     dashboard_path = Path(args.dashboard_output).resolve()
     dashboard_public_url = os.getenv("DASHBOARD_PUBLIC_URL", "").strip()
+    portfolio_public_outputs = _env_flag("PORTFOLIO_PUBLIC_OUTPUTS", False)
+    redact_portfolio_outputs = (
+        bool(dashboard_public_url)
+        and bool((payload.get("portfolio") or {}).get("enabled"))
+        and not portfolio_public_outputs
+    )
 
     payload["output_paths"] = {
         "report_md_path": str(report_path),
@@ -883,22 +934,25 @@ def main(argv: list[str] | None = None) -> int:
         "archive_index_url": payload["output_paths"]["archive_index_url"],
     }
 
-    save_text(args.output, report)
-    if payload.get("portfolio_brief_markdown"):
+    output_payload = _public_payload_without_private_portfolio(payload) if redact_portfolio_outputs else payload
+    output_report = global_report if redact_portfolio_outputs and global_report else report
+
+    save_text(args.output, output_report)
+    if not redact_portfolio_outputs and payload.get("portfolio_brief_markdown"):
         save_text(args.portfolio_output, payload["portfolio_brief_markdown"])
-    if payload.get("weekly_review_markdown"):
+    if not redact_portfolio_outputs and payload.get("weekly_review_markdown"):
         save_text(args.weekly_review_output, payload["weekly_review_markdown"])
 
     dashboard_error = ""
     try:
-        dashboard_html = render_dashboard_html(payload)
+        dashboard_html = render_dashboard_html(output_payload)
         save_text(args.dashboard_output, dashboard_html)
     except Exception as exc:
         dashboard_error = f"{type(exc).__name__}: {exc}"
-        payload["dashboard"]["enabled"] = False
-        payload["dashboard"]["error"] = dashboard_error
+        output_payload["dashboard"]["enabled"] = False
+        output_payload["dashboard"]["error"] = dashboard_error
 
-    save_json(args.json_output, payload)
+    save_json(args.json_output, output_payload)
 
     settings = load_settings()
     if args.send_feishu and settings.feishu_webhook_url:
@@ -907,9 +961,11 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"Markdown report saved to: {report_path}")
     print(f"JSON metadata saved to: {json_path}")
-    if payload.get("portfolio", {}).get("enabled"):
+    if redact_portfolio_outputs:
+        print("Portfolio outputs redacted from public dashboard/report; private action lines sent to Feishu.")
+    elif payload.get("portfolio", {}).get("enabled"):
         print(f"Portfolio brief saved to: {portfolio_path}")
-    if payload.get("weekly_review", {}).get("enabled"):
+    if not redact_portfolio_outputs and payload.get("weekly_review", {}).get("enabled"):
         print(f"Weekly review saved to: {weekly_path}")
     if payload.get("dashboard", {}).get("enabled"):
         print(f"Dashboard saved to: {dashboard_path}")

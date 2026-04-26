@@ -425,6 +425,13 @@ def _translated_overview(payload: dict[str, Any], translations: dict[str, Any]) 
 
 def _action_guidance_items(payload: dict[str, Any]) -> list[tuple[str, str, str]]:
     portfolio = payload.get("portfolio") or {}
+    if portfolio.get("private_mode"):
+        return [
+            ("当前动作", "已生成私密版", "具体组合建议看飞书；公开网页不展示持仓和交易流水。"),
+            ("继续持有", "看飞书", "需要持仓、成本和纪律线，已从私密配置计算。"),
+            ("补仓/买别的", "看触发条件", "公开页只显示新闻与价格，不给个人化买卖判断。"),
+            ("隐私保护", "不公开", "组合估值、AI 暴露、黄金仓位和历史缓存不发布到 Pages。"),
+        ]
     if portfolio.get("enabled"):
         rows = []
         for raw in portfolio.get("action_slot_lines") or []:
@@ -480,7 +487,7 @@ def _path_links(output_paths: dict[str, Any], dashboard: dict[str, Any]) -> str:
         ("结构化 JSON", output_paths.get("report_json_url") or output_paths.get("report_json_uri"), output_paths.get("report_json_path")),
         ("提醒状态 JSON", _public_sibling(output_paths, "watchlist.json"), "watchlist.json"),
     ]
-    if output_paths.get("portfolio_md_generated") is not False:
+    if output_paths.get("portfolio_md_generated"):
         pairs.append(("组合简报", output_paths.get("portfolio_md_url") or output_paths.get("portfolio_md_uri"), output_paths.get("portfolio_md_path")))
     if output_paths.get("weekly_md_generated"):
         pairs.append(("周复盘", output_paths.get("weekly_md_url") or output_paths.get("weekly_md_uri"), output_paths.get("weekly_md_path")))
@@ -584,6 +591,16 @@ def _event_route_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
 
 def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> list[str]:
     sections = []
+    if portfolio.get("private_mode"):
+        sections.append(
+            _section(
+                "组合配置（私密）",
+                '<div class="muted-block">组合配置已接入本次运行，但公开网页不会展示持仓、成本、交易流水、组合估值、AI 暴露、黄金仓位和历史缓存。具体动作提示请看飞书推送。</div>',
+                "默认保护你的个人仓位；如需公开展示，需要单独开启 PORTFOLIO_PUBLIC_OUTPUTS。",
+                "wide",
+            )
+        )
+        return sections
     if not portfolio.get("enabled"):
         sections.append(
             _section(
@@ -667,7 +684,9 @@ def _metric_cards(payload: dict[str, Any]) -> str:
         )
     elif translations.get("error"):
         cards.append(_metric("外文速译", "未完成", "翻译失败时保留原文"))
-    if portfolio.get("enabled"):
+    if portfolio.get("private_mode"):
+        cards.append(_metric("组合配置", "已接入", "私密模式：公开页不显示仓位明细"))
+    elif portfolio.get("enabled"):
         summary = portfolio.get("summary") or {}
         quotes = portfolio.get("portfolio_quotes") or {}
         cards.extend(

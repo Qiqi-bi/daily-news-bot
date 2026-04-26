@@ -34,6 +34,7 @@ jobs:
         if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         env:
           DASHBOARD_ARCHIVE_BRANCH: ${{ vars.DASHBOARD_ARCHIVE_BRANCH || 'dashboard-archive' }}
+          PORTFOLIO_PUBLIC_OUTPUTS: ${{ vars.PORTFOLIO_PUBLIC_OUTPUTS || 'false' }}
         run: |
           set -euo pipefail
           mkdir -p outputs
@@ -54,10 +55,14 @@ jobs:
 
           restore_state watchlist.json
           restore_state event_history.json
-          restore_state decision_journal.json
-          restore_state portfolio_history.json
-          restore_state fixed_buy_pool_history.json
-          restore_state fund_holdings_cache.json
+          if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
+            restore_state decision_journal.json
+            restore_state portfolio_history.json
+            restore_state fixed_buy_pool_history.json
+            restore_state fund_holdings_cache.json
+          else
+            echo "Private portfolio mode; not restoring portfolio state from the public archive branch."
+          fi
 
       - name: Run news bot
         env:
@@ -68,6 +73,9 @@ jobs:
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
           MARKETAUX_API_KEY: ${{ secrets.MARKETAUX_API_KEY }}
+          PORTFOLIO_YAML_B64: ${{ secrets.PORTFOLIO_YAML_B64 }}
+          TRADE_LEDGER_YAML_B64: ${{ secrets.TRADE_LEDGER_YAML_B64 }}
+          PORTFOLIO_PUBLIC_OUTPUTS: ${{ vars.PORTFOLIO_PUBLIC_OUTPUTS || 'false' }}
           NEWS_BASE_URL: ${{ vars.NEWS_BASE_URL }}
           NEWS_MODEL: ${{ vars.NEWS_MODEL }}
           NEWS_FALLBACK_MODELS: ${{ vars.NEWS_FALLBACK_MODELS }}
@@ -106,6 +114,20 @@ jobs:
 
           mkdir -p outputs
           rm -f outputs/dashboard.html outputs/report.md outputs/report.json outputs/portfolio_brief.md outputs/portfolio_weekly.md
+          export PORTFOLIO_PUBLIC_OUTPUTS="${PORTFOLIO_PUBLIC_OUTPUTS:-false}"
+
+          if [ -n "${PORTFOLIO_YAML_B64:-}" ]; then
+            mkdir -p config
+            printf '%s' "$PORTFOLIO_YAML_B64" | base64 -d > config/portfolio.yaml
+            chmod 600 config/portfolio.yaml
+            echo "Portfolio config loaded from GitHub Secret."
+          fi
+          if [ -n "${TRADE_LEDGER_YAML_B64:-}" ]; then
+            mkdir -p config
+            printf '%s' "$TRADE_LEDGER_YAML_B64" | base64 -d > config/trade_ledger.yaml
+            chmod 600 config/trade_ledger.yaml
+            echo "Trade ledger loaded from GitHub Secret."
+          fi
 
           MODE="evening"
           HOURS="24"
@@ -146,6 +168,7 @@ jobs:
         env:
           DASHBOARD_ARCHIVE_BRANCH: ${{ vars.DASHBOARD_ARCHIVE_BRANCH || 'dashboard-archive' }}
           GITHUB_TOKEN: ${{ github.token }}
+          PORTFOLIO_PUBLIC_OUTPUTS: ${{ vars.PORTFOLIO_PUBLIC_OUTPUTS || 'false' }}
         run: |
           set -euo pipefail
 
@@ -180,24 +203,33 @@ jobs:
           copy_if_exists outputs/report.md public/report.md
           copy_if_exists outputs/report.json public/report.json
           copy_if_exists outputs/watchlist.json public/watchlist.json
-          copy_if_exists outputs/portfolio_brief.md public/portfolio_brief.md
-          copy_if_exists outputs/portfolio_weekly.md public/portfolio_weekly.md
 
           mkdir -p public/state
           copy_if_exists outputs/watchlist.json public/state/watchlist.json
           copy_if_exists outputs/event_history.json public/state/event_history.json
-          copy_if_exists outputs/decision_journal.json public/state/decision_journal.json
-          copy_if_exists outputs/portfolio_history.json public/state/portfolio_history.json
-          copy_if_exists outputs/fixed_buy_pool_history.json public/state/fixed_buy_pool_history.json
-          copy_if_exists outputs/fund_holdings_cache.json public/state/fund_holdings_cache.json
 
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/index.html"
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/dashboard.html"
           copy_if_exists outputs/report.md "public/$DASHBOARD_ARCHIVE_PATH/report.md"
           copy_if_exists outputs/report.json "public/$DASHBOARD_ARCHIVE_PATH/report.json"
           copy_if_exists outputs/watchlist.json "public/$DASHBOARD_ARCHIVE_PATH/watchlist.json"
-          copy_if_exists outputs/portfolio_brief.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_brief.md"
-          copy_if_exists outputs/portfolio_weekly.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_weekly.md"
+
+          if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
+            copy_if_exists outputs/portfolio_brief.md public/portfolio_brief.md
+            copy_if_exists outputs/portfolio_weekly.md public/portfolio_weekly.md
+            copy_if_exists outputs/decision_journal.json public/state/decision_journal.json
+            copy_if_exists outputs/portfolio_history.json public/state/portfolio_history.json
+            copy_if_exists outputs/fixed_buy_pool_history.json public/state/fixed_buy_pool_history.json
+            copy_if_exists outputs/fund_holdings_cache.json public/state/fund_holdings_cache.json
+            copy_if_exists outputs/portfolio_brief.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_brief.md"
+            copy_if_exists outputs/portfolio_weekly.md "public/$DASHBOARD_ARCHIVE_PATH/portfolio_weekly.md"
+          else
+            rm -f public/portfolio_brief.md public/portfolio_weekly.md
+            rm -f public/state/decision_journal.json public/state/portfolio_history.json public/state/fixed_buy_pool_history.json public/state/fund_holdings_cache.json
+            if [ -d public/runs ]; then
+              find public/runs -type f \( -name 'portfolio_brief.md' -o -name 'portfolio_weekly.md' \) -delete
+            fi
+          fi
 
           mkdir -p public/runs
           run_count="$(find public/runs -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
