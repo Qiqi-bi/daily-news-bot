@@ -111,6 +111,14 @@ def _trend_class(value: Any) -> str:
     return "flat"
 
 
+def _normalize_title_key(value: Any) -> str:
+    text = _text(value, "").strip()
+    for prefix in ("跟踪：", "跟踪:", "新增跟踪｜", "新增跟踪|"):
+        if text.startswith(prefix):
+            text = text[len(prefix) :].strip()
+    return re.sub(r"\s+", " ", text).casefold()
+
+
 def _pill(label: Any, kind: str = "neutral") -> str:
     return f'<span class="pill {escape(kind)}">{escape(_text(label))}</span>'
 
@@ -189,16 +197,28 @@ def _theme_label(value: Any) -> str:
     return mapping.get(_text(value, ""), _text(value))
 
 
-def _cluster_rows(clusters: list[dict[str, Any]] | None) -> str:
+def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str, Any] | None = None) -> str:
     if not clusters:
         return _empty("本次没有筛出核心事件")
 
     rows = []
+    translation_items = translations or {}
     for index, cluster in enumerate(clusters[:10], start=1):
         representative = cluster.get("representative") or {}
-        title = _text(representative.get("title") or cluster.get("theme"), "未命名事件")
+        original_title = _text(representative.get("title") or cluster.get("theme"), "未命名事件")
+        translation = translation_items.get(_text(cluster.get("cluster_id"), "")) or {}
+        title_zh = _text(translation.get("title_zh"), "")
+        title = title_zh or original_title
         url = representative.get("url")
-        summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 260)
+        original_summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 260)
+        summary_zh = _shorten(translation.get("summary_zh") or translation.get("why_it_matters_zh"), 260)
+        summary = summary_zh or original_summary
+        original_title_html = ""
+        if title_zh and title_zh != original_title:
+            original_title_html = f'<div class="event-original">原文：{escape(original_title)}</div>'
+        original_summary_html = ""
+        if summary_zh and original_summary:
+            original_summary_html = f'<div class="event-original">原摘要：{escape(original_summary)}</div>'
         tags = cluster.get("tags") or []
         tag_html = "".join(_pill(tag, "tag") for tag in tags[:5]) or _pill("未分类")
         source = _text(representative.get("source"), "未知来源")
@@ -224,8 +244,10 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None) -> str:
             f'<div class="event-rank">{index}</div>'
             '<div class="event-main">'
             f'<div class="event-title">{_link(title, url)}</div>'
+            f"{original_title_html}"
             f'<div class="event-meta">{escape(source)} · {escape(published)} · {escape(source_line)}</div>'
             f'<div class="event-summary">{escape(summary)}</div>'
+            f"{original_summary_html}"
             '<div class="event-tags">'
             f'{_pill(direction, "direction")} {_pill("确定性 " + certainty, "neutral")} '
             f'{_pill("可信 " + credibility, "neutral")} {_pill("信源 " + confirmed, "neutral")} '
@@ -254,34 +276,42 @@ def _market_rows(market_snapshot: dict[str, Any]) -> list[list[str]]:
     return result
 
 
-def _watchlist_item(item: dict[str, Any], label: str) -> str:
+def _watchlist_item(item: dict[str, Any], label: str, title_translations: dict[str, str] | None = None) -> str:
     condition = item.get("condition_text")
     if not condition and item.get("metric"):
         condition = f"{item.get('symbol') or item.get('metric')} {item.get('operator', '')} {item.get('threshold', '')}"
     observed = item.get("observed") or item.get("last_observed") or ""
     action = item.get("action") or ""
     details = " · ".join(part for part in [_text(condition, ""), _text(observed, "")] if part)
+    raw_title = _text(item.get("title"), "未命名提醒")
+    translated_title = (title_translations or {}).get(_normalize_title_key(raw_title))
+    title = raw_title
+    original_html = ""
+    if translated_title:
+        title = "跟踪：" + translated_title if raw_title.startswith(("跟踪：", "跟踪:")) else translated_title
+        original_html = f'<div class="watch-original">原文：{escape(raw_title)}</div>'
     return (
         '<div class="watch-row">'
         f'<div class="watch-label">{escape(label)}</div>'
-        f'<div class="watch-title">{escape(_text(item.get("title"), "未命名提醒"))}</div>'
+        f'<div class="watch-title">{escape(title)}</div>'
+        f"{original_html}"
         f'<div class="watch-detail">{escape(_shorten(details, 220))}</div>'
         f'<div class="watch-action">{escape(_shorten(action, 220))}</div>'
         "</div>"
     )
 
 
-def _watchlist_rows(watchlist: dict[str, Any]) -> str:
+def _watchlist_rows(watchlist: dict[str, Any], title_translations: dict[str, str] | None = None) -> str:
     rows = []
     for item in watchlist.get("triggered_items") or []:
-        rows.append(_watchlist_item(item, "已触发"))
+        rows.append(_watchlist_item(item, "已触发", title_translations))
     for item in watchlist.get("new_items") or []:
-        rows.append(_watchlist_item(item, "新增"))
+        rows.append(_watchlist_item(item, "新增", title_translations))
     if len(rows) < 8:
         for item in watchlist.get("active_items") or []:
             if len(rows) >= 8:
                 break
-            rows.append(_watchlist_item(item, "继续盯"))
+            rows.append(_watchlist_item(item, "继续盯", title_translations))
     if not rows:
         return _empty("没有触发提醒；系统仍会保留有效提醒并在后续运行继续检查")
     return '<div class="watch-list">' + "".join(rows) + "</div>"
@@ -320,6 +350,19 @@ def _tag_distribution(tags: dict[str, Any] | None) -> str:
     for tag, count in sorted(tags.items(), key=lambda item: (-int(item[1]), item[0]))[:8]:
         items.append(f'{_pill(f"{tag} {count}", "tag")}')
     return '<div class="tag-strip">' + "".join(items) + "</div>"
+
+
+def _title_translation_map(clusters: list[dict[str, Any]] | None, translations: dict[str, Any] | None) -> dict[str, str]:
+    result: dict[str, str] = {}
+    translation_items = translations or {}
+    for cluster in clusters or []:
+        representative = cluster.get("representative") or {}
+        original_title = _text(representative.get("title") or cluster.get("theme"), "")
+        title_zh = _text((translation_items.get(_text(cluster.get("cluster_id"), "")) or {}).get("title_zh"), "")
+        if original_title and title_zh:
+            result[_normalize_title_key(original_title)] = title_zh
+            result[_normalize_title_key("跟踪：" + original_title)] = title_zh
+    return result
 
 
 def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
@@ -507,6 +550,7 @@ def _metric_cards(payload: dict[str, Any]) -> str:
     coverage = data_quality.get("source_coverage") or payload.get("source_coverage") or {}
     market_coverage = data_quality.get("market_coverage") or (payload.get("market_snapshot") or {}).get("coverage") or {}
     watchlist = payload.get("watchlist") or {}
+    translations = payload.get("translations") or {}
     cards = [
         _metric("核心事件", f"{payload.get('selected_count', 0)} 个", f"从 {payload.get('articles_count', 0)} 条新闻里筛出", "accent"),
         _metric("最新时效", _fmt_age(data_quality.get("latest_article_age_hours")), data_quality.get("freshness_status") or "未知"),
@@ -515,6 +559,16 @@ def _metric_cards(payload: dict[str, Any]) -> str:
         _metric("RSS/API", f'{coverage.get("rss_sources_with_articles", 0)}/{coverage.get("rss_sources_configured", 0)} · {coverage.get("api_sources_with_articles", 0)}/{coverage.get("api_sources_enabled", 0)}', "前者 RSS，后者 API"),
         _metric("低可信过滤", f'{data_quality.get("credibility_filtered_articles", (payload.get("credibility_summary") or {}).get("filtered_articles", 0))} 条', "先过滤再聚类"),
     ]
+    if translations.get("enabled"):
+        cards.append(
+            _metric(
+                "外文速译",
+                f'{translations.get("translated_count", len(translations.get("items") or {}))} 条',
+                "核心外文标题自动转中文",
+            )
+        )
+    elif translations.get("error"):
+        cards.append(_metric("外文速译", "未完成", "翻译失败时保留原文"))
     if portfolio.get("enabled"):
         summary = portfolio.get("summary") or {}
         quotes = portfolio.get("portfolio_quotes") or {}
@@ -700,10 +754,12 @@ h1 {
 }
 .event-meta,
 .event-note,
+.event-original,
 .asset-symbol,
 .path,
 .watch-detail,
 .watch-action,
+.watch-original,
 .muted-block {
   color: var(--muted);
   font-size: 12px;
@@ -721,6 +777,9 @@ h1 {
 }
 .event-note {
   margin-top: 7px;
+}
+.event-original {
+  margin-top: 4px;
 }
 .pill {
   display: inline-flex;
@@ -812,6 +871,9 @@ th {
 .watch-action {
   margin-top: 3px;
 }
+.watch-original {
+  margin-top: 2px;
+}
 ul {
   margin: 0;
   padding-left: 18px;
@@ -876,6 +938,8 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     dashboard = payload.get("dashboard") or {}
     watchlist = payload.get("watchlist") or {}
     market_snapshot = payload.get("market_snapshot") or {}
+    translations = ((payload.get("translations") or {}).get("items") or {})
+    title_translations = _title_translation_map(payload.get("clusters"), translations)
     generated = data_quality.get("generated_at_bjt") or payload.get("generated_at_utc") or "未知"
     global_overview = _strip_markdown(payload.get("global_30s_overview") or "本次日报已生成。")
     archive_url = output_paths.get("archive_index_url") or dashboard.get("archive_index_url")
@@ -897,7 +961,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
     sections = [
-        _section("今日核心事件", _cluster_rows(payload.get("clusters")), "按重要性、可信度和来源交叉验证排序。", "wide"),
+        _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide"),
         _section(
             "市场快照",
             _render_table(["资产", "价格", "涨跌", "状态", "行情时间"], _market_rows(market_snapshot)),
@@ -905,7 +969,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         ),
         _section(
             "提醒与记忆",
-            _watchlist_rows(watchlist),
+            _watchlist_rows(watchlist, title_translations),
             f'触发 {watchlist.get("triggered_count", 0)} · 新增 {watchlist.get("new_count", 0)} · 有效 {watchlist.get("active_count", 0)}',
         ),
         _section("数据质量", _coverage_body(payload), "看覆盖、时效和过滤情况，避免把缺数据误当判断。"),

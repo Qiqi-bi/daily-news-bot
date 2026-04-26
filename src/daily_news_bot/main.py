@@ -26,6 +26,7 @@ from .report import render_report, save_json, save_text
 from .senders import send_feishu_webhook
 from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
+from .translations import translate_cluster_highlights
 from .watchlist import evaluate_watchlist, render_watchlist_markdown
 
 
@@ -568,6 +569,14 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
             except Exception as exc:
                 portfolio_payload["decision_snapshot_error"] = f"{type(exc).__name__}: {exc}"[:300]
 
+    try:
+        translations = translate_cluster_highlights(settings, top_clusters)
+    except Exception as exc:
+        translations = {
+            "enabled": False,
+            "items": {},
+            "error": f"{type(exc).__name__}: {exc}"[:300],
+        }
     global_report, llm_used = render_report(
         settings,
         top_clusters,
@@ -616,6 +625,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "weekly_review_markdown": weekly_review_markdown,
         "global_30s_overview": _extract_30s_overview(global_report),
         "tag_distribution": summarize_tag_distribution(top_clusters),
+        "translations": translations,
         "clusters": [cluster.to_dict() for cluster in top_clusters],
     }
     try:
