@@ -416,6 +416,83 @@ def _feishu_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
     return str(translated.get("title_zh") or representative.get("title") or cluster.get("theme") or "未命名事件")
 
 
+def _feishu_tag_label(tag: Any) -> str:
+    mapping = {
+        "geopolitics": "地缘",
+        "energy": "能源",
+        "macro": "宏观",
+        "markets": "市场",
+        "technology": "科技",
+        "ai": "AI",
+        "semiconductor": "半导体",
+        "rates": "利率",
+        "fx": "汇率",
+        "gold": "黄金",
+        "commodities": "商品",
+        "supply_chain": "供应链",
+        "policy": "政策",
+        "earnings": "财报",
+        "crypto": "加密",
+    }
+    raw = str(tag or "").strip()
+    return mapping.get(raw, raw or "综合")
+
+
+def _feishu_clean_line(text: Any) -> str:
+    line = str(text or "").strip()
+    while line.startswith(("-", "*", ">", "#")):
+        line = line[1:].strip()
+    return line.replace("**", "").replace("__", "").replace("`", "")
+
+
+def _build_feishu_overview(payload: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
+    titles = [_feishu_short(_feishu_title(cluster, translations), 42) for cluster in clusters[:3]]
+    titles = [title for title in titles if title]
+    if not titles:
+        return "日报已生成。今天先看市场快照、核心事件和提醒状态，动手前再复核实时价格。"
+
+    directions = []
+    tags = []
+    high_credibility_count = 0
+    for cluster in clusters[:6]:
+        direction = str(cluster.get("direction") or "").strip()
+        if direction and direction not in directions:
+            directions.append(direction)
+        if cluster.get("credibility_label") == "高":
+            high_credibility_count += 1
+        for tag in cluster.get("tags") or []:
+            label = _feishu_tag_label(tag)
+            if label and label not in tags:
+                tags.append(label)
+
+    direction_text = "、".join(directions[:3]) or "中性"
+    tag_text = "、".join(tags[:4]) or "综合"
+    return (
+        f"今天先看：{'；'.join(titles)}。"
+        f"主线集中在 {tag_text}，方向以 {direction_text} 为主；"
+        f"高可信事件 {high_credibility_count} 个。先看价格是否确认，不追单。"
+    )
+
+
+def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
+    portfolio = payload.get("portfolio") or {}
+    if portfolio.get("enabled"):
+        lines = []
+        for raw in portfolio.get("action_slot_lines") or []:
+            cleaned = _feishu_clean_line(raw)
+            if cleaned:
+                lines.append(_feishu_short(cleaned, 120))
+        if lines:
+            return lines[:3]
+        return ["组合配置已接入，但今天没有明确触发动作；按原计划观察，动手前复核价格和仓位。"]
+
+    return [
+        "当前只能给新闻和价格提示：线上没有你的持仓、成本、现金和目标比例，所以不能判断继续持有、补仓或换仓。",
+        "今天默认动作：观察，不追单；先看原油、黄金、美元、VIX 是否继续确认新闻方向。",
+        "要生成持有/补仓/减仓/候选标的，需要接入组合配置；建议默认只发飞书或私密产物，不放公开网页。",
+    ]
+
+
 def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
     raw_title = str(item.get("title") or "未命名提醒")
     normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
@@ -439,17 +516,20 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
 
     latest_age = data_quality.get("latest_article_age_hours")
     latest_age_text = "未知" if latest_age is None else f"{float(latest_age):.1f} 小时"
-    global_line = _feishu_short(payload.get("global_30s_overview") or "日报已生成，请打开 Dashboard 查看完整内容。", 260)
+    global_line = _feishu_short(_build_feishu_overview(payload, clusters, translations), 260)
 
     lines: list[str] = [
         "**今日结论**",
         global_line,
         "",
+        "**操作提示**",
+        *[f"- {line}" for line in _build_feishu_action_lines(payload)],
+        "",
         "**核心事件**",
     ]
     if clusters:
         for index, cluster in enumerate(clusters[:5], start=1):
-            tags = "、".join(str(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
+            tags = "、".join(_feishu_tag_label(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
             title = _feishu_short(_feishu_title(cluster, translations), 100)
             lines.append(
                 f"{index}. {title}\n"

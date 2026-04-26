@@ -197,6 +197,28 @@ def _theme_label(value: Any) -> str:
     return mapping.get(_text(value, ""), _text(value))
 
 
+def _tag_label(value: Any) -> str:
+    mapping = {
+        "geopolitics": "地缘",
+        "energy": "能源",
+        "macro": "宏观",
+        "markets": "市场",
+        "technology": "科技",
+        "ai": "AI",
+        "semiconductor": "半导体",
+        "rates": "利率",
+        "fx": "汇率",
+        "gold": "黄金",
+        "commodities": "商品",
+        "supply_chain": "供应链",
+        "policy": "政策",
+        "earnings": "财报",
+        "crypto": "加密",
+    }
+    raw = _text(value, "")
+    return mapping.get(raw, raw or "综合")
+
+
 def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str, Any] | None = None) -> str:
     if not clusters:
         return _empty("本次没有筛出核心事件")
@@ -220,7 +242,7 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str,
         if summary_zh and original_summary:
             original_summary_html = f'<div class="event-original">原摘要：{escape(original_summary)}</div>'
         tags = cluster.get("tags") or []
-        tag_html = "".join(_pill(tag, "tag") for tag in tags[:5]) or _pill("未分类")
+        tag_html = "".join(_pill(_tag_label(tag), "tag") for tag in tags[:5]) or _pill("未分类")
         source = _text(representative.get("source"), "未知来源")
         published = _compact_time(representative.get("published_at"))
         direction = _text(cluster.get("direction"), "中性")
@@ -348,7 +370,7 @@ def _tag_distribution(tags: dict[str, Any] | None) -> str:
         return ""
     items = []
     for tag, count in sorted(tags.items(), key=lambda item: (-int(item[1]), item[0]))[:8]:
-        items.append(f'{_pill(f"{tag} {count}", "tag")}')
+        items.append(f'{_pill(f"{_tag_label(tag)} {count}", "tag")}')
     return '<div class="tag-strip">' + "".join(items) + "</div>"
 
 
@@ -363,6 +385,82 @@ def _title_translation_map(clusters: list[dict[str, Any]] | None, translations: 
             result[_normalize_title_key(original_title)] = title_zh
             result[_normalize_title_key("跟踪：" + original_title)] = title_zh
     return result
+
+
+def _cluster_display_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
+    representative = cluster.get("representative") or {}
+    translation = translations.get(_text(cluster.get("cluster_id"), "")) or {}
+    return _text(translation.get("title_zh") or representative.get("title") or cluster.get("theme"), "未命名事件")
+
+
+def _translated_overview(payload: dict[str, Any], translations: dict[str, Any]) -> str:
+    clusters = payload.get("clusters") or []
+    titles = [_shorten(_cluster_display_title(cluster, translations), 54) for cluster in clusters[:3]]
+    titles = [title for title in titles if title and title != "未命名事件"]
+    if not titles:
+        return _strip_markdown(payload.get("global_30s_overview") or "本次日报已生成。")
+
+    directions = []
+    tags = []
+    high_credibility_count = 0
+    for cluster in clusters[:6]:
+        direction = _text(cluster.get("direction"), "")
+        if direction and direction not in directions:
+            directions.append(direction)
+        if cluster.get("credibility_label") == "高":
+            high_credibility_count += 1
+        for tag in cluster.get("tags") or []:
+            label = _tag_label(tag)
+            if label and label not in tags:
+                tags.append(label)
+
+    direction_text = "、".join(directions[:3]) or "中性"
+    tag_text = "、".join(tags[:4]) or "综合"
+    return (
+        f"今天先看：{'；'.join(titles)}。"
+        f"主线集中在 {tag_text}，方向以 {direction_text} 为主；"
+        f"高可信事件 {high_credibility_count} 个。先看市场快照是否确认，再决定要不要动手。"
+    )
+
+
+def _action_guidance_items(payload: dict[str, Any]) -> list[tuple[str, str, str]]:
+    portfolio = payload.get("portfolio") or {}
+    if portfolio.get("enabled"):
+        rows = []
+        for raw in portfolio.get("action_slot_lines") or []:
+            line = _strip_markdown(raw)
+            if line:
+                rows.append(("组合动作", _shorten(line, 92), "按配置生成；仍需复核实时价格、流动性和仓位纪律。"))
+            if len(rows) >= 4:
+                break
+        if rows:
+            return rows
+        return [("当前动作", "观察", "组合配置已接入，但今天没有明确触发动作。")]
+
+    return [
+        ("当前动作", "观察", "缺少线上持仓配置，不生成买卖判断。"),
+        ("继续持有", "待组合接入", "需要知道持仓、成本、目标比例和纪律线。"),
+        ("补仓/买别的", "先不自动给", "需要现金、候选池、风险预算和买入规则。"),
+        ("组合接入", "建议走私密", "默认只推飞书或 Actions 产物，不放公开网页。"),
+    ]
+
+
+def _action_guidance_section(payload: dict[str, Any]) -> str:
+    cards = []
+    for label, value, note in _action_guidance_items(payload):
+        cards.append(
+            '<div class="action-card">'
+            f'<div class="action-label">{escape(label)}</div>'
+            f'<div class="action-value">{escape(value)}</div>'
+            f'<div class="action-note">{escape(note)}</div>'
+            "</div>"
+        )
+    note = (
+        "这不是交易指令；接入组合后也会输出“复核/观察/候选/纪律提醒”，"
+        "动手前仍要确认价格、流动性和个人仓位约束。"
+    )
+    body = '<div class="action-grid">' + "".join(cards) + f'</div><div class="muted-block">{escape(note)}</div>'
+    return _section("今天怎么处理", body, "先把能做和不能做说清楚，避免把新闻摘要误当交易建议。", "wide")
 
 
 def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
@@ -695,6 +793,34 @@ h1 {
   font-size: 12px;
   margin-top: 6px;
 }
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 10px;
+}
+.action-card {
+  border: 1px solid var(--line-soft);
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 98px;
+}
+.action-label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.action-value {
+  font-size: 18px;
+  font-weight: 760;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.action-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 7px;
+}
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(360px, .65fr);
@@ -941,7 +1067,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     translations = ((payload.get("translations") or {}).get("items") or {})
     title_translations = _title_translation_map(payload.get("clusters"), translations)
     generated = data_quality.get("generated_at_bjt") or payload.get("generated_at_utc") or "未知"
-    global_overview = _strip_markdown(payload.get("global_30s_overview") or "本次日报已生成。")
+    global_overview = _translated_overview(payload, translations)
     archive_url = output_paths.get("archive_index_url") or dashboard.get("archive_index_url")
     report_url = output_paths.get("report_md_url") or output_paths.get("report_md_uri")
 
@@ -961,6 +1087,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
     sections = [
+        _action_guidance_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide"),
         _section(
             "市场快照",
