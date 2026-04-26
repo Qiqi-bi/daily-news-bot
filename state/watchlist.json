@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-26T14:05:18",
+  "updated_at_utc": "2026-04-26T14:45:18",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,7 +18,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
+      "last_checked_at_utc": "2026-04-26T14:45:18",
       "last_observed": "WTI原油 change_pct=-1.513"
     },
     {
@@ -37,8 +37,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
-      "last_observed": "growth_tech_pct=未知"
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "growth_tech_pct=51.498"
     },
     {
       "id": "direct-ai-exposure-cap",
@@ -56,8 +56,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
-      "last_observed": "direct_ai_pct=未知"
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "direct_ai_pct=32.76"
     },
     {
       "id": "gold-position-below-target",
@@ -75,8 +75,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
-      "last_observed": "gold_pct=未知"
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "gold_pct=12.885"
     },
     {
       "id": "gold-position-above-target",
@@ -94,8 +94,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
-      "last_observed": "gold_pct=未知"
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "gold_pct=12.885"
     },
     {
       "id": "gold-futures-big-up",
@@ -114,7 +114,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
+      "last_checked_at_utc": "2026-04-26T14:45:18",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
@@ -134,100 +134,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-26T14:05:18",
+      "last_checked_at_utc": "2026-04-26T14:45:18",
       "last_observed": "黄金 change_pct=0.761"
-    },
-    {
-      "id": "event-2b52968c4903",
-      "type": "event_followup",
-      "title": "跟踪：Sen. Tillis prepared to end blockade of Fed chair nominee Kevin Warsh",
-      "keywords": [
-        "macro",
-        "geopolitics",
-        "markets",
-        "blockade",
-        "chair",
-        "cnbc",
-        "end",
-        "fed",
-        "kevin"
-      ],
-      "tokens": [
-        "blockade",
-        "chair",
-        "cnbc",
-        "end",
-        "fed",
-        "geopolitics",
-        "kevin",
-        "macro",
-        "nominee",
-        "of",
-        "prepared",
-        "sen",
-        "tillis",
-        "to",
-        "warsh",
-        "关键词"
-      ],
-      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
-      "created_at_utc": "2026-04-26T14:05:18",
-      "expires_at_utc": "2026-05-03T14:05:18",
-      "status": "active",
-      "source": "auto_event",
-      "repeat": false
-    },
-    {
-      "id": "event-1fe5cec92a18",
-      "type": "event_followup",
-      "title": "跟踪：US motorists skimp at the pump as Iran war keeps petrol prices high",
-      "keywords": [
-        "geopolitics",
-        "markets",
-        "ahead",
-        "as",
-        "at",
-        "cost",
-        "driving",
-        "elections",
-        "ft"
-      ],
-      "tokens": [
-        "ahead",
-        "as",
-        "at",
-        "cost",
-        "driving",
-        "elections",
-        "ft",
-        "geopolitics",
-        "high",
-        "in",
-        "iran",
-        "keeps",
-        "midterm",
-        "motorists",
-        "november",
-        "of",
-        "petrol",
-        "political",
-        "presents",
-        "prices",
-        "problem",
-        "pump",
-        "skimp",
-        "soaring",
-        "trump",
-        "us",
-        "war",
-        "关键词"
-      ],
-      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
-      "created_at_utc": "2026-04-26T14:05:18",
-      "expires_at_utc": "2026-05-03T14:05:18",
-      "status": "active",
-      "source": "auto_event",
-      "repeat": false
     },
     {
       "id": "event-86ae5bf02345",
@@ -891,6 +799,110 @@
       "last_checked_at_utc": "2026-04-26T14:05:18",
       "last_observed": "Sen. Tillis prepared to end blockade of Fed chair nominee Kevin Warsh；U.S. Sanctions Zigzag in New World of Economic Warfare；Higher prices could last for eight months after Iran war, minister says",
       "last_triggered_at_utc": "2026-04-26T14:05:18"
+    },
+    {
+      "id": "event-2b52968c4903",
+      "type": "event_followup",
+      "title": "跟踪：Sen. Tillis prepared to end blockade of Fed chair nominee Kevin Warsh",
+      "keywords": [
+        "macro",
+        "geopolitics",
+        "markets",
+        "blockade",
+        "chair",
+        "cnbc",
+        "end",
+        "fed",
+        "kevin"
+      ],
+      "tokens": [
+        "blockade",
+        "chair",
+        "cnbc",
+        "end",
+        "fed",
+        "geopolitics",
+        "kevin",
+        "macro",
+        "nominee",
+        "of",
+        "prepared",
+        "sen",
+        "tillis",
+        "to",
+        "warsh",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-26T14:05:18",
+      "expires_at_utc": "2026-05-03T14:05:18",
+      "status": "triggered",
+      "source": "auto_event",
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "f03169348d59",
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "Sen. Tillis prepared to end blockade of Fed chair nominee Kevin Warsh；U.S. Sanctions Zigzag in New World of Economic Warfare；Higher prices could last for eight months after Iran war, minister says",
+      "last_triggered_at_utc": "2026-04-26T14:45:18"
+    },
+    {
+      "id": "event-1fe5cec92a18",
+      "type": "event_followup",
+      "title": "跟踪：US motorists skimp at the pump as Iran war keeps petrol prices high",
+      "keywords": [
+        "geopolitics",
+        "markets",
+        "ahead",
+        "as",
+        "at",
+        "cost",
+        "driving",
+        "elections",
+        "ft"
+      ],
+      "tokens": [
+        "ahead",
+        "as",
+        "at",
+        "cost",
+        "driving",
+        "elections",
+        "ft",
+        "geopolitics",
+        "high",
+        "in",
+        "iran",
+        "keeps",
+        "midterm",
+        "motorists",
+        "november",
+        "of",
+        "petrol",
+        "political",
+        "presents",
+        "prices",
+        "problem",
+        "pump",
+        "skimp",
+        "soaring",
+        "trump",
+        "us",
+        "war",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-26T14:05:18",
+      "expires_at_utc": "2026-05-03T14:05:18",
+      "status": "triggered",
+      "source": "auto_event",
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "4f64169f8ce5",
+      "last_checked_at_utc": "2026-04-26T14:45:18",
+      "last_observed": "Sen. Tillis prepared to end blockade of Fed chair nominee Kevin Warsh；U.S. Sanctions Zigzag in New World of Economic Warfare；Higher prices could last for eight months after Iran war, minister says",
+      "last_triggered_at_utc": "2026-04-26T14:45:18"
     }
   ]
 }
