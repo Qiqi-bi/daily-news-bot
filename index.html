@@ -3,56 +3,362 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>投资决策驾驶舱</title>
+  <title>每日投资雷达</title>
   <style>
-    :root { color-scheme: light; --bg:#f6f8fb; --panel:#ffffff; --text:#152033; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { max-width:1280px; margin:0 auto; padding:24px; }
-    .header { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; flex-wrap:wrap; margin-bottom:20px; }
-    h1 { margin:0; font-size:30px; }
-    .sub { color:var(--muted); margin-top:6px; }
-    .metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:18px 0 22px; }
-    .metric,.panel { background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:0 4px 14px rgba(15,23,42,.04); }
-    .metric { padding:16px; }
-    .metric-title { color:var(--muted); font-size:13px; margin-bottom:8px; }
-    .metric-value { font-size:24px; font-weight:700; }
-    .note { color:var(--muted); font-size:12px; margin-top:6px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:16px; align-items:start; }
-    .panel { padding:18px; }
-    .panel h2 { margin:0 0 12px; font-size:18px; }
-    .hero { background:#eff6ff; border:1px solid #bfdbfe; color:#1d4ed8; padding:14px 16px; border-radius:12px; line-height:1.65; }
-    .hero.small { font-size:13px; color:#334155; background:#f8fafc; border-color:#e2e8f0; }
-    ul { margin:0; padding-left:18px; }
-    li { margin:8px 0; line-height:1.6; }
-    .table-wrap { overflow:auto; }
-    table { width:100%; border-collapse:collapse; font-size:13px; }
-    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
-    th { color:var(--muted); font-weight:600; background:#fafafa; position:sticky; top:0; }
-    .empty { color:var(--muted); padding:4px 0; }
-    .footer { color:var(--muted); font-size:12px; margin-top:18px; }
-    .link-list { padding-left:18px; }
-    .path { display:block; color:var(--muted); font-size:12px; margin-top:4px; }
-    a { color:var(--accent); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-  </style>
+:root {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --text: #172033;
+  --muted: #647083;
+  --line: #dfe5ec;
+  --line-soft: #edf1f5;
+  --blue: #1f6feb;
+  --green: #17803d;
+  --red: #bd2c2c;
+  --amber: #936100;
+  --teal: #0f766e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 28px 36px;
+}
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.subtitle {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.top-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.button-link {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--blue);
+  padding: 7px 11px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.lead {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+.lead-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.lead-text {
+  color: #243247;
+  font-size: 15px;
+}
+.tag-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
+  gap: 10px;
+  margin: 14px 0 18px;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px 14px;
+}
+.metric.accent {
+  border-top: 3px solid var(--blue);
+}
+.metric-title {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.metric-value {
+  font-size: 24px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+.metric-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, .65fr);
+  gap: 14px;
+  align-items: start;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  overflow: hidden;
+}
+.panel.wide {
+  grid-column: 1 / -1;
+}
+.panel h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.section-subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.event-list {
+  display: grid;
+  gap: 0;
+}
+.event-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.event-row:first-child {
+  border-top: 0;
+  padding-top: 4px;
+}
+.event-rank {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: #e8f1ff;
+  color: #164a9f;
+  font-weight: 700;
+  font-size: 13px;
+}
+.event-title {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.event-meta,
+.event-note,
+.asset-symbol,
+.path,
+.watch-detail,
+.watch-action,
+.muted-block {
+  color: var(--muted);
+  font-size: 12px;
+}
+.event-summary {
+  color: #27364b;
+  margin-top: 6px;
+  font-size: 13px;
+}
+.event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+.event-note {
+  margin-top: 7px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: #334155;
+  background: #f8fafc;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.pill.direction {
+  color: var(--teal);
+  border-color: #badbd7;
+  background: #effaf8;
+}
+.pill.tag {
+  color: #4d3b00;
+  border-color: #f1d68a;
+  background: #fff9e8;
+}
+.pill.importance {
+  color: #7c2d12;
+  border-color: #fdba74;
+  background: #fff7ed;
+}
+.table-wrap {
+  overflow: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th,
+td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 9px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  color: var(--muted);
+  font-weight: 650;
+  background: #fafbfc;
+}
+.asset-name {
+  font-weight: 650;
+}
+.change.up {
+  color: var(--green);
+  font-weight: 700;
+}
+.change.down {
+  color: var(--red);
+  font-weight: 700;
+}
+.change.flat {
+  color: var(--muted);
+  font-weight: 700;
+}
+.watch-list {
+  display: grid;
+  gap: 10px;
+}
+.watch-row {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+.watch-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.watch-label {
+  display: inline-block;
+  color: var(--amber);
+  background: #fff8e1;
+  border: 1px solid #ecd58a;
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.watch-title {
+  font-weight: 700;
+}
+.watch-action {
+  margin-top: 3px;
+}
+ul {
+  margin: 0;
+  padding-left: 18px;
+}
+li {
+  margin: 7px 0;
+}
+.link-list li {
+  margin: 9px 0;
+}
+.path {
+  display: block;
+  margin-top: 2px;
+  word-break: break-all;
+}
+.empty {
+  color: var(--muted);
+  padding: 8px 0;
+}
+.muted-block {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.footer {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 16px;
+}
+@media (max-width: 900px) {
+  .wrap {
+    padding: 18px 14px 28px;
+  }
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+  .top-actions {
+    justify-content: flex-start;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 25px;
+  }
+}
+</style>
 </head>
 <body>
   <div class="wrap">
-    <div class="header">
+    <header class="topbar">
       <div>
-        <h1>投资决策驾驶舱</h1>
-        <div class="sub">生成时间：2026-04-26T02:31:49 UTC</div>
+        <h1>每日投资雷达</h1>
+        <div class="subtitle">生成时间：2026-04-26T10:54:30 · 模式：evening · 不是交易终端，动手前仍需复核价格、流动性和仓位纪律。</div>
       </div>
-      <div class="sub">先看最重要的事，再看传导链，再决定是否动手</div>
-    </div>
-    <div class="metrics"><div class="metric"><div class="metric-title">组合估值</div><div class="metric-value">未知</div><div class="note">含场内价格/场外估值近似</div></div><div class="metric"><div class="metric-title">组合近一周</div><div class="metric-value">未知</div><div class="note">只看方向，不当精确收益</div></div><div class="metric"><div class="metric-title">A股阶段</div><div class="metric-value">未知</div><div class="note">本土风格框架</div></div><div class="metric"><div class="metric-title">直接AI暴露</div><div class="metric-value">未知</div><div class="note">纪律线默认 35%</div></div><div class="metric"><div class="metric-title">黄金仓位</div><div class="metric-value">未知</div><div class="note">保险仓默认 10%-15%</div></div><div class="metric"><div class="metric-title">新闻覆盖</div><div class="metric-value">100 条</div><div class="note">含 RSS / API / 官方源</div></div><div class="metric"><div class="metric-title">最新时效</div><div class="metric-value">0.01 小时</div><div class="note">新鲜</div></div><div class="metric"><div class="metric-title">待办提醒</div><div class="metric-value">0 触发</div><div class="note">12 条继续盯</div></div></div>
-    <div class="grid"><section class="panel"><h2>30秒总览</h2><div class="hero">- Trump cancels trip by US negotiators for Iran peace talks；主要影响：geopolitics；方向：偏利多。
+      <div class="top-actions"><a class="button-link" href="https://Qiqi-bi.github.io/daily-news-bot/report.md">打开完整日报</a><a class="button-link" href="https://Qiqi-bi.github.io/daily-news-bot/archive.html">历史归档</a></div>
+    </header>
+    <div class="lead"><div class="lead-title">30 秒总览</div><div class="lead-text">Trump cancels trip by US negotiators for Iran peace talks；主要影响：geopolitics；方向：偏利多。
 - Trump rushed offstage at White House correspondents’ dinner after shots fired；主要影响：综合；方向：中性。
 - 中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...；主要影响：macro；方向：中性。
 - This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks；主要影响：geopolitics, energy, markets；方向：分化。
-- What Apple investors need to know about the next steps for the company and its new CEO；主要影响：technology, markets；方向：偏利多。</div></section><section class="panel"><h2>待办与触发提醒</h2><ul><li>新增跟踪｜跟踪：Trump cancels trip by US negotiators for Iran peace talks｜条件：新闻再次出现或关键词命中：geopolitics / by / cancels / ft / he / iran / jared / kushner｜当前：从本次日报新增｜动作：如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</li><li>新增跟踪｜跟踪：Trump rushed offstage at White House correspondents’ dinner after shots fired｜条件：新闻再次出现或关键词命中：after / agents / annual / at / cabinet / correspondents / dinner / event｜当前：从本次日报新增｜动作：如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</li><li>新增跟踪｜跟踪：中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...｜条件：新闻再次出现或关键词命中：macro / official / page / pboc / 中国人民银行 / 国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习 / 官方网页抓取｜当前：从本次日报新增｜动作：如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</li><li>新增跟踪｜跟踪：This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks｜条件：新闻再次出现或关键词命中：geopolitics / energy / markets / 600 / amid / beginning / better / breakwave / bwet / cnbc / crude｜当前：从本次日报新增｜动作：如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</li><li>新增跟踪｜跟踪：What Apple investors need to know about the next steps for the company and its new CEO｜条件：新闻再次出现或关键词命中：technology / markets / about / ai / apple / built / ceo / company / cook / fix｜当前：从本次日报新增｜动作：如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</li><li>继续盯：12 条有效提醒；其中前 5 条：WTI 原油单日冲击；广义成长科技暴露触及上限；直接 AI 暴露触及上限；黄金仓位低于保险仓下限；黄金仓位高于保险仓上限</li></ul></section><section class="panel"><h2>数据质量</h2><ul><li>生成时间：2026-04-26T02:31:49</li><li>新闻窗口：2026-04-25T02:31:49 → 2026-04-26T02:31:49</li><li>实际新闻：2026-04-25T04:00:30 → 2026-04-26T02:31:31</li><li>可信度拦截：4 条</li></ul></section><section class="panel"><h2>报告入口</h2><ul class="link-list"><li><a href="https://Qiqi-bi.github.io/daily-news-bot/archive.html">Archive index</a><span class="path">https://Qiqi-bi.github.io/daily-news-bot/archive.html</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/runs/2026-04-26-103149-run-2509-attempt-1/">This run archive</a><span class="path">https://Qiqi-bi.github.io/daily-news-bot/runs/2026-04-26-103149-run-2509-attempt-1/</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/report.md">全球日报</a><span class="path">https://Qiqi-bi.github.io/daily-news-bot/report.md</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/report.json">JSON metadata</a><span class="path">https://Qiqi-bi.github.io/daily-news-bot/report.json</span></li></ul></section><section class="panel"><h2>当前驾驶舱</h2><div class="hero small"><a href="https://Qiqi-bi.github.io/daily-news-bot/">https://Qiqi-bi.github.io/daily-news-bot/</a></div></section></div>
-    <div class="footer">说明：这是你的静态决策面板，不替代交易终端与人工复核；任何实际买卖前仍需二次确认价格、流动性、折溢价与仓位纪律。</div>
+- What Apple investors need to know about the next steps for the company and its new CEO；主要影响：technology, markets；方向：偏利多。</div><div class="tag-strip"><span class="pill tag">geopolitics 3</span><span class="pill tag">markets 3</span><span class="pill tag">energy 2</span><span class="pill tag">macro 1</span><span class="pill tag">technology 1</span></div></div>
+    <div class="metrics"><div class="metric accent"><div class="metric-title">核心事件</div><div class="metric-value">6 个</div><div class="metric-note">从 100 条新闻里筛出</div></div><div class="metric"><div class="metric-title">最新时效</div><div class="metric-value">1 分钟</div><div class="metric-note">新鲜</div></div><div class="metric"><div class="metric-title">市场快照</div><div class="metric-value">9/9</div><div class="metric-note">能源、黄金、美元、利率、美股期货</div></div><div class="metric"><div class="metric-title">提醒</div><div class="metric-value">5 触发</div><div class="metric-note">新增 0 · 有效 7</div></div><div class="metric"><div class="metric-title">RSS/API</div><div class="metric-value">13/39 · 4/5</div><div class="metric-note">前者 RSS，后者 API</div></div><div class="metric"><div class="metric-title">低可信过滤</div><div class="metric-value">4 条</div><div class="metric-note">先过滤再聚类</div></div></div>
+    <main class="grid"><section class="panel wide"><h2>今日核心事件</h2><div class="section-subtitle">按重要性、可信度和来源交叉验证排序。</div><div class="event-list"><article class="event-row"><div class="event-rank">1</div><div class="event-main"><div class="event-title"><a href="https://www.ft.com/content/c3be45f6-0e2d-4683-bd10-e0ba726ffade">Trump cancels trip by US negotiators for Iran peace talks</a></div><div class="event-meta">FT World · 2026-04-25 21:10:13 · NYT World / Al Jazeera / BBC World</div><div class="event-summary">President said he was no longer sending Steve Witkoff and Jared Kushner to Pakistan</div><div class="event-tags"><span class="pill direction">偏利多</span> <span class="pill neutral">确定性 高</span> <span class="pill neutral">可信 高</span> <span class="pill neutral">信源 6</span> <span class="pill importance">★★★★★</span><span class="pill tag">geopolitics</span></div><div class="event-note">有3家及以上可靠来源交叉验证</div></div></article><article class="event-row"><div class="event-rank">2</div><div class="event-main"><div class="event-title"><a href="https://www.ft.com/content/a5b3add2-eee6-41d8-9353-f1bdc2b77398">Trump rushed offstage at White House correspondents’ dinner after shots fired</a></div><div class="event-meta">FT World · 2026-04-26 02:10:02 · CNBC Markets / Marketaux/thehindubusinessline.com / FT World / Al Jazeera</div><div class="event-summary">US president is safe after Secret Service agents usher cabinet members and journalists from annual event</div><div class="event-tags"><span class="pill direction">中性</span> <span class="pill neutral">确定性 高</span> <span class="pill neutral">可信 高</span> <span class="pill neutral">信源 4</span> <span class="pill importance">★★★★★</span><span class="pill neutral">未分类</span></div><div class="event-note">有3家及以上可靠来源交叉验证</div></div></article><article class="event-row"><div class="event-rank">3</div><div class="event-main"><div class="event-title"><a href="https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026042511120132932/index.html">中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...</a></div><div class="event-meta">PBOC Official Page · 2026-04-25 23:59:00 · PBOC Official Page</div><div class="event-summary">官方网页抓取：中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...</div><div class="event-tags"><span class="pill direction">中性</span> <span class="pill neutral">确定性 高</span> <span class="pill neutral">可信 高</span> <span class="pill neutral">信源 1</span> <span class="pill importance">★★★★★</span><span class="pill tag">macro</span></div><div class="event-note">有官方源确认</div></div></article><article class="event-row"><div class="event-rank">4</div><div class="event-main"><div class="event-title"><a href="https://www.cnbc.com/2026/04/25/crude-oil-freight-tanker-strait-hormuz-iran-war-energy-stocks.html">This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks</a></div><div class="event-meta">CNBC Markets · 2026-04-25 11:53:07 · CNBC Markets</div><div class="event-summary">The Breakwave Tanker Shipping ETF (BWET) has surged more than 600% since the beginning of the year, vastly outperforming crude oil and energy stocks.</div><div class="event-tags"><span class="pill direction">分化</span> <span class="pill neutral">确定性 低</span> <span class="pill neutral">可信 中</span> <span class="pill neutral">信源 1</span> <span class="pill importance">★★★★★</span><span class="pill tag">geopolitics</span><span class="pill tag">energy</span><span class="pill tag">markets</span></div><div class="event-note">主要依赖单一来源，需二次确认</div></div></article><article class="event-row"><div class="event-rank">5</div><div class="event-main"><div class="event-title"><a href="https://www.marketwatch.com/story/this-is-what-apple-investors-need-to-know-about-whats-next-for-the-company-and-its-new-ceo-9997df15?mod=mw_rss_topstories">What Apple investors need to know about the next steps for the company and its new CEO</a></div><div class="event-meta">MarketWatch Top Stories · 2026-04-25 18:27:00 · MarketWatch Top Stories / NYT Technology</div><div class="event-summary">Tim Cook built a $4 trillion powerhouse. Now John Ternus must fix Apple’s glaring AI gap.</div><div class="event-tags"><span class="pill direction">偏利多</span> <span class="pill neutral">确定性 中</span> <span class="pill neutral">可信 高</span> <span class="pill neutral">信源 2</span> <span class="pill importance">★★★★★</span><span class="pill tag">technology</span><span class="pill tag">markets</span></div><div class="event-note">有2家可靠来源交叉验证</div></div></article><article class="event-row"><div class="event-rank">6</div><div class="event-main"><div class="event-title"><a href="https://www.ft.com/content/be345914-7b4b-4264-bcbd-6e5e33b798c7">There’s no such thing as the petrodollar</a></div><div class="event-meta">FT Markets · 2026-04-25 04:00:31 · FT Markets</div><div class="event-summary">War on Iran is changing the currency calculations of Gulf energy exporters. But the dollar’s global role depends on far more than the denomination of a barrel of oil</div><div class="event-tags"><span class="pill direction">分化</span> <span class="pill neutral">确定性 低</span> <span class="pill neutral">可信 中</span> <span class="pill neutral">信源 1</span> <span class="pill importance">★★★★★</span><span class="pill tag">geopolitics</span><span class="pill tag">energy</span><span class="pill tag">markets</span></div><div class="event-note">主要依赖单一来源，需二次确认</div></div></article></div></section><section class="panel"><h2>市场快照</h2><div class="section-subtitle">Yahoo Finance chart API；用于看新闻是否已被价格确认。</div><div class="table-wrap"><table><thead><tr><th>资产</th><th>价格</th><th>涨跌</th><th>状态</th><th>行情时间</th></tr></thead><tbody><tr><td><div class="asset-name">WTI原油</div><div class="asset-symbol">CL=F</div></td><td>94.400 USD</td><td><span class="change down">-1.51%</span></td><td>下跌</td><td>2026-04-24 20:59:59 UTC</td></tr><tr><td><div class="asset-name">布伦特原油</div><div class="asset-symbol">BZ=F</div></td><td>99.130 USD</td><td><span class="change down">-5.65%</span></td><td>下跌</td><td>2026-04-24 20:59:53 UTC</td></tr><tr><td><div class="asset-name">黄金</div><div class="asset-symbol">GC=F</div></td><td>4,740.90 USD</td><td><span class="change up">+0.76%</span></td><td>上涨</td><td>2026-04-24 20:59:58 UTC</td></tr><tr><td><div class="asset-name">美元指数</div><div class="asset-symbol">DX-Y.NYB</div></td><td>98.510 USD</td><td><span class="change down">-0.29%</span></td><td>震荡</td><td>2026-04-24 20:59:59 UTC</td></tr><tr><td><div class="asset-name">美国10Y国债收益率</div><div class="asset-symbol">^TNX</div></td><td>4.3100 USD</td><td><span class="change down">-0.30%</span></td><td>震荡</td><td>2026-04-24 18:59:53 UTC</td></tr><tr><td><div class="asset-name">VIX</div><div class="asset-symbol">^VIX</div></td><td>18.710 USD</td><td><span class="change down">-3.11%</span></td><td>下跌</td><td>2026-04-24 20:15:01 UTC</td></tr><tr><td><div class="asset-name">标普500期货</div><div class="asset-symbol">ES=F</div></td><td>7,194.75 USD</td><td><span class="change up">+0.72%</span></td><td>上涨</td><td>2026-04-24 20:59:59 UTC</td></tr><tr><td><div class="asset-name">纳斯达克100期货</div><div class="asset-symbol">NQ=F</div></td><td>27,435.00 USD</td><td><span class="change up">+1.86%</span></td><td>上涨</td><td>2026-04-24 20:59:59 UTC</td></tr><tr><td><div class="asset-name">离岸人民币</div><div class="asset-symbol">CNH=X</div></td><td>6.8327 CNH</td><td><span class="change up">+0.01%</span></td><td>震荡</td><td>2026-04-24 20:59:39 UTC</td></tr></tbody></table></div></section><section class="panel"><h2>提醒与记忆</h2><div class="section-subtitle">触发 5 · 新增 0 · 有效 7</div><div class="watch-list"><div class="watch-row"><div class="watch-label">已触发</div><div class="watch-title">跟踪：This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks</div><div class="watch-detail">新闻再次出现或关键词命中：geopolitics / energy / markets / 600 / amid / beginning / better / breakwave / bwet / cnbc / crude · Trump cancels trip by US negotiators for Iran peace talks；This little-known ETF is up over 600% amid U.S.…</div><div class="watch-action">如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</div></div><div class="watch-row"><div class="watch-label">已触发</div><div class="watch-title">跟踪：Trump cancels trip by US negotiators for Iran peace talks</div><div class="watch-detail">新闻再次出现或关键词命中：geopolitics / by / cancels / ft / he / iran / jared / kushner · Trump cancels trip by US negotiators for Iran peace talks；Trump rushed offstage at White House correspondents’ dinner after shots fired；This l…</div><div class="watch-action">如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</div></div><div class="watch-row"><div class="watch-label">已触发</div><div class="watch-title">跟踪：Trump rushed offstage at White House correspondents’ dinner after shots fired</div><div class="watch-detail">新闻再次出现或关键词命中：after / agents / annual / at / cabinet / correspondents / dinner / event · Trump cancels trip by US negotiators for Iran peace talks；Trump rushed offstage at White House correspondents’ dinner after shots f…</div><div class="watch-action">如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</div></div><div class="watch-row"><div class="watch-label">已触发</div><div class="watch-title">跟踪：What Apple investors need to know about the next steps for the company and its new CEO</div><div class="watch-detail">新闻再次出现或关键词命中：technology / markets / about / ai / apple / built / ceo / company / cook / fix · Trump cancels trip by US negotiators for Iran peace talks；This little-known ETF is up over 600% amid U.S.-Iran war, a better…</div><div class="watch-action">如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</div></div><div class="watch-row"><div class="watch-label">已触发</div><div class="watch-title">跟踪：中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...</div><div class="watch-detail">新闻再次出现或关键词命中：macro / official / page / pboc / 中国人民银行 / 国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习 / 官方网页抓取 · 中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...</div><div class="watch-action">如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。</div></div><div class="watch-row"><div class="watch-label">继续盯</div><div class="watch-title">WTI 原油单日冲击</div><div class="watch-detail">CL=F &gt;= 3 · WTI原油 change_pct=-1.513</div><div class="watch-action">下次报告重点看能源、航运、电力、黄金的传导，不把新能源当第一反应。</div></div><div class="watch-row"><div class="watch-label">继续盯</div><div class="watch-title">广义成长科技暴露触及上限</div><div class="watch-detail">growth_tech_pct &gt;= 55 · growth_tech_pct=未知</div><div class="watch-action">新增资金优先回流宽基、红利低波或黄金，不继续堆成长仓。</div></div><div class="watch-row"><div class="watch-label">继续盯</div><div class="watch-title">直接 AI 暴露触及上限</div><div class="watch-detail">direct_ai_pct &gt;= 35 · direct_ai_pct=未知</div><div class="watch-action">停止新增同类 AI/半导体/港股科技，优先复核重叠和单仓上限。</div></div></div></section><section class="panel"><h2>数据质量</h2><div class="section-subtitle">看覆盖、时效和过滤情况，避免把缺数据误当判断。</div><div class="table-wrap"><table><thead><tr><th>项目</th><th>状态</th></tr></thead><tbody><tr><td>生成时间</td><td>2026-04-26 02:54:30</td></tr><tr><td>新闻窗口</td><td>2026-04-25 02:54:30 → 2026-04-26 02:54:30</td></tr><tr><td>实际新闻</td><td>2026-04-25 04:00:30 → 2026-04-26 02:54:00</td></tr><tr><td>RSS 覆盖</td><td>13/39</td></tr><tr><td>API 覆盖</td><td>4/5</td></tr><tr><td>官方源</td><td>1/28；官方网页 1 条</td></tr><tr><td>市场价格</td><td>9/9</td></tr><tr><td>低可信过滤</td><td>4 条</td></tr></tbody></table></div><div class="muted-block">本窗口无新内容的来源样例：Reuters World、Reuters Business、Reuters Technology、BBC Business、WSJ World、WSJ Markets、Nikkei Asia、The Diplomat</div><div class="muted-block">公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。</div></section><section class="panel"><h2>报告入口</h2><ul class="link-list"><li><a href="https://Qiqi-bi.github.io/daily-news-bot/">最新 Dashboard</a><span class="path">页面根目录</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/archive.html">历史归档</a><span class="path">archive.html</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/runs/2026-04-26-105430-run-2510-attempt-1/">本次归档</a><span class="path">本次运行快照</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/report.md">完整日报 Markdown</a><span class="path">/home/runner/work/daily-news-bot/daily-news-bot/outputs/report.md</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/report.json">结构化 JSON</a><span class="path">/home/runner/work/daily-news-bot/daily-news-bot/outputs/report.json</span></li><li><a href="https://Qiqi-bi.github.io/daily-news-bot/watchlist.json">提醒状态 JSON</a><span class="path">watchlist.json</span></li></ul></section><section class="panel wide"><h2>组合配置</h2><div class="section-subtitle">有本地 config/portfolio.yaml 时，组合区块会自动补上。</div><div class="muted-block">线上没有发布私人持仓配置，所以这里不会展示组合估值、AI 暴露和黄金仓位。当前页面先按公开新闻、市场价格和提醒状态运行。</div></section></main>
+    <div class="footer">公开 RSS/API/官方网页抓取有覆盖边界；重大交易前请二次确认官方源、实时行情和个人组合约束。</div>
   </div>
 </body>
 </html>

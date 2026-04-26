@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-26T02:31:49",
+  "updated_at_utc": "2026-04-26T02:54:30",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,7 +18,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "WTI原油 change_pct=-1.513"
     },
     {
@@ -37,7 +37,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "growth_tech_pct=未知"
     },
     {
@@ -56,7 +56,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "direct_ai_pct=未知"
     },
     {
@@ -75,7 +75,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -94,7 +94,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -114,7 +114,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
@@ -134,7 +134,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-26T02:31:49",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
@@ -193,9 +193,15 @@
       "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
       "created_at_utc": "2026-04-26T02:31:49",
       "expires_at_utc": "2026-05-03T02:31:49",
-      "status": "active",
+      "status": "triggered",
       "source": "auto_event",
-      "repeat": false
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "bcf79b3eaf6d",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
+      "last_observed": "Trump cancels trip by US negotiators for Iran peace talks；This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks；What Apple investors need to know about the next steps for the company and its new CEO",
+      "last_triggered_at_utc": "2026-04-26T02:54:30"
     },
     {
       "id": "event-29fad3cd520c",
@@ -242,9 +248,15 @@
       "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
       "created_at_utc": "2026-04-26T02:31:49",
       "expires_at_utc": "2026-05-03T02:31:49",
-      "status": "active",
+      "status": "triggered",
       "source": "auto_event",
-      "repeat": false
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "aa2a3db5e09b",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
+      "last_observed": "Trump cancels trip by US negotiators for Iran peace talks；Trump rushed offstage at White House correspondents’ dinner after shots fired；This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks",
+      "last_triggered_at_utc": "2026-04-26T02:54:30"
     },
     {
       "id": "event-fa2211ef4759",
@@ -292,9 +304,15 @@
       "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
       "created_at_utc": "2026-04-26T02:31:49",
       "expires_at_utc": "2026-05-03T02:31:49",
-      "status": "active",
+      "status": "triggered",
       "source": "auto_event",
-      "repeat": false
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "7a80f3ce7e90",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
+      "last_observed": "Trump cancels trip by US negotiators for Iran peace talks；Trump rushed offstage at White House correspondents’ dinner after shots fired；What Apple investors need to know about the next steps for the company and its new CEO",
+      "last_triggered_at_utc": "2026-04-26T02:54:30"
     },
     {
       "id": "event-2b24c243a2cb",
@@ -348,9 +366,15 @@
       "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
       "created_at_utc": "2026-04-26T02:31:49",
       "expires_at_utc": "2026-05-03T02:31:49",
-      "status": "active",
+      "status": "triggered",
       "source": "auto_event",
-      "repeat": false
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "31713f3a59f2",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
+      "last_observed": "Trump cancels trip by US negotiators for Iran peace talks；This little-known ETF is up over 600% amid U.S.-Iran war, a better trade than oil or energy stocks；What Apple investors need to know about the next steps for the company and its new CEO",
+      "last_triggered_at_utc": "2026-04-26T02:54:30"
     },
     {
       "id": "event-520c22ced708",
@@ -377,9 +401,15 @@
       "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
       "created_at_utc": "2026-04-26T02:31:49",
       "expires_at_utc": "2026-05-03T02:31:49",
-      "status": "active",
+      "status": "triggered",
       "source": "auto_event",
-      "repeat": false
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "8ac210999106",
+      "last_checked_at_utc": "2026-04-26T02:54:30",
+      "last_observed": "中国人民银行、国家外汇局召开全系统警示教育会暨树立和践行正确政绩观学习...",
+      "last_triggered_at_utc": "2026-04-26T02:54:30"
     }
   ]
 }
