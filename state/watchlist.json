@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-26T11:15:06",
+  "updated_at_utc": "2026-04-26T13:15:48",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,7 +18,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "WTI原油 change_pct=-1.513"
     },
     {
@@ -37,7 +37,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "growth_tech_pct=未知"
     },
     {
@@ -56,7 +56,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "direct_ai_pct=未知"
     },
     {
@@ -75,7 +75,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -94,7 +94,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -114,7 +114,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
@@ -134,8 +134,97 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-26T11:15:06",
+      "last_checked_at_utc": "2026-04-26T13:15:48",
       "last_observed": "黄金 change_pct=0.761"
+    },
+    {
+      "id": "event-abd118c9b105",
+      "type": "event_followup",
+      "title": "跟踪：The long history of violent incidents involving Donald Trump",
+      "keywords": [
+        "geopolitics",
+        "at",
+        "correspondents",
+        "dinner",
+        "donald",
+        "fired",
+        "ft",
+        "gunshots"
+      ],
+      "tokens": [
+        "at",
+        "correspondents",
+        "dinner",
+        "donald",
+        "fired",
+        "ft",
+        "geopolitics",
+        "gunshots",
+        "history",
+        "house",
+        "in",
+        "incidents",
+        "involving",
+        "just",
+        "latest",
+        "long",
+        "of",
+        "series",
+        "threats",
+        "trump",
+        "violent",
+        "were",
+        "white",
+        "world",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-26T13:15:48",
+      "expires_at_utc": "2026-05-03T13:15:48",
+      "status": "active",
+      "source": "auto_event",
+      "repeat": false
+    },
+    {
+      "id": "event-969a30f2536f",
+      "type": "event_followup",
+      "title": "跟踪：What signals can investors expect from the Fed?",
+      "keywords": [
+        "macro",
+        "markets",
+        "ahead",
+        "can",
+        "expect",
+        "fed",
+        "ft",
+        "guide",
+        "investors",
+        "is"
+      ],
+      "tokens": [
+        "ahead",
+        "can",
+        "expect",
+        "fed",
+        "ft",
+        "guide",
+        "investors",
+        "is",
+        "macro",
+        "questions",
+        "signals",
+        "to",
+        "week",
+        "what",
+        "world",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-26T13:15:48",
+      "expires_at_utc": "2026-05-03T13:15:48",
+      "status": "active",
+      "source": "auto_event",
+      "repeat": false
     },
     {
       "id": "event-86ae5bf02345",
