@@ -4,6 +4,8 @@ import json
 import re
 from typing import Any
 
+import requests
+
 from .config import Settings
 from .llm import generate_report
 from .models import EventCluster
@@ -28,6 +30,110 @@ def _needs_translation(text: str) -> bool:
         return False
     latin_chars = sum(1 for char in text if "a" <= char.lower() <= "z")
     return latin_chars >= 8
+
+
+def _translate_with_google(text: str, *, timeout: int = 12) -> str:
+    if not text.strip():
+        return ""
+    response = requests.get(
+        "https://translate.googleapis.com/translate_a/single",
+        params={
+            "client": "gtx",
+            "sl": "auto",
+            "tl": "zh-CN",
+            "dt": "t",
+            "q": text,
+        },
+        timeout=timeout,
+    )
+    response.raise_for_status()
+    data = response.json()
+    parts = data[0] if isinstance(data, list) and data else []
+    translated = "".join(str(part[0]) for part in parts if isinstance(part, list) and part)
+    return translated.strip()
+
+
+def _topic_label(tags: list[Any]) -> str:
+    mapping = {
+        "geopolitics": "地缘政治",
+        "energy": "能源",
+        "macro": "宏观",
+        "markets": "市场",
+        "technology": "科技",
+        "crypto": "加密资产",
+        "rates": "利率",
+        "fx": "汇率",
+        "gold": "黄金",
+    }
+    labels = [mapping.get(str(tag), str(tag)) for tag in tags if str(tag).strip()]
+    return "、".join(dict.fromkeys(labels) or ["相关资产"])
+
+
+def _why_it_matters(tags: list[Any], direction: Any) -> str:
+    topic = _topic_label(tags)
+    direction_text = str(direction or "待确认")
+    return f"该事件可能影响{topic}定价，当前方向判断为{direction_text}，仍需结合价格和更多信源复核。"
+
+
+def _rough_translate_title(title: str, tags: list[Any]) -> str:
+    replacements = [
+        (r"\bU\.S\.\b|\bUS\b", "美国"),
+        (r"\bIran\b", "伊朗"),
+        (r"\bRussia\b", "俄罗斯"),
+        (r"\bChina\b", "中国"),
+        (r"\bTrump\b", "特朗普"),
+        (r"\bWhite House\b", "白宫"),
+        (r"\bFederal Reserve\b|\bFed\b", "美联储"),
+        (r"\bsanctions?\b", "制裁"),
+        (r"\bwar\b", "战争"),
+        (r"\bshock\b", "冲击"),
+        (r"\bprices?\b", "价格"),
+        (r"\boil\b", "石油"),
+        (r"\bgold\b", "黄金"),
+        (r"\bmarkets?\b", "市场"),
+        (r"\beconomic warfare\b", "经济战"),
+        (r"\bdeveloping nations\b", "发展中国家"),
+        (r"\bhigher\b", "更高"),
+        (r"\bcould last\b", "可能持续"),
+        (r"\bminister says\b", "部长表示"),
+        (r"\bdrug cartel\b", "贩毒集团"),
+        (r"\bgovernment\b", "政府"),
+    ]
+    translated = title
+    for pattern, replacement in replacements:
+        translated = re.sub(pattern, replacement, translated, flags=re.IGNORECASE)
+    if translated == title:
+        return f"{_topic_label(tags)}新闻：{title}"
+    return translated
+
+
+def _fallback_translate_items(request_items: list[dict[str, Any]]) -> tuple[dict[str, dict[str, str]], str]:
+    translations: dict[str, dict[str, str]] = {}
+    provider = "google_translate"
+    for item in request_items:
+        cluster_id = str(item.get("cluster_id") or "").strip()
+        if not cluster_id:
+            continue
+        title = str(item.get("title") or "").strip()
+        summary = str(item.get("summary") or "").strip()
+        tags = list(item.get("tags") or [])
+        direction = item.get("direction")
+
+        try:
+            title_zh = _translate_with_google(title)
+            summary_zh = _translate_with_google(summary) if summary else ""
+        except Exception:
+            provider = "rule_based"
+            title_zh = _rough_translate_title(title, tags)
+            summary_zh = _rough_translate_title(summary, tags) if summary else ""
+
+        if title_zh:
+            translations[cluster_id] = {
+                "title_zh": title_zh,
+                "summary_zh": summary_zh,
+                "why_it_matters_zh": _why_it_matters(tags, direction),
+            }
+    return translations, provider
 
 
 def _extract_json_object(text: str) -> dict[str, Any]:
@@ -91,6 +197,16 @@ def translate_cluster_highlights(
 
     output = generate_report(settings, TRANSLATION_SYSTEM_PROMPT, user_prompt)
     if not output:
+        fallback_items, provider = _fallback_translate_items(request_items)
+        if fallback_items:
+            return {
+                "enabled": True,
+                "items": fallback_items,
+                "requested_count": len(request_items),
+                "translated_count": len(fallback_items),
+                "provider": provider,
+                "llm_error": "translation_llm_unavailable",
+            }
         return {
             "enabled": False,
             "items": {},
@@ -100,6 +216,16 @@ def translate_cluster_highlights(
     try:
         data = _extract_json_object(output)
     except Exception as exc:
+        fallback_items, provider = _fallback_translate_items(request_items)
+        if fallback_items:
+            return {
+                "enabled": True,
+                "items": fallback_items,
+                "requested_count": len(request_items),
+                "translated_count": len(fallback_items),
+                "provider": provider,
+                "llm_error": f"translation_parse_failed: {type(exc).__name__}: {exc}",
+            }
         return {
             "enabled": False,
             "items": {},
@@ -125,4 +251,5 @@ def translate_cluster_highlights(
         "items": translations,
         "requested_count": len(request_items),
         "translated_count": len(translations),
+        "provider": "llm",
     }
