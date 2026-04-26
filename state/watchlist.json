@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-26T11:03:39",
+  "updated_at_utc": "2026-04-26T11:15:06",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,7 +18,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "WTI原油 change_pct=-1.513"
     },
     {
@@ -37,7 +37,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "growth_tech_pct=未知"
     },
     {
@@ -56,7 +56,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "direct_ai_pct=未知"
     },
     {
@@ -75,7 +75,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -94,7 +94,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "gold_pct=未知"
     },
     {
@@ -114,7 +114,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
@@ -134,7 +134,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-26T11:03:39",
+      "last_checked_at_utc": "2026-04-26T11:15:06",
       "last_observed": "黄金 change_pct=0.761"
     },
     {
