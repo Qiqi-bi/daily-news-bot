@@ -10,13 +10,35 @@ import yaml
 from .trade_ledger import aggregate_trade_ledger, load_trade_ledger
 
 
+SIDE_ALIASES = {
+    "buy": "buy",
+    "买入": "buy",
+    "加仓": "buy",
+    "补仓": "buy",
+    "sell": "sell",
+    "卖出": "sell",
+    "减仓": "sell",
+    "清仓": "sell",
+}
+
+
 def _safe_float(value: Any) -> float | None:
     try:
         if value in (None, ""):
             return None
-        return float(str(value).replace(",", ""))
+        return float(str(value).replace(",", "").replace("，", ""))
     except (TypeError, ValueError):
         return None
+
+
+def _normalize_side(value: str) -> str:
+    token = value.strip().strip(":：,，.。").casefold()
+    return SIDE_ALIASES.get(token, "")
+
+
+def is_trade_receipt_text(text: str) -> bool:
+    parts = text.strip().split()
+    return bool(parts and _normalize_side(parts[0]))
 
 
 def _current_shares(ledger: dict[str, Any], code: str) -> float:
@@ -30,14 +52,14 @@ def _current_shares(ledger: dict[str, Any], code: str) -> float:
 def parse_trade_receipt(text: str, ledger: dict[str, Any] | None = None) -> dict[str, Any]:
     parts = text.strip().split()
     if len(parts) < 4:
-        raise ValueError("回执格式不完整，请用：BUY 代码 金额 价格 原因，或 SELL 代码 份额/比例 价格 原因")
+        raise ValueError("回执格式不完整，请用：买入 代码 金额 价格 原因，或 卖出 代码 份额/比例 价格 原因")
 
-    side = parts[0].lower()
+    side = _normalize_side(parts[0])
     if side not in {"buy", "sell"}:
-        raise ValueError("回执必须以 BUY 或 SELL 开头")
+        raise ValueError("回执必须以 买入/卖出/加仓/减仓 或 BUY/SELL 开头")
 
     code = parts[1].strip()
-    size_text = parts[2].strip()
+    size_text = parts[2].strip().replace("元", "").replace("人民币", "").replace("块", "")
     price = _safe_float(parts[3])
     if not code:
         raise ValueError("缺少代码")
@@ -56,16 +78,16 @@ def parse_trade_receipt(text: str, ledger: dict[str, Any] | None = None) -> dict
         trade["reason"] = reason
 
     if side == "buy":
-        amount = _safe_float(size_text.replace("元", ""))
+        amount = _safe_float(size_text)
         if amount is None or amount <= 0:
-            raise ValueError("BUY 后面的金额必须是大于 0 的数字")
+            raise ValueError("买入后面的金额必须是大于 0 的数字")
         trade["amount_cny"] = round(amount, 2)
         return trade
 
-    if size_text.endswith("%"):
+    if size_text.endswith(("%", "％")):
         pct = _safe_float(size_text[:-1])
         if pct is None or pct <= 0 or pct > 100:
-            raise ValueError("SELL 百分比必须在 0-100 之间")
+            raise ValueError("卖出百分比必须在 0-100 之间")
         shares = _current_shares(ledger or {"trades": []}, code) * pct / 100
         if shares <= 0:
             raise ValueError(f"没有找到 {code} 的可卖份额，无法按百分比减仓")
@@ -74,7 +96,7 @@ def parse_trade_receipt(text: str, ledger: dict[str, Any] | None = None) -> dict
     else:
         shares = _safe_float(size_text)
         if shares is None or shares <= 0:
-            raise ValueError("SELL 后面的份额必须是大于 0 的数字，或写成 20%")
+            raise ValueError("卖出后面的份额必须是大于 0 的数字，或写成 20%")
         trade["shares"] = round(shares, 4)
     return trade
 

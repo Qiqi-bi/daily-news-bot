@@ -13,7 +13,7 @@ import requests
 import yaml
 
 from .trade_ledger import load_trade_ledger
-from .trade_receipts import parse_trade_receipt
+from .trade_receipts import is_trade_receipt_text, parse_trade_receipt
 
 
 API_BASE = "https://open.feishu.cn/open-apis"
@@ -181,7 +181,7 @@ def _bjt_date_from_create_time(value: Any) -> str:
 
 
 def _is_receipt(text: str) -> bool:
-    return bool(re.match(r"^(BUY|SELL)\s+", text.strip(), flags=re.IGNORECASE))
+    return is_trade_receipt_text(text)
 
 
 def poll_and_append_receipts(
