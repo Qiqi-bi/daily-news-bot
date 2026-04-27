@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import json
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -280,6 +281,28 @@ def _public_output_url(dashboard_public_url: str, filename: str) -> str:
     return base_url + filename.lstrip("/")
 
 
+def _load_feishu_receipt_status(path: str | Path = "outputs/feishu_receipts.json") -> dict[str, Any]:
+    target = Path(path)
+    if not target.exists():
+        return {"configured": False, "status": "not_run", "appended_count": 0}
+    try:
+        payload = json.loads(target.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return {
+            "configured": True,
+            "ok": False,
+            "status": "read_error",
+            "error": f"{type(exc).__name__}: {exc}"[:300],
+            "appended_count": 0,
+        }
+    if not isinstance(payload, dict):
+        return {"configured": True, "ok": False, "status": "invalid_payload", "appended_count": 0}
+    payload.setdefault("configured", not bool(payload.get("skipped")))
+    payload.setdefault("appended_count", 0)
+    payload.setdefault("status", "ok" if payload.get("ok") else "error")
+    return payload
+
+
 def _extract_30s_overview(content: str) -> str:
     markers = ("## 30秒总览", "## 30 秒总览")
     start = -1
@@ -502,6 +525,22 @@ def _build_feishu_receipt_lines() -> list[str]:
     ]
 
 
+def _build_feishu_receipt_status_line(payload: dict[str, Any]) -> str:
+    status = payload.get("feishu_receipts") or {}
+    if not status or status.get("status") == "not_run":
+        return "回执状态：本次未读取；下次日报运行前会读取飞书群。"
+    if status.get("skipped"):
+        return f"回执状态：未启用；{_feishu_short(status.get('reason') or '缺少飞书群配置', 80)}"
+    if not status.get("ok", False):
+        return f"回执状态：读取失败；{_feishu_short(status.get('error') or '请看 Actions 日志', 100)}"
+    return (
+        f"回执状态：扫描 {status.get('message_count', 0)} 条，"
+        f"新增入账 {status.get('appended_count', 0)} 条，"
+        f"重复 {status.get('duplicate_count', 0)} 条，"
+        f"解析失败 {status.get('error_count', 0)} 条。"
+    )
+
+
 def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
     raw_title = str(item.get("title") or "未命名提醒")
     normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
@@ -580,6 +619,7 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
             f"已过滤低可信内容 {data_quality.get('credibility_filtered_articles', 0)} 条。",
             "",
             "**操作回执（有交易才填）**",
+            f"- {_build_feishu_receipt_status_line(payload)}",
             *[f"- {line}" for line in _build_feishu_receipt_lines()],
             "",
             f"Dashboard：{dashboard_url}",
@@ -614,6 +654,20 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
             "public_note": "周复盘已按私密组合生成，但不发布到公开网页。",
         }
         public_payload["weekly_review_markdown"] = ""
+
+    receipt_status = public_payload.get("feishu_receipts") or {}
+    if receipt_status:
+        public_payload["feishu_receipts"] = {
+            "configured": bool(receipt_status.get("configured")),
+            "ok": bool(receipt_status.get("ok")),
+            "skipped": bool(receipt_status.get("skipped")),
+            "status": receipt_status.get("status"),
+            "message_count": int(receipt_status.get("message_count") or 0),
+            "ignored_count": int(receipt_status.get("ignored_count") or 0),
+            "duplicate_count": int(receipt_status.get("duplicate_count") or 0),
+            "error_count": int(receipt_status.get("error_count") or 0),
+            "appended_count": int(receipt_status.get("appended_count") or 0),
+        }
 
     output_paths = public_payload.get("output_paths") or {}
     output_paths.update(
@@ -884,6 +938,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
             "lines": [f"- watchlist 检查失败：{type(exc).__name__}: {exc}"[:500]],
         }
     payload["watchlist"] = watchlist_summary
+    payload["feishu_receipts"] = _load_feishu_receipt_status()
     watchlist_section = render_watchlist_markdown(watchlist_summary)
     if watchlist_section:
         report = report.rstrip() + "\n\n" + watchlist_section

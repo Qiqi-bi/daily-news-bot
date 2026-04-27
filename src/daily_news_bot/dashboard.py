@@ -470,6 +470,76 @@ def _action_guidance_section(payload: dict[str, Any]) -> str:
     return _section("今天怎么处理", body, "先把能做和不能做说清楚，避免把新闻摘要误当交易建议。", "wide")
 
 
+def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
+    status = payload.get("feishu_receipts") or {}
+    if not status or status.get("status") == "not_run":
+        return ("操作回执", "本次未读取", "日报运行前会读取飞书群里的买入/卖出消息。", "neutral")
+    if status.get("skipped"):
+        return ("操作回执", "未配置", _shorten(status.get("reason") or "未配置飞书群读取。", 120), "warn")
+    if not status.get("ok", False):
+        return ("操作回执", "读取失败", _shorten(status.get("error") or "飞书消息读取失败。", 120), "bad")
+
+    appended = int(status.get("appended_count") or 0)
+    errors = int(status.get("error_count") or 0)
+    messages = int(status.get("message_count") or 0)
+    duplicates = int(status.get("duplicate_count") or 0)
+    if appended:
+        return ("操作回执", f"新增 {appended} 条", f"扫描 {messages} 条消息，重复 {duplicates} 条，解析失败 {errors} 条。", "good")
+    return ("操作回执", "没有新操作", f"扫描 {messages} 条消息，重复 {duplicates} 条，解析失败 {errors} 条。", "neutral")
+
+
+def _receipt_status_body(payload: dict[str, Any]) -> str:
+    label, value, note, tone = _receipt_status(payload)
+    status = payload.get("feishu_receipts") or {}
+    rows = [
+        ["状态", escape(value)],
+        ["扫描消息", escape(_text(status.get("message_count"), "0"))],
+        ["新增入账", escape(_text(status.get("appended_count"), "0"))],
+        ["重复跳过", escape(_text(status.get("duplicate_count"), "0"))],
+        ["解析失败", escape(_text(status.get("error_count"), "0"))],
+    ]
+    body = (
+        f'<div class="receipt-banner {escape(tone)}">'
+        f'<div class="receipt-title">{escape(label)}：{escape(value)}</div>'
+        f'<div class="receipt-note">{escape(note)}</div>'
+        "</div>"
+        + _render_table(["项目", "结果"], rows)
+    )
+    errors = status.get("errors") or []
+    if errors:
+        body += '<div class="muted-block">解析失败样例：' + escape(_shorten(errors[0].get("text") or errors[0].get("error"), 220)) + "</div>"
+    return body
+
+
+def _decision_strip(payload: dict[str, Any]) -> str:
+    action_items = _action_guidance_items(payload)
+    action_label, action_value, action_note = action_items[0] if action_items else ("当前动作", "观察", "先看价格确认。")
+    receipt_label, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
+    watchlist = payload.get("watchlist") or {}
+    data_quality = payload.get("data_quality") or {}
+    clusters = payload.get("clusters") or []
+    translations = ((payload.get("translations") or {}).get("items") or {})
+    top_event = _cluster_display_title(clusters[0], translations) if clusters else "暂无核心事件"
+    quality_value = data_quality.get("freshness_status") or "未知"
+    quality_note = f"最新新闻约 {_fmt_age(data_quality.get('latest_article_age_hours'))}；提醒触发 {watchlist.get('triggered_count', 0)} 条。"
+    items = [
+        ("今天动作", action_value, action_note, "primary"),
+        ("最先看", _shorten(top_event, 72), "先确认新闻是否已被油价、黄金、美元、VIX 等价格吸收。", "risk"),
+        (receipt_label, receipt_value, receipt_note, receipt_tone),
+        ("数据状态", quality_value, quality_note, "neutral"),
+    ]
+    cards = []
+    for label, value, note, tone in items:
+        cards.append(
+            f'<div class="decision-card {escape(tone)}">'
+            f'<div class="decision-label">{escape(label)}</div>'
+            f'<div class="decision-value">{escape(_shorten(value, 88))}</div>'
+            f'<div class="decision-note">{escape(_shorten(note, 120))}</div>'
+            "</div>"
+        )
+    return '<section class="decision-strip">' + "".join(cards) + "</section>"
+
+
 def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
     for key in ("report_json_url", "report_md_url", "dashboard_html_url"):
         url = _text(output_paths.get(key), "")
@@ -684,6 +754,8 @@ def _metric_cards(payload: dict[str, Any]) -> str:
         )
     elif translations.get("error"):
         cards.append(_metric("外文速译", "未完成", "翻译失败时保留原文"))
+    _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
+    cards.append(_metric("操作回执", receipt_value, receipt_note, "accent" if receipt_tone == "good" else ""))
     if portfolio.get("private_mode"):
         cards.append(_metric("组合配置", "已接入", "私密模式：公开页不显示仓位明细"))
     elif portfolio.get("enabled"):
@@ -782,6 +854,51 @@ h1 {
   gap: 7px;
   margin-top: 12px;
 }
+.decision-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.decision-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px 14px;
+  min-height: 122px;
+  border-top: 3px solid #94a3b8;
+}
+.decision-card.primary {
+  border-top-color: var(--blue);
+}
+.decision-card.risk {
+  border-top-color: var(--amber);
+}
+.decision-card.good {
+  border-top-color: var(--green);
+}
+.decision-card.bad {
+  border-top-color: var(--red);
+}
+.decision-card.warn {
+  border-top-color: var(--amber);
+}
+.decision-label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.decision-value {
+  font-size: 20px;
+  font-weight: 780;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.decision-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
 .metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
@@ -839,6 +956,34 @@ h1 {
   color: var(--muted);
   font-size: 12px;
   margin-top: 7px;
+}
+.receipt-banner {
+  border: 1px solid var(--line);
+  border-left: 4px solid #94a3b8;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 11px 12px;
+  margin-bottom: 12px;
+}
+.receipt-banner.good {
+  border-left-color: var(--green);
+  background: #f0fdf4;
+}
+.receipt-banner.bad {
+  border-left-color: var(--red);
+  background: #fff5f5;
+}
+.receipt-banner.warn {
+  border-left-color: var(--amber);
+  background: #fffbeb;
+}
+.receipt-title {
+  font-weight: 760;
+}
+.receipt-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
 }
 .grid {
   display: grid;
@@ -1065,11 +1210,35 @@ a:hover {
   .top-actions {
     justify-content: flex-start;
   }
+  .decision-strip {
+    grid-template-columns: 1fr;
+  }
+  .decision-card {
+    min-height: auto;
+  }
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .grid {
     grid-template-columns: 1fr;
   }
   h1 {
     font-size: 25px;
+  }
+}
+@media (max-width: 520px) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+  .metric-value {
+    font-size: 20px;
+  }
+  .event-row {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+  }
+  .panel {
+    padding: 13px;
   }
 }
 """
@@ -1118,6 +1287,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
             _watchlist_rows(watchlist, title_translations),
             f'触发 {watchlist.get("triggered_count", 0)} · 新增 {watchlist.get("new_count", 0)} · 有效 {watchlist.get("active_count", 0)}',
         ),
+        _section("操作回执", _receipt_status_body(payload), "飞书群里有交易才填；没操作不用回复，系统按原仓位继续。"),
         _section("数据质量", _coverage_body(payload), "看覆盖、时效和过滤情况，避免把缺数据误当判断。"),
         _section("报告入口", _path_links(output_paths, dashboard)),
     ]
@@ -1138,9 +1308,10 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         <h1>每日投资雷达</h1>
         <div class="subtitle">生成时间：{escape(_text(generated))} · 模式：{escape(_text(payload.get("mode"), "未知"))} · 不是交易终端，动手前仍需复核价格、流动性和仓位纪律。</div>
       </div>
-      {top_actions}
+    {top_actions}
     </header>
     {lead}
+    {_decision_strip(payload)}
     {_metric_cards(payload)}
     <main class="grid">{''.join(sections)}</main>
     <div class="footer">公开 RSS/API/官方网页抓取有覆盖边界；重大交易前请二次确认官方源、实时行情和个人组合约束。</div>
