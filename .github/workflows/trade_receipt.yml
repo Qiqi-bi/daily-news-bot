@@ -1,0 +1,121 @@
+name: Trade Receipt
+
+on:
+  workflow_dispatch:
+    inputs:
+      receipt_text:
+        description: "BUY/SELL receipt text from Feishu"
+        required: true
+        type: string
+      sender_id:
+        description: "Feishu sender open_id"
+        required: false
+        type: string
+      message_id:
+        description: "Feishu message id"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  update-trade-ledger-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install PyYAML PyNaCl requests
+
+      - name: Decode current trade ledger
+        env:
+          TRADE_LEDGER_YAML_B64: ${{ secrets.TRADE_LEDGER_YAML_B64 }}
+        run: |
+          set -euo pipefail
+          mkdir -p config
+          if [ -n "${TRADE_LEDGER_YAML_B64:-}" ]; then
+            printf '%s' "$TRADE_LEDGER_YAML_B64" | base64 -d > config/trade_ledger.yaml
+          else
+            printf 'trades: []\n' > config/trade_ledger.yaml
+          fi
+          chmod 600 config/trade_ledger.yaml
+
+      - name: Append receipt
+        env:
+          RECEIPT_TEXT: ${{ inputs.receipt_text }}
+          SENDER_ID: ${{ inputs.sender_id }}
+          MESSAGE_ID: ${{ inputs.message_id }}
+        run: |
+          set -euo pipefail
+          cd src
+          python -m daily_news_bot.trade_receipts \
+            --ledger ../config/trade_ledger.yaml \
+            --receipt "$RECEIPT_TEXT" \
+            --sender-id "$SENDER_ID" \
+            --message-id "$MESSAGE_ID"
+
+      - name: Update trade ledger secret
+        env:
+          GH_TOKEN_FOR_SECRETS: ${{ secrets.SECRET_WRITE_TOKEN || github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64
+          import json
+          import os
+          import urllib.request
+
+          from nacl import encoding, public
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN_FOR_SECRETS"]
+          headers = {
+              "Authorization": f"Bearer {token}",
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "daily-news-bot-trade-receipt",
+          }
+
+          request = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/actions/secrets/public-key",
+              headers=headers,
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              key_payload = json.loads(response.read().decode("utf-8"))
+
+          public_key = public.PublicKey(key_payload["key"].encode("utf-8"), encoding.Base64Encoder())
+          sealed_box = public.SealedBox(public_key)
+          raw = open("config/trade_ledger.yaml", "rb").read()
+          secret_value = base64.b64encode(raw).decode("ascii")
+          encrypted_value = base64.b64encode(sealed_box.encrypt(secret_value.encode("utf-8"))).decode("utf-8")
+
+          body = json.dumps({"encrypted_value": encrypted_value, "key_id": key_payload["key_id"]}).encode("utf-8")
+          update = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/actions/secrets/TRADE_LEDGER_YAML_B64",
+              data=body,
+              method="PUT",
+              headers={**headers, "Content-Type": "application/json"},
+          )
+          with urllib.request.urlopen(update, timeout=30) as response:
+              if response.status not in (201, 204):
+                  raise RuntimeError(f"Unexpected secret update status: {response.status}")
+          PY
+
+      - name: Summary
+        run: |
+          {
+            echo "## Trade receipt recorded"
+            echo "- Message id: ${{ inputs.message_id }}"
+            echo "- Sender id: ${{ inputs.sender_id }}"
+            echo "- The updated ledger was written back to TRADE_LEDGER_YAML_B64."
+          } >> "$GITHUB_STEP_SUMMARY"

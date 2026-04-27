@@ -1,0 +1,12 @@
+name = "daily-news-feishu-trade-receipt"
+main = "worker.js"
+compatibility_date = "2026-04-27"
+
+[vars]
+GITHUB_OWNER = "Qiqi-bi"
+GITHUB_REPO = "daily-news-bot"
+GITHUB_WORKFLOW = "trade_receipt.yml"
+GITHUB_REF = "main"
+
+# Optional: comma-separated Feishu sender open_ids. Leave empty during first test.
+# FEISHU_ALLOWED_OPEN_IDS = "ou_xxx,ou_yyy"
