@@ -511,6 +511,8 @@ jobs:
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/" --output /tmp/dashboard.html
           grep -qi '<html' /tmp/dashboard.html
+          grep -qi 'hero-panel' /tmp/dashboard.html
+          grep -qi 'status-bar' /tmp/dashboard.html
           grep -qi 'decision-strip' /tmp/dashboard.html
           ! grep -qi '/home/runner' /tmp/dashboard.html
           ! grep -qi 'file://' /tmp/dashboard.html
@@ -524,7 +526,17 @@ jobs:
           from pathlib import Path
 
           text = Path("/tmp/report.json").read_text(encoding="utf-8")
-          for needle in ("/home/runner", "file://", "receipt_text", "sender_id", "chat_id", "message_id"):
+          for needle in (
+              "/home/runner",
+              "file://",
+              "receipt_text",
+              "sender_id",
+              "chat_id",
+              "message_id",
+              "Qiqi-bi.github.io",
+              '"state_path"',
+              '"config_path"',
+          ):
               if needle in text:
                   raise SystemExit(f"Public report.json contains private/internal field: {needle}")
           PY

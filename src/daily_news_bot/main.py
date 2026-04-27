@@ -270,7 +270,16 @@ def _continued_event_count(tracking_summary: dict[str, Any]) -> int:
     return sum(1 for item in tracking_summary.get("tracked_events", []) if item.get("seen_recently"))
 
 
+def _normalize_public_url(value: Any) -> str:
+    url = str(value or "").strip()
+    match = re.match(r"^(https?://)([^/]+)(.*)$", url)
+    if not match:
+        return url
+    return match.group(1).lower() + match.group(2).lower() + match.group(3)
+
+
 def _public_output_url(dashboard_public_url: str, filename: str) -> str:
+    dashboard_public_url = _normalize_public_url(dashboard_public_url)
     if not dashboard_public_url:
         return ""
     if dashboard_public_url.endswith("/"):
@@ -691,6 +700,9 @@ def _strip_internal_path_values(value: Any) -> Any:
         return value
 
     normalized = value.replace("\\", "/")
+    public_url = _normalize_public_url(value)
+    if public_url != value:
+        return public_url
     if normalized.startswith("file://"):
         return ""
     if "/home/runner/" in normalized or re.match(r"^[A-Za-z]:/", normalized):
@@ -720,7 +732,14 @@ def _sanitize_public_output_references(payload: dict[str, Any]) -> dict[str, Any
     if "output_path" in dashboard:
         dashboard["output_path"] = "dashboard.html"
     public_payload["dashboard"] = dashboard
-    return _strip_internal_path_values(public_payload)
+    public_payload = _strip_internal_path_values(public_payload)
+
+    watchlist = dict(public_payload.get("watchlist") or {})
+    for key in ("state_path", "config_path"):
+        watchlist.pop(key, None)
+    if watchlist:
+        public_payload["watchlist"] = watchlist
+    return public_payload
 
 
 def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
@@ -1001,7 +1020,7 @@ def main(argv: list[str] | None = None) -> int:
     portfolio_path = Path(args.portfolio_output).resolve()
     weekly_path = Path(args.weekly_review_output).resolve()
     dashboard_path = Path(args.dashboard_output).resolve()
-    dashboard_public_url = os.getenv("DASHBOARD_PUBLIC_URL", "").strip()
+    dashboard_public_url = _normalize_public_url(os.getenv("DASHBOARD_PUBLIC_URL", "").strip())
     portfolio_public_outputs = _env_flag("PORTFOLIO_PUBLIC_OUTPUTS", False)
     redact_portfolio_outputs = (
         bool(dashboard_public_url)
@@ -1027,8 +1046,8 @@ def main(argv: list[str] | None = None) -> int:
         "dashboard_html_path": str(dashboard_path),
         "dashboard_html_uri": dashboard_path.as_uri(),
         "dashboard_html_url": dashboard_public_url,
-        "archive_url": os.getenv("DASHBOARD_ARCHIVE_URL", "").strip(),
-        "archive_index_url": os.getenv("DASHBOARD_ARCHIVE_INDEX_URL", "").strip(),
+        "archive_url": _normalize_public_url(os.getenv("DASHBOARD_ARCHIVE_URL", "").strip()),
+        "archive_index_url": _normalize_public_url(os.getenv("DASHBOARD_ARCHIVE_INDEX_URL", "").strip()),
     }
 
     payload["dashboard"] = {
