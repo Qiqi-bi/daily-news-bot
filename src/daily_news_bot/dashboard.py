@@ -523,9 +523,8 @@ def _receipt_status_body(payload: dict[str, Any]) -> str:
         "</div>"
         + _render_table(["项目", "结果"], rows)
     )
-    errors = status.get("errors") or []
-    if errors:
-        body += '<div class="muted-block">解析失败样例：' + escape(_shorten(errors[0].get("text") or errors[0].get("error"), 220)) + "</div>"
+    if int(status.get("error_count") or 0):
+        body += '<div class="muted-block">有解析失败的回执时，请到 GitHub Actions 运行日志里看原因；公开页面只展示统计，不展示飞书原文。</div>'
     return body
 
 

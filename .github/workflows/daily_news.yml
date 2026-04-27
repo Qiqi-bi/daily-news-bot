@@ -362,7 +362,7 @@ jobs:
             <div class="wrap">
               <header>
                 <div>
-                  <h1>Daily News Dashboard Archive</h1>
+                  <h1>日报历史归档</h1>
                   <div class="muted">每次日报都会保留一份独立快照；最新页永远在站点根目录。</div>
                 </div>
                 <div class="actions">
@@ -499,7 +499,7 @@ jobs:
           python3 -m json.tool /tmp/watchlist.json >/dev/null
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/archive.html" --output /tmp/archive.html
-          grep -qi 'Daily News Dashboard Archive' /tmp/archive.html
+          grep -qi '日报历史归档' /tmp/archive.html
           grep -qi 'run-row' /tmp/archive.html
 
   notify-failure:

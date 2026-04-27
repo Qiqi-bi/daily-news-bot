@@ -655,6 +655,23 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
         }
         public_payload["weekly_review_markdown"] = ""
 
+    output_paths = public_payload.get("output_paths") or {}
+    output_paths.update(
+        {
+            "portfolio_md_generated": False,
+            "portfolio_md_url": "",
+            "portfolio_md_uri": "",
+            "weekly_md_generated": False,
+            "weekly_md_url": "",
+            "weekly_md_uri": "",
+        }
+    )
+    public_payload["output_paths"] = output_paths
+    return public_payload
+
+
+def _sanitize_public_feishu_receipts(payload: dict[str, Any]) -> dict[str, Any]:
+    public_payload = copy.deepcopy(payload)
     receipt_status = public_payload.get("feishu_receipts") or {}
     if receipt_status:
         public_payload["feishu_receipts"] = {
@@ -668,19 +685,6 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
             "error_count": int(receipt_status.get("error_count") or 0),
             "appended_count": int(receipt_status.get("appended_count") or 0),
         }
-
-    output_paths = public_payload.get("output_paths") or {}
-    output_paths.update(
-        {
-            "portfolio_md_generated": False,
-            "portfolio_md_url": "",
-            "portfolio_md_uri": "",
-            "weekly_md_generated": False,
-            "weekly_md_url": "",
-            "weekly_md_uri": "",
-        }
-    )
-    public_payload["output_paths"] = output_paths
     return public_payload
 
 
@@ -1000,7 +1004,8 @@ def main(argv: list[str] | None = None) -> int:
         "archive_index_url": payload["output_paths"]["archive_index_url"],
     }
 
-    output_payload = _public_payload_without_private_portfolio(payload) if redact_portfolio_outputs else payload
+    output_payload = _public_payload_without_private_portfolio(payload) if redact_portfolio_outputs else copy.deepcopy(payload)
+    output_payload = _sanitize_public_feishu_receipts(output_payload)
     output_report = global_report if redact_portfolio_outputs and global_report else report
 
     save_text(args.output, output_report)

@@ -280,6 +280,26 @@ def _env_float(name: str, default: float) -> float:
         return default
 
 
+def public_receipt_summary(summary: dict[str, Any]) -> dict[str, Any]:
+    public = {
+        "ok": bool(summary.get("ok")),
+        "skipped": bool(summary.get("skipped")),
+        "status": summary.get("status") or ("ok" if summary.get("ok") else "error"),
+        "configured": not bool(summary.get("skipped")),
+        "lookback_hours": summary.get("lookback_hours"),
+        "message_count": int(summary.get("message_count") or 0),
+        "ignored_count": int(summary.get("ignored_count") or 0),
+        "duplicate_count": int(summary.get("duplicate_count") or 0),
+        "error_count": int(summary.get("error_count") or 0),
+        "appended_count": int(summary.get("appended_count") or 0),
+    }
+    if summary.get("reason"):
+        public["reason"] = str(summary.get("reason"))[:300]
+    if summary.get("error"):
+        public["error"] = str(summary.get("error"))[:300]
+    return public
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Poll Feishu chat messages and append BUY/SELL receipts to the trade ledger.")
     parser.add_argument("--ledger", default="config/trade_ledger.yaml")
@@ -306,13 +326,14 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:
         summary = {"ok": False, "error": f"{type(exc).__name__}: {exc}", "appended_count": 0}
         if not args.soft_fail:
-            print(json.dumps(summary, ensure_ascii=False, indent=2))
+            print(json.dumps(public_receipt_summary(summary), ensure_ascii=False, indent=2))
             return 1
 
+    public_summary = public_receipt_summary(summary)
     output_path = Path(args.summary_output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    output_path.write_text(json.dumps(public_summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps(public_summary, ensure_ascii=False, indent=2))
     return 0 if summary.get("ok") or args.soft_fail else 1
 
 
