@@ -233,8 +233,8 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str,
         title_zh = _text(translation.get("title_zh"), "")
         title = title_zh or original_title
         url = representative.get("url")
-        original_summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 260)
-        summary_zh = _shorten(translation.get("summary_zh") or translation.get("why_it_matters_zh"), 260)
+        original_summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 180)
+        summary_zh = _shorten(translation.get("summary_zh") or translation.get("why_it_matters_zh"), 180)
         summary = summary_zh or original_summary
         original_title_html = ""
         if title_zh and title_zh != original_title:
@@ -557,6 +557,65 @@ def _decision_strip(payload: dict[str, Any]) -> str:
     return '<section class="decision-strip">' + "".join(cards) + "</section>"
 
 
+def _status_bar(payload: dict[str, Any], generated: Any) -> str:
+    data_quality = payload.get("data_quality") or {}
+    watchlist = payload.get("watchlist") or {}
+    _, receipt_value, _, receipt_tone = _receipt_status(payload)
+    chips = [
+        ("生成", _compact_time(generated)),
+        ("模式", _text(payload.get("mode"), "未知")),
+        ("数据", _text(data_quality.get("freshness_status"), "未知")),
+        ("提醒", f"{watchlist.get('triggered_count', 0)} 触发"),
+        ("回执", receipt_value),
+    ]
+    items = []
+    for label, value in chips:
+        tone = receipt_tone if label == "回执" else ""
+        tone_class = f" {escape(tone)}" if tone else ""
+        items.append(
+            f'<span class="status-chip{tone_class}"><span>{escape(label)}</span><b>{escape(_shorten(value, 42))}</b></span>'
+        )
+    return '<div class="status-bar">' + "".join(items) + "</div>"
+
+
+def _hero_panel(payload: dict[str, Any], global_overview: str, market_snapshot: dict[str, Any]) -> str:
+    data_quality = payload.get("data_quality") or {}
+    market_coverage = data_quality.get("market_coverage") or market_snapshot.get("coverage") or {}
+    _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
+    stats = [
+        ("核心事件", f"{payload.get('selected_count', 0)} 个", f"从 {payload.get('articles_count', 0)} 条新闻筛出"),
+        ("最新时效", _fmt_age(data_quality.get("latest_article_age_hours")), _text(data_quality.get("freshness_status"), "未知")),
+        ("市场快照", f'{market_coverage.get("returned_assets", 0)}/{market_coverage.get("configured_assets", 0)}', "价格确认"),
+        ("操作回执", receipt_value, _shorten(receipt_note, 56)),
+    ]
+    stat_html = []
+    for label, value, note in stats:
+        tone = receipt_tone if label == "操作回执" else ""
+        tone_class = f" {escape(tone)}" if tone else ""
+        stat_html.append(
+            f'<div class="hero-stat{tone_class}">'
+            f'<span>{escape(label)}</span>'
+            f'<b>{escape(value)}</b>'
+            f'<small>{escape(note)}</small>'
+            "</div>"
+        )
+    return (
+        '<section class="hero-panel">'
+        '<div class="hero-copy">'
+        '<div class="eyebrow">今日简报</div>'
+        "<h2>先看结论，再决定要不要动手</h2>"
+        f'<p>{escape(_shorten(global_overview, 230))}</p>'
+        f'{_tag_distribution(payload.get("tag_distribution"))}'
+        f'{_market_signal_strip(market_snapshot)}'
+        "</div>"
+        '<div class="hero-stats">'
+        + "".join(stat_html)
+        + '<div class="hero-note">有交易就在飞书群发“买入/卖出”；没操作不用回复。</div>'
+        "</div>"
+        "</section>"
+    )
+
+
 def _quick_nav(archive_url: Any = "") -> str:
     links = [
         ("决策", "#decision"),
@@ -828,21 +887,23 @@ html {
 body {
   margin: 0;
   font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(31, 111, 235, 0.08), transparent 32rem),
+    linear-gradient(180deg, #f8fafc 0%, var(--bg) 18rem);
   color: var(--text);
   line-height: 1.55;
 }
 .wrap {
-  max-width: 1360px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 24px 28px 36px;
+  padding: 24px 24px 36px;
 }
 .topbar {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 20px;
-  align-items: end;
-  margin-bottom: 18px;
+  align-items: center;
+  margin-bottom: 10px;
 }
 h1 {
   margin: 0;
@@ -851,9 +912,16 @@ h1 {
   letter-spacing: 0;
 }
 .subtitle {
-  margin-top: 7px;
+  margin-top: 6px;
   color: var(--muted);
   font-size: 14px;
+}
+.eyebrow {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 760;
+  margin-bottom: 5px;
+  text-transform: uppercase;
 }
 .top-actions {
   display: flex;
@@ -865,9 +933,45 @@ h1 {
   border: 1px solid var(--line);
   background: #fff;
   color: var(--blue);
-  padding: 7px 11px;
+  padding: 8px 12px;
   border-radius: 6px;
   font-size: 13px;
+  font-weight: 650;
+}
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 4px;
+}
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.status-chip span {
+  color: var(--muted);
+}
+.status-chip b {
+  color: #263244;
+  font-weight: 720;
+}
+.status-chip.good {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+.status-chip.bad {
+  border-color: #fecaca;
+  background: #fff5f5;
+}
+.status-chip.warn {
+  border-color: #fde68a;
+  background: #fffbeb;
 }
 .quick-nav {
   position: sticky;
@@ -892,6 +996,7 @@ h1 {
   border-radius: 999px;
   padding: 6px 11px;
   font-size: 13px;
+  font-weight: 640;
 }
 .quick-nav a:hover {
   color: var(--blue);
@@ -912,6 +1017,69 @@ h1 {
 .lead-text {
   color: #243247;
   font-size: 15px;
+}
+.hero-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr);
+  gap: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 12px 0 14px;
+  box-shadow: 0 14px 38px rgba(17, 24, 39, 0.07);
+}
+.hero-copy h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.22;
+}
+.hero-copy p {
+  margin: 12px 0 0;
+  color: #263244;
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 780px;
+}
+.hero-stats {
+  display: grid;
+  gap: 10px;
+}
+.hero-stat {
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #f8fafc;
+}
+.hero-stat.good {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.hero-stat.bad {
+  background: #fff5f5;
+  border-color: #fecaca;
+}
+.hero-stat.warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.hero-stat span,
+.hero-stat small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.hero-stat b {
+  display: block;
+  margin: 2px 0 1px;
+  font-size: 19px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.hero-note {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 2px 2px 0;
 }
 .tag-strip {
   display: flex;
@@ -961,14 +1129,14 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  margin: 14px 0;
+  margin: 14px 0 18px;
 }
 .decision-card {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 13px 14px;
-  min-height: 122px;
+  min-height: 112px;
   border-top: 3px solid #94a3b8;
 }
 .decision-card.primary {
@@ -992,7 +1160,7 @@ h1 {
   margin-bottom: 6px;
 }
 .decision-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 780;
   line-height: 1.3;
   overflow-wrap: anywhere;
@@ -1097,7 +1265,7 @@ h1 {
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px;
   overflow: hidden;
 }
@@ -1161,6 +1329,10 @@ h1 {
   color: #27364b;
   margin-top: 6px;
   font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .event-tags {
   display: flex;
@@ -1319,6 +1491,10 @@ a:hover {
     padding-left: 14px;
     padding-right: 14px;
   }
+  .hero-panel {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
   .decision-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1336,6 +1512,9 @@ a:hover {
   }
 }
 @media (max-width: 520px) {
+  .wrap {
+    padding-top: 16px;
+  }
   .subtitle {
     font-size: 12px;
   }
@@ -1344,6 +1523,24 @@ a:hover {
   }
   .lead-text {
     font-size: 14px;
+  }
+  .hero-copy h2 {
+    font-size: 21px;
+  }
+  .hero-copy p {
+    font-size: 14px;
+  }
+  .status-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .status-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .status-chip {
+    flex: 0 0 auto;
   }
   .decision-strip {
     grid-template-columns: 1fr;
@@ -1393,14 +1590,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     archive_url = output_paths.get("archive_index_url") or dashboard.get("archive_index_url")
     report_url = output_paths.get("report_md_url") or output_paths.get("report_md_uri")
 
-    lead = (
-        '<div class="lead">'
-        '<div class="lead-title">30 秒总览</div>'
-        f'<div class="lead-text">{escape(global_overview)}</div>'
-        f'{_tag_distribution(payload.get("tag_distribution"))}'
-        f'{_market_signal_strip(market_snapshot)}'
-        "</div>"
-    )
+    hero = _hero_panel(payload, global_overview, market_snapshot)
 
     actions = []
     if report_url:
@@ -1410,8 +1600,8 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
     sections = [
-        _action_guidance_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
+        _action_guidance_section(payload),
         _section(
             "市场快照",
             _render_table(["资产", "价格", "涨跌", "状态", "行情时间"], _market_rows(market_snapshot)),
@@ -1442,15 +1632,16 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
   <div class="wrap">
     <header class="topbar">
       <div>
+        <div class="eyebrow">Daily News Bot</div>
         <h1>每日投资雷达</h1>
-        <div class="subtitle">生成时间：{escape(_text(generated))} · 模式：{escape(_text(payload.get("mode"), "未知"))} · 不是交易终端，动手前仍需复核价格、流动性和仓位纪律。</div>
+        <div class="subtitle">公开页看结论和证据；具体组合动作走飞书私密推送。</div>
       </div>
       {top_actions}
     </header>
+    {_status_bar(payload, generated)}
     {_quick_nav(archive_url)}
-    {lead}
+    {hero}
     {_decision_strip(payload)}
-    {_metric_cards(payload)}
     <main class="grid">{''.join(sections)}</main>
     <div class="footer">公开 RSS/API/官方网页抓取有覆盖边界；重大交易前请二次确认官方源、实时行情和个人组合约束。</div>
   </div>

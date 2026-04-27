@@ -564,26 +564,25 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
 
     latest_age = data_quality.get("latest_article_age_hours")
-    latest_age_text = "未知" if latest_age is None else f"{float(latest_age):.1f} 小时"
-    global_line = _feishu_short(_build_feishu_overview(payload, clusters, translations), 260)
+    latest_age_text = "未知" if latest_age is None else ("0 分钟" if float(latest_age) < 0.02 else f"{float(latest_age):.1f} 小时")
+    global_line = _feishu_short(_build_feishu_overview(payload, clusters, translations), 220)
+    receipt_line = _build_feishu_receipt_status_line(payload).replace("回执状态：", "")
 
     lines: list[str] = [
-        "**今日结论**",
+        "**20 秒简报**",
         global_line,
         "",
         "**操作提示**",
-        *[f"- {line}" for line in _build_feishu_action_lines(payload)],
+        *[f"- {line}" for line in _build_feishu_action_lines(payload)[:2]],
         "",
-        "**核心事件**",
+        "**先看这 3 件事**",
     ]
     if clusters:
-        for index, cluster in enumerate(clusters[:5], start=1):
+        for index, cluster in enumerate(clusters[:3], start=1):
             tags = "、".join(_feishu_tag_label(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
-            title = _feishu_short(_feishu_title(cluster, translations), 100)
+            title = _feishu_short(_feishu_title(cluster, translations), 82)
             lines.append(
-                f"{index}. {title}\n"
-                f"   方向：{cluster.get('direction') or '未知'}；可信：{cluster.get('credibility_label') or '未知'}；"
-                f"信源：{cluster.get('confirmed_source_count', 0)}；标签：{tags}"
+                f"{index}. {title}｜{cluster.get('direction') or '未知'}｜可信 {cluster.get('credibility_label') or '未知'}｜{tags}"
             )
     else:
         lines.append("暂无核心事件。")
@@ -591,37 +590,31 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     market_items = (payload.get("market_snapshot") or {}).get("items") or []
     if market_items:
         lines.extend(["", "**市场快照**"])
-        for item in market_items[:6]:
+        for item in market_items[:5]:
             pct = item.get("change_pct")
             pct_text = "未知" if pct is None else f"{float(pct):+.2f}%"
-            lines.append(f"- {item.get('name') or item.get('symbol')}：{item.get('price')}，{pct_text}，{item.get('movement') or '未知'}")
+            lines.append(f"- {item.get('name') or item.get('symbol')}：{pct_text}，{item.get('movement') or '未知'}")
 
     lines.extend(
         [
             "",
-            "**提醒**",
+            "**提醒与回执**",
             f"- 触发 {watchlist.get('triggered_count', 0)} 条；新增 {watchlist.get('new_count', 0)} 条；有效 {watchlist.get('active_count', 0)} 条。",
+            f"- 回执：{receipt_line}",
         ]
     )
     watch_items = list(watchlist.get("triggered_items") or []) + list(watchlist.get("new_items") or [])
-    for item in watch_items[:3]:
-        title = _feishu_short(_feishu_watch_title(item, clusters, translations), 90)
-        action = _feishu_short(item.get("action") or "", 90)
+    for item in watch_items[:2]:
+        title = _feishu_short(_feishu_watch_title(item, clusters, translations), 72)
+        action = _feishu_short(item.get("action") or "", 70)
         lines.append(f"- {title}" + (f"：{action}" if action else ""))
 
     lines.extend(
         [
             "",
-            "**数据质量**",
-            f"- 最新新闻距生成约 {latest_age_text}；状态：{data_quality.get('freshness_status') or '未知'}。",
-            f"- RSS {coverage.get('rss_sources_with_articles', 0)}/{coverage.get('rss_sources_configured', 0)}；"
-            f"API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；"
-            f"官方 {coverage.get('official_sources_with_articles', 0)}/{coverage.get('configured_official_sources', 0)}；"
-            f"已过滤低可信内容 {data_quality.get('credibility_filtered_articles', 0)} 条。",
-            "",
-            "**操作回执（有交易才填）**",
-            f"- {_build_feishu_receipt_status_line(payload)}",
-            *[f"- {line}" for line in _build_feishu_receipt_lines()],
+            "**数据**",
+            f"- 最新 {latest_age_text}；RSS {coverage.get('rss_sources_with_articles', 0)}/{coverage.get('rss_sources_configured', 0)}；API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；低可信过滤 {data_quality.get('credibility_filtered_articles', 0)} 条。",
+            "- 有交易才回：买入/卖出 代码 金额或份额 价格 原因；没操作不用回。",
             "",
             f"Dashboard：{dashboard_url}",
         ]
