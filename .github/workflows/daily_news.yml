@@ -30,6 +30,28 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt PyNaCl
 
+      - name: Validate trade receipt parser
+        run: |
+          python - <<'PY'
+          from src.daily_news_bot.trade_receipts import is_trade_receipt_text, parse_trade_receipt
+
+          ledger = {"trades": [{"code": "513100", "side": "buy", "amount_cny": 10000, "price": 1.0}]}
+          cases = [
+              "买入 518880 3000 5.12 黄金回落补保险仓",
+              "加仓 159915 2000 1.23 成长线回踩",
+              "卖出 513100 20 1.35 AI仓位超线",
+              "减仓 513100 20% 1.35 AI仓位超线",
+              "BUY 518880 3000 5.12 gold hedge",
+              "SELL 513100 20 1.35 trim",
+          ]
+          for text in cases:
+              assert is_trade_receipt_text(text), text
+              parsed = parse_trade_receipt(text, ledger)
+              assert parsed["side"] in {"buy", "sell"}
+              assert parsed["code"]
+          print("Trade receipt parser validation passed.")
+          PY
+
       - name: Restore dashboard bot state
         if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         env:
@@ -75,6 +97,8 @@ jobs:
           MARKETAUX_API_KEY: ${{ secrets.MARKETAUX_API_KEY }}
           FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_SEND_CHAT_ID: ${{ secrets.FEISHU_SEND_CHAT_ID }}
+          FEISHU_SEND_CHAT_NAME: ${{ secrets.FEISHU_SEND_CHAT_NAME || vars.FEISHU_SEND_CHAT_NAME }}
           FEISHU_RECEIPT_CHAT_ID: ${{ secrets.FEISHU_RECEIPT_CHAT_ID }}
           FEISHU_RECEIPT_CHAT_NAME: ${{ secrets.FEISHU_RECEIPT_CHAT_NAME || vars.FEISHU_RECEIPT_CHAT_NAME }}
           FEISHU_RECEIPT_LOOKBACK_HOURS: ${{ vars.FEISHU_RECEIPT_LOOKBACK_HOURS || '48' }}
@@ -488,12 +512,22 @@ jobs:
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/" --output /tmp/dashboard.html
           grep -qi '<html' /tmp/dashboard.html
           grep -qi 'decision-strip' /tmp/dashboard.html
+          ! grep -qi '/home/runner' /tmp/dashboard.html
+          ! grep -qi 'file://' /tmp/dashboard.html
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/report.md" --output /tmp/report.md
           test -s /tmp/report.md
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/report.json" --output /tmp/report.json
           python3 -m json.tool /tmp/report.json >/dev/null
+          python3 - <<'PY'
+          from pathlib import Path
+
+          text = Path("/tmp/report.json").read_text(encoding="utf-8")
+          for needle in ("/home/runner", "file://", "receipt_text", "sender_id", "chat_id", "message_id"):
+              if needle in text:
+                  raise SystemExit(f"Public report.json contains private/internal field: {needle}")
+          PY
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/watchlist.json" --output /tmp/watchlist.json
           python3 -m json.tool /tmp/watchlist.json >/dev/null
@@ -512,20 +546,25 @@ jobs:
       - name: Notify Feishu on workflow failure
         env:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_SEND_CHAT_ID: ${{ secrets.FEISHU_SEND_CHAT_ID }}
+          FEISHU_SEND_CHAT_NAME: ${{ secrets.FEISHU_SEND_CHAT_NAME || vars.FEISHU_SEND_CHAT_NAME }}
+          FEISHU_RECEIPT_CHAT_ID: ${{ secrets.FEISHU_RECEIPT_CHAT_ID }}
+          FEISHU_RECEIPT_CHAT_NAME: ${{ secrets.FEISHU_RECEIPT_CHAT_NAME || vars.FEISHU_RECEIPT_CHAT_NAME }}
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           RUN_NEWS_RESULT: ${{ needs.run-news-bot.result }}
           PUBLISH_RESULT: ${{ needs.publish-dashboard.result }}
         run: |
           set -euo pipefail
-          if [ -z "${FEISHU_WEBHOOK_URL:-}" ]; then
-            echo "FEISHU_WEBHOOK_URL is not configured; skipping failure notification."
-            exit 0
-          fi
 
           python3 - <<'PY'
           import json
           import os
+          import urllib.parse
           import urllib.request
+
+          API_BASE = "https://open.feishu.cn/open-apis"
 
           text = "\n".join([
               "Global Market Intelligence Bot failed.",
@@ -544,13 +583,93 @@ jobs:
                   }
               },
           }
-          data = json.dumps(payload).encode("utf-8")
-          request = urllib.request.Request(
-              os.environ["FEISHU_WEBHOOK_URL"],
-              data=data,
-              headers={"Content-Type": "application/json"},
-              method="POST",
-          )
-          with urllib.request.urlopen(request, timeout=20) as response:
-              response.read()
+
+          def post_json(url, body, headers=None, timeout=20):
+              request = urllib.request.Request(
+                  url,
+                  data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                  headers={**(headers or {}), "Content-Type": "application/json; charset=utf-8"},
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=timeout) as response:
+                  raw = response.read().decode("utf-8")
+              return json.loads(raw) if raw else {}
+
+          def get_json(url, headers=None, timeout=20):
+              request = urllib.request.Request(url, headers=headers or {})
+              with urllib.request.urlopen(request, timeout=timeout) as response:
+                  raw = response.read().decode("utf-8")
+              return json.loads(raw) if raw else {}
+
+          def ensure_ok(data):
+              if data.get("code") not in (None, 0):
+                  raise RuntimeError(data.get("msg") or data.get("message") or "Feishu API error")
+
+          def send_with_app():
+              app_id = os.getenv("FEISHU_APP_ID", "").strip()
+              app_secret = os.getenv("FEISHU_APP_SECRET", "").strip()
+              chat_id = os.getenv("FEISHU_SEND_CHAT_ID", "").strip() or os.getenv("FEISHU_RECEIPT_CHAT_ID", "").strip()
+              chat_name = os.getenv("FEISHU_SEND_CHAT_NAME", "").strip() or os.getenv("FEISHU_RECEIPT_CHAT_NAME", "").strip()
+              if not app_id or not app_secret or not (chat_id or chat_name):
+                  return False
+
+              token_data = post_json(
+                  f"{API_BASE}/auth/v3/tenant_access_token/internal",
+                  {"app_id": app_id, "app_secret": app_secret},
+              )
+              ensure_ok(token_data)
+              token = token_data.get("tenant_access_token")
+              if not token:
+                  raise RuntimeError("Feishu tenant_access_token was empty")
+              headers = {"Authorization": f"Bearer {token}"}
+
+              resolved_chat_id = chat_id
+              if not resolved_chat_id:
+                  expected = chat_name.casefold()
+                  page_token = ""
+                  while True:
+                      query = {"page_size": "100"}
+                      if page_token:
+                          query["page_token"] = page_token
+                      url = f"{API_BASE}/im/v1/chats?{urllib.parse.urlencode(query)}"
+                      data = get_json(url, headers=headers)
+                      ensure_ok(data)
+                      page = data.get("data") or {}
+                      for item in page.get("items") or []:
+                          if str(item.get("name") or "").strip().casefold() == expected:
+                              resolved_chat_id = str(item.get("chat_id") or "")
+                              break
+                      if resolved_chat_id or not page.get("has_more"):
+                          break
+                      page_token = str(page.get("page_token") or "")
+                      if not page_token:
+                          break
+              if not resolved_chat_id:
+                  raise RuntimeError(f"Could not find Feishu chat: {chat_name}")
+
+              data = post_json(
+                  f"{API_BASE}/im/v1/messages?receive_id_type=chat_id",
+                  {
+                      "receive_id": resolved_chat_id,
+                      "msg_type": "post",
+                      "content": json.dumps(payload["content"], ensure_ascii=False),
+                  },
+                  headers=headers,
+              )
+              ensure_ok(data)
+              return True
+
+          try:
+              if send_with_app():
+                  print("Failure notification sent via Feishu app.")
+                  raise SystemExit(0)
+          except Exception as exc:
+              print(f"Feishu app failure notification failed; trying webhook fallback: {type(exc).__name__}: {exc}")
+
+          webhook_url = os.getenv("FEISHU_WEBHOOK_URL", "").strip()
+          if webhook_url:
+              post_json(webhook_url, payload)
+              print("Failure notification sent via webhook fallback.")
+          else:
+              print("No Feishu failure notification sender configured.")
           PY

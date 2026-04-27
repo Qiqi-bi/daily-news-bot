@@ -115,7 +115,6 @@ jobs:
         run: |
           {
             echo "## Trade receipt recorded"
-            echo "- Message id: ${{ inputs.message_id }}"
-            echo "- Sender id: ${{ inputs.sender_id }}"
+            echo "- One private trade receipt was recorded."
             echo "- The updated ledger was written back to TRADE_LEDGER_YAML_B64."
           } >> "$GITHUB_STEP_SUMMARY"

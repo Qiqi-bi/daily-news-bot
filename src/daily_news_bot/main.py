@@ -4,6 +4,7 @@ import argparse
 import copy
 import json
 import os
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -688,6 +689,47 @@ def _sanitize_public_feishu_receipts(payload: dict[str, Any]) -> dict[str, Any]:
     return public_payload
 
 
+def _strip_internal_path_values(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: _strip_internal_path_values(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_strip_internal_path_values(item) for item in value]
+    if not isinstance(value, str):
+        return value
+
+    normalized = value.replace("\\", "/")
+    if normalized.startswith("file://"):
+        return ""
+    if "/home/runner/" in normalized or re.match(r"^[A-Za-z]:/", normalized):
+        return normalized.rstrip("/").rsplit("/", 1)[-1]
+    return value
+
+
+def _sanitize_public_output_references(payload: dict[str, Any]) -> dict[str, Any]:
+    public_payload = copy.deepcopy(payload)
+    output_paths = dict(public_payload.get("output_paths") or {})
+    public_labels = {
+        "report_md_path": "report.md",
+        "report_json_path": "report.json",
+        "portfolio_md_path": "portfolio_brief.md",
+        "weekly_md_path": "portfolio_weekly.md",
+        "dashboard_html_path": "dashboard.html",
+    }
+    for key, label in public_labels.items():
+        if key in output_paths:
+            output_paths[key] = label
+    for key in list(output_paths):
+        if key.endswith("_uri"):
+            output_paths[key] = ""
+    public_payload["output_paths"] = output_paths
+
+    dashboard = dict(public_payload.get("dashboard") or {})
+    if "output_path" in dashboard:
+        dashboard["output_path"] = "dashboard.html"
+    public_payload["dashboard"] = dashboard
+    return _strip_internal_path_values(public_payload)
+
+
 def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     settings = load_settings()
     generated_at = datetime.now(timezone.utc).replace(tzinfo=None, microsecond=0)
@@ -1005,6 +1047,8 @@ def main(argv: list[str] | None = None) -> int:
     }
 
     output_payload = _public_payload_without_private_portfolio(payload) if redact_portfolio_outputs else copy.deepcopy(payload)
+    if dashboard_public_url:
+        output_payload = _sanitize_public_output_references(output_payload)
     output_payload = _sanitize_public_feishu_receipts(output_payload)
     output_report = global_report if redact_portfolio_outputs and global_report else report
 

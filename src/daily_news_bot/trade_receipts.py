@@ -126,8 +126,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--message-id", default="")
     args = parser.parse_args(argv)
 
-    trade = append_trade_receipt(args.ledger, args.receipt, args.sender_id, args.message_id)
-    print(yaml.safe_dump({"appended_trade": trade}, allow_unicode=True, sort_keys=False).strip())
+    append_trade_receipt(args.ledger, args.receipt, args.sender_id, args.message_id)
+    print("Trade receipt appended to the private ledger.")
     return 0
 
 
