@@ -28,7 +28,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt PyNaCl
 
       - name: Restore dashboard bot state
         if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
@@ -73,6 +73,11 @@ jobs:
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
           MARKETAUX_API_KEY: ${{ secrets.MARKETAUX_API_KEY }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_RECEIPT_CHAT_ID: ${{ secrets.FEISHU_RECEIPT_CHAT_ID }}
+          FEISHU_RECEIPT_CHAT_NAME: ${{ secrets.FEISHU_RECEIPT_CHAT_NAME || vars.FEISHU_RECEIPT_CHAT_NAME }}
+          FEISHU_RECEIPT_LOOKBACK_HOURS: ${{ vars.FEISHU_RECEIPT_LOOKBACK_HOURS || '48' }}
           PORTFOLIO_YAML_B64: ${{ secrets.PORTFOLIO_YAML_B64 }}
           TRADE_LEDGER_YAML_B64: ${{ secrets.TRADE_LEDGER_YAML_B64 }}
           PORTFOLIO_PUBLIC_OUTPUTS: ${{ vars.PORTFOLIO_PUBLIC_OUTPUTS || 'false' }}
@@ -115,6 +120,7 @@ jobs:
           mkdir -p outputs
           rm -f outputs/dashboard.html outputs/report.md outputs/report.json outputs/portfolio_brief.md outputs/portfolio_weekly.md
           export PORTFOLIO_PUBLIC_OUTPUTS="${PORTFOLIO_PUBLIC_OUTPUTS:-false}"
+          echo "TRADE_LEDGER_UPDATED=false" >> "$GITHUB_ENV"
 
           if [ -n "${PORTFOLIO_YAML_B64:-}" ]; then
             mkdir -p config
@@ -127,6 +133,37 @@ jobs:
             printf '%s' "$TRADE_LEDGER_YAML_B64" | base64 -d > config/trade_ledger.yaml
             chmod 600 config/trade_ledger.yaml
             echo "Trade ledger loaded from GitHub Secret."
+          fi
+
+          if [ -n "${FEISHU_APP_ID:-}" ] && [ -n "${FEISHU_APP_SECRET:-}" ] && { [ -n "${FEISHU_RECEIPT_CHAT_ID:-}" ] || [ -n "${FEISHU_RECEIPT_CHAT_NAME:-}" ]; }; then
+            echo "Polling Feishu chat for trade receipts before building the report."
+            (
+              cd src
+              python -m daily_news_bot.feishu_receipts \
+                --ledger ../config/trade_ledger.yaml \
+                --summary-output ../outputs/feishu_receipts.json \
+                --soft-fail
+            )
+            appended_count="$(
+              python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("outputs/feishu_receipts.json")
+          if not path.exists():
+              print(0)
+          else:
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              print(int(payload.get("appended_count") or 0))
+          PY
+            )"
+            if [ "$appended_count" -gt 0 ]; then
+              echo "TRADE_LEDGER_UPDATED=true" >> "$GITHUB_ENV"
+              echo "Appended ${appended_count} Feishu trade receipt(s)."
+            else
+              echo "No new Feishu trade receipts appended."
+            fi
+          else
+            echo "Feishu receipt polling is not configured; skipping."
           fi
 
           MODE="evening"
@@ -148,6 +185,55 @@ jobs:
             --weekly-review-output "outputs/portfolio_weekly.md" \
             "${EXTRA_ARGS[@]}" \
             --send-feishu
+
+      - name: Update trade ledger secret from Feishu receipts
+        if: env.TRADE_LEDGER_UPDATED == 'true'
+        env:
+          GH_TOKEN_FOR_SECRETS: ${{ secrets.SECRET_WRITE_TOKEN || github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64
+          import json
+          import os
+          import urllib.request
+
+          from nacl import encoding, public
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN_FOR_SECRETS"]
+          headers = {
+              "Authorization": f"Bearer {token}",
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "daily-news-bot-feishu-receipt-poll",
+          }
+
+          request = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/actions/secrets/public-key",
+              headers=headers,
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              key_payload = json.loads(response.read().decode("utf-8"))
+
+          public_key = public.PublicKey(key_payload["key"].encode("utf-8"), encoding.Base64Encoder())
+          sealed_box = public.SealedBox(public_key)
+          raw = open("config/trade_ledger.yaml", "rb").read()
+          secret_value = base64.b64encode(raw).decode("ascii")
+          encrypted_value = base64.b64encode(sealed_box.encrypt(secret_value.encode("utf-8"))).decode("utf-8")
+
+          body = json.dumps({"encrypted_value": encrypted_value, "key_id": key_payload["key_id"]}).encode("utf-8")
+          update = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/actions/secrets/TRADE_LEDGER_YAML_B64",
+              data=body,
+              method="PUT",
+              headers={**headers, "Content-Type": "application/json"},
+          )
+          with urllib.request.urlopen(update, timeout=30) as response:
+              if response.status not in (201, 204):
+                  raise RuntimeError(f"Unexpected secret update status: {response.status}")
+          PY
 
       - name: Upload dashboard run artifacts
         uses: actions/upload-artifact@v4
