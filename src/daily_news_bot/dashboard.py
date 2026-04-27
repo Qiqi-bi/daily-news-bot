@@ -134,10 +134,11 @@ def _metric(title: str, value: str, note: str = "", tone: str = "") -> str:
     )
 
 
-def _section(title: str, body: str, subtitle: str = "", class_name: str = "") -> str:
+def _section(title: str, body: str, subtitle: str = "", class_name: str = "", section_id: str = "") -> str:
     subtitle_html = f'<div class="section-subtitle">{escape(subtitle)}</div>' if subtitle else ""
     class_attr = f"panel {class_name}".strip()
-    return f'<section class="{escape(class_attr)}"><h2>{escape(title)}</h2>{subtitle_html}{body}</section>'
+    id_attr = f' id="{escape(section_id)}"' if section_id else ""
+    return f'<section{id_attr} class="{escape(class_attr)}"><h2>{escape(title)}</h2>{subtitle_html}{body}</section>'
 
 
 def _empty(message: str = "暂无数据") -> str:
@@ -296,6 +297,23 @@ def _market_rows(market_snapshot: dict[str, Any]) -> list[list[str]]:
             ]
         )
     return result
+
+
+def _market_signal_strip(market_snapshot: dict[str, Any]) -> str:
+    items = market_snapshot.get("items") or []
+    if not items:
+        return ""
+    chips = []
+    for item in items[:6]:
+        trend = _trend_class(item.get("change_pct"))
+        pct = _fmt_pct(item.get("change_pct"))
+        chips.append(
+            f'<div class="signal-chip {escape(trend)}">'
+            f'<span class="signal-name">{escape(_text(item.get("name") or item.get("symbol")))}</span>'
+            f'<span class="signal-value">{escape(pct)}</span>'
+            "</div>"
+        )
+    return '<div class="signal-strip" aria-label="市场信号">' + "".join(chips) + "</div>"
 
 
 def _watchlist_item(item: dict[str, Any], label: str, title_translations: dict[str, str] | None = None) -> str:
@@ -467,7 +485,7 @@ def _action_guidance_section(payload: dict[str, Any]) -> str:
         "动手前仍要确认价格、流动性和个人仓位约束。"
     )
     body = '<div class="action-grid">' + "".join(cards) + f'</div><div class="muted-block">{escape(note)}</div>'
-    return _section("今天怎么处理", body, "先把能做和不能做说清楚，避免把新闻摘要误当交易建议。", "wide")
+    return _section("今天怎么处理", body, "先把能做和不能做说清楚，避免把新闻摘要误当交易建议。", "wide", "decision")
 
 
 def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
@@ -538,6 +556,22 @@ def _decision_strip(payload: dict[str, Any]) -> str:
             "</div>"
         )
     return '<section class="decision-strip">' + "".join(cards) + "</section>"
+
+
+def _quick_nav(archive_url: Any = "") -> str:
+    links = [
+        ("决策", "#decision"),
+        ("事件", "#events"),
+        ("市场", "#market"),
+        ("提醒", "#watchlist"),
+        ("回执", "#receipts"),
+        ("质量", "#quality"),
+    ]
+    if _safe_url(archive_url):
+        links.append(("归档", archive_url))
+    return '<nav class="quick-nav" aria-label="Dashboard 快速导航">' + "".join(
+        f'<a href="{escape(href)}">{escape(label)}</a>' for label, href in links
+    ) + "</nav>"
 
 
 def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
@@ -788,6 +822,10 @@ _CSS = """
   --teal: #0f766e;
 }
 * { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
 body {
   margin: 0;
   font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
@@ -832,6 +870,34 @@ h1 {
   border-radius: 6px;
   font-size: 13px;
 }
+.quick-nav {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0 12px;
+  margin: -4px 0 4px;
+  background: linear-gradient(180deg, var(--bg) 72%, rgba(244, 246, 248, 0));
+  scrollbar-width: none;
+}
+.quick-nav::-webkit-scrollbar {
+  display: none;
+}
+.quick-nav a {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #334155;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 13px;
+}
+.quick-nav a:hover {
+  color: var(--blue);
+  text-decoration: none;
+}
 .lead {
   background: #fff;
   border: 1px solid var(--line);
@@ -853,6 +919,44 @@ h1 {
   flex-wrap: wrap;
   gap: 7px;
   margin-top: 12px;
+}
+.signal-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 8px;
+  margin-top: 13px;
+}
+.signal-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line-soft);
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 7px 9px;
+  min-width: 0;
+}
+.signal-name {
+  color: #334155;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.signal-value {
+  font-size: 12px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+.signal-chip.up .signal-value {
+  color: var(--green);
+}
+.signal-chip.down .signal-value {
+  color: var(--red);
+}
+.signal-chip.flat .signal-value {
+  color: var(--muted);
 }
 .decision-strip {
   display: grid;
@@ -1210,8 +1314,14 @@ a:hover {
   .top-actions {
     justify-content: flex-start;
   }
+  .quick-nav {
+    margin-left: -14px;
+    margin-right: -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
   .decision-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .decision-card {
     min-height: auto;
@@ -1227,6 +1337,18 @@ a:hover {
   }
 }
 @media (max-width: 520px) {
+  .subtitle {
+    font-size: 12px;
+  }
+  .lead {
+    padding: 13px;
+  }
+  .lead-text {
+    font-size: 14px;
+  }
+  .decision-strip {
+    grid-template-columns: 1fr;
+  }
   .metrics {
     grid-template-columns: 1fr;
   }
@@ -1239,6 +1361,19 @@ a:hover {
   }
   .panel {
     padding: 13px;
+  }
+  .event-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .event-tags {
+    gap: 5px;
+  }
+  .pill {
+    font-size: 11px;
+    min-height: 20px;
   }
 }
 """
@@ -1264,6 +1399,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         '<div class="lead-title">30 秒总览</div>'
         f'<div class="lead-text">{escape(global_overview)}</div>'
         f'{_tag_distribution(payload.get("tag_distribution"))}'
+        f'{_market_signal_strip(market_snapshot)}'
         "</div>"
     )
 
@@ -1276,20 +1412,22 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
 
     sections = [
         _action_guidance_section(payload),
-        _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide"),
+        _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _section(
             "市场快照",
             _render_table(["资产", "价格", "涨跌", "状态", "行情时间"], _market_rows(market_snapshot)),
             f'{_text(market_snapshot.get("provider"), "价格源未知")}；用于看新闻是否已被价格确认。',
+            section_id="market",
         ),
         _section(
             "提醒与记忆",
             _watchlist_rows(watchlist, title_translations),
             f'触发 {watchlist.get("triggered_count", 0)} · 新增 {watchlist.get("new_count", 0)} · 有效 {watchlist.get("active_count", 0)}',
+            section_id="watchlist",
         ),
-        _section("操作回执", _receipt_status_body(payload), "飞书群里有交易才填；没操作不用回复，系统按原仓位继续。"),
-        _section("数据质量", _coverage_body(payload), "看覆盖、时效和过滤情况，避免把缺数据误当判断。"),
-        _section("报告入口", _path_links(output_paths, dashboard)),
+        _section("操作回执", _receipt_status_body(payload), "飞书群里有交易才填；没操作不用回复，系统按原仓位继续。", section_id="receipts"),
+        _section("数据质量", _coverage_body(payload), "看覆盖、时效和过滤情况，避免把缺数据误当判断。", section_id="quality"),
+        _section("报告入口", _path_links(output_paths, dashboard), section_id="links"),
     ]
     sections.extend(_portfolio_sections(portfolio, weekly))
 
@@ -1308,8 +1446,9 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         <h1>每日投资雷达</h1>
         <div class="subtitle">生成时间：{escape(_text(generated))} · 模式：{escape(_text(payload.get("mode"), "未知"))} · 不是交易终端，动手前仍需复核价格、流动性和仓位纪律。</div>
       </div>
-    {top_actions}
+      {top_actions}
     </header>
+    {_quick_nav(archive_url)}
     {lead}
     {_decision_strip(payload)}
     {_metric_cards(payload)}

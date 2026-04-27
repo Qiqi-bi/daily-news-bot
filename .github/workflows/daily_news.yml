@@ -331,24 +331,27 @@ jobs:
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Daily News Dashboard Archive</title>
+            <title>日报历史归档</title>
             <style>
-              :root { color-scheme: light; --bg:#f4f6f8; --panel:#fff; --text:#172033; --muted:#647083; --line:#dfe5ec; --blue:#1f6feb; }
+              :root { color-scheme: light; --bg:#f4f6f8; --panel:#fff; --text:#172033; --muted:#647083; --line:#dfe5ec; --soft:#edf1f5; --blue:#1f6feb; --green:#17803d; }
               * { box-sizing: border-box; }
               body { margin:0; font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
-              .wrap { max-width:1040px; margin:0 auto; padding:28px 18px 40px; }
+              .wrap { max-width:1120px; margin:0 auto; padding:28px 18px 42px; }
               header { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; flex-wrap:wrap; margin-bottom:18px; }
               h1 { margin:0; font-size:30px; letter-spacing:0; }
               .muted { color:var(--muted); }
               .actions { display:flex; flex-wrap:wrap; gap:10px; }
-              .button { border:1px solid var(--line); background:#fff; border-radius:6px; padding:7px 11px; }
+              .button { border:1px solid var(--line); background:#fff; color:var(--blue); border-radius:6px; padding:7px 11px; }
+              .hero { background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:8px; padding:16px; margin-bottom:14px; }
+              .hero-title { font-weight:760; margin-bottom:4px; }
               .summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin:16px 0; }
               .metric, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; }
               .metric-title { color:var(--muted); font-size:12px; }
               .metric-value { font-size:24px; font-weight:760; margin-top:4px; }
-              .run-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; align-items:center; padding:13px 0; border-top:1px solid #edf1f5; }
+              .run-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; align-items:center; padding:13px 0; border-top:1px solid var(--soft); }
               .run-row:first-child { border-top:0; padding-top:0; }
               .run-id { font-weight:700; word-break:break-all; }
+              .run-badge { display:inline-block; margin-right:8px; color:var(--green); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:6px; padding:1px 6px; font-size:12px; }
               .run-files { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; font-size:13px; }
               a { color:var(--blue); text-decoration:none; }
               a:hover { text-decoration:underline; }
@@ -360,13 +363,17 @@ jobs:
               <header>
                 <div>
                   <h1>Daily News Dashboard Archive</h1>
-                  <div class="muted">最新页面在站点根目录；这里保留每次运行的历史快照和原始输出。</div>
+                  <div class="muted">每次日报都会保留一份独立快照；最新页永远在站点根目录。</div>
                 </div>
                 <div class="actions">
                   <a class="button" href="./">最新 Dashboard</a>
                   <a class="button" href="archive.json">archive.json</a>
                 </div>
               </header>
+              <section class="hero">
+                <div class="hero-title">怎么用这个页面</div>
+                <div class="muted">先打开最新 Dashboard 做今日判断；需要回看某一天时，再进对应运行快照。每个快照都保留 dashboard、Markdown、JSON 和提醒状态。</div>
+              </section>
               <section class="summary">
                 <div class="metric"><div class="metric-title">历史运行</div><div class="metric-value">${run_count}</div></div>
                 <div class="metric"><div class="metric-title">最新归档</div><div class="metric-value" style="font-size:16px">${latest_block}</div></div>
@@ -375,7 +382,11 @@ jobs:
           HTML
           find public/runs -mindepth 1 -maxdepth 1 -type d | sort -r | while read -r dir; do
             slug="${dir#public/runs/}"
-            echo "<div class=\"run-row\"><div><div class=\"run-id\"><a href=\"runs/${slug}/\">${slug}</a></div><div class=\"muted\">保留 dashboard.html、report.md、report.json、watchlist.json 等输出</div></div><div class=\"run-files\"><a href=\"runs/${slug}/report.md\">report.md</a><a href=\"runs/${slug}/report.json\">report.json</a><a href=\"runs/${slug}/watchlist.json\">watchlist.json</a></div></div>"
+            badge=""
+            if [ "$slug" = "$latest_slug" ]; then
+              badge="<span class=\"run-badge\">最新</span>"
+            fi
+            echo "<div class=\"run-row\"><div><div class=\"run-id\">${badge}<a href=\"runs/${slug}/\">${slug}</a></div><div class=\"muted\">保留本次 dashboard、Markdown 报告、结构化 JSON 和提醒状态</div></div><div class=\"run-files\"><a href=\"runs/${slug}/\">dashboard</a><a href=\"runs/${slug}/report.md\">report.md</a><a href=\"runs/${slug}/report.json\">report.json</a><a href=\"runs/${slug}/watchlist.json\">watchlist.json</a></div></div>"
           done >> public/archive.html
           cat >> public/archive.html <<'HTML'
               </section>
@@ -421,6 +432,19 @@ jobs:
             echo "- This run archive: ${DASHBOARD_ARCHIVE_URL:-not configured}"
             echo "- Run artifact: daily-news-dashboard-${{ github.run_id }}-${{ github.run_attempt }}"
             echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json"
+            if [ -f outputs/feishu_receipts.json ]; then
+              python3 - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path("outputs/feishu_receipts.json").read_text(encoding="utf-8"))
+          if payload.get("ok"):
+              print(f"- Feishu receipts: scanned {payload.get('message_count', 0)}, appended {payload.get('appended_count', 0)}, duplicates {payload.get('duplicate_count', 0)}, parse errors {payload.get('error_count', 0)}")
+          elif payload.get("skipped"):
+              print(f"- Feishu receipts: skipped ({payload.get('reason', 'not configured')})")
+          else:
+              print(f"- Feishu receipts: failed ({payload.get('error', 'unknown error')})")
+          PY
+            fi
             if [ -f outputs/portfolio_brief.md ]; then
               echo "- Portfolio brief: outputs/portfolio_brief.md"
             fi
@@ -463,6 +487,7 @@ jobs:
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/" --output /tmp/dashboard.html
           grep -qi '<html' /tmp/dashboard.html
+          grep -qi 'decision-strip' /tmp/dashboard.html
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/report.md" --output /tmp/report.md
           test -s /tmp/report.md
@@ -475,6 +500,7 @@ jobs:
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/archive.html" --output /tmp/archive.html
           grep -qi 'Daily News Dashboard Archive' /tmp/archive.html
+          grep -qi 'run-row' /tmp/archive.html
 
   notify-failure:
     needs:
