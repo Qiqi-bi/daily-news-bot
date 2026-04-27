@@ -494,6 +494,14 @@ def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
     ]
 
 
+def _build_feishu_receipt_lines() -> list[str]:
+    return [
+        "有交易：复制一行回给我，我来入账；没操作不用回复，系统按原仓位继续。",
+        "加仓：BUY 代码 金额 价格 原因；例：BUY 518880 3000 5.12 黄金回落补保险仓。",
+        "减仓：SELL 代码 份额/比例 价格 原因；例：SELL 513100 20% 1.35 AI仓位超线。",
+    ]
+
+
 def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
     raw_title = str(item.get("title") or "未命名提醒")
     normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
@@ -570,6 +578,9 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
             f"API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；"
             f"官方 {coverage.get('official_sources_with_articles', 0)}/{coverage.get('configured_official_sources', 0)}；"
             f"已过滤低可信内容 {data_quality.get('credibility_filtered_articles', 0)} 条。",
+            "",
+            "**操作回执（有交易才填）**",
+            *[f"- {line}" for line in _build_feishu_receipt_lines()],
             "",
             f"Dashboard：{dashboard_url}",
         ]
