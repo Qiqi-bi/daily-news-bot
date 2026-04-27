@@ -25,7 +25,7 @@ from .portfolio_quotes import fetch_portfolio_quotes, update_portfolio_history
 from .portfolio_weekly import build_weekly_portfolio_review
 from .ranking import rank_clusters, summarize_tag_distribution
 from .report import render_report, save_json, save_text
-from .senders import send_feishu_webhook
+from .senders import send_feishu_message
 from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
 from .translations import translate_cluster_highlights
@@ -1026,9 +1026,25 @@ def main(argv: list[str] | None = None) -> int:
     save_json(args.json_output, output_payload)
 
     settings = load_settings()
-    if args.send_feishu and settings.feishu_webhook_url:
+    if args.send_feishu and (
+        settings.feishu_webhook_url
+        or (
+            settings.feishu_app_id
+            and settings.feishu_app_secret
+            and (settings.feishu_send_chat_id or settings.feishu_send_chat_name)
+        )
+    ):
         feishu_content = _build_feishu_digest(payload)
-        send_feishu_webhook(settings.feishu_webhook_url, "每日投资雷达", feishu_content)
+        sender = send_feishu_message(
+            webhook_url=settings.feishu_webhook_url,
+            app_id=settings.feishu_app_id,
+            app_secret=settings.feishu_app_secret,
+            chat_id=settings.feishu_send_chat_id,
+            chat_name=settings.feishu_send_chat_name,
+            title="每日投资雷达",
+            content=feishu_content,
+        )
+        print(f"Feishu message sent via {sender}.")
 
     print(f"Markdown report saved to: {report_path}")
     print(f"JSON metadata saved to: {json_path}")

@@ -31,6 +31,10 @@ class Settings:
     per_source_limit: int
     api_source_limit: int
     feishu_webhook_url: str
+    feishu_app_id: str
+    feishu_app_secret: str
+    feishu_send_chat_id: str
+    feishu_send_chat_name: str
     newsapi_key: str
     finnhub_api_key: str
     finnhub_news_categories: tuple[str, ...]
@@ -99,6 +103,16 @@ def load_settings() -> Settings:
         per_source_limit=int(_pick(env_file_values, "PER_SOURCE_LIMIT", "12")),
         api_source_limit=int(_pick(env_file_values, "API_SOURCE_LIMIT", "12")),
         feishu_webhook_url=_pick(env_file_values, "FEISHU_WEBHOOK_URL", "").strip(),
+        feishu_app_id=_pick(env_file_values, "FEISHU_APP_ID", "").strip(),
+        feishu_app_secret=_pick(env_file_values, "FEISHU_APP_SECRET", "").strip(),
+        feishu_send_chat_id=(
+            _pick(env_file_values, "FEISHU_SEND_CHAT_ID", "").strip()
+            or _pick(env_file_values, "FEISHU_RECEIPT_CHAT_ID", "").strip()
+        ),
+        feishu_send_chat_name=(
+            _pick(env_file_values, "FEISHU_SEND_CHAT_NAME", "").strip()
+            or _pick(env_file_values, "FEISHU_RECEIPT_CHAT_NAME", "").strip()
+        ),
         newsapi_key=_pick(env_file_values, "NEWSAPI_KEY", "").strip(),
         finnhub_api_key=_pick(env_file_values, "FINNHUB_API_KEY", "").strip(),
         finnhub_news_categories=_split_csv(

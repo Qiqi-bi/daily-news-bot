@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 import requests
+
+from .feishu_receipts import API_BASE, resolve_chat_id, tenant_access_token
 
 
 CARD_TOTAL_LIMIT = 18000
@@ -49,6 +52,19 @@ def _raise_for_feishu_error(response: requests.Response) -> None:
     if code not in (None, 0):
         message = payload.get("msg") or payload.get("message") or "Feishu webhook returned an error"
         raise RuntimeError(f"Feishu webhook error {code}: {message}")
+
+
+def _raise_for_feishu_api_error(response: requests.Response) -> dict[str, Any]:
+    response.raise_for_status()
+    try:
+        payload = response.json()
+    except ValueError:
+        return {}
+    code = payload.get("code")
+    if code not in (None, 0):
+        message = payload.get("msg") or payload.get("message") or "Feishu API returned an error"
+        raise RuntimeError(f"Feishu API error {code}: {message}")
+    return payload
 
 
 def _button_url(content: str) -> str:
@@ -110,6 +126,11 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
     }
 
 
+def _build_app_card_payload(title: str, content: str) -> dict[str, Any]:
+    webhook_payload = _build_card_payload(title, content)
+    return webhook_payload["card"]
+
+
 def _build_post_payload(title: str, content: str) -> dict[str, Any]:
     return {
         "msg_type": "post",
@@ -137,3 +158,77 @@ def send_feishu_webhook(webhook_url: str, title: str, content: str) -> None:
         fallback_payload = _build_post_payload(title, content)
         response = requests.post(webhook_url, json=fallback_payload, timeout=20)
         _raise_for_feishu_error(response)
+
+
+def send_feishu_app_message(
+    *,
+    app_id: str,
+    app_secret: str,
+    chat_id: str = "",
+    chat_name: str = "",
+    title: str,
+    content: str,
+    timeout: float = 20,
+) -> None:
+    if not app_id or not app_secret:
+        raise RuntimeError("FEISHU_APP_ID or FEISHU_APP_SECRET is missing")
+    if not chat_id and not chat_name:
+        raise RuntimeError("FEISHU_SEND_CHAT_ID or FEISHU_RECEIPT_CHAT_ID is missing")
+
+    token = tenant_access_token(app_id, app_secret, timeout=timeout)
+    resolved_chat_id = resolve_chat_id(token, chat_id, chat_name, timeout=timeout)
+    if not resolved_chat_id:
+        raise RuntimeError(f"Could not find Feishu chat: {chat_name or chat_id}")
+
+    card = _build_app_card_payload(title, content)
+    response = requests.post(
+        f"{API_BASE}/im/v1/messages",
+        params={"receive_id_type": "chat_id"},
+        headers={
+            "authorization": f"Bearer {token}",
+            "content-type": "application/json; charset=utf-8",
+        },
+        json={
+            "receive_id": resolved_chat_id,
+            "msg_type": "interactive",
+            "content": json.dumps(card, ensure_ascii=False),
+        },
+        timeout=timeout,
+    )
+    _raise_for_feishu_api_error(response)
+
+
+def send_feishu_message(
+    *,
+    webhook_url: str = "",
+    app_id: str = "",
+    app_secret: str = "",
+    chat_id: str = "",
+    chat_name: str = "",
+    title: str,
+    content: str,
+) -> str:
+    app_error: Exception | None = None
+    if app_id and app_secret and (chat_id or chat_name):
+        try:
+            send_feishu_app_message(
+                app_id=app_id,
+                app_secret=app_secret,
+                chat_id=chat_id,
+                chat_name=chat_name,
+                title=title,
+                content=content,
+            )
+            return "app"
+        except Exception as exc:
+            app_error = exc
+
+    if webhook_url:
+        if app_error:
+            print(f"Feishu app sender failed; falling back to webhook: {app_error}")
+        send_feishu_webhook(webhook_url, title, content)
+        return "webhook_fallback" if app_error else "webhook"
+
+    if app_error:
+        raise app_error
+    raise RuntimeError("No Feishu sender configured")
