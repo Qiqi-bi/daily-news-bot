@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-27T17:00:40",
+  "updated_at_utc": "2026-04-27T17:34:00",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,8 +18,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "WTI原油 change_pct=2.108"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "WTI原油 change_pct=2.903"
     },
     {
       "id": "growth-tech-exposure-cap",
@@ -37,9 +37,9 @@
       "trigger_count": 1,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "growth_tech_pct=60.069",
-      "last_triggered_at_utc": "2026-04-27T17:00:40"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_triggered_at_utc": "2026-04-27T17:00:40",
+      "last_observed": "growth_tech_pct=51.697"
     },
     {
       "id": "direct-ai-exposure-cap",
@@ -57,9 +57,9 @@
       "trigger_count": 1,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "direct_ai_pct=38.484",
-      "last_triggered_at_utc": "2026-04-27T17:00:40"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_triggered_at_utc": "2026-04-27T17:00:40",
+      "last_observed": "direct_ai_pct=33.121"
     },
     {
       "id": "gold-position-below-target",
@@ -77,8 +77,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "gold_pct=14.846"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "gold_pct=12.777"
     },
     {
       "id": "gold-position-above-target",
@@ -96,8 +96,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "gold_pct=14.846"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "gold_pct=12.777"
     },
     {
       "id": "gold-futures-big-up",
@@ -116,8 +116,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "黄金 change_pct=-0.64"
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "黄金 change_pct=-0.707"
     },
     {
       "id": "gold-futures-big-down",
@@ -136,60 +136,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-27T17:00:40",
-      "last_observed": "黄金 change_pct=-0.64"
-    },
-    {
-      "id": "event-fa5ed82d8d8a",
-      "type": "event_followup",
-      "title": "跟踪：European markets close lower as Iran reportedly makes peace proposal",
-      "keywords": [
-        "geopolitics",
-        "markets",
-        "macro",
-        "as",
-        "at",
-        "close",
-        "closed",
-        "cnbc",
-        "european",
-        "eye"
-      ],
-      "tokens": [
-        "as",
-        "at",
-        "close",
-        "closed",
-        "cnbc",
-        "european",
-        "eye",
-        "geopolitics",
-        "investors",
-        "iran",
-        "keep",
-        "lower",
-        "macro",
-        "makes",
-        "new",
-        "of",
-        "on",
-        "peace",
-        "proposal",
-        "reportedly",
-        "stalled",
-        "start",
-        "talks",
-        "trading",
-        "week",
-        "world",
-        "关键词"
-      ],
-      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
-      "created_at_utc": "2026-04-27T17:00:40",
-      "expires_at_utc": "2026-05-04T17:00:40",
-      "status": "active",
-      "source": "auto_event",
-      "repeat": false
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "黄金 change_pct=-0.707"
     },
     {
       "id": "event-86ae5bf02345",
@@ -1632,6 +1580,64 @@
       "last_checked_at_utc": "2026-04-27T17:00:40",
       "last_observed": "Iran would reopen Strait of Hormuz, postpone nuclear talks if U.S. lifts blockade and war ends: Reports；China blocks Meta's $2bn acquisition of AI start-up Manus；Oil prices rise as US-Iran peace talks stall",
       "last_triggered_at_utc": "2026-04-27T17:00:40"
+    },
+    {
+      "id": "event-fa5ed82d8d8a",
+      "type": "event_followup",
+      "title": "跟踪：European markets close lower as Iran reportedly makes peace proposal",
+      "keywords": [
+        "geopolitics",
+        "markets",
+        "macro",
+        "as",
+        "at",
+        "close",
+        "closed",
+        "cnbc",
+        "european",
+        "eye"
+      ],
+      "tokens": [
+        "as",
+        "at",
+        "close",
+        "closed",
+        "cnbc",
+        "european",
+        "eye",
+        "geopolitics",
+        "investors",
+        "iran",
+        "keep",
+        "lower",
+        "macro",
+        "makes",
+        "new",
+        "of",
+        "on",
+        "peace",
+        "proposal",
+        "reportedly",
+        "stalled",
+        "start",
+        "talks",
+        "trading",
+        "week",
+        "world",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-27T17:00:40",
+      "expires_at_utc": "2026-05-04T17:00:40",
+      "status": "triggered",
+      "source": "auto_event",
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "dcbcecb524db",
+      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_observed": "Oil prices rise as US-Iran peace talks stall；Iran would reopen Strait of Hormuz, postpone nuclear talks if U.S. lifts blockade and war ends: Reports；Global oil prices top $102 a barrel on concerns Iran may have to cut output due to storage issues",
+      "last_triggered_at_utc": "2026-04-27T17:34:00"
     }
   ]
 }
