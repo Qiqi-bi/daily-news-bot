@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-04-27T17:34:00",
+  "updated_at_utc": "2026-04-27T17:53:42",
   "items": [
     {
       "id": "oil-shock-watch",
@@ -18,8 +18,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "f52771a4f998",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
-      "last_observed": "WTI原油 change_pct=2.903"
+      "last_checked_at_utc": "2026-04-27T17:53:42",
+      "last_observed": "WTI原油 change_pct=2.288"
     },
     {
       "id": "growth-tech-exposure-cap",
@@ -37,7 +37,7 @@
       "trigger_count": 1,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_checked_at_utc": "2026-04-27T17:53:42",
       "last_triggered_at_utc": "2026-04-27T17:00:40",
       "last_observed": "growth_tech_pct=51.697"
     },
@@ -57,7 +57,7 @@
       "trigger_count": 1,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_checked_at_utc": "2026-04-27T17:53:42",
       "last_triggered_at_utc": "2026-04-27T17:00:40",
       "last_observed": "direct_ai_pct=33.121"
     },
@@ -77,7 +77,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_checked_at_utc": "2026-04-27T17:53:42",
       "last_observed": "gold_pct=12.777"
     },
     {
@@ -96,7 +96,7 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
+      "last_checked_at_utc": "2026-04-27T17:53:42",
       "last_observed": "gold_pct=12.777"
     },
     {
@@ -116,8 +116,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "51a6b0461a3e",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
-      "last_observed": "黄金 change_pct=-0.707"
+      "last_checked_at_utc": "2026-04-27T17:53:42",
+      "last_observed": "黄金 change_pct=-0.536"
     },
     {
       "id": "gold-futures-big-down",
@@ -136,8 +136,52 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-04-27T17:34:00",
-      "last_observed": "黄金 change_pct=-0.707"
+      "last_checked_at_utc": "2026-04-27T17:53:42",
+      "last_observed": "黄金 change_pct=-0.536"
+    },
+    {
+      "id": "event-bf8f017f2511",
+      "type": "event_followup",
+      "title": "跟踪：Canada launches C$25bn sovereign wealth fund to boost growth",
+      "keywords": [
+        "energy",
+        "25bn",
+        "amid",
+        "announces",
+        "boost",
+        "canada",
+        "carney",
+        "ft"
+      ],
+      "tokens": [
+        "25bn",
+        "amid",
+        "announces",
+        "boost",
+        "canada",
+        "carney",
+        "energy",
+        "ft",
+        "fund",
+        "growth",
+        "initiative",
+        "launches",
+        "mark",
+        "sovereign",
+        "tensions",
+        "to",
+        "trade",
+        "us",
+        "wealth",
+        "world",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-04-27T17:53:42",
+      "expires_at_utc": "2026-05-04T17:53:42",
+      "status": "active",
+      "source": "auto_event",
+      "repeat": false
     },
     {
       "id": "event-86ae5bf02345",
