@@ -143,7 +143,7 @@ def build_weekly_portfolio_review(
     )
     fixed_buy_pool_lines = _fixed_buy_pool_lines(fixed_buy_pool_rows)
     fixed_pool_history_panel = build_fixed_pool_60d_panel(portfolio, event_route_rows, fixed_pool_history)
-    fixed_pool_backfill_lines = fixed_pool_history_panel.get("backfill_lines") or ["- 固定可买池历史回填暂不可用。"]
+    fixed_pool_backfill_lines = fixed_pool_history_panel.get("backfill_lines") or ["- 固定候选池历史回填暂不可用。"]
     fixed_pool_win_lines = fixed_pool_history_panel.get("win_lines") or ["- T+1/T+3/T+5 先手胜率暂不可用。"]
     action_slot_lines = _action_slot_lines(portfolio, fixed_buy_pool_rows, reduce_candidates, portfolio_quotes)
     annual_objective_lines = _annual_objective_lines(portfolio)
@@ -228,10 +228,10 @@ def build_weekly_portfolio_review(
     lines.extend(["", "## A股风格阶段面板", ""])
     lines.extend(local_market_lines)
 
-    lines.extend(["", "## 固定可买池", ""])
+    lines.extend(["", "## 固定候选池", ""])
     lines.extend(fixed_buy_pool_lines)
 
-    lines.extend(["", "## 固定可买池120/250日回填", ""])
+    lines.extend(["", "## 固定候选池120/250日回填", ""])
     lines.extend(fixed_pool_backfill_lines)
 
     lines.extend(["", "## T+1/T+3/T+5先手胜率面板", ""])
@@ -240,7 +240,7 @@ def build_weekly_portfolio_review(
     lines.extend(["", "## 写死减仓规则", ""])
     lines.extend(hard_reduce_rule_lines)
 
-    lines.extend(["", "## 下周优先动作档位", ""])
+    lines.extend(["", "## 下周纪律档位", ""])
     lines.extend(action_slot_lines)
 
     lines.extend(["", "## 下周3大事件→A股/ETF映射", ""])
@@ -262,7 +262,7 @@ def build_weekly_portfolio_review(
     lines.extend(
         [
             "",
-            "## 下周动作框架",
+            "## 下周纪律框架",
             "",
             "- **先做纪律，不先做交易**：先看直接AI≤35%、广义成长/科技≤55%、单个进攻仓≤15% 这三条线是否还成立。",
             f"- **新增资金先看补短板**：每月约 {_fmt_cny(monthly_contribution)} 的新增资金不要机械平均；如果没有新的中级别催化，不建议继续往同类AI主题堆仓。",

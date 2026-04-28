@@ -403,7 +403,7 @@ def _build_feishu_content(report: str, payload: dict[str, Any]) -> str:
     quotes = portfolio.get("portfolio_quotes") or {}
     local_line = _compact_text(" ".join(_pick_lines(portfolio.get("local_market_lines"), 1)), 120) or "A股本土节奏暂不可用。"
     route_line = _compact_text(" ".join(_pick_lines(portfolio.get("event_route_lines"), 1)), 120) or "今天暂无强直连事件。"
-    action_lines = _pick_lines(portfolio.get("action_slot_lines"), 3) or ["- 暂无动作建议。"]
+    action_lines = _pick_lines(portfolio.get("action_slot_lines"), 3) or ["- 暂无纪律触发；默认继续持有，不因单日新闻操作。"]
 
     lines = [
         "## 今日入口",
@@ -414,7 +414,7 @@ def _build_feishu_content(report: str, payload: dict[str, Any]) -> str:
         f"- 全球30秒：{global_line}",
         watchlist_line,
         "",
-        "## 今日3个动作",
+        "## 中长期纪律",
         "",
     ]
     lines.extend(action_lines)
@@ -518,12 +518,12 @@ def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
                 lines.append(_feishu_short(cleaned, 120))
         if lines:
             return lines[:3]
-        return ["组合配置已接入，但今天没有明确触发动作；按原计划观察，动手前复核价格和仓位。"]
+        return ["组合配置已接入；今天没有明确纪律触发，默认继续持有，动手前复核价格和仓位。"]
 
     return [
-        "当前只能给新闻和价格提示：线上没有你的持仓、成本、现金和目标比例，所以不能判断继续持有、补仓或换仓。",
-        "今天默认动作：观察，不追单；先看原油、黄金、美元、VIX 是否继续确认新闻方向。",
-        "要生成持有/补仓/减仓/候选标的，需要接入组合配置；建议默认只发飞书或私密产物，不放公开网页。",
+        "当前只能给新闻和价格提示：线上没有你的持仓、成本、现金和目标比例，所以不能判断仓位纪律。",
+        "今天默认：观察，不追单；先看原油、黄金、美元、VIX 是否继续确认新闻方向。",
+        "要生成持有/补仓/减仓复核，需要接入组合配置；建议默认只发飞书或私密产物，不放公开网页。",
     ]
 
 
@@ -581,7 +581,7 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
         "**20 秒简报**",
         global_line,
         "",
-        "**操作提示**",
+        "**中长期纪律**",
         *[f"- {line}" for line in _build_feishu_action_lines(payload)[:2]],
         "",
         "**先看这 3 件事**",
@@ -623,7 +623,7 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
             "",
             "**数据**",
             f"- 最新 {latest_age_text}；RSS {coverage.get('rss_sources_with_articles', 0)}/{coverage.get('rss_sources_configured', 0)}；API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；低可信过滤 {data_quality.get('credibility_filtered_articles', 0)} 条。",
-            "- 有交易才回：买入/卖出 代码 金额或份额 价格 原因；没操作不用回。",
+            "- 默认不操作；有交易才回：买入/卖出 代码 金额或份额 价格 原因；没操作不用回。",
             "",
             f"Dashboard：{dashboard_url}",
         ]

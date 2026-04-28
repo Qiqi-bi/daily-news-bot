@@ -1141,7 +1141,7 @@ def _evaluate_fixed_buy_pool(
             else:
                 state = "观察"
                 score = 60
-                reason = "底仓始终可关注，但只有在回撤、补短板或进攻仓受限时才升为可买。"
+                reason = "底仓始终可关注，但只有在回撤、补短板或进攻仓受限时才升为可复核候选。"
         elif theme_key == "growth_core":
             if summary.get("growth_tech_pct", 0.0) >= growth_tech_cap * 0.92 or chase_risk == "高":
                 state = "观察"
@@ -1151,7 +1151,7 @@ def _evaluate_fixed_buy_pool(
                 state = "可买"
                 amount_key = "buy_core_small_cny"
                 score = 72
-                reason = "有主线催化且成长底仓低于目标区间时，可以小幅补。"
+                reason = "有主线催化且成长底仓低于目标区间时，才进入小幅补仓复核。"
         elif theme_key == "ai_attack":
             if weight >= _as_float((portfolio.get("risk_controls") or {}).get("single_attack_holding_cap_pct"), 15.0) or (pnl_pct or 0.0) >= 30 or attack_blockers:
                 state = "减仓"
@@ -1201,7 +1201,7 @@ def _evaluate_fixed_buy_pool(
                 state = "可买"
                 amount_key = "buy_probe_cny"
                 score = 66
-                reason = "AI主线强化时，半导体通常比主题基金更前排，但只适合小仓试探。"
+                reason = "AI主线强化时，半导体通常比主题基金更前排，但只作为小仓复核候选。"
 
         if state == "可买" and local_market_payload and str(local_market_payload.get("style") or "") in {"防御占优", "防御偏强"} and theme_key in {"growth_core", "ai_attack", "semiconductor"}:
             state = "观察"
@@ -1210,7 +1210,7 @@ def _evaluate_fixed_buy_pool(
         if state == "可买" and chase_risk == "高":
             state = "观察"
             score -= 10
-            reason = "当天追高风险偏高，先别把‘能买’误读成‘现在就买’。"
+            reason = "当天追高风险偏高，先别把‘候选’误读成‘现在就买’。"
 
         results.append(
             {
@@ -1237,12 +1237,13 @@ def _evaluate_fixed_buy_pool(
 
 def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
     if not rows:
-        return ["- 尚未配置固定可买池。"]
+        return ["- 尚未配置固定候选池。"]
+    state_label = {"可买": "可复核", "减仓": "减仓复核"}
     lines = ["| 标的 | 状态 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---:|---|---|"]
     for row in rows:
         day_text = _fmt_pct_or_unknown(row.get("day_change_pct"))
         lines.append(
-            f"| {row.get('name')}({row.get('code')}) | {row.get('state')} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
+            f"| {row.get('name')}({row.get('code')}) | {state_label.get(row.get('state'), row.get('state'))} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
         )
     return lines
 
@@ -1260,21 +1261,21 @@ def _action_slot_lines(
 
     if reduce_candidates:
         row = reduce_candidates[0]
-        lines.append(f"1. **减仓**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜原因：{row.get('reason')}")
+        lines.append(f"1. **减仓复核**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜原因：{row.get('reason')}；不是自动卖出。")
     if broad_buy_rows:
         names = "、".join(f"{row.get('name')}({row.get('code')})" for row in broad_buy_rows[:2])
         amount = broad_buy_rows[0].get("amount_band")
-        lines.append(f"{len(lines)+1}. **可买**｜{names}｜单只参考 {amount}｜原因：进攻仓受限或进入回撤档位时，优先把新增资金给稳底仓。")
+        lines.append(f"{len(lines)+1}. **低吸候选**｜{names}｜单只参考 {amount}｜条件：进攻仓受限或进入回撤档位时，才优先把新增资金给稳底仓。")
     if other_buy_rows:
         row = other_buy_rows[0]
-        lines.append(f"{len(lines)+1}. **可买**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜原因：{row.get('reason')}")
+        lines.append(f"{len(lines)+1}. **候选观察**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜条件：{row.get('reason')}；确认后再手动处理。")
 
     if len(lines) < 3 and observe_rows:
         row = observe_rows[0]
         lines.append(f"{len(lines)+1}. **观察**｜{row.get('name')}({row.get('code')})｜先看：{row.get('action_hint')}；当前不急着动。")
     if len(lines) < 3:
         week_change = (portfolio_quotes or {}).get("portfolio_week_change_pct")
-        lines.append(f"{len(lines)+1}. **观察**｜如果组合近一周约 {_fmt_pct_or_unknown(week_change)}，先按既有纪律跑，不因为单条新闻临时加动作。")
+        lines.append(f"{len(lines)+1}. **默认不动**｜如果组合近一周约 {_fmt_pct_or_unknown(week_change)}，先按既有纪律跑，不因为单条新闻临时加动作。")
     return lines[:3]
 
 
@@ -1287,7 +1288,7 @@ def _build_monthly_deployment_plan(
     profile = portfolio.get("profile") or {}
     monthly = _as_float(profile.get("monthly_contribution_cny"), 0.0)
     if monthly <= 0:
-        return ["- 未设置每月新增资金，暂不给出分配建议。"]
+        return ["- 未设置每月新增资金，暂不给出分配框架。"]
 
     stable_target = allocation.get("stable_core_target_pct") or [35, 45]
     growth_target = allocation.get("growth_core_target_pct") or [15, 20]
@@ -1335,11 +1336,11 @@ def _build_monthly_deployment_plan(
         reserve_amt = 0.0
 
     lines = [
-        f"- 稳底仓：建议约 {_fmt_cny(stable_amt)}，对应 `沪深300ETF易方达 + 上证指数ETF富国`；你现在更需要的是稳底仓，不是继续堆高弹性。",
-        f"- 成长底仓：建议约 {_fmt_cny(growth_amt)}，对应 `创业板ETF易方达`；它可以加，但要承认它不是防守仓。",
-        f"- 进攻仓：建议约 {_fmt_cny(attack_amt)}，对应 `天弘AI + 科创AI`；如果AI拥挤度高，就宁可给 0 或很小。",
-        f"- 保险仓：建议约 {_fmt_cny(insurance_amt)}，对应 `华安黄金ETF联接A`；只有在保险仓低于目标区间或地缘风险抬升时才加。",
-        f"- 机动资金：建议约 {_fmt_cny(max(reserve_amt, 0.0))}；你偏好不主动留现金，所以若没有强信号，机动部分默认回流稳底仓/成长底仓。",
+        f"- 稳底仓：框架参考 {_fmt_cny(stable_amt)}，对应 `沪深300ETF易方达 + 上证指数ETF富国`；你现在更需要的是稳底仓，不是继续堆高弹性。",
+        f"- 成长底仓：框架参考 {_fmt_cny(growth_amt)}，对应 `创业板ETF易方达`；它可以长期拿，但要承认它不是防守仓。",
+        f"- 进攻仓：框架参考 {_fmt_cny(attack_amt)}，对应 `天弘AI + 科创AI`；如果AI拥挤度高，就宁可给 0 或很小。",
+        f"- 保险仓：框架参考 {_fmt_cny(insurance_amt)}，对应 `华安黄金ETF联接A`；只有在保险仓低于目标区间或地缘风险抬升时才复核。",
+        f"- 机动资金：框架参考 {_fmt_cny(max(reserve_amt, 0.0))}；你偏好不主动留现金，所以若没有强信号，机动部分默认回流稳底仓/成长底仓。",
         "- 折中规则：不是留钱等系统猜底，而是没有确认信号时，不强行把新增资金打进进攻仓，默认回流稳底仓/成长底仓。",
     ]
     if attack_blockers:
@@ -1657,22 +1658,22 @@ def _action_board_lines(
     top_candidate = candidate_scores[0] if candidate_scores else {}
 
     if week_change is not None and week_change <= -drawdown_limit:
-        default_action = "立即确认：触发你的单周回撤警戒，先按回撤8%方案低吸稳底仓，暂停进攻仓。"
+        default_action = "纪律复核：触发单周回撤警戒，先确认是否按回撤8%方案分批补稳底仓，暂停进攻仓；不自动交易。"
     elif attack_blockers:
-        default_action = "立即确认：进攻仓/AI纪律优先级最高，新增资金先不要继续加AI、半导体或港股科技。"
+        default_action = "纪律优先：进攻仓/AI约束优先级最高，新增资金先不要继续加AI、半导体或港股科技。"
     elif immediate_events:
-        default_action = "立即确认：有核心事件影响你的持仓，但先等新闻主线和市场价格共振，不做单条标题交易。"
+        default_action = "复核观察：有核心事件影响持仓，但先等新闻主线和市场价格共振，不做单条标题交易。"
     else:
-        default_action = "观察：今天更适合更新认知和候选池，不急着动仓。"
+        default_action = "默认不动：今天更适合更新认知和候选池，不急着动仓。"
 
     candidate_text = "暂无高优先候选"
     if top_candidate:
         candidate_text = f"{top_candidate.get('theme')}（优先级 {top_candidate.get('priority', '未知')}，参考 {top_candidate.get('instrument_refs') or '见候选池'}）"
 
     lines = [
-        f"- **默认动作**：{default_action}",
-        f"- **新增资金**：按每月 {_fmt_cny(_as_float((portfolio.get('profile') or {}).get('monthly_contribution_cny'), 0.0))} 的分批框架执行；没有强信号时，剩余资金默认回流稳底仓。",
-        f"- **候选方向**：{candidate_text}；候选只代表观察优先级，不代表今天买。",
+        f"- **今日纪律**：{default_action}",
+        f"- **新增资金**：按每月 {_fmt_cny(_as_float((portfolio.get('profile') or {}).get('monthly_contribution_cny'), 0.0))} 的分批框架执行；没有强信号时，不为了把钱投出去而硬买。",
+        f"- **候选方向**：{candidate_text}；候选只代表中长期观察优先级，不代表今天买。",
         "- **执行纪律**：先看仓位上限、回撤档位、基金穿透和ETF折溢价，再决定是否手动操作。",
     ]
     if attack_blockers:
@@ -1912,7 +1913,7 @@ def build_portfolio_brief(
     )
     fixed_buy_pool_lines = _fixed_buy_pool_lines(fixed_buy_pool_rows)
     fixed_pool_history_panel = build_fixed_pool_60d_panel(portfolio, event_route_rows, fixed_pool_history)
-    fixed_pool_backfill_lines = fixed_pool_history_panel.get("backfill_lines") or ["- 固定可买池历史回填暂不可用。"]
+    fixed_pool_backfill_lines = fixed_pool_history_panel.get("backfill_lines") or ["- 固定候选池历史回填暂不可用。"]
     fixed_pool_win_lines = fixed_pool_history_panel.get("win_lines") or ["- T+1/T+3/T+5 先手胜率暂不可用。"]
     action_slot_lines = _action_slot_lines(portfolio, fixed_buy_pool_rows, reduce_candidates, portfolio_quotes)
     annual_objective_lines = _annual_objective_lines(portfolio)
@@ -1955,20 +1956,20 @@ def build_portfolio_brief(
         "- **保险仓**：`华安黄金ETF联接A`。",
     ]
 
-    lines.extend(["", "## 今日动作面板", ""])
+    lines.extend(["", "## 今日纪律面板", ""])
     lines.extend(action_board_lines)
     lines.extend(["", "## A股本土风格面板", ""])
     lines.extend(["", "## A股风格阶段面板", ""])
     lines.extend(local_market_lines)
-    lines.extend(["", "## 固定可买池", ""])
+    lines.extend(["", "## 固定候选池", ""])
     lines.extend(fixed_buy_pool_lines)
-    lines.extend(["", "## 固定可买池120/250日回填", ""])
+    lines.extend(["", "## 固定候选池120/250日回填", ""])
     lines.extend(fixed_pool_backfill_lines)
     lines.extend(["", "## T+1/T+3/T+5先手胜率面板", ""])
     lines.extend(fixed_pool_win_lines)
     lines.extend(["", "## 写死减仓规则", ""])
     lines.extend(hard_reduce_rule_lines)
-    lines.extend(["", "## 今天3个动作档位", ""])
+    lines.extend(["", "## 今天纪律档位", ""])
     lines.extend(action_slot_lines)
     lines.extend(["", "## 今日3大事件→A股/ETF映射", ""])
     lines.extend(event_route_lines)

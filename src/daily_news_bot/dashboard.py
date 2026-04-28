@@ -445,9 +445,9 @@ def _action_guidance_items(payload: dict[str, Any]) -> list[tuple[str, str, str]
     portfolio = payload.get("portfolio") or {}
     if portfolio.get("private_mode"):
         return [
-            ("当前动作", "已生成私密版", "具体组合建议看飞书；公开网页不展示持仓和交易流水。"),
-            ("继续持有", "看飞书", "需要持仓、成本和纪律线，已从私密配置计算。"),
-            ("补仓/买别的", "看触发条件", "公开页只显示新闻与价格，不给个人化买卖判断。"),
+            ("投资模式", "中长期纪律", "默认不因单日新闻交易；公开页只展示新闻、价格和风险状态。"),
+            ("今日处理", "默认不动", "具体仓位纪律看飞书私密推送；没有触发就继续持有。"),
+            ("何时动手", "只看触发", "回撤、仓位超线、折溢价/流动性异常或你主动回执后才复核。"),
             ("隐私保护", "不公开", "组合估值、AI 暴露、黄金仓位和历史缓存不发布到 Pages。"),
         ]
     if portfolio.get("enabled"):
@@ -455,17 +455,17 @@ def _action_guidance_items(payload: dict[str, Any]) -> list[tuple[str, str, str]
         for raw in portfolio.get("action_slot_lines") or []:
             line = _strip_markdown(raw)
             if line:
-                rows.append(("组合动作", _shorten(line, 92), "按配置生成；仍需复核实时价格、流动性和仓位纪律。"))
+                rows.append(("纪律提醒", _shorten(line, 92), "用于复核，不是每日买卖指令；仍需确认价格、流动性和仓位。"))
             if len(rows) >= 4:
                 break
         if rows:
             return rows
-        return [("当前动作", "观察", "组合配置已接入，但今天没有明确触发动作。")]
+        return [("今日处理", "默认不动", "组合配置已接入，但今天没有触发需要处理的纪律项。")]
 
     return [
-        ("当前动作", "观察", "缺少线上持仓配置，不生成买卖判断。"),
+        ("投资模式", "中长期纪律", "缺少线上持仓配置，不生成买卖判断。"),
         ("继续持有", "待组合接入", "需要知道持仓、成本、目标比例和纪律线。"),
-        ("补仓/买别的", "先不自动给", "需要现金、候选池、风险预算和买入规则。"),
+        ("补仓/换仓", "先不自动给", "需要现金、候选池、风险预算和买入规则。"),
         ("组合接入", "建议走私密", "默认只推飞书或 Actions 产物，不放公开网页。"),
     ]
 
@@ -481,11 +481,11 @@ def _action_guidance_section(payload: dict[str, Any]) -> str:
             "</div>"
         )
     note = (
-        "这不是交易指令；接入组合后也会输出“复核/观察/候选/纪律提醒”，"
-        "动手前仍要确认价格、流动性和个人仓位约束。"
+        "日报默认不催买卖；它只把新闻、价格和你的仓位纪律放到一起，"
+        "出现触发项时提醒你复核，最终仍由你手动决定。"
     )
     body = '<div class="action-grid">' + "".join(cards) + f'</div><div class="muted-block">{escape(note)}</div>'
-    return _section("今天怎么处理", body, "先把能做和不能做说清楚，避免把新闻摘要误当交易建议。", "wide", "decision")
+    return _section("中长期纪律", body, "默认不动；只有触发风险、回撤、仓位上限或你的操作回执时才需要处理。", "wide", "decision")
 
 
 def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
@@ -540,7 +540,7 @@ def _decision_strip(payload: dict[str, Any]) -> str:
     quality_value = data_quality.get("freshness_status") or "未知"
     quality_note = f"最新新闻约 {_fmt_age(data_quality.get('latest_article_age_hours'))}；提醒触发 {watchlist.get('triggered_count', 0)} 条。"
     items = [
-        ("今天动作", action_value, action_note, "primary"),
+        ("今日纪律", action_value, action_note, "primary"),
         ("最先看", _shorten(top_event, 72), "先确认新闻是否已被油价、黄金、美元、VIX 等价格吸收。", "risk"),
         (receipt_label, receipt_value, receipt_note, receipt_tone),
         ("数据状态", quality_value, quality_note, "neutral"),
@@ -603,14 +603,14 @@ def _hero_panel(payload: dict[str, Any], global_overview: str, market_snapshot: 
         '<section class="hero-panel">'
         '<div class="hero-copy">'
         '<div class="eyebrow">今日简报</div>'
-        "<h2>先看结论，再决定要不要动手</h2>"
+        "<h2>先看风险，再决定是否需要处理</h2>"
         f'<p>{escape(_shorten(global_overview, 230))}</p>'
         f'{_tag_distribution(payload.get("tag_distribution"))}'
         f'{_market_signal_strip(market_snapshot)}'
         "</div>"
         '<div class="hero-stats">'
         + "".join(stat_html)
-        + '<div class="hero-note">有交易就在飞书群发“买入/卖出”；没操作不用回复。</div>'
+        + '<div class="hero-note">默认不操作；有交易才在飞书群发“买入/卖出”，没操作不用回复。</div>'
         "</div>"
         "</section>"
     )
@@ -671,11 +671,12 @@ def _path_links(output_paths: dict[str, Any], dashboard: dict[str, Any]) -> str:
 
 def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     result = []
+    state_label = {"可买": "可复核", "减仓": "减仓复核"}
     for row in rows or []:
         result.append(
             [
                 escape(f"{_text(row.get('name'), '')} ({_text(row.get('code'), '')})"),
-                escape(_text(row.get("state"), "观察")),
+                escape(state_label.get(_text(row.get("state"), "观察"), _text(row.get("state"), "观察"))),
                 escape(_text(row.get("amount_band"))),
                 escape(_fmt_pct(row.get("day_change_pct"))),
                 escape(_text(row.get("role"))),
@@ -757,7 +758,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
         sections.append(
             _section(
                 "组合配置（私密）",
-                '<div class="muted-block">组合配置已接入本次运行，但公开网页不会展示持仓、成本、交易流水、组合估值、AI 暴露、黄金仓位和历史缓存。具体动作提示请看飞书推送。</div>',
+                '<div class="muted-block">组合配置已接入本次运行，但公开网页不会展示持仓、成本、交易流水、组合估值、AI 暴露、黄金仓位和历史缓存。具体纪律提示请看飞书推送。</div>',
                 "默认保护你的个人仓位；如需公开展示，需要单独开启 PORTFOLIO_PUBLIC_OUTPUTS。",
                 "wide",
             )
@@ -776,10 +777,10 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
 
     sections.extend(
         [
-            _section("今日动作", _render_list(portfolio.get("action_slot_lines"), 5), "只展示需要复核的动作，不替代交易指令。"),
+            _section("纪律提醒", _render_list(portfolio.get("action_slot_lines"), 5), "只展示需要复核的事项，不替代交易指令。"),
             _section("A 股阶段", _render_list(portfolio.get("local_market_lines"), 8)),
             _section(
-                "固定可买池",
+                "固定候选池",
                 _render_table(
                     ["标的", "状态", "金额档位", "当日变化", "角色", "原因"],
                     _fixed_pool_rows(portfolio.get("fixed_buy_pool_rows")),
@@ -787,7 +788,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
                 class_name="wide",
             ),
             _section(
-                "固定可买池回填",
+                "候选池回填",
                 _render_table(
                     ["标的", "主题", "覆盖天数", "20日", "60日", "120日", "250日", "最新"],
                     _backfill_rows(portfolio.get("fixed_pool_backfill_rows")),
