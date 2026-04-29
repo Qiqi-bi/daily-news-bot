@@ -247,7 +247,7 @@ def build_strategic_lens(
     market_snapshot: dict[str, Any] | None = None,
     limit: int = 5,
 ) -> dict[str, Any]:
-    rows: list[dict[str, Any]] = []
+    candidates: list[tuple[float, dict[str, Any]]] = []
     seen_clusters: set[str] = set()
     for cluster in clusters:
         if cluster.cluster_id in seen_clusters:
@@ -257,26 +257,37 @@ def build_strategic_lens(
             continue
         theme_key, rule, score = best
         representative = cluster.representative
-        rows.append(
-            {
-                "cluster_id": cluster.cluster_id,
-                "title": representative.title,
-                "theme_key": theme_key,
-                "theme_label": rule["label"],
-                "score": score,
-                "question": rule["question"],
-                "constraint": rule["constraint"],
-                "game_read": rule["game_read"],
-                "confirm": rule["confirm"],
-                "portfolio_note": rule["portfolio_note"],
-                "price_check": _market_check(theme_key, market_snapshot),
-                "direction": cluster.direction,
-                "certainty": cluster.certainty,
-                "credibility_label": cluster.credibility_label,
-                "confirmed_source_count": cluster.confirmed_source_count,
-            }
-        )
+        row = {
+            "cluster_id": cluster.cluster_id,
+            "title": representative.title,
+            "theme_key": theme_key,
+            "theme_label": rule["label"],
+            "score": score,
+            "question": rule["question"],
+            "constraint": rule["constraint"],
+            "game_read": rule["game_read"],
+            "confirm": rule["confirm"],
+            "portfolio_note": rule["portfolio_note"],
+            "price_check": _market_check(theme_key, market_snapshot),
+            "direction": cluster.direction,
+            "certainty": cluster.certainty,
+            "credibility_label": cluster.credibility_label,
+            "confirmed_source_count": cluster.confirmed_source_count,
+        }
+        priority_score = float(score) * 10 + float(cluster.score or 0)
+        candidates.append((priority_score, row))
         seen_clusters.add(cluster.cluster_id)
+    candidates.sort(key=lambda item: item[0], reverse=True)
+
+    rows: list[dict[str, Any]] = []
+    theme_counts: dict[str, int] = {}
+    for _, row in candidates:
+        theme_key = str(row.get("theme_key") or "")
+        current_count = theme_counts.get(theme_key, 0)
+        if current_count >= 2:
+            continue
+        rows.append(row)
+        theme_counts[theme_key] = current_count + 1
         if len(rows) >= limit:
             break
 
@@ -284,6 +295,7 @@ def build_strategic_lens(
         summary_lines = [
             f"今天识别到 {len(rows)} 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。",
             f"最先看：{rows[0]['theme_label']}｜{rows[0]['question']}",
+            "固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。",
             "中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。",
         ]
     else:
