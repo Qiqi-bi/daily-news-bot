@@ -24,6 +24,7 @@ from .official_pages import collect_official_page_articles_with_status
 from .portfolio import build_portfolio_brief, load_portfolio
 from .portfolio_quotes import fetch_portfolio_quotes, update_portfolio_history
 from .portfolio_weekly import build_weekly_portfolio_review
+from .prediction_lens import build_prediction_lens, render_prediction_lens_markdown
 from .ranking import rank_clusters, summarize_tag_distribution
 from .report import render_report, save_json, save_text
 from .senders import send_feishu_message
@@ -543,6 +544,22 @@ def _build_feishu_strategic_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_prediction_lines(payload: dict[str, Any]) -> list[str]:
+    lens = payload.get("prediction_lens") or {}
+    cards = lens.get("cards") or []
+    if not cards:
+        return []
+
+    result: list[str] = []
+    for card in cards[:2]:
+        result.append(
+            f"{card.get('label') or '预警'}｜{card.get('window') or '待定'}｜"
+            f"置信 {card.get('confidence') or '未知'}：{_feishu_short(card.get('prediction'), 82)}"
+        )
+    result.append("验证：至少等政策/订单/价格/相对强弱中两项确认；没确认不追。")
+    return result
+
+
 def _build_feishu_receipt_lines() -> list[str]:
     return [
         "有交易：复制一行回给我，我来入账；没操作不用回复，系统按原仓位继续。",
@@ -616,6 +633,11 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     if strategic_lines:
         lines.extend(["", "**资源博弈视角**"])
         lines.extend(f"- {line}" for line in strategic_lines)
+
+    prediction_lines = _build_feishu_prediction_lines(payload)
+    if prediction_lines:
+        lines.extend(["", "**发酵预警**"])
+        lines.extend(f"- {line}" for line in prediction_lines)
 
     market_items = (payload.get("market_snapshot") or {}).get("items") or []
     if market_items:
@@ -840,6 +862,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         credibility_summary=credibility_summary,
     )
     strategic_lens = build_strategic_lens(top_clusters, market_snapshot)
+    prediction_lens = build_prediction_lens(top_clusters, market_snapshot)
 
     portfolio_brief = ""
     portfolio_payload: dict[str, Any] = {"enabled": False}
@@ -955,6 +978,9 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     strategic_lens_markdown = render_strategic_lens_markdown(strategic_lens)
     if strategic_lens_markdown:
         global_report = global_report.rstrip() + "\n\n" + strategic_lens_markdown + "\n"
+    prediction_lens_markdown = render_prediction_lens_markdown(prediction_lens)
+    if prediction_lens_markdown:
+        global_report = global_report.rstrip() + "\n\n" + prediction_lens_markdown + "\n"
     global_report = global_report.rstrip() + "\n\n" + _render_data_quality_section(data_quality) + "\n"
     report = f"{portfolio_brief}\n\n---\n\n{global_report}" if portfolio_brief else global_report
 
@@ -989,6 +1015,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "api_source_status": api_source_status,
         "market_snapshot": market_snapshot,
         "strategic_lens": strategic_lens,
+        "prediction_lens": prediction_lens,
         "tracking_summary": tracking_summary,
         "tracking_history_update_error": history_update_error,
         "portfolio": portfolio_payload,

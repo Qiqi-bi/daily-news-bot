@@ -534,6 +534,51 @@ def _strategic_lens_section(payload: dict[str, Any]) -> str:
     )
 
 
+def _prediction_lens_section(payload: dict[str, Any]) -> str:
+    lens = payload.get("prediction_lens") or {}
+    summary_lines = lens.get("summary_lines") or [
+        "今天没有生成强发酵预警卡；继续按核心事件、资源博弈和纪律面板观察。",
+        "如果只有单一叙事，没有政策、订单或价格确认，先不升级。",
+    ]
+    cards = lens.get("cards") or []
+    framework_lines = lens.get("framework_lines") or []
+    summary_html = "".join(f"<li>{escape(_strip_markdown(line))}</li>" for line in summary_lines[:3])
+    body = f'<div class="prediction-summary"><ul>{summary_html}</ul></div>'
+
+    if cards:
+        card_html = []
+        for card in cards[:5]:
+            tags = (
+                _pill(card.get("label") or "预警", "tag")
+                + _pill(f"窗口 {card.get('window') or '待定'}", "neutral")
+                + _pill(f"置信 {card.get('confidence') or '未知'}", "importance")
+            )
+            card_html.append(
+                '<article class="prediction-card">'
+                f'<div class="prediction-card-head">{tags}</div>'
+                f'<h3>{escape(_shorten(card.get("prediction"), 100))}</h3>'
+                f'<p>{escape(_shorten(card.get("why"), 150))}</p>'
+                f'<div class="prediction-row"><b>验证</b><span>{escape(_shorten(card.get("verify"), 145))}</span></div>'
+                f'<div class="prediction-row"><b>失效</b><span>{escape(_shorten(card.get("invalidate"), 145))}</span></div>'
+                f'<div class="prediction-note">{escape(_shorten(card.get("discipline"), 135))}</div>'
+                "</article>"
+            )
+        body += '<div class="prediction-grid">' + "".join(card_html) + "</div>"
+    else:
+        body += _render_list(framework_lines, 5)
+
+    disclaimer = lens.get("disclaimer")
+    if disclaimer:
+        body += f'<div class="muted-block">{escape(disclaimer)}</div>'
+    return _section(
+        "发酵预警卡片",
+        body,
+        "提前找可能发酵的主线、验证条件和失效条件；不是买卖信号。",
+        "wide",
+        "predictions",
+    )
+
+
 def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
     status = payload.get("feishu_receipts") or {}
     if not status or status.get("status") == "not_run":
@@ -667,6 +712,7 @@ def _quick_nav(archive_url: Any = "") -> str:
         ("决策", "#decision"),
         ("事件", "#events"),
         ("博弈", "#strategy"),
+        ("预警", "#predictions"),
         ("市场", "#market"),
         ("提醒", "#watchlist"),
         ("回执", "#receipts"),
@@ -901,6 +947,15 @@ def _metric_cards(payload: dict[str, Any]) -> str:
                 "资源博弈",
                 f'{strategic_lens.get("match_count", 0)} 条',
                 "供给、通道、技术、结算筹码",
+            )
+        )
+    prediction_lens = payload.get("prediction_lens") or {}
+    if prediction_lens.get("enabled"):
+        cards.append(
+            _metric(
+                "发酵预警",
+                f'{prediction_lens.get("card_count", 0)} 张',
+                "主线、窗口、验证和失效条件",
             )
         )
     _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
@@ -1339,6 +1394,64 @@ h1 {
   padding-top: 8px;
   border-top: 1px solid var(--line-soft);
 }
+.prediction-summary {
+  border: 1px solid #d6eadf;
+  background: #f4fbf7;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.prediction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+  gap: 10px;
+}
+.prediction-card {
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: #fff;
+  padding: 13px;
+  min-height: 245px;
+}
+.prediction-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.prediction-card h3 {
+  margin: 0 0 9px;
+  font-size: 15px;
+  line-height: 1.38;
+}
+.prediction-card p {
+  margin: 0 0 10px;
+  color: #27364b;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.prediction-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: 13px;
+}
+.prediction-row b {
+  color: #334155;
+}
+.prediction-row span,
+.prediction-note {
+  color: var(--muted);
+}
+.prediction-note {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 8px;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.5;
+}
 .receipt-banner {
   border: 1px solid var(--line);
   border-left: 4px solid #94a3b8;
@@ -1713,6 +1826,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     sections = [
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
+        _prediction_lens_section(payload),
         _action_guidance_section(payload),
         _section(
             "市场快照",
