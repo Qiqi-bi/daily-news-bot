@@ -579,6 +579,44 @@ def _prediction_lens_section(payload: dict[str, Any]) -> str:
     )
 
 
+def _logic_playbook_section(payload: dict[str, Any]) -> str:
+    playbook = payload.get("logic_playbook") or {}
+    summary_lines = playbook.get("summary_lines") or [
+        "系统每天先用固定框架看新闻，再决定是否生成预警。",
+        "没有验证条件的判断，只进入观察，不进入操作。",
+    ]
+    cards = playbook.get("cards") or []
+    summary_html = "".join(f"<li>{escape(_strip_markdown(line))}</li>" for line in summary_lines[:3])
+    body = f'<div class="playbook-summary"><ul>{summary_html}</ul></div>'
+
+    if cards:
+        items = []
+        for card in cards[:9]:
+            items.append(
+                '<article class="playbook-card">'
+                f'<h3>{escape(_text(card.get("name"), "框架"))}</h3>'
+                f'<div class="playbook-question">{escape(_shorten(card.get("question"), 70))}</div>'
+                f'<p>{escape(_shorten(card.get("use_when"), 120))}</p>'
+                f'<div class="playbook-confirm">{escape(_shorten(card.get("confirm"), 125))}</div>'
+                f'<div class="playbook-avoid">{escape(_shorten(card.get("avoid"), 115))}</div>'
+                "</article>"
+            )
+        body += '<div class="playbook-grid">' + "".join(items) + "</div>"
+    else:
+        body += _empty("暂无思维框架")
+
+    disclaimer = playbook.get("disclaimer")
+    if disclaimer:
+        body += f'<div class="muted-block">{escape(disclaimer)}</div>'
+    return _section(
+        "思维框架库",
+        body,
+        "这些是系统看新闻的固定问题，用来把小作文变成可验证的研究清单。",
+        "wide",
+        "playbook",
+    )
+
+
 def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
     status = payload.get("feishu_receipts") or {}
     if not status or status.get("status") == "not_run":
@@ -713,6 +751,7 @@ def _quick_nav(archive_url: Any = "") -> str:
         ("事件", "#events"),
         ("博弈", "#strategy"),
         ("预警", "#predictions"),
+        ("框架", "#playbook"),
         ("市场", "#market"),
         ("提醒", "#watchlist"),
         ("回执", "#receipts"),
@@ -958,6 +997,9 @@ def _metric_cards(payload: dict[str, Any]) -> str:
                 "主线、窗口、验证和失效条件",
             )
         )
+    logic_playbook = payload.get("logic_playbook") or {}
+    if logic_playbook.get("enabled"):
+        cards.append(_metric("思维框架", f'{len(logic_playbook.get("cards") or [])} 条', "每天固定检查"))
     _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
     cards.append(_metric("操作回执", receipt_value, receipt_note, "accent" if receipt_tone == "good" else ""))
     if portfolio.get("private_mode"):
@@ -1452,6 +1494,53 @@ h1 {
   font-size: 13px;
   line-height: 1.5;
 }
+.playbook-summary {
+  border: 1px solid #e7d7ff;
+  background: #fbf7ff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.playbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(245px, 100%), 1fr));
+  gap: 10px;
+}
+.playbook-card {
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+  min-height: 210px;
+}
+.playbook-card h3 {
+  margin: 0 0 7px;
+  font-size: 15px;
+}
+.playbook-question {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 720;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.playbook-card p,
+.playbook-confirm,
+.playbook-avoid {
+  color: #27364b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+.playbook-confirm {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-soft);
+}
+.playbook-avoid {
+  margin-top: 7px;
+  color: var(--muted);
+}
 .receipt-banner {
   border: 1px solid var(--line);
   border-left: 4px solid #94a3b8;
@@ -1827,6 +1916,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),
+        _logic_playbook_section(payload),
         _action_guidance_section(payload),
         _section(
             "市场快照",

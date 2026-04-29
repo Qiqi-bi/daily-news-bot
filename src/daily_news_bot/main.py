@@ -19,6 +19,7 @@ from .execution_checks import fetch_execution_checks
 from .fixed_pool_history import fetch_fixed_pool_history
 from .fetchers import collect_articles_with_status
 from .fund_holdings import fetch_portfolio_fund_holdings
+from .logic_playbook import build_logic_playbook, render_logic_playbook_markdown
 from .market_data import fetch_market_snapshot
 from .official_pages import collect_official_page_articles_with_status
 from .portfolio import build_portfolio_brief, load_portfolio
@@ -863,6 +864,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     )
     strategic_lens = build_strategic_lens(top_clusters, market_snapshot)
     prediction_lens = build_prediction_lens(top_clusters, market_snapshot)
+    logic_playbook = build_logic_playbook()
 
     portfolio_brief = ""
     portfolio_payload: dict[str, Any] = {"enabled": False}
@@ -981,6 +983,9 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     prediction_lens_markdown = render_prediction_lens_markdown(prediction_lens)
     if prediction_lens_markdown:
         global_report = global_report.rstrip() + "\n\n" + prediction_lens_markdown + "\n"
+    logic_playbook_markdown = render_logic_playbook_markdown(logic_playbook)
+    if logic_playbook_markdown:
+        global_report = global_report.rstrip() + "\n\n" + logic_playbook_markdown + "\n"
     global_report = global_report.rstrip() + "\n\n" + _render_data_quality_section(data_quality) + "\n"
     report = f"{portfolio_brief}\n\n---\n\n{global_report}" if portfolio_brief else global_report
 
@@ -1016,6 +1021,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "market_snapshot": market_snapshot,
         "strategic_lens": strategic_lens,
         "prediction_lens": prediction_lens,
+        "logic_playbook": logic_playbook,
         "tracking_summary": tracking_summary,
         "tracking_history_update_error": history_update_error,
         "portfolio": portfolio_payload,
