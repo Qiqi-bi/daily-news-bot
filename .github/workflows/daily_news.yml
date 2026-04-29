@@ -514,6 +514,12 @@ jobs:
           grep -qi 'hero-panel' /tmp/dashboard.html
           grep -qi 'status-bar' /tmp/dashboard.html
           grep -qi 'decision-strip' /tmp/dashboard.html
+          grep -qi '中长期纪律' /tmp/dashboard.html
+          grep -qi '默认不动' /tmp/dashboard.html
+          grep -qi '资源博弈视角' /tmp/dashboard.html
+          ! grep -qi '今日3个动作' /tmp/dashboard.html
+          ! grep -qi '今天3个动作' /tmp/dashboard.html
+          ! grep -qi '今天怎么处理' /tmp/dashboard.html
           ! grep -qi '/home/runner' /tmp/dashboard.html
           ! grep -qi 'file://' /tmp/dashboard.html
 

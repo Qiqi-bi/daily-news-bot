@@ -488,6 +488,52 @@ def _action_guidance_section(payload: dict[str, Any]) -> str:
     return _section("中长期纪律", body, "默认不动；只有触发风险、回撤、仓位上限或你的操作回执时才需要处理。", "wide", "decision")
 
 
+def _strategic_lens_section(payload: dict[str, Any]) -> str:
+    lens = payload.get("strategic_lens") or {}
+    summary_lines = lens.get("summary_lines") or [
+        "三问法：谁被卡、谁拿筹码、钱在让谁完成什么任务。",
+        "没有价格、政策或订单确认时，只记录观察，不做动作。",
+    ]
+    framework_lines = lens.get("framework_lines") or []
+    rows = lens.get("rows") or []
+
+    summary_html = "".join(f"<li>{escape(_strip_markdown(line))}</li>" for line in summary_lines[:3])
+    body = f'<div class="strategy-summary"><ul>{summary_html}</ul></div>'
+
+    if rows:
+        cards = []
+        for row in rows[:5]:
+            tags = (
+                _pill(row.get("theme_label") or "资源约束", "tag")
+                + _pill(f"可信 {row.get('credibility_label') or '未知'}", "neutral")
+                + _pill(row.get("direction") or "中性", "neutral")
+            )
+            cards.append(
+                '<article class="strategy-card">'
+                f'<div class="strategy-card-head">{tags}</div>'
+                f'<h3>{escape(_shorten(row.get("title"), 92))}</h3>'
+                f'<div class="strategy-question">{escape(_text(row.get("question"), "先问约束在哪里"))}</div>'
+                f'<p>{escape(_shorten(row.get("game_read"), 145))}</p>'
+                f'<div class="strategy-check">{escape(_shorten(row.get("price_check"), 135))}</div>'
+                f'<div class="strategy-note">{escape(_shorten(row.get("portfolio_note"), 135))}</div>'
+                "</article>"
+            )
+        body += '<div class="strategy-grid">' + "".join(cards) + "</div>"
+    else:
+        body += _render_list(framework_lines, 5)
+
+    disclaimer = lens.get("disclaimer")
+    if disclaimer:
+        body += f'<div class="muted-block">{escape(disclaimer)}</div>'
+    return _section(
+        "资源博弈视角",
+        body,
+        "把新闻拆成供给、技术、通道、结算和政策许可，先判断筹码变化，再看价格是否确认。",
+        "wide",
+        "strategy",
+    )
+
+
 def _receipt_status(payload: dict[str, Any]) -> tuple[str, str, str, str]:
     status = payload.get("feishu_receipts") or {}
     if not status or status.get("status") == "not_run":
@@ -620,6 +666,7 @@ def _quick_nav(archive_url: Any = "") -> str:
     links = [
         ("决策", "#decision"),
         ("事件", "#events"),
+        ("博弈", "#strategy"),
         ("市场", "#market"),
         ("提醒", "#watchlist"),
         ("回执", "#receipts"),
@@ -847,6 +894,15 @@ def _metric_cards(payload: dict[str, Any]) -> str:
         )
     elif translations.get("error"):
         cards.append(_metric("外文速译", "未完成", "翻译失败时保留原文"))
+    strategic_lens = payload.get("strategic_lens") or {}
+    if strategic_lens.get("enabled"):
+        cards.append(
+            _metric(
+                "资源博弈",
+                f'{strategic_lens.get("match_count", 0)} 条',
+                "供给、通道、技术、结算筹码",
+            )
+        )
     _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
     cards.append(_metric("操作回执", receipt_value, receipt_note, "accent" if receipt_tone == "good" else ""))
     if portfolio.get("private_mode"):
@@ -1229,6 +1285,60 @@ h1 {
   font-size: 12px;
   margin-top: 7px;
 }
+.strategy-summary {
+  border: 1px solid #cfe2ff;
+  background: #f6faff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 10px;
+}
+.strategy-card {
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: #fff;
+  padding: 13px;
+  min-height: 210px;
+}
+.strategy-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.strategy-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.38;
+}
+.strategy-question {
+  color: var(--blue);
+  font-weight: 720;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+.strategy-card p,
+.strategy-check,
+.strategy-note {
+  margin: 0;
+  color: #27364b;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.strategy-check {
+  margin-top: 9px;
+  color: #475569;
+}
+.strategy-note {
+  margin-top: 8px;
+  color: var(--muted);
+  padding-top: 8px;
+  border-top: 1px solid var(--line-soft);
+}
 .receipt-banner {
   border: 1px solid var(--line);
   border-left: 4px solid #94a3b8;
@@ -1602,6 +1712,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
 
     sections = [
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
+        _strategic_lens_section(payload),
         _action_guidance_section(payload),
         _section(
             "市场快照",

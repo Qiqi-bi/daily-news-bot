@@ -27,6 +27,7 @@ from .portfolio_weekly import build_weekly_portfolio_review
 from .ranking import rank_clusters, summarize_tag_distribution
 from .report import render_report, save_json, save_text
 from .senders import send_feishu_message
+from .strategic_lens import build_strategic_lens, render_strategic_lens_markdown
 from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
 from .translations import translate_cluster_highlights
@@ -527,6 +528,21 @@ def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
     ]
 
 
+def _build_feishu_strategic_lines(payload: dict[str, Any]) -> list[str]:
+    lens = payload.get("strategic_lens") or {}
+    rows = lens.get("rows") or []
+    if not rows:
+        return []
+
+    result: list[str] = []
+    for row in rows[:2]:
+        title = _feishu_short(row.get("title") or "未命名事件", 42)
+        game_read = _feishu_short(row.get("game_read") or row.get("question") or "", 74)
+        result.append(f"{row.get('theme_label') or '资源约束'}：{title}｜{game_read}")
+    result.append("纪律：先升级观察和确认条件，不把叙事直接变成买卖。")
+    return result
+
+
 def _build_feishu_receipt_lines() -> list[str]:
     return [
         "有交易：复制一行回给我，我来入账；没操作不用回复，系统按原仓位继续。",
@@ -595,6 +611,11 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
             )
     else:
         lines.append("暂无核心事件。")
+
+    strategic_lines = _build_feishu_strategic_lines(payload)
+    if strategic_lines:
+        lines.extend(["", "**资源博弈视角**"])
+        lines.extend(f"- {line}" for line in strategic_lines)
 
     market_items = (payload.get("market_snapshot") or {}).get("items") or []
     if market_items:
@@ -818,6 +839,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         official_page_articles_count=len(official_page_articles),
         credibility_summary=credibility_summary,
     )
+    strategic_lens = build_strategic_lens(top_clusters, market_snapshot)
 
     portfolio_brief = ""
     portfolio_payload: dict[str, Any] = {"enabled": False}
@@ -930,6 +952,9 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         market_snapshot=market_snapshot,
         tracking_summary=tracking_summary,
     )
+    strategic_lens_markdown = render_strategic_lens_markdown(strategic_lens)
+    if strategic_lens_markdown:
+        global_report = global_report.rstrip() + "\n\n" + strategic_lens_markdown + "\n"
     global_report = global_report.rstrip() + "\n\n" + _render_data_quality_section(data_quality) + "\n"
     report = f"{portfolio_brief}\n\n---\n\n{global_report}" if portfolio_brief else global_report
 
@@ -963,6 +988,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "rss_source_status": rss_source_status,
         "api_source_status": api_source_status,
         "market_snapshot": market_snapshot,
+        "strategic_lens": strategic_lens,
         "tracking_summary": tracking_summary,
         "tracking_history_update_error": history_update_error,
         "portfolio": portfolio_payload,
