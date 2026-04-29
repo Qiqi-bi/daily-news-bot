@@ -117,6 +117,19 @@ RUMOR_TERMS = (
     "speculated",
     "circulating online",
     "viral post",
+    "baseless",
+    "without evidence",
+    "no evidence",
+    "conspiracy theory",
+    "false flag",
+    "inside job",
+    "deep state",
+    "plot behind",
+    "幕后",
+    "阴谋论",
+    "自导自演",
+    "无证据",
+    "未证实",
 )
 
 SOCIAL_ONLY_TERMS = (
