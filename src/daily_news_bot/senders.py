@@ -17,7 +17,7 @@ POST_TOTAL_LIMIT = 24000
 def _trim_content(content: str, limit: int) -> str:
     if len(content) <= limit:
         return content
-    return content[: limit - 80].rstrip() + "\n\n内容较长，已截断；完整内容请打开 Dashboard。"
+    return content[: limit - 80].rstrip() + "\n\n内容较长，已截断；完整内容请打开网页。"
 
 
 def _chunk_text(content: str, chunk_size: int = CARD_ELEMENT_LIMIT) -> list[str]:
@@ -38,7 +38,7 @@ def _chunk_text(content: str, chunk_size: int = CARD_ELEMENT_LIMIT) -> list[str]
         remaining = remaining[split_at:].strip()
 
     if remaining and chunks:
-        chunks[-1] = _trim_content(chunks[-1] + "\n\n后续内容较长，已截断；完整内容请打开 Dashboard。", chunk_size)
+        chunks[-1] = _trim_content(chunks[-1] + "\n\n后续内容较长，已截断；完整内容请打开网页。", chunk_size)
     return [chunk for chunk in chunks if chunk]
 
 
@@ -72,7 +72,7 @@ def _button_url(content: str) -> str:
         stripped = line.strip()
         if stripped.startswith("https://") or stripped.startswith("http://"):
             return stripped
-        if stripped.startswith("Dashboard："):
+        if stripped.startswith(("Dashboard：", "网页：")):
             value = stripped.split("：", 1)[1].strip()
             if value.startswith(("https://", "http://")):
                 return value
@@ -106,7 +106,7 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             "tag": "div",
             "text": {
                 "tag": "lark_md",
-                "content": "**读法**：先看“中长期纪律”和“事后验算”，再看核心事件；默认不操作，有交易才回执。本卡不是交易指令，不保证收益。",
+                "content": "**读法**：飞书只做低敏提醒入口，不展示新闻标题、价格、标的、仓位和操作细节；完整内容打开网页。本卡不是交易指令，不保证收益。",
             },
         },
     ]
@@ -127,7 +127,7 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
                 "actions": [
                     {
                         "tag": "button",
-                        "text": {"tag": "plain_text", "content": "打开 Dashboard"},
+                        "text": {"tag": "plain_text", "content": "打开网页"},
                         "url": dashboard_url,
                         "type": "primary",
                     }

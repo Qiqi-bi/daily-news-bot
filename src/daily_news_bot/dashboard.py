@@ -513,6 +513,44 @@ def _action_guidance_section(payload: dict[str, Any]) -> str:
     return _section("中长期纪律", body, "默认不动；只有触发风险、回撤、仓位上限或你的操作回执时才需要处理。", "wide", "decision")
 
 
+def _system_boundary_section(payload: dict[str, Any]) -> str:
+    validation = payload.get("signal_validation") or {}
+    watchlist = payload.get("watchlist") or {}
+    signal_count = int(validation.get("signal_count") or 0)
+    triggered_count = int(watchlist.get("triggered_count") or 0)
+    items = [
+        (
+            "不能保证赚钱",
+            "过滤 + 纪律",
+            "它负责把新闻、价格、提醒和验证条件整理清楚；不承诺收益，也不把单日叙事直接变成交易。",
+        ),
+        (
+            "持仓靠回执更新",
+            "不自动猜测",
+            "系统只认你在飞书回过的买入/卖出；没回执就按原仓位继续，避免把未发生的操作写进判断。",
+        ),
+        (
+            "行业逻辑继续养",
+            f"{signal_count} 条验算",
+            "人工智能、黄金、半导体材料、能源电力、关键矿产等主线会继续记录样本，用命中率决定加权或降权。",
+        ),
+    ]
+    cards = []
+    for label, value, note in items:
+        cards.append(
+            '<div class="action-card boundary-card">'
+            f'<div class="action-label">{escape(label)}</div>'
+            f'<div class="action-value">{escape(value)}</div>'
+            f'<div class="action-note">{escape(note)}</div>'
+            "</div>"
+        )
+    note = (
+        f"今天提醒触发 {triggered_count} 条。结论只给复核顺序：先确认价格和证据，再看仓位纪律，最后由你手动决定。"
+    )
+    body = '<div class="action-grid">' + "".join(cards) + f'</div><div class="muted-block">{escape(note)}</div>'
+    return _section("系统边界", body, "这三条是使用前提：不稳赢、不猜持仓、不把行业故事直接当买卖。", "wide", "boundary")
+
+
 def _strategic_lens_section(payload: dict[str, Any]) -> str:
     lens = payload.get("strategic_lens") or {}
     summary_lines = lens.get("summary_lines") or [
@@ -773,6 +811,7 @@ def _hero_panel(payload: dict[str, Any], global_overview: str, market_snapshot: 
 def _quick_nav(archive_url: Any = "") -> str:
     links = [
         ("决策", "#decision"),
+        ("边界", "#boundary"),
         ("事件", "#events"),
         ("博弈", "#strategy"),
         ("预警", "#predictions"),
@@ -785,7 +824,7 @@ def _quick_nav(archive_url: Any = "") -> str:
     ]
     if _safe_url(archive_url):
         links.append(("归档", archive_url))
-    return '<nav class="quick-nav" aria-label="Dashboard 快速导航">' + "".join(
+    return '<nav class="quick-nav" aria-label="快速导航">' + "".join(
         f'<a href="{escape(href)}">{escape(label)}</a>' for label, href in links
     ) + "</nav>"
 
@@ -800,7 +839,7 @@ def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
 
 def _path_links(output_paths: dict[str, Any], dashboard: dict[str, Any]) -> str:
     pairs = [
-        ("最新 Dashboard", output_paths.get("dashboard_html_url") or dashboard.get("public_url"), "页面根目录"),
+        ("最新网页", output_paths.get("dashboard_html_url") or dashboard.get("public_url"), "页面根目录"),
         ("历史归档", output_paths.get("archive_index_url") or dashboard.get("archive_index_url"), "archive.html"),
         ("本次归档", output_paths.get("archive_url") or dashboard.get("archive_url"), "本次运行快照"),
         ("完整日报 Markdown", output_paths.get("report_md_url") or output_paths.get("report_md_uri"), output_paths.get("report_md_path")),
@@ -1473,6 +1512,10 @@ h1 {
   padding: 12px;
   min-height: 98px;
 }
+.boundary-card {
+  background: #fff;
+  border-top: 3px solid #94a3b8;
+}
 .action-label {
   color: var(--muted);
   font-size: 12px;
@@ -2039,6 +2082,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),
         _signal_validation_section(payload),
+        _system_boundary_section(payload),
         _logic_playbook_section(payload),
         _action_guidance_section(payload),
         _section(
@@ -2071,7 +2115,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
   <div class="wrap">
     <header class="topbar">
       <div>
-        <div class="eyebrow">Daily News Bot</div>
+        <div class="eyebrow">投资雷达</div>
         <h1>每日投资雷达</h1>
         <div class="subtitle">公开页看结论和证据；具体组合动作走飞书私密推送；本页不是交易指令，不保证收益。</div>
       </div>

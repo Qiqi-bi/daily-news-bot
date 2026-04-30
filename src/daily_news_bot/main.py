@@ -668,89 +668,34 @@ def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], tr
 
 
 def _build_feishu_digest(payload: dict[str, Any]) -> str:
-    data_quality = payload.get("data_quality") or {}
-    coverage = data_quality.get("source_coverage") or {}
     watchlist = payload.get("watchlist") or {}
-    clusters = payload.get("clusters") or []
-    translations = _feishu_translation_items(payload)
     dashboard = payload.get("dashboard") or {}
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
-
-    latest_age = data_quality.get("latest_article_age_hours")
-    latest_age_text = "未知" if latest_age is None else ("0 分钟" if float(latest_age) < 0.02 else f"{float(latest_age):.1f} 小时")
-    global_line = _feishu_short(_build_feishu_overview(payload, clusters, translations), 220)
     receipt_line = _build_feishu_receipt_status_line(payload).replace("回执状态：", "")
+    validation = payload.get("signal_validation") or {}
 
     lines: list[str] = [
-        "**20 秒简报**",
-        global_line,
+        "**今日提醒**",
+        "- 日报已生成。飞书只做低敏入口提醒，不展示新闻标题、价格、标的、仓位和操作细节。",
+        "- 完整内容请打开网页；本卡不是交易指令，不保证收益。",
         "",
-        "**中长期纪律**",
-        *[f"- {line}" for line in _build_feishu_action_lines(payload)[:2]],
-        *[f"- {line}" for line in _build_feishu_objective_lines(payload)[:2]],
+        "**系统边界**",
+        "- 收益：这是信息过滤和纪律提醒系统，不是稳赢模型；后续用事后验算校准权重。",
+        "- 持仓：系统只知道你回执过的操作；没回执就按原仓位继续，不猜测你私下有没有动。",
+        "- 行业：行业雷达只决定重点观察什么；样本不够前不自动变成买卖建议。",
         "",
-        "**先看这 3 件事**",
+        "**回执**",
+        f"- {receipt_line}",
+        "- 有交易才回一行中文；没操作不用回。",
     ]
-    if clusters:
-        for index, cluster in enumerate(clusters[:3], start=1):
-            tags = "、".join(_feishu_tag_label(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
-            title = _feishu_short(_feishu_title(cluster, translations), 82)
-            lines.append(
-                f"{index}. {title}｜{cluster.get('direction') or '未知'}｜可信 {cluster.get('credibility_label') or '未知'}｜{tags}"
-            )
-    else:
-        lines.append("暂无核心事件。")
-
-    strategic_lines = _build_feishu_strategic_lines(payload)
-    if strategic_lines:
-        lines.extend(["", "**资源博弈视角**"])
-        lines.extend(f"- {line}" for line in strategic_lines)
-
-    prediction_lines = _build_feishu_prediction_lines(payload)
-    if prediction_lines:
-        lines.extend(["", "**发酵预警**"])
-        lines.extend(f"- {line}" for line in prediction_lines)
-
-    industry_radar_lines = _build_feishu_industry_radar_lines(payload)
-    if industry_radar_lines:
-        lines.extend(["", "**行业雷达**"])
-        lines.extend(f"- {line}" for line in industry_radar_lines)
-
-    validation_lines = _build_feishu_validation_lines(payload)
-    if validation_lines:
-        lines.extend(["", "**事后验算**"])
-        lines.extend(f"- {line}" for line in validation_lines)
-
-    market_items = (payload.get("market_snapshot") or {}).get("items") or []
-    if market_items:
-        lines.extend(["", "**市场快照**"])
-        for item in market_items[:5]:
-            pct = item.get("change_pct")
-            pct_text = "未知" if pct is None else f"{float(pct):+.2f}%"
-            lines.append(f"- {item.get('name') or item.get('symbol')}：{pct_text}，{item.get('movement') or '未知'}")
-
     lines.extend(
         [
             "",
-            "**提醒与回执**",
-            f"- 触发 {watchlist.get('triggered_count', 0)} 条；新增 {watchlist.get('new_count', 0)} 条；有效 {watchlist.get('active_count', 0)} 条。",
-            f"- 回执：{receipt_line}",
-        ]
-    )
-    watch_items = list(watchlist.get("triggered_items") or []) + list(watchlist.get("new_items") or [])
-    for item in watch_items[:2]:
-        title = _feishu_short(_feishu_watch_title(item, clusters, translations), 72)
-        action = _feishu_short(item.get("action") or "", 70)
-        lines.append(f"- {title}" + (f"：{action}" if action else ""))
-
-    lines.extend(
-        [
+            "**状态**",
+            f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；事后验算累计 {validation.get('signal_count', 0)} 条信号。",
+            "- 飞书不放英文原文；也不放可直接照抄的交易细节。",
             "",
-            "**数据**",
-            f"- 最新 {latest_age_text}；RSS {coverage.get('rss_sources_with_articles', 0)}/{coverage.get('rss_sources_configured', 0)}；API {coverage.get('api_sources_with_articles', 0)}/{coverage.get('api_sources_enabled', 0)}；低可信过滤 {data_quality.get('credibility_filtered_articles', 0)} 条。",
-            "- 默认不操作；有交易才回：买入/卖出 代码 金额或份额 价格 原因；没操作不用回。",
-            "",
-            f"Dashboard：{dashboard_url}",
+            f"网页：{dashboard_url}",
         ]
     )
     return "\n".join(lines)
