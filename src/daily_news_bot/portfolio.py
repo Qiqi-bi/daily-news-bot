@@ -10,6 +10,7 @@ import yaml
 from .config import ROOT_DIR
 from .decision_journal import build_event_etf_history
 from .fixed_pool_history import build_fixed_pool_60d_panel
+from .industry_radar import build_industry_radar, render_industry_radar_lines
 from .models import EventCluster
 
 
@@ -1242,8 +1243,9 @@ def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
     lines = ["| 标的 | 状态 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---:|---|---|"]
     for row in rows:
         day_text = _fmt_pct_or_unknown(row.get("day_change_pct"))
+        state = str(row.get("state") or "")
         lines.append(
-            f"| {row.get('name')}({row.get('code')}) | {state_label.get(row.get('state'), row.get('state'))} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
+            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
         )
     return lines
 
@@ -1873,6 +1875,8 @@ def build_portfolio_brief(
     event_impacts = _event_impacts(clusters, portfolio_for_weights)
     holding_impacts = _holding_impacts(portfolio_for_weights, event_impacts)
     candidate_scores = _score_candidate_pool(portfolio, event_impacts, summary)
+    industry_radar = build_industry_radar(portfolio, clusters, event_impacts, candidate_scores)
+    industry_radar_lines = render_industry_radar_lines(industry_radar)
     quote_map = _quote_map(portfolio_quotes)
     monthly_plan_lines = _build_monthly_deployment_plan(summary, portfolio, portfolio_quotes)
     drawdown_lines = _drawdown_trigger_lines(portfolio, portfolio_quotes)
@@ -1958,6 +1962,8 @@ def build_portfolio_brief(
 
     lines.extend(["", "## 今日纪律面板", ""])
     lines.extend(action_board_lines)
+    lines.extend(["", "## 行业雷达", ""])
+    lines.extend(industry_radar_lines)
     lines.extend(["", "## A股本土风格面板", ""])
     lines.extend(["", "## A股风格阶段面板", ""])
     lines.extend(local_market_lines)
@@ -2076,6 +2082,8 @@ def build_portfolio_brief(
         "event_impacts": event_impacts,
         "holding_impacts": [asdict(item) for item in holding_impacts],
         "candidate_scores": candidate_scores,
+        "industry_radar": industry_radar,
+        "industry_radar_lines": industry_radar_lines,
         "local_market_lines": local_market_lines,
         "local_market_payload": local_market_payload,
         "reduce_candidates": reduce_candidates,

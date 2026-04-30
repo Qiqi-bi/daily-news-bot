@@ -818,6 +818,26 @@ def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     return result
 
 
+def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
+    result = []
+    for row in (radar or {}).get("rows") or []:
+        instruments = "、".join(_text(item) for item in row.get("instruments") or [])
+        action = _text(row.get("action"), "")
+        if instruments:
+            action = f"{action} 参考：{instruments}"
+        result.append(
+            [
+                escape(_text(row.get("layer_label"))),
+                escape(_text(row.get("name"))),
+                escape(_text(row.get("status"))),
+                escape(_shorten(row.get("watch"), 120)),
+                escape(_shorten(row.get("verify"), 120)),
+                escape(_shorten(action, 130)),
+            ]
+        )
+    return result
+
+
 def _backfill_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     result = []
     for row in rows or []:
@@ -911,6 +931,15 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
         [
             _section("纪律提醒", _render_list(portfolio.get("action_slot_lines"), 5), "只展示需要复核的事项，不替代交易指令。"),
             _section("A 股阶段", _render_list(portfolio.get("local_market_lines"), 8)),
+            _section(
+                "行业雷达",
+                _render_table(
+                    ["层级", "行业", "状态", "看什么", "验证条件", "动作"],
+                    _industry_radar_rows(portfolio.get("industry_radar")),
+                ),
+                "雷达决定每天看什么；可买池不自动扩张，也不直接给买卖指令。",
+                "wide",
+            ),
             _section(
                 "固定候选池",
                 _render_table(

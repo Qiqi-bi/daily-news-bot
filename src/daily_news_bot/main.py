@@ -561,6 +561,30 @@ def _build_feishu_prediction_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
+    radar = (payload.get("portfolio") or {}).get("industry_radar") or {}
+    rows = radar.get("rows") or []
+    if not rows:
+        return []
+
+    focused = [
+        row
+        for row in rows
+        if row.get("status") in {"今日关注", "每日必看"} and row.get("layer") != "avoid"
+    ]
+    if not focused:
+        focused = [row for row in rows if row.get("layer") == "core"]
+
+    result: list[str] = []
+    for row in focused[:4]:
+        name = row.get("name") or "未命名行业"
+        status = row.get("status") or "观察"
+        watch = _feishu_short(row.get("watch") or row.get("why") or "", 78)
+        result.append(f"{name}｜{status}：{watch}")
+    result.append("规则：行业雷达只决定看什么，不自动扩可买池，不直接生成买卖。")
+    return result
+
+
 def _build_feishu_receipt_lines() -> list[str]:
     return [
         "有交易：复制一行回给我，我来入账；没操作不用回复，系统按原仓位继续。",
@@ -639,6 +663,11 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     if prediction_lines:
         lines.extend(["", "**发酵预警**"])
         lines.extend(f"- {line}" for line in prediction_lines)
+
+    industry_radar_lines = _build_feishu_industry_radar_lines(payload)
+    if industry_radar_lines:
+        lines.extend(["", "**行业雷达**"])
+        lines.extend(f"- {line}" for line in industry_radar_lines)
 
     market_items = (payload.get("market_snapshot") or {}).get("items") or []
     if market_items:
