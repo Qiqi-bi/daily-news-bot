@@ -1,0 +1,509 @@
+{
+  "version": 1,
+  "updated_at_utc": "2026-04-30T10:29:49",
+  "signals": [
+    {
+      "id": "20260430102949-candidate_pool-power-561560",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "电力",
+      "theme_key": "power",
+      "priority": "高",
+      "score": 6.0,
+      "code": "561560",
+      "name": "电力ETF",
+      "start_price": 1.346,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-candidate_pool-power-560390",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "电力",
+      "theme_key": "power",
+      "priority": "高",
+      "score": 6.0,
+      "code": "560390",
+      "name": "电网设备ETF易方达",
+      "start_price": 0.986,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-candidate_pool-dividend_lowvol-512890",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "红利低波",
+      "theme_key": "dividend_lowvol",
+      "priority": "高",
+      "score": 6.0,
+      "code": "512890",
+      "name": "红利低波ETF",
+      "start_price": 1.188,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-candidate_pool-dividend_lowvol-515100",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "红利低波",
+      "theme_key": "dividend_lowvol",
+      "priority": "高",
+      "score": 6.0,
+      "code": "515100",
+      "name": "红利100ETF",
+      "start_price": 1.453,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-candidate_pool-metals_gold-512400",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "有色/黄金",
+      "theme_key": "metals_gold",
+      "priority": "高",
+      "score": 5.0,
+      "code": "512400",
+      "name": "有色ETF",
+      "start_price": 2.119,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-candidate_pool-metals_gold-518880",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "candidate_pool",
+      "theme": "有色/黄金",
+      "theme_key": "metals_gold",
+      "priority": "高",
+      "score": 5.0,
+      "code": "518880",
+      "name": "黄金ETF",
+      "start_price": 9.678,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-gold_real_rates-518880",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "黄金/实际利率",
+      "theme_key": "gold_real_rates",
+      "priority": "今日关注",
+      "score": 10.0,
+      "code": "518880",
+      "name": "黄金ETF",
+      "start_price": 9.678,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-ai_infra-588930",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "AI基础设施链",
+      "theme_key": "ai_infra",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "588930",
+      "name": "科创人工智能ETF银华",
+      "start_price": 1.743,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-china_broad_core-510310",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "A股宽基/中国宏观",
+      "theme_key": "china_broad_core",
+      "priority": "每日必看",
+      "score": 3.0,
+      "code": "510310",
+      "name": "沪深300ETF易方达",
+      "start_price": 4.67,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-china_broad_core-510210",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "A股宽基/中国宏观",
+      "theme_key": "china_broad_core",
+      "priority": "每日必看",
+      "score": 3.0,
+      "code": "510210",
+      "name": "上证指数ETF富国",
+      "start_price": 1.032,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-energy_power-561560",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "能源电力链",
+      "theme_key": "energy_power",
+      "priority": "今日关注",
+      "score": 7.0,
+      "code": "561560",
+      "name": "电力ETF",
+      "start_price": 1.346,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-energy_power-560390",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "能源电力链",
+      "theme_key": "energy_power",
+      "priority": "今日关注",
+      "score": 7.0,
+      "code": "560390",
+      "name": "电网设备ETF易方达",
+      "start_price": 0.986,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-resource_metals-512400",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "资源品/关键矿产",
+      "theme_key": "resource_metals",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "512400",
+      "name": "有色ETF",
+      "start_price": 2.119,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-resource_metals-518880",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "资源品/关键矿产",
+      "theme_key": "resource_metals",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "518880",
+      "name": "黄金ETF",
+      "start_price": 9.678,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-dividend_defense-512890",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "红利低波/防御",
+      "theme_key": "dividend_defense",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "512890",
+      "name": "红利低波ETF",
+      "start_price": 1.188,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-dividend_defense-515100",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "红利低波/防御",
+      "theme_key": "dividend_defense",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "515100",
+      "name": "红利100ETF",
+      "start_price": 1.453,
+      "observations": {}
+    },
+    {
+      "id": "20260430102949-industry_radar-new_energy_cycle-159915",
+      "created_at_utc": "2026-04-30T10:29:49",
+      "source": "industry_radar",
+      "theme": "新能源价格周期",
+      "theme_key": "new_energy_cycle",
+      "priority": "今日关注",
+      "score": 2.0,
+      "code": "159915",
+      "name": "创业板ETF易方达",
+      "start_price": 3.689,
+      "observations": {}
+    }
+  ],
+  "rows": [
+    {
+      "theme_key": "power",
+      "theme": "电力",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "dividend_lowvol",
+      "theme": "红利低波",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "metals_gold",
+      "theme": "有色/黄金",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "china_broad_core",
+      "theme": "A股宽基/中国宏观",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "energy_power",
+      "theme": "能源电力链",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "resource_metals",
+      "theme": "资源品/关键矿产",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "dividend_defense",
+      "theme": "红利低波/防御",
+      "signals": 2,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "gold_real_rates",
+      "theme": "黄金/实际利率",
+      "signals": 1,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "ai_infra",
+      "theme": "AI基础设施链",
+      "signals": 1,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    },
+    {
+      "theme_key": "new_energy_cycle",
+      "theme": "新能源价格周期",
+      "signals": 1,
+      "t1": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t5": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t20": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累"
+    }
+  ],
+  "lines": [
+    "- 本次新增待验证信号 17 条；命中率只用于校准系统，不直接触发买卖。",
+    "- 电力：T+1 样本不足；T+5 样本不足；结论：继续积累。",
+    "- 红利低波：T+1 样本不足；T+5 样本不足；结论：继续积累。",
+    "- 有色/黄金：T+1 样本不足；T+5 样本不足；结论：继续积累。",
+    "- A股宽基/中国宏观：T+1 样本不足；T+5 样本不足；结论：继续积累。"
+  ],
+  "added_count": 17,
+  "signal_count": 17,
+  "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令。"
+}
