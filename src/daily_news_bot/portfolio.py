@@ -778,23 +778,56 @@ def _event_route_lines(
 
 
 def _annual_objective_lines(portfolio: dict[str, Any]) -> list[str]:
-    objective = portfolio.get("annual_objective") or {}
-    target_range = objective.get("target_return_pct_range") or [12, 18]
+    objective = _annual_objective_payload(portfolio)
+    base_text = _fmt_pct_range(objective["base_return_pct_range"])
+    stretch_text = _fmt_pct_range(objective["stretch_return_pct_range"])
     max_drawdown = _as_float(objective.get("max_annual_drawdown_pct"), 15.0)
     mode = objective.get("mode") or "range"
     note = objective.get("note") or "年度目标是方向盘，不是单笔交易扳机。"
     priorities = objective.get("priority_order") or ["先控制回撤", "再提高胜率", "最后争取收益"]
-    target_text = (
-        f"{_fmt_pct(_as_float(target_range[0], 12.0))} ~ {_fmt_pct(_as_float(target_range[1], 18.0))}"
-        if len(target_range) >= 2
-        else _fmt_pct(_as_float(target_range[0], 12.0))
-    )
     return [
-        f"- 建议用**区间目标**而不是死目标：当前模式 `{mode}`，年度参考收益目标先定为 {target_text}。",
+        f"- 建议用**两层区间目标**而不是死目标：当前模式 `{mode}`，基础目标先看 {base_text}，行情和纪律都配合时再看冲刺目标 {stretch_text}。",
         f"- 年度最大回撤红线先定为 {_fmt_pct(max_drawdown)}；一旦逼近，优先降波动和降重叠，而不是硬扛。",
         f"- 优先级顺序：{' → '.join(str(item) for item in priorities[:4])}。",
+        "- 操作含义：年度收益目标只决定组合节奏，不会因为“还差目标”就强行买入；如果为追收益破坏仓位纪律，说明目标过激。",
         f"- 解释：{note}",
     ]
+
+
+def _range_pair(values: Any, fallback: list[float]) -> list[float]:
+    if isinstance(values, (list, tuple)) and values:
+        first = _as_float(values[0], fallback[0])
+        second = _as_float(values[1], first) if len(values) >= 2 else first
+        return [first, second]
+    return fallback
+
+
+def _fmt_pct_range(values: Any) -> str:
+    low, high = _range_pair(values, [0.0, 0.0])
+    if abs(low - high) < 0.001:
+        return _fmt_pct(low)
+    return f"{_fmt_pct(low)} ~ {_fmt_pct(high)}"
+
+
+def _annual_objective_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
+    objective = portfolio.get("annual_objective") or {}
+    configured_target = _range_pair(objective.get("target_return_pct_range"), [12.0, 18.0])
+    base_range = _range_pair(objective.get("base_return_pct_range"), [8.0, 12.0])
+    stretch_range = _range_pair(objective.get("stretch_return_pct_range"), configured_target)
+    if "base_return_pct_range" not in objective and configured_target[1] <= 14:
+        base_range = configured_target
+        stretch_range = _range_pair(objective.get("stretch_return_pct_range"), [12.0, 18.0])
+
+    return {
+        "mode": objective.get("mode") or "range",
+        "base_return_pct_range": base_range,
+        "stretch_return_pct_range": stretch_range,
+        "configured_target_return_pct_range": configured_target,
+        "max_annual_drawdown_pct": _as_float(objective.get("max_annual_drawdown_pct"), 15.0),
+        "priority_order": objective.get("priority_order") or ["先控制回撤", "再提高胜率", "最后争取收益"],
+        "note": objective.get("note") or "年度目标是方向盘，不是单笔交易扳机。",
+        "discipline": "目标收益不触发单笔交易；只有仓位、价格、流动性和事件验证同时满足时才进入行动窗口。",
+    }
 
 
 def _playbook_rule_lines(portfolio: dict[str, Any], summary: dict[str, Any]) -> list[str]:
@@ -1920,6 +1953,7 @@ def build_portfolio_brief(
     fixed_pool_backfill_lines = fixed_pool_history_panel.get("backfill_lines") or ["- 固定候选池历史回填暂不可用。"]
     fixed_pool_win_lines = fixed_pool_history_panel.get("win_lines") or ["- T+1/T+3/T+5 先手胜率暂不可用。"]
     action_slot_lines = _action_slot_lines(portfolio, fixed_buy_pool_rows, reduce_candidates, portfolio_quotes)
+    annual_objective = _annual_objective_payload(portfolio)
     annual_objective_lines = _annual_objective_lines(portfolio)
     playbook_rule_lines = _playbook_rule_lines(portfolio, summary)
     day_change = (portfolio_quotes or {}).get("portfolio_estimated_day_change_pct")
@@ -2100,6 +2134,7 @@ def build_portfolio_brief(
         "event_route_rows": event_route_rows,
         "event_history_lines": event_history_lines,
         "event_history_rows": event_history_stats.get("rows") or [],
+        "annual_objective": annual_objective,
         "annual_objective_lines": annual_objective_lines,
         "playbook_rule_lines": playbook_rule_lines,
         "monthly_plan_lines": monthly_plan_lines,

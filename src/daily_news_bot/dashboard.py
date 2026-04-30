@@ -47,6 +47,26 @@ def _fmt_pct(value: Any) -> str:
         return "未知"
 
 
+def _fmt_pct_plain(value: Any) -> str:
+    try:
+        if value is None:
+            return "未知"
+        return f"{float(value):.2f}%"
+    except (TypeError, ValueError):
+        return "未知"
+
+
+def _objective_range_text(values: Any) -> str:
+    if not isinstance(values, (list, tuple)) or not values:
+        return "未设置"
+    items = list(values)
+    low = items[0]
+    high = items[1] if len(items) > 1 else items[0]
+    if _fmt_pct_plain(low) == _fmt_pct_plain(high):
+        return _fmt_pct_plain(low)
+    return f"{_fmt_pct_plain(low)}-{_fmt_pct_plain(high)}"
+
+
 def _fmt_price(value: Any, currency: Any = "") -> str:
     try:
         if value is None:
@@ -444,7 +464,12 @@ def _translated_overview(payload: dict[str, Any], translations: dict[str, Any]) 
 def _action_guidance_items(payload: dict[str, Any]) -> list[tuple[str, str, str]]:
     portfolio = payload.get("portfolio") or {}
     if portfolio.get("private_mode"):
+        objective = portfolio.get("annual_objective") or {}
+        base_target = _objective_range_text(objective.get("base_return_pct_range"))
+        stretch_target = _objective_range_text(objective.get("stretch_return_pct_range"))
+        drawdown = _fmt_pct_plain(objective.get("max_annual_drawdown_pct"))
         return [
+            ("年度目标", f"{base_target} / {stretch_target}", f"基础目标在前，冲刺目标只在行情和纪律同时配合时参考；回撤红线 {drawdown}。"),
             ("投资模式", "中长期纪律", "默认不因单日新闻交易；公开页只展示新闻、价格和风险状态。"),
             ("今日处理", "默认不动", "具体仓位纪律看飞书私密推送；没有触发就继续持有。"),
             ("何时动手", "只看触发", "回撤、仓位超线、折溢价/流动性异常或你主动回执后才复核。"),

@@ -530,6 +530,31 @@ def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
     ]
 
 
+def _feishu_pct_range(values: Any) -> str:
+    if isinstance(values, (list, tuple)) and values:
+        items = list(values)
+        low = float(items[0] or 0)
+        high = float(items[1] if len(items) > 1 else items[0] or 0)
+        if abs(low - high) < 0.001:
+            return _fmt_pct(low)
+        return f"{_fmt_pct(low)}~{_fmt_pct(high)}"
+    return "未设置"
+
+
+def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
+    objective = (payload.get("portfolio") or {}).get("annual_objective") or {}
+    if not objective:
+        return []
+    base = _feishu_pct_range(objective.get("base_return_pct_range"))
+    stretch = _feishu_pct_range(objective.get("stretch_return_pct_range"))
+    drawdown = _fmt_pct(float(objective.get("max_annual_drawdown_pct") or 15.0))
+    discipline = _feishu_short(objective.get("discipline") or "目标收益不触发单笔交易。", 88)
+    return [
+        f"年度目标：基础 {base}；冲刺 {stretch}；回撤红线 {drawdown}。",
+        f"纪律：{discipline}",
+    ]
+
+
 def _build_feishu_strategic_lines(payload: dict[str, Any]) -> list[str]:
     lens = payload.get("strategic_lens") or {}
     rows = lens.get("rows") or []
@@ -641,6 +666,7 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
         "",
         "**中长期纪律**",
         *[f"- {line}" for line in _build_feishu_action_lines(payload)[:2]],
+        *[f"- {line}" for line in _build_feishu_objective_lines(payload)[:2]],
         "",
         "**先看这 3 件事**",
     ]
@@ -718,6 +744,7 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
         public_payload["portfolio"] = {
             "enabled": True,
             "private_mode": True,
+            "annual_objective": portfolio.get("annual_objective") or {},
             "public_note": "组合配置已接入，但持仓、成本、现金、交易流水和组合估值不发布到公开网页；具体动作看飞书推送。",
         }
         public_payload["portfolio_brief_markdown"] = ""
