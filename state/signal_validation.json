@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-04-30T15:12:29",
+  "updated_at_utc": "2026-04-30T17:22:02",
   "signals": [
     {
       "id": "20260430102949-candidate_pool-power-561560",
@@ -250,7 +250,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "dividend_lowvol",
@@ -277,7 +280,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "metals_gold",
@@ -304,7 +310,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "china_broad_core",
@@ -331,7 +340,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "energy_power",
@@ -358,7 +370,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "resource_metals",
@@ -385,7 +400,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "dividend_defense",
@@ -412,7 +430,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "gold_real_rates",
@@ -439,7 +460,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "ai_infra",
@@ -466,7 +490,10 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     },
     {
       "theme_key": "new_energy_cycle",
@@ -493,17 +520,21 @@
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "verdict": "继续积累"
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T1"
     }
   ],
+  "adjustments": {},
   "lines": [
     "- 本次新增待验证信号 0 条；命中率只用于校准系统，不直接触发买卖。",
-    "- 电力：T+1 样本不足；T+5 样本不足；结论：继续积累。",
-    "- 红利低波：T+1 样本不足；T+5 样本不足；结论：继续积累。",
-    "- 有色/黄金：T+1 样本不足；T+5 样本不足；结论：继续积累。",
-    "- A股宽基/中国宏观：T+1 样本不足；T+5 样本不足；结论：继续积累。"
+    "- 电力：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
+    "- 红利低波：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
+    "- 有色/黄金：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
+    "- A股宽基/中国宏观：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。"
   ],
   "added_count": 0,
   "signal_count": 17,
-  "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令。"
+  "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
