@@ -2073,7 +2073,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
       <div>
         <div class="eyebrow">Daily News Bot</div>
         <h1>每日投资雷达</h1>
-        <div class="subtitle">公开页看结论和证据；具体组合动作走飞书私密推送。</div>
+        <div class="subtitle">公开页看结论和证据；具体组合动作走飞书私密推送；本页不是交易指令，不保证收益。</div>
       </div>
       {top_actions}
     </header>
@@ -2082,7 +2082,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     {hero}
     {_decision_strip(payload)}
     <main class="grid">{''.join(sections)}</main>
-    <div class="footer">公开 RSS/API/官方网页抓取有覆盖边界；重大交易前请二次确认官方源、实时行情和个人组合约束。</div>
+    <div class="footer">本页不是交易指令，不保证收益；公开 RSS/API/官方网页抓取有覆盖边界，重大交易前请二次确认官方源、实时行情和个人组合约束。</div>
   </div>
 </body>
 </html>

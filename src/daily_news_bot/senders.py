@@ -106,7 +106,7 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             "tag": "div",
             "text": {
                 "tag": "lark_md",
-                "content": "**读法**：先看“中长期纪律”和“事后验算”，再看核心事件；默认不操作，有交易才回执。",
+                "content": "**读法**：先看“中长期纪律”和“事后验算”，再看核心事件；默认不操作，有交易才回执。本卡不是交易指令，不保证收益。",
             },
         },
     ]
