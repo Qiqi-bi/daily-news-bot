@@ -29,6 +29,7 @@ from .prediction_lens import build_prediction_lens, render_prediction_lens_markd
 from .ranking import rank_clusters, summarize_tag_distribution
 from .report import render_report, save_json, save_text
 from .senders import send_feishu_message
+from .signal_validation import build_signal_validation, render_signal_validation_markdown
 from .strategic_lens import build_strategic_lens, render_strategic_lens_markdown
 from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
@@ -610,6 +611,26 @@ def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
+    validation = payload.get("signal_validation") or {}
+    rows = validation.get("rows") or []
+    if not rows:
+        return _pick_lines(validation.get("lines"), 2)
+
+    result: list[str] = []
+    for row in rows[:2]:
+        t5 = row.get("t5") or {}
+        samples = int(t5.get("samples") or 0)
+        if samples:
+            result.append(
+                f"{row.get('theme') or '未命名'}：T+5 样本 {samples}，胜率 {float(t5.get('win_rate_pct') or 0):.0f}%，均值 {float(t5.get('avg_return_pct') or 0):+.2f}%，{row.get('verdict') or '继续观察'}。"
+            )
+        else:
+            result.append(f"{row.get('theme') or '未命名'}：样本继续积累，先不把胜率当结论。")
+    result.append("用途：验算只校准系统权重，不直接触发买卖。")
+    return result
+
+
 def _build_feishu_receipt_lines() -> list[str]:
     return [
         "有交易：复制一行回给我，我来入账；没操作不用回复，系统按原仓位继续。",
@@ -694,6 +715,11 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
     if industry_radar_lines:
         lines.extend(["", "**行业雷达**"])
         lines.extend(f"- {line}" for line in industry_radar_lines)
+
+    validation_lines = _build_feishu_validation_lines(payload)
+    if validation_lines:
+        lines.extend(["", "**事后验算**"])
+        lines.extend(f"- {line}" for line in validation_lines)
 
     market_items = (payload.get("market_snapshot") or {}).get("items") or []
     if market_items:
@@ -926,6 +952,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     portfolio_payload: dict[str, Any] = {"enabled": False}
     weekly_review_markdown = ""
     weekly_review_payload: dict[str, Any] = {"enabled": False}
+    signal_validation: dict[str, Any] = {"enabled": False, "lines": []}
     if not args.no_portfolio:
         portfolio = load_portfolio(args.portfolio)
         if portfolio:
@@ -1017,6 +1044,21 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
                 portfolio_payload["decision_snapshot"] = decision_snapshot
             except Exception as exc:
                 portfolio_payload["decision_snapshot_error"] = f"{type(exc).__name__}: {exc}"[:300]
+            try:
+                signal_validation = build_signal_validation(
+                    generated_at=generated_at,
+                    portfolio_payload=portfolio_payload,
+                    execution_checks=execution_checks,
+                )
+                signal_validation["enabled"] = True
+                portfolio_payload["signal_validation"] = signal_validation
+            except Exception as exc:
+                signal_validation = {
+                    "enabled": False,
+                    "error": f"{type(exc).__name__}: {exc}"[:300],
+                    "lines": [f"- 事后验算暂不可用：{type(exc).__name__}: {exc}"[:500]],
+                }
+                portfolio_payload["signal_validation"] = signal_validation
 
     try:
         translations = translate_cluster_highlights(settings, top_clusters)
@@ -1042,6 +1084,9 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     logic_playbook_markdown = render_logic_playbook_markdown(logic_playbook)
     if logic_playbook_markdown:
         global_report = global_report.rstrip() + "\n\n" + logic_playbook_markdown + "\n"
+    signal_validation_markdown = render_signal_validation_markdown(signal_validation) if signal_validation.get("enabled") else ""
+    if signal_validation_markdown:
+        global_report = global_report.rstrip() + "\n\n" + signal_validation_markdown + "\n"
     global_report = global_report.rstrip() + "\n\n" + _render_data_quality_section(data_quality) + "\n"
     report = f"{portfolio_brief}\n\n---\n\n{global_report}" if portfolio_brief else global_report
 
@@ -1078,6 +1123,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "strategic_lens": strategic_lens,
         "prediction_lens": prediction_lens,
         "logic_playbook": logic_playbook,
+        "signal_validation": signal_validation,
         "tracking_summary": tracking_summary,
         "tracking_history_update_error": history_update_error,
         "portfolio": portfolio_payload,

@@ -776,6 +776,7 @@ def _quick_nav(archive_url: Any = "") -> str:
         ("事件", "#events"),
         ("博弈", "#strategy"),
         ("预警", "#predictions"),
+        ("验算", "#validation"),
         ("框架", "#playbook"),
         ("市场", "#market"),
         ("提醒", "#watchlist"),
@@ -805,6 +806,7 @@ def _path_links(output_paths: dict[str, Any], dashboard: dict[str, Any]) -> str:
         ("完整日报 Markdown", output_paths.get("report_md_url") or output_paths.get("report_md_uri"), output_paths.get("report_md_path")),
         ("结构化 JSON", output_paths.get("report_json_url") or output_paths.get("report_json_uri"), output_paths.get("report_json_path")),
         ("提醒状态 JSON", _public_sibling(output_paths, "watchlist.json"), "watchlist.json"),
+        ("信号验算 JSON", _public_sibling(output_paths, "signal_validation.json"), "signal_validation.json"),
     ]
     if output_paths.get("portfolio_md_generated"):
         pairs.append(("组合简报", output_paths.get("portfolio_md_url") or output_paths.get("portfolio_md_uri"), output_paths.get("portfolio_md_path")))
@@ -912,6 +914,47 @@ def _win_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
             ]
         )
     return result
+
+
+def _validation_bucket_text(bucket: dict[str, Any] | None) -> str:
+    data = bucket or {}
+    samples = int(data.get("samples") or 0)
+    if samples <= 0:
+        return "样本不足"
+    return f"{samples}次 / 胜率 {_fmt_pct_plain(data.get('win_rate_pct'))} / 均值 {_fmt_pct(data.get('avg_return_pct'))}"
+
+
+def _validation_rows(validation: dict[str, Any] | None) -> list[list[str]]:
+    result = []
+    for row in (validation or {}).get("rows") or []:
+        result.append(
+            [
+                escape(_text(row.get("theme"))),
+                escape(_text(row.get("signals"), "0")),
+                escape(_validation_bucket_text(row.get("t1"))),
+                escape(_validation_bucket_text(row.get("t5"))),
+                escape(_validation_bucket_text(row.get("t20"))),
+                escape(_text(row.get("verdict"), "继续积累")),
+            ]
+        )
+    return result
+
+
+def _signal_validation_section(payload: dict[str, Any]) -> str:
+    validation = payload.get("signal_validation") or {}
+    lines = validation.get("lines") or ["- 事后验算会在跑满几个交易日后逐步形成样本。"]
+    body = (
+        '<div class="validation-lead">'
+        + "".join(f"<div>{escape(_strip_markdown(line))}</div>" for line in lines[:3])
+        + "</div>"
+        + _render_table(
+            ["主题", "信号数", "T+1", "T+5", "T+20", "结论"],
+            _validation_rows(validation),
+        )
+    )
+    note = validation.get("note") or "只用于校准系统权重，不代表未来收益，也不会直接触发交易。"
+    body += f'<div class="muted-block">{escape(note)}</div>'
+    return _section("事后验算", body, "每天记录信号，后续自动回看表现；命中率用于校准，不用于保证收益。", "wide", "validation")
 
 
 def _event_route_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
@@ -1054,6 +1097,16 @@ def _metric_cards(payload: dict[str, Any]) -> str:
     logic_playbook = payload.get("logic_playbook") or {}
     if logic_playbook.get("enabled"):
         cards.append(_metric("思维框架", f'{len(logic_playbook.get("cards") or [])} 条', "每天固定检查"))
+    validation = payload.get("signal_validation") or {}
+    if validation.get("enabled"):
+        cards.append(
+            _metric(
+                "事后验算",
+                f'{validation.get("signal_count", 0)} 条',
+                "T+1/T+5/T+20 自动复盘",
+                "accent",
+            )
+        )
     _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
     cards.append(_metric("操作回执", receipt_value, receipt_note, "accent" if receipt_tone == "good" else ""))
     if portfolio.get("private_mode"):
@@ -1548,6 +1601,21 @@ h1 {
   font-size: 13px;
   line-height: 1.5;
 }
+.validation-lead {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.validation-lead div {
+  border: 1px solid #cfe2ff;
+  background: #f6faff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #263244;
+  font-size: 13px;
+  line-height: 1.55;
+}
 .playbook-summary {
   border: 1px solid #e7d7ff;
   background: #fbf7ff;
@@ -1970,6 +2038,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),
+        _signal_validation_section(payload),
         _logic_playbook_section(payload),
         _action_guidance_section(payload),
         _section(

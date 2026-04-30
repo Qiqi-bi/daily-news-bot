@@ -77,6 +77,7 @@ jobs:
 
           restore_state watchlist.json
           restore_state event_history.json
+          restore_state signal_validation.json
           if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
             restore_state decision_journal.json
             restore_state portfolio_history.json
@@ -268,6 +269,7 @@ jobs:
             outputs/report.md
             outputs/report.json
             outputs/watchlist.json
+            outputs/signal_validation.json
             outputs/portfolio_brief.md
             outputs/portfolio_weekly.md
           if-no-files-found: error
@@ -313,16 +315,19 @@ jobs:
           copy_if_exists outputs/report.md public/report.md
           copy_if_exists outputs/report.json public/report.json
           copy_if_exists outputs/watchlist.json public/watchlist.json
+          copy_if_exists outputs/signal_validation.json public/signal_validation.json
 
           mkdir -p public/state
           copy_if_exists outputs/watchlist.json public/state/watchlist.json
           copy_if_exists outputs/event_history.json public/state/event_history.json
+          copy_if_exists outputs/signal_validation.json public/state/signal_validation.json
 
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/index.html"
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/dashboard.html"
           copy_if_exists outputs/report.md "public/$DASHBOARD_ARCHIVE_PATH/report.md"
           copy_if_exists outputs/report.json "public/$DASHBOARD_ARCHIVE_PATH/report.json"
           copy_if_exists outputs/watchlist.json "public/$DASHBOARD_ARCHIVE_PATH/watchlist.json"
+          copy_if_exists outputs/signal_validation.json "public/$DASHBOARD_ARCHIVE_PATH/signal_validation.json"
 
           if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
             copy_if_exists outputs/portfolio_brief.md public/portfolio_brief.md
@@ -410,7 +415,7 @@ jobs:
             if [ "$slug" = "$latest_slug" ]; then
               badge="<span class=\"run-badge\">最新</span>"
             fi
-            echo "<div class=\"run-row\"><div><div class=\"run-id\">${badge}<a href=\"runs/${slug}/\">${slug}</a></div><div class=\"muted\">保留本次 dashboard、Markdown 报告、结构化 JSON 和提醒状态</div></div><div class=\"run-files\"><a href=\"runs/${slug}/\">dashboard</a><a href=\"runs/${slug}/report.md\">report.md</a><a href=\"runs/${slug}/report.json\">report.json</a><a href=\"runs/${slug}/watchlist.json\">watchlist.json</a></div></div>"
+            echo "<div class=\"run-row\"><div><div class=\"run-id\">${badge}<a href=\"runs/${slug}/\">${slug}</a></div><div class=\"muted\">保留本次 dashboard、Markdown 报告、结构化 JSON、提醒状态和信号验算</div></div><div class=\"run-files\"><a href=\"runs/${slug}/\">dashboard</a><a href=\"runs/${slug}/report.md\">report.md</a><a href=\"runs/${slug}/report.json\">report.json</a><a href=\"runs/${slug}/watchlist.json\">watchlist.json</a><a href=\"runs/${slug}/signal_validation.json\">signal_validation.json</a></div></div>"
           done >> public/archive.html
           cat >> public/archive.html <<'HTML'
               </section>
@@ -429,7 +434,7 @@ jobs:
                 echo ','
               fi
               first=0
-              printf '  {"id":"%s","url":"runs/%s/","report":"runs/%s/report.md","json":"runs/%s/report.json","watchlist":"runs/%s/watchlist.json"}' "$slug" "$slug" "$slug" "$slug" "$slug"
+              printf '  {"id":"%s","url":"runs/%s/","report":"runs/%s/report.md","json":"runs/%s/report.json","watchlist":"runs/%s/watchlist.json","validation":"runs/%s/signal_validation.json"}' "$slug" "$slug" "$slug" "$slug" "$slug" "$slug"
             done
             echo
             echo ']'
@@ -455,7 +460,7 @@ jobs:
             echo "- Archive index: ${DASHBOARD_ARCHIVE_INDEX_URL:-not configured}"
             echo "- This run archive: ${DASHBOARD_ARCHIVE_URL:-not configured}"
             echo "- Run artifact: daily-news-dashboard-${{ github.run_id }}-${{ github.run_attempt }}"
-            echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json"
+            echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json, outputs/signal_validation.json"
             if [ -f outputs/feishu_receipts.json ]; then
               python3 - <<'PY'
           import json
@@ -551,6 +556,9 @@ jobs:
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/watchlist.json" --output /tmp/watchlist.json
           python3 -m json.tool /tmp/watchlist.json >/dev/null
+
+          curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/signal_validation.json" --output /tmp/signal_validation.json
+          python3 -m json.tool /tmp/signal_validation.json >/dev/null
 
           curl --fail --location --retry 6 --retry-delay 10 --silent --show-error "$base/archive.html" --output /tmp/archive.html
           grep -qi '日报历史归档' /tmp/archive.html

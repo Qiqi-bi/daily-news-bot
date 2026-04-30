@@ -79,6 +79,25 @@ def _button_url(content: str) -> str:
     return ""
 
 
+def _card_overview_fields(content: str) -> list[dict[str, Any]]:
+    fields: list[dict[str, Any]] = []
+    wanted_prefixes = ("年度目标：", "纪律：", "回执：", "最新 ")
+    for line in content.splitlines():
+        cleaned = line.strip().lstrip("- ").strip()
+        if not cleaned:
+            continue
+        if cleaned.startswith(wanted_prefixes):
+            fields.append(
+                {
+                    "is_short": False,
+                    "text": {"tag": "lark_md", "content": cleaned[:240]},
+                }
+            )
+        if len(fields) >= 3:
+            break
+    return fields
+
+
 def _build_card_payload(title: str, content: str) -> dict[str, Any]:
     trimmed = _trim_content(content, CARD_TOTAL_LIMIT)
     chunks = _chunk_text(trimmed)
@@ -87,11 +106,14 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             "tag": "div",
             "text": {
                 "tag": "lark_md",
-                "content": "**快速阅读**：先看结论，再点 Dashboard 看完整事件和历史归档。",
+                "content": "**读法**：先看“中长期纪律”和“事后验算”，再看核心事件；默认不操作，有交易才回执。",
             },
         },
-        {"tag": "hr"},
     ]
+    overview_fields = _card_overview_fields(trimmed)
+    if overview_fields:
+        elements.append({"tag": "div", "fields": overview_fields})
+    elements.append({"tag": "hr"})
     for index, chunk in enumerate(chunks, start=1):
         if index > 1:
             elements.append({"tag": "hr"})
@@ -118,7 +140,7 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
         "card": {
             "config": {"wide_screen_mode": True},
             "header": {
-                "template": "blue",
+                "template": "turquoise",
                 "title": {"tag": "plain_text", "content": title},
             },
             "elements": elements,
