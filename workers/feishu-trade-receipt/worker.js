@@ -8,6 +8,13 @@ function jsonResponse(payload, status = 200) {
   });
 }
 
+function htmlResponse(body, status = 200) {
+  return new Response(body, {
+    status,
+    headers: { "content-type": "text/html; charset=utf-8" },
+  });
+}
+
 function bytesToHex(bytes) {
   return [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
@@ -111,7 +118,7 @@ function normalizeReceiptText(text) {
 }
 
 function isTradeReceipt(text) {
-  return /^(BUY|SELL)\s+/i.test(text);
+  return /^(BUY|SELL|买入|加仓|卖出|减仓)\s+/i.test(text);
 }
 
 function allowedSender(openId, env) {
@@ -219,8 +226,89 @@ async function handleFeishuEvent(request, env) {
   return jsonResponse({ ok: true });
 }
 
+function formTokenValid(request, env) {
+  const expected = String(env.RECEIPT_FORM_TOKEN || "").trim();
+  if (!expected) {
+    return false;
+  }
+  const url = new URL(request.url);
+  return url.searchParams.get("token") === expected;
+}
+
+function receiptFormHtml(request, message = "") {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token") || "";
+  const escapedMessage = message ? `<div class="notice">${message}</div>` : "";
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>操作回执</title>
+  <style>
+    body{margin:0;background:#f3f6fb;color:#0f172a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{max-width:520px;margin:0 auto;padding:22px 16px}
+    form{background:#fff;border:1px solid #d8e0ea;border-radius:12px;padding:16px;display:grid;gap:12px}
+    h1{font-size:24px;margin:0 0 8px}.hint{color:#526173;font-size:14px;line-height:1.6;margin-bottom:14px}
+    label{display:grid;gap:6px;font-size:13px;color:#334155;font-weight:650}
+    input,select{height:42px;border:1px solid #cbd5e1;border-radius:8px;padding:0 10px;font-size:15px}
+    button{height:44px;border:0;border-radius:8px;background:#1677ff;color:#fff;font-size:16px;font-weight:750}
+    .notice{background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;border-radius:8px;padding:10px 12px;margin-bottom:12px}
+    .warn{color:#64748b;font-size:12px;line-height:1.6;margin-top:12px}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>操作回执</h1>
+    <div class="hint">有操作就填；没操作不用提交。系统只记录你主动回执的买入/卖出，不会猜测你的实际操作。</div>
+    ${escapedMessage}
+    <form method="post" action="/receipt?token=${encodeURIComponent(token)}">
+      <label>方向<select name="side"><option value="买入">买入/加仓</option><option value="卖出">卖出/减仓</option></select></label>
+      <label>代码<input name="code" inputmode="numeric" placeholder="例如 518880" required></label>
+      <label>金额或份额<input name="amount" placeholder="例如 3000 或 20%" required></label>
+      <label>价格<input name="price" inputmode="decimal" placeholder="例如 5.12" required></label>
+      <label>原因<input name="reason" placeholder="例如 回撤到纪律线" required></label>
+      <button type="submit">提交回执</button>
+    </form>
+    <div class="warn">提交后会触发一次入账流程；下一次日报会按新回执复核仓位。</div>
+  </main>
+</body>
+</html>`;
+}
+
+async function handleReceiptForm(request, env) {
+  if (!formTokenValid(request, env)) {
+    return htmlResponse("回执表单未启用或链接无效。", 403);
+  }
+  if (request.method === "GET") {
+    return htmlResponse(receiptFormHtml(request));
+  }
+  const form = await request.formData();
+  const side = String(form.get("side") || "").trim();
+  const code = String(form.get("code") || "").trim();
+  const amount = String(form.get("amount") || "").trim();
+  const price = String(form.get("price") || "").trim();
+  const reason = String(form.get("reason") || "").trim();
+  if (!/^(买入|卖出)$/.test(side) || !code || !amount || !price || !reason) {
+    return htmlResponse(receiptFormHtml(request, "有字段没填完整，请补齐后再提交。"), 400);
+  }
+  const receiptText = normalizeReceiptText(`${side} ${code} ${amount} ${price} ${reason}`);
+  const messageIdValue = `form-${Date.now()}`;
+  await dispatchTradeReceipt(receiptText, "receipt-form", messageIdValue, env);
+  return htmlResponse(receiptFormHtml(request, "已收到回执，正在触发入账流程。"));
+}
+
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname === "/receipt") {
+      try {
+        return await handleReceiptForm(request, env);
+      } catch (error) {
+        console.error(error);
+        return htmlResponse("提交失败，请回飞书群里直接发中文回执。", 500);
+      }
+    }
     if (request.method === "GET") {
       return jsonResponse({ ok: true, service: "daily-news-bot feishu trade receipt" });
     }

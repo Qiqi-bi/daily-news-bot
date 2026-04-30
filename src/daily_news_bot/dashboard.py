@@ -974,6 +974,7 @@ def _validation_rows(validation: dict[str, Any] | None) -> list[list[str]]:
                 escape(_validation_bucket_text(row.get("t5"))),
                 escape(_validation_bucket_text(row.get("t20"))),
                 escape(_text(row.get("verdict"), "继续积累")),
+                escape(_text(row.get("adjustment"), "不调整")),
             ]
         )
     return result
@@ -987,7 +988,7 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
         + "".join(f"<div>{escape(_strip_markdown(line))}</div>" for line in lines[:3])
         + "</div>"
         + _render_table(
-            ["主题", "信号数", "T+1", "T+5", "T+20", "结论"],
+            ["主题", "信号数", "T+1", "T+5", "T+20", "结论", "权重"],
             _validation_rows(validation),
         )
     )
@@ -2078,11 +2079,11 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
     sections = [
+        _system_boundary_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),
         _signal_validation_section(payload),
-        _system_boundary_section(payload),
         _logic_playbook_section(payload),
         _action_guidance_section(payload),
         _section(

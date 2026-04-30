@@ -667,7 +667,7 @@ def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], tr
     return raw_title
 
 
-def _build_feishu_digest(payload: dict[str, Any]) -> str:
+def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") -> str:
     watchlist = payload.get("watchlist") or {}
     dashboard = payload.get("dashboard") or {}
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
@@ -688,6 +688,8 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
         f"- {receipt_line}",
         "- 有交易才回一行中文；没操作不用回。",
     ]
+    if receipt_form_url:
+        lines.append("- 也可以点卡片按钮填写回执。")
     lines.extend(
         [
             "",
@@ -698,7 +700,52 @@ def _build_feishu_digest(payload: dict[str, Any]) -> str:
             f"网页：{dashboard_url}",
         ]
     )
+    if receipt_form_url:
+        lines.append(f"回执页：{receipt_form_url}")
     return "\n".join(lines)
+
+
+def _downgraded_priority(priority: str, score_delta: int) -> str:
+    if score_delta >= 0:
+        return priority
+    if priority == "高":
+        return "中"
+    if priority == "中":
+        return "低"
+    return priority
+
+
+def _apply_signal_validation_adjustments(portfolio_payload: dict[str, Any], validation: dict[str, Any]) -> None:
+    adjustments = validation.get("adjustments") or {}
+    if not adjustments:
+        return
+
+    for row in portfolio_payload.get("candidate_scores") or []:
+        theme_key = str(row.get("theme_key") or "")
+        adjustment = adjustments.get(theme_key)
+        if not adjustment:
+            continue
+        score_delta = int(adjustment.get("score_delta") or 0)
+        original_score = float(row.get("score") or 0)
+        original_priority = str(row.get("priority") or "低")
+        row["validation_adjustment"] = adjustment
+        row["score_before_validation"] = original_score
+        row["score"] = max(0, round(original_score + score_delta, 2))
+        row["priority_before_validation"] = original_priority
+        row["priority"] = _downgraded_priority(original_priority, score_delta)
+        row["comment"] = f"{row.get('comment') or ''}；事后验算：{adjustment.get('adjustment')}。".strip("；")
+
+    radar = portfolio_payload.get("industry_radar") or {}
+    for row in radar.get("rows") or []:
+        theme_key = str(row.get("id") or row.get("theme_key") or row.get("name") or "")
+        adjustment = adjustments.get(theme_key)
+        if not adjustment:
+            continue
+        row["validation_adjustment"] = adjustment
+        if int(adjustment.get("score_delta") or 0) < 0:
+            row["status_before_validation"] = row.get("status")
+            row["status"] = "降权观察"
+            row["action"] = "先降权复核，不把该行业故事直接升级成买卖。"
 
 
 def _env_flag(name: str, default: bool = False) -> bool:
@@ -996,6 +1043,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
                     execution_checks=execution_checks,
                 )
                 signal_validation["enabled"] = True
+                _apply_signal_validation_adjustments(portfolio_payload, signal_validation)
                 portfolio_payload["signal_validation"] = signal_validation
             except Exception as exc:
                 signal_validation = {
@@ -1196,7 +1244,7 @@ def main(argv: list[str] | None = None) -> int:
             and (settings.feishu_send_chat_id or settings.feishu_send_chat_name)
         )
     ):
-        feishu_content = _build_feishu_digest(payload)
+        feishu_content = _build_feishu_digest(payload, settings.feishu_receipt_form_url)
         sender = send_feishu_message(
             webhook_url=settings.feishu_webhook_url,
             app_id=settings.feishu_app_id,
@@ -1205,6 +1253,7 @@ def main(argv: list[str] | None = None) -> int:
             chat_name=settings.feishu_send_chat_name,
             title="每日投资雷达",
             content=feishu_content,
+            allow_webhook_fallback=settings.feishu_allow_webhook_fallback,
         )
         print(f"Feishu message sent via {sender}.")
 

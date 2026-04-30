@@ -10,3 +10,6 @@ GITHUB_REF = "main"
 
 # Optional: comma-separated Feishu sender open_ids. Leave empty during first test.
 # FEISHU_ALLOWED_OPEN_IDS = "ou_xxx,ou_yyy"
+
+# Optional form secret. Set with `wrangler secret put RECEIPT_FORM_TOKEN`.
+# The form URL is /receipt?token=<RECEIPT_FORM_TOKEN>.

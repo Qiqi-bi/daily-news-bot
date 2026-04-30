@@ -67,16 +67,26 @@ def _raise_for_feishu_api_error(response: requests.Response) -> dict[str, Any]:
     return payload
 
 
-def _button_url(content: str) -> str:
+def _prefixed_url(content: str, prefixes: tuple[str, ...]) -> str:
     for line in content.splitlines():
         stripped = line.strip()
-        if stripped.startswith("https://") or stripped.startswith("http://"):
-            return stripped
-        if stripped.startswith(("Dashboard：", "网页：")):
+        if stripped.startswith(prefixes):
             value = stripped.split("：", 1)[1].strip()
             if value.startswith(("https://", "http://")):
                 return value
     return ""
+
+
+def _button_urls(content: str) -> dict[str, str]:
+    web_url = _prefixed_url(content, ("Dashboard：", "网页："))
+    receipt_url = _prefixed_url(content, ("回执页：",))
+    if not web_url:
+        for line in content.splitlines():
+            stripped = line.strip()
+            if stripped.startswith("https://") or stripped.startswith("http://"):
+                web_url = stripped
+                break
+    return {"web": web_url, "receipt": receipt_url}
 
 
 def _card_overview_fields(content: str) -> list[dict[str, Any]]:
@@ -119,19 +129,31 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             elements.append({"tag": "hr"})
         elements.append({"tag": "div", "text": {"tag": "lark_md", "content": chunk}})
 
-    dashboard_url = _button_url(trimmed)
-    if dashboard_url:
+    button_urls = _button_urls(trimmed)
+    actions = []
+    if button_urls["web"]:
+        actions.append(
+            {
+                "tag": "button",
+                "text": {"tag": "plain_text", "content": "打开网页"},
+                "url": button_urls["web"],
+                "type": "primary",
+            }
+        )
+    if button_urls["receipt"]:
+        actions.append(
+            {
+                "tag": "button",
+                "text": {"tag": "plain_text", "content": "填写回执"},
+                "url": button_urls["receipt"],
+                "type": "default",
+            }
+        )
+    if actions:
         elements.append(
             {
                 "tag": "action",
-                "actions": [
-                    {
-                        "tag": "button",
-                        "text": {"tag": "plain_text", "content": "打开网页"},
-                        "url": dashboard_url,
-                        "type": "primary",
-                    }
-                ],
+                "actions": actions,
             }
         )
 
@@ -229,9 +251,12 @@ def send_feishu_message(
     chat_name: str = "",
     title: str,
     content: str,
+    allow_webhook_fallback: bool = False,
 ) -> str:
     app_error: Exception | None = None
-    if app_id and app_secret and (chat_id or chat_name):
+    if app_id and app_secret and not (chat_id or chat_name):
+        app_error = RuntimeError("Feishu app sender is configured but no target chat is configured")
+    elif app_id and app_secret and (chat_id or chat_name):
         try:
             send_feishu_app_message(
                 app_id=app_id,
@@ -247,6 +272,8 @@ def send_feishu_message(
 
     if webhook_url:
         if app_error:
+            if not allow_webhook_fallback:
+                raise RuntimeError(f"Feishu app sender failed and webhook fallback is disabled: {app_error}") from app_error
             print(f"Feishu app sender failed; falling back to webhook: {app_error}")
         send_feishu_webhook(webhook_url, title, content)
         return "webhook_fallback" if app_error else "webhook"

@@ -102,6 +102,8 @@ jobs:
           FEISHU_SEND_CHAT_NAME: ${{ secrets.FEISHU_SEND_CHAT_NAME || vars.FEISHU_SEND_CHAT_NAME }}
           FEISHU_RECEIPT_CHAT_ID: ${{ secrets.FEISHU_RECEIPT_CHAT_ID }}
           FEISHU_RECEIPT_CHAT_NAME: ${{ secrets.FEISHU_RECEIPT_CHAT_NAME || vars.FEISHU_RECEIPT_CHAT_NAME }}
+          FEISHU_ALLOW_WEBHOOK_FALLBACK: ${{ vars.FEISHU_ALLOW_WEBHOOK_FALLBACK || 'false' }}
+          FEISHU_RECEIPT_FORM_URL: ${{ secrets.FEISHU_RECEIPT_FORM_URL || vars.FEISHU_RECEIPT_FORM_URL }}
           FEISHU_RECEIPT_LOOKBACK_HOURS: ${{ vars.FEISHU_RECEIPT_LOOKBACK_HOURS || '48' }}
           PORTFOLIO_YAML_B64: ${{ secrets.PORTFOLIO_YAML_B64 }}
           TRADE_LEDGER_YAML_B64: ${{ secrets.TRADE_LEDGER_YAML_B64 }}
@@ -520,6 +522,8 @@ jobs:
           grep -qi 'status-bar' /tmp/dashboard.html
           grep -qi 'decision-strip' /tmp/dashboard.html
           grep -qi '中长期纪律' /tmp/dashboard.html
+          grep -qi '系统边界' /tmp/dashboard.html
+          grep -qi '不能保证赚钱' /tmp/dashboard.html
           grep -qi '默认不动' /tmp/dashboard.html
           grep -qi '资源博弈视角' /tmp/dashboard.html
           grep -qi '发酵预警卡片' /tmp/dashboard.html
@@ -580,6 +584,7 @@ jobs:
           FEISHU_SEND_CHAT_NAME: ${{ secrets.FEISHU_SEND_CHAT_NAME || vars.FEISHU_SEND_CHAT_NAME }}
           FEISHU_RECEIPT_CHAT_ID: ${{ secrets.FEISHU_RECEIPT_CHAT_ID }}
           FEISHU_RECEIPT_CHAT_NAME: ${{ secrets.FEISHU_RECEIPT_CHAT_NAME || vars.FEISHU_RECEIPT_CHAT_NAME }}
+          FEISHU_ALLOW_WEBHOOK_FALLBACK: ${{ vars.FEISHU_ALLOW_WEBHOOK_FALLBACK || 'false' }}
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           RUN_NEWS_RESULT: ${{ needs.run-news-bot.result }}
           PUBLISH_RESULT: ${{ needs.publish-dashboard.result }}
@@ -692,6 +697,9 @@ jobs:
                   print("Failure notification sent via Feishu app.")
                   raise SystemExit(0)
           except Exception as exc:
+              allow_fallback = os.getenv("FEISHU_ALLOW_WEBHOOK_FALLBACK", "").strip().lower() in {"1", "true", "yes", "y", "on"}
+              if not allow_fallback:
+                  raise
               print(f"Feishu app failure notification failed; trying webhook fallback: {type(exc).__name__}: {exc}")
 
           webhook_url = os.getenv("FEISHU_WEBHOOK_URL", "").strip()

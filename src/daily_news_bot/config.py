@@ -35,6 +35,8 @@ class Settings:
     feishu_app_secret: str
     feishu_send_chat_id: str
     feishu_send_chat_name: str
+    feishu_allow_webhook_fallback: bool
+    feishu_receipt_form_url: str
     newsapi_key: str
     finnhub_api_key: str
     finnhub_news_categories: tuple[str, ...]
@@ -78,6 +80,12 @@ def _split_csv(value: str) -> tuple[str, ...]:
     return tuple(deduped)
 
 
+def _env_bool(value: str, default: bool = False) -> bool:
+    if value == "":
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
 def load_settings() -> Settings:
     env_path = ROOT_DIR / ".env"
 
@@ -113,6 +121,11 @@ def load_settings() -> Settings:
             _pick(env_file_values, "FEISHU_SEND_CHAT_NAME", "").strip()
             or _pick(env_file_values, "FEISHU_RECEIPT_CHAT_NAME", "").strip()
         ),
+        feishu_allow_webhook_fallback=_env_bool(
+            _pick(env_file_values, "FEISHU_ALLOW_WEBHOOK_FALLBACK", "false"),
+            False,
+        ),
+        feishu_receipt_form_url=_pick(env_file_values, "FEISHU_RECEIPT_FORM_URL", "").strip(),
         newsapi_key=_pick(env_file_values, "NEWSAPI_KEY", "").strip(),
         finnhub_api_key=_pick(env_file_values, "FINNHUB_API_KEY", "").strip(),
         finnhub_news_categories=_split_csv(

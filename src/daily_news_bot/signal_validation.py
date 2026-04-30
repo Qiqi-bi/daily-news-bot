@@ -13,6 +13,7 @@ HORIZONS = (1, 5, 20)
 MAX_SIGNALS = 500
 KEEP_DAYS = 180
 DEDUP_DAYS = 3
+MIN_ADJUSTMENT_SAMPLES = 3
 
 
 def _safe_float(value: Any) -> float | None:
@@ -250,19 +251,31 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 bucket["win_rate_pct"] = None
                 bucket["avg_return_pct"] = None
 
-        ref = row["t5"] if row["t5"]["samples"] >= 3 else row["t1"]
+        ref_key = "t5" if row["t5"]["samples"] >= MIN_ADJUSTMENT_SAMPLES else "t1"
+        ref = row[ref_key]
         samples = int(ref["samples"])
         win_rate = _safe_float(ref.get("win_rate_pct"))
         avg_return = _safe_float(ref.get("avg_return_pct"))
         if samples < 3:
             verdict = "继续积累"
+            adjustment = "不调整"
+            score_delta = 0
         elif win_rate is not None and avg_return is not None and win_rate >= 60 and avg_return > 0:
             verdict = "保留加权"
+            adjustment = "小幅加权"
+            score_delta = 1
         elif win_rate is not None and avg_return is not None and win_rate <= 40 and avg_return < 0:
             verdict = "降权观察"
+            adjustment = "自动降权"
+            score_delta = -2
         else:
             verdict = "维持观察"
+            adjustment = "不调整"
+            score_delta = 0
         row["verdict"] = verdict
+        row["adjustment"] = adjustment
+        row["score_delta"] = score_delta
+        row["adjustment_basis"] = ref_key.upper()
         rows.append(row)
 
     rows.sort(
@@ -292,9 +305,28 @@ def _summary_lines(rows: list[dict[str, Any]], added_count: int) -> list[str]:
     lines = [f"- 本次新增待验证信号 {added_count} 条；命中率只用于校准系统，不直接触发买卖。"]
     for row in rows[:4]:
         lines.append(
-            f"- {row.get('theme')}：T+1 {_fmt_bucket(row['t1'])}；T+5 {_fmt_bucket(row['t5'])}；结论：{row.get('verdict')}。"
+            f"- {row.get('theme')}：T+1 {_fmt_bucket(row['t1'])}；T+5 {_fmt_bucket(row['t5'])}；结论：{row.get('verdict')}；权重：{row.get('adjustment', '不调整')}。"
         )
     return lines
+
+
+def _build_adjustments(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    adjustments: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        theme_key = str(row.get("theme_key") or "")
+        if not theme_key:
+            continue
+        score_delta = int(row.get("score_delta") or 0)
+        if score_delta == 0:
+            continue
+        adjustments[theme_key] = {
+            "theme": row.get("theme"),
+            "verdict": row.get("verdict"),
+            "adjustment": row.get("adjustment"),
+            "score_delta": score_delta,
+            "basis": row.get("adjustment_basis"),
+        }
+    return adjustments
 
 
 def build_signal_validation(
@@ -319,10 +351,11 @@ def build_signal_validation(
         "updated_at_utc": now.isoformat(),
         "signals": signals,
         "rows": rows,
+        "adjustments": _build_adjustments(rows),
         "lines": _summary_lines(rows, added_count),
         "added_count": added_count,
         "signal_count": len(signals),
-        "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令。",
+        "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。",
     }
     _save_state(output, path)
     return output
@@ -333,10 +366,10 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
     lines.extend(validation.get("lines") or ["- 暂无验算数据。"])
     rows = validation.get("rows") or []
     if rows:
-        lines.extend(["", "| 主题 | 信号数 | T+1 | T+5 | T+20 | 结论 |", "|---|---:|---|---|---|---|"])
+        lines.extend(["", "| 主题 | 信号数 | T+1 | T+5 | T+20 | 结论 | 权重 |", "|---|---:|---|---|---|---|---|"])
         for row in rows[:8]:
             lines.append(
-                f"| {row.get('theme')} | {row.get('signals', 0)} | {_fmt_bucket(row['t1'])} | {_fmt_bucket(row['t5'])} | {_fmt_bucket(row['t20'])} | {row.get('verdict')} |"
+                f"| {row.get('theme')} | {row.get('signals', 0)} | {_fmt_bucket(row['t1'])} | {_fmt_bucket(row['t5'])} | {_fmt_bucket(row['t20'])} | {row.get('verdict')} | {row.get('adjustment', '不调整')} |"
             )
     lines.extend(["", f"> {validation.get('note') or '事后验算只用于校准系统，不代表未来收益。'}"])
     return "\n".join(lines).strip() + "\n"
