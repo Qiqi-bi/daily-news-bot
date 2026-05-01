@@ -794,6 +794,18 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
             )
         else:
             result.append(f"{row.get('theme') or '未命名'}：30/60/90天样本继续积累，先不把胜率当结论。")
+    leaderboard_rows = ((validation.get("industry_leaderboard") or {}).get("rows") or [])
+    if leaderboard_rows:
+        top = leaderboard_rows[0]
+        result.append(
+            f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 胜率 {float(top.get('win_rate_pct') or 0):.0f}%，均值 {float(top.get('avg_return_pct') or 0):+.2f}%；{top.get('action') or '继续积累'}。"
+        )
+    mistake_reviews = validation.get("mistake_reviews") or []
+    if mistake_reviews:
+        item = mistake_reviews[0]
+        result.append(
+            f"复盘提醒：{item.get('theme') or '未命名'} / {item.get('name') or item.get('code') or '-'}，{item.get('horizon') or '-'} {float(item.get('return_pct') or 0):+.2f}%；{item.get('reason') or '待复盘'}。"
+        )
     result.append("用途：验算只校准系统权重，不直接触发买卖。")
     return result
 

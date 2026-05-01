@@ -1054,6 +1054,49 @@ def _validation_rows(validation: dict[str, Any] | None) -> list[list[str]]:
     return result
 
 
+def _validation_leaderboard_rows(validation: dict[str, Any] | None) -> list[list[str]]:
+    leaderboard = ((validation or {}).get("industry_leaderboard") or {}).get("rows") or []
+    result: list[list[str]] = []
+    for row in leaderboard[:8]:
+        result.append(
+            [
+                escape(_text(row.get("theme"), "未命名行业")),
+                escape(_text(row.get("basis"), "-")),
+                escape(_text(row.get("samples"), "0")),
+                escape(_fmt_pct_plain(row.get("win_rate_pct"))),
+                escape(_fmt_pct(row.get("avg_return_pct"))),
+                escape(_text(row.get("action"), "继续积累")),
+            ]
+        )
+    return result
+
+
+def _validation_mistake_rows(validation: dict[str, Any] | None) -> list[list[str]]:
+    result: list[list[str]] = []
+    for item in (validation or {}).get("mistake_reviews") or []:
+        result.append(
+            [
+                escape(_shorten(item.get("theme"), 42)),
+                escape(_shorten(item.get("name") or item.get("code"), 42)),
+                escape(_text(item.get("horizon"), "-")),
+                escape(_fmt_pct(item.get("return_pct"))),
+                escape(_shorten(item.get("reason"), 36)),
+                escape(_shorten(item.get("lesson"), 90)),
+            ]
+        )
+    return result
+
+
+def _validation_subblock(title: str, note: str, headers: list[str], rows: list[list[str]]) -> str:
+    return (
+        '<div class="validation-subblock">'
+        f"<h3>{escape(title)}</h3>"
+        f"<p>{escape(note)}</p>"
+        + _render_table(headers, rows)
+        + "</div>"
+    )
+
+
 def _signal_validation_section(payload: dict[str, Any]) -> str:
     validation = payload.get("signal_validation") or {}
     lines = validation.get("lines") or ["- 事后验算会在跑满几个交易日后逐步形成样本。"]
@@ -1065,6 +1108,18 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
             ["主题", "信号数", "T+30", "T+60", "T+90", "结论", "权重"],
             _validation_rows(validation),
         )
+    )
+    body += _validation_subblock(
+        "行业雷达命中率榜",
+        "看哪些行业逻辑被价格验证过；样本不足时只用于排序，不作为买卖承诺。",
+        ["行业", "窗口", "样本", "胜率", "均值", "动作"],
+        _validation_leaderboard_rows(validation),
+    )
+    body += _validation_subblock(
+        "错误复盘库",
+        "把负向样本变成下次规则，避免同一种故事反复误判。",
+        ["主题", "标的", "窗口", "结果", "原因", "下次规则"],
+        _validation_mistake_rows(validation),
     )
     note = validation.get("note") or "30/60/90天成绩单只用于校准系统权重，不代表未来收益，也不会直接触发交易。"
     body += f'<div class="muted-block">{escape(note)}</div>'
@@ -1802,6 +1857,19 @@ h1 {
   color: #263244;
   font-size: 13px;
   line-height: 1.55;
+}
+.validation-subblock {
+  margin-top: 14px;
+}
+.validation-subblock h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #06183a;
+}
+.validation-subblock p {
+  margin: 0 0 10px;
+  color: #53627a;
+  font-size: 13px;
 }
 .playbook-summary {
   border: 1px solid #e7d7ff;

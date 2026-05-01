@@ -346,6 +346,163 @@ def _build_adjustments(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return adjustments
 
 
+def _leaderboard_basis(row: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    basis_key = str(row.get("adjustment_basis") or "").lower()
+    if basis_key in {_horizon_key(horizon) for horizon in HORIZONS}:
+        bucket = row.get(basis_key) or {}
+        if int(bucket.get("samples") or 0) > 0:
+            return basis_key, bucket
+    best_key = _horizon_key(HORIZONS[0])
+    best_bucket = row.get(best_key) or {}
+    for horizon in HORIZONS:
+        key = _horizon_key(horizon)
+        bucket = row.get(key) or {}
+        if int(bucket.get("samples") or 0) > int(best_bucket.get("samples") or 0):
+            best_key = key
+            best_bucket = bucket
+    return best_key, best_bucket
+
+
+def _build_industry_leaderboard(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    leaderboard_rows: list[dict[str, Any]] = []
+    for row in rows:
+        basis_key, bucket = _leaderboard_basis(row)
+        samples = int(bucket.get("samples") or 0)
+        win_rate = _safe_float(bucket.get("win_rate_pct"))
+        avg_return = _safe_float(bucket.get("avg_return_pct"))
+        if samples <= 0 or win_rate is None or avg_return is None:
+            continue
+        rank_score = round(win_rate / 10 + avg_return + min(samples, 6) * 0.25, 3)
+        if samples < MIN_ADJUSTMENT_SAMPLES:
+            action = "继续积累样本"
+        elif win_rate >= 60 and avg_return > 0:
+            action = "优先保留权重"
+        elif win_rate <= 40 and avg_return < 0:
+            action = "降权复盘"
+        else:
+            action = "等待二次确认"
+        leaderboard_rows.append(
+            {
+                "theme_key": row.get("theme_key"),
+                "theme": row.get("theme"),
+                "signals": row.get("signals", 0),
+                "basis": basis_key.upper(),
+                "samples": samples,
+                "win_rate_pct": round(win_rate, 1),
+                "avg_return_pct": round(avg_return, 3),
+                "rank_score": rank_score,
+                "verdict": row.get("verdict"),
+                "action": action,
+            }
+        )
+
+    leaderboard_rows.sort(
+        key=lambda item: (
+            int(item.get("samples") or 0) >= MIN_ADJUSTMENT_SAMPLES,
+            _safe_float(item.get("rank_score")) or -999,
+            int(item.get("samples") or 0),
+        ),
+        reverse=True,
+    )
+    if not leaderboard_rows:
+        lines = ["- 行业雷达命中率榜还在积累样本；不要用单日涨跌下结论。"]
+    else:
+        lines = []
+        for item in leaderboard_rows[:3]:
+            lines.append(
+                f"- {item.get('theme')}：{item.get('basis')} 样本 {item.get('samples')}，胜率 {item.get('win_rate_pct'):.0f}%，均值 {item.get('avg_return_pct'):+.2f}%，动作：{item.get('action')}。"
+            )
+    return {
+        "rows": leaderboard_rows,
+        "lines": lines,
+        "best": leaderboard_rows[0] if leaderboard_rows else None,
+        "worst": leaderboard_rows[-1] if leaderboard_rows else None,
+    }
+
+
+def _latest_completed_observation(signal: dict[str, Any]) -> tuple[str, dict[str, Any]] | None:
+    observations = signal.get("observations") or {}
+    for horizon in reversed(HORIZONS):
+        key = _horizon_key(horizon)
+        obs = observations.get(key) or {}
+        if _safe_float(obs.get("return_pct")) is not None:
+            return key.upper(), obs
+    return None
+
+
+def _mistake_reason(signal: dict[str, Any], return_pct: float) -> str:
+    priority = str(signal.get("priority") or "")
+    source = str(signal.get("source") or "")
+    score = _safe_float(signal.get("score")) or 0.0
+    if "追高" in priority or "冲刺" in priority:
+        return "追高风险"
+    if source == "industry_radar":
+        return "行业逻辑未兑现"
+    if score >= 10 or priority in {"高", "今日关注", "每日必看", "watch"}:
+        return "信号升级过早"
+    if return_pct <= -8:
+        return "价格确认失败"
+    return "证据不足"
+
+
+def _mistake_lesson(reason: str) -> str:
+    lessons = {
+        "追高风险": "后续先看回撤和成交确认，不把情绪高点当作加仓点。",
+        "行业逻辑未兑现": "同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。",
+        "信号升级过早": "先留在观察层，等价格和新闻复核后再提高权重。",
+        "价格确认失败": "降低该主题权重，避免把短期叙事当作趋势。",
+        "证据不足": "补充更多来源和价格验证，样本不够时只观察。",
+    }
+    return lessons.get(reason, "先复核假设，再决定是否继续跟踪。")
+
+
+def _build_mistake_reviews(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    reviews: list[dict[str, Any]] = []
+    for signal in signals:
+        latest = _latest_completed_observation(signal)
+        if latest is None:
+            continue
+        horizon, observation = latest
+        return_pct = _safe_float(observation.get("return_pct"))
+        if return_pct is None or return_pct >= 0:
+            continue
+        reason = _mistake_reason(signal, return_pct)
+        reviews.append(
+            {
+                "theme_key": signal.get("theme_key"),
+                "theme": signal.get("theme"),
+                "code": signal.get("code"),
+                "name": signal.get("name") or signal.get("code"),
+                "created_at_utc": signal.get("created_at_utc"),
+                "source": signal.get("source"),
+                "horizon": horizon,
+                "return_pct": round(return_pct, 3),
+                "reason": reason,
+                "lesson": _mistake_lesson(reason),
+                "status": "待复盘",
+            }
+        )
+    reviews.sort(key=lambda item: _safe_float(item.get("return_pct")) or 0)
+    return reviews[:12]
+
+
+def _build_mistake_summary(reviews: list[dict[str, Any]]) -> dict[str, Any]:
+    by_reason: dict[str, int] = {}
+    for item in reviews:
+        reason = str(item.get("reason") or "未分类")
+        by_reason[reason] = by_reason.get(reason, 0) + 1
+    if not reviews:
+        lines = ["- 错误复盘库暂无完成窗口的负向样本；继续积累，不急着下结论。"]
+    else:
+        top_reason = max(by_reason, key=lambda reason: by_reason[reason])
+        lines = [f"- 错误复盘库记录 {len(reviews)} 条负向样本；最多的问题是：{top_reason}。"]
+        for item in reviews[:2]:
+            lines.append(
+                f"- {item.get('theme')} / {item.get('name')}：{item.get('horizon')} {item.get('return_pct'):+.2f}%，{item.get('reason')}；{item.get('lesson')}"
+            )
+    return {"total": len(reviews), "by_reason": by_reason, "lines": lines}
+
+
 def build_signal_validation(
     *,
     generated_at: datetime,
@@ -362,12 +519,18 @@ def build_signal_validation(
     added_count = _add_current_signals(signals, entries, now)
     signals = _trim_signals(signals, now)
     rows = _summarize(signals)
+    industry_leaderboard = _build_industry_leaderboard(rows)
+    mistake_reviews = _build_mistake_reviews(signals)
+    mistake_summary = _build_mistake_summary(mistake_reviews)
 
     output = {
         "version": 1,
         "updated_at_utc": now.isoformat(),
         "signals": signals,
         "rows": rows,
+        "industry_leaderboard": industry_leaderboard,
+        "mistake_reviews": mistake_reviews,
+        "mistake_summary": mistake_summary,
         "adjustments": _build_adjustments(rows),
         "lines": _summary_lines(rows, added_count),
         "added_count": added_count,
@@ -389,6 +552,26 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
             buckets = " | ".join(_fmt_bucket(row[_horizon_key(horizon)]) for horizon in HORIZONS)
             lines.append(
                 f"| {row.get('theme')} | {row.get('signals', 0)} | {buckets} | {row.get('verdict')} | {row.get('adjustment', '不调整')} |"
+            )
+    leaderboard = validation.get("industry_leaderboard") or {}
+    lines.extend(["", "## 行业雷达命中率榜", ""])
+    lines.extend(leaderboard.get("lines") or ["- 行业雷达命中率榜还在积累样本。"])
+    leaderboard_rows = leaderboard.get("rows") or []
+    if leaderboard_rows:
+        lines.extend(["", "| 行业 | 窗口 | 样本 | 胜率 | 均值 | 动作 |", "|---|---|---:|---:|---:|---|"])
+        for row in leaderboard_rows[:8]:
+            lines.append(
+                f"| {row.get('theme')} | {row.get('basis')} | {row.get('samples', 0)} | {row.get('win_rate_pct', 0):.0f}% | {row.get('avg_return_pct', 0):+.2f}% | {row.get('action')} |"
+            )
+    mistake_summary = validation.get("mistake_summary") or {}
+    mistake_reviews = validation.get("mistake_reviews") or []
+    lines.extend(["", "## 错误复盘库", ""])
+    lines.extend(mistake_summary.get("lines") or ["- 暂无完成窗口的负向样本。"])
+    if mistake_reviews:
+        lines.extend(["", "| 主题 | 标的 | 窗口 | 结果 | 原因 | 下次规则 |", "|---|---|---|---:|---|---|"])
+        for item in mistake_reviews[:8]:
+            lines.append(
+                f"| {item.get('theme')} | {item.get('name')} | {item.get('horizon')} | {item.get('return_pct', 0):+.2f}% | {item.get('reason')} | {item.get('lesson')} |"
             )
     lines.extend(["", f"> {validation.get('note') or '事后验算只用于校准系统，不代表未来收益。'}"])
     return "\n".join(lines).strip() + "\n"
