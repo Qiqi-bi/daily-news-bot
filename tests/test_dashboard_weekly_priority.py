@@ -32,6 +32,7 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         )
 
         self.assertIn("中长期周报", html)
+        self.assertLess(html.index("中长期周报"), html.index("系统边界"))
         self.assertLess(html.index("中长期周报"), html.index("今日核心事件"))
 
 

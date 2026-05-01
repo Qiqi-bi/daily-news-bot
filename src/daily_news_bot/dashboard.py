@@ -2193,8 +2193,8 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
     sections = [
-        _system_boundary_section(payload),
         _weekly_main_section(payload),
+        _system_boundary_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),

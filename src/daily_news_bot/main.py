@@ -835,17 +835,28 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     translations = _feishu_translation_items(payload)
     overview = _build_feishu_overview(payload, clusters, translations)
     news_lines = _build_feishu_news_lines(clusters, translations)
-    market_summary = _build_feishu_market_summary(payload)
+    market_lines = _build_feishu_market_lines(payload)
     action_tendency = _build_feishu_action_tendency(payload)
     focus_lines = _build_feishu_focus_lines(payload)
+    objective_lines = _build_feishu_objective_lines(payload)
 
     lines: list[str] = [
         "**总判断**",
-        _feishu_short(f"{overview} {market_summary}", 260),
+        _feishu_short(overview, 240),
         "- 本卡不是交易指令，不保证收益；完整依据打开网页。",
         "",
-        "**3条新闻**",
+        "**市场快照**",
     ]
+    lines.extend(f"- {line}" for line in market_lines[:4])
+    if objective_lines:
+        lines.extend(["", "**年度纪律**"])
+        lines.extend(f"- {line}" for line in objective_lines[:2])
+    lines.extend(
+        [
+            "",
+            "**3条新闻**",
+        ]
+    )
     lines.extend(news_lines[:3])
     lines.extend(
         [
@@ -872,8 +883,8 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         [
             "",
             "**状态**",
-            f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；30/60/90成绩单累计 {validation.get('signal_count', 0)} 条信号。",
-            "- 飞书不放英文原文、完整持仓、成本价、仓位金额；只给纪律级方向。",
+            f"- 提醒 {watchlist.get('triggered_count', 0)} 条；30/60/90成绩单 {validation.get('signal_count', 0)} 条。",
+            "- 只看中文摘要；完整持仓、成本价和仓位金额不放在飞书卡片里。",
             "",
             f"网页：{dashboard_url}",
         ]
