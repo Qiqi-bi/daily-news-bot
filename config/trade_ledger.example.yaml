@@ -1,0 +1,21 @@
+# Copy this file to config/trade_ledger.yaml.
+# The real file is local-only and records your buy/sell receipts.
+
+trades:
+  - date: "2026-05-01"
+    side: buy
+    code: "510300"
+    name: Broad Market ETF
+    shares: 100
+    price: 4.000
+    fee_cny: 0
+    source: manual_example
+
+  - date: "2026-05-02"
+    side: sell
+    code: "510300"
+    name: Broad Market ETF
+    shares: 20
+    price: 4.100
+    fee_cny: 0
+    source: manual_example

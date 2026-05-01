@@ -1,0 +1,53 @@
+# Copy this file to config/portfolio.yaml and fill in your real portfolio locally.
+# Do not commit config/portfolio.yaml; it may contain position size, cost and cash details.
+
+profile:
+  total_value_cny: 100000
+  monthly_contribution_cny: 3000
+  investor_type: medium_long_term
+
+annual_objective:
+  base_return_pct_range: [8, 12]
+  stretch_return_pct_range: [12, 18]
+  max_annual_drawdown_pct: 15
+  discipline: "Target return is a review anchor, not a single-trade trigger."
+
+allocation_framework:
+  stable_core_target_pct: [35, 45]
+  growth_core_target_pct: [15, 20]
+  attack_target_pct: [20, 30]
+  insurance_target_pct: [10, 15]
+  reserve_target_pct: [0, 10]
+
+risk_controls:
+  direct_ai_cap_pct: 35
+  growth_tech_cap_pct: 55
+  single_attack_cap_pct: 15
+
+holdings:
+  - name: Broad Market ETF
+    code: "510300"
+    sleeve: stable_core
+    bucket: broad_core
+    weight_pct: 40
+    shares: 0
+    cost_nav: 0
+    themes: [china_equity, broad_market]
+  - name: Growth Tech ETF
+    code: "512480"
+    sleeve: growth_core
+    bucket: growth_broad
+    weight_pct: 18
+    shares: 0
+    cost_nav: 0
+    themes: [technology, semiconductor]
+  - name: Gold ETF
+    code: "518880"
+    sleeve: insurance
+    bucket: gold
+    weight_pct: 12
+    shares: 0
+    cost_nav: 0
+    themes: [gold, insurance]
+
+industry_radar: []

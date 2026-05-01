@@ -42,13 +42,28 @@ Thumbs.db
 history.json
 lark_config.json
 .env
+.env.local
+.env.*.local
+.dev.vars
 config.json
 secrets.json
 
 # Local config
 local_settings.py
 settings_local.py
+config/portfolio.yaml
+config/trade_ledger.yaml
+
+# Generated reports and local run output
+output/
+outputs/
 
 # Webhook URLs and API keys
 webhook_url.txt
 api_key.txt
+
+# Cloudflare local state
+.wrangler/
+workers/*/.wrangler/
+workers/*/wrangler.toml
+!workers/*/wrangler.toml.example
