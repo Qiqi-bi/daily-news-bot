@@ -1025,9 +1025,9 @@ def _validation_rows(validation: dict[str, Any] | None) -> list[list[str]]:
             [
                 escape(_text(row.get("theme"))),
                 escape(_text(row.get("signals"), "0")),
-                escape(_validation_bucket_text(row.get("t1"))),
-                escape(_validation_bucket_text(row.get("t5"))),
-                escape(_validation_bucket_text(row.get("t20"))),
+                escape(_validation_bucket_text(row.get("t30"))),
+                escape(_validation_bucket_text(row.get("t60"))),
+                escape(_validation_bucket_text(row.get("t90"))),
                 escape(_text(row.get("verdict"), "继续积累")),
                 escape(_text(row.get("adjustment"), "不调整")),
             ]
@@ -1043,13 +1043,53 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
         + "".join(f"<div>{escape(_strip_markdown(line))}</div>" for line in lines[:3])
         + "</div>"
         + _render_table(
-            ["主题", "信号数", "T+1", "T+5", "T+20", "结论", "权重"],
+            ["主题", "信号数", "T+30", "T+60", "T+90", "结论", "权重"],
             _validation_rows(validation),
         )
     )
-    note = validation.get("note") or "只用于校准系统权重，不代表未来收益，也不会直接触发交易。"
+    note = validation.get("note") or "30/60/90天成绩单只用于校准系统权重，不代表未来收益，也不会直接触发交易。"
     body += f'<div class="muted-block">{escape(note)}</div>'
-    return _section("事后验算", body, "每天记录信号，后续自动回看表现；命中率用于校准，不用于保证收益。", "wide", "validation")
+    return _section("30/60/90天成绩单", body, "每天记录信号，后续按中长期窗口回看表现；命中率用于校准，不用于保证收益。", "wide", "validation")
+
+
+def _weekly_main_section(payload: dict[str, Any]) -> str:
+    weekly = payload.get("weekly_review") or {}
+    validation = payload.get("signal_validation") or {}
+    output_paths = payload.get("output_paths") or {}
+    weekly_url = output_paths.get("weekly_md_url") or output_paths.get("weekly_md_uri")
+    is_enabled = bool(weekly.get("enabled"))
+    signal_count = int(validation.get("signal_count") or 0)
+    private_note = _text(weekly.get("public_note"), "周报按私密组合生成时，公开网页只展示节奏和边界，不展示持仓明细。")
+    status_value = "已生成" if is_enabled else "周日生成"
+    status_note = private_note if is_enabled and weekly.get("private_mode") else "每天先积累样本，周报只看连续确认和证伪。"
+    cards = [
+        ("周报状态", status_value, status_note),
+        ("验证窗口", "30/60/90天", "不按单日涨跌判断系统好坏，等样本到期再校准。"),
+        ("待验证信号", f"{signal_count} 条", "样本不足时只观察，不把胜率当结论。"),
+    ]
+    card_html = '<div class="action-grid">' + "".join(
+        '<div class="action-card">'
+        f'<div class="action-label">{escape(label)}</div>'
+        f'<div class="action-value">{escape(value)}</div>'
+        f'<div class="action-note">{escape(_shorten(note, 120))}</div>'
+        "</div>"
+        for label, value, note in cards
+    ) + "</div>"
+
+    lines: list[str] = []
+    decision_review = weekly.get("decision_review") or {}
+    lines.extend(decision_review.get("lines") or [])
+    if not lines:
+        lines.extend(weekly.get("signals") or [])
+    if not lines:
+        lines = [
+            "本周主结论等周报生成；平时只看连续确认、价格验证和仓位纪律。",
+            "今天的新闻只负责进入观察池，不应该每天逼你交易。",
+        ]
+    body = card_html + _render_list(lines, 5)
+    if weekly_url and output_paths.get("weekly_md_generated"):
+        body += f'<div class="section-actions">{_link("打开周报", weekly_url, "button-link")}</div>'
+    return _section("中长期周报", body, "先看周报和30/60/90天成绩单，再看当天新闻；这更适合中长期风格。", "wide", "weekly")
 
 
 def _event_route_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
@@ -1212,9 +1252,9 @@ def _metric_cards(payload: dict[str, Any]) -> str:
     if validation.get("enabled"):
         cards.append(
             _metric(
-                "事后验算",
+                "30/60/90成绩单",
                 f'{validation.get("signal_count", 0)} 条',
-                "T+1/T+5/T+20 自动复盘",
+                "中长期窗口自动复盘",
                 "accent",
             )
         )
@@ -2154,6 +2194,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
 
     sections = [
         _system_boundary_section(payload),
+        _weekly_main_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题会自动加中文速译。", "wide", "events"),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),

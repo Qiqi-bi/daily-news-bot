@@ -9,7 +9,7 @@ from .config import ROOT_DIR
 
 
 VALIDATION_PATH = ROOT_DIR / "outputs" / "signal_validation.json"
-HORIZONS = (1, 5, 20)
+HORIZONS = (30, 60, 90)
 MAX_SIGNALS = 500
 KEEP_DAYS = 180
 DEDUP_DAYS = 3
@@ -68,6 +68,14 @@ def _pct_change(start: float | None, end: float | None) -> float | None:
     if start in (None, 0) or end in (None, 0):
         return None
     return round((float(end) - float(start)) / float(start) * 100, 3)
+
+
+def _horizon_key(horizon: int) -> str:
+    return f"t{horizon}"
+
+
+def _horizon_label(horizon: int) -> str:
+    return f"T+{horizon}"
 
 
 def _trim_signals(signals: list[dict[str, Any]], now: datetime) -> list[dict[str, Any]]:
@@ -158,7 +166,7 @@ def _observe_existing(signals: list[dict[str, Any]], quote_by_code: dict[str, di
         if current_price in (None, 0):
             continue
         for horizon in HORIZONS:
-            key = f"t{horizon}"
+            key = _horizon_key(horizon)
             if key in observations or elapsed_days < horizon:
                 continue
             return_pct = _pct_change(_safe_float(signal.get("start_price")), current_price)
@@ -219,15 +227,13 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "theme_key": theme_key,
                 "theme": theme,
                 "signals": 0,
-                "t1": _empty_bucket(),
-                "t5": _empty_bucket(),
-                "t20": _empty_bucket(),
+                **{_horizon_key(horizon): _empty_bucket() for horizon in HORIZONS},
             },
         )
         row["signals"] += 1
         observations = signal.get("observations") or {}
         for horizon in HORIZONS:
-            key = f"t{horizon}"
+            key = _horizon_key(horizon)
             obs = observations.get(key) or {}
             return_pct = _safe_float(obs.get("return_pct"))
             if return_pct is None:
@@ -251,7 +257,14 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 bucket["win_rate_pct"] = None
                 bucket["avg_return_pct"] = None
 
-        ref_key = "t5" if row["t5"]["samples"] >= MIN_ADJUSTMENT_SAMPLES else "t1"
+        ref_key = _horizon_key(HORIZONS[-1])
+        for horizon in reversed(HORIZONS):
+            candidate_key = _horizon_key(horizon)
+            if row[candidate_key]["samples"] >= MIN_ADJUSTMENT_SAMPLES:
+                ref_key = candidate_key
+                break
+        if row[ref_key]["samples"] < MIN_ADJUSTMENT_SAMPLES:
+            ref_key = _horizon_key(HORIZONS[0])
         ref = row[ref_key]
         samples = int(ref["samples"])
         win_rate = _safe_float(ref.get("win_rate_pct"))
@@ -280,8 +293,9 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     rows.sort(
         key=lambda item: (
-            int((item.get("t5") or {}).get("samples") or 0),
-            _safe_float((item.get("t5") or {}).get("avg_return_pct")) or -999,
+            int((item.get(_horizon_key(HORIZONS[-1])) or {}).get("samples") or 0),
+            _safe_float((item.get(_horizon_key(HORIZONS[-1])) or {}).get("avg_return_pct")) or -999,
+            int((item.get(_horizon_key(HORIZONS[0])) or {}).get("samples") or 0),
             int(item.get("signals") or 0),
         ),
         reverse=True,
@@ -299,13 +313,16 @@ def _fmt_bucket(bucket: dict[str, Any]) -> str:
 def _summary_lines(rows: list[dict[str, Any]], added_count: int) -> list[str]:
     if not rows:
         return [
-            "- 事后验算刚启用：今天会先记录候选方向和价格，后续自动回看 T+1/T+5/T+20。",
+            "- 事后验算刚启用：今天会先记录候选方向和价格，后续自动回看 T+30/T+60/T+90。",
             f"- 本次新增待验证信号 {added_count} 条；样本不足前不要把胜率当结论。",
         ]
-    lines = [f"- 本次新增待验证信号 {added_count} 条；命中率只用于校准系统，不直接触发买卖。"]
+    lines = [f"- 本次新增待验证信号 {added_count} 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。"]
     for row in rows[:4]:
+        first = _horizon_key(HORIZONS[0])
+        second = _horizon_key(HORIZONS[1])
+        third = _horizon_key(HORIZONS[2])
         lines.append(
-            f"- {row.get('theme')}：T+1 {_fmt_bucket(row['t1'])}；T+5 {_fmt_bucket(row['t5'])}；结论：{row.get('verdict')}；权重：{row.get('adjustment', '不调整')}。"
+            f"- {row.get('theme')}：{_horizon_label(HORIZONS[0])} {_fmt_bucket(row[first])}；{_horizon_label(HORIZONS[1])} {_fmt_bucket(row[second])}；{_horizon_label(HORIZONS[2])} {_fmt_bucket(row[third])}；结论：{row.get('verdict')}。"
         )
     return lines
 
@@ -366,10 +383,12 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
     lines.extend(validation.get("lines") or ["- 暂无验算数据。"])
     rows = validation.get("rows") or []
     if rows:
-        lines.extend(["", "| 主题 | 信号数 | T+1 | T+5 | T+20 | 结论 | 权重 |", "|---|---:|---|---|---|---|---|"])
+        horizon_labels = " | ".join(_horizon_label(horizon) for horizon in HORIZONS)
+        lines.extend(["", f"| 主题 | 信号数 | {horizon_labels} | 结论 | 权重 |", "|---|---:|---|---|---|---|---|"])
         for row in rows[:8]:
+            buckets = " | ".join(_fmt_bucket(row[_horizon_key(horizon)]) for horizon in HORIZONS)
             lines.append(
-                f"| {row.get('theme')} | {row.get('signals', 0)} | {_fmt_bucket(row['t1'])} | {_fmt_bucket(row['t5'])} | {_fmt_bucket(row['t20'])} | {row.get('verdict')} | {row.get('adjustment', '不调整')} |"
+                f"| {row.get('theme')} | {row.get('signals', 0)} | {buckets} | {row.get('verdict')} | {row.get('adjustment', '不调整')} |"
             )
     lines.extend(["", f"> {validation.get('note') or '事后验算只用于校准系统，不代表未来收益。'}"])
     return "\n".join(lines).strip() + "\n"

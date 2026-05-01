@@ -767,14 +767,14 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
 
     result: list[str] = []
     for row in rows[:2]:
-        t5 = row.get("t5") or {}
-        samples = int(t5.get("samples") or 0)
+        t30 = row.get("t30") or {}
+        samples = int(t30.get("samples") or 0)
         if samples:
             result.append(
-                f"{row.get('theme') or '未命名'}：T+5 样本 {samples}，胜率 {float(t5.get('win_rate_pct') or 0):.0f}%，均值 {float(t5.get('avg_return_pct') or 0):+.2f}%，{row.get('verdict') or '继续观察'}。"
+                f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，胜率 {float(t30.get('win_rate_pct') or 0):.0f}%，均值 {float(t30.get('avg_return_pct') or 0):+.2f}%，{row.get('verdict') or '继续观察'}。"
             )
         else:
-            result.append(f"{row.get('theme') or '未命名'}：样本继续积累，先不把胜率当结论。")
+            result.append(f"{row.get('theme') or '未命名'}：30/60/90天样本继续积累，先不把胜率当结论。")
     result.append("用途：验算只校准系统权重，不直接触发买卖。")
     return result
 
@@ -872,7 +872,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         [
             "",
             "**状态**",
-            f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；事后验算累计 {validation.get('signal_count', 0)} 条信号。",
+            f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；30/60/90成绩单累计 {validation.get('signal_count', 0)} 条信号。",
             "- 飞书不放英文原文、完整持仓、成本价、仓位金额；只给纪律级方向。",
             "",
             f"网页：{dashboard_url}",

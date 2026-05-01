@@ -116,7 +116,7 @@ jobs:
               "feishu_receipts": {"status": "not_run"},
           }
           digest = _build_feishu_digest(payload)
-          required = ["总判断", "3条新闻", "1. 美国能源供应扰动推高油价", "黄金：+1.20%，上涨", "3个关注", "半导体材料", "调仓倾向", "2026-05-31 回看", "持仓同步"]
+          required = ["总判断", "3条新闻", "1. 美国能源供应扰动推高油价", "黄金：+1.20%，上涨", "3个关注", "半导体材料", "调仓倾向", "2026-05-31 回看", "持仓同步", "30/60/90成绩单"]
           for item in required:
               assert item in digest, item
           forbidden = ["U.S. energy headline", "011840", "¥1,000"]
@@ -620,6 +620,8 @@ jobs:
           grep -qi 'hero-panel' /tmp/dashboard.html
           grep -qi 'status-bar' /tmp/dashboard.html
           grep -qi 'decision-strip' /tmp/dashboard.html
+          grep -qi '中长期周报' /tmp/dashboard.html
+          grep -qi '30/60/90天成绩单' /tmp/dashboard.html
           grep -qi '中长期纪律' /tmp/dashboard.html
           grep -qi '系统边界' /tmp/dashboard.html
           grep -qi '不能保证赚钱' /tmp/dashboard.html
