@@ -70,7 +70,7 @@ def iter_chats(token: str, *, timeout: float = 20) -> list[dict[str, Any]]:
     chats: list[dict[str, Any]] = []
     page_token = ""
     while True:
-        params = {"page_size": 100}
+        params: dict[str, Any] = {"page_size": 100}
         if page_token:
             params["page_token"] = page_token
         data = _request_json("GET", "/im/v1/chats", token=token, params=params, timeout=timeout)
@@ -194,15 +194,16 @@ def poll_and_append_receipts(
     lookback_hours: float = 48,
     timeout: float = 20,
 ) -> dict[str, Any]:
+    checked_at_utc = datetime.now(timezone.utc).isoformat()
     if not app_id or not app_secret:
-        return {"ok": True, "skipped": True, "reason": "FEISHU_APP_ID or FEISHU_APP_SECRET is missing", "appended_count": 0}
+        return {"ok": True, "skipped": True, "reason": "FEISHU_APP_ID or FEISHU_APP_SECRET is missing", "appended_count": 0, "checked_at_utc": checked_at_utc}
     if not chat_id and not chat_name:
-        return {"ok": True, "skipped": True, "reason": "FEISHU_RECEIPT_CHAT_ID or FEISHU_RECEIPT_CHAT_NAME is missing", "appended_count": 0}
+        return {"ok": True, "skipped": True, "reason": "FEISHU_RECEIPT_CHAT_ID or FEISHU_RECEIPT_CHAT_NAME is missing", "appended_count": 0, "checked_at_utc": checked_at_utc}
 
     token = tenant_access_token(app_id, app_secret, timeout=timeout)
     resolved_chat_id = resolve_chat_id(token, chat_id, chat_name, timeout=timeout)
     if not resolved_chat_id:
-        return {"ok": False, "error": f"Could not find Feishu chat: {chat_name or chat_id}", "appended_count": 0}
+        return {"ok": False, "error": f"Could not find Feishu chat: {chat_name or chat_id}", "appended_count": 0, "checked_at_utc": checked_at_utc}
 
     now = int(time.time())
     start = max(now - int(lookback_hours * 3600), 0)
@@ -267,6 +268,7 @@ def poll_and_append_receipts(
         "errors": errors[:10],
         "appended_count": len(appended),
         "appended": appended,
+        "checked_at_utc": checked_at_utc,
     }
 
 
@@ -297,6 +299,8 @@ def public_receipt_summary(summary: dict[str, Any]) -> dict[str, Any]:
         public["reason"] = str(summary.get("reason"))[:300]
     if summary.get("error"):
         public["error"] = str(summary.get("error"))[:300]
+    if summary.get("checked_at_utc"):
+        public["checked_at_utc"] = str(summary.get("checked_at_utc"))[:40]
     return public
 
 
@@ -324,7 +328,7 @@ def main(argv: list[str] | None = None) -> int:
             timeout=args.timeout,
         )
     except Exception as exc:
-        summary = {"ok": False, "error": f"{type(exc).__name__}: {exc}", "appended_count": 0}
+        summary = {"ok": False, "error": f"{type(exc).__name__}: {exc}", "appended_count": 0, "checked_at_utc": datetime.now(timezone.utc).isoformat()}
         if not args.soft_fail:
             print(json.dumps(public_receipt_summary(summary), ensure_ascii=False, indent=2))
             return 1

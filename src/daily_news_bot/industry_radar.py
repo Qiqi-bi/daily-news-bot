@@ -185,8 +185,123 @@ DEFAULT_INDUSTRY_RADAR: list[dict[str, Any]] = [
 ]
 
 
+INDUSTRY_FACT_DETAILS: dict[str, dict[str, Any]] = {
+    "ai_infra": {
+        "逻辑": "AI基础设施先看资本开支、芯片供给、数据中心电力和订单兑现，不只看模型热度。",
+        "确认": ["海外AI龙头指引上修", "半导体/算力价格同步走强", "数据中心电力约束被定价"],
+        "否定": ["订单延后", "芯片供给缓解但价格不涨", "组合AI仓位已超纪律线"],
+    },
+    "china_broad_core": {
+        "逻辑": "宽基是组合底盘，政策、流动性、人民币和成交量决定新增资金节奏。",
+        "确认": ["人民币企稳", "成交量放大", "稳增长政策落地", "沪深300相对成长不弱"],
+        "否定": ["政策只喊话不落地", "汇率继续承压", "成交缩量"],
+    },
+    "gold_real_rates": {
+        "逻辑": "黄金是保险仓，核心看实际利率、美元、央行买盘和地缘风险。",
+        "确认": ["黄金上涨同时美元或美债收益率不强", "央行买盘延续", "地缘风险升温"],
+        "否定": ["实际利率快速上行", "黄金仓位已高于保险区间", "只靠单日避险情绪"],
+    },
+    "semiconductor_materials": {
+        "逻辑": "半导体材料看不可替代性、认证周期、供应集中度和出口管制，小品种可能卡住大产业。",
+        "确认": ["价格上涨", "交期拉长", "客户认证推进", "出口管制收紧", "库存周数下降"],
+        "否定": ["只是题材传播", "价格没有确认", "下游库存充足", "没有订单或毛利率验证"],
+    },
+    "energy_power": {
+        "逻辑": "能源电力链看油气煤价格、绿电消纳、算力用电和电网投资，风光不能混成一个逻辑。",
+        "确认": ["油气煤价格上行", "电力/电网订单确认", "风电相对光伏走强", "算力绿电需求落地"],
+        "否定": ["能源价格回落", "电力板块不跟", "政策只保供不让利润释放"],
+    },
+    "resource_metals": {
+        "逻辑": "资源品看供给集中、出口规则、库存和下游议价，商品上涨要能传到企业利润。",
+        "确认": ["出口限制或供应扰动", "库存下降", "现货价格连续确认", "龙头毛利率改善"],
+        "否定": ["期货单日波动", "下游无法接受涨价", "新增供给快速释放"],
+    },
+    "anti_involution_policy": {
+        "逻辑": "反内卷的价值在于能否限制低价竞争并修复利润，不是所有政策口号都等于涨价。",
+        "确认": ["行业协会或监管文件落地", "报价上调", "产能利用率改善", "毛利率修复"],
+        "否定": ["产能仍继续扩张", "低价竞争未停", "海外需求不足"],
+    },
+    "hk_tech": {
+        "逻辑": "港股科技看美元流动性、南向资金、平台政策和AI应用侧，弹性强但不是防守仓。",
+        "确认": ["南向持续流入", "美元压力缓解", "平台政策改善", "应用侧收入兑现"],
+        "否定": ["美元走强", "平台监管反复", "只涨估值不涨业绩"],
+    },
+    "dividend_defense": {
+        "逻辑": "红利低波是组合稳定器，重点看股息率、利率和成长仓拥挤度。",
+        "确认": ["长端利率下行", "股息率仍有吸引力", "成长波动升高", "现金流稳定"],
+        "否定": ["红利过度拥挤", "利率上行", "只因短线避险追高"],
+    },
+    "shipping_routes": {
+        "逻辑": "航运只在通道风险发生时抬高优先级，核心看运价、绕航、保险费和能源价格。",
+        "确认": ["运价上行", "绕航时间增加", "保险费上升", "能源价格同步"],
+        "否定": ["通道快速恢复", "运价不跟", "只有传闻没有航线数据"],
+    },
+    "new_energy_cycle": {
+        "逻辑": "新能源看产能出清、价格链和利润修复，油价上涨不自动等于新能源上涨。",
+        "确认": ["锂价/组件价格企稳", "库存下降", "龙头盈利修复", "订单改善"],
+        "否定": ["产能继续过剩", "价格继续下跌", "政策保量不保利润"],
+    },
+    "sanctions_tariffs": {
+        "逻辑": "制裁关税改变成本、供应链和议价权，必须看生效日期、豁免和替代供应。",
+        "确认": ["官方文件确认", "报价变化", "汇率或商品价格响应", "替代供应不足"],
+        "否定": ["只有口头威胁", "豁免范围很大", "价格没有响应"],
+    },
+}
+
+
 def _text(value: Any) -> str:
     return " ".join(str(value or "").split())
+
+
+def _fact_values(value: Any) -> list[str]:
+    if isinstance(value, dict):
+        result: list[str] = []
+        for item in value.values():
+            result.extend(_fact_values(item))
+        return result
+    if isinstance(value, list):
+        result = []
+        for item in value:
+            result.extend(_fact_values(item))
+        return result
+    text = _text(value)
+    return [text] if text else []
+
+
+def _apply_fact_details(entry: dict[str, Any]) -> dict[str, Any]:
+    row = dict(entry)
+    entry_id = str(row.get("id") or row.get("name") or "")
+    facts = dict(INDUSTRY_FACT_DETAILS.get(entry_id) or {})
+    configured_facts = row.get("facts")
+    if isinstance(configured_facts, dict):
+        facts.update(configured_facts)
+    if facts:
+        row["facts"] = facts
+        row.setdefault("fact_summary", _text(facts.get("逻辑")))
+    return row
+
+
+def _configured_entries(config: Any) -> tuple[bool, list[dict[str, Any]]]:
+    if isinstance(config, dict):
+        if config.get("enabled") is False:
+            return True, []
+        if isinstance(config.get("items"), list):
+            return True, [dict(item) for item in config.get("items") or [] if isinstance(item, dict)]
+        layers = config.get("layers")
+        if isinstance(layers, dict):
+            entries: list[dict[str, Any]] = []
+            for layer, items in layers.items():
+                if not isinstance(items, list):
+                    continue
+                for item in items:
+                    if isinstance(item, dict):
+                        row = dict(item)
+                        row.setdefault("layer", layer)
+                        entries.append(row)
+            return True, entries
+    if isinstance(config, list):
+        return True, [dict(item) for item in config if isinstance(item, dict)]
+    return False, []
 
 
 def _cluster_text(cluster: Any) -> str:
@@ -212,26 +327,21 @@ def _cluster_text(cluster: Any) -> str:
 
 
 def _normalize_entries(config: Any) -> list[dict[str, Any]]:
-    if isinstance(config, dict):
-        if config.get("enabled") is False:
-            return []
-        if isinstance(config.get("items"), list):
-            return [dict(item) for item in config.get("items") or [] if isinstance(item, dict)]
-        layers = config.get("layers")
-        if isinstance(layers, dict):
-            entries: list[dict[str, Any]] = []
-            for layer, items in layers.items():
-                if not isinstance(items, list):
-                    continue
-                for item in items:
-                    if isinstance(item, dict):
-                        row = dict(item)
-                        row.setdefault("layer", layer)
-                        entries.append(row)
-            return entries
-    if isinstance(config, list):
-        return [dict(item) for item in config if isinstance(item, dict)]
-    return [dict(item) for item in DEFAULT_INDUSTRY_RADAR]
+    configured, custom_entries = _configured_entries(config)
+    if configured and not custom_entries:
+        return []
+
+    entries = [_apply_fact_details(item) for item in DEFAULT_INDUSTRY_RADAR]
+    index_by_key = {str(item.get("id") or item.get("name") or ""): idx for idx, item in enumerate(entries)}
+    for custom in custom_entries:
+        key = str(custom.get("id") or custom.get("name") or "")
+        if key and key in index_by_key:
+            merged = dict(entries[index_by_key[key]])
+            merged.update(custom)
+            entries[index_by_key[key]] = _apply_fact_details(merged)
+        else:
+            entries.append(_apply_fact_details(custom))
+    return entries
 
 
 def _keyword_hits(entry: dict[str, Any], cluster_texts: list[str]) -> list[str]:
@@ -271,8 +381,10 @@ def _industry_score_card(
             entry.get("why"),
             entry.get("watch"),
             entry.get("verify"),
+            entry.get("fact_summary"),
             " ".join(entry.get("keywords") or []),
             " ".join(hits),
+            " ".join(_fact_values(entry.get("facts"))),
         )
     )
     policy_score = _component_score(
@@ -386,6 +498,8 @@ def build_industry_radar(
                 "score_card": score_card,
                 "score_card_text": _score_card_text(score_card),
                 "why": entry.get("why") or "",
+                "facts": entry.get("facts") or {},
+                "fact_summary": entry.get("fact_summary") or "",
                 "watch": entry.get("watch") or "",
                 "verify": entry.get("verify") or "",
                 "action": entry.get("action") or "",
@@ -418,7 +532,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
         return ["- 行业雷达未启用。"]
     lines = list(radar.get("summary_lines") or [])
     rows = radar.get("rows") or []
-    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 看什么 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|"])
+    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 事实库 | 看什么 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|---|"])
     for row in rows:
         instruments = "、".join(row.get("instruments") or [])
         action = row.get("action") or ""
@@ -430,6 +544,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
             f"{_text(row.get('name'))} | "
             f"{_text(row.get('score_card_text'))} | "
             f"{_text(row.get('status'))} | "
+            f"{_text(row.get('fact_summary'))} | "
             f"{_text(row.get('watch'))} | "
             f"{_text(row.get('verify'))} | "
             f"{_text(action)} |"

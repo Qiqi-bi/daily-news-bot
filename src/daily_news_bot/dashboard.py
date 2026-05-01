@@ -720,6 +720,25 @@ def _receipt_status_body(payload: dict[str, Any]) -> str:
     return body
 
 
+def _trade_sync_status_body(portfolio: dict[str, Any]) -> str:
+    sync = portfolio.get("trade_sync_status") or {}
+    if not sync:
+        return '<div class="muted-block">持仓同步状态暂不可用；系统会继续按私密组合配置运行。</div>'
+    rows = [
+        ["状态", escape(_text(sync.get("value"), "未知"))],
+        ["说明", escape(_text(sync.get("note"), ""))],
+        ["检查时间", escape(_compact_time(sync.get("checked_at_utc")) if sync.get("checked_at_utc") else "本次未记录")],
+    ]
+    tone = _text(sync.get("tone"), "neutral")
+    return (
+        f'<div class="receipt-banner {escape(tone)}">'
+        f'<div class="receipt-title">持仓同步：{escape(_text(sync.get("value"), "未知"))}</div>'
+        f'<div class="receipt-note">{escape(_text(sync.get("note"), ""))}</div>'
+        "</div>"
+        + _render_table(["项目", "结果"], rows)
+    )
+
+
 def _decision_strip(payload: dict[str, Any]) -> str:
     action_items = _action_guidance_items(payload)
     action_label, action_value, action_note = action_items[0] if action_items else ("当前动作", "观察", "先看价格确认。")
@@ -931,6 +950,7 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
                 escape(_text(row.get("name"))),
                 escape(_text(row.get("score_card_text"), "-")),
                 escape(_text(row.get("status"))),
+                escape(_shorten(row.get("fact_summary"), 120)),
                 escape(_shorten(row.get("watch"), 120)),
                 escape(_shorten(row.get("verify"), 120)),
                 escape(_shorten(action, 130)),
@@ -1053,7 +1073,8 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
         sections.append(
             _section(
                 "组合配置（私密）",
-                '<div class="muted-block">组合配置已接入本次运行，但公开网页不会展示持仓、成本、交易流水、组合估值、AI 暴露、黄金仓位和历史缓存。具体纪律提示请看飞书推送。</div>',
+                '<div class="muted-block">组合配置已接入本次运行，但公开网页不会展示持仓、成本、交易流水、组合估值、AI 暴露、黄金仓位和历史缓存。具体纪律提示请看飞书推送。</div>'
+                + _trade_sync_status_body(portfolio),
                 "默认保护你的个人仓位；如需公开展示，需要单独开启 PORTFOLIO_PUBLIC_OUTPUTS。",
                 "wide",
             )
@@ -1092,7 +1113,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             _section(
                 "行业雷达",
                 _render_table(
-                    ["层级", "行业", "评分", "状态", "看什么", "验证条件", "动作"],
+                    ["层级", "行业", "评分", "状态", "事实库", "看什么", "验证条件", "动作"],
                     _industry_radar_rows(portfolio.get("industry_radar")),
                 ),
                 "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",
@@ -1200,7 +1221,10 @@ def _metric_cards(payload: dict[str, Any]) -> str:
     _, receipt_value, receipt_note, receipt_tone = _receipt_status(payload)
     cards.append(_metric("操作回执", receipt_value, receipt_note, "accent" if receipt_tone == "good" else ""))
     if portfolio.get("private_mode"):
+        sync = portfolio.get("trade_sync_status") or {}
         cards.append(_metric("组合配置", "已接入", "私密模式：公开页不显示仓位明细"))
+        if sync:
+            cards.append(_metric("持仓同步", _text(sync.get("value"), "未知"), _shorten(sync.get("note"), 48)))
     elif portfolio.get("enabled"):
         summary = portfolio.get("summary") or {}
         quotes = portfolio.get("portfolio_quotes") or {}

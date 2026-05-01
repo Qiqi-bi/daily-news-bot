@@ -31,7 +31,7 @@ from .report import render_report, save_json, save_text
 from .senders import send_feishu_message
 from .signal_validation import build_signal_validation, render_signal_validation_markdown
 from .strategic_lens import build_strategic_lens, render_strategic_lens_markdown
-from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, load_trade_ledger
+from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, build_trade_sync_status, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
 from .translations import translate_cluster_highlights
 from .watchlist import evaluate_watchlist, render_watchlist_markdown
@@ -803,6 +803,15 @@ def _build_feishu_receipt_status_line(payload: dict[str, Any]) -> str:
     )
 
 
+def _build_feishu_trade_sync_line(payload: dict[str, Any]) -> str:
+    sync = ((payload.get("portfolio") or {}).get("trade_sync_status") or {})
+    if not sync:
+        return "持仓同步：未启用；系统仍按原始配置估算。"
+    value = str(sync.get("value") or "未知")
+    note = _feishu_short(sync.get("note") or "", 120)
+    return f"持仓同步：{value}；{note}"
+
+
 def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
     raw_title = str(item.get("title") or "未命名提醒")
     normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
@@ -820,6 +829,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     dashboard = payload.get("dashboard") or {}
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
     receipt_line = _build_feishu_receipt_status_line(payload).replace("回执状态：", "")
+    trade_sync_line = _build_feishu_trade_sync_line(payload).replace("持仓同步：", "")
     validation = payload.get("signal_validation") or {}
     clusters = list(payload.get("clusters") or [])
     translations = _feishu_translation_items(payload)
@@ -851,6 +861,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             f"- {action_tendency}",
             "",
             "**回执/周报**",
+            f"- 持仓同步：{trade_sync_line}",
             f"- {receipt_line}；有交易才回一行中文，没操作不用回。",
             "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
         ]
@@ -943,10 +954,19 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
     public_payload = copy.deepcopy(payload)
     portfolio = public_payload.get("portfolio") or {}
     if portfolio.get("enabled"):
+        sync = portfolio.get("trade_sync_status") or {}
         public_payload["portfolio"] = {
             "enabled": True,
             "private_mode": True,
             "annual_objective": portfolio.get("annual_objective") or {},
+            "trade_sync_status": {
+                "label": sync.get("label") or "持仓同步",
+                "value": sync.get("value") or "未知",
+                "tone": sync.get("tone") or "neutral",
+                "status": sync.get("status") or "",
+                "note": sync.get("note") or "私密组合已接入；公开网页不显示持仓明细。",
+                "checked_at_utc": sync.get("checked_at_utc") or "",
+            },
             "public_note": "组合配置已接入，但持仓、成本、现金、交易流水和组合估值不发布到公开网页；具体动作看飞书推送。",
         }
         public_payload["portfolio_brief_markdown"] = ""
@@ -1343,7 +1363,25 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
             "lines": [f"- watchlist 检查失败：{type(exc).__name__}: {exc}"[:500]],
         }
     payload["watchlist"] = watchlist_summary
-    payload["feishu_receipts"] = _load_feishu_receipt_status()
+    receipt_status = _load_feishu_receipt_status()
+    payload["feishu_receipts"] = receipt_status
+    portfolio_status = payload.get("portfolio") or {}
+    if portfolio_status.get("enabled"):
+        trade_sync_status = build_trade_sync_status(portfolio_status.get("trade_ledger") or {}, receipt_status)
+        portfolio_status["trade_sync_status"] = trade_sync_status
+        sync_lines = [
+            f"- {trade_sync_status.get('value', '未知')}：{trade_sync_status.get('note', '')}",
+            f"- 交易账本累计 {trade_sync_status.get('trade_count', 0)} 条，覆盖 {trade_sync_status.get('positions_count', 0)} 个标的。",
+        ]
+        portfolio_status["trade_sync_lines"] = sync_lines
+        if payload.get("portfolio_brief_markdown"):
+            portfolio_brief = (
+                str(payload["portfolio_brief_markdown"]).rstrip()
+                + "\n\n## 持仓同步状态\n\n"
+                + "\n".join(sync_lines)
+                + "\n"
+            )
+            payload["portfolio_brief_markdown"] = portfolio_brief
     watchlist_section = render_watchlist_markdown(watchlist_summary)
     if watchlist_section:
         report = report.rstrip() + "\n\n" + watchlist_section
