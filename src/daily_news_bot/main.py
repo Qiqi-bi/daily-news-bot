@@ -447,11 +447,41 @@ def _feishu_translation_items(payload: dict[str, Any]) -> dict[str, Any]:
     return (payload.get("translations") or {}).get("items") or {}
 
 
+def _feishu_cjk_count(text: str) -> int:
+    return sum(1 for char in text if "\u4e00" <= char <= "\u9fff")
+
+
+def _feishu_latin_count(text: str) -> int:
+    return sum(1 for char in text if "a" <= char.lower() <= "z")
+
+
+def _feishu_too_much_english(text: str) -> bool:
+    latin = _feishu_latin_count(text)
+    cjk = _feishu_cjk_count(text)
+    return latin >= 18 and latin > max(cjk * 2, 18)
+
+
+def _feishu_cluster_fallback_title(cluster: dict[str, Any]) -> str:
+    tags = [_feishu_tag_label(tag) for tag in (cluster.get("tags") or [])]
+    tag_text = "、".join(list(dict.fromkeys(tag for tag in tags if tag))[:3]) or "综合"
+    direction = str(cluster.get("direction") or "待确认")
+    credibility = str(cluster.get("credibility_label") or "待确认")
+    sources = int(cluster.get("confirmed_source_count") or 0)
+    source_text = f"{sources} 个信源" if sources else "信源待确认"
+    return f"{tag_text}事件：方向{direction}，可信度{credibility}，{source_text}"
+
+
 def _feishu_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
     representative = cluster.get("representative") or {}
     cluster_id = str(cluster.get("cluster_id") or "")
     translated = translations.get(cluster_id) or {}
-    return str(translated.get("title_zh") or representative.get("title") or cluster.get("theme") or "未命名事件")
+    title = str(translated.get("title_zh") or "").strip()
+    if title and not _feishu_too_much_english(title):
+        return title
+    raw_title = str(representative.get("title") or cluster.get("theme") or "").strip()
+    if raw_title and _feishu_cjk_count(raw_title) >= 4 and not _feishu_too_much_english(raw_title):
+        return raw_title
+    return _feishu_cluster_fallback_title(cluster)
 
 
 def _feishu_tag_label(tag: Any) -> str:
@@ -512,12 +542,78 @@ def _build_feishu_overview(payload: dict[str, Any], clusters: list[dict[str, Any
     )
 
 
+def _build_feishu_news_lines(clusters: list[dict[str, Any]], translations: dict[str, Any]) -> list[str]:
+    if not clusters:
+        return ["本次没有筛出核心新闻；先看市场快照和提醒状态。"]
+
+    result: list[str] = []
+    for index, cluster in enumerate(clusters[:3], start=1):
+        translated = translations.get(str(cluster.get("cluster_id") or "")) or {}
+        title = _feishu_short(_feishu_title(cluster, translations), 58)
+        summary = str(translated.get("why_it_matters_zh") or translated.get("summary_zh") or "").strip()
+        if _feishu_too_much_english(summary):
+            summary = ""
+        tags = [_feishu_tag_label(tag) for tag in cluster.get("tags") or []]
+        tag_text = "、".join(list(dict.fromkeys(tag for tag in tags if tag))[:3]) or "综合"
+        direction = str(cluster.get("direction") or "待确认")
+        credibility = str(cluster.get("credibility_label") or "待确认")
+        source_count = int(cluster.get("confirmed_source_count") or 0)
+        verify = f"{source_count} 源确认" if source_count else "先二次确认"
+        detail = _feishu_short(summary, 72) if summary else f"影响 {tag_text}，方向 {direction}，{verify}"
+        result.append(f"{index}. {title}；{detail}；可信度 {credibility}。")
+    return result
+
+
+def _feishu_fmt_market_change(value: Any) -> str:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return "未知"
+    return f"{number:+.2f}%"
+
+
+def _build_feishu_market_lines(payload: dict[str, Any]) -> list[str]:
+    items = (payload.get("market_snapshot") or {}).get("items") or []
+    if not items:
+        return ["本次没有拿到市场快照；动手前先查实时价格。"]
+
+    preferred = ["WTI原油", "布伦特原油", "黄金", "美元指数", "美国10Y国债收益率", "VIX", "标普500期货", "纳斯达克100期货", "离岸人民币"]
+    by_name = {str(item.get("name") or ""): item for item in items}
+    ordered = [by_name[name] for name in preferred if name in by_name]
+    ordered.extend(item for item in items if item not in ordered)
+
+    result: list[str] = []
+    display_names = {
+        "WTI原油": "美国原油",
+        "VIX": "波动率指数",
+        "美国10Y国债收益率": "美国十年期收益率",
+    }
+    for item in ordered[:7]:
+        raw_name = str(item.get("name") or "未知资产")
+        name = display_names.get(raw_name, raw_name)
+        change = _feishu_fmt_market_change(item.get("change_pct"))
+        movement = str(item.get("movement") or "待确认")
+        result.append(f"{name}：{change}，{movement}")
+    return result
+
+
+def _feishu_action_visible_line(raw: Any) -> str:
+    cleaned = _feishu_clean_line(raw)
+    cleaned = re.sub(r"^\d+\.\s*", "", cleaned)
+    cleaned = re.sub(r"\([0-9A-Za-z.=^_-]{3,}\)", "", cleaned)
+    cleaned = re.sub(r"参考金额\s*¥?[0-9,.\s~￥¥]+", "参考金额按纪律表", cleaned)
+    cleaned = re.sub(r"单只参考\s*¥?[0-9,.\s~￥¥]+", "单只金额按纪律表", cleaned)
+    cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?\s*(?:~|-|至)\s*¥?[0-9,]+(?:\.\d+)?", "纪律区间", cleaned)
+    cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?", "纪律金额", cleaned)
+    return _feishu_short(cleaned, 118)
+
+
 def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
     portfolio = payload.get("portfolio") or {}
     if portfolio.get("enabled"):
         lines = []
         for raw in portfolio.get("action_slot_lines") or []:
-            cleaned = _feishu_clean_line(raw)
+            cleaned = _feishu_action_visible_line(raw)
             if cleaned:
                 lines.append(_feishu_short(cleaned, 120))
         if lines:
@@ -673,21 +769,57 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
     receipt_line = _build_feishu_receipt_status_line(payload).replace("回执状态：", "")
     validation = payload.get("signal_validation") or {}
+    clusters = list(payload.get("clusters") or [])
+    translations = _feishu_translation_items(payload)
+    overview = _build_feishu_overview(payload, clusters, translations)
+    news_lines = _build_feishu_news_lines(clusters, translations)
+    market_lines = _build_feishu_market_lines(payload)
+    action_lines = _build_feishu_action_lines(payload)
+    industry_lines = _build_feishu_industry_radar_lines(payload)
 
     lines: list[str] = [
-        "**今日提醒**",
-        "- 日报已生成。飞书只做低敏入口提醒，不展示新闻标题、价格、标的、仓位和操作细节。",
-        "- 完整内容请打开网页；本卡不是交易指令，不保证收益。",
+        "**今日一句话**",
+        "- 先看 3 条新闻、市场快照和纪律级调仓建议；完整依据打开网页。",
+        "- 本卡不是交易指令，不保证收益。",
         "",
-        "**系统边界**",
-        "- 收益：这是信息过滤和纪律提醒系统，不是稳赢模型；后续用事后验算校准权重。",
-        "- 持仓：系统只知道你回执过的操作；没回执就按原仓位继续，不猜测你私下有没有动。",
-        "- 行业：行业雷达只决定重点观察什么；样本不够前不自动变成买卖建议。",
-        "",
-        "**回执**",
-        f"- {receipt_line}",
-        "- 有交易才回一行中文；没操作不用回。",
+        "**20秒简报**",
+        overview,
     ]
+    lines.extend(news_lines)
+    lines.extend(
+        [
+            "",
+            "**调仓建议**",
+        ]
+    )
+    lines.extend(f"- {line}" for line in action_lines)
+    lines.extend(
+        [
+            "",
+            "**今天关注**",
+        ]
+    )
+    lines.extend(f"- {line}" for line in (industry_lines[:4] or ["今天没有新增行业信号；继续看核心资产价格是否确认。"]))
+    lines.extend(
+        [
+            "",
+            "**市场快照**",
+        ]
+    )
+    lines.extend(f"- {line}" for line in market_lines)
+    lines.extend(
+        [
+            "",
+            "**系统边界**",
+            "- 收益：这是信息过滤和纪律提醒系统，不是稳赢模型；后续用事后验算校准权重。",
+            "- 持仓：系统只知道你回执过的操作；没回执就按原仓位继续，不猜测你私下有没有动。",
+            "- 行业：行业雷达只决定重点观察什么；样本不够前不自动变成买卖建议。",
+            "",
+            "**回执**",
+            f"- {receipt_line}",
+            "- 有交易才回一行中文；没操作不用回。",
+        ]
+    )
     if receipt_form_url:
         lines.append("- 也可以点卡片按钮填写回执。")
     lines.extend(
@@ -695,7 +827,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             "",
             "**状态**",
             f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；事后验算累计 {validation.get('signal_count', 0)} 条信号。",
-            "- 飞书不放英文原文；也不放可直接照抄的交易细节。",
+            "- 飞书不放英文原文、完整持仓、成本价、仓位金额；调仓只给纪律级方向。",
             "",
             f"网页：{dashboard_url}",
         ]
