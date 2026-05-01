@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-05-01T06:15:47",
+  "updated_at_utc": "2026-05-01T06:37:20",
   "items": [
     {
       "id": "growth-tech-exposure-cap",
@@ -17,9 +17,9 @@
       "trigger_count": 2,
       "keywords": [],
       "definition_hash": "8409b5007718",
-      "last_checked_at_utc": "2026-05-01T06:15:47",
+      "last_checked_at_utc": "2026-05-01T06:37:20",
       "last_triggered_at_utc": "2026-04-28T05:55:52",
-      "last_observed": "growth_tech_pct=52.264"
+      "last_observed": "growth_tech_pct=41.592"
     },
     {
       "id": "direct-ai-exposure-cap",
@@ -34,12 +34,12 @@
       "source": "config",
       "status": "active",
       "created_at_utc": "2026-04-26T02:31:49",
-      "trigger_count": 5,
+      "trigger_count": 6,
       "keywords": [],
       "definition_hash": "3020b554e980",
-      "last_checked_at_utc": "2026-05-01T06:15:47",
-      "last_triggered_at_utc": "2026-05-01T04:21:15",
-      "last_observed": "direct_ai_pct=33.738"
+      "last_checked_at_utc": "2026-05-01T06:37:20",
+      "last_triggered_at_utc": "2026-05-01T06:37:20",
+      "last_observed": "direct_ai_pct=41.592"
     },
     {
       "id": "gold-position-below-target",
@@ -54,11 +54,12 @@
       "source": "config",
       "status": "active",
       "created_at_utc": "2026-04-26T02:31:49",
-      "trigger_count": 0,
+      "trigger_count": 1,
       "keywords": [],
       "definition_hash": "fdf37d368c7c",
-      "last_checked_at_utc": "2026-05-01T06:15:47",
-      "last_observed": "gold_pct=12.369"
+      "last_checked_at_utc": "2026-05-01T06:37:20",
+      "last_observed": "gold_pct=0.0",
+      "last_triggered_at_utc": "2026-05-01T06:37:20"
     },
     {
       "id": "gold-position-above-target",
@@ -76,9 +77,9 @@
       "trigger_count": 4,
       "keywords": [],
       "definition_hash": "114e8c4085ea",
-      "last_checked_at_utc": "2026-05-01T06:15:47",
+      "last_checked_at_utc": "2026-05-01T06:37:20",
       "last_triggered_at_utc": "2026-05-01T04:21:15",
-      "last_observed": "gold_pct=12.369"
+      "last_observed": "gold_pct=0.0"
     },
     {
       "id": "gold-futures-big-down",
@@ -97,63 +98,8 @@
       "trigger_count": 0,
       "keywords": [],
       "definition_hash": "95c1b4e06862",
-      "last_checked_at_utc": "2026-05-01T06:15:47",
-      "last_observed": "黄金 change_pct=-0.033"
-    },
-    {
-      "id": "event-74dcbdec38e5",
-      "type": "event_followup",
-      "title": "跟踪：Fertiliser boss says war puts 10 billion meals a week at risk",
-      "keywords": [
-        "geopolitics",
-        "macro",
-        "10",
-        "at",
-        "bbc",
-        "billion",
-        "boss",
-        "business",
-        "conflict",
-        "could"
-      ],
-      "tokens": [
-        "10",
-        "at",
-        "bbc",
-        "billion",
-        "boss",
-        "business",
-        "conflict",
-        "could",
-        "crop",
-        "due",
-        "fertiliser",
-        "geopolitics",
-        "higher",
-        "iran",
-        "macro",
-        "meals",
-        "of",
-        "prices",
-        "push",
-        "puts",
-        "reduce",
-        "risk",
-        "says",
-        "shortage",
-        "to",
-        "war",
-        "week",
-        "yara",
-        "yields",
-        "关键词"
-      ],
-      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
-      "created_at_utc": "2026-05-01T06:15:47",
-      "expires_at_utc": "2026-05-08T06:15:47",
-      "status": "active",
-      "source": "auto_event",
-      "repeat": false
+      "last_checked_at_utc": "2026-05-01T06:37:20",
+      "last_observed": "黄金 change_pct=-0.167"
     },
     {
       "id": "oil-shock-watch",
@@ -5280,6 +5226,67 @@
       "last_checked_at_utc": "2026-05-01T06:15:47",
       "last_observed": "Oil rises as White House says Iran ceasefire halts 60-day war deadline；China’s EV price war turns into AI arms race beyond cheaper cars；Veeva Systems to join S&P 500 index, replacing Coterra Energy",
       "last_triggered_at_utc": "2026-05-01T06:15:47"
+    },
+    {
+      "id": "event-74dcbdec38e5",
+      "type": "event_followup",
+      "title": "跟踪：Fertiliser boss says war puts 10 billion meals a week at risk",
+      "keywords": [
+        "geopolitics",
+        "macro",
+        "10",
+        "at",
+        "bbc",
+        "billion",
+        "boss",
+        "business",
+        "conflict",
+        "could"
+      ],
+      "tokens": [
+        "10",
+        "at",
+        "bbc",
+        "billion",
+        "boss",
+        "business",
+        "conflict",
+        "could",
+        "crop",
+        "due",
+        "fertiliser",
+        "geopolitics",
+        "higher",
+        "iran",
+        "macro",
+        "meals",
+        "of",
+        "prices",
+        "push",
+        "puts",
+        "reduce",
+        "risk",
+        "says",
+        "shortage",
+        "to",
+        "war",
+        "week",
+        "yara",
+        "yields",
+        "关键词"
+      ],
+      "action": "如果下次再次出现，检查是否已经从新闻走向价格确认；未确认则继续观察，不自动行动。",
+      "created_at_utc": "2026-05-01T06:15:47",
+      "expires_at_utc": "2026-05-08T06:15:47",
+      "status": "triggered",
+      "source": "auto_event",
+      "repeat": false,
+      "enabled": true,
+      "trigger_count": 1,
+      "definition_hash": "35c766430e3b",
+      "last_checked_at_utc": "2026-05-01T06:37:20",
+      "last_observed": "Oil rises as White House says Iran ceasefire halts 60-day war deadline；China’s EV price war turns into AI arms race beyond cheaper cars；Fertiliser boss says war puts 10 billion meals a week at risk",
+      "last_triggered_at_utc": "2026-05-01T06:37:20"
     }
   ]
 }
