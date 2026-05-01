@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-01T05:31:23",
+  "updated_at_utc": "2026-05-01T06:15:47",
   "signals": [
     {
       "id": "20260501030453-industry_radar-semiconductor_materials-512480",
@@ -281,21 +281,21 @@
       "theme_key": "semiconductor_materials",
       "theme": "半导体材料/卡脖子链",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -305,27 +305,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "hk_tech",
       "theme": "港股科技/互联网",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -335,27 +335,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "power",
       "theme": "电力",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -365,27 +365,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "dividend_lowvol",
       "theme": "红利低波",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -395,27 +395,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "metals_gold",
       "theme": "有色/黄金",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -425,27 +425,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "china_broad_core",
       "theme": "A股宽基/中国宏观",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -455,27 +455,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "energy_power",
       "theme": "能源电力链",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -485,27 +485,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "resource_metals",
       "theme": "资源品/关键矿产",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -515,27 +515,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "dividend_defense",
       "theme": "红利低波/防御",
       "signals": 2,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -545,27 +545,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "gold_real_rates",
       "theme": "黄金/实际利率",
       "signals": 1,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -575,27 +575,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "ai_infra",
       "theme": "AI基础设施链",
       "signals": 1,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -605,27 +605,27 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     },
     {
       "theme_key": "new_energy_cycle",
       "theme": "新能源价格周期",
       "signals": 1,
-      "t1": {
+      "t30": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t5": {
+      "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
         "win_rate_pct": null,
         "avg_return_pct": null
       },
-      "t20": {
+      "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
@@ -635,16 +635,16 @@
       "verdict": "继续积累",
       "adjustment": "不调整",
       "score_delta": 0,
-      "adjustment_basis": "T1"
+      "adjustment_basis": "T30"
     }
   ],
   "adjustments": {},
   "lines": [
-    "- 本次新增待验证信号 0 条；命中率只用于校准系统，不直接触发买卖。",
-    "- 半导体材料/卡脖子链：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
-    "- 港股科技/互联网：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
-    "- 电力：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。",
-    "- 红利低波：T+1 样本不足；T+5 样本不足；结论：继续积累；权重：不调整。"
+    "- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 半导体材料/卡脖子链：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 港股科技/互联网：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 电力：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 红利低波：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
   ],
   "added_count": 0,
   "signal_count": 21,
