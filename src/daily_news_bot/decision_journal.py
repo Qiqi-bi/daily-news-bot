@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+import re
 from typing import Any
 
 from .config import ROOT_DIR
@@ -52,6 +53,48 @@ def _candidate_theme_map(snapshot: dict[str, Any]) -> dict[str, list[dict[str, A
     return result
 
 
+def _clean_advice_text(text: Any) -> str:
+    cleaned = str(text or "").strip()
+    cleaned = re.sub(r"\*\*|`", "", cleaned)
+    cleaned = re.sub(r"^\d+\.\s*", "", cleaned)
+    cleaned = re.sub(r"\([0-9A-Za-z.=^_-]{3,}\)", "", cleaned)
+    cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?\s*(?:~|-|至)\s*¥?[0-9,]+(?:\.\d+)?", "纪律区间", cleaned)
+    cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?", "纪律金额", cleaned)
+    return " ".join(cleaned.split())[:180]
+
+
+def _classify_advice(text: str) -> str:
+    if any(keyword in text for keyword in ("减仓", "卖出", "降仓", "只减不加")):
+        return "减仓复核"
+    if any(keyword in text for keyword in ("可买", "补仓", "买入", "低吸")):
+        return "可买复核"
+    if any(keyword in text for keyword in ("等待", "观察", "不动", "暂停")):
+        return "等待确认"
+    return "继续持有"
+
+
+def _build_advice_items(generated_at: datetime, action_lines: list[str]) -> list[dict[str, Any]]:
+    source_lines = [_clean_advice_text(line) for line in action_lines if _clean_advice_text(line)]
+    if not source_lines:
+        source_lines = ["继续持有；今天没有明确纪律触发，等待价格和事件继续确认。"]
+    verify_at = generated_at + timedelta(days=30)
+    items: list[dict[str, Any]] = []
+    for index, line in enumerate(source_lines[:3], start=1):
+        action = _classify_advice(line)
+        items.append(
+            {
+                "advice_id": f"{generated_at.strftime('%Y%m%d')}-{index}",
+                "created_at_utc": generated_at.isoformat(),
+                "verify_at_utc": verify_at.isoformat(),
+                "horizon_days": 30,
+                "action": action,
+                "subject": line,
+                "status": "待验证",
+            }
+        )
+    return items
+
+
 def load_decision_journal(path: Path = JOURNAL_PATH) -> list[dict[str, Any]]:
     if not path.exists():
         return []
@@ -74,6 +117,7 @@ def build_decision_snapshot(
     candidate_scores: list[dict[str, Any]],
     action_board_lines: list[str],
     execution_checks: dict[str, Any] | None = None,
+    action_slot_lines: list[str] | None = None,
 ) -> dict[str, Any]:
     quote_map = _execution_quote_map(execution_checks)
     top_candidates: list[dict[str, Any]] = []
@@ -115,6 +159,7 @@ def build_decision_snapshot(
         for item in event_impacts[:5]
     ]
 
+    advice_items = _build_advice_items(generated_at, list(action_slot_lines or action_board_lines or []))
     return {
         "generated_at_utc": generated_at.isoformat(),
         "portfolio_total_value_cny": _safe_float(summary.get("total_value_cny")),
@@ -128,6 +173,7 @@ def build_decision_snapshot(
         "top_candidates": top_candidates,
         "default_action": (action_board_lines or [""])[0],
         "action_board_lines": list(action_board_lines or [])[:4],
+        "advice_items": advice_items,
     }
 
 
@@ -149,6 +195,71 @@ def update_decision_journal(
     kept.append(snapshot)
     kept.sort(key=lambda item: str(item.get("generated_at_utc") or ""))
     save_decision_journal(kept, path)
+
+
+def build_advice_tracking(
+    current_snapshot: dict[str, Any],
+    path: Path = JOURNAL_PATH,
+) -> dict[str, Any]:
+    records = load_decision_journal(path)
+    try:
+        current_time = datetime.fromisoformat(str(current_snapshot.get("generated_at_utc") or ""))
+    except ValueError:
+        current_time = datetime.utcnow()
+
+    due: list[dict[str, Any]] = []
+    pending: list[dict[str, Any]] = []
+    for record in records:
+        try:
+            record_time = datetime.fromisoformat(str(record.get("generated_at_utc") or ""))
+        except ValueError:
+            continue
+        if record_time >= current_time:
+            continue
+        for item in record.get("advice_items") or []:
+            try:
+                verify_at = datetime.fromisoformat(str(item.get("verify_at_utc") or ""))
+            except ValueError:
+                continue
+            packed = {"snapshot": record, "item": item, "verify_at": verify_at}
+            if verify_at <= current_time:
+                due.append(packed)
+            else:
+                pending.append(packed)
+
+    current_pnl = _safe_float(current_snapshot.get("portfolio_total_pnl_pct"))
+    due_lines: list[str] = []
+    for packed in due[-3:]:
+        snapshot = packed["snapshot"]
+        item = packed["item"]
+        start_pnl = _safe_float(snapshot.get("portfolio_total_pnl_pct"))
+        pnl_text = "组合收益变化未知"
+        if current_pnl is not None and start_pnl is not None:
+            pnl_text = f"组合浮盈比例变化 {current_pnl - start_pnl:+.2f}pct"
+        due_lines.append(
+            f"- 到期验证｜{str(item.get('action') or '建议')}：{str(item.get('subject') or '')[:90]}；{pnl_text}。"
+        )
+
+    today_items = list(current_snapshot.get("advice_items") or [])[:3]
+    today_line = "；".join(f"{item.get('action')}：{item.get('subject')}" for item in today_items[:1]) or "继续持有：今天没有明确纪律触发。"
+    nearest = sorted(pending, key=lambda item: item["verify_at"])[:1]
+    nearest_line = ""
+    if nearest:
+        nearest_line = f"最近一条待验证建议将在 {nearest[0]['verify_at'].date().isoformat()} 回看。"
+
+    lines = [
+        f"- 今日建议已入队：{today_line}；30天后自动回看，不靠当天感觉判断对错。",
+        f"- 待验证建议 {len(pending) + len(today_items)} 条；{nearest_line or '当前没有历史待验证建议。'}",
+    ]
+    lines.extend(due_lines or ["- 本次没有到期的30日建议，继续积累样本。"])
+    return {
+        "enabled": True,
+        "today_items": today_items,
+        "pending_count": len(pending) + len(today_items),
+        "due_count": len(due),
+        "due_lines": due_lines,
+        "lines": lines,
+    }
 
 
 def _pick_previous_snapshot(records: list[dict[str, Any]], current_time: datetime) -> dict[str, Any] | None:

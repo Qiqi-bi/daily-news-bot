@@ -155,6 +155,7 @@ def build_weekly_portfolio_review(
         candidate_scores=candidate_scores,
         action_board_lines=action_board_lines,
         execution_checks=execution_checks,
+        action_slot_lines=action_slot_lines,
     )
     decision_review = build_weekly_decision_review(current_snapshot, execution_checks=execution_checks)
 

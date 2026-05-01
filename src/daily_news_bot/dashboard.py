@@ -884,6 +884,40 @@ def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     return result
 
 
+def _allocation_deviation_rows(panel: dict[str, Any] | None) -> list[list[str]]:
+    result = []
+    for row in (panel or {}).get("rows") or []:
+        result.append(
+            [
+                escape(_text(row.get("label"))),
+                escape(_fmt_pct(row.get("current_pct"))),
+                escape(_objective_range_text(row.get("target_range_pct"))),
+                escape(_text(row.get("deviation_text")) or _fmt_pct(row.get("deviation_pct"))),
+                escape(_text(row.get("status"))),
+                escape(_shorten(row.get("action"), 150)),
+            ]
+        )
+    return result
+
+
+def _advice_tracking_body(tracking: dict[str, Any] | None) -> str:
+    data = tracking or {}
+    lines = data.get("lines") or ["- 建议追踪会在有组合快照后开始记录。"]
+    body = '<div class="validation-lead">' + "".join(f"<div>{escape(_strip_markdown(line))}</div>" for line in lines[:4]) + "</div>"
+    today_rows = []
+    for item in data.get("today_items") or []:
+        today_rows.append(
+            [
+                escape(_text(item.get("action"))),
+                escape(_shorten(item.get("subject"), 180)),
+                escape(_text(item.get("verify_at_utc"), "")[:10]),
+                escape(_text(item.get("status"), "待验证")),
+            ]
+        )
+    body += _render_table(["建议", "内容", "验证日", "状态"], today_rows)
+    return body
+
+
 def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
     result = []
     for row in (radar or {}).get("rows") or []:
@@ -895,6 +929,7 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
             [
                 escape(_text(row.get("layer_label"))),
                 escape(_text(row.get("name"))),
+                escape(_text(row.get("score_card_text"), "-")),
                 escape(_text(row.get("status"))),
                 escape(_shorten(row.get("watch"), 120)),
                 escape(_shorten(row.get("verify"), 120)),
@@ -1038,14 +1073,29 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
     sections.extend(
         [
             _section("纪律提醒", _render_list(portfolio.get("action_slot_lines"), 5), "只展示需要复核的事项，不替代交易指令。"),
+            _section(
+                "组合偏离面板",
+                _render_table(
+                    ["模块", "当前", "目标", "偏离", "状态", "处理"],
+                    _allocation_deviation_rows(portfolio.get("allocation_deviation")),
+                ),
+                _text((portfolio.get("allocation_deviation") or {}).get("conclusion"), "看当前仓位离目标区间差多少。"),
+                "wide",
+            ),
+            _section(
+                "建议追踪",
+                _advice_tracking_body(portfolio.get("advice_tracking")),
+                "今天的建议会进入30日验证队列；周报只看连续确认，不鼓励每天交易。",
+                "wide",
+            ),
             _section("A 股阶段", _render_list(portfolio.get("local_market_lines"), 8)),
             _section(
                 "行业雷达",
                 _render_table(
-                    ["层级", "行业", "状态", "看什么", "验证条件", "动作"],
+                    ["层级", "行业", "评分", "状态", "看什么", "验证条件", "动作"],
                     _industry_radar_rows(portfolio.get("industry_radar")),
                 ),
-                "雷达决定每天看什么；可买池不自动扩张，也不直接给买卖指令。",
+                "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",
                 "wide",
             ),
             _section(

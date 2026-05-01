@@ -355,6 +355,92 @@ def _range_status(value: float, target_range: list[Any]) -> str:
     return "区间内"
 
 
+def _range_deviation(value: float, target_range: list[Any]) -> float:
+    if len(target_range) != 2:
+        return 0.0
+    low = _as_float(target_range[0])
+    high = _as_float(target_range[1], low)
+    if value < low:
+        return round(low - value, 2)
+    if value > high:
+        return round(high - value, 2)
+    return 0.0
+
+
+def _allocation_action(label: str, status: str, deviation: float) -> str:
+    if status == "低配":
+        return f"新增资金优先补 {label}，差约 {_fmt_pct(abs(deviation))} 到目标下沿。"
+    if status == "高配":
+        return f"暂停新增 {label}；若继续扩大，进入减仓/再平衡复核。"
+    if status == "区间内":
+        return "维持，不因单日新闻改变目标仓位。"
+    return "目标区间未设置，先只观察。"
+
+
+def _allocation_deviation_text(status: str, deviation: float) -> str:
+    if status == "低配":
+        return f"差 {_fmt_pct(abs(deviation))}"
+    if status == "高配":
+        return f"超 {_fmt_pct(abs(deviation))}"
+    if status == "区间内":
+        return "0.00%"
+    return "-"
+
+
+def _allocation_deviation_panel(summary: dict[str, Any], portfolio: dict[str, Any]) -> dict[str, Any]:
+    allocation = portfolio.get("allocation_framework") or {}
+    total_weight = _as_float(summary.get("total_weight_pct"), 100.0)
+    reserve_pct = max(0.0, round(100.0 - total_weight, 2))
+    definitions = [
+        ("stable_core", "稳底仓", summary.get("stable_core_pct"), allocation.get("stable_core_target_pct") or [35, 45]),
+        ("growth_core", "成长底仓", summary.get("growth_core_pct"), allocation.get("growth_core_target_pct") or [15, 20]),
+        ("attack", "进攻仓", summary.get("attack_pct"), allocation.get("attack_target_pct") or [20, 30]),
+        ("insurance", "保险仓", summary.get("insurance_pct"), allocation.get("insurance_target_pct") or [10, 15]),
+        ("reserve", "现金/等待", reserve_pct, allocation.get("reserve_target_pct") or [0, 10]),
+    ]
+
+    rows: list[dict[str, Any]] = []
+    for key, label, current_raw, target_range in definitions:
+        current = _as_float(current_raw)
+        status = _range_status(current, target_range)
+        deviation = _range_deviation(current, target_range)
+        rows.append(
+            {
+                "key": key,
+                "label": label,
+                "current_pct": current,
+                "target_range_pct": [_as_float(target_range[0]), _as_float(target_range[1])] if len(target_range) == 2 else [],
+                "status": status,
+                "deviation_pct": deviation,
+                "deviation_text": _allocation_deviation_text(status, deviation),
+                "action": _allocation_action(label, status, deviation),
+            }
+        )
+
+    high = [row for row in rows if row["status"] == "高配"]
+    low = [row for row in rows if row["status"] == "低配"]
+    if high:
+        conclusion = "优先处理高配：" + "、".join(row["label"] for row in high[:2]) + "。"
+    elif low:
+        conclusion = "新增资金优先补低配：" + "、".join(row["label"] for row in low[:2]) + "。"
+    else:
+        conclusion = "主要仓位在目标区间内，默认继续持有。"
+    return {"enabled": True, "rows": rows, "conclusion": conclusion}
+
+
+def _allocation_deviation_lines(panel: dict[str, Any]) -> list[str]:
+    lines = [
+        f"- {panel.get('conclusion') or '按目标仓位做再平衡复核。'}",
+        "| 模块 | 当前 | 目标 | 偏离 | 状态 | 处理 |",
+        "|---|---:|---:|---:|---|---|",
+    ]
+    for row in panel.get("rows") or []:
+        lines.append(
+            f"| {row.get('label')} | {_fmt_pct(row.get('current_pct') or 0.0)} | {_fmt_pct_range(row.get('target_range_pct'))} | {row.get('deviation_text') or _fmt_pct(row.get('deviation_pct') or 0.0)} | {row.get('status')} | {row.get('action')} |"
+        )
+    return lines
+
+
 def _candidate_pool_lines(portfolio: dict[str, Any]) -> list[str]:
     lines: list[str] = []
     for item in portfolio.get("candidate_etf_pool") or []:
@@ -1910,6 +1996,8 @@ def build_portfolio_brief(
     candidate_scores = _score_candidate_pool(portfolio, event_impacts, summary)
     industry_radar = build_industry_radar(portfolio, clusters, event_impacts, candidate_scores)
     industry_radar_lines = render_industry_radar_lines(industry_radar)
+    allocation_deviation = _allocation_deviation_panel(summary, portfolio)
+    allocation_deviation_lines = _allocation_deviation_lines(allocation_deviation)
     quote_map = _quote_map(portfolio_quotes)
     monthly_plan_lines = _build_monthly_deployment_plan(summary, portfolio, portfolio_quotes)
     drawdown_lines = _drawdown_trigger_lines(portfolio, portfolio_quotes)
@@ -1996,6 +2084,8 @@ def build_portfolio_brief(
 
     lines.extend(["", "## 今日纪律面板", ""])
     lines.extend(action_board_lines)
+    lines.extend(["", "## 组合偏离面板", ""])
+    lines.extend(allocation_deviation_lines)
     lines.extend(["", "## 行业雷达", ""])
     lines.extend(industry_radar_lines)
     lines.extend(["", "## A股本土风格面板", ""])
@@ -2116,6 +2206,8 @@ def build_portfolio_brief(
         "event_impacts": event_impacts,
         "holding_impacts": [asdict(item) for item in holding_impacts],
         "candidate_scores": candidate_scores,
+        "allocation_deviation": allocation_deviation,
+        "allocation_deviation_lines": allocation_deviation_lines,
         "industry_radar": industry_radar,
         "industry_radar_lines": industry_radar_lines,
         "local_market_lines": local_market_lines,

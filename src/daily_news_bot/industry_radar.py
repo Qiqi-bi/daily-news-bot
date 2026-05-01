@@ -250,6 +250,72 @@ def _theme_hit(entry: dict[str, Any], event_theme_keys: set[str], candidate_them
     return bool(theme_keys & (event_theme_keys | candidate_theme_keys))
 
 
+def _component_score(text: str, keywords: tuple[str, ...]) -> int:
+    lowered = text.casefold()
+    hits = sum(1 for keyword in keywords if keyword in lowered)
+    return min(5, hits * 2)
+
+
+def _industry_score_card(
+    entry: dict[str, Any],
+    *,
+    hits: list[str],
+    matched_by_theme: bool,
+    candidate_bonus: int,
+    layer: str,
+) -> dict[str, Any]:
+    combined = " ".join(
+        _text(value)
+        for value in (
+            entry.get("name"),
+            entry.get("why"),
+            entry.get("watch"),
+            entry.get("verify"),
+            " ".join(entry.get("keywords") or []),
+            " ".join(hits),
+        )
+    )
+    policy_score = _component_score(
+        combined,
+        ("policy", "tariff", "sanction", "export", "regulation", "政策", "关税", "制裁", "出口", "管制", "反内卷"),
+    )
+    supply_score = _component_score(
+        combined,
+        ("supply", "shortage", "inventory", "capacity", "order", "供应", "库存", "产能", "订单", "交期", "卡脖子"),
+    )
+    price_score = min(5, int(candidate_bonus / 3) + (1 if matched_by_theme else 0))
+    news_score = min(5, len(hits) * 2 + (2 if matched_by_theme else 0))
+    hit_rate_score = 1 if layer != "avoid" else 0
+    total = policy_score + supply_score + price_score + news_score + hit_rate_score
+    if total >= 18:
+        label = "强观察"
+    elif total >= 12:
+        label = "观察"
+    elif layer == "avoid":
+        label = "降噪"
+    else:
+        label = "积累"
+    return {
+        "policy": policy_score,
+        "supply": supply_score,
+        "price": price_score,
+        "news": news_score,
+        "hit_rate": hit_rate_score,
+        "total": total,
+        "label": label,
+        "hit_rate_note": "等待事后验算样本",
+    }
+
+
+def _score_card_text(score_card: dict[str, Any] | None) -> str:
+    card = score_card or {}
+    return (
+        f"{card.get('total', 0)}分/{card.get('label', '积累')}；"
+        f"政{card.get('policy', 0)} 供{card.get('supply', 0)} "
+        f"价{card.get('price', 0)} 闻{card.get('news', 0)} 命{card.get('hit_rate', 0)}"
+    )
+
+
 def _layer_of(entry: dict[str, Any]) -> str:
     layer = str(entry.get("layer") or "watch")
     return layer if layer in LAYER_LABELS else "watch"
@@ -292,6 +358,14 @@ def build_industry_radar(
         elif layer == "avoid":
             score -= 1
 
+        score_card = _industry_score_card(
+            entry,
+            hits=hits,
+            matched_by_theme=matched_by_theme,
+            candidate_bonus=candidate_bonus,
+            layer=layer,
+        )
+
         if hits or matched_by_theme:
             status = "今日关注"
         elif layer == "core":
@@ -309,6 +383,8 @@ def build_industry_radar(
                 "layer_label": LAYER_LABELS[layer],
                 "status": status,
                 "score": score,
+                "score_card": score_card,
+                "score_card_text": _score_card_text(score_card),
                 "why": entry.get("why") or "",
                 "watch": entry.get("watch") or "",
                 "verify": entry.get("verify") or "",
@@ -342,7 +418,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
         return ["- 行业雷达未启用。"]
     lines = list(radar.get("summary_lines") or [])
     rows = radar.get("rows") or []
-    lines.extend(["", "| 层级 | 行业 | 状态 | 看什么 | 验证条件 | 动作 |", "|---|---|---|---|---|---|"])
+    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 看什么 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|"])
     for row in rows:
         instruments = "、".join(row.get("instruments") or [])
         action = row.get("action") or ""
@@ -352,6 +428,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
             "| "
             f"{_text(row.get('layer_label'))} | "
             f"{_text(row.get('name'))} | "
+            f"{_text(row.get('score_card_text'))} | "
             f"{_text(row.get('status'))} | "
             f"{_text(row.get('watch'))} | "
             f"{_text(row.get('verify'))} | "

@@ -14,7 +14,7 @@ from .clustering import cluster_articles
 from .config import load_settings, load_sources
 from .credibility import annotate_and_filter_articles, credibility_summary_to_dict
 from .dashboard import render_dashboard_html
-from .decision_journal import build_decision_snapshot, update_decision_journal
+from .decision_journal import build_advice_tracking, build_decision_snapshot, update_decision_journal
 from .execution_checks import fetch_execution_checks
 from .fixed_pool_history import fetch_fixed_pool_history
 from .fetchers import collect_articles_with_status
@@ -597,6 +597,13 @@ def _build_feishu_market_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_market_summary(payload: dict[str, Any]) -> str:
+    lines = _build_feishu_market_lines(payload)
+    if not lines:
+        return "市场快照暂不可用，动手前先查实时价格。"
+    return "市场：" + "；".join(lines[:5]) + "。"
+
+
 def _feishu_action_visible_line(raw: Any) -> str:
     cleaned = _feishu_clean_line(raw)
     cleaned = re.sub(r"^\d+\.\s*", "", cleaned)
@@ -606,6 +613,21 @@ def _feishu_action_visible_line(raw: Any) -> str:
     cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?\s*(?:~|-|至)\s*¥?[0-9,]+(?:\.\d+)?", "纪律区间", cleaned)
     cleaned = re.sub(r"¥[0-9,]+(?:\.\d+)?", "纪律金额", cleaned)
     return _feishu_short(cleaned, 118)
+
+
+def _build_feishu_action_tendency(payload: dict[str, Any]) -> str:
+    tracking = ((payload.get("portfolio") or {}).get("advice_tracking") or {})
+    today_items = tracking.get("today_items") or []
+    if today_items:
+        item = today_items[0]
+        action = str(item.get("action") or "继续持有")
+        subject = _feishu_action_visible_line(item.get("subject") or "")
+        verify_date = str(item.get("verify_at_utc") or "")[:10]
+        suffix = f"；{verify_date} 回看" if verify_date else "；30天后回看"
+        return _feishu_short(f"{action}｜{subject}{suffix}", 135)
+
+    lines = _build_feishu_action_lines(payload)
+    return _feishu_short(lines[0] if lines else "继续持有｜今天没有明确纪律触发，等待价格和事件继续确认。", 135)
 
 
 def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
@@ -625,6 +647,36 @@ def _build_feishu_action_lines(payload: dict[str, Any]) -> list[str]:
         "今天默认：观察，不追单；先看原油、黄金、美元、VIX 是否继续确认新闻方向。",
         "要生成持有/补仓/减仓复核，需要接入组合配置；建议默认只发飞书或私密产物，不放公开网页。",
     ]
+
+
+def _build_feishu_focus_lines(payload: dict[str, Any]) -> list[str]:
+    radar = ((payload.get("portfolio") or {}).get("industry_radar") or {})
+    rows = radar.get("rows") or []
+    focused = [
+        row
+        for row in rows
+        if row.get("status") in {"今日关注", "每日必看", "降权观察"} and row.get("layer") != "avoid"
+    ]
+    if not focused:
+        focused = [row for row in rows if row.get("layer") == "core"]
+
+    result: list[str] = []
+    for row in focused[:3]:
+        score = str(row.get("score_card_text") or row.get("status") or "观察")
+        watch = _feishu_short(row.get("watch") or row.get("why") or "", 58)
+        result.append(f"{row.get('name') or '未命名行业'}｜{score}｜{watch}")
+    if not result:
+        result = ["今天没有新增行业信号；继续看核心资产价格是否确认。"]
+    fillers = [
+        "市场确认｜看黄金、原油、美元、美债是否支持新闻方向",
+        "组合纪律｜看仓位是否偏离目标区间，不因单日新闻硬交易",
+        "周报复盘｜只把连续确认的建议升级，不追一次性热点",
+    ]
+    for filler in fillers:
+        if len(result) >= 3:
+            break
+        result.append(filler)
+    return result[:3]
 
 
 def _feishu_pct_range(values: Any) -> str:
@@ -773,51 +825,34 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     translations = _feishu_translation_items(payload)
     overview = _build_feishu_overview(payload, clusters, translations)
     news_lines = _build_feishu_news_lines(clusters, translations)
-    market_lines = _build_feishu_market_lines(payload)
-    action_lines = _build_feishu_action_lines(payload)
-    industry_lines = _build_feishu_industry_radar_lines(payload)
+    market_summary = _build_feishu_market_summary(payload)
+    action_tendency = _build_feishu_action_tendency(payload)
+    focus_lines = _build_feishu_focus_lines(payload)
 
     lines: list[str] = [
-        "**今日一句话**",
-        "- 先看 3 条新闻、市场快照和纪律级调仓建议；完整依据打开网页。",
-        "- 本卡不是交易指令，不保证收益。",
+        "**总判断**",
+        _feishu_short(f"{overview} {market_summary}", 260),
+        "- 本卡不是交易指令，不保证收益；完整依据打开网页。",
         "",
-        "**20秒简报**",
-        overview,
+        "**3条新闻**",
     ]
-    lines.extend(news_lines)
+    lines.extend(news_lines[:3])
     lines.extend(
         [
             "",
-            "**调仓建议**",
+            "**3个关注**",
         ]
     )
-    lines.extend(f"- {line}" for line in action_lines)
+    lines.extend(f"{index}. {line}" for index, line in enumerate(focus_lines[:3], start=1))
     lines.extend(
         [
             "",
-            "**今天关注**",
-        ]
-    )
-    lines.extend(f"- {line}" for line in (industry_lines[:4] or ["今天没有新增行业信号；继续看核心资产价格是否确认。"]))
-    lines.extend(
-        [
+            "**调仓倾向**",
+            f"- {action_tendency}",
             "",
-            "**市场快照**",
-        ]
-    )
-    lines.extend(f"- {line}" for line in market_lines)
-    lines.extend(
-        [
-            "",
-            "**系统边界**",
-            "- 收益：这是信息过滤和纪律提醒系统，不是稳赢模型；后续用事后验算校准权重。",
-            "- 持仓：系统只知道你回执过的操作；没回执就按原仓位继续，不猜测你私下有没有动。",
-            "- 行业：行业雷达只决定重点观察什么；样本不够前不自动变成买卖建议。",
-            "",
-            "**回执**",
-            f"- {receipt_line}",
-            "- 有交易才回一行中文；没操作不用回。",
+            "**回执/周报**",
+            f"- {receipt_line}；有交易才回一行中文，没操作不用回。",
+            "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
         ]
     )
     if receipt_form_url:
@@ -827,7 +862,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             "",
             "**状态**",
             f"- 提醒触发 {watchlist.get('triggered_count', 0)} 条；事后验算累计 {validation.get('signal_count', 0)} 条信号。",
-            "- 飞书不放英文原文、完整持仓、成本价、仓位金额；调仓只给纪律级方向。",
+            "- 飞书不放英文原文、完整持仓、成本价、仓位金额；只给纪律级方向。",
             "",
             f"网页：{dashboard_url}",
         ]
@@ -874,6 +909,23 @@ def _apply_signal_validation_adjustments(portfolio_payload: dict[str, Any], vali
         if not adjustment:
             continue
         row["validation_adjustment"] = adjustment
+        score_card = row.get("score_card") or {}
+        score_delta = int(adjustment.get("score_delta") or 0)
+        if score_card:
+            original_hit_rate = int(score_card.get("hit_rate") or 0)
+            score_card["hit_rate"] = max(0, min(5, original_hit_rate + score_delta))
+            score_card["hit_rate_note"] = str(adjustment.get("adjustment") or "事后验算更新")
+            score_card["total"] = sum(
+                int(score_card.get(key) or 0)
+                for key in ("policy", "supply", "price", "news", "hit_rate")
+            )
+            score_card["label"] = "强观察" if score_card["total"] >= 18 else "观察" if score_card["total"] >= 12 else "积累"
+            row["score_card"] = score_card
+            row["score_card_text"] = (
+                f"{score_card.get('total', 0)}分/{score_card.get('label', '积累')}；"
+                f"政{score_card.get('policy', 0)} 供{score_card.get('supply', 0)} "
+                f"价{score_card.get('price', 0)} 闻{score_card.get('news', 0)} 命{score_card.get('hit_rate', 0)}"
+            )
         if int(adjustment.get("score_delta") or 0) < 0:
             row["status_before_validation"] = row.get("status")
             row["status"] = "降权观察"
@@ -1163,9 +1215,18 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
                     candidate_scores=portfolio_payload.get("candidate_scores") or [],
                     action_board_lines=portfolio_payload.get("action_board_lines") or [],
                     execution_checks=execution_checks,
+                    action_slot_lines=portfolio_payload.get("action_slot_lines") or [],
                 )
                 update_decision_journal(decision_snapshot)
+                advice_tracking = build_advice_tracking(decision_snapshot)
                 portfolio_payload["decision_snapshot"] = decision_snapshot
+                portfolio_payload["advice_tracking"] = advice_tracking
+                if advice_tracking.get("lines"):
+                    portfolio_brief = portfolio_brief.rstrip() + "\n\n## 建议追踪\n\n" + "\n".join(advice_tracking["lines"]) + "\n"
+                    if weekly_review_markdown:
+                        weekly_review_markdown = weekly_review_markdown.rstrip() + "\n\n## 建议追踪\n\n" + "\n".join(advice_tracking["lines"]) + "\n"
+                    if weekly_review_payload.get("enabled"):
+                        weekly_review_payload["advice_tracking"] = advice_tracking
             except Exception as exc:
                 portfolio_payload["decision_snapshot_error"] = f"{type(exc).__name__}: {exc}"[:300]
             try:
