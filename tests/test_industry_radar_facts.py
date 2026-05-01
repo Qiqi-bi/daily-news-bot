@@ -50,6 +50,41 @@ class IndustryRadarFactsTest(unittest.TestCase):
         self.assertIn("六氟化钨", row["hits"])
         self.assertGreaterEqual(row["score_card"]["news"], 1)
 
+    def test_sub_industry_radar_binds_to_portfolio_and_candidate_pool(self) -> None:
+        cluster = SimpleNamespace(
+            theme="电子特气",
+            tags=["semiconductor"],
+            representative=SimpleNamespace(
+                title="电子级氦气供应紧张，半导体客户长协推进",
+                summary="气源和提纯产线成为新约束。",
+                content="",
+            ),
+            articles=[],
+        )
+
+        radar = build_industry_radar(
+            {
+                "holdings": [{"name": "半导体ETF", "code": "512480"}],
+            },
+            [cluster],
+            [],
+            [
+                {
+                    "theme_key": "semiconductor",
+                    "priority": "高",
+                    "score": 10,
+                    "instruments": [{"name": "科创芯片ETF", "code": "588200"}],
+                }
+            ],
+        )
+        row = next(item for item in radar["rows"] if item["id"] == "helium_supply_chain")
+
+        self.assertEqual(row["status"], "今日关注")
+        self.assertIn("氦气", row["hits"])
+        self.assertIn("半导体ETF(512480)", row["binding_summary"])
+        self.assertIn("科创芯片ETF(588200)", row["binding_summary"])
+        self.assertGreaterEqual(len(radar["rows"]), 18)
+
 
 if __name__ == "__main__":
     unittest.main()

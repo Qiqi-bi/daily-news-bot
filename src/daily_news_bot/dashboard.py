@@ -952,6 +952,7 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
                 escape(_text(row.get("status"))),
                 escape(_shorten(row.get("fact_summary"), 120)),
                 escape(_shorten(row.get("watch"), 120)),
+                escape(_shorten(row.get("binding_summary"), 120)),
                 escape(_shorten(row.get("verify"), 120)),
                 escape(_shorten(action, 130)),
             ]
@@ -1150,10 +1151,11 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
                 "wide",
             ),
             _section("A 股阶段", _render_list(portfolio.get("local_market_lines"), 8)),
+            _section("风险硬闸门", _render_list(portfolio.get("hard_risk_gate_lines"), 6), "控制单次金额、月度进攻仓新增、连续确认和追高频率。", "wide"),
             _section(
                 "行业雷达",
                 _render_table(
-                    ["层级", "行业", "评分", "状态", "事实库", "看什么", "验证条件", "动作"],
+                    ["层级", "行业", "评分", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
                     _industry_radar_rows(portfolio.get("industry_radar")),
                 ),
                 "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",

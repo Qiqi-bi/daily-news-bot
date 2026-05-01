@@ -663,8 +663,10 @@ def _build_feishu_focus_lines(payload: dict[str, Any]) -> list[str]:
     result: list[str] = []
     for row in focused[:3]:
         score = str(row.get("score_card_text") or row.get("status") or "观察")
-        watch = _feishu_short(row.get("watch") or row.get("why") or "", 58)
-        result.append(f"{row.get('name') or '未命名行业'}｜{score}｜{watch}")
+        watch = _feishu_short(row.get("watch") or row.get("why") or "", 54)
+        binding = _feishu_short(row.get("binding_summary") or "", 42)
+        suffix = f"｜{binding}" if binding else ""
+        result.append(f"{row.get('name') or '未命名行业'}｜{score}｜{watch}{suffix}")
     if not result:
         result = ["今天没有新增行业信号；继续看核心资产价格是否确认。"]
     fillers = [
@@ -702,6 +704,16 @@ def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
         f"年度目标：基础 {base}；冲刺 {stretch}；回撤红线 {drawdown}。",
         f"纪律：{discipline}",
     ]
+
+
+def _build_feishu_risk_gate_lines(payload: dict[str, Any]) -> list[str]:
+    lines = ((payload.get("portfolio") or {}).get("hard_risk_gate_lines") or [])
+    result: list[str] = []
+    for line in lines[:2]:
+        cleaned = _feishu_clean_line(line)
+        if cleaned:
+            result.append(_feishu_short(cleaned, 86))
+    return result
 
 
 def _build_feishu_strategic_lines(payload: dict[str, Any]) -> list[str]:
@@ -753,8 +765,10 @@ def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
     for row in focused[:4]:
         name = row.get("name") or "未命名行业"
         status = row.get("status") or "观察"
-        watch = _feishu_short(row.get("watch") or row.get("why") or "", 78)
-        result.append(f"{name}｜{status}：{watch}")
+        watch = _feishu_short(row.get("watch") or row.get("why") or "", 70)
+        binding = _feishu_short(row.get("binding_summary") or "", 48)
+        suffix = f"｜{binding}" if binding else ""
+        result.append(f"{name}｜{status}：{watch}{suffix}")
     result.append("规则：行业雷达只决定看什么，不自动扩可买池，不直接生成买卖。")
     return result
 
@@ -839,6 +853,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     action_tendency = _build_feishu_action_tendency(payload)
     focus_lines = _build_feishu_focus_lines(payload)
     objective_lines = _build_feishu_objective_lines(payload)
+    risk_gate_lines = _build_feishu_risk_gate_lines(payload)
 
     lines: list[str] = [
         "**总判断**",
@@ -851,6 +866,8 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     if objective_lines:
         lines.extend(["", "**年度纪律**"])
         lines.extend(f"- {line}" for line in objective_lines[:2])
+    if risk_gate_lines:
+        lines.extend(f"- {line}" for line in risk_gate_lines[:2])
     lines.extend(
         [
             "",

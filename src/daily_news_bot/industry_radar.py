@@ -63,6 +63,54 @@ DEFAULT_INDUSTRY_RADAR: list[dict[str, Any]] = [
         "instruments": ["512480", "588200"],
     },
     {
+        "id": "helium_supply_chain",
+        "name": "氦气/电子特气",
+        "layer": "watch",
+        "theme_keys": ["ai", "semiconductor"],
+        "keywords": ["helium", "specialty gas", "noble gas", "氦气", "电子特气", "气源", "提纯", "半导体气体"],
+        "why": "氦气更像半导体保供约束，先看气源、提纯和国产替代，不把扩产故事直接当盈利故事。",
+        "watch": "气源可得性、电子级提纯、半导体客户认证、进口依赖和价格持续性。",
+        "verify": "至少看到电子级价格、长协订单、客户认证或进口约束中两项确认。",
+        "action": "只提升半导体材料观察优先级；AI仓位超线时仍不新增同类进攻仓。",
+        "instruments": ["512480", "588200"],
+    },
+    {
+        "id": "tungsten_hexafluoride",
+        "name": "六氟化钨/前驱体",
+        "layer": "watch",
+        "theme_keys": ["ai", "semiconductor"],
+        "keywords": ["wf6", "tungsten hexafluoride", "precursor", "六氟化钨", "钨", "前驱体", "薄膜沉积", "cvd"],
+        "why": "六氟化钨是小市场高卡点材料，重点不是市场规模，而是不可替代性、认证周期和涨价传导。",
+        "watch": "钨资源约束、高纯产能、半导体沉积需求、出口规则和下游议价。",
+        "verify": "先看价格/订单/出口/毛利率能否连续确认，不能只看稀缺叙事。",
+        "action": "作为半导体材料子雷达；未出现价格和订单验证前只观察。",
+        "instruments": ["512480", "588200"],
+    },
+    {
+        "id": "photoresist_materials",
+        "name": "光刻胶/靶材",
+        "layer": "watch",
+        "theme_keys": ["ai", "semiconductor"],
+        "keywords": ["photoresist", "target material", "mask", "光刻胶", "靶材", "掩膜版", "晶圆材料"],
+        "why": "光刻胶和靶材更看认证和良率，国产替代周期长，不能把国产替代四个字直接等同于利润。",
+        "watch": "客户认证节点、良率、国产替代订单、毛利率和资本开支节奏。",
+        "verify": "确认客户导入和收入占比，而不是只确认新闻标题。",
+        "action": "只进入材料候选观察，不默认扩可买池。",
+        "instruments": ["512480", "588200"],
+    },
+    {
+        "id": "advanced_packaging",
+        "name": "先进封装/玻璃基板",
+        "layer": "watch",
+        "theme_keys": ["ai", "semiconductor"],
+        "keywords": ["advanced packaging", "coWoS", "hbm", "glass substrate", "先进封装", "玻璃基板", "hbm", "封装", "载板"],
+        "why": "先进封装跟AI算力需求更直连，但要分清设备、材料、封装产能和真实订单。",
+        "watch": "海外封装产能、HBM订单、载板/玻璃基板验证、设备交期和国内封测订单。",
+        "verify": "看订单、产能利用率、价格和客户认证是否同步。",
+        "action": "作为AI上游观察，若AI仓位已高，只用于解释持仓风险，不新增进攻仓。",
+        "instruments": ["512480", "588200"],
+    },
+    {
         "id": "energy_power",
         "name": "能源电力链",
         "layer": "watch",
@@ -72,6 +120,30 @@ DEFAULT_INDUSTRY_RADAR: list[dict[str, Any]] = [
         "watch": "油气价格、煤价、电力ETF、电网订单、风电相对光伏强弱。",
         "verify": "看能源价格和电力/电网板块是否同步确认。",
         "action": "先看传导链，不把新能源当油价上涨的第一反应。",
+        "instruments": ["561560", "560390"],
+    },
+    {
+        "id": "wind_power_aidc",
+        "name": "风电/算力绿电",
+        "layer": "watch",
+        "theme_keys": ["energy", "new_energy"],
+        "keywords": ["wind power", "green power", "data center", "aidc", "风电", "绿电", "算力中心", "源网荷储", "西北算力"],
+        "why": "算力中心的绿电约束会让风电、电网和储能分化，不能把风电和光伏混成一个逻辑。",
+        "watch": "算力中心投产、绿电消纳比例、风电利用小时、电网接入和储能订单。",
+        "verify": "看风电相对光伏强弱、电网/储能订单和地方政策是否一起确认。",
+        "action": "只在价格和订单共振时升级电力链候选。",
+        "instruments": ["561560", "560390"],
+    },
+    {
+        "id": "grid_storage_power",
+        "name": "电网/储能/火电调峰",
+        "layer": "watch",
+        "theme_keys": ["energy", "new_energy"],
+        "keywords": ["grid", "storage", "thermal power", "电网", "储能", "火电", "调峰", "输配电", "特高压"],
+        "why": "新能源消纳和算力用电最后要落到电网、储能和调峰能力，先看订单和利用率。",
+        "watch": "电网投资、储能招标、火电容量电价、用电负荷和特高压建设。",
+        "verify": "看订单、价格和政策落地，不靠一句源网荷储追高。",
+        "action": "作为能源电力链的确认层，不直接替代宽基或防守仓。",
         "instruments": ["561560", "560390"],
     },
     {
@@ -206,10 +278,40 @@ INDUSTRY_FACT_DETAILS: dict[str, dict[str, Any]] = {
         "确认": ["价格上涨", "交期拉长", "客户认证推进", "出口管制收紧", "库存周数下降"],
         "否定": ["只是题材传播", "价格没有确认", "下游库存充足", "没有订单或毛利率验证"],
     },
+    "helium_supply_chain": {
+        "逻辑": "氦气先看半导体保供和电子级提纯，不把普通工业气扩产直接等同于利润弹性。",
+        "确认": ["电子级氦气价格连续上行", "半导体客户长协", "进口气源受限", "提纯产线达标"],
+        "否定": ["只扩低纯度产能", "没有客户认证", "价格没有连续确认", "运输或气源成本吞噬利润"],
+    },
+    "tungsten_hexafluoride": {
+        "逻辑": "六氟化钨看钨资源、高纯氟化能力、沉积工艺不可替代性和出口规则，小市场也可能有高议价。",
+        "确认": ["WF6报价上调", "高纯产能紧张", "下游晶圆厂认证", "出口限制或长协涨价"],
+        "否定": ["只讲稀缺没有价格", "新增产能快速释放", "客户认证未过", "毛利率没有改善"],
+    },
+    "photoresist_materials": {
+        "逻辑": "光刻胶/靶材的核心是认证、良率和客户导入，国产替代节奏通常慢于题材传播。",
+        "确认": ["客户认证通过", "收入占比提升", "良率改善", "订单和毛利率同步"],
+        "否定": ["只有国产替代叙事", "验证周期拉长", "价格不涨", "收入占比过低"],
+    },
+    "advanced_packaging": {
+        "逻辑": "先进封装要区分设备、材料、载板、封测产能和AI订单，先看瓶颈到底卡在哪里。",
+        "确认": ["HBM/先进封装订单", "设备交期拉长", "产能利用率提升", "客户认证通过"],
+        "否定": ["只跟随AI情绪", "订单未落地", "产能快速释放", "价格没有确认"],
+    },
     "energy_power": {
         "逻辑": "能源电力链看油气煤价格、绿电消纳、算力用电和电网投资，风光不能混成一个逻辑。",
         "确认": ["油气煤价格上行", "电力/电网订单确认", "风电相对光伏走强", "算力绿电需求落地"],
         "否定": ["能源价格回落", "电力板块不跟", "政策只保供不让利润释放"],
+    },
+    "wind_power_aidc": {
+        "逻辑": "风电相对光伏的差异在于出力曲线、区域资源和算力绿电消纳，最终还要看订单和利用小时。",
+        "确认": ["AIDC绿电比例要求", "风电利用小时提升", "电网接入改善", "风电相对光伏走强"],
+        "否定": ["只讲政策不看订单", "消纳受限", "风电价格不跟", "装机增长但利润不修复"],
+    },
+    "grid_storage_power": {
+        "逻辑": "电网/储能/火电调峰是绿电和算力用电的承接层，重在投资计划和招标订单。",
+        "确认": ["电网投资上修", "储能招标放量", "容量电价改善", "特高压建设加速"],
+        "否定": ["招标价格继续内卷", "项目延期", "政策只保供不保利润"],
     },
     "resource_metals": {
         "逻辑": "资源品看供给集中、出口规则、库存和下游议价，商品上涨要能传到企业利润。",
@@ -360,6 +462,62 @@ def _theme_hit(entry: dict[str, Any], event_theme_keys: set[str], candidate_them
     return bool(theme_keys & (event_theme_keys | candidate_theme_keys))
 
 
+def _instrument_code_set(items: list[Any]) -> set[str]:
+    codes: set[str] = set()
+    for item in items or []:
+        if isinstance(item, dict):
+            code = str(item.get("code") or "").strip()
+        else:
+            code = str(item or "").strip()
+        if code:
+            codes.add(code)
+    return codes
+
+
+def _instrument_label(item: dict[str, Any]) -> str:
+    name = str(item.get("name") or item.get("code") or "").strip()
+    code = str(item.get("code") or "").strip()
+    if name and code and name != code:
+        return f"{name}({code})"
+    return name or code
+
+
+def _binding_refs(entry: dict[str, Any], portfolio: dict[str, Any], matched_candidates: list[dict[str, Any]]) -> tuple[list[str], list[str], str]:
+    entry_codes = _instrument_code_set(entry.get("instruments") or [])
+    candidate_links: list[str] = []
+    candidate_codes: set[str] = set(entry_codes)
+    for candidate in matched_candidates:
+        for instrument in candidate.get("instruments") or []:
+            if not isinstance(instrument, dict):
+                continue
+            code = str(instrument.get("code") or "").strip()
+            label = _instrument_label(instrument)
+            if code:
+                candidate_codes.add(code)
+            if label:
+                candidate_links.append(label)
+
+    holding_links: list[str] = []
+    for holding in portfolio.get("holdings") or []:
+        code = str(holding.get("code") or "").strip()
+        if code and code in candidate_codes:
+            holding_links.append(_instrument_label(holding))
+
+    candidate_links = list(dict.fromkeys(candidate_links))[:4]
+    holding_links = list(dict.fromkeys(holding_links))[:4]
+    if holding_links and candidate_links:
+        summary = "已持有：" + "、".join(holding_links) + "；候选：" + "、".join(candidate_links)
+    elif holding_links:
+        summary = "已持有：" + "、".join(holding_links)
+    elif candidate_links:
+        summary = "候选：" + "、".join(candidate_links)
+    elif entry_codes:
+        summary = "参考代码：" + "、".join(sorted(entry_codes)[:4])
+    else:
+        summary = "暂无直接绑定，先看行业确认"
+    return holding_links, candidate_links, summary
+
+
 def _component_score(text: str, keywords: tuple[str, ...]) -> int:
     lowered = text.casefold()
     hits = sum(1 for keyword in keywords if keyword in lowered)
@@ -463,6 +621,7 @@ def build_industry_radar(
             for key in (entry.get("theme_keys") or [])
             if key in candidate_by_key
         ]
+        holding_links, candidate_links, binding_summary = _binding_refs(entry, portfolio, matched_candidates)
         candidate_bonus = max((int(item.get("score") or 0) for item in matched_candidates), default=0)
         score = len(hits) * 2 + (3 if matched_by_theme else 0) + candidate_bonus
         if layer == "core":
@@ -504,6 +663,9 @@ def build_industry_radar(
                 "verify": entry.get("verify") or "",
                 "action": entry.get("action") or "",
                 "instruments": list(entry.get("instruments") or []),
+                "portfolio_links": holding_links,
+                "candidate_links": candidate_links,
+                "binding_summary": binding_summary,
                 "hits": hits,
             }
         )
@@ -532,7 +694,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
         return ["- 行业雷达未启用。"]
     lines = list(radar.get("summary_lines") or [])
     rows = radar.get("rows") or []
-    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 事实库 | 看什么 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|---|"])
+    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 事实库 | 看什么 | 组合/候选绑定 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|---|---|"])
     for row in rows:
         instruments = "、".join(row.get("instruments") or [])
         action = row.get("action") or ""
@@ -546,6 +708,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
             f"{_text(row.get('status'))} | "
             f"{_text(row.get('fact_summary'))} | "
             f"{_text(row.get('watch'))} | "
+            f"{_text(row.get('binding_summary'))} | "
             f"{_text(row.get('verify'))} | "
             f"{_text(action)} |"
         )

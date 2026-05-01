@@ -947,6 +947,36 @@ def _playbook_rule_lines(portfolio: dict[str, Any], summary: dict[str, Any]) -> 
     ]
 
 
+def _hard_risk_gate_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
+    controls = portfolio.get("risk_controls") or {}
+    gates = controls.get("hard_gates") or {}
+    return {
+        "max_single_action_pct_of_monthly": _as_float(gates.get("max_single_action_pct_of_monthly"), 40.0),
+        "max_monthly_attack_add_pct_of_monthly": _as_float(gates.get("max_monthly_attack_add_pct_of_monthly"), 25.0),
+        "max_monthly_action_count": int(_as_float(gates.get("max_monthly_action_count"), 2.0)),
+        "confirmation_required_count": int(_as_float(gates.get("confirmation_required_count"), 2.0)),
+        "confirmation_window_days": int(_as_float(gates.get("confirmation_window_days"), 7.0)),
+        "max_chase_day_pct": _as_float(gates.get("max_chase_day_pct"), 2.5),
+    }
+
+
+def _hard_risk_gate_lines(portfolio: dict[str, Any], summary: dict[str, Any]) -> list[str]:
+    del summary
+    gates = _hard_risk_gate_payload(portfolio)
+    monthly = _as_float((portfolio.get("profile") or {}).get("monthly_contribution_cny"), 0.0)
+    single_cap = monthly * gates["max_single_action_pct_of_monthly"] / 100 if monthly > 0 else 0.0
+    attack_cap = monthly * gates["max_monthly_attack_add_pct_of_monthly"] / 100 if monthly > 0 else 0.0
+    single_text = _fmt_cny(single_cap) if single_cap > 0 else f"月新增资金的 {_fmt_pct(gates['max_single_action_pct_of_monthly'])}"
+    attack_text = _fmt_cny(attack_cap) if attack_cap > 0 else f"月新增资金的 {_fmt_pct(gates['max_monthly_attack_add_pct_of_monthly'])}"
+    return [
+        f"- **单次上限**：任何一次手动操作默认不超过 {single_text}；超过就拆到下次周报后再复核。",
+        f"- **进攻仓月度上限**：AI/半导体/港股科技等进攻方向每月新增合计不超过 {attack_text}；仓位超线时新增为 0。",
+        f"- **连续确认**：新主题至少需要 {gates['confirmation_window_days']} 天内 {gates['confirmation_required_count']} 次确认，确认项可来自新闻、价格、订单、政策或回执复盘。",
+        f"- **追高闸门**：候选标的单日涨幅超过 {_fmt_pct(gates['max_chase_day_pct'])} 默认不追，只进入下次复核。",
+        f"- **频率闸门**：每月最多 {gates['max_monthly_action_count']} 次主动调仓；没操作就不填回执，系统按未操作继续跟踪。",
+    ]
+
+
 def _decision_cockpit(portfolio: dict[str, Any]) -> dict[str, Any]:
     return portfolio.get("decision_cockpit") or {}
 
@@ -2014,6 +2044,7 @@ def build_portfolio_brief(
     trade_ledger_lines = _trade_ledger_lines(trade_ledger)
     action_board_lines = _action_board_lines(summary, portfolio, portfolio_quotes, candidate_scores, event_impacts)
     candidate_lines = _candidate_pool_lines(portfolio)
+    hard_risk_gate_lines = _hard_risk_gate_lines(portfolio, summary)
     event_route_lines, event_route_rows = _event_route_lines(
         event_impacts,
         portfolio,
@@ -2166,6 +2197,8 @@ def build_portfolio_brief(
     lines.extend(contribution_execution_lines)
     lines.extend(["", "## 交易前确认清单", ""])
     lines.extend(trade_checklist_lines)
+    lines.extend(["", "## 风险硬闸门", ""])
+    lines.extend(hard_risk_gate_lines)
     lines.extend(["", "## 低吸触发规则", ""])
     lines.extend(drawdown_lines)
     lines.extend(["", "## AI重叠度报告", ""])
@@ -2214,6 +2247,7 @@ def build_portfolio_brief(
         "local_market_payload": local_market_payload,
         "reduce_candidates": reduce_candidates,
         "hard_reduce_rule_lines": hard_reduce_rule_lines,
+        "hard_risk_gate_lines": hard_risk_gate_lines,
         "fixed_buy_pool_rows": fixed_buy_pool_rows,
         "fixed_buy_pool_lines": fixed_buy_pool_lines,
         "fixed_pool_history": fixed_pool_history or {},
