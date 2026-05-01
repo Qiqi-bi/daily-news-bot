@@ -1,7 +1,163 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-01T06:37:20",
+  "updated_at_utc": "2026-05-01T09:50:38",
   "signals": [
+    {
+      "id": "20260501095038-industry_radar-helium_supply_chain-512480",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "氦气/电子特气",
+      "theme_key": "helium_supply_chain",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "512480",
+      "name": "半导体ETF",
+      "start_price": 1.817,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-helium_supply_chain-588200",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "氦气/电子特气",
+      "theme_key": "helium_supply_chain",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "588200",
+      "name": "科创芯片ETF",
+      "start_price": 3.088,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-tungsten_hexafluoride-512480",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "六氟化钨/前驱体",
+      "theme_key": "tungsten_hexafluoride",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "512480",
+      "name": "半导体ETF",
+      "start_price": 1.817,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-tungsten_hexafluoride-588200",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "六氟化钨/前驱体",
+      "theme_key": "tungsten_hexafluoride",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "588200",
+      "name": "科创芯片ETF",
+      "start_price": 3.088,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-photoresist_materials-512480",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "光刻胶/靶材",
+      "theme_key": "photoresist_materials",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "512480",
+      "name": "半导体ETF",
+      "start_price": 1.817,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-photoresist_materials-588200",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "光刻胶/靶材",
+      "theme_key": "photoresist_materials",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "588200",
+      "name": "科创芯片ETF",
+      "start_price": 3.088,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-advanced_packaging-512480",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "先进封装/玻璃基板",
+      "theme_key": "advanced_packaging",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "512480",
+      "name": "半导体ETF",
+      "start_price": 1.817,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-advanced_packaging-588200",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "先进封装/玻璃基板",
+      "theme_key": "advanced_packaging",
+      "priority": "今日关注",
+      "score": 4.0,
+      "code": "588200",
+      "name": "科创芯片ETF",
+      "start_price": 3.088,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-wind_power_aidc-561560",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "风电/算力绿电",
+      "theme_key": "wind_power_aidc",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "561560",
+      "name": "电力ETF",
+      "start_price": 1.346,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-wind_power_aidc-560390",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "风电/算力绿电",
+      "theme_key": "wind_power_aidc",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "560390",
+      "name": "电网设备ETF易方达",
+      "start_price": 0.986,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-grid_storage_power-561560",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "电网/储能/火电调峰",
+      "theme_key": "grid_storage_power",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "561560",
+      "name": "电力ETF",
+      "start_price": 1.346,
+      "observations": {}
+    },
+    {
+      "id": "20260501095038-industry_radar-grid_storage_power-560390",
+      "created_at_utc": "2026-05-01T09:50:38",
+      "source": "industry_radar",
+      "theme": "电网/储能/火电调峰",
+      "theme_key": "grid_storage_power",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "560390",
+      "name": "电网设备ETF易方达",
+      "start_price": 0.986,
+      "observations": {}
+    },
     {
       "id": "20260501030453-industry_radar-semiconductor_materials-512480",
       "created_at_utc": "2026-05-01T03:04:53",
@@ -277,6 +433,186 @@
     }
   ],
   "rows": [
+    {
+      "theme_key": "helium_supply_chain",
+      "theme": "氦气/电子特气",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "tungsten_hexafluoride",
+      "theme": "六氟化钨/前驱体",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "photoresist_materials",
+      "theme": "光刻胶/靶材",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "advanced_packaging",
+      "theme": "先进封装/玻璃基板",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "wind_power_aidc",
+      "theme": "风电/算力绿电",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "grid_storage_power",
+      "theme": "电网/储能/火电调峰",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
     {
       "theme_key": "semiconductor_materials",
       "theme": "半导体材料/卡脖子链",
@@ -640,13 +976,13 @@
   ],
   "adjustments": {},
   "lines": [
-    "- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
-    "- 半导体材料/卡脖子链：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
-    "- 港股科技/互联网：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
-    "- 电力：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
-    "- 红利低波：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
+    "- 本次新增待验证信号 12 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 氦气/电子特气：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 六氟化钨/前驱体：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 光刻胶/靶材：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
+    "- 先进封装/玻璃基板：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
   ],
-  "added_count": 0,
-  "signal_count": 21,
+  "added_count": 12,
+  "signal_count": 33,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
