@@ -81,7 +81,12 @@ def aggregate_trade_ledger(ledger: dict[str, Any]) -> dict[str, Any]:
         if shares <= 0 or amount <= 0:
             continue
 
-        accepted_trades.append(dict(trade))
+        normalized_trade = dict(trade)
+        normalized_trade["side"] = side
+        normalized_trade["shares"] = round(shares, 4)
+        normalized_trade["amount_cny"] = round(amount, 2)
+        normalized_trade["fee_cny"] = round(fee, 2)
+        accepted_trades.append(normalized_trade)
         position = positions.setdefault(
             code,
             {"code": code, "name": trade.get("name") or code, "shares": 0.0, "cost_cny": 0.0, "buy_amount_cny": 0.0, "sell_amount_cny": 0.0, "trade_count": 0},
@@ -110,6 +115,7 @@ def aggregate_trade_ledger(ledger: dict[str, Any]) -> dict[str, Any]:
         "enabled": bool(ledger.get("enabled")),
         "path": ledger.get("path"),
         "positions": sorted(positions.values(), key=lambda item: item["code"]),
+        "trades": sorted(accepted_trades, key=_trade_sort_value),
         "trade_count": sum(item.get("trade_count", 0) for item in positions.values()),
         "latest_trade_date": latest_date,
         "latest_trade_side": _trade_side(latest.get("side") or latest.get("type")) if latest else "",

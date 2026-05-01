@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 import re
 from typing import Any
@@ -960,9 +961,72 @@ def _hard_risk_gate_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _hard_risk_gate_lines(portfolio: dict[str, Any], summary: dict[str, Any]) -> list[str]:
+def _trade_month_key(value: Any) -> str:
+    raw = str(value or "").strip()
+    if not raw:
+        return ""
+    try:
+        timestamp = float(raw)
+        if timestamp > 10_000_000_000:
+            timestamp = timestamp / 1000
+        if timestamp > 946684800:
+            return datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime("%Y-%m")
+    except ValueError:
+        pass
+    try:
+        return datetime.fromisoformat(raw[:10]).strftime("%Y-%m")
+    except ValueError:
+        return ""
+
+
+def _hard_risk_gate_status(
+    portfolio: dict[str, Any],
+    trade_ledger: dict[str, Any] | None,
+    now: datetime | None = None,
+) -> dict[str, Any]:
+    gates = _hard_risk_gate_payload(portfolio)
+    current = now or datetime.now(timezone.utc)
+    month_key = current.strftime("%Y-%m")
+    monthly = _as_float((portfolio.get("profile") or {}).get("monthly_contribution_cny"), 0.0)
+    attack_cap = monthly * gates["max_monthly_attack_add_pct_of_monthly"] / 100 if monthly > 0 else 0.0
+    attack_codes = {
+        str(item.get("code") or "")
+        for item in portfolio.get("holdings") or []
+        if str(item.get("sleeve") or "") == "attack" and item.get("code")
+    }
+    trades = [
+        trade
+        for trade in (trade_ledger or {}).get("trades") or []
+        if _trade_month_key(trade.get("date") or trade.get("created_at_utc") or trade.get("feishu_create_time")) == month_key
+    ]
+    buy_trades = [trade for trade in trades if str(trade.get("side") or trade.get("type") or "buy").lower() != "sell"]
+    attack_buys = [trade for trade in buy_trades if str(trade.get("code") or "") in attack_codes]
+    attack_used = sum(_as_float(trade.get("amount_cny")) for trade in attack_buys)
+    action_count = len(trades)
+    action_limit = int(gates["max_monthly_action_count"])
+    return {
+        "month": month_key,
+        "ledger_enabled": bool((trade_ledger or {}).get("enabled")),
+        "action_count": action_count,
+        "action_limit": action_limit,
+        "action_remaining": max(action_limit - action_count, 0),
+        "attack_add_used_cny": round(attack_used, 2),
+        "attack_add_limit_cny": round(attack_cap, 2),
+        "attack_add_remaining_cny": round(max(attack_cap - attack_used, 0.0), 2),
+        "blocks_new_action": action_limit > 0 and action_count >= action_limit,
+        "blocks_attack_add": attack_cap > 0 and attack_used >= attack_cap,
+    }
+
+
+def _hard_risk_gate_lines(
+    portfolio: dict[str, Any],
+    summary: dict[str, Any],
+    trade_ledger: dict[str, Any] | None = None,
+    now: datetime | None = None,
+) -> list[str]:
     del summary
     gates = _hard_risk_gate_payload(portfolio)
+    status = _hard_risk_gate_status(portfolio, trade_ledger, now=now)
     monthly = _as_float((portfolio.get("profile") or {}).get("monthly_contribution_cny"), 0.0)
     single_cap = monthly * gates["max_single_action_pct_of_monthly"] / 100 if monthly > 0 else 0.0
     attack_cap = monthly * gates["max_monthly_attack_add_pct_of_monthly"] / 100 if monthly > 0 else 0.0
@@ -971,6 +1035,13 @@ def _hard_risk_gate_lines(portfolio: dict[str, Any], summary: dict[str, Any]) ->
     return [
         f"- **单次上限**：任何一次手动操作默认不超过 {single_text}；超过就拆到下次周报后再复核。",
         f"- **进攻仓月度上限**：AI/半导体/港股科技等进攻方向每月新增合计不超过 {attack_text}；仓位超线时新增为 0。",
+        (
+            f"- **本月状态**：{status['month']} 已记录主动调仓 {status['action_count']}/{status['action_limit']} 次；"
+            f"进攻仓新增 {_fmt_cny(status['attack_add_used_cny'])}/{_fmt_cny(status['attack_add_limit_cny'])}，"
+            f"剩余额度 {_fmt_cny(status['attack_add_remaining_cny'])}。"
+            if status["ledger_enabled"]
+            else "- **本月状态**：未启用交易账本，系统无法核对本月操作次数和已用额度；默认按硬闸门保守执行。"
+        ),
         f"- **连续确认**：新主题至少需要 {gates['confirmation_window_days']} 天内 {gates['confirmation_required_count']} 次确认，确认项可来自新闻、价格、订单、政策或回执复盘。",
         f"- **追高闸门**：候选标的单日涨幅超过 {_fmt_pct(gates['max_chase_day_pct'])} 默认不追，只进入下次复核。",
         f"- **频率闸门**：每月最多 {gates['max_monthly_action_count']} 次主动调仓；没操作就不填回执，系统按未操作继续跟踪。",
@@ -1248,6 +1319,7 @@ def _evaluate_fixed_buy_pool(
     candidate_scores: list[dict[str, Any]],
     event_route_rows: list[dict[str, Any]],
     local_market_payload: dict[str, Any] | None = None,
+    trade_ledger: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     allocation = portfolio.get("allocation_framework") or {}
     holdings_by_code = {str(item.get("code") or ""): item for item in portfolio.get("holdings") or [] if item.get("code")}
@@ -1262,6 +1334,7 @@ def _evaluate_fixed_buy_pool(
     gold_high = _as_float(gold_range[1], 15.0)
     direct_ai_cap = _as_float((portfolio.get("risk_controls") or {}).get("direct_ai_cap_pct"), 35.0)
     growth_tech_cap = _as_float((portfolio.get("risk_controls") or {}).get("growth_tech_cap_pct"), 55.0)
+    gate_status = _hard_risk_gate_status(portfolio, trade_ledger)
     results: list[dict[str, Any]] = []
 
     for item in _fixed_buy_pool(portfolio):
@@ -1361,6 +1434,14 @@ def _evaluate_fixed_buy_pool(
             state = "观察"
             score -= 10
             reason = "当天追高风险偏高，先别把‘候选’误读成‘现在就买’。"
+        if state == "可买" and gate_status.get("blocks_new_action"):
+            state = "观察"
+            score -= 12
+            reason = "本月主动调仓次数已到硬闸门，除减风险外不新增操作。"
+        if state == "可买" and theme_key in {"ai_attack", "semiconductor"} and gate_status.get("blocks_attack_add"):
+            state = "观察"
+            score -= 12
+            reason = "本月进攻仓新增额度已用完，AI/半导体方向只观察。"
 
         results.append(
             {
@@ -2044,7 +2125,8 @@ def build_portfolio_brief(
     trade_ledger_lines = _trade_ledger_lines(trade_ledger)
     action_board_lines = _action_board_lines(summary, portfolio, portfolio_quotes, candidate_scores, event_impacts)
     candidate_lines = _candidate_pool_lines(portfolio)
-    hard_risk_gate_lines = _hard_risk_gate_lines(portfolio, summary)
+    hard_risk_gate_status = _hard_risk_gate_status(portfolio, trade_ledger)
+    hard_risk_gate_lines = _hard_risk_gate_lines(portfolio, summary, trade_ledger)
     event_route_lines, event_route_rows = _event_route_lines(
         event_impacts,
         portfolio,
@@ -2066,6 +2148,7 @@ def build_portfolio_brief(
         candidate_scores,
         event_route_rows,
         local_market_payload=local_market_payload,
+        trade_ledger=trade_ledger,
     )
     fixed_buy_pool_lines = _fixed_buy_pool_lines(fixed_buy_pool_rows)
     fixed_pool_history_panel = build_fixed_pool_60d_panel(portfolio, event_route_rows, fixed_pool_history)
@@ -2248,6 +2331,7 @@ def build_portfolio_brief(
         "reduce_candidates": reduce_candidates,
         "hard_reduce_rule_lines": hard_reduce_rule_lines,
         "hard_risk_gate_lines": hard_risk_gate_lines,
+        "hard_risk_gate_status": hard_risk_gate_status,
         "fixed_buy_pool_rows": fixed_buy_pool_rows,
         "fixed_buy_pool_lines": fixed_buy_pool_lines,
         "fixed_pool_history": fixed_pool_history or {},
