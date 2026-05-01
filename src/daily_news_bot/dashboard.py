@@ -890,14 +890,32 @@ def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     result = []
     state_label = {"可买": "可复核", "减仓": "减仓复核"}
     for row in rows or []:
+        odds = row.get("opportunity_score") or {}
         result.append(
             [
                 escape(f"{_text(row.get('name'), '')} ({_text(row.get('code'), '')})"),
                 escape(state_label.get(_text(row.get("state"), "观察"), _text(row.get("state"), "观察"))),
+                escape(_shorten(odds.get("text") or row.get("odds_label") or "-", 120)),
                 escape(_text(row.get("amount_band"))),
                 escape(_fmt_pct(row.get("day_change_pct"))),
                 escape(_text(row.get("role"))),
                 escape(_shorten(row.get("reason"), 160)),
+            ]
+        )
+    return result
+
+
+def _annual_budget_rows(objective: dict[str, Any] | None) -> list[list[str]]:
+    result = []
+    budget = (objective or {}).get("return_budget") or {}
+    for row in budget.get("rows") or []:
+        result.append(
+            [
+                escape(_text(row.get("label"))),
+                escape(_objective_range_text(row.get("target_range_pct"))),
+                escape(_objective_range_text(row.get("expected_return_pct_range"))),
+                escape(_objective_range_text(row.get("contribution_pct_range"))),
+                escape(_shorten(row.get("role"), 120)),
             ]
         )
     return result
@@ -1145,6 +1163,15 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
                 "wide",
             ),
             _section(
+                "年度收益拆账",
+                _render_table(
+                    ["模块", "目标仓位", "假设年收益", "组合贡献", "角色"],
+                    _annual_budget_rows(portfolio.get("annual_objective")),
+                ),
+                _text(((portfolio.get("annual_objective") or {}).get("return_budget") or {}).get("note"), "收益目标用于约束仓位结构，不保证结果。"),
+                "wide",
+            ),
+            _section(
                 "建议追踪",
                 _advice_tracking_body(portfolio.get("advice_tracking")),
                 "今天的建议会进入30日验证队列；周报只看连续确认，不鼓励每天交易。",
@@ -1164,7 +1191,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             _section(
                 "固定候选池",
                 _render_table(
-                    ["标的", "状态", "金额档位", "当日变化", "角色", "原因"],
+                    ["标的", "状态", "赔率", "金额档位", "当日变化", "角色", "原因"],
                     _fixed_pool_rows(portfolio.get("fixed_buy_pool_rows")),
                 ),
                 class_name="wide",

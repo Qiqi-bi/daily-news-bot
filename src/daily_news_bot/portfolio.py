@@ -872,13 +872,31 @@ def _annual_objective_lines(portfolio: dict[str, Any]) -> list[str]:
     mode = objective.get("mode") or "range"
     note = objective.get("note") or "年度目标是方向盘，不是单笔交易扳机。"
     priorities = objective.get("priority_order") or ["先控制回撤", "再提高胜率", "最后争取收益"]
-    return [
+    budget = objective.get("return_budget") or {}
+    lines = [
         f"- 建议用**两层区间目标**而不是死目标：当前模式 `{mode}`，基础目标先看 {base_text}，行情和纪律都配合时再看冲刺目标 {stretch_text}。",
         f"- 年度最大回撤红线先定为 {_fmt_pct(max_drawdown)}；一旦逼近，优先降波动和降重叠，而不是硬扛。",
         f"- 优先级顺序：{' → '.join(str(item) for item in priorities[:4])}。",
         "- 操作含义：年度收益目标只决定组合节奏，不会因为“还差目标”就强行买入；如果为追收益破坏仓位纪律，说明目标过激。",
         f"- 解释：{note}",
     ]
+    rows = budget.get("rows") or []
+    if rows:
+        lines.extend(
+            [
+                "",
+                "| 模块 | 目标仓位 | 假设年收益 | 对组合贡献 | 角色 |",
+                "|---|---:|---:|---:|---|",
+            ]
+        )
+        for row in rows:
+            lines.append(
+                f"| {row.get('label')} | {_fmt_pct_range(row.get('target_range_pct'))} | "
+                f"{_fmt_pct_range(row.get('expected_return_pct_range'))} | "
+                f"{_fmt_pct_range(row.get('contribution_pct_range'))} | {row.get('role')} |"
+            )
+        lines.append(f"- 拆账结论：按目标仓位和默认假设，组合目标贡献约 {_fmt_pct_range(budget.get('estimated_return_contribution_pct_range'))}；{budget.get('note')}")
+    return lines
 
 
 def _range_pair(values: Any, fallback: list[float]) -> list[float]:
@@ -894,6 +912,53 @@ def _fmt_pct_range(values: Any) -> str:
     if abs(low - high) < 0.001:
         return _fmt_pct(low)
     return f"{_fmt_pct(low)} ~ {_fmt_pct(high)}"
+
+
+def _range_mid(values: Any, fallback: list[float]) -> float:
+    low, high = _range_pair(values, fallback)
+    return round((low + high) / 2, 2)
+
+
+def _annual_return_budget_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
+    allocation = portfolio.get("allocation_framework") or {}
+    objective = portfolio.get("annual_objective") or {}
+    assumptions = objective.get("return_assumptions_pct") or {}
+    rows: list[dict[str, Any]] = []
+    configs = [
+        ("stable_core", "稳底仓", "stable_core_target_pct", [35.0, 45.0], [5.0, 8.0], "宽基底仓负责长期收益底座，不追热点。"),
+        ("growth_core", "成长底仓", "growth_core_target_pct", [15.0, 20.0], [8.0, 14.0], "成长底仓负责弹性，但要承认波动。"),
+        ("attack", "进攻仓", "attack_target_pct", [20.0, 30.0], [12.0, 22.0], "进攻仓决定冲刺空间，必须受硬闸门约束。"),
+        ("insurance", "保险仓", "insurance_target_pct", [10.0, 15.0], [-2.0, 8.0], "保险仓不追求跑赢，核心任务是降低组合断崖风险。"),
+        ("reserve", "机动/缓冲", "reserve_target_pct", [0.0, 10.0], [0.0, 2.0], "机动仓负责等待确认，不为凑收益强行交易。"),
+    ]
+    low_total = 0.0
+    high_total = 0.0
+    for key, label, allocation_key, target_fallback, return_fallback, role in configs:
+        target_range = _range_pair(allocation.get(allocation_key), target_fallback)
+        return_range = _range_pair(assumptions.get(key), return_fallback)
+        contribution_low = round(target_range[0] * return_range[0] / 100, 2)
+        contribution_high = round(target_range[1] * return_range[1] / 100, 2)
+        low_total += contribution_low
+        high_total += contribution_high
+        rows.append(
+            {
+                "key": key,
+                "label": label,
+                "target_range_pct": target_range,
+                "target_mid_pct": _range_mid(target_range, target_fallback),
+                "expected_return_pct_range": return_range,
+                "expected_return_mid_pct": _range_mid(return_range, return_fallback),
+                "contribution_pct_range": [contribution_low, contribution_high],
+                "contribution_mid_pct": round(_range_mid(target_range, target_fallback) * _range_mid(return_range, return_fallback) / 100, 2),
+                "role": role,
+            }
+        )
+
+    return {
+        "rows": rows,
+        "estimated_return_contribution_pct_range": [round(low_total, 2), round(high_total, 2)],
+        "note": "这是目标拆账，不是收益承诺；用来检查收益目标是否主要靠仓位结构和纪律，而不是靠每天预测。",
+    }
 
 
 def _annual_objective_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
@@ -914,6 +979,7 @@ def _annual_objective_payload(portfolio: dict[str, Any]) -> dict[str, Any]:
         "priority_order": objective.get("priority_order") or ["先控制回撤", "再提高胜率", "最后争取收益"],
         "note": objective.get("note") or "年度目标是方向盘，不是单笔交易扳机。",
         "discipline": "目标收益不触发单笔交易；只有仓位、价格、流动性和事件验证同时满足时才进入行动窗口。",
+        "return_budget": _annual_return_budget_payload(portfolio),
     }
 
 
@@ -1311,6 +1377,100 @@ def _hard_reduce_rule_lines(portfolio: dict[str, Any], reduce_candidates: list[d
     return lines
 
 
+def _opportunity_scorecard(
+    *,
+    theme_key: str,
+    state: str,
+    score: int,
+    chase_risk: str,
+    liquidity_level: str,
+    event_theme_keys: set[str],
+    candidate_priority: dict[str, str],
+    gate_status: dict[str, Any],
+) -> dict[str, Any]:
+    upside_ranges = {
+        "broad_core": [3.0, 8.0],
+        "growth_core": [5.0, 12.0],
+        "ai_attack": [8.0, 18.0],
+        "gold_insurance": [2.0, 8.0],
+        "dividend_lowvol": [3.0, 7.0],
+        "power": [4.0, 10.0],
+        "semiconductor": [8.0, 18.0],
+    }
+    drawdown_map = {
+        "broad_core": 6.0,
+        "growth_core": 12.0,
+        "ai_attack": 16.0,
+        "gold_insurance": 7.0,
+        "dividend_lowvol": 7.0,
+        "power": 9.0,
+        "semiconductor": 16.0,
+    }
+    theme_to_event = {
+        "broad_core": "china_macro",
+        "growth_core": "china_macro",
+        "ai_attack": "ai",
+        "gold_insurance": "gold",
+        "dividend_lowvol": "china_macro",
+        "power": "energy",
+        "semiconductor": "ai",
+    }
+    upside_range = upside_ranges.get(theme_key, [3.0, 8.0])
+    max_drawdown = drawdown_map.get(theme_key, 10.0)
+    if chase_risk == "高":
+        max_drawdown += 2.0
+    if liquidity_level == "偏弱":
+        max_drawdown += 2.0
+
+    confirmation_required = 2 if theme_key in {"broad_core", "gold_insurance", "dividend_lowvol"} else 3
+    confirmation_count = 0
+    if state in {"可买", "减仓"}:
+        confirmation_count += 1
+    if theme_to_event.get(theme_key) in event_theme_keys:
+        confirmation_count += 1
+    if candidate_priority.get(theme_key) in {"高", "中"}:
+        confirmation_count += 1
+    if chase_risk != "高":
+        confirmation_count += 1
+    if liquidity_level not in {"偏弱", "未知"}:
+        confirmation_count += 1
+    confirmation_count = min(confirmation_count, confirmation_required)
+
+    upside_mid = _range_mid(upside_range, [3.0, 8.0])
+    odds_ratio = round(upside_mid / max(max_drawdown, 0.1), 2)
+    odds_score = int(round(score + confirmation_count * 6 + odds_ratio * 10 - max_drawdown))
+    blockers: list[str] = []
+    if chase_risk == "高":
+        blockers.append("当天追高风险高")
+    if liquidity_level == "偏弱":
+        blockers.append("流动性偏弱")
+    if gate_status.get("blocks_new_action"):
+        blockers.append("本月操作次数已满")
+    if theme_key in {"ai_attack", "semiconductor"} and gate_status.get("blocks_attack_add"):
+        blockers.append("进攻仓本月新增额度已满")
+
+    if state == "减仓":
+        label = "减风险优先"
+    elif state == "可买" and confirmation_count >= confirmation_required and not blockers and odds_score >= 65:
+        label = "可复核"
+    elif state == "可买":
+        label = "等确认"
+    else:
+        label = "只观察"
+
+    return {
+        "label": label,
+        "odds_score": max(min(odds_score, 100), 0),
+        "expected_upside_pct_range": upside_range,
+        "max_drawdown_pct": round(max_drawdown, 2),
+        "odds_ratio": odds_ratio,
+        "confirmation_count": confirmation_count,
+        "confirmation_required": confirmation_required,
+        "blockers": blockers,
+        "text": f"{label}｜确认 {confirmation_count}/{confirmation_required}｜上行假设 {_fmt_pct_range(upside_range)}｜可承受回撤约 {_fmt_pct(max_drawdown)}",
+    }
+
+
 def _evaluate_fixed_buy_pool(
     portfolio: dict[str, Any],
     summary: dict[str, Any],
@@ -1348,6 +1508,7 @@ def _evaluate_fixed_buy_pool(
         reason = item.get("comment") or ""
         action_hint = "等待新闻、价格和纪律共振"
         chase_risk = str(snap.get("chase_risk") or "未知")
+        liquidity_level = str(snap.get("liquidity_level") or "未知")
 
         theme_key = str(item.get("theme_key") or "")
         if theme_key == "broad_core":
@@ -1443,6 +1604,17 @@ def _evaluate_fixed_buy_pool(
             score -= 12
             reason = "本月进攻仓新增额度已用完，AI/半导体方向只观察。"
 
+        opportunity_score = _opportunity_scorecard(
+            theme_key=theme_key,
+            state=state,
+            score=score,
+            chase_risk=chase_risk,
+            liquidity_level=liquidity_level,
+            event_theme_keys=event_theme_keys,
+            candidate_priority=candidate_priority,
+            gate_status=gate_status,
+        )
+
         results.append(
             {
                 "code": code,
@@ -1455,10 +1627,13 @@ def _evaluate_fixed_buy_pool(
                 "reason": reason,
                 "action_hint": action_hint,
                 "score": score,
+                "opportunity_score": opportunity_score,
+                "odds_label": opportunity_score.get("label"),
+                "odds_score": opportunity_score.get("odds_score"),
                 "day_change_pct": snap.get("change_pct"),
                 "latest_value": snap.get("latest_value"),
                 "premium_discount_pct": snap.get("premium_discount_pct"),
-                "liquidity_level": snap.get("liquidity_level"),
+                "liquidity_level": liquidity_level,
                 "chase_risk": chase_risk,
             }
         )
@@ -1470,12 +1645,14 @@ def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
     if not rows:
         return ["- 尚未配置固定候选池。"]
     state_label = {"可买": "可复核", "减仓": "减仓复核"}
-    lines = ["| 标的 | 状态 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---:|---|---|"]
+    lines = ["| 标的 | 状态 | 赔率 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---|---:|---|---|"]
     for row in rows:
         day_text = _fmt_pct_or_unknown(row.get("day_change_pct"))
         state = str(row.get("state") or "")
+        odds = row.get("opportunity_score") or {}
+        odds_text = odds.get("text") or row.get("odds_label") or "-"
         lines.append(
-            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
+            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {odds_text} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
         )
     return lines
 
@@ -1497,14 +1674,17 @@ def _action_slot_lines(
     if broad_buy_rows:
         names = "、".join(f"{row.get('name')}({row.get('code')})" for row in broad_buy_rows[:2])
         amount = broad_buy_rows[0].get("amount_band")
-        lines.append(f"{len(lines)+1}. **低吸候选**｜{names}｜单只参考 {amount}｜条件：进攻仓受限或进入回撤档位时，才优先把新增资金给稳底仓。")
+        odds = (broad_buy_rows[0].get("opportunity_score") or {}).get("text") or "赔率待确认"
+        lines.append(f"{len(lines)+1}. **低吸候选**｜{names}｜单只参考 {amount}｜{odds}｜条件：进攻仓受限或进入回撤档位时，才优先把新增资金给稳底仓。")
     if other_buy_rows:
         row = other_buy_rows[0]
-        lines.append(f"{len(lines)+1}. **候选观察**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜条件：{row.get('reason')}；确认后再手动处理。")
+        odds = (row.get("opportunity_score") or {}).get("text") or "赔率待确认"
+        lines.append(f"{len(lines)+1}. **候选观察**｜{row.get('name')}({row.get('code')})｜参考金额 {row.get('amount_band')}｜{odds}｜条件：{row.get('reason')}；确认后再手动处理。")
 
     if len(lines) < 3 and observe_rows:
         row = observe_rows[0]
-        lines.append(f"{len(lines)+1}. **观察**｜{row.get('name')}({row.get('code')})｜先看：{row.get('action_hint')}；当前不急着动。")
+        odds = (row.get("opportunity_score") or {}).get("text") or "赔率不足"
+        lines.append(f"{len(lines)+1}. **观察**｜{row.get('name')}({row.get('code')})｜{odds}｜先看：{row.get('action_hint')}；当前不急着动。")
     if len(lines) < 3:
         week_change = (portfolio_quotes or {}).get("portfolio_week_change_pct")
         lines.append(f"{len(lines)+1}. **默认不动**｜如果组合近一周约 {_fmt_pct_or_unknown(week_change)}，先按既有纪律跑，不因为单条新闻临时加动作。")

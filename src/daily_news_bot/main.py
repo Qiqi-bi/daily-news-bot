@@ -700,10 +700,15 @@ def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
     stretch = _feishu_pct_range(objective.get("stretch_return_pct_range"))
     drawdown = _fmt_pct(float(objective.get("max_annual_drawdown_pct") or 15.0))
     discipline = _feishu_short(objective.get("discipline") or "目标收益不触发单笔交易。", 88)
-    return [
+    lines = [
         f"年度目标：基础 {base}；冲刺 {stretch}；回撤红线 {drawdown}。",
         f"纪律：{discipline}",
     ]
+    budget = objective.get("return_budget") or {}
+    budget_range = budget.get("estimated_return_contribution_pct_range")
+    if budget_range:
+        lines.append(f"拆账：目标仓位贡献约 {_feishu_pct_range(budget_range)}；靠仓位结构和纪律，不靠每天预测。")
+    return lines
 
 
 def _build_feishu_risk_gate_lines(payload: dict[str, Any]) -> list[str]:
