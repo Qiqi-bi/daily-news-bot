@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-01T11:46:27",
+  "updated_at_utc": "2026-05-01T12:31:11",
   "signals": [
     {
       "id": "20260501095038-industry_radar-helium_supply_chain-512480",
@@ -974,6 +974,22 @@
       "adjustment_basis": "T30"
     }
   ],
+  "industry_leaderboard": {
+    "rows": [],
+    "lines": [
+      "- 行业雷达命中率榜还在积累样本；不要用单日涨跌下结论。"
+    ],
+    "best": null,
+    "worst": null
+  },
+  "mistake_reviews": [],
+  "mistake_summary": {
+    "total": 0,
+    "by_reason": {},
+    "lines": [
+      "- 错误复盘库暂无完成窗口的负向样本；继续积累，不急着下结论。"
+    ]
+  },
   "adjustments": {},
   "lines": [
     "- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
