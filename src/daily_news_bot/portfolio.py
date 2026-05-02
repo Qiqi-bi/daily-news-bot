@@ -169,6 +169,15 @@ def _as_float(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def _maybe_float(value: Any) -> float | None:
+    try:
+        if value in (None, ""):
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def _fmt_pct(value: float) -> str:
     return f"{value:.2f}%"
 
@@ -1164,6 +1173,123 @@ def _instrument_snapshot(
     }
 
 
+def _benchmark_change_for_theme(theme_key: str, local_market_payload: dict[str, Any] | None) -> float | None:
+    payload = local_market_payload or {}
+    if theme_key in {"ai_attack", "semiconductor", "growth_core", "power"}:
+        return _maybe_float(payload.get("broad_change_pct"))
+    if theme_key in {"dividend_lowvol", "gold_insurance"}:
+        return _maybe_float(payload.get("ai_change_pct"))
+    return _maybe_float(payload.get("broad_change_pct"))
+
+
+def _volume_confirmation(turnover_cny: Any) -> str:
+    turnover = _as_float(turnover_cny)
+    if turnover <= 0:
+        return "未知"
+    if turnover >= 100_000_000:
+        return "放量"
+    if turnover >= 20_000_000:
+        return "正常"
+    return "不足"
+
+
+def _pullback_position(change_pct: float | None, chase_risk: str) -> str:
+    if chase_risk == "高" or (change_pct is not None and change_pct >= 2.5):
+        return "高位追涨"
+    if change_pct is not None and change_pct <= -1.0:
+        return "回撤观察"
+    if change_pct is not None and -1.0 < change_pct < 1.0:
+        return "正常区间"
+    return "偏热"
+
+
+def _crowding_level(chase_risk: str, local_market_payload: dict[str, Any] | None) -> str:
+    payload = local_market_payload or {}
+    phase = str(payload.get("phase") or "")
+    risk_avg = _maybe_float(payload.get("risk_avg_pct"))
+    high_chase_count = int(payload.get("high_chase_count") or 0)
+    if chase_risk == "高" or phase == "主题过热" or high_chase_count >= 2 or (risk_avg is not None and risk_avg >= 1.5):
+        return "高"
+    if chase_risk == "中" or (risk_avg is not None and risk_avg >= 0.8):
+        return "中"
+    return "低"
+
+
+def _market_confirmation(
+    *,
+    theme_key: str,
+    snap: dict[str, Any],
+    local_market_payload: dict[str, Any] | None,
+) -> dict[str, Any]:
+    change_pct = _maybe_float(snap.get("change_pct"))
+    benchmark_change = _benchmark_change_for_theme(theme_key, local_market_payload)
+    relative_strength = None
+    if change_pct is not None and benchmark_change is not None:
+        relative_strength = round(change_pct - benchmark_change, 3)
+
+    if relative_strength is None:
+        relative_status = "未知"
+    elif relative_strength >= 0.7:
+        relative_status = "强"
+    elif relative_strength <= -0.7:
+        relative_status = "弱"
+    else:
+        relative_status = "中性"
+
+    volume_status = _volume_confirmation(snap.get("turnover_cny"))
+    chase_risk = str(snap.get("chase_risk") or "未知")
+    pullback = _pullback_position(change_pct, chase_risk)
+    crowding = _crowding_level(chase_risk, local_market_payload)
+
+    score = 50
+    if relative_status == "强":
+        score += 15
+    elif relative_status == "弱":
+        score -= 15
+    if volume_status == "放量":
+        score += 12
+    elif volume_status == "正常":
+        score += 6
+    elif volume_status == "不足":
+        score -= 12
+    if pullback == "回撤观察":
+        score += 8
+    elif pullback == "高位追涨":
+        score -= 18
+    if crowding == "高":
+        score -= 18
+    elif crowding == "中":
+        score -= 7
+
+    blockers: list[str] = []
+    if pullback == "高位追涨":
+        blockers.append("追高位置，不把强势当成马上买")
+    if volume_status == "不足":
+        blockers.append("成交额不足，价格确认不够硬")
+    if crowding == "高":
+        blockers.append("资金拥挤偏高，先降级观察")
+    if relative_status == "弱":
+        blockers.append("相对强弱落后，先等板块确认")
+
+    score = max(0, min(100, score))
+    blocks_action = bool(blockers) and score < 60
+    text = (
+        f"确认 {score}/100｜相对{relative_status}"
+        f"｜成交{volume_status}｜{pullback}｜拥挤{crowding}"
+    )
+    return {
+        "score": score,
+        "relative_strength_pct": relative_strength,
+        "relative_strength_status": relative_status,
+        "volume_confirmation": volume_status,
+        "pullback_position": pullback,
+        "crowding_level": crowding,
+        "blocks_action": blocks_action,
+        "blockers": blockers,
+        "text": text,
+    }
+
+
 
 def _local_market_panel_lines(
     portfolio: dict[str, Any],
@@ -1511,6 +1637,11 @@ def _evaluate_fixed_buy_pool(
         liquidity_level = str(snap.get("liquidity_level") or "未知")
 
         theme_key = str(item.get("theme_key") or "")
+        market_confirmation = _market_confirmation(
+            theme_key=theme_key,
+            snap=snap,
+            local_market_payload=local_market_payload,
+        )
         if theme_key == "broad_core":
             if attack_blockers or (week_change is not None and week_change <= -3) or summary.get("stable_core_pct", 0.0) < _as_float(stable_target[0], 35.0):
                 state = "可买"
@@ -1603,6 +1734,10 @@ def _evaluate_fixed_buy_pool(
             state = "观察"
             score -= 12
             reason = "本月进攻仓新增额度已用完，AI/半导体方向只观察。"
+        if state == "可买" and market_confirmation.get("blocks_action"):
+            state = "观察"
+            score -= 10
+            reason = f"行情确认不足：{'；'.join((market_confirmation.get('blockers') or [])[:2])}。"
 
         opportunity_score = _opportunity_scorecard(
             theme_key=theme_key,
@@ -1635,6 +1770,7 @@ def _evaluate_fixed_buy_pool(
                 "premium_discount_pct": snap.get("premium_discount_pct"),
                 "liquidity_level": liquidity_level,
                 "chase_risk": chase_risk,
+                "market_confirmation": market_confirmation,
             }
         )
 
@@ -1645,14 +1781,15 @@ def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
     if not rows:
         return ["- 尚未配置固定候选池。"]
     state_label = {"可买": "可复核", "减仓": "减仓复核"}
-    lines = ["| 标的 | 状态 | 赔率 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---|---:|---|---|"]
+    lines = ["| 标的 | 状态 | 行情确认 | 赔率 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---|---|---:|---|---|"]
     for row in rows:
         day_text = _fmt_pct_or_unknown(row.get("day_change_pct"))
         state = str(row.get("state") or "")
         odds = row.get("opportunity_score") or {}
         odds_text = odds.get("text") or row.get("odds_label") or "-"
+        confirmation = (row.get("market_confirmation") or {}).get("text") or "-"
         lines.append(
-            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {odds_text} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
+            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {confirmation} | {odds_text} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
         )
     return lines
 

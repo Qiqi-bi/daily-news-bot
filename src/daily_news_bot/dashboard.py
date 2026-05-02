@@ -891,10 +891,12 @@ def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     state_label = {"可买": "可复核", "减仓": "减仓复核"}
     for row in rows or []:
         odds = row.get("opportunity_score") or {}
+        confirmation = row.get("market_confirmation") or {}
         result.append(
             [
                 escape(f"{_text(row.get('name'), '')} ({_text(row.get('code'), '')})"),
                 escape(state_label.get(_text(row.get("state"), "观察"), _text(row.get("state"), "观察"))),
+                escape(_shorten(confirmation.get("text") or "-", 90)),
                 escape(_shorten(odds.get("text") or row.get("odds_label") or "-", 120)),
                 escape(_text(row.get("amount_band"))),
                 escape(_fmt_pct(row.get("day_change_pct"))),
@@ -1246,7 +1248,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             _section(
                 "固定候选池",
                 _render_table(
-                    ["标的", "状态", "赔率", "金额档位", "当日变化", "角色", "原因"],
+                    ["标的", "状态", "行情确认", "赔率", "金额档位", "当日变化", "角色", "原因"],
                     _fixed_pool_rows(portfolio.get("fixed_buy_pool_rows")),
                 ),
                 class_name="wide",

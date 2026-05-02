@@ -238,7 +238,28 @@ function formTokenValid(request, env) {
 function receiptFormHtml(request, message = "") {
   const url = new URL(request.url);
   const token = url.searchParams.get("token") || "";
+  const action = url.searchParams.get("action") || "";
+  const selectedSide = action === "sell" ? "卖出" : "买入";
+  const buySelected = selectedSide === "买入" ? " selected" : "";
+  const sellSelected = selectedSide === "卖出" ? " selected" : "";
   const escapedMessage = message ? `<div class="notice">${message}</div>` : "";
+  const noopPanel = action === "noop" ? `
+    <section class="noop">
+      <h2>今天没操作</h2>
+      <p>不用提交任何内容。系统会按原仓位继续跟踪，下一次日报仍会保留观察和复盘。</p>
+      <a href="/receipt?token=${encodeURIComponent(token)}">我其实有操作，要填写回执</a>
+    </section>
+  ` : "";
+  const formPanel = action === "noop" ? "" : `
+    <form method="post" action="/receipt?token=${encodeURIComponent(token)}">
+      <label>方向<select name="side"><option value="买入"${buySelected}>买入/加仓</option><option value="卖出"${sellSelected}>卖出/减仓</option></select></label>
+      <label>代码<input name="code" inputmode="numeric" placeholder="例如 518880" required></label>
+      <label>金额或份额<input name="amount" placeholder="例如 3000 或 20%" required></label>
+      <label>价格<input name="price" inputmode="decimal" placeholder="例如 5.12" required></label>
+      <label>原因<input name="reason" placeholder="例如 回撤到纪律线" required></label>
+      <button type="submit">提交回执</button>
+    </form>
+  `;
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -248,8 +269,9 @@ function receiptFormHtml(request, message = "") {
   <style>
     body{margin:0;background:#f3f6fb;color:#0f172a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     main{max-width:520px;margin:0 auto;padding:22px 16px}
-    form{background:#fff;border:1px solid #d8e0ea;border-radius:12px;padding:16px;display:grid;gap:12px}
+    form,.noop{background:#fff;border:1px solid #d8e0ea;border-radius:12px;padding:16px;display:grid;gap:12px}
     h1{font-size:24px;margin:0 0 8px}.hint{color:#526173;font-size:14px;line-height:1.6;margin-bottom:14px}
+    h2{font-size:18px;margin:0}.noop p{margin:0;color:#334155;line-height:1.7}.noop a{color:#1677ff;text-decoration:none;font-weight:700}
     label{display:grid;gap:6px;font-size:13px;color:#334155;font-weight:650}
     input,select{height:42px;border:1px solid #cbd5e1;border-radius:8px;padding:0 10px;font-size:15px}
     button{height:44px;border:0;border-radius:8px;background:#1677ff;color:#fff;font-size:16px;font-weight:750}
@@ -262,14 +284,8 @@ function receiptFormHtml(request, message = "") {
     <h1>操作回执</h1>
     <div class="hint">有操作就填；没操作不用提交。系统只记录你主动回执的买入/卖出，不会猜测你的实际操作。</div>
     ${escapedMessage}
-    <form method="post" action="/receipt?token=${encodeURIComponent(token)}">
-      <label>方向<select name="side"><option value="买入">买入/加仓</option><option value="卖出">卖出/减仓</option></select></label>
-      <label>代码<input name="code" inputmode="numeric" placeholder="例如 518880" required></label>
-      <label>金额或份额<input name="amount" placeholder="例如 3000 或 20%" required></label>
-      <label>价格<input name="price" inputmode="decimal" placeholder="例如 5.12" required></label>
-      <label>原因<input name="reason" placeholder="例如 回撤到纪律线" required></label>
-      <button type="submit">提交回执</button>
-    </form>
+    ${noopPanel}
+    ${formPanel}
     <div class="warn">提交后会触发一次入账流程；下一次日报会按新回执复核仓位。</div>
   </main>
 </body>

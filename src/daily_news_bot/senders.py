@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from typing import Any
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
 
@@ -89,6 +90,15 @@ def _button_urls(content: str) -> dict[str, str]:
     return {"web": web_url, "receipt": receipt_url}
 
 
+def _url_with_action(url: str, action: str) -> str:
+    if not url:
+        return ""
+    parts = urlsplit(url)
+    query = dict(parse_qsl(parts.query, keep_blank_values=True))
+    query["action"] = action
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+
+
 def _card_overview_fields(content: str) -> list[dict[str, Any]]:
     fields: list[dict[str, Any]] = []
     wanted_prefixes = ("年度目标：", "纪律：", "回执：", "最新 ")
@@ -141,14 +151,19 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             }
         )
     if button_urls["receipt"]:
-        actions.append(
-            {
-                "tag": "button",
-                "text": {"tag": "plain_text", "content": "填写回执"},
-                "url": button_urls["receipt"],
-                "type": "default",
-            }
-        )
+        for label, action, button_type in (
+            ("今天没操作", "noop", "default"),
+            ("买入/加仓", "buy", "default"),
+            ("卖出/减仓", "sell", "danger"),
+        ):
+            actions.append(
+                {
+                    "tag": "button",
+                    "text": {"tag": "plain_text", "content": label},
+                    "url": _url_with_action(button_urls["receipt"], action),
+                    "type": button_type,
+                }
+            )
     if actions:
         elements.append(
             {
