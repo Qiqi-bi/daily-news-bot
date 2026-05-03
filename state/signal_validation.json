@@ -1,7 +1,20 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-03T10:38:56",
+  "updated_at_utc": "2026-05-03T14:11:40",
   "signals": [
+    {
+      "id": "20260503141140-industry_radar-new_energy_cycle-159915",
+      "created_at_utc": "2026-05-03T14:11:40",
+      "source": "industry_radar",
+      "theme": "新能源价格周期",
+      "theme_key": "new_energy_cycle",
+      "priority": "今日关注",
+      "score": 2.0,
+      "code": "159915",
+      "name": "创业板ETF易方达",
+      "start_price": 3.689,
+      "observations": {}
+    },
     {
       "id": "20260503103856-candidate_pool-ai_power_base-561560",
       "created_at_utc": "2026-05-03T10:38:56",
@@ -878,6 +891,36 @@
       "adjustment_basis": "T30"
     },
     {
+      "theme_key": "new_energy_cycle",
+      "theme": "新能源价格周期",
+      "signals": 2,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
       "theme_key": "ai_power_base",
       "theme": "AI电力底座",
       "signals": 2,
@@ -1206,36 +1249,6 @@
       "adjustment": "不调整",
       "score_delta": 0,
       "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "new_energy_cycle",
-      "theme": "新能源价格周期",
-      "signals": 1,
-      "t30": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "verdict": "继续积累",
-      "adjustment": "不调整",
-      "score_delta": 0,
-      "adjustment_basis": "T30"
     }
   ],
   "industry_leaderboard": {
@@ -1256,13 +1269,13 @@
   },
   "adjustments": {},
   "lines": [
-    "- 本次新增待验证信号 18 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 本次新增待验证信号 1 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
     "- 电力：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
     "- 红利低波：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
     "- 有色/黄金：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
     "- A股宽基/中国宏观：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
   ],
-  "added_count": 18,
-  "signal_count": 51,
+  "added_count": 1,
+  "signal_count": 52,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
