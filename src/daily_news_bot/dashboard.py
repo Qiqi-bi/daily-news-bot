@@ -968,6 +968,7 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
             [
                 escape(_text(row.get("layer_label"))),
                 escape(_text(row.get("name"))),
+                escape(_text(row.get("horizon"), "-")),
                 escape(_text(row.get("score_card_text"), "-")),
                 escape(_text(row.get("status"))),
                 escape(_shorten(row.get("fact_summary"), 120)),
@@ -1239,7 +1240,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             _section(
                 "行业雷达",
                 _render_table(
-                    ["层级", "行业", "评分", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
+                    ["层级", "行业", "周期", "评分", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
                     _industry_radar_rows(portfolio.get("industry_radar")),
                 ),
                 "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",

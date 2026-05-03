@@ -655,15 +655,21 @@ def _build_feishu_focus_lines(payload: dict[str, Any]) -> list[str]:
     focused = [
         row
         for row in rows
-        if row.get("status") in {"今日关注", "每日必看", "降权观察"} and row.get("layer") != "avoid"
+        if row.get("status") in {"今日关注", "每日必看", "长期必看", "降权观察"} and row.get("layer") != "avoid"
     ]
+    secular_rows = [row for row in rows if row.get("layer") == "secular"]
+    if secular_rows and not any(row.get("layer") == "secular" for row in focused[:3]):
+        first_secular = secular_rows[0]
+        focused = [first_secular] + [row for row in focused if row is not first_secular]
     if not focused:
-        focused = [row for row in rows if row.get("layer") == "core"]
+        focused = secular_rows + [row for row in rows if row.get("layer") == "core"]
 
     result: list[str] = []
     for row in focused[:3]:
         score = str(row.get("score_card_text") or row.get("status") or "观察")
-        watch = _feishu_short(row.get("watch") or row.get("why") or "", 54)
+        horizon = str(row.get("horizon") or "").strip()
+        prefix = f"{horizon}｜" if horizon else ""
+        watch = _feishu_short(prefix + (row.get("watch") or row.get("why") or ""), 54)
         binding = _feishu_short(row.get("binding_summary") or "", 42)
         suffix = f"｜{binding}" if binding else ""
         result.append(f"{row.get('name') or '未命名行业'}｜{score}｜{watch}{suffix}")
@@ -761,16 +767,22 @@ def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
     focused = [
         row
         for row in rows
-        if row.get("status") in {"今日关注", "每日必看"} and row.get("layer") != "avoid"
+        if row.get("status") in {"今日关注", "每日必看", "长期必看"} and row.get("layer") != "avoid"
     ]
+    secular_rows = [row for row in rows if row.get("layer") == "secular"]
+    if secular_rows and not any(row.get("layer") == "secular" for row in focused[:4]):
+        first_secular = secular_rows[0]
+        focused = [first_secular] + [row for row in focused if row is not first_secular]
     if not focused:
-        focused = [row for row in rows if row.get("layer") == "core"]
+        focused = secular_rows + [row for row in rows if row.get("layer") == "core"]
 
     result: list[str] = []
     for row in focused[:4]:
         name = row.get("name") or "未命名行业"
         status = row.get("status") or "观察"
-        watch = _feishu_short(row.get("watch") or row.get("why") or "", 70)
+        horizon = str(row.get("horizon") or "").strip()
+        prefix = f"{horizon}｜" if horizon else ""
+        watch = _feishu_short(prefix + (row.get("watch") or row.get("why") or ""), 70)
         binding = _feishu_short(row.get("binding_summary") or "", 48)
         suffix = f"｜{binding}" if binding else ""
         result.append(f"{name}｜{status}：{watch}{suffix}")

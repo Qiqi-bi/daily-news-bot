@@ -5,12 +5,13 @@ from typing import Any
 
 LAYER_LABELS = {
     "core": "一级：持仓相关",
+    "secular": "长期主线：1-5年跟踪",
     "watch": "二级：重点观察",
     "event": "三级：事件触发",
     "avoid": "降噪：默认回避",
 }
 
-LAYER_ORDER = {"core": 0, "watch": 1, "event": 2, "avoid": 3}
+LAYER_ORDER = {"core": 0, "secular": 1, "watch": 2, "event": 3, "avoid": 4}
 
 
 DEFAULT_INDUSTRY_RADAR: list[dict[str, Any]] = [
@@ -25,6 +26,97 @@ DEFAULT_INDUSTRY_RADAR: list[dict[str, Any]] = [
         "verify": "至少等价格、订单、政策或相对强弱中两项确认。",
         "action": "默认先复核持仓重叠和上限，不因单日强势继续叠加进攻仓。",
         "instruments": ["011840", "588930", "512480", "588200"],
+    },
+    {
+        "id": "ai_power_base",
+        "name": "AI电力底座/算电协同",
+        "layer": "secular",
+        "theme_keys": ["ai_power_base", "power", "energy", "new_energy"],
+        "horizon": "1-5年",
+        "keywords": [
+            "compute power and electricity",
+            "green compute",
+            "ai data center",
+            "data center power",
+            "800v hvdc",
+            "liquid cooling",
+            "算电协同",
+            "绿色算力",
+            "算力电力",
+            "数据中心用电",
+            "绿电",
+            "风电",
+            "电网",
+            "变压器",
+            "特高压",
+            "储能",
+            "虚拟电厂",
+            "电力交易",
+            "绿证",
+            "液冷",
+            "源网荷储",
+            "AIDC",
+        ],
+        "why": "AI主线不能只看芯片和模型；长期约束会扩散到绿电、电网、储能、液冷和数据中心电源。",
+        "watch": "绿电占比、数据中心项目、PPA/绿证、电网设备订单、储能招标、液冷/电源方案、风电相对光伏和板块相对沪深300强弱。",
+        "verify": "至少等政策、订单、价格/相对强弱、成交量、利润兑现中两项确认；只讲故事不触发买入。",
+        "action": "先允许2%-3%观察底仓；政策/订单/价格连续确认后才考虑升到5%-8%；不把它当成继续加AI进攻仓的理由。",
+        "instruments": ["561560", "560390"],
+    },
+    {
+        "id": "data_center_power_cooling",
+        "name": "AIDC电源/液冷/800V",
+        "layer": "secular",
+        "theme_keys": ["ai_power_base", "ai"],
+        "horizon": "1-5年",
+        "keywords": [
+            "800v hvdc",
+            "liquid cooling",
+            "power supply",
+            "ups",
+            "bbu",
+            "cooling",
+            "数据中心电源",
+            "液冷",
+            "800V",
+            "HVDC",
+            "UPS",
+            "BBU",
+            "服务器电源",
+            "CDU",
+            "换热",
+        ],
+        "why": "AI机房功率密度上升会先推电源架构和散热升级，适合做长期主线观察，不适合按单条新闻追高。",
+        "watch": "大客户架构迁移、液冷渗透率、服务器电源订单、800V HVDC进度、毛利率和交付周期。",
+        "verify": "看订单、客户导入、价格、交付周期和毛利率是否同步确认。",
+        "action": "只进观察池；没有ETF化表达和价格确认前，不扩固定可买池。",
+        "instruments": [],
+    },
+    {
+        "id": "power_trading_vpp",
+        "name": "电力交易/虚拟电厂/绿证",
+        "layer": "secular",
+        "theme_keys": ["ai_power_base", "power", "new_energy"],
+        "horizon": "1-5年",
+        "keywords": [
+            "power trading",
+            "virtual power plant",
+            "green certificate",
+            "ppa",
+            "demand response",
+            "电力交易",
+            "虚拟电厂",
+            "绿证",
+            "绿电交易",
+            "需求响应",
+            "PPA",
+            "零碳算力",
+        ],
+        "why": "算力负载和绿电波动需要交易、调度和凭证机制承接，可能成为长期利润分配入口。",
+        "watch": "绿电溢价、PPA合同、绿证成交、需求响应政策、园区电价和地方政策试点。",
+        "verify": "先看正式政策、交易量、合同和利润留存，不能只按概念炒作。",
+        "action": "作为长期跟踪主题；没有上市公司利润兑现前，只提高关注，不生成买入。",
+        "instruments": [],
     },
     {
         "id": "china_broad_core",
@@ -262,6 +354,22 @@ INDUSTRY_FACT_DETAILS: dict[str, dict[str, Any]] = {
         "逻辑": "AI基础设施先看资本开支、芯片供给、数据中心电力和订单兑现，不只看模型热度。",
         "确认": ["海外AI龙头指引上修", "半导体/算力价格同步走强", "数据中心电力约束被定价"],
         "否定": ["订单延后", "芯片供给缓解但价格不涨", "组合AI仓位已超纪律线"],
+    },
+    "ai_power_base": {
+        "逻辑": "AI算力的长期瓶颈会从芯片扩散到电力底座，核心是绿电、电网、储能、液冷和数据中心电源能不能兑现订单和利润。",
+        "确认": ["算电协同/绿色算力政策落地", "数据中心项目或PPA合同增加", "电网设备/储能/液冷订单确认", "电力链相对沪深300走强"],
+        "否定": ["只有概念新闻没有订单", "板块成交不足或追高拥挤", "利润被地方、电网或客户分走", "继续和AI进攻仓高度同涨同跌"],
+        "仓位纪律": ["首次只允许2%-3%观察底仓", "连续确认后才考虑5%-8%", "不因长期故事破坏AI仓位上限"],
+    },
+    "data_center_power_cooling": {
+        "逻辑": "AI机房功率密度提高会推动电源架构、液冷和散热部件升级，真正价值来自客户导入和交付周期，不来自单条技术新闻。",
+        "确认": ["800V HVDC或高压直流方案推进", "液冷渗透率提升", "服务器电源/BBU/UPS订单确认", "毛利率和交付周期改善"],
+        "否定": ["仍停留在样品或概念", "订单没有放量", "价格竞争吃掉毛利", "没有可跟踪ETF或标的"],
+    },
+    "power_trading_vpp": {
+        "逻辑": "算力负载要和绿电波动匹配，电力交易、虚拟电厂、绿证和PPA合同决定谁能拿到长期议价权。",
+        "确认": ["绿电交易量提升", "PPA合同公布", "虚拟电厂/需求响应政策落地", "园区电价和利润留存可验证"],
+        "否定": ["只有地方口号", "没有交易量或合同", "收益被补贴和电价机制吞掉", "上市公司利润表没有兑现"],
     },
     "china_broad_core": {
         "逻辑": "宽基是组合底盘，政策、流动性、人民币和成交量决定新增资金节奏。",
@@ -641,6 +749,8 @@ def build_industry_radar(
             status = "今日关注"
         elif layer == "core":
             status = "每日必看"
+        elif layer == "secular":
+            status = "长期必看"
         elif layer == "avoid":
             status = "降噪"
         else:
@@ -657,6 +767,7 @@ def build_industry_radar(
                 "score_card": score_card,
                 "score_card_text": _score_card_text(score_card),
                 "why": entry.get("why") or "",
+                "horizon": entry.get("horizon") or "",
                 "facts": entry.get("facts") or {},
                 "fact_summary": entry.get("fact_summary") or "",
                 "watch": entry.get("watch") or "",
@@ -674,10 +785,13 @@ def build_industry_radar(
     layer_counts = {layer: sum(1 for row in rows if row.get("layer") == layer) for layer in LAYER_LABELS}
     active_rows = [row for row in rows if row.get("status") == "今日关注"]
     core_rows = [row for row in rows if row.get("layer") == "core"]
-    focus_names = [row["name"] for row in (active_rows or core_rows)[:3]]
+    secular_rows = [row for row in rows if row.get("layer") == "secular"]
+    focus_pool = active_rows or (secular_rows + core_rows)
+    focus_names = [row["name"] for row in focus_pool[:3]]
     summary_lines = [
-        f"行业雷达共 {len(rows)} 条：持仓相关 {layer_counts.get('core', 0)}，重点观察 {layer_counts.get('watch', 0)}，事件触发 {layer_counts.get('event', 0)}，降噪 {layer_counts.get('avoid', 0)}。",
+        f"行业雷达共 {len(rows)} 条：持仓相关 {layer_counts.get('core', 0)}，长期主线 {layer_counts.get('secular', 0)}，重点观察 {layer_counts.get('watch', 0)}，事件触发 {layer_counts.get('event', 0)}，降噪 {layer_counts.get('avoid', 0)}。",
         "今天优先看：" + "、".join(focus_names) + "。" if focus_names else "今天没有行业雷达触发项。",
+        "长期主线默认每日报警、每周决策；首次只允许小底仓，连续确认后才升级。",
         "可买池不随行业雷达自动扩张；雷达只决定看什么，不直接决定买什么。",
     ]
     return {
@@ -694,7 +808,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
         return ["- 行业雷达未启用。"]
     lines = list(radar.get("summary_lines") or [])
     rows = radar.get("rows") or []
-    lines.extend(["", "| 层级 | 行业 | 评分 | 状态 | 事实库 | 看什么 | 组合/候选绑定 | 验证条件 | 动作 |", "|---|---|---:|---|---|---|---|---|---|"])
+    lines.extend(["", "| 层级 | 行业 | 周期 | 评分 | 状态 | 事实库 | 看什么 | 组合/候选绑定 | 验证条件 | 动作 |", "|---|---|---|---:|---|---|---|---|---|---|"])
     for row in rows:
         instruments = "、".join(row.get("instruments") or [])
         action = row.get("action") or ""
@@ -704,6 +818,7 @@ def render_industry_radar_lines(radar: dict[str, Any]) -> list[str]:
             "| "
             f"{_text(row.get('layer_label'))} | "
             f"{_text(row.get('name'))} | "
+            f"{_text(row.get('horizon'))} | "
             f"{_text(row.get('score_card_text'))} | "
             f"{_text(row.get('status'))} | "
             f"{_text(row.get('fact_summary'))} | "

@@ -6,6 +6,43 @@ from .models import EventCluster
 
 
 PREDICTION_RULES: dict[str, dict[str, Any]] = {
+    "ai_power_base_secular": {
+        "label": "AI电力底座：算电协同",
+        "keywords": (
+            "compute power and electricity",
+            "green compute",
+            "ai data center",
+            "data center power",
+            "800v hvdc",
+            "liquid cooling",
+            "power grid",
+            "transformer",
+            "算电协同",
+            "绿色算力",
+            "零碳算力",
+            "算力电力",
+            "数据中心用电",
+            "绿电",
+            "电网",
+            "变压器",
+            "特高压",
+            "源网荷储",
+            "储能",
+            "虚拟电厂",
+            "电力交易",
+            "绿证",
+            "液冷",
+            "服务器电源",
+            "AIDC",
+        ),
+        "tags": ("technology", "energy", "supply_chain", "policy"),
+        "prediction": "如果AI算力继续高增，约束会从芯片扩散到绿电、电网设备、储能、液冷和数据中心电源，形成1-5年长期主线。",
+        "why": "算力中心不是只买服务器，还要长期稳定电力、并网、调度、散热和电源架构；这些环节可能成为AI产业链新的利润分配入口。",
+        "window": "1-5年，周度复核",
+        "verify": "看算电协同政策、数据中心项目/PPA、绿电占比、电网设备订单、储能招标、液冷/电源订单和板块相对沪深300强弱。",
+        "invalidate": "如果只有概念传播，没有项目、订单、价格或利润兑现，或者板块明显跑输宽基，这条线只保留观察。",
+        "discipline": "首次只允许2%-3%观察底仓；连续确认后才考虑5%-8%，不把长期主线当成短线重仓理由。",
+    },
     "green_compute_wind": {
         "label": "绿电算力：风电相对光伏",
         "keywords": (
@@ -295,6 +332,7 @@ def _market_line(rule_key: str, market_snapshot: dict[str, Any] | None) -> str:
     if not items:
         return "本次没有行情快照，不能做价格确认。"
     groups_by_rule = {
+        "ai_power_base_secular": {"equity", "energy", "rates"},
         "green_compute_wind": {"equity", "energy", "rates"},
         "currency_anti_involution_pricing": {"fx", "energy", "safe_haven"},
         "policy_capped_industry": {"energy", "fx", "rates"},

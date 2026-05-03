@@ -37,6 +37,39 @@ THEME_RULES: dict[str, dict[str, Any]] = {
         "benefit": "AI主题、科创AI、创业板成长风格可能最敏感。",
         "risk": "估值和拥挤度较高，若海外科技股或半导体链回撤，组合波动会被放大。",
     },
+    "ai_power_base": {
+        "label": "AI电力底座/算电协同",
+        "keywords": (
+            "compute power and electricity",
+            "green compute",
+            "ai data center",
+            "data center power",
+            "800v hvdc",
+            "liquid cooling",
+            "power grid",
+            "transformer",
+            "算电协同",
+            "绿色算力",
+            "零碳算力",
+            "算力电力",
+            "数据中心用电",
+            "绿电",
+            "电网",
+            "变压器",
+            "特高压",
+            "风电",
+            "源网荷储",
+            "储能",
+            "虚拟电厂",
+            "电力交易",
+            "绿证",
+            "液冷",
+            "服务器电源",
+            "AIDC",
+        ),
+        "benefit": "AI长期需求会扩散到绿电、电网设备、储能、液冷和数据中心电源，是独立于AI进攻仓的长期底座线。",
+        "risk": "故事兑现周期长，收益可能被地方、电网、客户或重资产折旧分走；只能小底仓跟踪，不能替代价格和订单确认。",
+    },
     "gold": {
         "label": "黄金/避险",
         "keywords": (
@@ -139,6 +172,45 @@ THEME_RULES: dict[str, dict[str, Any]] = {
         "risk": "油价上涨只能提供长期替代逻辑，不等于A股新能源会立刻上涨。",
     },
 }
+
+
+DEFAULT_LONG_TERM_CANDIDATE_ETF_POOL: list[dict[str, Any]] = [
+    {
+        "theme": "AI电力底座",
+        "theme_key": "ai_power_base",
+        "role": "算电协同/绿色算力长期底仓候选",
+        "fit_for": "当算电协同、绿电、数据中心用电、电网设备、储能或液冷订单形成连续确认时",
+        "caution": "这是1-5年主线，不是短线AI进攻仓；首次只允许2%-3%观察底仓，确认后再看5%-8%。",
+        "instruments": [
+            {
+                "name": "电力ETF",
+                "code": "561560",
+                "type": "ETF",
+                "market": "A股",
+                "usage": "观察/候选，偏绿电运营和电力现金流",
+            },
+            {
+                "name": "电网设备ETF易方达",
+                "code": "560390",
+                "type": "ETF",
+                "market": "A股",
+                "usage": "观察/候选，偏电网设备、变压器和特高压",
+            },
+        ],
+    }
+]
+
+
+DEFAULT_LONG_TERM_FIXED_BUY_POOL: list[dict[str, Any]] = [
+    {
+        "code": "560390",
+        "name": "电网设备ETF易方达",
+        "type": "ETF",
+        "role": "AI电力底座观察仓",
+        "theme_key": "ai_power_base",
+        "comment": "算电协同、电网设备、变压器和特高压方向；只做2%-3%试探底仓，不追高",
+    }
+]
 
 
 @dataclass(slots=True)
@@ -451,9 +523,28 @@ def _allocation_deviation_lines(panel: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _merge_by_key(configured: list[dict[str, Any]], defaults: list[dict[str, Any]], key_name: str) -> list[dict[str, Any]]:
+    rows = [dict(item) for item in configured if isinstance(item, dict)]
+    existing = {str(item.get(key_name) or "") for item in rows}
+    for item in defaults:
+        key = str(item.get(key_name) or "")
+        if key and key not in existing:
+            rows.append(dict(item))
+            existing.add(key)
+    return rows
+
+
+def _candidate_etf_pool(portfolio: dict[str, Any]) -> list[dict[str, Any]]:
+    return _merge_by_key(
+        list(portfolio.get("candidate_etf_pool") or []),
+        DEFAULT_LONG_TERM_CANDIDATE_ETF_POOL,
+        "theme_key",
+    )
+
+
 def _candidate_pool_lines(portfolio: dict[str, Any]) -> list[str]:
     lines: list[str] = []
-    for item in portfolio.get("candidate_etf_pool") or []:
+    for item in _candidate_etf_pool(portfolio):
         lines.append(
             f"- {item.get('theme', '未命名')}：{item.get('role', '')}；适用场景：{item.get('fit_for', '')}；注意：{item.get('caution', '')}。"
         )
@@ -603,7 +694,7 @@ def _score_candidate_pool(
     attack_pct = summary.get("attack_pct", 0.0)
     gold_pct = summary.get("insurance_pct", summary.get("gold_pct", 0.0))
     rows: list[dict[str, Any]] = []
-    for item in portfolio.get("candidate_etf_pool") or []:
+    for item in _candidate_etf_pool(portfolio):
         theme = item.get("theme", "未命名")
         key = item.get("theme_key", "")
         catalyst = 1
@@ -631,6 +722,11 @@ def _score_candidate_pool(
             catalyst = 3 if "ai" in event_theme_keys or "china_macro" in event_theme_keys else 2
             overlap_risk = 4 if attack_pct > 30 else 3
             fit = 2 if attack_pct > 30 else 3
+        elif key == "ai_power_base":
+            catalyst = 4 if "ai_power_base" in event_theme_keys else 3
+            overlap_risk = 1
+            fit = 5 if attack_pct > 30 else 4
+            comment = comment or "长期底座线，只允许小底仓观察，不增加AI进攻仓重叠。"
 
         total = catalyst + fit - overlap_risk
         if total >= 5:
@@ -714,6 +810,11 @@ def _holding_refs(
 
 def _primary_theme_key(title: str, theme_keys: list[str]) -> str:
     text = title.lower()
+    if "ai_power_base" in theme_keys and any(
+        keyword in text
+        for keyword in ("算电", "绿色算力", "数据中心用电", "绿电", "电网", "液冷", "800v", "hvdc", "源网荷储", "虚拟电厂")
+    ):
+        return "ai_power_base"
     if "ai" in theme_keys and any(keyword in text for keyword in ("ai", "artificial intelligence", "chip", "semiconductor", "算力", "人工智能", "半导体", "芯片")):
         return "ai"
     if "energy" in theme_keys and any(keyword in text for keyword in ("oil", "crude", "brent", "wti", "gas", "lng", "iran", "hormuz", "原油", "石油", "天然气", "伊朗", "霍尔木兹")):
@@ -725,7 +826,7 @@ def _primary_theme_key(title: str, theme_keys: list[str]) -> str:
     if "new_energy" in theme_keys and any(keyword in text for keyword in ("ev", "battery", "lithium", "solar", "新能源", "锂电", "光伏")):
         return "new_energy"
 
-    ordered = ["energy", "gold", "ai", "china_macro", "new_energy"]
+    ordered = ["ai_power_base", "energy", "gold", "ai", "china_macro", "new_energy"]
     for item in ordered:
         if item in theme_keys:
             return item
@@ -738,6 +839,7 @@ def _route_chain_text(theme_key: str) -> str:
         "gold": "美债实际利率/美元/避险情绪 → 黄金定价 → 组合保险仓与资源避险链重估。",
         "china_macro": "中国政策/汇率/风险偏好 → 宽基先修复 → 再传成长风格、港股科技和高弹性主题。",
         "ai": "海外AI龙头/半导体景气/国内算力政策 → 科创AI与半导体先动 → 再传AI主题和成长风格。",
+        "ai_power_base": "AI算力需求 → 数据中心用电和绿电约束 → 电网设备/储能/液冷/电源订单 → 再看电力、电网和算力底座候选。",
         "new_energy": "产业价格/订单/政策变化 → 新能源链盈利预期修复 → 再决定是否从观察升级为交易。",
     }.get(theme_key, "新闻主线 → 风险偏好与价格确认 → 再决定是否映射到A股ETF。")
 
@@ -748,6 +850,7 @@ def _route_watch_text(theme_key: str) -> str:
         "gold": "观察美元、实际利率和金价是否同向确认，而不是只看一篇避险标题。",
         "china_macro": "观察人民币、A股成交额、沪深300/上证是否同步放量确认。",
         "ai": "观察半导体指数、海外AI龙头、国内算力政策与成交量是否共振。",
+        "ai_power_base": "观察算电协同政策、数据中心项目、绿电/PPA、电网设备、储能和液冷订单是否形成连续确认。",
         "new_energy": "观察锂价、光伏产业链价格、销量和政策，而不是只看油价联想。",
     }.get(theme_key, "观察价格是否和新闻主线共振。")
 
@@ -758,6 +861,7 @@ def _route_mistake_text(theme_key: str) -> str:
         "gold": "不要把黄金当主攻仓；它的任务是保险和对冲，不是替代AI去冲收益。",
         "china_macro": "不要只因一条政策标题就去追最拥挤的高弹性主题；宽基通常比主题先受益。",
         "ai": "不要因为单日纳指或海外科技股大涨，就继续叠加同类AI基金。",
+        "ai_power_base": "不要把长期算电故事当成今天重仓买入理由；首次只能小底仓，必须等政策、订单和价格确认。",
         "new_energy": "不要把长期替代逻辑当成短期交易信号；新能源更看产业价格和订单周期。",
     }.get(theme_key, "不要把单条新闻直接当成买卖指令。")
 
@@ -775,6 +879,7 @@ def _route_buy_text(
     attack_fund = _instrument_text(_holding_refs(portfolio, codes={"011840"}))
     insurance = _instrument_text(_holding_refs(portfolio, sleeves={"insurance"}))
     power = _instrument_text((candidate_index.get("power") or {}).get("instruments"))
+    ai_power_base = _instrument_text((candidate_index.get("ai_power_base") or {}).get("instruments"))
     semi = _instrument_text((candidate_index.get("semiconductor") or {}).get("instruments"))
     metals_gold = _instrument_text((candidate_index.get("metals_gold") or {}).get("instruments"))
     dividend = _instrument_text((candidate_index.get("dividend_lowvol") or {}).get("instruments"))
@@ -803,6 +908,9 @@ def _route_buy_text(
         if direct_ai_pct >= direct_ai_cap:
             return f"当前直接AI已接近/超过上限，先持有 {attack_etf}、{attack_fund}，不建议新增同类AI/半导体。"
         return f"若AI仓位仍有空间，优先ETF化表达 {attack_etf}；补充候选看 {semi}，再看 {hk_tech}。"
+    if theme_key == "ai_power_base":
+        refs = ai_power_base if ai_power_base and ai_power_base != "暂无候选" else power
+        return f"优先看长期底座候选 {refs}；首次只允许2%-3%观察底仓，连续确认后才考虑5%-8%，不新增AI进攻仓重叠。"
     if theme_key == "new_energy":
         return "当前不给直接买入优先级；先把它留在观察池，等产业价格和政策一起确认。"
     return "先看现有底仓是否值得加，确认后再看候选ETF池。"
@@ -816,6 +924,8 @@ def _route_action_text(theme_key: str, priority: str, summary: dict[str, Any], p
             return "观察｜AI主线存在，但你自己的AI暴露已高，动作应从“找机会加”切换成“控制重叠和等更好赔率”。"
     if theme_key == "energy":
         return "观察｜先确认它是否从海外新闻传到A股价格，再决定是否把电力/黄金/有色升到买入候选。"
+    if theme_key == "ai_power_base":
+        return "观察底仓｜这是1-5年主线，先看绿电/电网/储能/液冷订单；若要动手也只做2%-3%试探仓。"
     if priority == "立即确认":
         return "立即确认｜这条主线已经足够重要，但依旧要等新闻、价格、纪律三项同时满足。"
     if priority == "忽略":
@@ -1128,7 +1238,11 @@ def _decision_cockpit(portfolio: dict[str, Any]) -> dict[str, Any]:
 
 
 def _fixed_buy_pool(portfolio: dict[str, Any]) -> list[dict[str, Any]]:
-    return list((_decision_cockpit(portfolio).get("fixed_buy_pool") or []))
+    return _merge_by_key(
+        list((_decision_cockpit(portfolio).get("fixed_buy_pool") or [])),
+        DEFAULT_LONG_TERM_FIXED_BUY_POOL,
+        "code",
+    )
 
 
 def _amount_band_text(portfolio: dict[str, Any], key: str) -> str:
@@ -1175,7 +1289,7 @@ def _instrument_snapshot(
 
 def _benchmark_change_for_theme(theme_key: str, local_market_payload: dict[str, Any] | None) -> float | None:
     payload = local_market_payload or {}
-    if theme_key in {"ai_attack", "semiconductor", "growth_core", "power"}:
+    if theme_key in {"ai_attack", "semiconductor", "growth_core", "power", "ai_power_base"}:
         return _maybe_float(payload.get("broad_change_pct"))
     if theme_key in {"dividend_lowvol", "gold_insurance"}:
         return _maybe_float(payload.get("ai_change_pct"))
@@ -1521,6 +1635,7 @@ def _opportunity_scorecard(
         "gold_insurance": [2.0, 8.0],
         "dividend_lowvol": [3.0, 7.0],
         "power": [4.0, 10.0],
+        "ai_power_base": [5.0, 12.0],
         "semiconductor": [8.0, 18.0],
     }
     drawdown_map = {
@@ -1530,6 +1645,7 @@ def _opportunity_scorecard(
         "gold_insurance": 7.0,
         "dividend_lowvol": 7.0,
         "power": 9.0,
+        "ai_power_base": 10.0,
         "semiconductor": 16.0,
     }
     theme_to_event = {
@@ -1539,6 +1655,7 @@ def _opportunity_scorecard(
         "gold_insurance": "gold",
         "dividend_lowvol": "china_macro",
         "power": "energy",
+        "ai_power_base": "ai_power_base",
         "semiconductor": "ai",
     }
     upside_range = upside_ranges.get(theme_key, [3.0, 8.0])
@@ -1707,6 +1824,17 @@ def _evaluate_fixed_buy_pool(
             else:
                 state = "观察"
                 score = 56
+        elif theme_key == "ai_power_base":
+            if ("ai_power_base" in event_theme_keys or candidate_priority.get("ai_power_base") == "高") and chase_risk != "高":
+                state = "可买"
+                amount_key = "buy_probe_cny"
+                score = 74
+                reason = "AI电力底座是1-5年主线，首次只允许2%-3%观察底仓，后续等政策、订单和价格确认再升级。"
+                action_hint = "小底仓观察，不追高、不替代AI仓位上限"
+            else:
+                state = "观察"
+                score = 35
+                reason = "长期主线值得看，但还没到连续确认；先看绿电、电网、储能、液冷和数据中心电源订单。"
         elif theme_key == "semiconductor":
             if attack_blockers or summary.get("direct_ai_pct", 0.0) >= direct_ai_cap * 0.95:
                 state = "观察"
@@ -2263,6 +2391,10 @@ def _event_impacts(clusters: list[EventCluster], portfolio: dict[str, Any]) -> l
             theme_hit = False
             if "ai" in matched_theme_keys and bucket in {"ai_direct", "growth_broad"}:
                 theme_hit = True
+            if "ai_power_base" in matched_theme_keys and (
+                bucket in {"power", "energy", "new_energy"} or "电力" in holding_text or "电网" in holding_text
+            ):
+                theme_hit = True
             if "gold" in matched_theme_keys and bucket == "gold":
                 theme_hit = True
             if "china_macro" in matched_theme_keys and bucket in {"broad_core", "growth_broad"}:
@@ -2278,7 +2410,7 @@ def _event_impacts(clusters: list[EventCluster], portfolio: dict[str, Any]) -> l
             priority = "立即确认"
         if exposed_weight < 8 and "energy" in matched_theme_keys:
             priority = "观察"
-        if exposed_weight == 0 and not any(key in matched_theme_keys for key in ("energy", "new_energy")):
+        if exposed_weight == 0 and not any(key in matched_theme_keys for key in ("energy", "new_energy", "ai_power_base")):
             priority = "忽略"
 
         impacts.append(
@@ -2372,6 +2504,7 @@ def _watchlist_lines(portfolio: dict[str, Any], event_impacts: list[dict[str, An
             ("能源" in theme and "energy" in event_theme_keys)
             or ("航运" in theme and "energy" in event_theme_keys)
             or ("新能源" in theme and ("energy" in event_theme_keys or "new_energy" in event_theme_keys))
+            or ("AI电力底座" in theme and "ai_power_base" in event_theme_keys)
             or ("AI" in theme.upper() and "ai" in event_theme_keys)
             or ("红利" in theme and any(key in event_theme_keys for key in ("gold", "china_macro")))
             or theme_text in event_theme_keys
