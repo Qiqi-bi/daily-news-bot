@@ -85,6 +85,28 @@ class IndustryRadarFactsTest(unittest.TestCase):
         self.assertIn("科创芯片ETF(588200)", row["binding_summary"])
         self.assertGreaterEqual(len(radar["rows"]), 18)
 
+    def test_optical_interconnect_is_tracked_as_ai_infra_sub_industry(self) -> None:
+        cluster = SimpleNamespace(
+            theme="AI数据中心互联",
+            tags=["ai", "semiconductor"],
+            representative=SimpleNamespace(
+                title="空心光纤、CPO与OCS推动AI数据中心光通信互联升级",
+                summary="光模块和高速互联降低延迟、功耗和存储压力，成为算力集群新瓶颈。",
+                content="",
+            ),
+            articles=[],
+        )
+
+        radar = build_industry_radar({}, [cluster], [], [])
+        row = next(item for item in radar["rows"] if item["id"] == "optical_interconnect")
+
+        self.assertEqual(row["status"], "今日关注")
+        self.assertIn("空心光纤", row["hits"])
+        self.assertIn("CPO", row["hits"])
+        self.assertIn("AI数据中心", row["why"])
+        self.assertIn("客户导入", row["verify"])
+        self.assertGreaterEqual(row["score_card"]["news"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
