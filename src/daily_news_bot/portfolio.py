@@ -1630,6 +1630,9 @@ def _hard_reduce_candidates(
     only_reduce_pct = _as_float(((risk_controls.get("only_reduce_watchline") or {}).get("unrealized_profit_pct")), 30.0)
     profit_lock_pct = _as_float(((risk_controls.get("profit_lock_watchline") or {}).get("unrealized_profit_pct")), 50.0)
     direct_ai_cap = _as_float(risk_controls.get("direct_ai_cap_pct"), 35.0)
+    gold_range = risk_controls.get("gold_target_range_pct") or [10, 15]
+    gold_high = _as_float(gold_range[1] if len(gold_range) > 1 else 15.0, 15.0)
+    gold_pct = _as_float(summary.get("insurance_pct"), _as_float(summary.get("gold_pct"), 0.0))
     quote_map = _quote_map(portfolio_quotes)
     holding_profiles = {
         str(item.get("code") or ""): item
@@ -1640,7 +1643,8 @@ def _hard_reduce_candidates(
     rows: list[dict[str, Any]] = []
     for holding in portfolio.get("holdings") or []:
         code = str(holding.get("code") or "")
-        if not code or str(holding.get("sleeve") or "") != "attack":
+        sleeve = str(holding.get("sleeve") or "")
+        if not code or sleeve not in {"attack", "insurance"}:
             continue
         quote = quote_map.get(holding.get("name", ""), {})
         weight_pct = _as_float(quote.get("actual_weight_pct"), _as_float(holding.get("weight_pct"), 0.0))
@@ -1651,7 +1655,14 @@ def _hard_reduce_candidates(
         amount_key = ""
         reason = ""
         priority = 0
-        if pnl_pct is not None and pnl_pct >= profit_lock_pct and overlap_level == "high":
+        is_gold_holding = sleeve == "insurance" and ("黄金" in str(holding.get("name") or "") or code in {"518880", "518800", "159934"})
+        if is_gold_holding:
+            if gold_pct > gold_high and (pnl_pct or 0.0) > 0:
+                trigger = "黄金超配"
+                amount_key = "reduce_small_cny"
+                reason = f"黄金/保险仓已超过 {gold_high:.0f}% 上限且有浮盈，先小幅减回区间，不把保险仓做成收益主攻。"
+                priority = 2
+        elif pnl_pct is not None and pnl_pct >= profit_lock_pct and overlap_level == "high":
             trigger = "锁盈线"
             amount_key = "reduce_medium_cny"
             reason = f"高重叠AI仓浮盈达到 {profit_lock_pct:.0f}% 以上，适合分批锁盈。"
@@ -1936,7 +1947,14 @@ def _evaluate_fixed_buy_pool(
                 score = 68
                 reason = "只有AI仓位没超线且当天不拥挤时，才考虑小仓试探。"
         elif theme_key == "gold_insurance":
-            if summary.get("gold_pct", 0.0) < gold_low:
+            current_gold_pct = _as_float(summary.get("insurance_pct"), _as_float(summary.get("gold_pct"), 0.0))
+            if current_gold_pct > gold_high and weight > 0 and (pnl_pct or 0.0) > 0:
+                state = "减仓"
+                amount_key = "reduce_small_cny"
+                score = 84
+                reason = f"黄金/保险仓已超过 {gold_high:.0f}% 上限且有浮盈，先小幅减回区间；保险仓用于缓冲风险，不做收益主攻。"
+                action_hint = "小幅减回目标区间，不是看空黄金主线"
+            elif summary.get("gold_pct", 0.0) < gold_low:
                 state = "可买"
                 amount_key = "buy_defense_cny"
                 score = 76

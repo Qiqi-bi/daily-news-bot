@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from src.daily_news_bot.portfolio import _annual_objective_payload, _evaluate_fixed_buy_pool
+from src.daily_news_bot.portfolio import _annual_objective_payload, _evaluate_fixed_buy_pool, _hard_reduce_candidates
 
 
 class ReturnBudgetAndOddsTest(unittest.TestCase):
@@ -92,6 +92,106 @@ class ReturnBudgetAndOddsTest(unittest.TestCase):
         self.assertGreaterEqual(odds["confirmation_count"], odds["confirmation_required"])
         self.assertIn("expected_upside_pct_range", odds)
         self.assertIn("max_drawdown_pct", odds)
+
+    def test_gold_overweight_with_profit_becomes_reduce_review(self) -> None:
+        portfolio = {
+            "profile": {"monthly_contribution_cny": 10000},
+            "allocation_framework": {
+                "stable_core_target_pct": [35, 45],
+                "growth_core_target_pct": [15, 20],
+                "attack_target_pct": [20, 30],
+                "insurance_target_pct": [10, 15],
+            },
+            "risk_controls": {
+                "direct_ai_cap_pct": 35,
+                "growth_tech_cap_pct": 55,
+                "single_attack_holding_cap_pct": 15,
+                "gold_target_range_pct": [10, 15],
+                "hard_gates": {"max_monthly_action_count": 2},
+            },
+            "decision_cockpit": {
+                "action_amount_bands": {"reduce_small_cny": [1000, 2500]},
+                "fixed_buy_pool": [
+                    {
+                        "code": "518880",
+                        "name": "黄金ETF",
+                        "type": "ETF",
+                        "role": "保险仓",
+                        "theme_key": "gold_insurance",
+                    }
+                ],
+            },
+            "holdings": [
+                {"code": "518880", "name": "黄金ETF", "sleeve": "insurance", "weight_pct": 18.0},
+            ],
+        }
+        portfolio_quotes = {
+            "items": [
+                {
+                    "holding_name": "黄金ETF",
+                    "code": "518880",
+                    "actual_weight_pct": 18.0,
+                    "unrealized_pnl_pct": 12.0,
+                }
+            ]
+        }
+
+        rows = _evaluate_fixed_buy_pool(
+            portfolio,
+            {
+                "direct_ai_pct": 20.0,
+                "growth_tech_pct": 35.0,
+                "attack_pct": 20.0,
+                "gold_pct": 18.0,
+                "insurance_pct": 18.0,
+                "stable_core_pct": 40.0,
+                "growth_core_pct": 15.0,
+            },
+            portfolio_quotes,
+            {"items": [{"code": "518880", "change_pct": 0.4, "chase_risk": "低", "liquidity_level": "正常"}]},
+            [],
+            [],
+            trade_ledger={"enabled": True, "trades": []},
+        )
+
+        row = rows[0]
+
+        self.assertEqual(row["state"], "减仓")
+        self.assertEqual(row["action_tier"], "减仓复核")
+        self.assertIn("黄金", row["reason"])
+        self.assertIn("超过", row["reason"])
+
+    def test_hard_reduce_candidates_include_overweight_gold_insurance(self) -> None:
+        portfolio = {
+            "risk_controls": {
+                "single_attack_holding_cap_pct": 15,
+                "gold_target_range_pct": [10, 15],
+            },
+            "decision_cockpit": {"action_amount_bands": {"reduce_small_cny": [1000, 2500]}},
+            "holdings": [
+                {"code": "518880", "name": "黄金ETF", "sleeve": "insurance", "weight_pct": 18.0},
+            ],
+        }
+        portfolio_quotes = {
+            "items": [
+                {
+                    "holding_name": "黄金ETF",
+                    "code": "518880",
+                    "actual_weight_pct": 18.0,
+                    "unrealized_pnl_pct": 12.0,
+                }
+            ]
+        }
+
+        rows = _hard_reduce_candidates(
+            portfolio,
+            {"gold_pct": 18.0, "insurance_pct": 18.0, "direct_ai_pct": 20.0},
+            portfolio_quotes,
+        )
+
+        self.assertEqual(rows[0]["code"], "518880")
+        self.assertEqual(rows[0]["trigger"], "黄金超配")
+        self.assertIn("保险仓", rows[0]["reason"])
 
 
 if __name__ == "__main__":
