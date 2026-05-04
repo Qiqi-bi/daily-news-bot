@@ -14,6 +14,23 @@ MAX_SIGNALS = 500
 KEEP_DAYS = 180
 DEDUP_DAYS = 3
 MIN_ADJUSTMENT_SAMPLES = 3
+DEFAULT_BENCHMARK = {"code": "510300", "name": "沪深300ETF"}
+THEME_BENCHMARKS: dict[str, dict[str, str]] = {
+    "broad_core": {"code": "510300", "name": "沪深300ETF"},
+    "china_macro": {"code": "510300", "name": "沪深300ETF"},
+    "ai_power_base": {"code": "510300", "name": "沪深300ETF"},
+    "power": {"code": "510300", "name": "沪深300ETF"},
+    "energy_power": {"code": "510300", "name": "沪深300ETF"},
+    "gold_insurance": {"code": "518880", "name": "黄金ETF"},
+    "gold_real_rates": {"code": "518880", "name": "黄金ETF"},
+    "growth_core": {"code": "159915", "name": "创业板ETF"},
+    "new_energy": {"code": "159915", "name": "创业板ETF"},
+    "new_energy_cycle": {"code": "159915", "name": "创业板ETF"},
+    "ai": {"code": "510300", "name": "沪深300ETF"},
+    "ai_attack": {"code": "510300", "name": "沪深300ETF"},
+    "semiconductor": {"code": "510300", "name": "沪深300ETF"},
+    "semiconductor_materials": {"code": "510300", "name": "沪深300ETF"},
+}
 
 
 def _safe_float(value: Any) -> float | None:
@@ -64,6 +81,19 @@ def _quote_map(execution_checks: dict[str, Any] | None) -> dict[str, dict[str, A
     }
 
 
+def _quote_price(quote: dict[str, Any] | None) -> float | None:
+    data = quote or {}
+    for key in ("latest_price", "latest_value", "close", "price", "official_nav", "estimate_nav"):
+        price = _safe_float(data.get(key))
+        if price not in (None, 0):
+            return price
+    return None
+
+
+def _benchmark_for_theme(theme_key: str) -> dict[str, str]:
+    return dict(THEME_BENCHMARKS.get(theme_key) or DEFAULT_BENCHMARK)
+
+
 def _pct_change(start: float | None, end: float | None) -> float | None:
     if start in (None, 0) or end in (None, 0):
         return None
@@ -112,9 +142,11 @@ def _candidate_entries(portfolio_payload: dict[str, Any], quote_by_code: dict[st
         for instrument in (row.get("instruments") or [])[:2]:
             code = str(instrument.get("code") or "").strip()
             quote = quote_by_code.get(code)
-            price = _safe_float((quote or {}).get("latest_price"))
+            price = _quote_price(quote)
             if not code or price in (None, 0):
                 continue
+            benchmark = _benchmark_for_theme(str(row.get("theme_key") or ""))
+            benchmark_quote = quote_by_code.get(benchmark["code"])
             entries.append(
                 {
                     "source": "candidate_pool",
@@ -125,6 +157,9 @@ def _candidate_entries(portfolio_payload: dict[str, Any], quote_by_code: dict[st
                     "code": code,
                     "name": instrument.get("name") or (quote or {}).get("name") or code,
                     "start_price": price,
+                    "benchmark_code": benchmark["code"],
+                    "benchmark_name": benchmark["name"],
+                    "benchmark_start_price": _quote_price(benchmark_quote),
                 }
             )
 
@@ -136,22 +171,67 @@ def _candidate_entries(portfolio_payload: dict[str, Any], quote_by_code: dict[st
         for code in (row.get("instruments") or [])[:2]:
             code_text = str(code or "").strip()
             quote = quote_by_code.get(code_text)
-            price = _safe_float((quote or {}).get("latest_price"))
+            price = _quote_price(quote)
             if not code_text or price in (None, 0):
                 continue
+            theme_key = str(row.get("id") or row.get("theme_key") or row.get("name") or "")
+            benchmark = _benchmark_for_theme(theme_key)
+            benchmark_quote = quote_by_code.get(benchmark["code"])
             entries.append(
                 {
                     "source": "industry_radar",
                     "theme": row.get("name") or "行业雷达",
-                    "theme_key": row.get("id") or row.get("theme_key") or row.get("name") or "",
+                    "theme_key": theme_key,
                     "priority": row.get("status") or "观察",
                     "score": _safe_float(row.get("score")) or 0.0,
                     "code": code_text,
                     "name": (quote or {}).get("name") or code_text,
                     "start_price": price,
+                    "benchmark_code": benchmark["code"],
+                    "benchmark_name": benchmark["name"],
+                    "benchmark_start_price": _quote_price(benchmark_quote),
                 }
             )
     return entries
+
+
+def _relative_observation_fields(
+    signal: dict[str, Any],
+    quote_by_code: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    benchmark_code = str(signal.get("benchmark_code") or "").strip()
+    if not benchmark_code:
+        benchmark = _benchmark_for_theme(str(signal.get("theme_key") or ""))
+        benchmark_code = benchmark["code"]
+        signal.setdefault("benchmark_code", benchmark_code)
+        signal.setdefault("benchmark_name", benchmark["name"])
+    benchmark_quote = quote_by_code.get(benchmark_code)
+    benchmark_current = _quote_price(benchmark_quote)
+    benchmark_start = _safe_float(signal.get("benchmark_start_price"))
+    if benchmark_start in (None, 0) and benchmark_current not in (None, 0):
+        signal["benchmark_start_price"] = benchmark_current
+        benchmark_start = benchmark_current
+    benchmark_return = _pct_change(benchmark_start, benchmark_current)
+    return {
+        "benchmark_code": benchmark_code,
+        "benchmark_name": signal.get("benchmark_name") or benchmark_code,
+        "benchmark_price": benchmark_current,
+        "benchmark_return_pct": benchmark_return,
+    }
+
+
+def _apply_relative_return(observation: dict[str, Any], signal: dict[str, Any], quote_by_code: dict[str, dict[str, Any]]) -> None:
+    return_pct = _safe_float(observation.get("return_pct"))
+    if return_pct is None:
+        return
+    relative_fields = _relative_observation_fields(signal, quote_by_code)
+    benchmark_return = _safe_float(relative_fields.get("benchmark_return_pct"))
+    observation.update({key: value for key, value in relative_fields.items() if value is not None})
+    if benchmark_return is None:
+        return
+    relative_return = round(return_pct - benchmark_return, 3)
+    observation["relative_return_pct"] = relative_return
+    observation["relative_hit"] = relative_return > 0
 
 
 def _observe_existing(signals: list[dict[str, Any]], quote_by_code: dict[str, dict[str, Any]], now: datetime) -> None:
@@ -162,12 +242,16 @@ def _observe_existing(signals: list[dict[str, Any]], quote_by_code: dict[str, di
         elapsed_days = (now - created_at).total_seconds() / 86400
         observations = signal.setdefault("observations", {})
         quote = quote_by_code.get(str(signal.get("code") or ""))
-        current_price = _safe_float((quote or {}).get("latest_price"))
+        current_price = _quote_price(quote)
         if current_price in (None, 0):
             continue
         for horizon in HORIZONS:
             key = _horizon_key(horizon)
-            if key in observations or elapsed_days < horizon:
+            if key in observations:
+                if "relative_return_pct" not in (observations.get(key) or {}):
+                    _apply_relative_return(observations[key], signal, quote_by_code)
+                continue
+            if elapsed_days < horizon:
                 continue
             return_pct = _pct_change(_safe_float(signal.get("start_price")), current_price)
             if return_pct is None:
@@ -179,6 +263,7 @@ def _observe_existing(signals: list[dict[str, Any]], quote_by_code: dict[str, di
                 "return_pct": return_pct,
                 "hit": return_pct > 0,
             }
+            _apply_relative_return(observations[key], signal, quote_by_code)
 
 
 def _add_current_signals(
@@ -205,6 +290,9 @@ def _add_current_signals(
                 "code": code,
                 "name": entry.get("name") or code,
                 "start_price": entry.get("start_price"),
+                "benchmark_code": entry.get("benchmark_code"),
+                "benchmark_name": entry.get("benchmark_name"),
+                "benchmark_start_price": entry.get("benchmark_start_price"),
                 "observations": {},
             }
         )
@@ -213,7 +301,7 @@ def _add_current_signals(
 
 
 def _empty_bucket() -> dict[str, Any]:
-    return {"samples": 0, "hits": 0, "sum_return_pct": 0.0}
+    return {"samples": 0, "hits": 0, "sum_return_pct": 0.0, "relative_samples": 0, "relative_hits": 0, "sum_relative_return_pct": 0.0}
 
 
 def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -243,6 +331,12 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
             bucket["sum_return_pct"] += return_pct
             if return_pct > 0:
                 bucket["hits"] += 1
+            relative_return_pct = _safe_float(obs.get("relative_return_pct"))
+            if relative_return_pct is not None:
+                bucket["relative_samples"] += 1
+                bucket["sum_relative_return_pct"] += relative_return_pct
+                if relative_return_pct > 0:
+                    bucket["relative_hits"] += 1
 
     rows: list[dict[str, Any]] = []
     for row in grouped.values():
@@ -256,6 +350,13 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
             else:
                 bucket["win_rate_pct"] = None
                 bucket["avg_return_pct"] = None
+            relative_samples = int(bucket.get("relative_samples") or 0)
+            if relative_samples:
+                bucket["relative_win_rate_pct"] = round(bucket["relative_hits"] / relative_samples * 100, 1)
+                bucket["avg_relative_return_pct"] = round(bucket["sum_relative_return_pct"] / relative_samples, 3)
+            else:
+                bucket["relative_win_rate_pct"] = None
+                bucket["avg_relative_return_pct"] = None
 
         ref_key = _horizon_key(HORIZONS[-1])
         for horizon in reversed(HORIZONS):
@@ -307,7 +408,11 @@ def _fmt_bucket(bucket: dict[str, Any]) -> str:
     samples = int(bucket.get("samples") or 0)
     if samples <= 0:
         return "样本不足"
-    return f"{samples}次｜胜率 {bucket.get('win_rate_pct'):.0f}%｜均值 {bucket.get('avg_return_pct'):+.2f}%"
+    text = f"{samples}次｜胜率 {bucket.get('win_rate_pct'):.0f}%｜均值 {bucket.get('avg_return_pct'):+.2f}%"
+    relative_samples = int(bucket.get("relative_samples") or 0)
+    if relative_samples > 0 and bucket.get("avg_relative_return_pct") is not None:
+        text += f"｜相对基准 {bucket.get('avg_relative_return_pct'):+.2f}%"
+    return text
 
 
 def _summary_lines(rows: list[dict[str, Any]], added_count: int) -> list[str]:
@@ -370,14 +475,17 @@ def _build_industry_leaderboard(rows: list[dict[str, Any]]) -> dict[str, Any]:
         samples = int(bucket.get("samples") or 0)
         win_rate = _safe_float(bucket.get("win_rate_pct"))
         avg_return = _safe_float(bucket.get("avg_return_pct"))
+        avg_relative_return = _safe_float(bucket.get("avg_relative_return_pct"))
+        relative_win_rate = _safe_float(bucket.get("relative_win_rate_pct"))
         if samples <= 0 or win_rate is None or avg_return is None:
             continue
-        rank_score = round(win_rate / 10 + avg_return + min(samples, 6) * 0.25, 3)
+        relative_bonus = (avg_relative_return or 0.0) * 0.7
+        rank_score = round(win_rate / 10 + avg_return + relative_bonus + min(samples, 6) * 0.25, 3)
         if samples < MIN_ADJUSTMENT_SAMPLES:
             action = "继续积累样本"
-        elif win_rate >= 60 and avg_return > 0:
+        elif win_rate >= 60 and avg_return > 0 and (avg_relative_return is None or avg_relative_return > 0):
             action = "优先保留权重"
-        elif win_rate <= 40 and avg_return < 0:
+        elif (win_rate <= 40 and avg_return < 0) or (avg_relative_return is not None and avg_relative_return < -2):
             action = "降权复盘"
         else:
             action = "等待二次确认"
@@ -390,6 +498,8 @@ def _build_industry_leaderboard(rows: list[dict[str, Any]]) -> dict[str, Any]:
                 "samples": samples,
                 "win_rate_pct": round(win_rate, 1),
                 "avg_return_pct": round(avg_return, 3),
+                "relative_win_rate_pct": round(relative_win_rate, 1) if relative_win_rate is not None else None,
+                "avg_relative_return_pct": round(avg_relative_return, 3) if avg_relative_return is not None else None,
                 "rank_score": rank_score,
                 "verdict": row.get("verdict"),
                 "action": action,
@@ -409,8 +519,11 @@ def _build_industry_leaderboard(rows: list[dict[str, Any]]) -> dict[str, Any]:
     else:
         lines = []
         for item in leaderboard_rows[:3]:
+            relative_text = ""
+            if item.get("avg_relative_return_pct") is not None:
+                relative_text = f"，相对基准 {item.get('avg_relative_return_pct'):+.2f}%"
             lines.append(
-                f"- {item.get('theme')}：{item.get('basis')} 样本 {item.get('samples')}，胜率 {item.get('win_rate_pct'):.0f}%，均值 {item.get('avg_return_pct'):+.2f}%，动作：{item.get('action')}。"
+                f"- {item.get('theme')}：{item.get('basis')} 样本 {item.get('samples')}，胜率 {item.get('win_rate_pct'):.0f}%，均值 {item.get('avg_return_pct'):+.2f}%{relative_text}，动作：{item.get('action')}。"
             )
     return {
         "rows": leaderboard_rows,
@@ -558,10 +671,13 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
     lines.extend(leaderboard.get("lines") or ["- 行业雷达命中率榜还在积累样本。"])
     leaderboard_rows = leaderboard.get("rows") or []
     if leaderboard_rows:
-        lines.extend(["", "| 行业 | 窗口 | 样本 | 胜率 | 均值 | 动作 |", "|---|---|---:|---:|---:|---|"])
+        lines.extend(["", "| 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |", "|---|---|---:|---:|---:|---:|---|"])
         for row in leaderboard_rows[:8]:
+            relative_text = "-"
+            if row.get("avg_relative_return_pct") is not None:
+                relative_text = f"{row.get('avg_relative_return_pct', 0):+.2f}%"
             lines.append(
-                f"| {row.get('theme')} | {row.get('basis')} | {row.get('samples', 0)} | {row.get('win_rate_pct', 0):.0f}% | {row.get('avg_return_pct', 0):+.2f}% | {row.get('action')} |"
+                f"| {row.get('theme')} | {row.get('basis')} | {row.get('samples', 0)} | {row.get('win_rate_pct', 0):.0f}% | {row.get('avg_return_pct', 0):+.2f}% | {relative_text} | {row.get('action')} |"
             )
     mistake_summary = validation.get("mistake_summary") or {}
     mistake_reviews = validation.get("mistake_reviews") or []

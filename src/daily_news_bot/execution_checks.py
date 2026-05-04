@@ -12,6 +12,11 @@ EASTMONEY_QUOTE_URL = "https://push2.eastmoney.com/api/qt/stock/get"
 FUND_ESTIMATE_URL = "https://fundgz.1234567.com.cn/js/{code}.js"
 DEFAULT_TIMEOUT = 10
 JSONP_RE = re.compile(r"jsonpgz\((.*)\);?", re.DOTALL)
+DEFAULT_BENCHMARK_ASSETS: dict[str, dict[str, str]] = {
+    "510300": {"name": "沪深300ETF", "source": "benchmark"},
+    "159915": {"name": "创业板ETF", "source": "benchmark"},
+    "518880": {"name": "黄金ETF", "source": "benchmark"},
+}
 
 
 def _safe_float(value: Any, scale: float = 1.0) -> float | None:
@@ -132,8 +137,9 @@ def fetch_etf_execution_quote(code: str, timeout: int = DEFAULT_TIMEOUT) -> dict
     }
 
 
-def fetch_execution_checks(portfolio: dict[str, Any], timeout: int = DEFAULT_TIMEOUT) -> dict[str, Any]:
+def _configured_execution_assets(portfolio: dict[str, Any]) -> dict[str, dict[str, Any]]:
     configured: dict[str, dict[str, Any]] = {}
+    configured.update(DEFAULT_BENCHMARK_ASSETS)
     for holding in portfolio.get("holdings") or []:
         code = str(holding.get("code") or "").strip()
         if code and str(holding.get("type") or "").upper() == "ETF":
@@ -143,7 +149,11 @@ def fetch_execution_checks(portfolio: dict[str, Any], timeout: int = DEFAULT_TIM
             code = str(instrument.get("code") or "").strip()
             if code and str(instrument.get("type") or "").upper() == "ETF":
                 configured.setdefault(code, {"name": instrument.get("name") or code, "source": "candidate", "theme": theme.get("theme")})
+    return configured
 
+
+def fetch_execution_checks(portfolio: dict[str, Any], timeout: int = DEFAULT_TIMEOUT) -> dict[str, Any]:
+    configured = _configured_execution_assets(portfolio)
     items: list[dict[str, Any]] = []
     failures: list[dict[str, str]] = []
     for code, meta in configured.items():

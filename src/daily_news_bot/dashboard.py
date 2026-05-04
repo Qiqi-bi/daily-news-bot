@@ -1037,7 +1037,10 @@ def _validation_bucket_text(bucket: dict[str, Any] | None) -> str:
     samples = int(data.get("samples") or 0)
     if samples <= 0:
         return "样本不足"
-    return f"{samples}次 / 胜率 {_fmt_pct_plain(data.get('win_rate_pct'))} / 均值 {_fmt_pct(data.get('avg_return_pct'))}"
+    text = f"{samples}次 / 胜率 {_fmt_pct_plain(data.get('win_rate_pct'))} / 均值 {_fmt_pct(data.get('avg_return_pct'))}"
+    if data.get("avg_relative_return_pct") is not None:
+        text += f" / 相对基准 {_fmt_pct(data.get('avg_relative_return_pct'))}"
+    return text
 
 
 def _validation_rows(validation: dict[str, Any] | None) -> list[list[str]]:
@@ -1061,6 +1064,9 @@ def _validation_leaderboard_rows(validation: dict[str, Any] | None) -> list[list
     leaderboard = ((validation or {}).get("industry_leaderboard") or {}).get("rows") or []
     result: list[list[str]] = []
     for row in leaderboard[:8]:
+        relative_text = "-"
+        if row.get("avg_relative_return_pct") is not None:
+            relative_text = _fmt_pct(row.get("avg_relative_return_pct"))
         result.append(
             [
                 escape(_text(row.get("theme"), "未命名行业")),
@@ -1068,6 +1074,7 @@ def _validation_leaderboard_rows(validation: dict[str, Any] | None) -> list[list
                 escape(_text(row.get("samples"), "0")),
                 escape(_fmt_pct_plain(row.get("win_rate_pct"))),
                 escape(_fmt_pct(row.get("avg_return_pct"))),
+                escape(relative_text),
                 escape(_text(row.get("action"), "继续积累")),
             ]
         )
@@ -1115,7 +1122,7 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
     body += _validation_subblock(
         "行业雷达命中率榜",
         "看哪些行业逻辑被价格验证过；样本不足时只用于排序，不作为买卖承诺。",
-        ["行业", "窗口", "样本", "胜率", "均值", "动作"],
+        ["行业", "窗口", "样本", "胜率", "均值", "相对基准", "动作"],
         _validation_leaderboard_rows(validation),
     )
     body += _validation_subblock(

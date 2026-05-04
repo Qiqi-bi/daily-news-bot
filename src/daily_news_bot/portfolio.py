@@ -728,6 +728,16 @@ def _score_candidate_pool(
             fit = 5 if attack_pct > 30 else 4
             comment = comment or "长期底座线，只允许小底仓观察，不增加AI进攻仓重叠。"
 
+        evidence_chain = _candidate_evidence_chain(
+            theme_key=key,
+            event_theme_keys=event_theme_keys,
+            event_impacts=event_impacts,
+            catalyst=catalyst,
+            fit=fit,
+            overlap_risk=overlap_risk,
+            summary=summary,
+        )
+
         total = catalyst + fit - overlap_risk
         if total >= 5:
             priority = "高"
@@ -735,15 +745,24 @@ def _score_candidate_pool(
             priority = "中"
         else:
             priority = "低"
+        advice_tier = _candidate_advice_tier(key, priority, evidence_chain, overlap_risk)
+        evidence_text = (
+            f"证据链 {evidence_chain['total']}/25"
+            f"（政{evidence_chain['policy']} 供{evidence_chain['supply']} "
+            f"价{evidence_chain['price']} 闻{evidence_chain['news']} 纪{evidence_chain['discipline']}）"
+        )
+        comment = f"{comment}；{evidence_text}".strip("；")
         rows.append(
             {
                 "theme": theme,
                 "theme_key": key,
                 "priority": priority,
+                "advice_tier": advice_tier,
                 "score": total,
                 "catalyst_score": catalyst,
                 "fit_score": fit,
                 "overlap_risk": overlap_risk,
+                "evidence_chain": evidence_chain,
                 "comment": comment,
                 "role": item.get("role", ""),
                 "instruments": list(item.get("instruments") or []),
@@ -757,14 +776,83 @@ def _score_candidate_pool(
     return sorted(rows, key=lambda row: row["score"], reverse=True)
 
 
+def _candidate_evidence_chain(
+    *,
+    theme_key: str,
+    event_theme_keys: set[str],
+    event_impacts: list[dict[str, Any]],
+    catalyst: int,
+    fit: int,
+    overlap_risk: int,
+    summary: dict[str, Any],
+) -> dict[str, Any]:
+    matched_events = [item for item in event_impacts if theme_key in (item.get("theme_keys") or [])]
+    has_event = theme_key in event_theme_keys
+    immediate_event = any(str(item.get("priority") or "") == "立即确认" for item in matched_events)
+    high_score_event = any(_as_float(item.get("score"), 0.0) >= 10 for item in matched_events)
+
+    policy_score = 4 if immediate_event else 3 if has_event else 1
+    supply_score = 2
+    price_score = max(1, min(5, catalyst))
+    news_score = 4 if high_score_event else 3 if has_event else 1
+    discipline_score = max(0, 5 - max(overlap_risk - 1, 0))
+
+    if theme_key == "ai_power_base":
+        policy_score = max(policy_score, 3)
+        supply_score = 4
+        discipline_score = 5 if _as_float(summary.get("attack_pct"), 0.0) >= 25 else 4
+    elif theme_key in {"ai_attack", "semiconductor", "hk_tech"}:
+        supply_score = 3
+        if _as_float(summary.get("growth_tech_pct"), 0.0) >= 50:
+            discipline_score = min(discipline_score, 2)
+    elif theme_key in {"broad_core", "dividend_lowvol", "gold_insurance"}:
+        discipline_score = max(discipline_score, 4)
+
+    total = policy_score + supply_score + price_score + news_score + discipline_score
+    if total >= 18:
+        label = "强"
+    elif total >= 13:
+        label = "中"
+    else:
+        label = "弱"
+    return {
+        "policy": policy_score,
+        "supply": supply_score,
+        "price": price_score,
+        "news": news_score,
+        "discipline": discipline_score,
+        "total": total,
+        "label": label,
+        "note": "先看证据链，再看价格和仓位；证据弱时不从观察升级为交易。",
+    }
+
+
+def _candidate_advice_tier(
+    theme_key: str,
+    priority: str,
+    evidence_chain: dict[str, Any],
+    overlap_risk: int,
+) -> str:
+    total = int(evidence_chain.get("total") or 0)
+    if theme_key == "ai_power_base":
+        return "观察底仓" if total >= 13 and overlap_risk <= 2 else "只观察"
+    if priority == "低" or total < 10:
+        return "只观察"
+    if overlap_risk >= 4:
+        return "等回撤"
+    if priority == "高" and total >= 16:
+        return "小幅补仓"
+    return "继续跟踪"
+
+
 def _candidate_score_lines(rows: list[dict[str, Any]]) -> list[str]:
     if not rows:
         return ["- 暂未配置候选池评分。"]
-    lines = ["| 候选方向 | 优先级 | 分数 | 为什么 |", "|---|---|---:|---|"]
+    lines = ["| 候选方向 | 建议层 | 优先级 | 分数 | 为什么 |", "|---|---|---|---:|---|"]
     for row in rows:
         refs = f"；参考：{row['instrument_refs']}" if row.get("instrument_refs") else ""
         lines.append(
-            f"| {row['theme']} | {row['priority']} | {row['score']} | 催化 {row['catalyst_score']} / 适配 {row['fit_score']} / 重叠风险 {row['overlap_risk']}；{row['comment']}{refs} |"
+            f"| {row['theme']} | {row.get('advice_tier', '继续跟踪')} | {row['priority']} | {row['score']} | 催化 {row['catalyst_score']} / 适配 {row['fit_score']} / 重叠风险 {row['overlap_risk']}；{row['comment']}{refs} |"
         )
     return lines
 
@@ -1714,6 +1802,57 @@ def _opportunity_scorecard(
     }
 
 
+def _action_tier_for_fixed_pool(
+    *,
+    theme_key: str,
+    state: str,
+    score: int,
+    market_confirmation: dict[str, Any],
+) -> dict[str, Any]:
+    confirmation_score = _as_float(market_confirmation.get("score"), 0.0)
+    if state == "减仓":
+        return {
+            "action_tier": "减仓复核",
+            "max_position_pct": None,
+            "tier_reason": "先处理仓位上限、浮盈锁定或重叠风险，不把减仓理解成看空全部主线。",
+        }
+    if theme_key == "ai_power_base":
+        if state == "可买" and confirmation_score >= 55:
+            return {
+                "action_tier": "观察底仓",
+                "max_position_pct": 3.0,
+                "tier_reason": "长期主线先用2%-3%观察底仓验证，不因故事空间大而一步到位。",
+            }
+        return {
+            "action_tier": "只观察",
+            "max_position_pct": 0.0,
+            "tier_reason": "先等政策、订单、价格和相对强弱继续确认。",
+        }
+    if state != "可买":
+        return {
+            "action_tier": "只观察",
+            "max_position_pct": 0.0,
+            "tier_reason": "还没有进入执行复核区。",
+        }
+    if theme_key in {"broad_core", "gold_insurance", "dividend_lowvol"}:
+        return {
+            "action_tier": "小幅补仓",
+            "max_position_pct": None,
+            "tier_reason": "偏底仓/防御方向，可按金额档位复核，但仍不自动交易。",
+        }
+    if score >= 75 and confirmation_score >= 70:
+        return {
+            "action_tier": "小幅补仓",
+            "max_position_pct": None,
+            "tier_reason": "证据和行情确认较好，但高弹性方向仍按小仓处理。",
+        }
+    return {
+        "action_tier": "等确认",
+        "max_position_pct": None,
+        "tier_reason": "候选已出现，但仍需要二次确认或回撤位置。",
+    }
+
+
 def _evaluate_fixed_buy_pool(
     portfolio: dict[str, Any],
     summary: dict[str, Any],
@@ -1877,6 +2016,12 @@ def _evaluate_fixed_buy_pool(
             candidate_priority=candidate_priority,
             gate_status=gate_status,
         )
+        action_tier = _action_tier_for_fixed_pool(
+            theme_key=theme_key,
+            state=state,
+            score=score,
+            market_confirmation=market_confirmation,
+        )
 
         results.append(
             {
@@ -1886,6 +2031,9 @@ def _evaluate_fixed_buy_pool(
                 "role": item.get("role") or "",
                 "theme_key": theme_key,
                 "state": state,
+                "action_tier": action_tier["action_tier"],
+                "max_position_pct": action_tier["max_position_pct"],
+                "tier_reason": action_tier["tier_reason"],
                 "amount_band": _amount_band_text(portfolio, amount_key) if amount_key else "-",
                 "reason": reason,
                 "action_hint": action_hint,
@@ -1909,7 +2057,7 @@ def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
     if not rows:
         return ["- 尚未配置固定候选池。"]
     state_label = {"可买": "可复核", "减仓": "减仓复核"}
-    lines = ["| 标的 | 状态 | 行情确认 | 赔率 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---|---|---:|---|---|"]
+    lines = ["| 标的 | 层级 | 状态 | 行情确认 | 赔率 | 金额档位 | 当日变化 | 角色 | 原因 |", "|---|---|---|---|---|---|---:|---|---|"]
     for row in rows:
         day_text = _fmt_pct_or_unknown(row.get("day_change_pct"))
         state = str(row.get("state") or "")
@@ -1917,7 +2065,7 @@ def _fixed_buy_pool_lines(rows: list[dict[str, Any]]) -> list[str]:
         odds_text = odds.get("text") or row.get("odds_label") or "-"
         confirmation = (row.get("market_confirmation") or {}).get("text") or "-"
         lines.append(
-            f"| {row.get('name')}({row.get('code')}) | {state_label.get(state, state)} | {confirmation} | {odds_text} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
+            f"| {row.get('name')}({row.get('code')}) | {row.get('action_tier', '继续跟踪')} | {state_label.get(state, state)} | {confirmation} | {odds_text} | {row.get('amount_band')} | {day_text} | {row.get('role')} | {row.get('reason')} |"
         )
     return lines
 

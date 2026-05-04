@@ -801,16 +801,22 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
         t30 = row.get("t30") or {}
         samples = int(t30.get("samples") or 0)
         if samples:
+            relative = ""
+            if t30.get("avg_relative_return_pct") is not None:
+                relative = f"，相对基准 {float(t30.get('avg_relative_return_pct') or 0):+.2f}%"
             result.append(
-                f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，胜率 {float(t30.get('win_rate_pct') or 0):.0f}%，均值 {float(t30.get('avg_return_pct') or 0):+.2f}%，{row.get('verdict') or '继续观察'}。"
+                f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，胜率 {float(t30.get('win_rate_pct') or 0):.0f}%，均值 {float(t30.get('avg_return_pct') or 0):+.2f}%{relative}，{row.get('verdict') or '继续观察'}。"
             )
         else:
             result.append(f"{row.get('theme') or '未命名'}：30/60/90天样本继续积累，先不把胜率当结论。")
     leaderboard_rows = ((validation.get("industry_leaderboard") or {}).get("rows") or [])
     if leaderboard_rows:
         top = leaderboard_rows[0]
+        relative = ""
+        if top.get("avg_relative_return_pct") is not None:
+            relative = f"，相对基准 {float(top.get('avg_relative_return_pct') or 0):+.2f}%"
         result.append(
-            f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 胜率 {float(top.get('win_rate_pct') or 0):.0f}%，均值 {float(top.get('avg_return_pct') or 0):+.2f}%；{top.get('action') or '继续积累'}。"
+            f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 胜率 {float(top.get('win_rate_pct') or 0):.0f}%，均值 {float(top.get('avg_return_pct') or 0):+.2f}%{relative}；{top.get('action') or '继续积累'}。"
         )
     mistake_reviews = validation.get("mistake_reviews") or []
     if mistake_reviews:
