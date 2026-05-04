@@ -923,6 +923,21 @@ def _annual_budget_rows(objective: dict[str, Any] | None) -> list[list[str]]:
     return result
 
 
+def _stress_test_rows(panel: dict[str, Any] | None) -> list[list[str]]:
+    result = []
+    for row in (panel or {}).get("rows") or []:
+        result.append(
+            [
+                escape(_text(row.get("name"))),
+                escape(_fmt_pct(row.get("estimated_impact_pct"))),
+                escape(_text(row.get("severity"))),
+                escape(_shorten(row.get("shock_text"), 150)),
+                escape(_shorten(row.get("action"), 150)),
+            ]
+        )
+    return result
+
+
 def _allocation_deviation_rows(panel: dict[str, Any] | None) -> list[list[str]]:
     result = []
     for row in (panel or {}).get("rows") or []:
@@ -1235,6 +1250,15 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
                     _annual_budget_rows(portfolio.get("annual_objective")),
                 ),
                 _text(((portfolio.get("annual_objective") or {}).get("return_budget") or {}).get("note"), "收益目标用于约束仓位结构，不保证结果。"),
+                "wide",
+            ),
+            _section(
+                "风险压力测试",
+                _render_table(
+                    ["场景", "估算影响", "状态", "假设冲击", "应对"],
+                    _stress_test_rows(portfolio.get("stress_test")),
+                ),
+                _text((portfolio.get("stress_test") or {}).get("conclusion"), "看极端场景是否超过年度回撤预算。"),
                 "wide",
             ),
             _section(

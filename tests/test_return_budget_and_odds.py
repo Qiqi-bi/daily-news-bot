@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import unittest
 
-from src.daily_news_bot.portfolio import _annual_objective_payload, _evaluate_fixed_buy_pool, _hard_reduce_candidates
+from src.daily_news_bot.portfolio import (
+    _annual_objective_payload,
+    _evaluate_fixed_buy_pool,
+    _hard_reduce_candidates,
+    _stress_test_payload,
+)
 
 
 class ReturnBudgetAndOddsTest(unittest.TestCase):
@@ -38,6 +43,30 @@ class ReturnBudgetAndOddsTest(unittest.TestCase):
         self.assertEqual(attack["target_mid_pct"], 25.0)
         self.assertEqual(attack["contribution_mid_pct"], 3.75)
         self.assertGreater(budget["estimated_return_contribution_pct_range"][1], 10)
+
+    def test_stress_test_flags_worst_drawdown_against_budget(self) -> None:
+        payload = _stress_test_payload(
+            {
+                "annual_objective": {"max_annual_drawdown_pct": 12},
+            },
+            {
+                "stable_core_pct": 40.0,
+                "growth_core_pct": 20.0,
+                "attack_pct": 25.0,
+                "insurance_pct": 10.0,
+                "direct_ai_pct": 24.0,
+                "gold_pct": 10.0,
+                "total_weight_pct": 95.0,
+            },
+        )
+
+        worst = payload["worst_case"]
+
+        self.assertEqual(worst["name"], "A股系统回撤")
+        self.assertLess(worst["estimated_impact_pct"], -12.0)
+        self.assertEqual(worst["severity"], "超过预算")
+        self.assertLess(payload["drawdown_budget_gap_pct"], 0)
+        self.assertIn("暂停新增进攻仓", worst["action"])
 
     def test_fixed_buy_pool_rows_include_odds_and_confirmation_gate(self) -> None:
         rows = _evaluate_fixed_buy_pool(

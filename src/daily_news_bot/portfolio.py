@@ -523,6 +523,136 @@ def _allocation_deviation_lines(panel: dict[str, Any]) -> list[str]:
     return lines
 
 
+DEFAULT_STRESS_TEST_SCENARIOS: tuple[dict[str, Any], ...] = (
+    {
+        "id": "a_share_drawdown",
+        "name": "A股系统回撤",
+        "shocks_pct": {"stable_core": -12.0, "growth_core": -18.0, "attack": -22.0, "insurance": 2.0, "reserve": 0.0},
+        "note": "大盘、创业板和主题一起杀估值，保险仓只做轻微缓冲。",
+    },
+    {
+        "id": "ai_growth_shock",
+        "name": "AI/成长急跌",
+        "shocks_pct": {"stable_core": -5.0, "growth_core": -14.0, "attack": -22.0, "insurance": 3.0, "reserve": 0.0},
+        "note": "AI和成长仓先跌，宽基受拖累，黄金可能只能部分对冲。",
+    },
+    {
+        "id": "rates_up",
+        "name": "利率/美元上行",
+        "shocks_pct": {"stable_core": -4.0, "growth_core": -9.0, "attack": -12.0, "insurance": -7.0, "reserve": 0.0},
+        "note": "成长估值和黄金同时受压，适合检查是否过度依赖单一方向。",
+    },
+    {
+        "id": "gold_pullback",
+        "name": "黄金保险回撤",
+        "shocks_pct": {"stable_core": 0.0, "growth_core": -3.0, "attack": -4.0, "insurance": -10.0, "reserve": 0.0},
+        "note": "黄金回撤时，保险仓不能继续当主攻仓追。",
+    },
+)
+
+
+def _stress_severity(impact_pct: float, max_drawdown_pct: float) -> str:
+    drawdown = abs(min(impact_pct, 0.0))
+    budget = max(max_drawdown_pct, 1.0)
+    if drawdown > budget:
+        return "超过预算"
+    if drawdown >= budget * 0.75:
+        return "接近预算"
+    if drawdown >= budget * 0.45:
+        return "中等压力"
+    return "可承受"
+
+
+def _stress_action(severity: str, scenario_id: str) -> str:
+    if severity == "超过预算":
+        return "暂停新增进攻仓，先复核AI重叠、成长仓和黄金保险仓；不为年度目标硬追。"
+    if severity == "接近预算":
+        return "新增资金优先回稳底仓或等待，进攻仓只允许等回撤和二次确认。"
+    if scenario_id == "gold_pullback":
+        return "黄金只按保险仓复核，不把短期回撤当作自动补仓理由。"
+    return "保持既有节奏，继续看价格、成交和行业雷达确认。"
+
+
+def _stress_shock_text(shocks: dict[str, float]) -> str:
+    labels = {
+        "stable_core": "稳底仓",
+        "growth_core": "成长底仓",
+        "attack": "进攻仓",
+        "insurance": "保险仓",
+        "reserve": "现金",
+    }
+    return "；".join(f"{label} {_fmt_pct(shocks.get(key, 0.0))}" for key, label in labels.items() if key in shocks)
+
+
+def _stress_test_payload(portfolio: dict[str, Any], summary: dict[str, Any]) -> dict[str, Any]:
+    objective = portfolio.get("annual_objective") or {}
+    max_drawdown_pct = _as_float(objective.get("max_annual_drawdown_pct"), 15.0)
+    total_weight = _as_float(summary.get("total_weight_pct"), 100.0)
+    exposures = {
+        "stable_core": _as_float(summary.get("stable_core_pct")),
+        "growth_core": _as_float(summary.get("growth_core_pct")),
+        "attack": _as_float(summary.get("attack_pct")),
+        "insurance": _as_float(summary.get("insurance_pct")),
+        "reserve": max(0.0, round(100.0 - total_weight, 2)),
+    }
+    configured = (portfolio.get("stress_tests") or {}).get("scenarios") or []
+    scenarios = [item for item in configured if isinstance(item, dict)] or list(DEFAULT_STRESS_TEST_SCENARIOS)
+
+    rows: list[dict[str, Any]] = []
+    for scenario in scenarios:
+        shocks = {key: _as_float(value) for key, value in (scenario.get("shocks_pct") or {}).items()}
+        sleeve_impacts = {key: round(exposures.get(key, 0.0) * shocks.get(key, 0.0) / 100, 2) for key in exposures}
+        impact = round(sum(sleeve_impacts.values()), 2)
+        severity = _stress_severity(impact, max_drawdown_pct)
+        rows.append(
+            {
+                "id": scenario.get("id") or scenario.get("name") or "scenario",
+                "name": scenario.get("name") or "未命名压力场景",
+                "estimated_impact_pct": impact,
+                "severity": severity,
+                "shock_text": _stress_shock_text(shocks),
+                "sleeve_impacts_pct": sleeve_impacts,
+                "action": scenario.get("action") or _stress_action(severity, str(scenario.get("id") or "")),
+                "note": scenario.get("note") or "压力测试是估算，不是预测。",
+            }
+        )
+    rows.sort(key=lambda item: item["estimated_impact_pct"])
+    worst = rows[0] if rows else {}
+    gap = round(max_drawdown_pct - abs(_as_float(worst.get("estimated_impact_pct"))), 2) if worst else max_drawdown_pct
+    if gap < 0:
+        conclusion = f"最坏场景可能超过年度回撤预算约 {_fmt_pct(abs(gap))}，先控进攻仓和重叠仓。"
+    elif gap <= max_drawdown_pct * 0.25:
+        conclusion = "最坏场景接近年度回撤预算，新增资金先保守。"
+    else:
+        conclusion = "压力测试仍在预算内，但不代表可以追高。"
+
+    return {
+        "enabled": True,
+        "max_annual_drawdown_pct": max_drawdown_pct,
+        "exposures_pct": exposures,
+        "rows": rows,
+        "worst_case": worst,
+        "drawdown_budget_gap_pct": gap,
+        "conclusion": conclusion,
+        "note": "这是按仓位模块做的情景压力估算，用来约束仓位和节奏，不是收益或亏损预测。",
+    }
+
+
+def _stress_test_lines(panel: dict[str, Any]) -> list[str]:
+    lines = [
+        f"- {panel.get('conclusion') or '先按回撤预算检查仓位。'}",
+        f"- 回撤预算：{_fmt_pct(panel.get('max_annual_drawdown_pct') or 0.0)}；预算差额：{_fmt_pct(panel.get('drawdown_budget_gap_pct') or 0.0)}。",
+        "| 场景 | 估算组合影响 | 状态 | 假设冲击 | 应对 |",
+        "|---|---:|---|---|---|",
+    ]
+    for row in panel.get("rows") or []:
+        lines.append(
+            f"| {row.get('name')} | {_fmt_pct(row.get('estimated_impact_pct') or 0.0)} | {row.get('severity')} | {row.get('shock_text')} | {row.get('action')} |"
+        )
+    lines.append(f"- 说明：{panel.get('note')}")
+    return lines
+
+
 def _merge_by_key(configured: list[dict[str, Any]], defaults: list[dict[str, Any]], key_name: str) -> list[dict[str, Any]]:
     rows = [dict(item) for item in configured if isinstance(item, dict)]
     existing = {str(item.get(key_name) or "") for item in rows}
@@ -2816,6 +2946,8 @@ def build_portfolio_brief(
     action_slot_lines = _action_slot_lines(portfolio, fixed_buy_pool_rows, reduce_candidates, portfolio_quotes)
     annual_objective = _annual_objective_payload(portfolio)
     annual_objective_lines = _annual_objective_lines(portfolio)
+    stress_test = _stress_test_payload(portfolio, summary)
+    stress_test_lines = _stress_test_lines(stress_test)
     playbook_rule_lines = _playbook_rule_lines(portfolio, summary)
     day_change = (portfolio_quotes or {}).get("portfolio_estimated_day_change_pct")
     week_change = (portfolio_quotes or {}).get("portfolio_week_change_pct")
@@ -2880,6 +3012,8 @@ def build_portfolio_brief(
     lines.extend(event_history_lines)
     lines.extend(["", "## 年度目标框架", ""])
     lines.extend(annual_objective_lines)
+    lines.extend(["", "## 风险压力测试", ""])
+    lines.extend(stress_test_lines)
     lines.extend(["", "## 我的10条操作手册", ""])
     lines.extend(playbook_rule_lines)
     lines.extend(["", "## 今日对我影响最大的事件", ""])
@@ -3005,6 +3139,8 @@ def build_portfolio_brief(
         "event_history_rows": event_history_stats.get("rows") or [],
         "annual_objective": annual_objective,
         "annual_objective_lines": annual_objective_lines,
+        "stress_test": stress_test,
+        "stress_test_lines": stress_test_lines,
         "playbook_rule_lines": playbook_rule_lines,
         "monthly_plan_lines": monthly_plan_lines,
         "monthly_scenario_lines": monthly_scenario_lines,

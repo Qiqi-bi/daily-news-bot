@@ -699,7 +699,8 @@ def _feishu_pct_range(values: Any) -> str:
 
 
 def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
-    objective = (payload.get("portfolio") or {}).get("annual_objective") or {}
+    portfolio = payload.get("portfolio") or {}
+    objective = portfolio.get("annual_objective") or {}
     if not objective:
         return []
     base = _feishu_pct_range(objective.get("base_return_pct_range"))
@@ -708,8 +709,13 @@ def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
     discipline = _feishu_short(objective.get("discipline") or "目标收益不触发单笔交易。", 88)
     lines = [
         f"年度目标：基础 {base}；冲刺 {stretch}；回撤红线 {drawdown}。",
-        f"纪律：{discipline}",
     ]
+    worst = (portfolio.get("stress_test") or {}).get("worst_case") or {}
+    if worst:
+        lines.append(
+            f"压力：{worst.get('name') or '最坏场景'} 约 {_fmt_pct(worst.get('estimated_impact_pct'))}，{worst.get('severity') or '待评估'}；{_feishu_short(worst.get('action') or '先复核仓位。', 70)}"
+        )
+    lines.append(f"纪律：{discipline}")
     budget = objective.get("return_budget") or {}
     budget_range = budget.get("estimated_return_contribution_pct_range")
     if budget_range:

@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 
 from src.daily_news_bot.portfolio import _evaluate_fixed_buy_pool
+from src.daily_news_bot.main import _build_feishu_objective_lines
 from src.daily_news_bot.senders import _build_card_payload
 
 
@@ -101,6 +102,34 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertTrue(any("action=noop" in url for url in urls))
         self.assertTrue(any("action=buy" in url for url in urls))
         self.assertTrue(any("action=sell" in url for url in urls))
+
+    def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
+        lines = _build_feishu_objective_lines(
+            {
+                "portfolio": {
+                    "annual_objective": {
+                        "base_return_pct_range": [8, 12],
+                        "stretch_return_pct_range": [12, 18],
+                        "max_annual_drawdown_pct": 12,
+                    },
+                    "stress_test": {
+                        "worst_case": {
+                            "name": "A股系统回撤",
+                            "estimated_impact_pct": -13.7,
+                            "severity": "超过预算",
+                            "action": "暂停新增进攻仓，先复核AI重叠。",
+                        }
+                    },
+                }
+            }
+        )
+
+        text = "\n".join(lines[:2])
+
+        self.assertIn("压力", text)
+        self.assertIn("A股系统回撤", text)
+        self.assertIn("暂停新增进攻仓", text)
+        self.assertNotIn("¥", text)
 
 
 if __name__ == "__main__":
