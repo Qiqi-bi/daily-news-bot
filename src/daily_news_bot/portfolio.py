@@ -1631,12 +1631,19 @@ def _hard_reduce_candidates(
     profit_lock_pct = _as_float(((risk_controls.get("profit_lock_watchline") or {}).get("unrealized_profit_pct")), 50.0)
     direct_ai_cap = _as_float(risk_controls.get("direct_ai_cap_pct"), 35.0)
     allocation = portfolio.get("allocation_framework") or {}
+    stable_target = allocation.get("stable_core_target_pct") or [35, 45]
+    stable_high = _as_float(stable_target[1] if len(stable_target) > 1 else 45.0, 45.0)
+    stable_core_pct = _as_float(summary.get("stable_core_pct"), 0.0)
     growth_target = allocation.get("growth_core_target_pct") or [15, 20]
+    growth_low = _as_float(growth_target[0] if growth_target else 15.0, 15.0)
     growth_high = _as_float(growth_target[1] if len(growth_target) > 1 else 20.0, 20.0)
     growth_core_pct = _as_float(summary.get("growth_core_pct"), 0.0)
+    insurance_target = allocation.get("insurance_target_pct") or [10, 15]
+    insurance_low = _as_float(insurance_target[0] if insurance_target else 10.0, 10.0)
     gold_range = risk_controls.get("gold_target_range_pct") or [10, 15]
     gold_high = _as_float(gold_range[1] if len(gold_range) > 1 else 15.0, 15.0)
     gold_pct = _as_float(summary.get("insurance_pct"), _as_float(summary.get("gold_pct"), 0.0))
+    has_rebalance_shortfall = growth_core_pct < growth_low or gold_pct < insurance_low
     quote_map = _quote_map(portfolio_quotes)
     holding_profiles = {
         str(item.get("code") or ""): item
@@ -1648,7 +1655,7 @@ def _hard_reduce_candidates(
     for holding in portfolio.get("holdings") or []:
         code = str(holding.get("code") or "")
         sleeve = str(holding.get("sleeve") or "")
-        if not code or sleeve not in {"attack", "insurance", "growth_core"}:
+        if not code or sleeve not in {"attack", "insurance", "growth_core", "stable_core"}:
             continue
         quote = quote_map.get(holding.get("name", ""), {})
         weight_pct = _as_float(quote.get("actual_weight_pct"), _as_float(holding.get("weight_pct"), 0.0))
@@ -1666,6 +1673,12 @@ def _hard_reduce_candidates(
                 amount_key = "reduce_small_cny"
                 reason = f"黄金/保险仓已超过 {gold_high:.0f}% 上限且有浮盈，先小幅减回区间，不把保险仓做成收益主攻。"
                 priority = 2
+        elif sleeve == "stable_core":
+            if stable_core_pct > stable_high and (pnl_pct or 0.0) > 0 and has_rebalance_shortfall:
+                trigger = "稳底仓超配"
+                amount_key = "reduce_small_cny"
+                reason = f"稳底仓已超过 {stable_high:.0f}% 上限且有浮盈，同时成长或保险仓低于目标，先做小幅再平衡复核。"
+                priority = 1
         elif sleeve == "growth_core":
             if growth_core_pct > growth_high and (pnl_pct or 0.0) > 0:
                 trigger = "成长超配"
@@ -1920,7 +1933,19 @@ def _evaluate_fixed_buy_pool(
             local_market_payload=local_market_payload,
         )
         if theme_key == "broad_core":
-            if attack_blockers or (week_change is not None and week_change <= -3) or summary.get("stable_core_pct", 0.0) < _as_float(stable_target[0], 35.0):
+            current_stable_core_pct = _as_float(summary.get("stable_core_pct"), 0.0)
+            stable_high = _as_float(stable_target[1] if len(stable_target) > 1 else 45.0, 45.0)
+            growth_low = _as_float(growth_target[0] if growth_target else 15.0, 15.0)
+            insurance_low = _as_float((allocation.get("insurance_target_pct") or [10, 15])[0], 10.0)
+            current_insurance_pct = _as_float(summary.get("insurance_pct"), _as_float(summary.get("gold_pct"), 0.0))
+            has_rebalance_shortfall = _as_float(summary.get("growth_core_pct"), 0.0) < growth_low or current_insurance_pct < insurance_low
+            if current_stable_core_pct > stable_high and weight > 0 and (pnl_pct or 0.0) > 0 and has_rebalance_shortfall:
+                state = "减仓"
+                amount_key = "reduce_small_cny"
+                score = 76
+                reason = f"稳底仓已超过 {stable_high:.0f}% 上限且有浮盈，同时成长或保险仓低于目标，先小幅再平衡；不是看空宽基。"
+                action_hint = "小幅再平衡到目标区间，不追求一次调完"
+            elif attack_blockers or (week_change is not None and week_change <= -3) or summary.get("stable_core_pct", 0.0) < _as_float(stable_target[0], 35.0):
                 state = "可买"
                 amount_key = "buy_core_large_cny"
                 score = 92

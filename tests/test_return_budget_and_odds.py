@@ -291,6 +291,114 @@ class ReturnBudgetAndOddsTest(unittest.TestCase):
         self.assertEqual(rows[0]["trigger"], "成长超配")
         self.assertIn("成长底仓", rows[0]["reason"])
 
+    def test_stable_core_overweight_with_profit_and_shortfall_becomes_rebalance_review(self) -> None:
+        portfolio = {
+            "profile": {"monthly_contribution_cny": 10000},
+            "allocation_framework": {
+                "stable_core_target_pct": [35, 45],
+                "growth_core_target_pct": [15, 20],
+                "attack_target_pct": [20, 30],
+                "insurance_target_pct": [10, 15],
+            },
+            "risk_controls": {
+                "direct_ai_cap_pct": 35,
+                "growth_tech_cap_pct": 55,
+                "single_attack_holding_cap_pct": 15,
+                "gold_target_range_pct": [10, 15],
+                "hard_gates": {"max_monthly_action_count": 2},
+            },
+            "decision_cockpit": {
+                "action_amount_bands": {"reduce_small_cny": [1000, 2500]},
+                "fixed_buy_pool": [
+                    {
+                        "code": "510300",
+                        "name": "沪深300ETF",
+                        "type": "ETF",
+                        "role": "稳底仓",
+                        "theme_key": "broad_core",
+                    }
+                ],
+            },
+            "holdings": [
+                {"code": "510300", "name": "沪深300ETF", "sleeve": "stable_core", "weight_pct": 48.0},
+            ],
+        }
+        portfolio_quotes = {
+            "items": [
+                {
+                    "holding_name": "沪深300ETF",
+                    "code": "510300",
+                    "actual_weight_pct": 48.0,
+                    "unrealized_pnl_pct": 8.0,
+                }
+            ]
+        }
+
+        rows = _evaluate_fixed_buy_pool(
+            portfolio,
+            {
+                "direct_ai_pct": 20.0,
+                "growth_tech_pct": 30.0,
+                "attack_pct": 20.0,
+                "gold_pct": 8.0,
+                "insurance_pct": 8.0,
+                "stable_core_pct": 48.0,
+                "growth_core_pct": 12.0,
+            },
+            portfolio_quotes,
+            {"items": [{"code": "510300", "change_pct": 0.2, "chase_risk": "低", "liquidity_level": "正常"}]},
+            [],
+            [],
+            trade_ledger={"enabled": True, "trades": []},
+        )
+
+        row = rows[0]
+
+        self.assertEqual(row["state"], "减仓")
+        self.assertEqual(row["action_tier"], "减仓复核")
+        self.assertIn("稳底仓", row["reason"])
+        self.assertIn("再平衡", row["reason"])
+
+    def test_hard_reduce_candidates_include_overweight_stable_core_when_others_shortfall(self) -> None:
+        portfolio = {
+            "allocation_framework": {
+                "stable_core_target_pct": [35, 45],
+                "growth_core_target_pct": [15, 20],
+                "insurance_target_pct": [10, 15],
+            },
+            "risk_controls": {"single_attack_holding_cap_pct": 15, "gold_target_range_pct": [10, 15]},
+            "decision_cockpit": {"action_amount_bands": {"reduce_small_cny": [1000, 2500]}},
+            "holdings": [
+                {"code": "510300", "name": "沪深300ETF", "sleeve": "stable_core", "weight_pct": 48.0},
+            ],
+        }
+        portfolio_quotes = {
+            "items": [
+                {
+                    "holding_name": "沪深300ETF",
+                    "code": "510300",
+                    "actual_weight_pct": 48.0,
+                    "unrealized_pnl_pct": 8.0,
+                }
+            ]
+        }
+
+        rows = _hard_reduce_candidates(
+            portfolio,
+            {
+                "stable_core_pct": 48.0,
+                "growth_core_pct": 12.0,
+                "insurance_pct": 8.0,
+                "gold_pct": 8.0,
+                "direct_ai_pct": 20.0,
+            },
+            portfolio_quotes,
+        )
+
+        self.assertEqual(rows[0]["code"], "510300")
+        self.assertEqual(rows[0]["trigger"], "稳底仓超配")
+        self.assertIn("再平衡", rows[0]["reason"])
+
 
 if __name__ == "__main__":
     unittest.main()
