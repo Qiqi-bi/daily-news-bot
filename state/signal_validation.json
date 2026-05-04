@@ -1,7 +1,39 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-03T14:11:40",
+  "updated_at_utc": "2026-05-04T03:21:52",
   "signals": [
+    {
+      "id": "20260504032152-industry_radar-hk_tech-513010",
+      "created_at_utc": "2026-05-04T03:21:52",
+      "source": "industry_radar",
+      "theme": "港股科技/互联网",
+      "theme_key": "hk_tech",
+      "priority": "今日关注",
+      "score": 2.0,
+      "code": "513010",
+      "name": "港股科技ETF",
+      "start_price": 0.645,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": null,
+      "observations": {}
+    },
+    {
+      "id": "20260504032152-industry_radar-hk_tech-513180",
+      "created_at_utc": "2026-05-04T03:21:52",
+      "source": "industry_radar",
+      "theme": "港股科技/互联网",
+      "theme_key": "hk_tech",
+      "priority": "今日关注",
+      "score": 2.0,
+      "code": "513180",
+      "name": "恒生科技指数ETF",
+      "start_price": 0.627,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": null,
+      "observations": {}
+    },
     {
       "id": "20260503141140-industry_radar-new_energy_cycle-159915",
       "created_at_utc": "2026-05-03T14:11:40",
@@ -681,6 +713,51 @@
   ],
   "rows": [
     {
+      "theme_key": "hk_tech",
+      "theme": "港股科技/互联网",
+      "signals": 4,
+      "t30": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "继续积累",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
       "theme_key": "power",
       "theme": "电力",
       "signals": 4,
@@ -688,22 +765,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -718,22 +810,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -748,22 +855,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -778,22 +900,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -808,22 +945,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -838,22 +990,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -868,22 +1035,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -898,22 +1080,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -928,22 +1125,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -958,22 +1170,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -988,22 +1215,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1018,22 +1260,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1048,22 +1305,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1078,22 +1350,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1108,22 +1395,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1138,22 +1440,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1168,22 +1485,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1198,52 +1530,37 @@
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t60": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "t90": {
         "samples": 0,
         "hits": 0,
         "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
         "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "verdict": "继续积累",
-      "adjustment": "不调整",
-      "score_delta": 0,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "hk_tech",
-      "theme": "港股科技/互联网",
-      "signals": 2,
-      "t30": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
       },
       "verdict": "继续积累",
       "adjustment": "不调整",
@@ -1269,13 +1586,13 @@
   },
   "adjustments": {},
   "lines": [
-    "- 本次新增待验证信号 1 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 本次新增待验证信号 2 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 港股科技/互联网：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
     "- 电力：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
     "- 红利低波：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
-    "- 有色/黄金：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。",
-    "- A股宽基/中国宏观：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
+    "- 有色/黄金：T+30 样本不足；T+60 样本不足；T+90 样本不足；结论：继续积累。"
   ],
-  "added_count": 1,
-  "signal_count": 52,
+  "added_count": 2,
+  "signal_count": 54,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
