@@ -1630,6 +1630,10 @@ def _hard_reduce_candidates(
     only_reduce_pct = _as_float(((risk_controls.get("only_reduce_watchline") or {}).get("unrealized_profit_pct")), 30.0)
     profit_lock_pct = _as_float(((risk_controls.get("profit_lock_watchline") or {}).get("unrealized_profit_pct")), 50.0)
     direct_ai_cap = _as_float(risk_controls.get("direct_ai_cap_pct"), 35.0)
+    allocation = portfolio.get("allocation_framework") or {}
+    growth_target = allocation.get("growth_core_target_pct") or [15, 20]
+    growth_high = _as_float(growth_target[1] if len(growth_target) > 1 else 20.0, 20.0)
+    growth_core_pct = _as_float(summary.get("growth_core_pct"), 0.0)
     gold_range = risk_controls.get("gold_target_range_pct") or [10, 15]
     gold_high = _as_float(gold_range[1] if len(gold_range) > 1 else 15.0, 15.0)
     gold_pct = _as_float(summary.get("insurance_pct"), _as_float(summary.get("gold_pct"), 0.0))
@@ -1644,7 +1648,7 @@ def _hard_reduce_candidates(
     for holding in portfolio.get("holdings") or []:
         code = str(holding.get("code") or "")
         sleeve = str(holding.get("sleeve") or "")
-        if not code or sleeve not in {"attack", "insurance"}:
+        if not code or sleeve not in {"attack", "insurance", "growth_core"}:
             continue
         quote = quote_map.get(holding.get("name", ""), {})
         weight_pct = _as_float(quote.get("actual_weight_pct"), _as_float(holding.get("weight_pct"), 0.0))
@@ -1661,6 +1665,12 @@ def _hard_reduce_candidates(
                 trigger = "黄金超配"
                 amount_key = "reduce_small_cny"
                 reason = f"黄金/保险仓已超过 {gold_high:.0f}% 上限且有浮盈，先小幅减回区间，不把保险仓做成收益主攻。"
+                priority = 2
+        elif sleeve == "growth_core":
+            if growth_core_pct > growth_high and (pnl_pct or 0.0) > 0:
+                trigger = "成长超配"
+                amount_key = "reduce_small_cny"
+                reason = f"成长底仓已超过 {growth_high:.0f}% 上限且有浮盈，先小幅减回目标区间，不把风格放大器当成防守仓。"
                 priority = 2
         elif pnl_pct is not None and pnl_pct >= profit_lock_pct and overlap_level == "high":
             trigger = "锁盈线"
@@ -1925,7 +1935,15 @@ def _evaluate_fixed_buy_pool(
                 score = 60
                 reason = "底仓始终可关注，但只有在回撤、补短板或进攻仓受限时才升为可复核候选。"
         elif theme_key == "growth_core":
-            if summary.get("growth_tech_pct", 0.0) >= growth_tech_cap * 0.92 or chase_risk == "高":
+            current_growth_core_pct = _as_float(summary.get("growth_core_pct"), 0.0)
+            growth_high = _as_float(growth_target[1] if len(growth_target) > 1 else 20.0, 20.0)
+            if current_growth_core_pct > growth_high and weight > 0 and (pnl_pct or 0.0) > 0:
+                state = "减仓"
+                amount_key = "reduce_small_cny"
+                score = 82
+                reason = f"成长底仓已超过 {growth_high:.0f}% 上限且有浮盈，先小幅减回目标区间；创业板是风格放大器，不是防守仓。"
+                action_hint = "小幅减回目标区间，不是看空成长主线"
+            elif summary.get("growth_tech_pct", 0.0) >= growth_tech_cap * 0.92 or chase_risk == "高":
                 state = "观察"
                 score = 45
                 reason = "成长总暴露已不低，且它本身会放大组合波动。"
