@@ -1090,6 +1090,7 @@ def _validation_mistake_rows(validation: dict[str, Any] | None) -> list[list[str
                 escape(_shorten(item.get("name") or item.get("code"), 42)),
                 escape(_text(item.get("horizon"), "-")),
                 escape(_fmt_pct(item.get("return_pct"))),
+                escape(_fmt_pct(item.get("relative_return_pct")) if item.get("relative_return_pct") is not None else "-"),
                 escape(_shorten(item.get("reason"), 36)),
                 escape(_shorten(item.get("lesson"), 90)),
             ]
@@ -1128,7 +1129,7 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
     body += _validation_subblock(
         "错误复盘库",
         "把负向样本变成下次规则，避免同一种故事反复误判。",
-        ["主题", "标的", "窗口", "结果", "原因", "下次规则"],
+        ["主题", "标的", "窗口", "结果", "相对基准", "原因", "下次规则"],
         _validation_mistake_rows(validation),
     )
     note = validation.get("note") or "30/60/90天成绩单只用于校准系统权重，不代表未来收益，也不会直接触发交易。"

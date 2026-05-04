@@ -821,8 +821,11 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
     mistake_reviews = validation.get("mistake_reviews") or []
     if mistake_reviews:
         item = mistake_reviews[0]
+        relative = ""
+        if item.get("relative_return_pct") is not None:
+            relative = f"，相对基准 {float(item.get('relative_return_pct') or 0):+.2f}%"
         result.append(
-            f"复盘提醒：{item.get('theme') or '未命名'} / {item.get('name') or item.get('code') or '-'}，{item.get('horizon') or '-'} {float(item.get('return_pct') or 0):+.2f}%；{item.get('reason') or '待复盘'}。"
+            f"复盘提醒：{item.get('theme') or '未命名'} / {item.get('name') or item.get('code') or '-'}，{item.get('horizon') or '-'} {float(item.get('return_pct') or 0):+.2f}%{relative}；{item.get('reason') or '待复盘'}。"
         )
     result.append("用途：验算只校准系统权重，不直接触发买卖。")
     return result

@@ -126,6 +126,103 @@ class LogicAndReturnQualityTest(unittest.TestCase):
         self.assertEqual(row["t30"]["relative_win_rate_pct"], 100.0)
         self.assertIn("相对基准", markdown)
 
+    def test_signal_validation_downgrades_absolute_winner_that_loses_to_benchmark(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "signal_validation.json"
+            now = datetime(2026, 5, 1)
+            created_at = now - timedelta(days=35)
+            signals = []
+            for index in range(3):
+                signals.append(
+                    {
+                        "id": f"power-grid-{index}",
+                        "created_at_utc": created_at.isoformat(),
+                        "source": "candidate_pool",
+                        "theme": "AI电力底座",
+                        "theme_key": "ai_power_base",
+                        "priority": "高",
+                        "score": 8,
+                        "code": "560390",
+                        "name": "电网设备ETF",
+                        "start_price": 1.0,
+                        "benchmark_code": "510300",
+                        "benchmark_name": "沪深300ETF",
+                        "benchmark_start_price": 1.0,
+                        "observations": {},
+                    }
+                )
+            path.write_text(json.dumps({"version": 1, "signals": signals}, ensure_ascii=False), encoding="utf-8")
+
+            validation = build_signal_validation(
+                generated_at=now,
+                portfolio_payload={},
+                execution_checks={
+                    "items": [
+                        {"code": "560390", "latest_price": 1.03},
+                        {"code": "510300", "latest_price": 1.08},
+                    ]
+                },
+                path=path,
+            )
+            row = validation["rows"][0]
+
+        self.assertEqual(row["t30"]["avg_return_pct"], 3.0)
+        self.assertEqual(row["t30"]["avg_relative_return_pct"], -5.0)
+        self.assertEqual(row["verdict"], "跑输基准降权")
+        self.assertEqual(row["adjustment"], "相对收益降权")
+        self.assertLess(row["score_delta"], 0)
+        self.assertEqual(validation["adjustments"]["ai_power_base"]["score_delta"], row["score_delta"])
+
+    def test_mistake_reviews_include_absolute_winner_that_loses_to_benchmark(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "signal_validation.json"
+            now = datetime(2026, 5, 1)
+            created_at = now - timedelta(days=35)
+            path.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "signals": [
+                            {
+                                "id": "power-grid-underperform",
+                                "created_at_utc": created_at.isoformat(),
+                                "source": "candidate_pool",
+                                "theme": "AI电力底座",
+                                "theme_key": "ai_power_base",
+                                "priority": "高",
+                                "score": 8,
+                                "code": "560390",
+                                "name": "电网设备ETF",
+                                "start_price": 1.0,
+                                "benchmark_code": "510300",
+                                "benchmark_name": "沪深300ETF",
+                                "benchmark_start_price": 1.0,
+                                "observations": {},
+                            }
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            validation = build_signal_validation(
+                generated_at=now,
+                portfolio_payload={},
+                execution_checks={
+                    "items": [
+                        {"code": "560390", "latest_price": 1.03},
+                        {"code": "510300", "latest_price": 1.08},
+                    ]
+                },
+                path=path,
+            )
+
+        review = validation["mistake_reviews"][0]
+        self.assertEqual(review["reason"], "跑输基准")
+        self.assertEqual(review["relative_return_pct"], -5.0)
+        self.assertIn("没有贡献超额收益", review["lesson"])
+
     def test_execution_checks_include_default_benchmarks_for_relative_review(self) -> None:
         assets = _configured_execution_assets({"holdings": [], "candidate_etf_pool": []})
 

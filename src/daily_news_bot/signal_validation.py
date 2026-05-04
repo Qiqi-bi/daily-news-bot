@@ -370,15 +370,36 @@ def _summarize(signals: list[dict[str, Any]]) -> list[dict[str, Any]]:
         samples = int(ref["samples"])
         win_rate = _safe_float(ref.get("win_rate_pct"))
         avg_return = _safe_float(ref.get("avg_return_pct"))
+        relative_win_rate = _safe_float(ref.get("relative_win_rate_pct"))
+        avg_relative_return = _safe_float(ref.get("avg_relative_return_pct"))
         if samples < 3:
             verdict = "继续积累"
             adjustment = "不调整"
             score_delta = 0
-        elif win_rate is not None and avg_return is not None and win_rate >= 60 and avg_return > 0:
+        elif (
+            avg_relative_return is not None
+            and avg_relative_return <= -2
+            and (relative_win_rate is None or relative_win_rate <= 50)
+        ):
+            verdict = "跑输基准降权"
+            adjustment = "相对收益降权"
+            score_delta = -2
+        elif (
+            win_rate is not None
+            and avg_return is not None
+            and win_rate >= 60
+            and avg_return > 0
+            and (avg_relative_return is None or avg_relative_return > 0)
+        ):
             verdict = "保留加权"
             adjustment = "小幅加权"
             score_delta = 1
-        elif win_rate is not None and avg_return is not None and win_rate <= 40 and avg_return < 0:
+        elif (
+            win_rate is not None
+            and avg_return is not None
+            and win_rate <= 40
+            and avg_return < 0
+        ):
             verdict = "降权观察"
             adjustment = "自动降权"
             score_delta = -2
@@ -543,10 +564,12 @@ def _latest_completed_observation(signal: dict[str, Any]) -> tuple[str, dict[str
     return None
 
 
-def _mistake_reason(signal: dict[str, Any], return_pct: float) -> str:
+def _mistake_reason(signal: dict[str, Any], return_pct: float, relative_return_pct: float | None = None) -> str:
     priority = str(signal.get("priority") or "")
     source = str(signal.get("source") or "")
     score = _safe_float(signal.get("score")) or 0.0
+    if relative_return_pct is not None and relative_return_pct <= -2 and return_pct >= 0:
+        return "跑输基准"
     if "追高" in priority or "冲刺" in priority:
         return "追高风险"
     if source == "industry_radar":
@@ -564,6 +587,7 @@ def _mistake_lesson(reason: str) -> str:
         "行业逻辑未兑现": "同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。",
         "信号升级过早": "先留在观察层，等价格和新闻复核后再提高权重。",
         "价格确认失败": "降低该主题权重，避免把短期叙事当作趋势。",
+        "跑输基准": "绝对上涨但没跑赢基准时，说明这条行业逻辑没有贡献超额收益，下次降低权重或只保留底仓。",
         "证据不足": "补充更多来源和价格验证，样本不够时只观察。",
     }
     return lessons.get(reason, "先复核假设，再决定是否继续跟踪。")
@@ -577,9 +601,11 @@ def _build_mistake_reviews(signals: list[dict[str, Any]]) -> list[dict[str, Any]
             continue
         horizon, observation = latest
         return_pct = _safe_float(observation.get("return_pct"))
-        if return_pct is None or return_pct >= 0:
+        relative_return_pct = _safe_float(observation.get("relative_return_pct"))
+        underperformed_benchmark = relative_return_pct is not None and relative_return_pct <= -2
+        if return_pct is None or (return_pct >= 0 and not underperformed_benchmark):
             continue
-        reason = _mistake_reason(signal, return_pct)
+        reason = _mistake_reason(signal, return_pct, relative_return_pct)
         reviews.append(
             {
                 "theme_key": signal.get("theme_key"),
@@ -590,6 +616,7 @@ def _build_mistake_reviews(signals: list[dict[str, Any]]) -> list[dict[str, Any]
                 "source": signal.get("source"),
                 "horizon": horizon,
                 "return_pct": round(return_pct, 3),
+                "relative_return_pct": round(relative_return_pct, 3) if relative_return_pct is not None else None,
                 "reason": reason,
                 "lesson": _mistake_lesson(reason),
                 "status": "待复盘",
@@ -610,8 +637,11 @@ def _build_mistake_summary(reviews: list[dict[str, Any]]) -> dict[str, Any]:
         top_reason = max(by_reason, key=lambda reason: by_reason[reason])
         lines = [f"- 错误复盘库记录 {len(reviews)} 条负向样本；最多的问题是：{top_reason}。"]
         for item in reviews[:2]:
+            relative_text = ""
+            if item.get("relative_return_pct") is not None:
+                relative_text = f"，相对基准 {item.get('relative_return_pct'):+.2f}%"
             lines.append(
-                f"- {item.get('theme')} / {item.get('name')}：{item.get('horizon')} {item.get('return_pct'):+.2f}%，{item.get('reason')}；{item.get('lesson')}"
+                f"- {item.get('theme')} / {item.get('name')}：{item.get('horizon')} {item.get('return_pct'):+.2f}%{relative_text}，{item.get('reason')}；{item.get('lesson')}"
             )
     return {"total": len(reviews), "by_reason": by_reason, "lines": lines}
 
@@ -684,10 +714,13 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
     lines.extend(["", "## 错误复盘库", ""])
     lines.extend(mistake_summary.get("lines") or ["- 暂无完成窗口的负向样本。"])
     if mistake_reviews:
-        lines.extend(["", "| 主题 | 标的 | 窗口 | 结果 | 原因 | 下次规则 |", "|---|---|---|---:|---|---|"])
+        lines.extend(["", "| 主题 | 标的 | 窗口 | 结果 | 相对基准 | 原因 | 下次规则 |", "|---|---|---|---:|---:|---|---|"])
         for item in mistake_reviews[:8]:
+            relative_text = "-"
+            if item.get("relative_return_pct") is not None:
+                relative_text = f"{item.get('relative_return_pct', 0):+.2f}%"
             lines.append(
-                f"| {item.get('theme')} | {item.get('name')} | {item.get('horizon')} | {item.get('return_pct', 0):+.2f}% | {item.get('reason')} | {item.get('lesson')} |"
+                f"| {item.get('theme')} | {item.get('name')} | {item.get('horizon')} | {item.get('return_pct', 0):+.2f}% | {relative_text} | {item.get('reason')} | {item.get('lesson')} |"
             )
     lines.extend(["", f"> {validation.get('note') or '事后验算只用于校准系统，不代表未来收益。'}"])
     return "\n".join(lines).strip() + "\n"
