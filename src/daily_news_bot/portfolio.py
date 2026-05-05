@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import re
 from typing import Any
@@ -11,7 +11,14 @@ import yaml
 from .config import ROOT_DIR
 from .decision_journal import build_event_etf_history
 from .fixed_pool_history import build_fixed_pool_60d_panel
-from .industry_radar import apply_industry_hit_streaks, build_industry_radar, render_industry_radar_lines
+from .industry_radar import (
+    INDUSTRY_RADAR_STATE_PATH,
+    apply_industry_hit_streaks,
+    build_industry_radar,
+    load_industry_radar_state,
+    render_industry_radar_lines,
+    save_industry_radar_state,
+)
 from .models import EventCluster
 
 
@@ -1715,6 +1722,54 @@ def _base_position_gate(row: dict[str, Any], price_status: str) -> tuple[str, st
     return "等待连续确认", "价格有配合，但连续命中次数还不够，先不扩可买池。"
 
 
+def _date_text(value: datetime) -> str:
+    return value.date().isoformat()
+
+
+def _parse_date(value: Any) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text)
+    except ValueError:
+        return None
+
+
+def _apply_weekly_review_cooldown(
+    *,
+    row: dict[str, Any],
+    gate: str,
+    note: str,
+    state_items: dict[str, Any],
+    generated_at: datetime | None,
+    cooldown_days: int = 6,
+) -> tuple[str, str, dict[str, Any], bool]:
+    row_id = str(row.get("id") or row.get("name") or "").strip()
+    if not row_id or gate != "周报评估" or generated_at is None:
+        return gate, note, {}, False
+
+    current_date = generated_at.date()
+    item = dict(state_items.get(row_id) or {})
+    last_review_text = str(item.get("last_weekly_review_date") or "")
+    cooldown_until = _parse_date(item.get("weekly_review_cooldown_until"))
+    if last_review_text == _date_text(generated_at):
+        return gate, note, item, False
+    if cooldown_until is not None and current_date <= cooldown_until.date():
+        cool_note = f"冷却期到 {cooldown_until.date().isoformat()}；等周报或新回执后再重新评估。"
+        return "冷却中", cool_note, item, False
+
+    until_date = current_date + timedelta(days=cooldown_days)
+    item.update(
+        {
+            "last_weekly_review_date": current_date.isoformat(),
+            "weekly_review_cooldown_until": until_date.isoformat(),
+            "last_weekly_review_gate": gate,
+        }
+    )
+    return gate, note, item, True
+
+
 def _apply_industry_price_confirmation(
     radar: dict[str, Any],
     *,
@@ -1722,6 +1777,8 @@ def _apply_industry_price_confirmation(
     execution_checks: dict[str, Any] | None,
     local_market_payload: dict[str, Any] | None,
     candidate_scores: list[dict[str, Any]],
+    generated_at: datetime | None = None,
+    state_path: Path = INDUSTRY_RADAR_STATE_PATH,
 ) -> dict[str, Any]:
     if not radar or not radar.get("enabled"):
         return radar
@@ -1730,6 +1787,10 @@ def _apply_industry_price_confirmation(
     rows: list[dict[str, Any]] = []
     confirmed_names: list[str] = []
     blocked_names: list[str] = []
+    cooldown_names: list[str] = []
+    state = load_industry_radar_state(state_path)
+    state_items = dict(state.get("items") or {})
+    state_changed = False
 
     for original in radar.get("rows") or []:
         row = dict(original)
@@ -1750,6 +1811,17 @@ def _apply_industry_price_confirmation(
         best = max(confirmations, key=lambda item: int(item.get("score") or 0), default={})
         price_status = _price_confirmation_status(best)
         gate, note = _base_position_gate(row, price_status)
+        gate, note, updated_state_item, cooldown_state_changed = _apply_weekly_review_cooldown(
+            row=row,
+            gate=gate,
+            note=note,
+            state_items=state_items,
+            generated_at=generated_at,
+        )
+        row_id = str(row.get("id") or row.get("name") or "").strip()
+        if updated_state_item and row_id:
+            state_items[row_id] = updated_state_item
+            state_changed = state_changed or cooldown_state_changed
 
         row["price_confirmation"] = best
         row["price_confirmation_status"] = price_status
@@ -1760,16 +1832,27 @@ def _apply_industry_price_confirmation(
         row["binding_summary"] = f"{row.get('binding_summary') or ''}；{suffix}"
         if price_status == "价格确认" and gate == "周报评估":
             confirmed_names.append(str(row.get("name") or row.get("id") or "行业"))
+        elif price_status == "价格确认" and gate == "冷却中":
+            cooldown_names.append(str(row.get("name") or row.get("id") or "行业"))
         elif int(row.get("hit_streak") or 0) >= 3 and price_status != "价格确认":
             blocked_names.append(str(row.get("name") or row.get("id") or "行业"))
         rows.append(row)
 
+    if state_changed:
+        state["version"] = 1
+        if generated_at is not None:
+            state["updated_at_utc"] = generated_at.replace(microsecond=0).isoformat()
+        state["items"] = state_items
+        save_industry_radar_state(state, state_path)
+
     summary_lines = list(result.get("summary_lines") or [])
     if confirmed_names:
         summary_lines.append("价格确认：连续命中且价格配合的行业：" + "、".join(confirmed_names[:3]) + "；只进周报评估，不自动交易。")
-    elif blocked_names:
+    if cooldown_names:
+        summary_lines.append("价格确认：已进入冷却期的行业：" + "、".join(cooldown_names[:3]) + "；等周报或新回执后再评估。")
+    if blocked_names:
         summary_lines.append("价格确认：连续命中但价格未确认的行业：" + "、".join(blocked_names[:3]) + "；继续观察。")
-    else:
+    if not (confirmed_names or cooldown_names or blocked_names):
         summary_lines.append("价格确认：没有行业同时满足连续命中和价格确认。")
     result["rows"] = rows
     result["summary_lines"] = summary_lines
@@ -3102,6 +3185,7 @@ def build_portfolio_brief(
         execution_checks=execution_checks,
         local_market_payload=local_market_payload,
         candidate_scores=candidate_scores,
+        generated_at=generated_at,
     )
     industry_radar_lines = render_industry_radar_lines(industry_radar)
     reduce_candidates = _hard_reduce_candidates(portfolio, summary, portfolio_quotes)

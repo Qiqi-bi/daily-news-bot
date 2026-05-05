@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+from datetime import datetime
+import json
+from pathlib import Path
+import tempfile
 import unittest
 
 from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool
@@ -91,6 +95,66 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertEqual(row["base_position_gate"], "周报评估")
         self.assertIn("周报评估", row["binding_summary"])
         self.assertIn("不自动交易", row["price_confirmation_note"])
+
+    def test_industry_weekly_review_enters_cooldown_after_first_prompt(self) -> None:
+        radar = {
+            "enabled": True,
+            "rows": [
+                {
+                    "id": "ai_power_base",
+                    "name": "AI电力底座",
+                    "layer": "secular",
+                    "status": "今日关注",
+                    "hit_streak": 4,
+                    "theme_keys": ["ai_power_base"],
+                    "instruments": ["561560"],
+                    "binding_summary": "参考代码：561560；连续4次：连续确认",
+                }
+            ],
+            "summary_lines": [],
+        }
+        checks = {
+            "items": [
+                {
+                    "code": "561560",
+                    "change_pct": 1.4,
+                    "turnover_cny": 150_000_000,
+                    "chase_risk": "低",
+                }
+            ]
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state_path = Path(tmp) / "industry_radar_state.json"
+            first = _apply_industry_price_confirmation(
+                radar,
+                portfolio_quotes=None,
+                execution_checks=checks,
+                local_market_payload={"broad_change_pct": 0.2, "risk_avg_pct": 0.1, "high_chase_count": 0},
+                candidate_scores=[],
+                generated_at=datetime(2026, 5, 3, 13),
+                state_path=state_path,
+            )
+            second = _apply_industry_price_confirmation(
+                radar,
+                portfolio_quotes=None,
+                execution_checks=checks,
+                local_market_payload={"broad_change_pct": 0.2, "risk_avg_pct": 0.1, "high_chase_count": 0},
+                candidate_scores=[],
+                generated_at=datetime(2026, 5, 4, 13),
+                state_path=state_path,
+            )
+            state_payload = json.loads(state_path.read_text(encoding="utf-8"))
+
+        first_row = first["rows"][0]
+        second_row = second["rows"][0]
+
+        self.assertEqual(first_row["base_position_gate"], "周报评估")
+        self.assertEqual(second_row["base_position_gate"], "冷却中")
+        self.assertIn("冷却", second_row["price_confirmation_note"])
+        self.assertIn("冷却中", second_row["binding_summary"])
+        self.assertIn("已进入冷却期", "\n".join(second["summary_lines"]))
+        self.assertEqual(state_payload["updated_at_utc"], "2026-05-03T13:00:00")
 
     def test_fixed_pool_rows_include_market_confirmation_detail(self) -> None:
         rows = _evaluate_fixed_buy_pool(

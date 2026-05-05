@@ -839,6 +839,14 @@ def _save_streak_state(payload: dict[str, Any], path: Path = INDUSTRY_RADAR_STAT
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def load_industry_radar_state(path: Path = INDUSTRY_RADAR_STATE_PATH) -> dict[str, Any]:
+    return _load_streak_state(path)
+
+
+def save_industry_radar_state(payload: dict[str, Any], path: Path = INDUSTRY_RADAR_STATE_PATH) -> None:
+    _save_streak_state(payload, path)
+
+
 def _date_key(value: datetime) -> str:
     return value.date().isoformat()
 
