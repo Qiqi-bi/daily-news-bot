@@ -835,6 +835,8 @@ def _quick_nav(archive_url: Any = "") -> str:
         ("博弈", "#strategy"),
         ("预警", "#predictions"),
         ("验算", "#validation"),
+        ("行业", "#industry"),
+        ("候选", "#fixed-pool"),
         ("框架", "#playbook"),
         ("市场", "#market"),
         ("提醒", "#watchlist"),
@@ -892,14 +894,17 @@ def _fixed_pool_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
     for row in rows or []:
         odds = row.get("opportunity_score") or {}
         confirmation = row.get("market_confirmation") or {}
+        confirmation_text = confirmation.get("text") or confirmation.get("summary") or "-"
+        amount_text = row.get("amount_band") or row.get("amount_text")
+        change_text = _fmt_pct(row.get("day_change_pct")) if row.get("day_change_pct") is not None else _text(row.get("change_text"), "未知")
         result.append(
             [
                 escape(f"{_text(row.get('name'), '')} ({_text(row.get('code'), '')})"),
                 escape(state_label.get(_text(row.get("state"), "观察"), _text(row.get("state"), "观察"))),
-                escape(_shorten(confirmation.get("text") or "-", 90)),
+                escape(_shorten(confirmation_text, 90)),
                 escape(_shorten(odds.get("text") or row.get("odds_label") or "-", 120)),
-                escape(_text(row.get("amount_band"))),
-                escape(_fmt_pct(row.get("day_change_pct"))),
+                escape(_text(amount_text)),
+                escape(change_text),
                 escape(_text(row.get("role"))),
                 escape(_shorten(row.get("reason"), 160)),
             ]
@@ -1258,6 +1263,27 @@ def _event_route_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
 
 def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> list[str]:
     sections = []
+    industry_section = _section(
+        "行业雷达",
+        _industry_radar_gate_summary(portfolio.get("industry_radar"))
+        + _render_table(
+            ["层级", "行业", "周期", "评分", "闸门", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
+            _industry_radar_rows(portfolio.get("industry_radar")),
+        ),
+        "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",
+        "wide",
+        "industry",
+    )
+    fixed_pool_section = _section(
+        "固定候选池",
+        _render_table(
+            ["标的", "状态", "行情确认", "赔率", "金额档位", "当日变化", "角色", "原因"],
+            _fixed_pool_rows(portfolio.get("fixed_buy_pool_rows")),
+        ),
+        "只展示公开候选和纪律状态，不展示实际持仓、成本价或组合金额。",
+        class_name="wide",
+        section_id="fixed-pool",
+    )
     if portfolio.get("private_mode"):
         sections.append(
             _section(
@@ -1268,6 +1294,7 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
                 "wide",
             )
         )
+        sections.extend([industry_section, fixed_pool_section])
         return sections
     if not portfolio.get("enabled"):
         sections.append(
@@ -1318,24 +1345,8 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             ),
             _section("A 股阶段", _render_list(portfolio.get("local_market_lines"), 8)),
             _section("风险硬闸门", _render_list(portfolio.get("hard_risk_gate_lines"), 6), "控制单次金额、月度进攻仓新增、连续确认和追高频率。", "wide"),
-            _section(
-                "行业雷达",
-                _industry_radar_gate_summary(portfolio.get("industry_radar"))
-                + _render_table(
-                    ["层级", "行业", "周期", "评分", "闸门", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
-                    _industry_radar_rows(portfolio.get("industry_radar")),
-                ),
-                "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",
-                "wide",
-            ),
-            _section(
-                "固定候选池",
-                _render_table(
-                    ["标的", "状态", "行情确认", "赔率", "金额档位", "当日变化", "角色", "原因"],
-                    _fixed_pool_rows(portfolio.get("fixed_buy_pool_rows")),
-                ),
-                class_name="wide",
-            ),
+            industry_section,
+            fixed_pool_section,
             _section(
                 "候选池回填",
                 _render_table(

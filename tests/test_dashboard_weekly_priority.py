@@ -142,6 +142,76 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertIn("冷却中：黄金保险仓", html)
         self.assertIn("只进周报评估，不自动交易", html)
 
+    def test_private_portfolio_still_shows_public_research_sections(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {
+                    "enabled": True,
+                    "private_mode": True,
+                    "trade_sync_status": {"label": "操作回执", "value": "已同步", "note": "按账本运行。"},
+                    "industry_radar": {
+                        "enabled": True,
+                        "rows": [
+                            {
+                                "layer_label": "长期主线",
+                                "name": "AI电力底座",
+                                "horizon": "1-3年",
+                                "score_card_text": "政策 4 / 供需 5",
+                                "status": "持仓复核",
+                                "base_position_gate": "周报评估",
+                                "price_confirmation_status": "价格确认",
+                                "fact_summary": "算电协同继续推进。",
+                                "watch": "绿电和算力订单。",
+                                "binding_summary": "连续4次；价格闸门：价格确认，周报评估",
+                                "verify": "等周报评估。",
+                                "action": "只进周报评估，不自动交易。",
+                            }
+                        ],
+                    },
+                    "fixed_buy_pool_rows": [
+                        {
+                            "name": "电力ETF",
+                            "code": "561560",
+                            "state": "观察",
+                            "market_confirmation": {"summary": "价格确认，等待周报。"},
+                            "odds_label": "中",
+                            "amount_text": "按纪律表",
+                            "change_text": "+1.20%",
+                            "role": "AI电力底座",
+                            "reason": "观察，不自动买。",
+                        }
+                    ],
+                },
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("组合配置（私密）", html)
+        self.assertIn("行业雷达", html)
+        self.assertIn('href="#industry"', html)
+        self.assertIn("行业闸门", html)
+        self.assertIn("周报评估：AI电力底座", html)
+        self.assertIn("固定候选池", html)
+        self.assertIn('href="#fixed-pool"', html)
+        self.assertIn("电力ETF", html)
+        self.assertIn("价格确认，等待周报", html)
+        self.assertIn("按纪律表", html)
+        self.assertIn("+1.20%", html)
+        self.assertNotIn("组合偏离面板", html)
+        self.assertNotIn("年度收益拆账", html)
+
 
 if __name__ == "__main__":
     unittest.main()
