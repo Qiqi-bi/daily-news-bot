@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+from datetime import datetime
+import json
+from pathlib import Path
 from typing import Any
 
+
+INDUSTRY_RADAR_STATE_PATH = Path(__file__).resolve().parents[2] / "outputs" / "industry_radar_state.json"
 
 LAYER_LABELS = {
     "core": "一级：持仓相关",
@@ -812,6 +817,149 @@ def _coverage_guidance(
 
 def _binding_with_coverage(binding_summary: str, coverage_status: str, coverage_note: str) -> str:
     return f"{binding_summary}；{coverage_status}：{coverage_note}"
+
+
+def _load_streak_state(path: Path = INDUSTRY_RADAR_STATE_PATH) -> dict[str, Any]:
+    if not path.exists():
+        return {"version": 1, "items": {}}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"version": 1, "items": {}}
+    if not isinstance(payload, dict):
+        return {"version": 1, "items": {}}
+    items = payload.get("items")
+    if not isinstance(items, dict):
+        payload["items"] = {}
+    return payload
+
+
+def _save_streak_state(payload: dict[str, Any], path: Path = INDUSTRY_RADAR_STATE_PATH) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _date_key(value: datetime) -> str:
+    return value.date().isoformat()
+
+
+def _previous_day(last_date: str, current_date: str) -> bool:
+    try:
+        last = datetime.fromisoformat(last_date).date()
+        current = datetime.fromisoformat(current_date).date()
+    except ValueError:
+        return False
+    return (current - last).days == 1
+
+
+def _streak_active(row: dict[str, Any]) -> bool:
+    return row.get("status") == "今日关注" and row.get("layer") != "avoid"
+
+
+def _streak_text(streak: int, active: bool) -> tuple[str, str]:
+    if not active:
+        return "未命中", "本次没有新闻或候选命中，连续计数暂停。"
+    if streak >= 3:
+        return "连续确认", f"已连续{streak}次命中；进入周报复核，仍需价格、成交和仓位闸门确认。"
+    if streak == 2:
+        return "二次确认", "已连续2次命中；下一次仍确认，再评估是否进入候选或观察底仓。"
+    return "首次命中", "首次命中只记录观察，不扩可买池。"
+
+
+def _append_streak_summary(binding_summary: str, streak: int, streak_status: str) -> str:
+    if streak <= 0:
+        return binding_summary
+    return f"{binding_summary}；连续{streak}次：{streak_status}"
+
+
+def apply_industry_hit_streaks(
+    radar: dict[str, Any],
+    *,
+    generated_at: datetime,
+    path: Path = INDUSTRY_RADAR_STATE_PATH,
+) -> dict[str, Any]:
+    if not radar or not radar.get("enabled"):
+        return radar
+
+    result = dict(radar)
+    rows = [dict(row) for row in radar.get("rows") or []]
+    state = _load_streak_state(path)
+    items = dict(state.get("items") or {})
+    current_date = _date_key(generated_at)
+    active_with_streak: list[dict[str, Any]] = []
+
+    for row in rows:
+        row_id = str(row.get("id") or row.get("name") or "").strip()
+        if not row_id:
+            continue
+        item = dict(items.get(row_id) or {})
+        active = _streak_active(row)
+        previous_last_hit = str(item.get("last_hit_date") or "")
+        previous_streak = int(item.get("hit_streak") or 0)
+
+        if active:
+            if previous_last_hit == current_date:
+                streak = max(previous_streak, 1)
+            elif previous_last_hit and _previous_day(previous_last_hit, current_date):
+                streak = previous_streak + 1
+            else:
+                streak = 1
+            item.update(
+                {
+                    "id": row_id,
+                    "name": row.get("name") or row_id,
+                    "hit_streak": streak,
+                    "last_hit_date": current_date,
+                    "last_status": row.get("status"),
+                    "last_hits": list(row.get("hits") or []),
+                }
+            )
+        else:
+            streak = 0
+            item.update(
+                {
+                    "id": row_id,
+                    "name": row.get("name") or row_id,
+                    "hit_streak": 0,
+                    "last_missed_date": current_date,
+                    "last_status": row.get("status"),
+                    "last_hits": [],
+                }
+            )
+
+        streak_status, streak_note = _streak_text(streak, active)
+        row["hit_streak"] = streak
+        row["streak_status"] = streak_status
+        row["streak_note"] = streak_note
+        row["binding_summary"] = _append_streak_summary(str(row.get("binding_summary") or ""), streak, streak_status)
+        if active:
+            active_with_streak.append(row)
+        items[row_id] = item
+
+    state = {
+        "version": 1,
+        "updated_at_utc": generated_at.replace(microsecond=0).isoformat(),
+        "items": items,
+    }
+    try:
+        _save_streak_state(state, path)
+    except OSError as exc:
+        result["streak_error"] = f"{type(exc).__name__}: {exc}"[:200]
+
+    result["rows"] = rows
+    confirmed = [row for row in active_with_streak if int(row.get("hit_streak") or 0) >= 3]
+    pending = [row for row in active_with_streak if int(row.get("hit_streak") or 0) == 2]
+    if confirmed:
+        names = "、".join(f"{row.get('name')}连续{row.get('hit_streak')}次" for row in confirmed[:3])
+        streak_line = f"连续确认：{names}；进入周报复核，仍不自动交易。"
+    elif pending:
+        names = "、".join(str(row.get("name")) for row in pending[:3])
+        streak_line = f"二次确认：{names}；下一次仍命中再评估候选或观察底仓。"
+    else:
+        streak_line = "连续确认仍在积累；单日命中不扩可买池。"
+    result["streak_summary_lines"] = [streak_line]
+    result["summary_lines"] = list(result.get("summary_lines") or []) + [streak_line]
+    return result
 
 
 def _component_score(text: str, keywords: tuple[str, ...]) -> int:

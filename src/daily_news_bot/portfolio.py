@@ -11,7 +11,7 @@ import yaml
 from .config import ROOT_DIR
 from .decision_journal import build_event_etf_history
 from .fixed_pool_history import build_fixed_pool_60d_panel
-from .industry_radar import build_industry_radar, render_industry_radar_lines
+from .industry_radar import apply_industry_hit_streaks, build_industry_radar, render_industry_radar_lines
 from .models import EventCluster
 
 
@@ -2924,6 +2924,7 @@ def build_portfolio_brief(
     execution_checks: dict[str, Any] | None = None,
     trade_ledger: dict[str, Any] | None = None,
     fixed_pool_history: dict[str, Any] | None = None,
+    generated_at: datetime | None = None,
 ) -> tuple[str, dict[str, Any]]:
     del market_snapshot
     portfolio_for_weights = _portfolio_with_quote_weights(portfolio, portfolio_quotes)
@@ -2938,6 +2939,8 @@ def build_portfolio_brief(
     holding_impacts = _holding_impacts(portfolio_for_weights, event_impacts)
     candidate_scores = _score_candidate_pool(portfolio, event_impacts, summary)
     industry_radar = build_industry_radar(portfolio, clusters, event_impacts, candidate_scores)
+    if generated_at is not None:
+        industry_radar = apply_industry_hit_streaks(industry_radar, generated_at=generated_at)
     industry_radar_lines = render_industry_radar_lines(industry_radar)
     allocation_deviation = _allocation_deviation_panel(summary, portfolio)
     allocation_deviation_lines = _allocation_deviation_lines(allocation_deviation)

@@ -1279,6 +1279,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
                 execution_checks=execution_checks,
                 trade_ledger=trade_ledger,
                 fixed_pool_history=fixed_pool_history,
+                generated_at=generated_at,
             )
             portfolio_payload["enabled"] = True
             portfolio_payload["quotes"] = portfolio_quotes

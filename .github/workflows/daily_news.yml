@@ -186,6 +186,7 @@ jobs:
           restore_state watchlist.json
           restore_state event_history.json
           restore_state signal_validation.json
+          restore_state industry_radar_state.json
           if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
             restore_state decision_journal.json
             restore_state portfolio_history.json
@@ -380,6 +381,7 @@ jobs:
             outputs/report.json
             outputs/watchlist.json
             outputs/signal_validation.json
+            outputs/industry_radar_state.json
             outputs/portfolio_brief.md
             outputs/portfolio_weekly.md
           if-no-files-found: error
@@ -426,11 +428,13 @@ jobs:
           copy_if_exists outputs/report.json public/report.json
           copy_if_exists outputs/watchlist.json public/watchlist.json
           copy_if_exists outputs/signal_validation.json public/signal_validation.json
+          copy_if_exists outputs/industry_radar_state.json public/industry_radar_state.json
 
           mkdir -p public/state
           copy_if_exists outputs/watchlist.json public/state/watchlist.json
           copy_if_exists outputs/event_history.json public/state/event_history.json
           copy_if_exists outputs/signal_validation.json public/state/signal_validation.json
+          copy_if_exists outputs/industry_radar_state.json public/state/industry_radar_state.json
 
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/index.html"
           copy_if_exists outputs/dashboard.html "public/$DASHBOARD_ARCHIVE_PATH/dashboard.html"
@@ -438,6 +442,7 @@ jobs:
           copy_if_exists outputs/report.json "public/$DASHBOARD_ARCHIVE_PATH/report.json"
           copy_if_exists outputs/watchlist.json "public/$DASHBOARD_ARCHIVE_PATH/watchlist.json"
           copy_if_exists outputs/signal_validation.json "public/$DASHBOARD_ARCHIVE_PATH/signal_validation.json"
+          copy_if_exists outputs/industry_radar_state.json "public/$DASHBOARD_ARCHIVE_PATH/industry_radar_state.json"
 
           if [ "$PORTFOLIO_PUBLIC_OUTPUTS" = "true" ]; then
             copy_if_exists outputs/portfolio_brief.md public/portfolio_brief.md
@@ -570,7 +575,7 @@ jobs:
             echo "- Archive index: ${DASHBOARD_ARCHIVE_INDEX_URL:-not configured}"
             echo "- This run archive: ${DASHBOARD_ARCHIVE_URL:-not configured}"
             echo "- Run artifact: daily-news-dashboard-${{ github.run_id }}-${{ github.run_attempt }}"
-            echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json, outputs/signal_validation.json"
+            echo "- Files: outputs/dashboard.html, outputs/report.md, outputs/report.json, outputs/watchlist.json, outputs/signal_validation.json, outputs/industry_radar_state.json"
             if [ -f outputs/feishu_receipts.json ]; then
               python3 - <<'PY'
           import json

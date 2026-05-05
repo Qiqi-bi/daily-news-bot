@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from datetime import datetime
+from pathlib import Path
 from types import SimpleNamespace
+import tempfile
 import unittest
 
-from src.daily_news_bot.industry_radar import build_industry_radar
+from src.daily_news_bot.industry_radar import apply_industry_hit_streaks, build_industry_radar
 
 
 class IndustryRadarFactsTest(unittest.TestCase):
@@ -196,6 +199,94 @@ class IndustryRadarFactsTest(unittest.TestCase):
         self.assertEqual(held_row["coverage_status"], "持仓复核")
         self.assertIn("不自动加仓", held_row["coverage_note"])
         self.assertIn("持仓复核", held_row["binding_summary"])
+
+    def test_industry_hit_streak_requires_repeated_confirmations(self) -> None:
+        cluster = SimpleNamespace(
+            theme="具身智能机器人订单",
+            tags=[],
+            representative=SimpleNamespace(
+                title="具身智能机器人和伺服系统进入客户验证",
+                summary="减速器、执行器和传感器订单开始放量。",
+                content="",
+            ),
+            articles=[],
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "industry_radar_state.json"
+            first = apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 1, 13),
+                path=path,
+            )
+            duplicate_same_day = apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 1, 21),
+                path=path,
+            )
+            second = apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 2, 13),
+                path=path,
+            )
+            third = apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 3, 13),
+                path=path,
+            )
+
+        first_row = next(item for item in first["rows"] if item["id"] == "embodied_robotics")
+        duplicate_row = next(item for item in duplicate_same_day["rows"] if item["id"] == "embodied_robotics")
+        second_row = next(item for item in second["rows"] if item["id"] == "embodied_robotics")
+        third_row = next(item for item in third["rows"] if item["id"] == "embodied_robotics")
+
+        self.assertEqual(first_row["hit_streak"], 1)
+        self.assertEqual(duplicate_row["hit_streak"], 1)
+        self.assertEqual(second_row["hit_streak"], 2)
+        self.assertEqual(third_row["hit_streak"], 3)
+        self.assertIn("首次命中", first_row["streak_status"])
+        self.assertIn("二次确认", second_row["streak_status"])
+        self.assertIn("连续确认", third_row["streak_status"])
+        self.assertIn("周报", third_row["streak_note"])
+        self.assertIn("连续3次", third_row["binding_summary"])
+
+    def test_industry_hit_streak_resets_after_a_missed_run(self) -> None:
+        cluster = SimpleNamespace(
+            theme="煤炭和火电容量电价",
+            tags=[],
+            representative=SimpleNamespace(
+                title="煤炭和火电容量电价支撑电力安全",
+                summary="迎峰度夏用电负荷抬升。",
+                content="",
+            ),
+            articles=[],
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "industry_radar_state.json"
+            apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 1, 13),
+                path=path,
+            )
+            missed = apply_industry_hit_streaks(
+                build_industry_radar({}, [], [], []),
+                generated_at=datetime(2026, 5, 2, 13),
+                path=path,
+            )
+            resumed = apply_industry_hit_streaks(
+                build_industry_radar({}, [cluster], [], []),
+                generated_at=datetime(2026, 5, 3, 13),
+                path=path,
+            )
+
+        missed_row = next(item for item in missed["rows"] if item["id"] == "coal_power_security")
+        resumed_row = next(item for item in resumed["rows"] if item["id"] == "coal_power_security")
+
+        self.assertEqual(missed_row["hit_streak"], 0)
+        self.assertEqual(missed_row["streak_status"], "未命中")
+        self.assertEqual(resumed_row["hit_streak"], 1)
+        self.assertIn("首次命中", resumed_row["streak_status"])
 
 
 if __name__ == "__main__":
