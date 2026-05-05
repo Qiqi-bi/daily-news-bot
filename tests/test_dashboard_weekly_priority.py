@@ -76,6 +76,72 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertIn("A股系统回撤", html)
         self.assertIn("暂停新增进攻仓", html)
 
+    def test_industry_radar_surfaces_review_gate_summary(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {
+                    "enabled": True,
+                    "action_slot_lines": [],
+                    "allocation_deviation": {"rows": [], "conclusion": "维持。"},
+                    "annual_objective": {"return_budget": {"rows": []}},
+                    "stress_test": {"rows": []},
+                    "industry_radar": {
+                        "enabled": True,
+                        "rows": [
+                            {
+                                "layer_label": "长期主线",
+                                "name": "AI电力底座",
+                                "horizon": "1-3年",
+                                "score_card_text": "政策 4 / 供需 5",
+                                "status": "今日关注",
+                                "base_position_gate": "周报评估",
+                                "price_confirmation_status": "价格确认",
+                                "price_confirmation_note": "连续命中叠加价格确认，可以进入周报底仓评估，但不自动交易。",
+                                "fact_summary": "算电协同继续推进。",
+                                "watch": "绿电和算力订单。",
+                                "binding_summary": "连续4次；价格闸门：价格确认，周报评估",
+                                "verify": "等周报评估。",
+                                "action": "只进周报评估，不自动交易。",
+                            },
+                            {
+                                "layer_label": "保险仓",
+                                "name": "黄金保险仓",
+                                "horizon": "长期",
+                                "score_card_text": "政策 2 / 供需 3",
+                                "status": "今日关注",
+                                "base_position_gate": "冷却中",
+                                "price_confirmation_status": "价格确认",
+                                "price_confirmation_note": "冷却期到 2026-05-09；等周报或新回执后再重新评估。",
+                                "fact_summary": "避险仍在。",
+                                "watch": "美元和实际利率。",
+                                "binding_summary": "价格闸门：价格确认，冷却中",
+                                "verify": "等新回执。",
+                                "action": "本周已提醒。",
+                            },
+                        ],
+                    },
+                },
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("行业闸门", html)
+        self.assertIn("周报评估：AI电力底座", html)
+        self.assertIn("冷却中：黄金保险仓", html)
+        self.assertIn("只进周报评估，不自动交易", html)
+
 
 if __name__ == "__main__":
     unittest.main()

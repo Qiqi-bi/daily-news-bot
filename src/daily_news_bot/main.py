@@ -663,15 +663,47 @@ def _build_feishu_focus_lines(payload: dict[str, Any]) -> list[str]:
         focused = [first_secular] + [row for row in focused if row is not first_secular]
     if not focused:
         focused = secular_rows + [row for row in rows if row.get("layer") == "core"]
+    gated_rows = [
+        row for row in rows if str(row.get("base_position_gate") or "") in {"周报评估", "冷却中"} and row.get("layer") != "avoid"
+    ]
+    if gated_rows:
+        gated_ids = {id(row) for row in gated_rows}
+        focused = gated_rows + [row for row in focused if id(row) not in gated_ids]
+
+    def gate_priority(row: dict[str, Any]) -> int:
+        gate = str(row.get("base_position_gate") or "")
+        if gate == "周报评估":
+            return 0
+        if gate == "冷却中":
+            return 1
+        if str(row.get("price_confirmation_status") or "") == "价格确认":
+            return 2
+        return 3
+
+    focused = sorted(enumerate(focused), key=lambda item: (gate_priority(item[1]), item[0]))
+    focused_rows = [row for _, row in focused]
 
     result: list[str] = []
-    for row in focused[:3]:
-        score = str(row.get("score_card_text") or row.get("status") or "观察")
+    for row in focused_rows[:3]:
+        gate = str(row.get("base_position_gate") or "").strip()
+        price_status = str(row.get("price_confirmation_status") or "").strip()
+        if gate or price_status:
+            score = "｜".join(part for part in [gate or "继续观察", price_status or "价格待确认"] if part)
+            if gate == "周报评估":
+                suffix_text = "周报里复核底仓，不自动买"
+            elif gate == "冷却中":
+                suffix_text = "本周已提醒，等周报或新回执"
+            elif price_status == "价格确认":
+                suffix_text = "价格配合，但还要看连续性"
+            else:
+                suffix_text = _feishu_short(row.get("price_confirmation_note") or row.get("binding_summary") or "", 38)
+        else:
+            score = str(row.get("score_card_text") or row.get("status") or "观察")
+            suffix_text = _feishu_short(row.get("binding_summary") or "", 42)
         horizon = str(row.get("horizon") or "").strip()
         prefix = f"{horizon}｜" if horizon else ""
         watch = _feishu_short(prefix + (row.get("watch") or row.get("why") or ""), 54)
-        binding = _feishu_short(row.get("binding_summary") or "", 42)
-        suffix = f"｜{binding}" if binding else ""
+        suffix = f"｜{suffix_text}" if suffix_text else ""
         result.append(f"{row.get('name') or '未命名行业'}｜{score}｜{watch}{suffix}")
     if not result:
         result = ["今天没有新增行业信号；继续看核心资产价格是否确认。"]

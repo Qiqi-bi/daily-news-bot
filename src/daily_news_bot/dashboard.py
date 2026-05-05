@@ -979,12 +979,19 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
         action = _text(row.get("action"), "")
         if instruments:
             action = f"{action} 参考：{instruments}"
+        gate = _text(row.get("base_position_gate"), "-")
+        price_status = _text(row.get("price_confirmation_status"), "")
+        gate_kind = "direction" if gate == "周报评估" else "importance" if gate == "冷却中" else "neutral"
+        gate_cell = _pill(gate, gate_kind)
+        if price_status:
+            gate_cell += f'<div class="path">{escape(price_status)}</div>'
         result.append(
             [
                 escape(_text(row.get("layer_label"))),
                 escape(_text(row.get("name"))),
                 escape(_text(row.get("horizon"), "-")),
                 escape(_text(row.get("score_card_text"), "-")),
+                gate_cell,
                 escape(_text(row.get("status"))),
                 escape(_shorten(row.get("fact_summary"), 120)),
                 escape(_shorten(row.get("watch"), 120)),
@@ -994,6 +1001,48 @@ def _industry_radar_rows(radar: dict[str, Any] | None) -> list[list[str]]:
             ]
         )
     return result
+
+
+def _industry_names_by_gate(rows: list[dict[str, Any]], gate: str) -> list[str]:
+    return [_text(row.get("name"), "未命名行业") for row in rows if _text(row.get("base_position_gate"), "") == gate]
+
+
+def _industry_radar_gate_summary(radar: dict[str, Any] | None) -> str:
+    rows = list((radar or {}).get("rows") or [])
+    if not rows:
+        return ""
+    review_names = _industry_names_by_gate(rows, "周报评估")
+    cooldown_names = _industry_names_by_gate(rows, "冷却中")
+    blocked_names = [
+        _text(row.get("name"), "未命名行业")
+        for row in rows
+        if _text(row.get("price_confirmation_status"), "") == "价格未确认" and int(row.get("hit_streak") or 0) >= 3
+    ]
+    cards = [
+        (
+            "行业闸门",
+            "周报评估：" + ("、".join(review_names[:3]) if review_names else "无"),
+            "连续命中且价格确认后，只进周报评估，不自动交易。",
+        ),
+        (
+            "冷却期",
+            "冷却中：" + ("、".join(cooldown_names[:3]) if cooldown_names else "无"),
+            "本周已提醒过的主线，等周报或新回执后再重新评估。",
+        ),
+        (
+            "未确认",
+            "继续观察：" + ("、".join(blocked_names[:3]) if blocked_names else "无"),
+            "新闻连续出现但价格没确认时，不扩可买池。",
+        ),
+    ]
+    return '<div class="industry-gate-summary action-grid">' + "".join(
+        '<div class="action-card">'
+        f'<div class="action-label">{escape(label)}</div>'
+        f'<div class="action-value">{escape(_shorten(value, 90))}</div>'
+        f'<div class="action-note">{escape(note)}</div>'
+        "</div>"
+        for label, value, note in cards
+    ) + "</div>"
 
 
 def _backfill_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
@@ -1271,8 +1320,9 @@ def _portfolio_sections(portfolio: dict[str, Any], weekly: dict[str, Any]) -> li
             _section("风险硬闸门", _render_list(portfolio.get("hard_risk_gate_lines"), 6), "控制单次金额、月度进攻仓新增、连续确认和追高频率。", "wide"),
             _section(
                 "行业雷达",
-                _render_table(
-                    ["层级", "行业", "周期", "评分", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
+                _industry_radar_gate_summary(portfolio.get("industry_radar"))
+                + _render_table(
+                    ["层级", "行业", "周期", "评分", "闸门", "状态", "事实库", "看什么", "组合/候选绑定", "验证条件", "动作"],
                     _industry_radar_rows(portfolio.get("industry_radar")),
                 ),
                 "每条按政策、供需、价格、新闻、命中率打分；雷达只决定看什么，不直接给买卖指令。",
@@ -1738,6 +1788,9 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 10px;
+}
+.industry-gate-summary {
+  margin-bottom: 12px;
 }
 .action-card {
   border: 1px solid var(--line-soft);

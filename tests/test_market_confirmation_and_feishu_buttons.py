@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool
-from src.daily_news_bot.main import _build_feishu_objective_lines
+from src.daily_news_bot.main import _build_feishu_digest, _build_feishu_objective_lines
 from src.daily_news_bot.senders import _build_card_payload
 
 
@@ -250,6 +250,55 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertTrue(any("action=noop" in url for url in urls))
         self.assertTrue(any("action=buy" in url for url in urls))
         self.assertTrue(any("action=sell" in url for url in urls))
+
+    def test_feishu_digest_prioritizes_industry_review_gates(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {
+                    "enabled": True,
+                    "industry_radar": {
+                        "rows": [
+                            {
+                                "name": "普通热点",
+                                "layer": "watch",
+                                "status": "今日关注",
+                                "watch": "新闻热度上升。",
+                            },
+                            {
+                                "name": "AI电力底座",
+                                "layer": "secular",
+                                "status": "持仓复核",
+                                "horizon": "1-3年",
+                                "watch": "绿电、算力订单和电价机制。",
+                                "base_position_gate": "周报评估",
+                                "price_confirmation_status": "价格确认",
+                                "price_confirmation_note": "连续命中叠加价格确认，可以进入周报底仓评估，但不自动交易。",
+                                "binding_summary": "连续4次；价格闸门：价格确认，周报评估",
+                            },
+                            {
+                                "name": "黄金保险仓",
+                                "layer": "core",
+                                "status": "今日关注",
+                                "watch": "美元和实际利率。",
+                                "base_position_gate": "冷却中",
+                                "price_confirmation_status": "价格确认",
+                                "price_confirmation_note": "冷却期到 2026-05-09；等周报或新回执后再重新评估。",
+                                "binding_summary": "价格闸门：价格确认，冷却中",
+                            },
+                        ]
+                    },
+                },
+            }
+        )
+
+        self.assertIn("AI电力底座｜周报评估｜价格确认", digest)
+        self.assertIn("黄金保险仓｜冷却中｜价格确认", digest)
+        self.assertIn("本周已提醒", digest)
 
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
