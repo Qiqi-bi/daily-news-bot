@@ -62,6 +62,30 @@ class HardRiskGateTest(unittest.TestCase):
         self.assertIn("2026-05 已记录主动调仓 2/2 次", text)
         self.assertIn("剩余额度 ¥800.00", text)
 
+    def test_hard_risk_gates_surface_stress_budget_breach(self) -> None:
+        portfolio = {
+            "profile": {"monthly_contribution_cny": 10000},
+            "annual_objective": {"max_annual_drawdown_pct": 10},
+            "risk_controls": {"hard_gates": {"max_monthly_action_count": 2}},
+        }
+
+        lines = _hard_risk_gate_lines(
+            portfolio,
+            {
+                "stable_core_pct": 40.0,
+                "growth_core_pct": 20.0,
+                "attack_pct": 25.0,
+                "insurance_pct": 10.0,
+                "total_weight_pct": 95.0,
+            },
+            {"enabled": True, "trades": []},
+        )
+        text = "\n".join(lines)
+
+        self.assertIn("压力闸门", text)
+        self.assertIn("超过预算", text)
+        self.assertIn("高弹性方向", text)
+
 
 if __name__ == "__main__":
     unittest.main()

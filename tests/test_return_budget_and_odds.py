@@ -122,6 +122,61 @@ class ReturnBudgetAndOddsTest(unittest.TestCase):
         self.assertIn("expected_upside_pct_range", odds)
         self.assertIn("max_drawdown_pct", odds)
 
+    def test_stress_budget_blocks_high_beta_adds(self) -> None:
+        rows = _evaluate_fixed_buy_pool(
+            {
+                "profile": {"monthly_contribution_cny": 10000},
+                "annual_objective": {"max_annual_drawdown_pct": 10},
+                "allocation_framework": {
+                    "stable_core_target_pct": [35, 45],
+                    "growth_core_target_pct": [15, 20],
+                    "attack_target_pct": [20, 30],
+                    "insurance_target_pct": [10, 15],
+                },
+                "risk_controls": {
+                    "direct_ai_cap_pct": 35,
+                    "growth_tech_cap_pct": 55,
+                    "single_attack_holding_cap_pct": 15,
+                    "hard_gates": {"max_monthly_action_count": 2},
+                },
+                "decision_cockpit": {
+                    "action_amount_bands": {"buy_probe_cny": [800, 1500]},
+                    "fixed_buy_pool": [
+                        {
+                            "code": "588930",
+                            "name": "AI ETF",
+                            "type": "ETF",
+                            "role": "AI attack ETF",
+                            "theme_key": "ai_attack",
+                        }
+                    ],
+                },
+                "holdings": [],
+            },
+            {
+                "direct_ai_pct": 24.0,
+                "growth_tech_pct": 45.0,
+                "attack_pct": 25.0,
+                "gold_pct": 10.0,
+                "insurance_pct": 10.0,
+                "stable_core_pct": 40.0,
+                "growth_core_pct": 20.0,
+                "total_weight_pct": 95.0,
+            },
+            None,
+            {"items": [{"code": "588930", "change_pct": 0.8, "chase_risk": "低", "liquidity_level": "正常"}]},
+            [],
+            [{"theme_key": "ai"}],
+            trade_ledger={"enabled": True, "trades": []},
+        )
+
+        row = rows[0]
+
+        self.assertEqual(row["state"], "观察")
+        self.assertEqual(row["action_tier"], "只观察")
+        self.assertIn("压力测试", row["reason"])
+        self.assertIn("超过预算", row["reason"])
+
     def test_gold_overweight_with_profit_becomes_reduce_review(self) -> None:
         portfolio = {
             "profile": {"monthly_contribution_cny": 10000},

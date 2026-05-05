@@ -550,6 +550,8 @@ DEFAULT_STRESS_TEST_SCENARIOS: tuple[dict[str, Any], ...] = (
     },
 )
 
+HIGH_BETA_STRESS_BLOCK_THEMES = {"growth_core", "ai_attack", "semiconductor", "ai_power_base"}
+
 
 def _stress_severity(impact_pct: float, max_drawdown_pct: float) -> str:
     drawdown = abs(min(impact_pct, 0.0))
@@ -651,6 +653,29 @@ def _stress_test_lines(panel: dict[str, Any]) -> list[str]:
         )
     lines.append(f"- 说明：{panel.get('note')}")
     return lines
+
+
+def _stress_gate_status(portfolio: dict[str, Any], summary: dict[str, Any]) -> dict[str, Any]:
+    panel = _stress_test_payload(portfolio, summary)
+    worst = panel.get("worst_case") or {}
+    severity = str(worst.get("severity") or "")
+    blocks = severity == "超过预算"
+    cautions = severity == "接近预算"
+    if blocks:
+        action = "高弹性方向暂停新增；先看宽基、防御或等待下次周报。"
+    elif cautions:
+        action = "高弹性方向只做小仓复核，不能因为年度目标硬追。"
+    else:
+        action = "压力预算内仍需遵守仓位、价格和成交确认。"
+    return {
+        "panel": panel,
+        "worst_case": worst,
+        "severity": severity,
+        "blocks_high_beta_add": blocks,
+        "cautions_high_beta_add": cautions,
+        "reason": f"压力测试 {worst.get('name') or '最坏场景'} {worst.get('estimated_impact_pct', 0.0):+.2f}%，{severity or '待评估'}",
+        "action": action,
+    }
 
 
 def _merge_by_key(configured: list[dict[str, Any]], defaults: list[dict[str, Any]], key_name: str) -> list[dict[str, Any]]:
@@ -1427,15 +1452,15 @@ def _hard_risk_gate_lines(
     trade_ledger: dict[str, Any] | None = None,
     now: datetime | None = None,
 ) -> list[str]:
-    del summary
     gates = _hard_risk_gate_payload(portfolio)
     status = _hard_risk_gate_status(portfolio, trade_ledger, now=now)
+    stress_gate = _stress_gate_status(portfolio, summary)
     monthly = _as_float((portfolio.get("profile") or {}).get("monthly_contribution_cny"), 0.0)
     single_cap = monthly * gates["max_single_action_pct_of_monthly"] / 100 if monthly > 0 else 0.0
     attack_cap = monthly * gates["max_monthly_attack_add_pct_of_monthly"] / 100 if monthly > 0 else 0.0
     single_text = _fmt_cny(single_cap) if single_cap > 0 else f"月新增资金的 {_fmt_pct(gates['max_single_action_pct_of_monthly'])}"
     attack_text = _fmt_cny(attack_cap) if attack_cap > 0 else f"月新增资金的 {_fmt_pct(gates['max_monthly_attack_add_pct_of_monthly'])}"
-    return [
+    lines = [
         f"- **单次上限**：任何一次手动操作默认不超过 {single_text}；超过就拆到下次周报后再复核。",
         f"- **进攻仓月度上限**：AI/半导体/港股科技等进攻方向每月新增合计不超过 {attack_text}；仓位超线时新增为 0。",
         (
@@ -1449,6 +1474,12 @@ def _hard_risk_gate_lines(
         f"- **追高闸门**：候选标的单日涨幅超过 {_fmt_pct(gates['max_chase_day_pct'])} 默认不追，只进入下次复核。",
         f"- **频率闸门**：每月最多 {gates['max_monthly_action_count']} 次主动调仓；没操作就不填回执，系统按未操作继续跟踪。",
     ]
+    if stress_gate.get("blocks_high_beta_add") or stress_gate.get("cautions_high_beta_add"):
+        lines.insert(
+            2,
+            f"- **压力闸门**：{stress_gate.get('reason')}；{stress_gate.get('action')}",
+        )
+    return lines
 
 
 def _decision_cockpit(portfolio: dict[str, Any]) -> dict[str, Any]:
@@ -1943,6 +1974,8 @@ def _opportunity_scorecard(
         blockers.append("本月操作次数已满")
     if theme_key in {"ai_attack", "semiconductor"} and gate_status.get("blocks_attack_add"):
         blockers.append("进攻仓本月新增额度已满")
+    if theme_key in HIGH_BETA_STRESS_BLOCK_THEMES and gate_status.get("blocks_high_beta_add"):
+        blockers.append("压力测试超过预算")
 
     if state == "减仓":
         label = "减风险优先"
@@ -2040,7 +2073,12 @@ def _evaluate_fixed_buy_pool(
     gold_high = _as_float(gold_range[1], 15.0)
     direct_ai_cap = _as_float((portfolio.get("risk_controls") or {}).get("direct_ai_cap_pct"), 35.0)
     growth_tech_cap = _as_float((portfolio.get("risk_controls") or {}).get("growth_tech_cap_pct"), 55.0)
-    gate_status = _hard_risk_gate_status(portfolio, trade_ledger)
+    stress_gate = _stress_gate_status(portfolio, summary)
+    gate_status = {
+        **_hard_risk_gate_status(portfolio, trade_ledger),
+        "blocks_high_beta_add": stress_gate.get("blocks_high_beta_add"),
+        "stress_gate_reason": stress_gate.get("reason"),
+    }
     results: list[dict[str, Any]] = []
 
     for item in _fixed_buy_pool(portfolio):
@@ -2192,6 +2230,11 @@ def _evaluate_fixed_buy_pool(
             state = "观察"
             score -= 12
             reason = "本月进攻仓新增额度已用完，AI/半导体方向只观察。"
+        if state == "可买" and theme_key in HIGH_BETA_STRESS_BLOCK_THEMES and stress_gate.get("blocks_high_beta_add"):
+            state = "观察"
+            amount_key = ""
+            score -= 15
+            reason = f"{stress_gate.get('reason')}；高弹性方向先观察，不为年度收益目标追加风险。"
         if state == "可买" and market_confirmation.get("blocks_action"):
             state = "观察"
             score -= 10
