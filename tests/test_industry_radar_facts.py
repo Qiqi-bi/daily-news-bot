@@ -107,6 +107,55 @@ class IndustryRadarFactsTest(unittest.TestCase):
         self.assertIn("客户导入", row["verify"])
         self.assertGreaterEqual(row["score_card"]["news"], 1)
 
+    def test_additional_industry_lines_cover_robotics_defense_chemicals_and_coal(self) -> None:
+        cases = [
+            (
+                "embodied_robotics",
+                "具身智能机器人、伺服系统和减速器订单放量",
+                "机器人本体、传感器和执行器进入客户验证。",
+                ["具身智能", "伺服"],
+                "客户验证",
+            ),
+            (
+                "defense_low_altitude",
+                "低空经济、无人机和军工电子订单加速",
+                "卫星通信、航空发动机和无人系统成为政策重点。",
+                ["低空经济", "无人机"],
+                "订单",
+            ),
+            (
+                "chemicals_fertilizer",
+                "化肥、农药和硫酸价格受出口管制影响",
+                "尿素和磷化工库存下降，海外价格走强。",
+                ["化肥", "硫酸"],
+                "价格",
+            ),
+            (
+                "coal_power_security",
+                "煤炭和火电容量电价支撑电力安全",
+                "迎峰度夏用电负荷抬升，煤电调峰价值提升。",
+                ["煤炭", "容量电价"],
+                "用电负荷",
+            ),
+        ]
+
+        for row_id, title, summary, expected_hits, expected_verify in cases:
+            with self.subTest(row_id=row_id):
+                cluster = SimpleNamespace(
+                    theme=title,
+                    tags=[],
+                    representative=SimpleNamespace(title=title, summary=summary, content=""),
+                    articles=[],
+                )
+
+                radar = build_industry_radar({}, [cluster], [], [])
+                row = next(item for item in radar["rows"] if item["id"] == row_id)
+
+                self.assertEqual(row["status"], "今日关注")
+                for hit in expected_hits:
+                    self.assertIn(hit, row["hits"])
+                self.assertIn(expected_verify, row["verify"])
+
 
 if __name__ == "__main__":
     unittest.main()
