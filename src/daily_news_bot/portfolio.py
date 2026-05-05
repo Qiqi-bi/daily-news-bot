@@ -1653,6 +1653,129 @@ def _market_confirmation(
     }
 
 
+def _instrument_codes(items: list[Any]) -> list[str]:
+    codes: list[str] = []
+    for item in items or []:
+        if isinstance(item, dict):
+            code = str(item.get("code") or "").strip()
+        else:
+            code = str(item or "").strip()
+        if code:
+            codes.append(code)
+    return list(dict.fromkeys(codes))
+
+
+def _candidate_instrument_codes_for_row(row: dict[str, Any], candidate_scores: list[dict[str, Any]]) -> list[str]:
+    theme_keys = {str(key) for key in row.get("theme_keys") or []}
+    theme_keys.add(str(row.get("id") or ""))
+    codes: list[str] = []
+    for candidate in candidate_scores or []:
+        if str(candidate.get("theme_key") or "") not in theme_keys:
+            continue
+        codes.extend(_instrument_codes(list(candidate.get("instruments") or [])))
+    return codes
+
+
+def _row_price_codes(row: dict[str, Any], candidate_scores: list[dict[str, Any]]) -> list[str]:
+    return list(dict.fromkeys(_instrument_codes(list(row.get("instruments") or [])) + _candidate_instrument_codes_for_row(row, candidate_scores)))
+
+
+def _theme_key_for_price(row: dict[str, Any]) -> str:
+    for key in row.get("theme_keys") or []:
+        text = str(key or "").strip()
+        if text:
+            return text
+    return str(row.get("id") or "")
+
+
+def _price_confirmation_status(confirmation: dict[str, Any]) -> str:
+    if not confirmation:
+        return "无价格样本"
+    if confirmation.get("blocks_action"):
+        return "价格未确认"
+    if (
+        confirmation.get("score", 0) >= 60
+        and confirmation.get("relative_strength_status") == "强"
+        and confirmation.get("volume_confirmation") in {"正常", "放量"}
+        and confirmation.get("pullback_position") != "高位追涨"
+        and confirmation.get("crowding_level") != "高"
+    ):
+        return "价格确认"
+    return "价格未确认"
+
+
+def _base_position_gate(row: dict[str, Any], price_status: str) -> tuple[str, str]:
+    streak = int(row.get("hit_streak") or 0)
+    if price_status == "无价格样本":
+        return "继续观察", "没有绑定可验证标的，不能进入底仓评估。"
+    if price_status != "价格确认":
+        return "继续观察", "新闻连续确认但价格还没确认，不能升级。"
+    if streak >= 3:
+        return "周报评估", "连续命中叠加价格确认，可以进入周报底仓评估，但不自动交易。"
+    return "等待连续确认", "价格有配合，但连续命中次数还不够，先不扩可买池。"
+
+
+def _apply_industry_price_confirmation(
+    radar: dict[str, Any],
+    *,
+    portfolio_quotes: dict[str, Any] | None,
+    execution_checks: dict[str, Any] | None,
+    local_market_payload: dict[str, Any] | None,
+    candidate_scores: list[dict[str, Any]],
+) -> dict[str, Any]:
+    if not radar or not radar.get("enabled"):
+        return radar
+
+    result = dict(radar)
+    rows: list[dict[str, Any]] = []
+    confirmed_names: list[str] = []
+    blocked_names: list[str] = []
+
+    for original in radar.get("rows") or []:
+        row = dict(original)
+        codes = _row_price_codes(row, candidate_scores)
+        confirmations: list[dict[str, Any]] = []
+        for code in codes:
+            snap = _instrument_snapshot(code, portfolio_quotes, execution_checks)
+            if snap.get("change_pct") is None:
+                continue
+            confirmation = _market_confirmation(
+                theme_key=_theme_key_for_price(row),
+                snap=snap,
+                local_market_payload=local_market_payload,
+            )
+            confirmation["code"] = code
+            confirmations.append(confirmation)
+
+        best = max(confirmations, key=lambda item: int(item.get("score") or 0), default={})
+        price_status = _price_confirmation_status(best)
+        gate, note = _base_position_gate(row, price_status)
+
+        row["price_confirmation"] = best
+        row["price_confirmation_status"] = price_status
+        row["base_position_gate"] = gate
+        row["price_confirmation_note"] = note
+        row["price_confirmation_codes"] = codes
+        suffix = f"价格闸门：{price_status}，{gate}"
+        row["binding_summary"] = f"{row.get('binding_summary') or ''}；{suffix}"
+        if price_status == "价格确认" and gate == "周报评估":
+            confirmed_names.append(str(row.get("name") or row.get("id") or "行业"))
+        elif int(row.get("hit_streak") or 0) >= 3 and price_status != "价格确认":
+            blocked_names.append(str(row.get("name") or row.get("id") or "行业"))
+        rows.append(row)
+
+    summary_lines = list(result.get("summary_lines") or [])
+    if confirmed_names:
+        summary_lines.append("价格确认：连续命中且价格配合的行业：" + "、".join(confirmed_names[:3]) + "；只进周报评估，不自动交易。")
+    elif blocked_names:
+        summary_lines.append("价格确认：连续命中但价格未确认的行业：" + "、".join(blocked_names[:3]) + "；继续观察。")
+    else:
+        summary_lines.append("价格确认：没有行业同时满足连续命中和价格确认。")
+    result["rows"] = rows
+    result["summary_lines"] = summary_lines
+    return result
+
+
 
 def _local_market_panel_lines(
     portfolio: dict[str, Any],
@@ -2973,6 +3096,14 @@ def build_portfolio_brief(
     event_history_stats = build_event_etf_history(event_route_rows)
     event_history_lines = event_history_stats.get("lines") or []
     local_market_lines, local_market_payload = _local_market_panel_lines(portfolio, portfolio_quotes, execution_checks)
+    industry_radar = _apply_industry_price_confirmation(
+        industry_radar,
+        portfolio_quotes=portfolio_quotes,
+        execution_checks=execution_checks,
+        local_market_payload=local_market_payload,
+        candidate_scores=candidate_scores,
+    )
+    industry_radar_lines = render_industry_radar_lines(industry_radar)
     reduce_candidates = _hard_reduce_candidates(portfolio, summary, portfolio_quotes)
     hard_reduce_rule_lines = _hard_reduce_rule_lines(portfolio, reduce_candidates)
     fixed_buy_pool_rows = _evaluate_fixed_buy_pool(

@@ -2,12 +2,96 @@ from __future__ import annotations
 
 import unittest
 
-from src.daily_news_bot.portfolio import _evaluate_fixed_buy_pool
+from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool
 from src.daily_news_bot.main import _build_feishu_objective_lines
 from src.daily_news_bot.senders import _build_card_payload
 
 
 class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
+    def test_industry_price_gate_blocks_three_hit_streak_when_relative_strength_is_weak(self) -> None:
+        radar = {
+            "enabled": True,
+            "rows": [
+                {
+                    "id": "ai_power_base",
+                    "name": "AI电力底座",
+                    "layer": "secular",
+                    "status": "今日关注",
+                    "hit_streak": 3,
+                    "theme_keys": ["ai_power_base"],
+                    "instruments": ["561560"],
+                    "binding_summary": "参考代码：561560；连续3次：连续确认",
+                }
+            ],
+            "summary_lines": [],
+        }
+
+        enriched = _apply_industry_price_confirmation(
+            radar,
+            portfolio_quotes=None,
+            execution_checks={
+                "items": [
+                    {
+                        "code": "561560",
+                        "change_pct": -0.2,
+                        "turnover_cny": 150_000_000,
+                        "chase_risk": "低",
+                    }
+                ]
+            },
+            local_market_payload={"broad_change_pct": 0.8, "risk_avg_pct": 0.1, "high_chase_count": 0},
+            candidate_scores=[],
+        )
+
+        row = enriched["rows"][0]
+
+        self.assertEqual(row["price_confirmation_status"], "价格未确认")
+        self.assertEqual(row["base_position_gate"], "继续观察")
+        self.assertIn("相对强弱落后", "；".join(row["price_confirmation"]["blockers"]))
+        self.assertIn("价格未确认", row["binding_summary"])
+
+    def test_industry_price_gate_allows_weekly_review_only_after_streak_and_price_confirmation(self) -> None:
+        radar = {
+            "enabled": True,
+            "rows": [
+                {
+                    "id": "ai_power_base",
+                    "name": "AI电力底座",
+                    "layer": "secular",
+                    "status": "今日关注",
+                    "hit_streak": 3,
+                    "theme_keys": ["ai_power_base"],
+                    "instruments": ["561560"],
+                    "binding_summary": "参考代码：561560；连续3次：连续确认",
+                }
+            ],
+            "summary_lines": [],
+        }
+
+        enriched = _apply_industry_price_confirmation(
+            radar,
+            portfolio_quotes=None,
+            execution_checks={
+                "items": [
+                    {
+                        "code": "561560",
+                        "change_pct": 1.4,
+                        "turnover_cny": 150_000_000,
+                        "chase_risk": "低",
+                    }
+                ]
+            },
+            local_market_payload={"broad_change_pct": 0.2, "risk_avg_pct": 0.1, "high_chase_count": 0},
+            candidate_scores=[],
+        )
+
+        row = enriched["rows"][0]
+
+        self.assertEqual(row["price_confirmation_status"], "价格确认")
+        self.assertEqual(row["base_position_gate"], "周报评估")
+        self.assertIn("周报评估", row["binding_summary"])
+        self.assertIn("不自动交易", row["price_confirmation_note"])
+
     def test_fixed_pool_rows_include_market_confirmation_detail(self) -> None:
         rows = _evaluate_fixed_buy_pool(
             {

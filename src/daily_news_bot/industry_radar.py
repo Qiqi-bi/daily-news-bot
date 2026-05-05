@@ -1107,6 +1107,7 @@ def build_industry_radar(
                 "name": entry.get("name") or "未命名行业",
                 "layer": layer,
                 "layer_label": LAYER_LABELS[layer],
+                "theme_keys": list(entry.get("theme_keys") or []),
                 "status": status,
                 "score": score,
                 "score_card": score_card,
