@@ -790,6 +790,30 @@ def _binding_refs(entry: dict[str, Any], portfolio: dict[str, Any], matched_cand
     return holding_links, candidate_links, summary
 
 
+def _coverage_guidance(
+    entry: dict[str, Any],
+    *,
+    layer: str,
+    status: str,
+    holding_links: list[str],
+    candidate_links: list[str],
+) -> tuple[str, str]:
+    entry_codes = _instrument_code_set(entry.get("instruments") or [])
+    if layer == "avoid":
+        return "降噪", "降噪项不建仓，只记录风险和反向约束。"
+    if holding_links:
+        return "持仓复核", "已有对应持仓，只复核逻辑、价格和仓位上限，不自动加仓。"
+    if candidate_links or entry_codes:
+        return "候选观察", "已有候选或参考代码，先等连续确认和价格位置，不追高。"
+    if status in {"每日必看", "长期必看", "今日关注"}:
+        return "组合缺口", "组合暂无直接持仓或候选，先记录观察；连续确认后再评估是否加入可买池。"
+    return "暂不覆盖", "暂无直接持仓或候选，维持静默观察。"
+
+
+def _binding_with_coverage(binding_summary: str, coverage_status: str, coverage_note: str) -> str:
+    return f"{binding_summary}；{coverage_status}：{coverage_note}"
+
+
 def _component_score(text: str, keywords: tuple[str, ...]) -> int:
     lowered = text.casefold()
     hits = sum(1 for keyword in keywords if keyword in lowered)
@@ -920,6 +944,15 @@ def build_industry_radar(
         else:
             status = "静默观察"
 
+        coverage_status, coverage_note = _coverage_guidance(
+            entry,
+            layer=layer,
+            status=status,
+            holding_links=holding_links,
+            candidate_links=candidate_links,
+        )
+        binding_summary = _binding_with_coverage(binding_summary, coverage_status, coverage_note)
+
         rows.append(
             {
                 "id": entry.get("id") or entry.get("name"),
@@ -941,6 +974,8 @@ def build_industry_radar(
                 "portfolio_links": holding_links,
                 "candidate_links": candidate_links,
                 "binding_summary": binding_summary,
+                "coverage_status": coverage_status,
+                "coverage_note": coverage_note,
                 "hits": hits,
             }
         )

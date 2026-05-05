@@ -156,6 +156,47 @@ class IndustryRadarFactsTest(unittest.TestCase):
                     self.assertIn(hit, row["hits"])
                 self.assertIn(expected_verify, row["verify"])
 
+    def test_industry_radar_marks_portfolio_gap_before_new_buy_pool_expansion(self) -> None:
+        cluster = SimpleNamespace(
+            theme="具身智能机器人订单",
+            tags=[],
+            representative=SimpleNamespace(
+                title="具身智能机器人和伺服系统进入客户验证",
+                summary="减速器、执行器和传感器订单开始放量。",
+                content="",
+            ),
+            articles=[],
+        )
+
+        radar_without_position = build_industry_radar({}, [cluster], [], [])
+        gap_row = next(item for item in radar_without_position["rows"] if item["id"] == "embodied_robotics")
+
+        self.assertEqual(gap_row["coverage_status"], "组合缺口")
+        self.assertIn("先记录观察", gap_row["coverage_note"])
+        self.assertIn("组合缺口", gap_row["binding_summary"])
+
+        radar_with_position = build_industry_radar(
+            {
+                "holdings": [{"name": "人工智能ETF", "code": "011840"}],
+                "industry_radar": {
+                    "items": [
+                        {
+                            "id": "embodied_robotics",
+                            "instruments": ["011840"],
+                        }
+                    ]
+                },
+            },
+            [cluster],
+            [],
+            [],
+        )
+        held_row = next(item for item in radar_with_position["rows"] if item["id"] == "embodied_robotics")
+
+        self.assertEqual(held_row["coverage_status"], "持仓复核")
+        self.assertIn("不自动加仓", held_row["coverage_note"])
+        self.assertIn("持仓复核", held_row["binding_summary"])
+
 
 if __name__ == "__main__":
     unittest.main()
