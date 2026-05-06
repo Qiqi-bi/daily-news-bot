@@ -1012,6 +1012,45 @@ def _industry_names_by_gate(rows: list[dict[str, Any]], gate: str) -> list[str]:
     return [_text(row.get("name"), "未命名行业") for row in rows if _text(row.get("base_position_gate"), "") == gate]
 
 
+def _weekly_industry_gate_summary(portfolio: dict[str, Any] | None) -> str:
+    rows = list(((portfolio or {}).get("industry_radar") or {}).get("rows") or [])
+    if not rows:
+        return ""
+
+    review_names = _industry_names_by_gate(rows, "周报评估")
+    cooldown_names = _industry_names_by_gate(rows, "冷却中")
+    watch_names = [
+        _text(row.get("name"), "未命名行业")
+        for row in rows
+        if _text(row.get("base_position_gate"), "") not in {"周报评估", "冷却中"}
+    ]
+    cards = [
+        (
+            "本周评估",
+            "、".join(review_names[:3]) if review_names else "无",
+            "先周报评估，不自动交易。",
+        ),
+        (
+            "冷却观察",
+            "、".join(cooldown_names[:3]) if cooldown_names else "无",
+            "本周已提醒过的主线，等周报或新回执后再复核。",
+        ),
+        (
+            "只观察",
+            f"{len(watch_names)} 条",
+            "价格未确认或连续性不足：" + ("、".join(watch_names[:3]) if watch_names else "暂无"),
+        ),
+    ]
+    return '<div class="industry-gate-summary action-grid">' + "".join(
+        '<div class="action-card">'
+        f'<div class="action-label">{escape(label)}</div>'
+        f'<div class="action-value">{escape(_shorten(value, 90))}</div>'
+        f'<div class="action-note">{escape(_shorten(note, 120))}</div>'
+        "</div>"
+        for label, value, note in cards
+    ) + "</div>"
+
+
 def _industry_radar_gate_summary(radar: dict[str, Any] | None) -> str:
     rows = list((radar or {}).get("rows") or [])
     if not rows:
@@ -1209,6 +1248,7 @@ def _signal_validation_section(payload: dict[str, Any]) -> str:
 def _weekly_main_section(payload: dict[str, Any]) -> str:
     weekly = payload.get("weekly_review") or {}
     validation = payload.get("signal_validation") or {}
+    portfolio = payload.get("portfolio") or {}
     output_paths = payload.get("output_paths") or {}
     weekly_url = output_paths.get("weekly_md_url") or output_paths.get("weekly_md_uri")
     is_enabled = bool(weekly.get("enabled"))
@@ -1240,7 +1280,7 @@ def _weekly_main_section(payload: dict[str, Any]) -> str:
             "本周主结论等周报生成；平时只看连续确认、价格验证和仓位纪律。",
             "今天的新闻只负责进入观察池，不应该每天逼你交易。",
         ]
-    body = card_html + _render_list(lines, 5)
+    body = card_html + _weekly_industry_gate_summary(portfolio) + _render_list(lines, 5)
     if weekly_url and output_paths.get("weekly_md_generated"):
         body += f'<div class="section-actions">{_link("打开周报", weekly_url, "button-link")}</div>'
     return _section("中长期周报", body, "先看周报和30/60/90天成绩单，再看当天新闻；这更适合中长期风格。", "wide", "weekly")
@@ -1801,6 +1841,7 @@ h1 {
   gap: 10px;
 }
 .industry-gate-summary {
+  margin-top: 10px;
   margin-bottom: 12px;
 }
 .action-card {
