@@ -765,6 +765,35 @@ def _build_feishu_risk_gate_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_weekly_gate_lines(payload: dict[str, Any]) -> list[str]:
+    rows = (((payload.get("portfolio") or {}).get("industry_radar") or {}).get("rows") or [])
+    if not rows:
+        return []
+    review_names = [
+        str(row.get("name") or "未命名行业")
+        for row in rows
+        if str(row.get("base_position_gate") or "") == "周报评估"
+    ]
+    cooldown_names = [
+        str(row.get("name") or "未命名行业")
+        for row in rows
+        if str(row.get("base_position_gate") or "") == "冷却中"
+    ]
+    watch_count = sum(
+        1
+        for row in rows
+        if str(row.get("base_position_gate") or "") not in {"周报评估", "冷却中"}
+    )
+    lines: list[str] = []
+    if review_names:
+        lines.append(f"本周评估：{_feishu_short('、'.join(review_names[:3]), 60)}；只进周报复核，不自动交易。")
+    if cooldown_names:
+        lines.append(f"冷却观察：{_feishu_short('、'.join(cooldown_names[:3]), 60)}；等周报或新回执后再评估。")
+    if watch_count:
+        lines.append(f"只观察：{watch_count} 条；价格未确认或连续性不足，不扩可买池。")
+    return lines[:3]
+
+
 def _build_feishu_strategic_lines(payload: dict[str, Any]) -> list[str]:
     lens = payload.get("strategic_lens") or {}
     rows = lens.get("rows") or []
@@ -930,6 +959,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     focus_lines = _build_feishu_focus_lines(payload)
     objective_lines = _build_feishu_objective_lines(payload)
     risk_gate_lines = _build_feishu_risk_gate_lines(payload)
+    weekly_gate_lines = _build_feishu_weekly_gate_lines(payload)
 
     lines: list[str] = [
         "**总判断**",
@@ -970,6 +1000,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
         ]
     )
+    lines.extend(f"- {line}" for line in weekly_gate_lines)
     if receipt_form_url:
         lines.append("- 也可以点卡片按钮填写回执。")
     lines.extend(
