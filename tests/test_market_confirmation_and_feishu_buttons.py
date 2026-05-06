@@ -302,6 +302,8 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertIn("本周评估：AI电力底座", digest)
         self.assertIn("冷却观察：黄金保险仓", digest)
         self.assertIn("只观察：1 条", digest)
+        self.assertLess(digest.index("本周评估：AI电力底座"), digest.index("**市场快照**"))
+        self.assertEqual(digest.count("本周评估："), 1)
 
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(

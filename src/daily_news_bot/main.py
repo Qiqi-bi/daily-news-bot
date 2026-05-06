@@ -965,9 +965,16 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         "**总判断**",
         _feishu_short(overview, 240),
         "- 本卡不是交易指令，不保证收益；完整依据打开网页。",
-        "",
-        "**市场快照**",
     ]
+    if weekly_gate_lines:
+        lines.extend(["", "**本周闸门**"])
+        lines.extend(f"- {line}" for line in weekly_gate_lines)
+    lines.extend(
+        [
+            "",
+            "**市场快照**",
+        ]
+    )
     lines.extend(f"- {line}" for line in market_lines[:4])
     if objective_lines:
         lines.extend(["", "**年度纪律**"])
@@ -1000,7 +1007,6 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
         ]
     )
-    lines.extend(f"- {line}" for line in weekly_gate_lines)
     if receipt_form_url:
         lines.append("- 也可以点卡片按钮填写回执。")
     lines.extend(
