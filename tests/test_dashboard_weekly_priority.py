@@ -100,6 +100,58 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertIn("2 条", weekly_html)
         self.assertIn("先周报评估，不自动交易", weekly_html)
 
+    def test_weekly_entry_starts_with_action_conclusion(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {
+                    "enabled": True,
+                    "annual_objective": {
+                        "base_return_pct_range": [8, 12],
+                        "stretch_return_pct_range": [12, 18],
+                        "max_annual_drawdown_pct": 12,
+                    },
+                    "industry_radar": {
+                        "rows": [
+                            {
+                                "name": "AI电力底座",
+                                "base_position_gate": "周报评估",
+                                "price_confirmation_status": "价格确认",
+                                "hit_streak": 4,
+                            },
+                            {
+                                "name": "黄金保险仓",
+                                "base_position_gate": "冷却中",
+                                "price_confirmation_status": "价格确认",
+                                "hit_streak": 5,
+                            },
+                        ],
+                    },
+                },
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        weekly_html = html[: html.index("系统边界")]
+        self.assertIn("本周动作", weekly_html)
+        self.assertIn("周报复核", weekly_html)
+        self.assertIn("AI电力底座", weekly_html)
+        self.assertIn("不自动买卖", weekly_html)
+        self.assertIn("年度纪律", weekly_html)
+        self.assertIn("8.00%~12.00%", weekly_html)
+        self.assertLess(weekly_html.index("本周动作"), weekly_html.index("周报状态"))
+
     def test_portfolio_stress_test_is_visible_on_dashboard(self) -> None:
         html = render_dashboard_html(
             {

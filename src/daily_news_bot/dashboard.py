@@ -1051,6 +1051,38 @@ def _weekly_industry_gate_summary(portfolio: dict[str, Any] | None) -> str:
     ) + "</div>"
 
 
+def _weekly_action_conclusion(payload: dict[str, Any]) -> str:
+    portfolio = payload.get("portfolio") or {}
+    rows = list((portfolio.get("industry_radar") or {}).get("rows") or [])
+    review_names = _industry_names_by_gate(rows, "周报评估")
+    cooldown_names = _industry_names_by_gate(rows, "冷却中")
+    objective = portfolio.get("annual_objective") or {}
+    base_target = _objective_range_text(objective.get("base_return_pct_range")).replace("-", "~")
+    drawdown = _fmt_pct_plain(objective.get("max_annual_drawdown_pct"))
+    if review_names:
+        action_value = "周报复核"
+        action_note = f"{'、'.join(review_names[:3])} 已满足周报闸门；只复核是否纳入计划，不自动买卖。"
+    elif cooldown_names:
+        action_value = "等待冷却"
+        action_note = f"{'、'.join(cooldown_names[:3])} 本周已提醒过；等周报或新回执后再评估。"
+    else:
+        action_value = "默认不动"
+        action_note = "没有行业进入周报闸门；今天只记录新闻、价格和提醒。"
+    cards = [
+        ("本周动作", action_value, action_note),
+        ("复核顺序", "价格→周报→回执", "先看价格是否确认，再看30/60/90天样本；有交易才用飞书回执入账。"),
+        ("年度纪律", base_target, f"基础目标只约束仓位节奏，不保证收益；回撤红线 {drawdown}。"),
+    ]
+    return '<div class="industry-gate-summary action-grid">' + "".join(
+        '<div class="action-card">'
+        f'<div class="action-label">{escape(label)}</div>'
+        f'<div class="action-value">{escape(_shorten(value, 90))}</div>'
+        f'<div class="action-note">{escape(_shorten(note, 130))}</div>'
+        "</div>"
+        for label, value, note in cards
+    ) + "</div>"
+
+
 def _industry_radar_gate_summary(radar: dict[str, Any] | None) -> str:
     rows = list((radar or {}).get("rows") or [])
     if not rows:
@@ -1280,7 +1312,7 @@ def _weekly_main_section(payload: dict[str, Any]) -> str:
             "本周主结论等周报生成；平时只看连续确认、价格验证和仓位纪律。",
             "今天的新闻只负责进入观察池，不应该每天逼你交易。",
         ]
-    body = card_html + _weekly_industry_gate_summary(portfolio) + _render_list(lines, 5)
+    body = _weekly_action_conclusion(payload) + card_html + _weekly_industry_gate_summary(portfolio) + _render_list(lines, 5)
     if weekly_url and output_paths.get("weekly_md_generated"):
         body += f'<div class="section-actions">{_link("打开周报", weekly_url, "button-link")}</div>'
     return _section("中长期周报", body, "先看周报和30/60/90天成绩单，再看当天新闻；这更适合中长期风格。", "wide", "weekly")
