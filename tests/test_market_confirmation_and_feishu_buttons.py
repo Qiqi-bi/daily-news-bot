@@ -6,12 +6,46 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool
+from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool, _execution_check_lines
 from src.daily_news_bot.main import _build_feishu_action_tendency, _build_feishu_digest, _build_feishu_objective_lines
 from src.daily_news_bot.senders import _build_card_payload
 
 
 class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
+    def test_execution_check_lines_prioritize_holding_risks(self) -> None:
+        lines = _execution_check_lines(
+            {
+                "items": [
+                    {
+                        "code": "510300",
+                        "name": "沪深300ETF",
+                        "source": "holding",
+                        "latest_price": 4.0,
+                        "change_pct": 0.2,
+                        "turnover_cny": 300_000_000,
+                        "liquidity_level": "好",
+                        "chase_risk": "低",
+                    },
+                    {
+                        "code": "588930",
+                        "name": "AI主题ETF",
+                        "source": "holding",
+                        "latest_price": 1.2,
+                        "change_pct": 3.2,
+                        "turnover_cny": 10_000_000,
+                        "liquidity_level": "偏弱",
+                        "chase_risk": "高",
+                    },
+                ]
+            }
+        )
+
+        first_data_row = lines[2]
+
+        self.assertIn("AI主题ETF", first_data_row)
+        self.assertIn("偏弱", first_data_row)
+        self.assertIn("高", first_data_row)
+
     def test_industry_price_gate_blocks_three_hit_streak_when_relative_strength_is_weak(self) -> None:
         radar = {
             "enabled": True,

@@ -2870,8 +2870,8 @@ def _execution_check_lines(execution_checks: dict[str, Any] | None) -> list[str]
         items,
         key=lambda item: (
             item.get("source") != "holding",
-            item.get("liquidity_level") == "偏弱",
-            item.get("chase_risk") == "高",
+            item.get("liquidity_level") != "偏弱",
+            item.get("chase_risk") != "高",
         ),
     )
     lines = ["| 标的 | 来源 | 最新价 | 估算净值 | 折溢价 | 涨跌幅 | 成交额 | 流动性 | 追高风险 |", "|---|---|---:|---:|---:|---:|---:|---|---|"]
