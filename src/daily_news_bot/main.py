@@ -1007,10 +1007,9 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         ]
     )
     lines.extend(f"- {line}" for line in market_lines[:4])
-    if objective_lines:
+    if objective_lines or risk_gate_lines:
         lines.extend(["", "**年度纪律**"])
         lines.extend(f"- {line}" for line in objective_lines[:2])
-    if risk_gate_lines:
         lines.extend(f"- {line}" for line in risk_gate_lines[:2])
     lines.extend(
         [

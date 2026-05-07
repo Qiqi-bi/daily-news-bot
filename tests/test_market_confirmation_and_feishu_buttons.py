@@ -335,6 +335,28 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertNotIn("继续持有", tendency)
         self.assertNotIn("¥1,000", tendency)
 
+    def test_feishu_digest_groups_risk_gates_under_annual_discipline_without_objective(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {
+                    "enabled": True,
+                    "hard_risk_gate_lines": [
+                        "- 纪律优先：进攻仓/AI约束优先级最高，新增资金先不要继续加AI、半导体或港股科技。"
+                    ],
+                },
+            }
+        )
+
+        self.assertIn("**年度纪律**", digest)
+        self.assertIn("纪律优先：进攻仓", digest)
+        self.assertLess(digest.index("**年度纪律**"), digest.index("纪律优先：进攻仓"))
+        self.assertLess(digest.index("纪律优先：进攻仓"), digest.index("**3条新闻**"))
+
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
             {
