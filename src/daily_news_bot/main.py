@@ -1008,6 +1008,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     risk_gate_lines = _build_feishu_risk_gate_lines(payload)
     weekly_gate_lines = _build_feishu_weekly_gate_lines(payload)
     weekly_action_line = _build_feishu_weekly_action_line(payload)
+    validation_lines = _build_feishu_validation_lines(payload)
 
     lines: list[str] = [
         "**总判断**",
@@ -1058,6 +1059,13 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     )
     if receipt_form_url:
         lines.append("- 也可以点卡片按钮填写回执。")
+    if validation_lines:
+        validation_preview = validation_lines[:2]
+        discipline_line = next((line for line in validation_lines if line.startswith("用途：")), "")
+        if discipline_line and discipline_line not in validation_preview:
+            validation_preview.append(discipline_line)
+        lines.extend(["", "**验算**"])
+        lines.extend(f"- {line}" for line in validation_preview[:3])
     lines.extend(
         [
             "",

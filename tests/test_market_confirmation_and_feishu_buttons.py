@@ -420,6 +420,47 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertNotIn("U.S. Sanctions", digest)
         self.assertNotIn("能源、宏观事件", digest)
 
+    def test_feishu_digest_surfaces_signal_validation_summary(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {
+                    "signal_count": 8,
+                    "rows": [
+                        {
+                            "theme": "AI电力底座",
+                            "t30": {
+                                "samples": 3,
+                                "win_rate_pct": 67,
+                                "avg_return_pct": 4.2,
+                                "avg_relative_return_pct": 1.5,
+                            },
+                            "verdict": "继续跟踪，但等价格确认。",
+                        }
+                    ],
+                    "mistake_reviews": [
+                        {
+                            "theme": "黄金",
+                            "name": "黄金ETF",
+                            "horizon": "T+30",
+                            "return_pct": -2.0,
+                            "relative_return_pct": -1.1,
+                            "reason": "追高风险",
+                        }
+                    ],
+                },
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {"enabled": True},
+            }
+        )
+
+        self.assertIn("**验算**", digest)
+        self.assertIn("AI电力底座：T+30 样本 3", digest)
+        self.assertIn("用途：验算只校准系统权重", digest)
+        self.assertLess(digest.index("**验算**"), digest.index("**状态**"))
+
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
             {
