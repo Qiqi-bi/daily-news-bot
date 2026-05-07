@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 from src.daily_news_bot.portfolio import _apply_industry_price_confirmation, _evaluate_fixed_buy_pool
-from src.daily_news_bot.main import _build_feishu_digest, _build_feishu_objective_lines
+from src.daily_news_bot.main import _build_feishu_action_tendency, _build_feishu_digest, _build_feishu_objective_lines
 from src.daily_news_bot.senders import _build_card_payload
 
 
@@ -307,6 +307,33 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertLess(digest.index("本周动作：周报复核"), digest.index("本周评估：AI电力底座"))
         self.assertLess(digest.index("本周评估：AI电力底座"), digest.index("**市场快照**"))
         self.assertEqual(digest.count("本周评估："), 1)
+
+    def test_feishu_action_tendency_prioritizes_reduce_discipline_over_tracking(self) -> None:
+        tendency = _build_feishu_action_tendency(
+            {
+                "portfolio": {
+                    "enabled": True,
+                    "advice_tracking": {
+                        "today_items": [
+                            {
+                                "action": "继续持有",
+                                "subject": "沪深300",
+                                "verify_at_utc": "2026-06-06T00:00:00Z",
+                            }
+                        ]
+                    },
+                    "action_slot_lines": [
+                        "1. **减仓复核**｜AI主题基金(011840)｜参考金额 ¥1,000~¥2,500｜原因：直接AI暴露超线，先处理重叠；不是自动卖出。",
+                    ],
+                }
+            }
+        )
+
+        self.assertIn("减仓复核", tendency)
+        self.assertIn("直接AI暴露超线", tendency)
+        self.assertIn("不是自动卖出", tendency)
+        self.assertNotIn("继续持有", tendency)
+        self.assertNotIn("¥1,000", tendency)
 
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(

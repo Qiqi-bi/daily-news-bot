@@ -616,6 +616,12 @@ def _feishu_action_visible_line(raw: Any) -> str:
 
 
 def _build_feishu_action_tendency(payload: dict[str, Any]) -> str:
+    lines = _build_feishu_action_lines(payload)
+    priority_tokens = ("减仓复核", "只减不加", "分批锁盈", "暂停新增", "超线", "超过上限", "回撤红线")
+    for line in lines:
+        if any(token in line for token in priority_tokens):
+            return _feishu_short(line, 135)
+
     tracking = ((payload.get("portfolio") or {}).get("advice_tracking") or {})
     today_items = tracking.get("today_items") or []
     if today_items:
@@ -626,7 +632,6 @@ def _build_feishu_action_tendency(payload: dict[str, Any]) -> str:
         suffix = f"；{verify_date} 回看" if verify_date else "；30天后回看"
         return _feishu_short(f"{action}｜{subject}{suffix}", 135)
 
-    lines = _build_feishu_action_lines(payload)
     return _feishu_short(lines[0] if lines else "继续持有｜今天没有明确纪律触发，等待价格和事件继续确认。", 135)
 
 
