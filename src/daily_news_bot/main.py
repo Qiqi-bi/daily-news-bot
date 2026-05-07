@@ -1096,10 +1096,31 @@ def _public_payload_without_private_portfolio(payload: dict[str, Any]) -> dict[s
     portfolio = public_payload.get("portfolio") or {}
     if portfolio.get("enabled"):
         sync = portfolio.get("trade_sync_status") or {}
+        fixed_pool_rows = []
+        for row in portfolio.get("fixed_buy_pool_rows") or []:
+            public_row = {
+                key: copy.deepcopy(row.get(key))
+                for key in (
+                    "name",
+                    "code",
+                    "state",
+                    "market_confirmation",
+                    "odds_label",
+                    "day_change_pct",
+                    "change_text",
+                    "role",
+                    "reason",
+                )
+                if row.get(key) is not None
+            }
+            public_row["amount_text"] = "按纪律表"
+            fixed_pool_rows.append(public_row)
         public_payload["portfolio"] = {
             "enabled": True,
             "private_mode": True,
             "annual_objective": portfolio.get("annual_objective") or {},
+            "industry_radar": portfolio.get("industry_radar") or {},
+            "fixed_buy_pool_rows": fixed_pool_rows,
             "trade_sync_status": {
                 "label": sync.get("label") or "持仓同步",
                 "value": sync.get("value") or "未知",
