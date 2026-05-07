@@ -299,9 +299,12 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertIn("AI电力底座｜周报评估｜价格确认", digest)
         self.assertIn("黄金保险仓｜冷却中｜价格确认", digest)
         self.assertIn("本周已提醒", digest)
+        self.assertIn("本周动作：周报复核", digest)
+        self.assertIn("不自动买卖", digest)
         self.assertIn("本周评估：AI电力底座", digest)
         self.assertIn("冷却观察：黄金保险仓", digest)
         self.assertIn("只观察：1 条", digest)
+        self.assertLess(digest.index("本周动作：周报复核"), digest.index("本周评估：AI电力底座"))
         self.assertLess(digest.index("本周评估：AI电力底座"), digest.index("**市场快照**"))
         self.assertEqual(digest.count("本周评估："), 1)
 
