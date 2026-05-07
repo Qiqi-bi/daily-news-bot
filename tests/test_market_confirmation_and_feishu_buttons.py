@@ -357,6 +357,35 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertLess(digest.index("**年度纪律**"), digest.index("纪律优先：进攻仓"))
         self.assertLess(digest.index("纪律优先：进攻仓"), digest.index("**3条新闻**"))
 
+    def test_feishu_digest_uses_cluster_level_chinese_news_when_translation_map_is_empty(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [
+                    {
+                        "cluster_id": "energy-1",
+                        "title_zh": "美国制裁扰动能源价格",
+                        "summary_zh": "能源价格可能继续波动，先看油价、美元和运费是否同步确认。",
+                        "representative": {"title": "U.S. Sanctions Zigzag in New World of Economic Warfare"},
+                        "tags": ["energy", "macro"],
+                        "direction": "分化",
+                        "credibility_label": "中",
+                        "confirmed_source_count": 1,
+                    }
+                ],
+                "translations": {"items": {}},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {"enabled": True},
+            }
+        )
+
+        self.assertIn("美国制裁扰动能源价格", digest)
+        self.assertIn("能源价格可能继续波动", digest)
+        self.assertNotIn("U.S. Sanctions", digest)
+        self.assertNotIn("能源、宏观事件", digest)
+
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
             {

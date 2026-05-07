@@ -461,6 +461,14 @@ def _feishu_too_much_english(text: str) -> bool:
     return latin >= 18 and latin > max(cjk * 2, 18)
 
 
+def _feishu_chinese_text(*values: Any, min_cjk: int = 2) -> str:
+    for value in values:
+        text = str(value or "").strip()
+        if text and _feishu_cjk_count(text) >= min_cjk and not _feishu_too_much_english(text):
+            return text
+    return ""
+
+
 def _feishu_cluster_fallback_title(cluster: dict[str, Any]) -> str:
     tags = [_feishu_tag_label(tag) for tag in (cluster.get("tags") or [])]
     tag_text = "、".join(list(dict.fromkeys(tag for tag in tags if tag))[:3]) or "综合"
@@ -475,8 +483,13 @@ def _feishu_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
     representative = cluster.get("representative") or {}
     cluster_id = str(cluster.get("cluster_id") or "")
     translated = translations.get(cluster_id) or {}
-    title = str(translated.get("title_zh") or "").strip()
-    if title and not _feishu_too_much_english(title):
+    title = _feishu_chinese_text(
+        translated.get("title_zh"),
+        cluster.get("title_zh"),
+        cluster.get("headline_zh"),
+        representative.get("title_zh"),
+    )
+    if title:
         return title
     raw_title = str(representative.get("title") or cluster.get("theme") or "").strip()
     if raw_title and _feishu_cjk_count(raw_title) >= 4 and not _feishu_too_much_english(raw_title):
@@ -548,11 +561,17 @@ def _build_feishu_news_lines(clusters: list[dict[str, Any]], translations: dict[
 
     result: list[str] = []
     for index, cluster in enumerate(clusters[:3], start=1):
+        representative = cluster.get("representative") or {}
         translated = translations.get(str(cluster.get("cluster_id") or "")) or {}
         title = _feishu_short(_feishu_title(cluster, translations), 58)
-        summary = str(translated.get("why_it_matters_zh") or translated.get("summary_zh") or "").strip()
-        if _feishu_too_much_english(summary):
-            summary = ""
+        summary = _feishu_chinese_text(
+            translated.get("why_it_matters_zh"),
+            translated.get("summary_zh"),
+            cluster.get("why_it_matters_zh"),
+            cluster.get("summary_zh"),
+            representative.get("why_it_matters_zh"),
+            representative.get("summary_zh"),
+        )
         tags = [_feishu_tag_label(tag) for tag in cluster.get("tags") or []]
         tag_text = "、".join(list(dict.fromkeys(tag for tag in tags if tag))[:3]) or "综合"
         direction = str(cluster.get("direction") or "待确认")
