@@ -19,6 +19,28 @@ def _shorten(value: Any, limit: int = 180) -> str:
     return text[: max(limit - 1, 0)].rstrip() + "…"
 
 
+def _cjk_count(text: str) -> int:
+    return sum(1 for char in text if "\u4e00" <= char <= "\u9fff")
+
+
+def _latin_count(text: str) -> int:
+    return sum(1 for char in text if "a" <= char.lower() <= "z")
+
+
+def _too_much_english(text: str) -> bool:
+    latin = _latin_count(text)
+    cjk = _cjk_count(text)
+    return latin >= 18 and latin > max(cjk * 2, 18)
+
+
+def _chinese_text(*values: Any, min_cjk: int = 2) -> str:
+    for value in values:
+        text = _text(value, "")
+        if text and _cjk_count(text) >= min_cjk and not _too_much_english(text):
+            return text
+    return ""
+
+
 def _strip_markdown(value: Any) -> str:
     text = _text(value, "")
     text = re.sub(r"^[-*>#\s]+", "", text).strip()
@@ -250,18 +272,29 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str,
         representative = cluster.get("representative") or {}
         original_title = _text(representative.get("title") or cluster.get("theme"), "未命名事件")
         translation = translation_items.get(_text(cluster.get("cluster_id"), "")) or {}
-        title_zh = _text(translation.get("title_zh"), "")
+        title_zh = _chinese_text(
+            translation.get("title_zh"),
+            cluster.get("title_zh"),
+            cluster.get("headline_zh"),
+            representative.get("title_zh"),
+        )
         title = title_zh or original_title
         url = representative.get("url")
         original_summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 180)
-        summary_zh = _shorten(translation.get("summary_zh") or translation.get("why_it_matters_zh"), 180)
+        summary_zh = _shorten(
+            _chinese_text(
+                translation.get("summary_zh"),
+                translation.get("why_it_matters_zh"),
+                cluster.get("summary_zh"),
+                cluster.get("why_it_matters_zh"),
+                representative.get("summary_zh"),
+                representative.get("why_it_matters_zh"),
+            ),
+            180,
+        )
         summary = summary_zh or original_summary
         original_title_html = ""
-        if title_zh and title_zh != original_title:
-            original_title_html = f'<div class="event-original">原文：{escape(original_title)}</div>'
         original_summary_html = ""
-        if summary_zh and original_summary:
-            original_summary_html = f'<div class="event-original">原摘要：{escape(original_summary)}</div>'
         tags = cluster.get("tags") or []
         tag_html = "".join(_pill(_tag_label(tag), "tag") for tag in tags[:5]) or _pill("未分类")
         source = _text(representative.get("source"), "未知来源")
@@ -418,7 +451,13 @@ def _title_translation_map(clusters: list[dict[str, Any]] | None, translations: 
     for cluster in clusters or []:
         representative = cluster.get("representative") or {}
         original_title = _text(representative.get("title") or cluster.get("theme"), "")
-        title_zh = _text((translation_items.get(_text(cluster.get("cluster_id"), "")) or {}).get("title_zh"), "")
+        translation = translation_items.get(_text(cluster.get("cluster_id"), "")) or {}
+        title_zh = _chinese_text(
+            translation.get("title_zh"),
+            cluster.get("title_zh"),
+            cluster.get("headline_zh"),
+            representative.get("title_zh"),
+        )
         if original_title and title_zh:
             result[_normalize_title_key(original_title)] = title_zh
             result[_normalize_title_key("跟踪：" + original_title)] = title_zh
@@ -428,7 +467,13 @@ def _title_translation_map(clusters: list[dict[str, Any]] | None, translations: 
 def _cluster_display_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
     representative = cluster.get("representative") or {}
     translation = translations.get(_text(cluster.get("cluster_id"), "")) or {}
-    return _text(translation.get("title_zh") or representative.get("title") or cluster.get("theme"), "未命名事件")
+    title = _chinese_text(
+        translation.get("title_zh"),
+        cluster.get("title_zh"),
+        cluster.get("headline_zh"),
+        representative.get("title_zh"),
+    )
+    return _text(title or representative.get("title") or cluster.get("theme"), "未命名事件")
 
 
 def _translated_overview(payload: dict[str, Any], translations: dict[str, Any]) -> str:

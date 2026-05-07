@@ -7,6 +7,47 @@ from src.daily_news_bot.main import _public_payload_without_private_portfolio
 
 
 class DashboardWeeklyPriorityTest(unittest.TestCase):
+    def test_dashboard_uses_cluster_level_chinese_news_without_showing_english_original(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 1,
+                "articles_count": 1,
+                "clusters": [
+                    {
+                        "cluster_id": "energy-1",
+                        "title_zh": "美国制裁扰动能源价格",
+                        "summary_zh": "能源价格可能继续波动，先看油价、美元和运费是否同步确认。",
+                        "representative": {
+                            "title": "U.S. Sanctions Zigzag in New World of Economic Warfare",
+                            "summary": "Oil markets face a new sanctions shock.",
+                            "source": "Foreign Wire",
+                        },
+                        "tags": ["energy", "macro"],
+                        "direction": "分化",
+                        "credibility_label": "中",
+                        "confirmed_source_count": 1,
+                    }
+                ],
+                "translations": {"items": {}},
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": False},
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("美国制裁扰动能源价格", html)
+        self.assertIn("能源价格可能继续波动", html)
+        self.assertNotIn("U.S. Sanctions", html)
+        self.assertNotIn("Oil markets face", html)
+
     def test_weekly_review_is_shown_before_daily_news(self) -> None:
         html = render_dashboard_html(
             {
