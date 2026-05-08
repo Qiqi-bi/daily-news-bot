@@ -342,6 +342,49 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertLess(digest.index("本周评估：AI电力底座"), digest.index("**市场快照**"))
         self.assertEqual(digest.count("本周评估："), 1)
 
+    def test_feishu_digest_surfaces_execution_risk_without_amounts(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {
+                    "enabled": True,
+                    "execution_checks": {
+                        "items": [
+                            {
+                                "name": "AI主题ETF",
+                                "code": "588930",
+                                "source": "holding",
+                                "change_pct": 3.1,
+                                "chase_risk": "高",
+                                "liquidity_level": "偏弱",
+                                "premium_risk": "高",
+                                "turnover_cny": 8_000_000,
+                            },
+                            {
+                                "name": "沪深300ETF",
+                                "code": "510300",
+                                "source": "holding",
+                                "change_pct": 0.2,
+                                "chase_risk": "低",
+                                "liquidity_level": "好",
+                            },
+                        ]
+                    },
+                },
+            }
+        )
+
+        self.assertIn("执行风险：AI主题ETF", digest)
+        self.assertIn("追高风险高", digest)
+        self.assertIn("流动性偏弱", digest)
+        self.assertIn("折溢价风险高", digest)
+        self.assertNotIn("8,000,000", digest)
+        self.assertLess(digest.index("执行风险："), digest.index("**年度纪律**") if "**年度纪律**" in digest else digest.index("**3条新闻**"))
+
     def test_feishu_action_tendency_prioritizes_reduce_discipline_over_tracking(self) -> None:
         tendency = _build_feishu_action_tendency(
             {

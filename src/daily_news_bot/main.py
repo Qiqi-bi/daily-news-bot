@@ -623,6 +623,26 @@ def _build_feishu_market_summary(payload: dict[str, Any]) -> str:
     return "市场：" + "；".join(lines[:5]) + "。"
 
 
+def _build_feishu_execution_risk_line(payload: dict[str, Any]) -> str:
+    items = (((payload.get("portfolio") or {}).get("execution_checks") or {}).get("items") or [])
+    risky: list[str] = []
+    for item in items:
+        reasons: list[str] = []
+        if item.get("chase_risk") == "高":
+            reasons.append("追高风险高")
+        if item.get("liquidity_level") == "偏弱":
+            reasons.append("流动性偏弱")
+        if item.get("premium_risk") == "高":
+            reasons.append("折溢价风险高")
+        if not reasons:
+            continue
+        name = str(item.get("name") or item.get("code") or "未命名标的").strip()
+        risky.append(f"{name}（{'、'.join(reasons[:3])}）")
+    if not risky:
+        return ""
+    return _feishu_short("执行风险：" + "；".join(risky[:2]) + "；买前先看盘口、折溢价和实时价格。", 135)
+
+
 def _feishu_action_visible_line(raw: Any) -> str:
     cleaned = _feishu_clean_line(raw)
     cleaned = re.sub(r"^\d+\.\s*", "", cleaned)
@@ -1008,6 +1028,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     overview = _build_feishu_overview(payload, clusters, translations)
     news_lines = _build_feishu_news_lines(clusters, translations)
     market_lines = _build_feishu_market_lines(payload)
+    execution_risk_line = _build_feishu_execution_risk_line(payload)
     action_tendency = _build_feishu_action_tendency(payload)
     focus_lines = _build_feishu_focus_lines(payload)
     objective_lines = _build_feishu_objective_lines(payload)
@@ -1033,6 +1054,8 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         ]
     )
     lines.extend(f"- {line}" for line in market_lines[:4])
+    if execution_risk_line:
+        lines.append(f"- {execution_risk_line}")
     if objective_lines or risk_gate_lines:
         lines.extend(["", "**年度纪律**"])
         lines.extend(f"- {line}" for line in objective_lines[:2])
