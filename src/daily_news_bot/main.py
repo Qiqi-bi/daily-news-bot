@@ -29,7 +29,7 @@ from .prediction_lens import build_prediction_lens, render_prediction_lens_markd
 from .ranking import rank_clusters, summarize_tag_distribution
 from .report import render_report, save_json, save_text
 from .senders import send_feishu_message
-from .signal_validation import build_signal_validation, render_signal_validation_markdown
+from .signal_validation import MIN_ADJUSTMENT_SAMPLES, build_signal_validation, render_signal_validation_markdown
 from .strategic_lens import build_strategic_lens, render_strategic_lens_markdown
 from .trade_ledger import aggregate_trade_ledger, apply_trade_ledger_to_portfolio, build_trade_sync_status, load_trade_ledger
 from .tracking import build_tracking_summary, update_event_history
@@ -915,11 +915,17 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
         t30 = row.get("t30") or {}
         samples = int(t30.get("samples") or 0)
         if samples:
+            conclusion = row.get("verdict") or "继续观察"
+            if samples < MIN_ADJUSTMENT_SAMPLES:
+                result.append(
+                    f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，样本不足，不展示胜率，不下结论；{conclusion}。"
+                )
+                continue
             relative = ""
             if t30.get("avg_relative_return_pct") is not None:
                 relative = f"，相对基准 {float(t30.get('avg_relative_return_pct') or 0):+.2f}%"
             result.append(
-                f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，胜率 {float(t30.get('win_rate_pct') or 0):.0f}%，均值 {float(t30.get('avg_return_pct') or 0):+.2f}%{relative}，{row.get('verdict') or '继续观察'}。"
+                f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，胜率 {float(t30.get('win_rate_pct') or 0):.0f}%，均值 {float(t30.get('avg_return_pct') or 0):+.2f}%{relative}，{conclusion}。"
             )
         else:
             result.append(f"{row.get('theme') or '未命名'}：30/60/90天样本继续积累，先不把胜率当结论。")

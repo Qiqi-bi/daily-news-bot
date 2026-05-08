@@ -461,6 +461,37 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertIn("用途：验算只校准系统权重", digest)
         self.assertLess(digest.index("**验算**"), digest.index("**状态**"))
 
+    def test_feishu_validation_summary_marks_small_samples_as_not_conclusive(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {
+                    "signal_count": 2,
+                    "rows": [
+                        {
+                            "theme": "六氟化钨",
+                            "t30": {
+                                "samples": 2,
+                                "win_rate_pct": 100,
+                                "avg_return_pct": 8.0,
+                                "avg_relative_return_pct": 6.0,
+                            },
+                            "verdict": "表现较强。",
+                        }
+                    ],
+                },
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {"enabled": True},
+            }
+        )
+
+        self.assertIn("六氟化钨：T+30 样本 2", digest)
+        self.assertIn("样本不足，不下结论", digest)
+        self.assertNotIn("胜率 100", digest)
+        self.assertIn("用途：验算只校准系统权重", digest)
+
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
             {
