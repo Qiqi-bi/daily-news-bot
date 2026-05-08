@@ -535,6 +535,38 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertNotIn("胜率 100", digest)
         self.assertIn("用途：验算只校准系统权重", digest)
 
+    def test_feishu_validation_leaderboard_hides_win_rate_for_small_samples(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {
+                    "signal_count": 2,
+                    "rows": [],
+                    "industry_leaderboard": {
+                        "rows": [
+                            {
+                                "theme": "算电协同",
+                                "basis": "T+30",
+                                "samples": 2,
+                                "win_rate_pct": 100,
+                                "avg_return_pct": 9.0,
+                                "avg_relative_return_pct": 7.0,
+                                "action": "继续观察",
+                            }
+                        ]
+                    },
+                },
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {"enabled": True},
+            }
+        )
+
+        self.assertIn("命中率榜：算电协同", digest)
+        self.assertIn("样本 2，样本不足，不展示胜率", digest)
+        self.assertNotIn("胜率 100", digest)
+
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(
             {

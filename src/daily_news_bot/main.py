@@ -952,12 +952,18 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
     leaderboard_rows = ((validation.get("industry_leaderboard") or {}).get("rows") or [])
     if leaderboard_rows:
         top = leaderboard_rows[0]
-        relative = ""
-        if top.get("avg_relative_return_pct") is not None:
-            relative = f"，相对基准 {float(top.get('avg_relative_return_pct') or 0):+.2f}%"
-        result.append(
-            f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 胜率 {float(top.get('win_rate_pct') or 0):.0f}%，均值 {float(top.get('avg_return_pct') or 0):+.2f}%{relative}；{top.get('action') or '继续积累'}。"
-        )
+        top_samples = int(top.get("samples") or 0)
+        if top_samples < MIN_ADJUSTMENT_SAMPLES:
+            result.append(
+                f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 样本 {top_samples}，样本不足，不展示胜率；{top.get('action') or '继续积累'}。"
+            )
+        else:
+            relative = ""
+            if top.get("avg_relative_return_pct") is not None:
+                relative = f"，相对基准 {float(top.get('avg_relative_return_pct') or 0):+.2f}%"
+            result.append(
+                f"命中率榜：{top.get('theme') or '未命名'}，{top.get('basis') or '-'} 胜率 {float(top.get('win_rate_pct') or 0):.0f}%，均值 {float(top.get('avg_return_pct') or 0):+.2f}%{relative}；{top.get('action') or '继续积累'}。"
+            )
     mistake_reviews = validation.get("mistake_reviews") or []
     if mistake_reviews:
         item = mistake_reviews[0]
