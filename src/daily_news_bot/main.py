@@ -20,6 +20,7 @@ from .fixed_pool_history import fetch_fixed_pool_history
 from .fetchers import collect_articles_with_status
 from .fund_holdings import fetch_portfolio_fund_holdings
 from .logic_playbook import build_logic_playbook, render_logic_playbook_markdown
+from .macro_burst_risk import build_macro_burst_risk, render_macro_burst_risk_markdown
 from .market_data import fetch_market_snapshot
 from .official_pages import collect_official_page_articles_with_status
 from .portfolio import build_portfolio_brief, load_portfolio
@@ -892,6 +893,31 @@ def _build_feishu_prediction_lines(payload: dict[str, Any]) -> list[str]:
     return result
 
 
+def _build_feishu_macro_risk_lines(payload: dict[str, Any]) -> list[str]:
+    risk = payload.get("macro_burst_risk") or {}
+    if not risk.get("enabled"):
+        return []
+
+    level = risk.get("level") or "未知"
+    score = risk.get("score", 0)
+    posture = _feishu_short(risk.get("posture") or "只做风险复核。", 76)
+    result = [f"等级 {level} / {score}分：{posture}"]
+
+    for line in (risk.get("summary_lines") or [])[:2]:
+        result.append(_feishu_short(line, 88))
+
+    rows = risk.get("rows") or []
+    if rows:
+        row = rows[0]
+        name = row.get("name") or "风险信号"
+        evidence = _feishu_short(row.get("evidence") or "", 42)
+        read = _feishu_short(row.get("read") or "", 58)
+        result.append(f"{name}：{evidence}；{read}")
+
+    result.append("用途：只做风险闸门，不自动买卖。")
+    return result[:5]
+
+
 def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
     radar = (payload.get("portfolio") or {}).get("industry_radar") or {}
     rows = radar.get("rows") or []
@@ -1044,6 +1070,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     risk_gate_lines = _build_feishu_risk_gate_lines(payload)
     weekly_gate_lines = _build_feishu_weekly_gate_lines(payload)
     weekly_action_line = _build_feishu_weekly_action_line(payload)
+    macro_risk_lines = _build_feishu_macro_risk_lines(payload)
     validation_lines = _build_feishu_validation_lines(payload)
     news_count = min(len(clusters), 3)
     news_heading = f"**{news_count}条新闻**" if news_count else "**新闻**"
@@ -1059,6 +1086,9 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
         if weekly_action_line:
             lines.append(f"- {weekly_action_line}")
         lines.extend(f"- {line}" for line in weekly_gate_lines)
+    if macro_risk_lines:
+        lines.extend(["", "**宏观爆破风险**"])
+        lines.extend(f"- {line}" for line in macro_risk_lines)
     lines.extend(
         [
             "",
@@ -1402,6 +1432,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
     )
     strategic_lens = build_strategic_lens(top_clusters, market_snapshot)
     prediction_lens = build_prediction_lens(top_clusters, market_snapshot)
+    macro_burst_risk = build_macro_burst_risk(top_clusters, market_snapshot)
     logic_playbook = build_logic_playbook()
 
     portfolio_brief = ""
@@ -1542,6 +1573,9 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         market_snapshot=market_snapshot,
         tracking_summary=tracking_summary,
     )
+    macro_burst_risk_markdown = render_macro_burst_risk_markdown(macro_burst_risk)
+    if macro_burst_risk_markdown:
+        global_report = global_report.rstrip() + "\n\n" + macro_burst_risk_markdown + "\n"
     strategic_lens_markdown = render_strategic_lens_markdown(strategic_lens)
     if strategic_lens_markdown:
         global_report = global_report.rstrip() + "\n\n" + strategic_lens_markdown + "\n"
@@ -1589,6 +1623,7 @@ def run_pipeline(args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
         "market_snapshot": market_snapshot,
         "strategic_lens": strategic_lens,
         "prediction_lens": prediction_lens,
+        "macro_burst_risk": macro_burst_risk,
         "logic_playbook": logic_playbook,
         "signal_validation": signal_validation,
         "tracking_summary": tracking_summary,

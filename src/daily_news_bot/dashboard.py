@@ -658,6 +658,64 @@ def _strategic_lens_section(payload: dict[str, Any]) -> str:
     )
 
 
+def _macro_burst_risk_section(payload: dict[str, Any]) -> str:
+    risk = payload.get("macro_burst_risk") or {}
+    if not risk.get("enabled"):
+        return ""
+
+    summary_lines = risk.get("summary_lines") or [
+        "把政策换挡、油价、美元、VIX、黄金和高估值资产放在一起看。",
+        "它只判断现在该不该进攻，不自动生成买卖。",
+    ]
+    summary_html = "".join(f"<li>{escape(_strip_markdown(line))}</li>" for line in summary_lines[:3])
+    level = _text(risk.get("level"), "未知")
+    score = risk.get("score", 0)
+    posture = _text(risk.get("posture"), "只做风险复核，不自动买卖。")
+    body = (
+        f'<div class="strategy-summary"><ul>{summary_html}</ul></div>'
+        '<div class="action-grid">'
+        '<div class="action-card boundary-card">'
+        '<div class="action-label">当前等级</div>'
+        f'<div class="action-value">{escape(level)} / {escape(str(score))}分</div>'
+        '<div class="action-note">看是否进入被迫交易、流动性收缩或高估值去杠杆环境。</div>'
+        '</div>'
+        '<div class="action-card boundary-card">'
+        '<div class="action-label">操作姿态</div>'
+        f'<div class="action-value">{escape(_shorten(posture, 90))}</div>'
+        '<div class="action-note">只做风险闸门，不自动买卖。</div>'
+        '</div>'
+        '</div>'
+    )
+
+    rows = risk.get("rows") or []
+    if rows:
+        cards = []
+        for row in rows[:6]:
+            tags = _pill(f"{row.get('score', 0)}分", "importance")
+            cards.append(
+                '<article class="strategy-card">'
+                f'<div class="strategy-card-head">{tags}</div>'
+                f'<h3>{escape(_text(row.get("name"), "风险信号"))}</h3>'
+                f'<div class="strategy-question">{escape(_shorten(row.get("evidence"), 120))}</div>'
+                f'<p>{escape(_shorten(row.get("read"), 170))}</p>'
+                "</article>"
+            )
+        body += '<div class="strategy-grid" style="margin-top:10px">' + "".join(cards) + "</div>"
+    else:
+        body += _render_list(risk.get("framework_lines"), 5)
+
+    disclaimer = risk.get("disclaimer")
+    if disclaimer:
+        body += f'<div class="muted-block">{escape(disclaimer)}</div>'
+    return _section(
+        "宏观爆破风险",
+        body,
+        "看政策换挡、油价、美元、VIX、黄金和高估值资产是否形成共振；只做风险闸门，不自动买卖。",
+        "wide",
+        "macro-risk",
+    )
+
+
 def _prediction_lens_section(payload: dict[str, Any]) -> str:
     lens = payload.get("prediction_lens") or {}
     summary_lines = lens.get("summary_lines") or [
@@ -905,6 +963,7 @@ def _quick_nav(archive_url: Any = "") -> str:
         ("决策", "#decision"),
         ("边界", "#boundary"),
         ("事件", "#events"),
+        ("宏观", "#macro-risk"),
         ("博弈", "#strategy"),
         ("预警", "#predictions"),
         ("验算", "#validation"),
@@ -1581,6 +1640,16 @@ def _metric_cards(payload: dict[str, Any]) -> str:
                 "发酵预警",
                 f'{prediction_lens.get("card_count", 0)} 张',
                 "主线、窗口、验证和失效条件",
+            )
+        )
+    macro_risk = payload.get("macro_burst_risk") or {}
+    if macro_risk.get("enabled"):
+        cards.append(
+            _metric(
+                "宏观风险",
+                f'{macro_risk.get("level", "未知")} / {macro_risk.get("score", 0)}分',
+                "只做风险闸门，不自动买卖",
+                "accent" if macro_risk.get("level") in {"高", "极高"} else "",
             )
         )
     logic_playbook = payload.get("logic_playbook") or {}
@@ -2554,6 +2623,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _weekly_main_section(payload),
         _system_boundary_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题优先转中文，失败时隐藏长英文。", "wide", "events"),
+        _macro_burst_risk_section(payload),
         _strategic_lens_section(payload),
         _prediction_lens_section(payload),
         _signal_validation_section(payload),
