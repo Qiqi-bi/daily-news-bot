@@ -282,7 +282,12 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str,
             cluster.get("headline_zh"),
             representative.get("title_zh"),
         )
-        title = title_zh or original_title
+        if title_zh:
+            title = title_zh
+        elif _too_much_english(original_title):
+            title = "外文事件待翻译"
+        else:
+            title = original_title
         url = representative.get("url")
         original_summary = _shorten(representative.get("summary") or representative.get("content") or cluster.get("theme"), 180)
         summary_zh = _shorten(
@@ -296,7 +301,12 @@ def _cluster_rows(clusters: list[dict[str, Any]] | None, translations: dict[str,
             ),
             180,
         )
-        summary = summary_zh or original_summary
+        if summary_zh:
+            summary = summary_zh
+        elif _too_much_english(original_summary):
+            summary = "外文摘要待翻译；先看标签、来源和市场确认。"
+        else:
+            summary = original_summary
         original_title_html = ""
         original_summary_html = ""
         tags = cluster.get("tags") or []
@@ -468,13 +478,18 @@ def _title_translation_map(clusters: list[dict[str, Any]] | None, translations: 
 def _cluster_display_title(cluster: dict[str, Any], translations: dict[str, Any]) -> str:
     representative = cluster.get("representative") or {}
     translation = translations.get(_text(cluster.get("cluster_id"), "")) or {}
+    original_title = _text(representative.get("title") or cluster.get("theme"), "")
     title = _chinese_text(
         translation.get("title_zh"),
         cluster.get("title_zh"),
         cluster.get("headline_zh"),
         representative.get("title_zh"),
     )
-    return _text(title or representative.get("title") or cluster.get("theme"), "未命名事件")
+    if title:
+        return title
+    if _too_much_english(original_title):
+        return "外文事件待翻译"
+    return _text(original_title, "未命名事件")
 
 
 def _translated_overview(payload: dict[str, Any], translations: dict[str, Any]) -> str:

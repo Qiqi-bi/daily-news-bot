@@ -102,6 +102,42 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertNotIn("原文：", html)
         self.assertNotIn("U.S. Sanctions", html)
 
+    def test_dashboard_hides_english_event_text_when_translation_is_missing(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 1,
+                "articles_count": 1,
+                "clusters": [
+                    {
+                        "cluster_id": "energy-1",
+                        "representative": {
+                            "title": "U.S. Sanctions Zigzag in New World of Economic Warfare",
+                            "summary": "Oil markets face a new sanctions shock and traders are watching shipping costs.",
+                            "source": "Foreign Wire",
+                        },
+                        "tags": ["energy", "macro"],
+                    }
+                ],
+                "translations": {"enabled": False, "items": {}},
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": False},
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("外文事件待翻译", html)
+        self.assertIn("外文摘要待翻译", html)
+        self.assertNotIn("U.S. Sanctions", html)
+        self.assertNotIn("Oil markets face", html)
+
     def test_weekly_review_is_shown_before_daily_news(self) -> None:
         html = render_dashboard_html(
             {
