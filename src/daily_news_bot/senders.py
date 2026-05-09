@@ -71,16 +71,17 @@ def _raise_for_feishu_api_error(response: requests.Response) -> dict[str, Any]:
 def _prefixed_url(content: str, prefixes: tuple[str, ...]) -> str:
     for line in content.splitlines():
         stripped = line.strip()
-        if stripped.startswith(prefixes):
-            value = stripped.split("：", 1)[1].strip()
-            if value.startswith(("https://", "http://")):
-                return value
+        for prefix in prefixes:
+            if stripped.startswith(prefix):
+                value = stripped[len(prefix) :].strip()
+                if value.startswith(("https://", "http://")):
+                    return value
     return ""
 
 
 def _button_urls(content: str) -> dict[str, str]:
-    web_url = _prefixed_url(content, ("Dashboard：", "网页："))
-    receipt_url = _prefixed_url(content, ("回执页：",))
+    web_url = _prefixed_url(content, ("Dashboard：", "Dashboard:", "网页：", "网页:"))
+    receipt_url = _prefixed_url(content, ("回执页：", "回执页:"))
     if not web_url:
         for line in content.splitlines():
             stripped = line.strip()
@@ -88,6 +89,19 @@ def _button_urls(content: str) -> dict[str, str]:
                 web_url = stripped
                 break
     return {"web": web_url, "receipt": receipt_url}
+
+
+def _card_display_content(content: str) -> str:
+    lines: list[str] = []
+    for line in content.splitlines():
+        stripped = line.lstrip()
+        indent = line[: len(line) - len(stripped)]
+        if stripped.startswith(("Dashboard：", "Dashboard:")):
+            _, value = stripped.replace("Dashboard:", "Dashboard：", 1).split("：", 1)
+            lines.append(f"{indent}网页：{value.strip()}")
+        else:
+            lines.append(line)
+    return "\n".join(lines)
 
 
 def _url_with_action(url: str, action: str) -> str:
@@ -120,7 +134,8 @@ def _card_overview_fields(content: str) -> list[dict[str, Any]]:
 
 def _build_card_payload(title: str, content: str) -> dict[str, Any]:
     trimmed = _trim_content(content, CARD_TOTAL_LIMIT)
-    chunks = _chunk_text(trimmed)
+    display_content = _card_display_content(trimmed)
+    chunks = _chunk_text(display_content)
     elements: list[dict[str, Any]] = [
         {
             "tag": "div",
@@ -130,7 +145,7 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             },
         },
     ]
-    overview_fields = _card_overview_fields(trimmed)
+    overview_fields = _card_overview_fields(display_content)
     if overview_fields:
         elements.append({"tag": "div", "fields": overview_fields})
     elements.append({"tag": "hr"})

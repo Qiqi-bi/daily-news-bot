@@ -285,6 +285,30 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertTrue(any("action=buy" in url for url in urls))
         self.assertTrue(any("action=sell" in url for url in urls))
 
+    def test_feishu_card_relabels_dashboard_as_chinese_web_entry(self) -> None:
+        payload = _build_card_payload(
+            "daily",
+            "Dashboard:https://example.com/dashboard\n回执页：https://example.com/receipt?token=abc",
+        )
+
+        text_blocks = [
+            element.get("text", {}).get("content", "")
+            for element in payload["card"]["elements"]
+            if element.get("tag") == "div"
+        ]
+        combined_text = "\n".join(text_blocks)
+        buttons = [
+            action
+            for element in payload["card"]["elements"]
+            if element.get("tag") == "action"
+            for action in element.get("actions", [])
+            if action.get("tag") == "button"
+        ]
+
+        self.assertIn("网页：https://example.com/dashboard", combined_text)
+        self.assertNotIn("Dashboard", combined_text)
+        self.assertTrue(any(button.get("url") == "https://example.com/dashboard" for button in buttons))
+
     def test_feishu_digest_prioritizes_industry_review_gates(self) -> None:
         digest = _build_feishu_digest(
             {
