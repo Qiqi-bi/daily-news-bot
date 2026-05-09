@@ -1,0 +1,62 @@
+from __future__ import annotations
+
+import unittest
+
+from src.daily_news_bot.main import _build_feishu_digest
+
+
+class FeishuOutputGuardTest(unittest.TestCase):
+    def test_digest_keeps_return_targets_as_discipline_and_requires_realtime_confirmation(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "dashboard": {"public_url": "https://example.com/daily-news-bot/"},
+                "clusters": [],
+                "translations": {"items": {}},
+                "market_snapshot": {
+                    "items": [
+                        {"name": "WTI原油", "change_pct": 1.2, "movement": "上涨"},
+                        {"name": "黄金", "change_pct": -0.6, "movement": "下跌"},
+                        {"name": "美元指数", "change_pct": 0.4, "movement": "上涨"},
+                        {"name": "VIX", "change_pct": 3.0, "movement": "上涨"},
+                    ]
+                },
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "portfolio": {
+                    "annual_objective": {
+                        "base_return_pct_range": [8, 12],
+                        "stretch_return_pct_range": [12, 18],
+                        "max_annual_drawdown_pct": 15,
+                        "discipline": "目标收益不触发单笔交易。",
+                    }
+                },
+                "macro_burst_risk": {
+                    "enabled": True,
+                    "level": "高",
+                    "score": 9,
+                    "posture": "暂停新增进攻仓，保留现金，等价格确认。",
+                    "summary_lines": ["宏观爆破风险高：事实和推测分开，先看验证。"],
+                    "rows": [
+                        {
+                            "name": "美元荒/被迫卖出",
+                            "fact": "美元、VIX 上行，黄金短跌。",
+                            "inference": "可能是换现金，而不是避险失效。",
+                            "verify": "继续看美元、VIX、黄金和股指是否共振。",
+                            "invalidate": "美元和VIX回落，黄金重新走强。",
+                        }
+                    ],
+                },
+            }
+        )
+
+        self.assertIn("不是收益承诺", digest)
+        self.assertIn("数据可能延迟", digest)
+        self.assertIn("实时价格", digest)
+        self.assertLessEqual(len(digest.splitlines()), 44)
+        self.assertIn("网页：https://example.com/daily-news-bot/", digest)
+
+
+if __name__ == "__main__":
+    unittest.main()
+

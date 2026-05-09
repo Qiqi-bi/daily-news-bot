@@ -36,6 +36,8 @@ NEWS_RULES: dict[str, dict[str, Any]] = {
         ),
         "weight": 2,
         "read": "政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。",
+        "verify": "看美联储声明、利率期货、美元指数和美债收益率是否同向确认。",
+        "invalidate": "政策表述转温和，长端利率、美元和VIX没有继续跟随。",
     },
     "energy_shock": {
         "name": "能源/通道冲击",
@@ -54,6 +56,8 @@ NEWS_RULES: dict[str, dict[str, Any]] = {
         ),
         "weight": 2,
         "read": "油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。",
+        "verify": "看Brent/WTI、库存、航运通道和美元指数是否继续共振。",
+        "invalidate": "油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。",
     },
     "forced_trading": {
         "name": "被迫交易/现金方",
@@ -79,6 +83,8 @@ NEWS_RULES: dict[str, dict[str, Any]] = {
         ),
         "weight": 3,
         "read": "这条线关注谁缺现金、谁能等折价；它是风险框架，不是阴谋论结论。",
+        "verify": "看美元融资压力、VIX、保证金压力、黄金抛售和权益回撤是否同时出现。",
+        "invalidate": "美元资金压力缓和，黄金和权益资产同步企稳，现金荒没有扩散。",
     },
     "ai_capex_pressure": {
         "name": "AI资本开支压力",
@@ -100,6 +106,8 @@ NEWS_RULES: dict[str, dict[str, Any]] = {
         ),
         "weight": 2,
         "read": "AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。",
+        "verify": "看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。",
+        "invalidate": "业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。",
     },
 }
 
@@ -153,10 +161,31 @@ def _item_line(item: dict[str, Any] | None) -> str:
     return f"{item.get('name') or item.get('symbol')} {_fmt_pct(item.get('change_pct'))} {item.get('movement') or '待确认'}"
 
 
-def _add_row(rows: list[dict[str, Any]], key: str, name: str, evidence: str, read: str, score: int) -> int:
+def _add_row(
+    rows: list[dict[str, Any]],
+    key: str,
+    name: str,
+    fact: str,
+    inference: str,
+    score: int,
+    verify: str,
+    invalidate: str,
+) -> int:
     if any(row.get("key") == key for row in rows):
         return 0
-    rows.append({"key": key, "name": name, "evidence": evidence, "read": read, "score": score})
+    rows.append(
+        {
+            "key": key,
+            "name": name,
+            "evidence": fact,
+            "read": inference,
+            "fact": fact,
+            "inference": inference,
+            "verify": verify,
+            "invalidate": invalidate,
+            "score": score,
+        }
+    )
     return score
 
 
@@ -168,8 +197,17 @@ def _news_rows(clusters: list[EventCluster]) -> tuple[list[dict[str, Any]], int]
         hits = [word for word in rule["keywords"] if str(word).casefold() in combined]
         if not hits:
             continue
-        evidence = "新闻命中：" + " / ".join(str(word) for word in hits[:4])
-        score += _add_row(rows, key, rule["name"], evidence, rule["read"], int(rule["weight"]))
+        fact = "新闻命中：" + " / ".join(str(word) for word in hits[:4])
+        score += _add_row(
+            rows,
+            key,
+            rule["name"],
+            fact,
+            rule["read"],
+            int(rule["weight"]),
+            rule["verify"],
+            rule["invalidate"],
+        )
     return rows, score
 
 
@@ -195,14 +233,16 @@ def _market_rows(market_snapshot: dict[str, Any] | None) -> tuple[list[dict[str,
     equity_change = _change(nasdaq)
 
     if oil_change is not None and oil_change >= 1.0:
-        evidence = "；".join(part for part in [_item_line(oil), _item_line(dollar)] if part)
+        fact = "；".join(part for part in [_item_line(oil), _item_line(dollar)] if part)
         score += _add_row(
             rows,
             "oil_dollar_pressure",
             "油价/美元压力",
-            evidence,
+            fact,
             "油价和美元同步走强时，小国、企业融资和风险资产会先承压。",
             2,
+            "看油价、美元指数和通胀预期是否继续同步上行。",
+            "油价回落或美元转弱，VIX没有继续放大。",
         )
 
     if (
@@ -213,25 +253,29 @@ def _market_rows(market_snapshot: dict[str, Any] | None) -> tuple[list[dict[str,
             or (yield_change is not None and yield_change >= 0.35)
         )
     ):
-        evidence = "；".join(part for part in [_item_line(dollar), _item_line(yield10), _item_line(vix), _item_line(gold)] if part)
+        fact = "；".join(part for part in [_item_line(dollar), _item_line(yield10), _item_line(vix), _item_line(gold)] if part)
         score += _add_row(
             rows,
             "liquidity_squeeze",
             "美元荒/被迫卖出",
-            evidence,
+            fact,
             "美元、利率和VIX一起上行时，黄金短跌可能是换现金，不一定是避险逻辑失效。",
             3,
+            "看DXY、VIX、美债收益率继续上行，黄金和股指是否同步承压。",
+            "美元和VIX回落，黄金重新走强，股指企稳。",
         )
 
     if equity_change is not None and equity_change <= -0.8 and vix_change is not None and vix_change >= 2.0:
-        evidence = "；".join(part for part in [_item_line(nasdaq), _item_line(vix)] if part)
+        fact = "；".join(part for part in [_item_line(nasdaq), _item_line(vix)] if part)
         score += _add_row(
             rows,
             "equity_deleveraging",
             "美股去杠杆",
-            evidence,
+            fact,
             "高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。",
             2,
+            "看纳指/标普继续下行，VIX和信用利差是否扩大。",
+            "股指收复跌幅，VIX回落，成交没有继续放大。",
         )
 
     return rows, score
@@ -270,9 +314,9 @@ def build_macro_burst_risk(
 
     if rows:
         summary_lines = [
-            f"宏观爆破风险{level}：先看谁被迫交易、谁有现金等打折、谁承担油价和美元压力。",
-            f"当前分数 {score}；{posture}",
-            "纪律：这是风险闸门，只控制追涨和仓位节奏，不把具体日期或人物判断当成买卖指令。",
+            f"宏观爆破风险{level}：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。",
+            f"当前分数 {score}：{posture}",
+            "纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。",
         ]
     else:
         summary_lines = [
@@ -304,13 +348,15 @@ def render_macro_burst_risk_markdown(risk: dict[str, Any]) -> str:
     lines.extend(f"- {line}" for line in risk.get("summary_lines") or [])
     rows = risk.get("rows") or []
     if rows:
-        lines.extend(["", "| 风险线 | 证据 | 解读 |", "|---|---|---|"])
+        lines.extend(["", "| 风险线 | 事实 | 推测 | 验证 | 失效 |", "|---|---|---|---|---|"])
         for row in rows[:6]:
             lines.append(
                 "| "
                 f"{_md_cell(row.get('name'))} | "
-                f"{_md_cell(row.get('evidence'))} | "
-                f"{_md_cell(row.get('read'))} |"
+                f"{_md_cell(row.get('fact') or row.get('evidence'))} | "
+                f"{_md_cell(row.get('inference') or row.get('read'))} | "
+                f"{_md_cell(row.get('verify'))} | "
+                f"{_md_cell(row.get('invalidate'))} |"
             )
     else:
         lines.extend(["", "### 固定框架", ""])

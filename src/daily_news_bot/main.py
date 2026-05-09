@@ -608,12 +608,13 @@ def _build_feishu_market_lines(payload: dict[str, Any]) -> list[str]:
         "VIX": "波动率指数",
         "美国10Y国债收益率": "美国十年期收益率",
     }
-    for item in ordered[:7]:
+    for item in ordered[:3]:
         raw_name = str(item.get("name") or "未知资产")
         name = display_names.get(raw_name, raw_name)
         change = _feishu_fmt_market_change(item.get("change_pct"))
         movement = str(item.get("movement") or "待确认")
         result.append(f"{name}：{change}，{movement}")
+    result.append("数据可能延迟；交易前二次确认实时价格、盘口和官方源。")
     return result
 
 
@@ -792,6 +793,7 @@ def _build_feishu_objective_lines(payload: dict[str, Any]) -> list[str]:
         lines.append(
             f"压力：{worst.get('name') or '最坏场景'} 约 {_fmt_pct(worst.get('estimated_impact_pct'))}，{worst.get('severity') or '待评估'}；{_feishu_short(worst.get('action') or '先复核仓位。', 70)}"
         )
+    lines.append("定位：年度目标是仓位纪律和风险预算，不是收益承诺。")
     lines.append(f"纪律：{discipline}")
     budget = objective.get("return_budget") or {}
     budget_range = budget.get("estimated_return_contribution_pct_range")
@@ -903,16 +905,21 @@ def _build_feishu_macro_risk_lines(payload: dict[str, Any]) -> list[str]:
     posture = _feishu_short(risk.get("posture") or "只做风险复核。", 76)
     result = [f"等级 {level} / {score}分：{posture}"]
 
-    for line in (risk.get("summary_lines") or [])[:2]:
+    for line in (risk.get("summary_lines") or [])[:1]:
         result.append(_feishu_short(line, 88))
 
     rows = risk.get("rows") or []
     if rows:
         row = rows[0]
         name = row.get("name") or "风险信号"
-        evidence = _feishu_short(row.get("evidence") or "", 42)
-        read = _feishu_short(row.get("read") or "", 58)
-        result.append(f"{name}：{evidence}；{read}")
+        fact = _feishu_short(row.get("fact") or row.get("evidence") or "", 42)
+        inference = _feishu_short(row.get("inference") or row.get("read") or "", 50)
+        verify = _feishu_short(row.get("verify") or "继续看价格和流动性是否确认。", 42)
+        invalidate = _feishu_short(row.get("invalidate") or "若价格不跟随则降级。", 36)
+        result.append(f"{name}：事实 {fact}；推测 {inference}")
+        result.append(f"验证：{verify}；失效：{invalidate}")
+    else:
+        result.append("验证：至少等美元、VIX、油价、股指中两项确认；失效：价格不跟随就降级。")
 
     result.append("用途：只做风险闸门，不自动买卖。")
     return result[:5]
@@ -1051,6 +1058,17 @@ def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], tr
     return raw_title
 
 
+def _compact_feishu_lines(lines: list[str], max_lines: int = 44) -> list[str]:
+    if len(lines) <= max_lines:
+        return lines
+    webpage_index = next((index for index, line in enumerate(lines) if line.startswith("网页：")), len(lines))
+    tail = lines[webpage_index:] if webpage_index < len(lines) else []
+    budget = max_lines - len(tail) - 2
+    if budget < 12:
+        return lines[:max_lines]
+    return lines[:budget] + ["", "- 后续内容较长，已压缩；完整内容请打开网页。"] + tail
+
+
 def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") -> str:
     watchlist = payload.get("watchlist") or {}
     dashboard = payload.get("dashboard") or {}
@@ -1149,6 +1167,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     )
     if receipt_form_url:
         lines.append(f"回执页：{receipt_form_url}")
+    lines = _compact_feishu_lines(lines)
     return "\n".join(lines)
 
 

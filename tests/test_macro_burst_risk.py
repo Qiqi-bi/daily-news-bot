@@ -65,6 +65,26 @@ class MacroBurstRiskTest(unittest.TestCase):
         self.assertTrue(any(row["key"] == "liquidity_squeeze" for row in lens["rows"]))
         self.assertTrue(any("VIX" in row["evidence"] for row in lens["rows"]))
 
+    def test_macro_risk_rows_separate_fact_inference_validation_and_failure(self) -> None:
+        lens = build_macro_burst_risk(
+            [
+                _cluster(
+                    "Oil shock and dollar shortage pressure high valuation AI assets",
+                    "Forced selling risk rises as VIX and dollar funding stress climb.",
+                    ["macro", "energy", "markets"],
+                )
+            ],
+            _stressed_market(),
+        )
+
+        row = next(row for row in lens["rows"] if row["key"] == "liquidity_squeeze")
+        self.assertIn("fact", row)
+        self.assertIn("inference", row)
+        self.assertIn("verify", row)
+        self.assertIn("invalidate", row)
+        self.assertIn("事实", " ".join(lens["summary_lines"]))
+        self.assertIn("推测", " ".join(lens["summary_lines"]))
+
     def test_feishu_digest_surfaces_macro_risk_without_turning_it_into_buy_signal(self) -> None:
         digest = _build_feishu_digest(
             {
@@ -91,6 +111,8 @@ class MacroBurstRiskTest(unittest.TestCase):
         self.assertIn("宏观爆破风险", digest)
         self.assertIn("暂停新增进攻仓", digest)
         self.assertIn("不自动买卖", digest)
+        self.assertIn("验证", digest)
+        self.assertIn("失效", digest)
         self.assertNotIn("马上买入", digest)
 
     def test_dashboard_shows_macro_burst_risk_panel(self) -> None:

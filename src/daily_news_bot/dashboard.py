@@ -696,8 +696,10 @@ def _macro_burst_risk_section(payload: dict[str, Any]) -> str:
                 '<article class="strategy-card">'
                 f'<div class="strategy-card-head">{tags}</div>'
                 f'<h3>{escape(_text(row.get("name"), "风险信号"))}</h3>'
-                f'<div class="strategy-question">{escape(_shorten(row.get("evidence"), 120))}</div>'
-                f'<p>{escape(_shorten(row.get("read"), 170))}</p>'
+                f'<div class="strategy-question">事实：{escape(_shorten(row.get("fact") or row.get("evidence"), 110))}</div>'
+                f'<p>推测：{escape(_shorten(row.get("inference") or row.get("read"), 150))}</p>'
+                f'<div class="strategy-check">验证：{escape(_shorten(row.get("verify"), 120))}</div>'
+                f'<div class="strategy-note">失效：{escape(_shorten(row.get("invalidate"), 120))}</div>'
                 "</article>"
             )
         body += '<div class="strategy-grid" style="margin-top:10px">' + "".join(cards) + "</div>"
@@ -2632,7 +2634,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _section(
             "市场快照",
             _render_table(["资产", "价格", "涨跌", "状态", "行情时间"], _market_rows(market_snapshot)),
-            f'{_text(market_snapshot.get("provider"), "价格源未知")}；用于看新闻是否已被价格确认。',
+            f'{_text(market_snapshot.get("provider"), "价格源未知")}；用于看新闻是否已被价格确认，数据可能延迟，交易前二次确认实时行情和盘口。',
             section_id="market",
         ),
         _section(
