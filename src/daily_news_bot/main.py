@@ -1009,6 +1009,10 @@ def _build_feishu_trade_sync_line(payload: dict[str, Any]) -> str:
     return f"持仓同步：{value}；{note}"
 
 
+def _feishu_strip_sentence_end(text: str) -> str:
+    return str(text or "").rstrip("。；; ")
+
+
 def _feishu_watch_title(item: dict[str, Any], clusters: list[dict[str, Any]], translations: dict[str, Any]) -> str:
     raw_title = str(item.get("title") or "未命名提醒")
     normalized = raw_title.replace("跟踪：", "", 1).replace("跟踪:", "", 1).strip().casefold()
@@ -1087,7 +1091,7 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
             "",
             "**回执/周报**",
             f"- 持仓同步：{trade_sync_line}",
-            f"- {receipt_line}；有交易才回一行中文，没操作不用回。",
+            f"- {_feishu_strip_sentence_end(receipt_line)}；有交易才回一行中文，没操作不用回。",
             "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
         ]
     )

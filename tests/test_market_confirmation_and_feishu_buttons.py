@@ -309,6 +309,22 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertNotIn("Dashboard", combined_text)
         self.assertTrue(any(button.get("url") == "https://example.com/dashboard" for button in buttons))
 
+    def test_feishu_digest_receipt_line_has_clean_punctuation(self) -> None:
+        digest = _build_feishu_digest(
+            {
+                "clusters": [],
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0},
+                "signal_validation": {"signal_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "dashboard": {"public_url": "https://example.com/dashboard"},
+                "portfolio": {"enabled": True},
+            }
+        )
+
+        self.assertIn("本次未读取；下次日报运行前会读取飞书群；有交易才回一行中文，没操作不用回。", digest)
+        self.assertNotIn("。；", digest)
+
     def test_feishu_digest_prioritizes_industry_review_gates(self) -> None:
         digest = _build_feishu_digest(
             {
