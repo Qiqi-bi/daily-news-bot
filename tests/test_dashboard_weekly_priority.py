@@ -135,6 +135,8 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
 
         self.assertIn("外文事件待翻译", html)
         self.assertIn("外文摘要待翻译", html)
+        self.assertIn("外文标题优先转中文", html)
+        self.assertNotIn("外文标题会自动加中文速译", html)
         self.assertNotIn("U.S. Sanctions", html)
         self.assertNotIn("Oil markets face", html)
 
