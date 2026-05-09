@@ -4,6 +4,8 @@ import re
 from html import escape
 from typing import Any
 
+from src.daily_news_bot.signal_validation import MIN_ADJUSTMENT_SAMPLES
+
 
 def _text(value: Any, default: str = "-") -> str:
     if value is None:
@@ -1249,17 +1251,22 @@ def _validation_leaderboard_rows(validation: dict[str, Any] | None) -> list[list
     leaderboard = ((validation or {}).get("industry_leaderboard") or {}).get("rows") or []
     result: list[list[str]] = []
     for row in leaderboard[:8]:
+        samples = int(row.get("samples") or 0)
+        small_sample = samples < MIN_ADJUSTMENT_SAMPLES
         relative_text = "-"
         if row.get("avg_relative_return_pct") is not None:
             relative_text = _fmt_pct(row.get("avg_relative_return_pct"))
+        win_rate_text = "样本不足，不展示胜率" if small_sample else _fmt_pct_plain(row.get("win_rate_pct"))
+        avg_return_text = "观察中" if small_sample else _fmt_pct(row.get("avg_return_pct"))
+        relative_return_text = "观察中" if small_sample else relative_text
         result.append(
             [
                 escape(_text(row.get("theme"), "未命名行业")),
                 escape(_text(row.get("basis"), "-")),
-                escape(_text(row.get("samples"), "0")),
-                escape(_fmt_pct_plain(row.get("win_rate_pct"))),
-                escape(_fmt_pct(row.get("avg_return_pct"))),
-                escape(relative_text),
+                escape(_text(samples, "0")),
+                escape(win_rate_text),
+                escape(avg_return_text),
+                escape(relative_return_text),
                 escape(_text(row.get("action"), "继续积累")),
             ]
         )
