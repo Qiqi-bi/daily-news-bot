@@ -517,16 +517,22 @@ def build_fixed_pool_60d_panel(
             continue
 
         line_parts: list[str] = []
+        small_sample = sample_counts.get(preferred_window, 0) < 8
         for horizon in (1, 3, 5):
             leader = (row["selected_leaders"] or {}).get(f"t{horizon}")
             if leader:
-                line_parts.append(
-                    f"T+{horizon} 先手更常见 {leader.get('name')}({leader.get('code')})，胜率 {leader.get('win_rate_pct', 0.0):.0f}%"
-                )
+                if small_sample:
+                    line_parts.append(
+                        f"T+{horizon} 先手更常见 {leader.get('name')}({leader.get('code')})，样本 {leader.get('samples', 0)}，不展示胜率"
+                    )
+                else:
+                    line_parts.append(
+                        f"T+{horizon} 先手更常见 {leader.get('name')}({leader.get('code')})，胜率 {leader.get('win_rate_pct', 0.0):.0f}%"
+                    )
 
         sample_text = "/".join(str(sample_counts[window]) for window in WIN_LOOKBACK_WINDOWS)
         if line_parts:
-            sample_note = "样本仍偏少，仅供观察；" if sample_counts.get(preferred_window, 0) < 8 else ""
+            sample_note = "样本仍偏少，仅供观察；" if small_sample else ""
             win_lines.append(
                 f"- {theme_label}：近 60/120/250 天主题样本日 {sample_text} 个；当前优先参考近 {preferred_window} 天；{sample_note}"
                 + "；".join(line_parts)
