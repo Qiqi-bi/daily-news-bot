@@ -1045,6 +1045,9 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     weekly_gate_lines = _build_feishu_weekly_gate_lines(payload)
     weekly_action_line = _build_feishu_weekly_action_line(payload)
     validation_lines = _build_feishu_validation_lines(payload)
+    news_count = min(len(clusters), 3)
+    news_heading = f"**{news_count}条新闻**" if news_count else "**新闻**"
+    focus_heading = f"**{min(len(focus_lines), 3)}个关注**" if focus_lines else "**关注**"
 
     lines: list[str] = [
         "**总判断**",
@@ -1072,14 +1075,14 @@ def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") ->
     lines.extend(
         [
             "",
-            "**3条新闻**",
+            news_heading,
         ]
     )
     lines.extend(news_lines[:3])
     lines.extend(
         [
             "",
-            "**3个关注**",
+            focus_heading,
         ]
     )
     lines.extend(f"{index}. {line}" for index, line in enumerate(focus_lines[:3], start=1))

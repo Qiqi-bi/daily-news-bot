@@ -423,7 +423,7 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertIn("流动性偏弱", digest)
         self.assertIn("折溢价风险高", digest)
         self.assertNotIn("8,000,000", digest)
-        self.assertLess(digest.index("执行风险："), digest.index("**年度纪律**") if "**年度纪律**" in digest else digest.index("**3条新闻**"))
+        self.assertLess(digest.index("执行风险："), digest.index("**年度纪律**") if "**年度纪律**" in digest else digest.index("**新闻**"))
 
     def test_feishu_action_tendency_prioritizes_reduce_discipline_over_tracking(self) -> None:
         tendency = _build_feishu_action_tendency(
@@ -472,7 +472,7 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
         self.assertIn("**年度纪律**", digest)
         self.assertIn("纪律优先：进攻仓", digest)
         self.assertLess(digest.index("**年度纪律**"), digest.index("纪律优先：进攻仓"))
-        self.assertLess(digest.index("纪律优先：进攻仓"), digest.index("**3条新闻**"))
+        self.assertLess(digest.index("纪律优先：进攻仓"), digest.index("**新闻**"))
 
     def test_feishu_digest_uses_cluster_level_chinese_news_when_translation_map_is_empty(self) -> None:
         digest = _build_feishu_digest(
@@ -500,6 +500,8 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
 
         self.assertIn("美国制裁扰动能源价格", digest)
         self.assertIn("能源价格可能继续波动", digest)
+        self.assertIn("**1条新闻**", digest)
+        self.assertNotIn("**3条新闻**", digest)
         self.assertNotIn("U.S. Sanctions", digest)
         self.assertNotIn("能源、宏观事件", digest)
 
