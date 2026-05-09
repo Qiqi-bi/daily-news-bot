@@ -6,6 +6,8 @@ from typing import Any
 
 from src.daily_news_bot.signal_validation import MIN_ADJUSTMENT_SAMPLES
 
+FIXED_POOL_MIN_WIN_SAMPLES = 8
+
 
 def _text(value: Any, default: str = "-") -> str:
     if value is None:
@@ -1191,10 +1193,16 @@ def _backfill_rows(rows: list[dict[str, Any]] | None) -> list[list[str]]:
 def _win_leader_text(leader: dict[str, Any] | None) -> str:
     if not leader:
         return "-"
+    samples = int(leader.get("samples") or 0)
+    if samples < FIXED_POOL_MIN_WIN_SAMPLES:
+        return (
+            f"{_text(leader.get('name'), '')} ({_text(leader.get('code'), '')}) / "
+            f"样本 {samples}，样本不足，不展示胜率"
+        )
     return (
         f"{_text(leader.get('name'), '')} ({_text(leader.get('code'), '')}) / "
         f"胜率 {_fmt_pct(leader.get('win_rate_pct'))} / 均值 {_fmt_pct(leader.get('avg_return_pct'))} / "
-        f"样本 {_text(leader.get('samples'), '0')}"
+        f"样本 {samples}"
     )
 
 
