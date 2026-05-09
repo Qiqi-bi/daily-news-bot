@@ -889,6 +889,125 @@ def _decision_strip(payload: dict[str, Any]) -> str:
     return '<section class="decision-strip">' + "".join(cards) + "</section>"
 
 
+def _cockpit_news_list(payload: dict[str, Any], translations: dict[str, Any]) -> str:
+    clusters = payload.get("clusters") or []
+    if not clusters:
+        return _empty("本次没有筛出核心新闻")
+
+    rows = []
+    for index, cluster in enumerate(clusters[:5], start=1):
+        representative = cluster.get("representative") or {}
+        translation = translations.get(_text(cluster.get("cluster_id"), "")) or {}
+        title = _cluster_display_title(cluster, translations)
+        summary = _chinese_text(
+            translation.get("why_it_matters_zh"),
+            translation.get("summary_zh"),
+            cluster.get("why_it_matters_zh"),
+            cluster.get("summary_zh"),
+            representative.get("why_it_matters_zh"),
+            representative.get("summary_zh"),
+        )
+        if not summary and _too_much_english(_text(representative.get("summary") or representative.get("content"), "")):
+            summary = "外文摘要待翻译；先看来源、标签和市场确认。"
+        if not summary:
+            summary = _text(cluster.get("theme"), "先看价格是否确认。")
+        tags = "、".join(_tag_label(tag) for tag in (cluster.get("tags") or [])[:3]) or "综合"
+        credibility = _text(cluster.get("credibility_label"), "待确认")
+        rows.append(
+            "<li>"
+            f'<b>{index}. {escape(_shorten(title, 62))}</b>'
+            f'<span>{escape(_shorten(summary, 105))}</span>'
+            f'<small>{escape(tags)} · 可信度 {escape(credibility)}</small>'
+            "</li>"
+        )
+    return '<ol class="cockpit-news">' + "".join(rows) + "</ol>"
+
+
+def _cockpit_macro_summary(payload: dict[str, Any]) -> tuple[str, str]:
+    risk = payload.get("macro_burst_risk") or {}
+    if not risk.get("enabled"):
+        return ("宏观风险", "未触发高风险框架；继续看油价、美元、VIX、黄金是否共振。")
+    level = _text(risk.get("level"), "未知")
+    score = _text(risk.get("score"), "0")
+    posture = _text(risk.get("posture"), "只做风险复核，不自动买卖。")
+    return (f"宏观风险 {level}/{score}", _shorten(posture, 110))
+
+
+def _cockpit_industry_summary(payload: dict[str, Any]) -> tuple[str, str]:
+    radar = ((payload.get("portfolio") or {}).get("industry_radar") or {})
+    rows = radar.get("rows") or []
+    if not rows:
+        return ("行业雷达", "本次没有行业闸门数据；先看当天新闻和价格确认。")
+    review_names = _industry_names_by_gate(rows, "周报评估")
+    cooldown_names = _industry_names_by_gate(rows, "冷却中")
+    watch_names = [
+        _text(row.get("name"), "")
+        for row in rows
+        if _text(row.get("base_position_gate"), "") in {"继续观察", "只观察"}
+    ]
+    if review_names:
+        return ("行业雷达", "周报评估：" + "、".join(review_names[:3]))
+    if cooldown_names:
+        return ("行业雷达", "冷却观察：" + "、".join(cooldown_names[:3]))
+    return ("行业雷达", "继续观察：" + ("、".join(watch_names[:3]) if watch_names else "暂无可升级主线"))
+
+
+def _cockpit_section(
+    payload: dict[str, Any],
+    global_overview: str,
+    market_snapshot: dict[str, Any],
+    translations: dict[str, Any],
+) -> str:
+    action_items = _action_guidance_items(payload)
+    action_label, action_value, action_note = action_items[0] if action_items else ("怎么调整", "默认不动", "先看价格确认。")
+    macro_title, macro_note = _cockpit_macro_summary(payload)
+    industry_title, industry_note = _cockpit_industry_summary(payload)
+    market_html = _market_signal_strip(market_snapshot) or '<div class="muted-block">本次没有市场快照；交易前先查实时价格。</div>'
+    body = (
+        '<div class="cockpit-layout">'
+        '<div class="cockpit-main">'
+        '<div class="eyebrow">今天结论</div>'
+        f'<h3>{escape(_shorten(global_overview, 92))}</h3>'
+        f'<p>{escape(_shorten(action_note, 150))}</p>'
+        '</div>'
+        '<div class="cockpit-card action-focus">'
+        f'<div class="action-label">{escape(action_label or "怎么调整")}</div>'
+        f'<div class="action-value">{escape(_shorten(action_value, 70))}</div>'
+        f'<div class="action-note">{escape(_shorten(action_note, 120))}</div>'
+        '</div>'
+        '<div class="cockpit-card market-focus">'
+        '<div class="action-label">关键市场</div>'
+        f'{market_html}'
+        '</div>'
+        '<div class="cockpit-card">'
+        f'<div class="action-label">{escape(macro_title)}</div>'
+        f'<div class="action-note">{escape(macro_note)}</div>'
+        '</div>'
+        '<div class="cockpit-card">'
+        f'<div class="action-label">{escape(industry_title)}</div>'
+        f'<div class="action-note">{escape(industry_note)}</div>'
+        '</div>'
+        '<div class="cockpit-card news-focus">'
+        '<div class="action-label">当天新闻</div>'
+        f'{_cockpit_news_list(payload, translations)}'
+        '</div>'
+        '</div>'
+    )
+    return _section("今日驾驶舱", body, "先看怎么调整、关键市场和当天新闻；详细复盘已折叠在下面。", "wide cockpit-panel", "cockpit")
+
+
+def _detail_review_panel(sections: list[str]) -> str:
+    body = "".join(section for section in sections if section)
+    if not body:
+        return ""
+    return (
+        '<details id="detail-review" class="panel wide detail-group">'
+        '<summary><span>详细复盘</span><small>展开查看行业、宏观、验算、提醒、回执和报告入口</small></summary>'
+        f'<div class="detail-grid">{body}</div>'
+        "</details>"
+    )
+
+
 def _status_bar(payload: dict[str, Any], generated: Any) -> str:
     data_quality = payload.get("data_quality") or {}
     watchlist = payload.get("watchlist") or {}
@@ -962,20 +1081,8 @@ def _hero_panel(payload: dict[str, Any], global_overview: str, market_snapshot: 
 
 def _quick_nav(archive_url: Any = "") -> str:
     links = [
-        ("决策", "#decision"),
-        ("边界", "#boundary"),
-        ("事件", "#events"),
-        ("宏观", "#macro-risk"),
-        ("博弈", "#strategy"),
-        ("预警", "#predictions"),
-        ("验算", "#validation"),
-        ("行业", "#industry"),
-        ("候选", "#fixed-pool"),
-        ("框架", "#playbook"),
-        ("市场", "#market"),
-        ("提醒", "#watchlist"),
-        ("回执", "#receipts"),
-        ("质量", "#quality"),
+        ("驾驶舱", "#cockpit"),
+        ("复盘", "#detail-review"),
     ]
     if _safe_url(archive_url):
         links.append(("归档", archive_url))
@@ -2063,6 +2170,107 @@ h1 {
   font-size: 12px;
   margin-top: 7px;
 }
+.cockpit-panel {
+  border-top: 3px solid var(--blue);
+}
+.cockpit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  gap: 12px;
+  align-items: stretch;
+}
+.cockpit-main,
+.cockpit-card {
+  border: 1px solid var(--line-soft);
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 13px;
+}
+.cockpit-main {
+  background: #fff;
+  border-left: 3px solid var(--blue);
+}
+.cockpit-main h3 {
+  margin: 4px 0 8px;
+  font-size: 22px;
+  line-height: 1.35;
+}
+.cockpit-main p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.market-focus,
+.news-focus {
+  grid-column: 1 / -1;
+}
+.cockpit-news {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+}
+.cockpit-news li {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.cockpit-news li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.cockpit-news b {
+  color: var(--blue);
+  font-size: 14px;
+}
+.cockpit-news span,
+.cockpit-news small {
+  color: var(--muted);
+  line-height: 1.5;
+}
+.detail-group {
+  padding: 0;
+}
+.detail-group > summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 16px;
+  font-weight: 780;
+  font-size: 18px;
+}
+.detail-group > summary::-webkit-details-marker {
+  display: none;
+}
+.detail-group > summary::after {
+  content: "展开";
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 720;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: #fff;
+}
+.detail-group[open] > summary::after {
+  content: "收起";
+}
+.detail-group > summary small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, .65fr);
+  gap: 14px;
+  padding: 0 16px 16px;
+}
 .strategy-summary {
   border: 1px solid #cfe2ff;
   background: #f6faff;
@@ -2526,6 +2734,10 @@ a:hover {
   .metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .cockpit-layout,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
   .grid {
     grid-template-columns: 1fr;
   }
@@ -2580,6 +2792,17 @@ a:hover {
   .panel {
     padding: 13px;
   }
+  .detail-group {
+    padding: 0;
+  }
+  .detail-group > summary {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 13px;
+  }
+  .detail-grid {
+    padding: 0 13px 13px;
+  }
   .event-summary {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -2621,7 +2844,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         actions.append(_link("历史归档", archive_url, "button-link"))
     top_actions = '<div class="top-actions">' + "".join(actions) + "</div>" if actions else ""
 
-    sections = [
+    detail_sections = [
         _weekly_main_section(payload),
         _system_boundary_section(payload),
         _section("今日核心事件", _cluster_rows(payload.get("clusters"), translations), "按重要性、可信度和来源交叉验证排序；外文标题优先转中文，失败时隐藏长英文。", "wide", "events"),
@@ -2647,7 +2870,11 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
         _section("数据质量", _coverage_body(payload), "看覆盖、时效和过滤情况，避免把缺数据误当判断。", section_id="quality"),
         _section("报告入口", _path_links(output_paths, dashboard), section_id="links"),
     ]
-    sections.extend(_portfolio_sections(portfolio, weekly))
+    detail_sections.extend(_portfolio_sections(portfolio, weekly))
+    sections = [
+        _cockpit_section(payload, global_overview, market_snapshot, translations),
+        _detail_review_panel(detail_sections),
+    ]
 
     html = f"""<!doctype html>
 <html lang="zh-CN">

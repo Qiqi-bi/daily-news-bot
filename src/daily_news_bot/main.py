@@ -608,7 +608,7 @@ def _build_feishu_market_lines(payload: dict[str, Any]) -> list[str]:
         "VIX": "波动率指数",
         "美国10Y国债收益率": "美国十年期收益率",
     }
-    for item in ordered[:3]:
+    for item in ordered[:6]:
         raw_name = str(item.get("name") or "未知资产")
         name = display_names.get(raw_name, raw_name)
         change = _feishu_fmt_market_change(item.get("change_pct"))
@@ -1070,104 +1070,25 @@ def _compact_feishu_lines(lines: list[str], max_lines: int = 44) -> list[str]:
 
 
 def _build_feishu_digest(payload: dict[str, Any], receipt_form_url: str = "") -> str:
-    watchlist = payload.get("watchlist") or {}
     dashboard = payload.get("dashboard") or {}
     dashboard_url = dashboard.get("archive_url") or dashboard.get("public_url") or "https://qiqi-bi.github.io/daily-news-bot/"
-    receipt_line = _build_feishu_receipt_status_line(payload).replace("回执状态：", "")
-    trade_sync_line = _build_feishu_trade_sync_line(payload).replace("持仓同步：", "")
-    validation = payload.get("signal_validation") or {}
     clusters = list(payload.get("clusters") or [])
     translations = _feishu_translation_items(payload)
-    overview = _build_feishu_overview(payload, clusters, translations)
     news_lines = _build_feishu_news_lines(clusters, translations)
     market_lines = _build_feishu_market_lines(payload)
-    execution_risk_line = _build_feishu_execution_risk_line(payload)
     action_tendency = _build_feishu_action_tendency(payload)
-    focus_lines = _build_feishu_focus_lines(payload)
-    objective_lines = _build_feishu_objective_lines(payload)
-    risk_gate_lines = _build_feishu_risk_gate_lines(payload)
-    weekly_gate_lines = _build_feishu_weekly_gate_lines(payload)
-    weekly_action_line = _build_feishu_weekly_action_line(payload)
-    macro_risk_lines = _build_feishu_macro_risk_lines(payload)
-    validation_lines = _build_feishu_validation_lines(payload)
-    news_count = min(len(clusters), 3)
-    news_heading = f"**{news_count}条新闻**" if news_count else "**新闻**"
-    focus_heading = f"**{min(len(focus_lines), 3)}个关注**" if focus_lines else "**关注**"
 
     lines: list[str] = [
-        "**总判断**",
-        _feishu_short(overview, 240),
-        "- 本卡不是交易指令，不保证收益；完整依据打开网页。",
+        "**怎么调整**",
+        f"- {_feishu_short(action_tendency, 135)}",
+        "- 不是交易指令，不是收益承诺；动手前先确认实时价格、流动性和仓位纪律。",
+        "",
+        "**市场快照**",
     ]
-    if weekly_gate_lines or weekly_action_line:
-        lines.extend(["", "**本周闸门**"])
-        if weekly_action_line:
-            lines.append(f"- {weekly_action_line}")
-        lines.extend(f"- {line}" for line in weekly_gate_lines)
-    if macro_risk_lines:
-        lines.extend(["", "**宏观爆破风险**"])
-        lines.extend(f"- {line}" for line in macro_risk_lines)
-    lines.extend(
-        [
-            "",
-            "**市场快照**",
-        ]
-    )
-    lines.extend(f"- {line}" for line in market_lines[:4])
-    if execution_risk_line:
-        lines.append(f"- {execution_risk_line}")
-    if objective_lines or risk_gate_lines:
-        lines.extend(["", "**年度纪律**"])
-        lines.extend(f"- {line}" for line in objective_lines[:2])
-        lines.extend(f"- {line}" for line in risk_gate_lines[:2])
-    lines.extend(
-        [
-            "",
-            news_heading,
-        ]
-    )
+    lines.extend(f"- {line}" for line in market_lines[:7])
+    lines.extend(["", "**当天新闻**"])
     lines.extend(news_lines[:3])
-    lines.extend(
-        [
-            "",
-            focus_heading,
-        ]
-    )
-    lines.extend(f"{index}. {line}" for index, line in enumerate(focus_lines[:3], start=1))
-    lines.extend(
-        [
-            "",
-            "**调仓倾向**",
-            f"- {action_tendency}",
-            "",
-            "**回执/周报**",
-            f"- 持仓同步：{trade_sync_line}",
-            f"- {_feishu_strip_sentence_end(receipt_line)}；有交易才回一行中文，没操作不用回。",
-            "- 周报只看系统建议有没有连续确认；不要每天为了新闻硬交易。",
-        ]
-    )
-    if receipt_form_url:
-        lines.append("- 也可以点卡片按钮填写回执。")
-    if validation_lines:
-        validation_preview = validation_lines[:2]
-        discipline_line = next((line for line in validation_lines if line.startswith("用途：")), "")
-        if discipline_line and discipline_line not in validation_preview:
-            validation_preview.append(discipline_line)
-        lines.extend(["", "**验算**"])
-        lines.extend(f"- {line}" for line in validation_preview[:3])
-    lines.extend(
-        [
-            "",
-            "**状态**",
-            f"- 提醒 {watchlist.get('triggered_count', 0)} 条；30/60/90成绩单 {validation.get('signal_count', 0)} 条。",
-            "- 只看中文摘要；完整持仓、成本价和仓位金额不放在飞书卡片里。",
-            "",
-            f"网页：{dashboard_url}",
-        ]
-    )
-    if receipt_form_url:
-        lines.append(f"回执页：{receipt_form_url}")
-    lines = _compact_feishu_lines(lines)
+    lines.extend(["", f"网页：{dashboard_url}"])
     return "\n".join(lines)
 
 

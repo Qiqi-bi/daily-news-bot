@@ -7,6 +7,53 @@ from src.daily_news_bot.main import _public_payload_without_private_portfolio
 
 
 class DashboardWeeklyPriorityTest(unittest.TestCase):
+    def test_dashboard_starts_with_cockpit_and_collapses_deep_review(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 2,
+                "articles_count": 12,
+                "clusters": [
+                    {
+                        "cluster_id": "1",
+                        "theme": "能源价格扰动",
+                        "summary_zh": "原油上涨带来通胀压力。",
+                        "tags": ["energy"],
+                        "direction": "分化",
+                        "credibility_label": "高",
+                        "confirmed_source_count": 2,
+                    }
+                ],
+                "translations": {"items": {}},
+                "data_quality": {"generated_at_bjt": "2026-05-01 20:00"},
+                "market_snapshot": {"items": [{"name": "黄金", "change_pct": 1.1, "movement": "上涨"}]},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"rows": [], "lines": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": True, "action_slot_lines": ["继续持有｜没有明确纪律触发，等待价格确认。"]},
+                "macro_burst_risk": {
+                    "enabled": True,
+                    "level": "中",
+                    "score": 5,
+                    "posture": "不追涨，等待确认。",
+                    "summary_lines": ["宏观风险中：先看验证信号。"],
+                },
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn('id="cockpit"', html)
+        self.assertIn("今日驾驶舱", html)
+        self.assertIn("怎么调整", html)
+        self.assertIn("关键市场", html)
+        self.assertIn("当天新闻", html)
+        self.assertIn("详细复盘", html)
+        self.assertLess(html.index('id="cockpit"'), html.index("详细复盘"))
+        self.assertIn("<details", html)
+
     def test_dashboard_uses_a_share_market_colors_for_price_changes(self) -> None:
         html = render_dashboard_html(
             {
@@ -545,11 +592,12 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
 
         self.assertIn("组合配置（私密）", html)
         self.assertIn("行业雷达", html)
-        self.assertIn('href="#industry"', html)
+        self.assertIn('id="industry"', html)
+        self.assertIn('href="#detail-review"', html)
         self.assertIn("行业闸门", html)
         self.assertIn("周报评估：AI电力底座", html)
         self.assertIn("固定候选池", html)
-        self.assertIn('href="#fixed-pool"', html)
+        self.assertIn('id="fixed-pool"', html)
         self.assertIn("电力ETF", html)
         self.assertIn("价格确认，等待周报", html)
         self.assertIn("按纪律表", html)

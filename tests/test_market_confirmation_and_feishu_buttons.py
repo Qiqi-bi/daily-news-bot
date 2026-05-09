@@ -323,7 +323,12 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("本次未读取；下次日报运行前会读取飞书群；有交易才回一行中文，没操作不用回。", digest)
+        self.assertIn("**怎么调整**", digest)
+        self.assertIn("**市场快照**", digest)
+        self.assertIn("**当天新闻**", digest)
+        self.assertIn("网页：https://example.com/dashboard", digest)
+        self.assertNotIn("**回执/周报**", digest)
+        self.assertNotIn("本次未读取；下次日报运行前会读取飞书群", digest)
         self.assertNotIn("。；", digest)
 
     def test_feishu_digest_prioritizes_industry_review_gates(self) -> None:
@@ -371,17 +376,14 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("AI电力底座｜周报评估｜价格确认", digest)
-        self.assertIn("黄金保险仓｜冷却中｜价格确认", digest)
-        self.assertIn("本周已提醒", digest)
-        self.assertIn("本周动作：周报复核", digest)
-        self.assertIn("不自动买卖", digest)
-        self.assertIn("本周评估：AI电力底座", digest)
-        self.assertIn("冷却观察：黄金保险仓", digest)
-        self.assertIn("只观察：1 条", digest)
-        self.assertLess(digest.index("本周动作：周报复核"), digest.index("本周评估：AI电力底座"))
-        self.assertLess(digest.index("本周评估：AI电力底座"), digest.index("**市场快照**"))
-        self.assertEqual(digest.count("本周评估："), 1)
+        self.assertIn("**怎么调整**", digest)
+        self.assertIn("**市场快照**", digest)
+        self.assertIn("**当天新闻**", digest)
+        self.assertNotIn("AI电力底座｜周报评估｜价格确认", digest)
+        self.assertNotIn("黄金保险仓｜冷却中｜价格确认", digest)
+        self.assertNotIn("本周动作：周报复核", digest)
+        self.assertNotIn("本周评估：AI电力底座", digest)
+        self.assertLessEqual(len(digest.splitlines()), 24)
 
     def test_feishu_digest_surfaces_execution_risk_without_amounts(self) -> None:
         digest = _build_feishu_digest(
@@ -419,12 +421,13 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("执行风险：AI主题ETF", digest)
-        self.assertIn("追高风险高", digest)
-        self.assertIn("流动性偏弱", digest)
-        self.assertIn("折溢价风险高", digest)
+        self.assertIn("**怎么调整**", digest)
+        self.assertIn("**市场快照**", digest)
+        self.assertNotIn("执行风险：AI主题ETF", digest)
+        self.assertNotIn("追高风险高", digest)
+        self.assertNotIn("流动性偏弱", digest)
+        self.assertNotIn("折溢价风险高", digest)
         self.assertNotIn("8,000,000", digest)
-        self.assertLess(digest.index("执行风险："), digest.index("**年度纪律**") if "**年度纪律**" in digest else digest.index("**新闻**"))
 
     def test_feishu_action_tendency_prioritizes_reduce_discipline_over_tracking(self) -> None:
         tendency = _build_feishu_action_tendency(
@@ -470,10 +473,10 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("**年度纪律**", digest)
-        self.assertIn("纪律优先：进攻仓", digest)
-        self.assertLess(digest.index("**年度纪律**"), digest.index("纪律优先：进攻仓"))
-        self.assertLess(digest.index("纪律优先：进攻仓"), digest.index("**新闻**"))
+        self.assertIn("**怎么调整**", digest)
+        self.assertNotIn("**年度纪律**", digest)
+        self.assertNotIn("纪律优先：进攻仓", digest)
+        self.assertIn("网页：https://example.com/dashboard", digest)
 
     def test_feishu_digest_uses_cluster_level_chinese_news_when_translation_map_is_empty(self) -> None:
         digest = _build_feishu_digest(
@@ -501,7 +504,7 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
 
         self.assertIn("美国制裁扰动能源价格", digest)
         self.assertIn("能源价格可能继续波动", digest)
-        self.assertIn("**1条新闻**", digest)
+        self.assertIn("**当天新闻**", digest)
         self.assertNotIn("**3条新闻**", digest)
         self.assertNotIn("U.S. Sanctions", digest)
         self.assertNotIn("能源、宏观事件", digest)
@@ -542,10 +545,11 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("**验算**", digest)
-        self.assertIn("AI电力底座：T+30 样本 3", digest)
-        self.assertIn("用途：验算只校准系统权重", digest)
-        self.assertLess(digest.index("**验算**"), digest.index("**状态**"))
+        self.assertIn("**怎么调整**", digest)
+        self.assertNotIn("**验算**", digest)
+        self.assertNotIn("AI电力底座：T+30 样本 3", digest)
+        self.assertNotIn("用途：验算只校准系统权重", digest)
+        self.assertIn("网页：https://example.com/dashboard", digest)
 
     def test_feishu_validation_summary_marks_small_samples_as_not_conclusive(self) -> None:
         digest = _build_feishu_digest(
@@ -573,10 +577,11 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("六氟化钨：T+30 样本 2", digest)
-        self.assertIn("样本不足，不下结论", digest)
+        self.assertNotIn("六氟化钨：T+30 样本 2", digest)
+        self.assertNotIn("样本不足，不下结论", digest)
         self.assertNotIn("胜率 100", digest)
-        self.assertIn("用途：验算只校准系统权重", digest)
+        self.assertNotIn("用途：验算只校准系统权重", digest)
+        self.assertIn("**当天新闻**", digest)
 
     def test_feishu_validation_leaderboard_hides_win_rate_for_small_samples(self) -> None:
         digest = _build_feishu_digest(
@@ -606,9 +611,10 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("命中率榜：算电协同", digest)
-        self.assertIn("样本 2，样本不足，不展示胜率", digest)
+        self.assertNotIn("命中率榜：算电协同", digest)
+        self.assertNotIn("样本 2，样本不足，不展示胜率", digest)
         self.assertNotIn("胜率 100", digest)
+        self.assertIn("**市场快照**", digest)
 
     def test_feishu_validation_surfaces_mistake_review_without_relative_return(self) -> None:
         digest = _build_feishu_digest(
@@ -634,8 +640,9 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("复盘提醒：黄金保险仓 / 黄金ETF", digest)
-        self.assertIn("追高风险", digest)
+        self.assertNotIn("复盘提醒：黄金保险仓 / 黄金ETF", digest)
+        self.assertNotIn("追高风险", digest)
+        self.assertIn("网页：https://example.com/dashboard", digest)
 
     def test_feishu_objective_lines_include_worst_stress_without_private_amounts(self) -> None:
         lines = _build_feishu_objective_lines(

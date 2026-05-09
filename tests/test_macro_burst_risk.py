@@ -108,11 +108,14 @@ class MacroBurstRiskTest(unittest.TestCase):
             }
         )
 
-        self.assertIn("宏观爆破风险", digest)
-        self.assertIn("暂停新增进攻仓", digest)
-        self.assertIn("不自动买卖", digest)
-        self.assertIn("验证", digest)
-        self.assertIn("失效", digest)
+        self.assertIn("**怎么调整**", digest)
+        self.assertIn("**市场快照**", digest)
+        self.assertIn("**当天新闻**", digest)
+        self.assertIn("网页：https://example.com/daily-news-bot/", digest)
+        self.assertNotIn("**宏观爆破风险**", digest)
+        self.assertNotIn("暂停新增进攻仓", digest)
+        self.assertNotIn("验证", digest)
+        self.assertNotIn("失效", digest)
         self.assertNotIn("马上买入", digest)
 
     def test_dashboard_shows_macro_burst_risk_panel(self) -> None:
