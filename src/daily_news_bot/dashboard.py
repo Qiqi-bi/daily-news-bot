@@ -383,15 +383,12 @@ def _watchlist_item(item: dict[str, Any], label: str, title_translations: dict[s
     raw_title = _text(item.get("title"), "未命名提醒")
     translated_title = (title_translations or {}).get(_normalize_title_key(raw_title))
     title = raw_title
-    original_html = ""
     if translated_title:
         title = "跟踪：" + translated_title if raw_title.startswith(("跟踪：", "跟踪:")) else translated_title
-        original_html = f'<div class="watch-original">原文：{escape(raw_title)}</div>'
     return (
         '<div class="watch-row">'
         f'<div class="watch-label">{escape(label)}</div>'
         f'<div class="watch-title">{escape(title)}</div>'
-        f"{original_html}"
         f'<div class="watch-detail">{escape(_shorten(details, 220))}</div>'
         f'<div class="watch-action">{escape(_shorten(action, 220))}</div>'
         "</div>"
