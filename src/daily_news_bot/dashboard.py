@@ -850,6 +850,18 @@ def _status_bar(payload: dict[str, Any], generated: Any) -> str:
     return '<div class="status-bar">' + "".join(items) + "</div>"
 
 
+def _translation_notice(payload: dict[str, Any]) -> str:
+    translations = payload.get("translations") or {}
+    if not translations.get("error"):
+        return ""
+    return (
+        '<section class="lead">'
+        '<div class="lead-title">外文速译未完成</div>'
+        '<div class="lead-text">翻译服务暂时失败；长英文已隐藏，请打开完整报告或原始来源复核。</div>'
+        "</section>"
+    )
+
+
 def _hero_panel(payload: dict[str, Any], global_overview: str, market_snapshot: dict[str, Any]) -> str:
     data_quality = payload.get("data_quality") or {}
     market_coverage = data_quality.get("market_coverage") or market_snapshot.get("coverage") or {}
@@ -1552,7 +1564,7 @@ def _metric_cards(payload: dict[str, Any]) -> str:
             )
         )
     elif translations.get("error"):
-        cards.append(_metric("外文速译", "未完成", "翻译失败时保留原文"))
+        cards.append(_metric("外文速译", "未完成", "长英文已隐藏，需打开原始来源复核"))
     strategic_lens = payload.get("strategic_lens") or {}
     if strategic_lens.get("enabled"):
         cards.append(
@@ -2582,6 +2594,7 @@ def render_dashboard_html(payload: dict[str, Any]) -> str:
     </header>
     {_status_bar(payload, generated)}
     {_quick_nav(archive_url)}
+    {_translation_notice(payload)}
     {hero}
     {_decision_strip(payload)}
     <main class="grid">{''.join(sections)}</main>
