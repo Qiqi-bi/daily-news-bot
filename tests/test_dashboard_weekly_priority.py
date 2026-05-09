@@ -481,6 +481,44 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertIn("不展示胜率", html)
         self.assertNotIn("100.00%", html)
 
+    def test_dashboard_validation_rows_hide_small_sample_win_rate(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {
+                    "lines": [],
+                    "rows": [
+                        {
+                            "theme": "算电协同",
+                            "signals": 2,
+                            "t30": {"samples": 2, "win_rate_pct": 100.0, "avg_return_pct": 8.0},
+                            "t60": {"samples": 0, "win_rate_pct": None, "avg_return_pct": None},
+                            "t90": {"samples": 0, "win_rate_pct": None, "avg_return_pct": None},
+                            "verdict": "继续积累",
+                            "adjustment": "不调整",
+                        }
+                    ],
+                    "industry_leaderboard": {"rows": []},
+                },
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": False},
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("算电协同", html)
+        self.assertIn("样本不足，不展示胜率", html)
+        self.assertNotIn("100.00%", html)
+
     def test_dashboard_fixed_pool_win_table_hides_small_sample_win_rate(self) -> None:
         html = render_dashboard_html(
             {

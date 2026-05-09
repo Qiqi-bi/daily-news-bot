@@ -1232,6 +1232,8 @@ def _validation_bucket_text(bucket: dict[str, Any] | None) -> str:
     samples = int(data.get("samples") or 0)
     if samples <= 0:
         return "样本不足"
+    if samples < MIN_ADJUSTMENT_SAMPLES:
+        return f"{samples}次 / 样本不足，不展示胜率"
     text = f"{samples}次 / 胜率 {_fmt_pct_plain(data.get('win_rate_pct'))} / 均值 {_fmt_pct(data.get('avg_return_pct'))}"
     if data.get("avg_relative_return_pct") is not None:
         text += f" / 相对基准 {_fmt_pct(data.get('avg_relative_return_pct'))}"

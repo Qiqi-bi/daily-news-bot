@@ -429,6 +429,8 @@ def _fmt_bucket(bucket: dict[str, Any]) -> str:
     samples = int(bucket.get("samples") or 0)
     if samples <= 0:
         return "样本不足"
+    if samples < MIN_ADJUSTMENT_SAMPLES:
+        return f"{samples}次｜样本不足，不展示胜率"
     text = f"{samples}次｜胜率 {bucket.get('win_rate_pct'):.0f}%｜均值 {bucket.get('avg_return_pct'):+.2f}%"
     relative_samples = int(bucket.get("relative_samples") or 0)
     if relative_samples > 0 and bucket.get("avg_relative_return_pct") is not None:
@@ -540,6 +542,12 @@ def _build_industry_leaderboard(rows: list[dict[str, Any]]) -> dict[str, Any]:
     else:
         lines = []
         for item in leaderboard_rows[:3]:
+            samples = int(item.get("samples") or 0)
+            if samples < MIN_ADJUSTMENT_SAMPLES:
+                lines.append(
+                    f"- {item.get('theme')}：{item.get('basis')} 样本 {samples}，样本不足，不展示胜率；动作：{item.get('action')}。"
+                )
+                continue
             relative_text = ""
             if item.get("avg_relative_return_pct") is not None:
                 relative_text = f"，相对基准 {item.get('avg_relative_return_pct'):+.2f}%"
@@ -703,11 +711,19 @@ def render_signal_validation_markdown(validation: dict[str, Any]) -> str:
     if leaderboard_rows:
         lines.extend(["", "| 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |", "|---|---|---:|---:|---:|---:|---|"])
         for row in leaderboard_rows[:8]:
-            relative_text = "-"
-            if row.get("avg_relative_return_pct") is not None:
+            samples = int(row.get("samples") or 0)
+            if samples < MIN_ADJUSTMENT_SAMPLES:
+                win_rate_text = "样本不足，不展示胜率"
+                avg_return_text = "观察中"
+                relative_text = "观察中"
+            else:
+                win_rate_text = f"{row.get('win_rate_pct', 0):.0f}%"
+                avg_return_text = f"{row.get('avg_return_pct', 0):+.2f}%"
+                relative_text = "-"
+            if samples >= MIN_ADJUSTMENT_SAMPLES and row.get("avg_relative_return_pct") is not None:
                 relative_text = f"{row.get('avg_relative_return_pct', 0):+.2f}%"
             lines.append(
-                f"| {row.get('theme')} | {row.get('basis')} | {row.get('samples', 0)} | {row.get('win_rate_pct', 0):.0f}% | {row.get('avg_return_pct', 0):+.2f}% | {relative_text} | {row.get('action')} |"
+                f"| {row.get('theme')} | {row.get('basis')} | {samples} | {win_rate_text} | {avg_return_text} | {relative_text} | {row.get('action')} |"
             )
     mistake_summary = validation.get("mistake_summary") or {}
     mistake_reviews = validation.get("mistake_reviews") or []

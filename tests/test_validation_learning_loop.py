@@ -115,6 +115,43 @@ class ValidationLearningLoopTest(unittest.TestCase):
         self.assertIn("\u884c\u4e1a\u96f7\u8fbe\u547d\u4e2d\u7387\u699c", markdown)
         self.assertIn("\u9519\u8bef\u590d\u76d8\u5e93", markdown)
 
+    def test_markdown_hides_small_sample_win_rates(self) -> None:
+        validation = {
+            "lines": ["- validation running"],
+            "rows": [
+                {
+                    "theme": "算电协同",
+                    "signals": 2,
+                    "t30": {"samples": 2, "win_rate_pct": 100.0, "avg_return_pct": 8.0},
+                    "t60": {"samples": 0, "win_rate_pct": None, "avg_return_pct": None},
+                    "t90": {"samples": 0, "win_rate_pct": None, "avg_return_pct": None},
+                    "verdict": "继续积累",
+                    "adjustment": "不调整",
+                }
+            ],
+            "industry_leaderboard": {
+                "lines": [],
+                "rows": [
+                    {
+                        "theme": "算电协同",
+                        "basis": "T30",
+                        "samples": 2,
+                        "win_rate_pct": 100.0,
+                        "avg_return_pct": 8.0,
+                        "avg_relative_return_pct": 5.0,
+                        "action": "继续积累样本",
+                    }
+                ],
+            },
+            "mistake_reviews": [],
+            "mistake_summary": {"lines": []},
+        }
+
+        markdown = render_signal_validation_markdown(validation)
+
+        self.assertIn("样本不足，不展示胜率", markdown)
+        self.assertNotIn("100%", markdown)
+
 
 if __name__ == "__main__":
     unittest.main()
