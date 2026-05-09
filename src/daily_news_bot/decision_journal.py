@@ -10,6 +10,7 @@ from .config import ROOT_DIR
 
 
 JOURNAL_PATH = ROOT_DIR / "outputs" / "decision_journal.json"
+MIN_EVENT_HISTORY_SAMPLES = 5
 EVENT_THEME_TO_CANDIDATE_KEYS: dict[str, tuple[str, ...]] = {
     "ai": ("semiconductor", "hk_tech"),
     "energy": ("power", "metals_gold", "dividend_lowvol"),
@@ -369,11 +370,18 @@ def build_event_etf_history(
         if sample_count <= 0 or not stats:
             lines.append(f"- {row['theme_label']}：历史样本还不够，先继续积累快照；现阶段仍以当下新闻、价格和纪律三项共振为主。")
             continue
-        sample_note = "样本偏少，仅供观察；" if sample_count < 5 else ""
-        leader_text = "；".join(
-            f"{item.get('name')}({item.get('code')}) 平均下一次快照 {item.get('avg_change_pct', 0.0):+.2f}%｜胜率 {item.get('win_rate_pct', 0.0):.0f}%"
-            for item in stats[:2]
-        )
+        small_sample = sample_count < MIN_EVENT_HISTORY_SAMPLES
+        sample_note = "样本偏少，仅供观察；" if small_sample else ""
+        if small_sample:
+            leader_text = "；".join(
+                f"{item.get('name')}({item.get('code')}) 样本 {item.get('samples', 0)}，暂不展示均值/胜率"
+                for item in stats[:2]
+            )
+        else:
+            leader_text = "；".join(
+                f"{item.get('name')}({item.get('code')}) 平均下一次快照 {item.get('avg_change_pct', 0.0):+.2f}%｜胜率 {item.get('win_rate_pct', 0.0):.0f}%"
+                for item in stats[:2]
+            )
         lines.append(
             f"- {row['theme_label']}：历史可比样本 {sample_count} 次；{sample_note}候选池里先手更多见 {leader_text}。"
         )
