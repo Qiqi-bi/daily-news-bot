@@ -7,6 +7,41 @@ from src.daily_news_bot.main import _public_payload_without_private_portfolio
 
 
 class DashboardWeeklyPriorityTest(unittest.TestCase):
+    def test_dashboard_uses_a_share_market_colors_for_price_changes(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "translations": {"items": {}},
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {
+                    "items": [
+                        {"name": "WTI", "symbol": "CL=F", "price": 65, "change_pct": 1.2, "movement": "up"},
+                        {"name": "Dollar", "symbol": "DXY", "price": 99, "change_pct": -0.4, "movement": "down"},
+                    ]
+                },
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": False},
+                "output_paths": {},
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn(".signal-chip.up .signal-value {\n  color: var(--red);", html)
+        self.assertIn(".signal-chip.down .signal-value {\n  color: var(--green);", html)
+        self.assertIn(".change.up {\n  color: var(--red);", html)
+        self.assertIn(".change.down {\n  color: var(--green);", html)
+        self.assertIn('class="signal-chip up"', html)
+        self.assertIn('class="signal-chip down"', html)
+        self.assertIn(".hero-stats {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));", html)
+        self.assertIn(".hero-note {\n  grid-column: 1 / -1;", html)
+
     def test_dashboard_uses_cluster_level_chinese_news_without_showing_english_original(self) -> None:
         html = render_dashboard_html(
             {

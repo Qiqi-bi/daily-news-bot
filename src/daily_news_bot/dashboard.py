@@ -1796,7 +1796,9 @@ h1 {
 }
 .hero-stats {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  align-self: start;
 }
 .hero-stat {
   border: 1px solid var(--line-soft);
@@ -1830,6 +1832,7 @@ h1 {
   overflow-wrap: anywhere;
 }
 .hero-note {
+  grid-column: 1 / -1;
   color: var(--muted);
   font-size: 12px;
   padding: 2px 2px 0;
@@ -1870,10 +1873,10 @@ h1 {
   white-space: nowrap;
 }
 .signal-chip.up .signal-value {
-  color: var(--green);
+  color: var(--red);
 }
 .signal-chip.down .signal-value {
-  color: var(--red);
+  color: var(--green);
 }
 .signal-chip.flat .signal-value {
   color: var(--muted);
@@ -2345,11 +2348,11 @@ th {
   font-weight: 650;
 }
 .change.up {
-  color: var(--green);
+  color: var(--red);
   font-weight: 700;
 }
 .change.down {
-  color: var(--red);
+  color: var(--green);
   font-weight: 700;
 }
 .change.flat {
