@@ -927,9 +927,6 @@ def _build_feishu_industry_radar_lines(payload: dict[str, Any]) -> list[str]:
 def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
     validation = payload.get("signal_validation") or {}
     rows = validation.get("rows") or []
-    if not rows:
-        return _pick_lines(validation.get("lines"), 2)
-
     result: list[str] = []
     for row in rows[:2]:
         t30 = row.get("t30") or {}
@@ -938,7 +935,7 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
             conclusion = row.get("verdict") or "继续观察"
             if samples < MIN_ADJUSTMENT_SAMPLES:
                 result.append(
-                    f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，样本不足，不展示胜率，不下结论；{conclusion}。"
+                    f"{row.get('theme') or '未命名'}：T+30 样本 {samples}，样本不足，不下结论，不展示胜率；{conclusion}。"
                 )
                 continue
             relative = ""
@@ -973,6 +970,8 @@ def _build_feishu_validation_lines(payload: dict[str, Any]) -> list[str]:
         result.append(
             f"复盘提醒：{item.get('theme') or '未命名'} / {item.get('name') or item.get('code') or '-'}，{item.get('horizon') or '-'} {float(item.get('return_pct') or 0):+.2f}%{relative}；{item.get('reason') or '待复盘'}。"
         )
+    if not result:
+        result.extend(_pick_lines(validation.get("lines"), 2))
     result.append("用途：验算只校准系统权重，不直接触发买卖。")
     return result
 
