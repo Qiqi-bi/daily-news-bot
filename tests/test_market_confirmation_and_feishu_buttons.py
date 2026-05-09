@@ -305,7 +305,8 @@ class MarketConfirmationAndFeishuButtonsTest(unittest.TestCase):
             if action.get("tag") == "button"
         ]
 
-        self.assertIn("网页：https://example.com/dashboard", combined_text)
+        self.assertNotIn("网页：https://example.com/dashboard", combined_text)
+        self.assertNotIn("回执页：https://example.com/receipt", combined_text)
         self.assertNotIn("Dashboard", combined_text)
         self.assertTrue(any(button.get("url") == "https://example.com/dashboard" for button in buttons))
 

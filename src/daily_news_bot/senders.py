@@ -104,6 +104,22 @@ def _card_display_content(content: str) -> str:
     return "\n".join(lines)
 
 
+def _hide_button_url_lines(content: str, button_urls: dict[str, str]) -> str:
+    if not button_urls.get("web") and not button_urls.get("receipt"):
+        return content
+    lines: list[str] = []
+    for line in content.splitlines():
+        stripped = line.strip()
+        if button_urls.get("web") and stripped.startswith(("网页：", "网页:", "Dashboard：", "Dashboard:")):
+            continue
+        if button_urls.get("receipt") and stripped.startswith(("回执页：", "回执页:")):
+            continue
+        if button_urls.get("web") and stripped in {button_urls["web"]}:
+            continue
+        lines.append(line)
+    return "\n".join(lines).strip()
+
+
 def _url_with_action(url: str, action: str) -> str:
     if not url:
         return ""
@@ -134,7 +150,8 @@ def _card_overview_fields(content: str) -> list[dict[str, Any]]:
 
 def _build_card_payload(title: str, content: str) -> dict[str, Any]:
     trimmed = _trim_content(content, CARD_TOTAL_LIMIT)
-    display_content = _card_display_content(trimmed)
+    button_urls = _button_urls(trimmed)
+    display_content = _hide_button_url_lines(_card_display_content(trimmed), button_urls)
     chunks = _chunk_text(display_content)
     elements: list[dict[str, Any]] = [
         {
@@ -154,7 +171,6 @@ def _build_card_payload(title: str, content: str) -> dict[str, Any]:
             elements.append({"tag": "hr"})
         elements.append({"tag": "div", "text": {"tag": "lark_md", "content": chunk}})
 
-    button_urls = _button_urls(trimmed)
     actions = []
     if button_urls["web"]:
         actions.append(
