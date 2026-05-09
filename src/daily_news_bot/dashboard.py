@@ -933,18 +933,18 @@ def _public_sibling(output_paths: dict[str, Any], filename: str) -> str:
 
 def _path_links(output_paths: dict[str, Any], dashboard: dict[str, Any]) -> str:
     pairs = [
-        ("最新网页", output_paths.get("dashboard_html_url") or dashboard.get("public_url"), "页面根目录"),
-        ("历史归档", output_paths.get("archive_index_url") or dashboard.get("archive_index_url"), "archive.html"),
+        ("最新网页", output_paths.get("dashboard_html_url") or dashboard.get("public_url"), "日常打开这个"),
+        ("历史归档", output_paths.get("archive_index_url") or dashboard.get("archive_index_url"), "查看历史运行"),
         ("本次归档", output_paths.get("archive_url") or dashboard.get("archive_url"), "本次运行快照"),
-        ("完整日报 Markdown", output_paths.get("report_md_url") or output_paths.get("report_md_uri"), output_paths.get("report_md_path")),
-        ("结构化 JSON", output_paths.get("report_json_url") or output_paths.get("report_json_uri"), output_paths.get("report_json_path")),
-        ("提醒状态 JSON", _public_sibling(output_paths, "watchlist.json"), "watchlist.json"),
-        ("信号验算 JSON", _public_sibling(output_paths, "signal_validation.json"), "signal_validation.json"),
+        ("完整日报", output_paths.get("report_md_url") or output_paths.get("report_md_uri"), "完整文字依据"),
+        ("结构化数据", output_paths.get("report_json_url") or output_paths.get("report_json_uri"), "给系统复盘用"),
+        ("提醒状态", _public_sibling(output_paths, "watchlist.json"), "提醒续盯状态"),
+        ("信号验算", _public_sibling(output_paths, "signal_validation.json"), "30/60/90天复盘数据"),
     ]
     if output_paths.get("portfolio_md_generated"):
-        pairs.append(("组合简报", output_paths.get("portfolio_md_url") or output_paths.get("portfolio_md_uri"), output_paths.get("portfolio_md_path")))
+        pairs.append(("组合简报", output_paths.get("portfolio_md_url") or output_paths.get("portfolio_md_uri"), "私密组合依据"))
     if output_paths.get("weekly_md_generated"):
-        pairs.append(("周复盘", output_paths.get("weekly_md_url") or output_paths.get("weekly_md_uri"), output_paths.get("weekly_md_path")))
+        pairs.append(("周复盘", output_paths.get("weekly_md_url") or output_paths.get("weekly_md_uri"), "中长期复核入口"))
 
     items = []
     for label, url, note in pairs:

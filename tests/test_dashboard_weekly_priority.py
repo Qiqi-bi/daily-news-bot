@@ -163,6 +163,41 @@ class DashboardWeeklyPriorityTest(unittest.TestCase):
         self.assertIn("长英文已隐藏", html)
         self.assertNotIn("翻译失败时保留原文", html)
 
+    def test_dashboard_report_links_hide_technical_labels_and_runner_paths(self) -> None:
+        html = render_dashboard_html(
+            {
+                "generated_at_utc": "2026-05-01T00:00:00",
+                "mode": "evening",
+                "selected_count": 0,
+                "articles_count": 0,
+                "clusters": [],
+                "data_quality": {"generated_at_bjt": "2026-05-01 08:00"},
+                "market_snapshot": {"items": []},
+                "watchlist": {"triggered_count": 0, "new_count": 0, "active_count": 0},
+                "feishu_receipts": {"status": "not_run"},
+                "signal_validation": {"lines": [], "rows": []},
+                "weekly_review": {"enabled": False},
+                "portfolio": {"enabled": False},
+                "output_paths": {
+                    "dashboard_html_url": "https://example.com/daily-news-bot/",
+                    "archive_index_url": "https://example.com/daily-news-bot/archive.html",
+                    "archive_url": "https://example.com/daily-news-bot/runs/2026-05-01/",
+                    "report_md_url": "https://example.com/daily-news-bot/runs/2026-05-01/report.md",
+                    "report_md_path": "/home/runner/work/daily-news-bot/daily-news-bot/outputs/report.md",
+                    "report_json_url": "https://example.com/daily-news-bot/runs/2026-05-01/report.json",
+                    "report_json_path": "/home/runner/work/daily-news-bot/daily-news-bot/outputs/report.json",
+                },
+                "dashboard": {},
+            }
+        )
+
+        self.assertIn("完整日报", html)
+        self.assertIn("结构化数据", html)
+        self.assertIn("提醒状态", html)
+        self.assertNotIn("Markdown", html)
+        self.assertNotIn("JSON", html)
+        self.assertNotIn("/home/runner", html)
+
     def test_weekly_review_is_shown_before_daily_news(self) -> None:
         html = render_dashboard_html(
             {
