@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-05-09T12:59:06",
+  "updated_at_utc": "2026-05-09T13:24:06",
   "items": {
     "china_broad_core": {
       "id": "china_broad_core",
@@ -17,10 +17,12 @@
     "gold_real_rates": {
       "id": "gold_real_rates",
       "name": "黄金/实际利率",
-      "hit_streak": 0,
-      "last_hit_date": "2026-05-08",
-      "last_status": "每日必看",
-      "last_hits": [],
+      "hit_streak": 1,
+      "last_hit_date": "2026-05-09",
+      "last_status": "今日关注",
+      "last_hits": [
+        "inflation"
+      ],
       "last_missed_date": "2026-05-09"
     },
     "ai_infra": {
@@ -130,9 +132,7 @@
       "hit_streak": 4,
       "last_hit_date": "2026-05-09",
       "last_status": "今日关注",
-      "last_hits": [
-        "export"
-      ]
+      "last_hits": []
     },
     "hk_tech": {
       "id": "hk_tech",
@@ -212,7 +212,9 @@
       "hit_streak": 4,
       "last_hit_date": "2026-05-09",
       "last_status": "今日关注",
-      "last_hits": []
+      "last_hits": [
+        "hormuz"
+      ]
     },
     "sanctions_tariffs": {
       "id": "sanctions_tariffs",
@@ -220,9 +222,7 @@
       "hit_streak": 4,
       "last_hit_date": "2026-05-09",
       "last_status": "今日关注",
-      "last_hits": [
-        "sanction"
-      ]
+      "last_hits": []
     },
     "new_energy_cycle": {
       "id": "new_energy_cycle",
