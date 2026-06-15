@@ -1,7 +1,39 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-06-14T15:07:37",
+  "updated_at_utc": "2026-06-15T17:58:32",
   "signals": [
+    {
+      "id": "20260615175832-industry_radar-hk_tech-513010",
+      "created_at_utc": "2026-06-15T17:58:32",
+      "source": "industry_radar",
+      "theme": "港股科技/互联网",
+      "theme_key": "hk_tech",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "513010",
+      "name": "港股科技ETF",
+      "start_price": 0.621,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.919,
+      "observations": {}
+    },
+    {
+      "id": "20260615175832-industry_radar-hk_tech-513180",
+      "created_at_utc": "2026-06-15T17:58:32",
+      "source": "industry_radar",
+      "theme": "港股科技/互联网",
+      "theme_key": "hk_tech",
+      "priority": "今日关注",
+      "score": 3.0,
+      "code": "513180",
+      "name": "恒生科技指数ETF",
+      "start_price": 0.602,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.919,
+      "observations": {}
+    },
     {
       "id": "20260614150737-candidate_pool-ai_power_base-561560",
       "created_at_utc": "2026-06-14T15:07:37",
@@ -5823,6 +5855,51 @@
   ],
   "rows": [
     {
+      "theme_key": "hk_tech",
+      "theme": "港股科技/互联网",
+      "signals": 18,
+      "t30": {
+        "samples": 6,
+        "hits": 2,
+        "sum_return_pct": -7.3039999999999985,
+        "relative_samples": 6,
+        "relative_hits": 2,
+        "sum_relative_return_pct": -6.4239999999999995,
+        "win_rate_pct": 33.3,
+        "avg_return_pct": -1.217,
+        "relative_win_rate_pct": 33.3,
+        "avg_relative_return_pct": -1.071
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "降权观察",
+      "adjustment": "自动降权",
+      "score_delta": -2,
+      "adjustment_basis": "T30"
+    },
+    {
       "theme_key": "power",
       "theme": "电力",
       "signals": 18,
@@ -6197,51 +6274,6 @@
         "avg_return_pct": -1.348,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": -1.041
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "降权观察",
-      "adjustment": "自动降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "hk_tech",
-      "theme": "港股科技/互联网",
-      "signals": 16,
-      "t30": {
-        "samples": 6,
-        "hits": 2,
-        "sum_return_pct": -7.3039999999999985,
-        "relative_samples": 6,
-        "relative_hits": 2,
-        "sum_relative_return_pct": -6.4239999999999995,
-        "win_rate_pct": 33.3,
-        "avg_return_pct": -1.217,
-        "relative_win_rate_pct": 33.3,
-        "avg_relative_return_pct": -1.071
       },
       "t60": {
         "samples": 0,
@@ -6840,7 +6872,7 @@
       {
         "theme_key": "hk_tech",
         "theme": "港股科技/互联网",
-        "signals": 16,
+        "signals": 18,
         "basis": "T30",
         "samples": 6,
         "win_rate_pct": 33.3,
@@ -7209,6 +7241,13 @@
     ]
   },
   "adjustments": {
+    "hk_tech": {
+      "theme": "港股科技/互联网",
+      "verdict": "降权观察",
+      "adjustment": "自动降权",
+      "score_delta": -2,
+      "basis": "T30"
+    },
     "power": {
       "theme": "电力",
       "verdict": "保留加权",
@@ -7272,13 +7311,6 @@
       "score_delta": -2,
       "basis": "T30"
     },
-    "hk_tech": {
-      "theme": "港股科技/互联网",
-      "verdict": "降权观察",
-      "adjustment": "自动降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
     "ai_power_base": {
       "theme": "AI电力底座",
       "verdict": "保留加权",
@@ -7309,13 +7341,13 @@
     }
   },
   "lines": [
-    "- 本次新增待验证信号 35 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 本次新增待验证信号 2 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 港股科技/互联网：T+30 6次｜胜率 33%｜均值 -1.22%｜相对基准 -1.07%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
     "- 电力：T+30 6次｜胜率 100%｜均值 +7.33%｜相对基准 +7.64%；T+60 样本不足；T+90 样本不足；结论：保留加权。",
     "- 红利低波：T+30 6次｜胜率 0%｜均值 -1.35%｜相对基准 -1.04%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
-    "- 有色/黄金：T+30 6次｜胜率 0%｜均值 -5.96%｜相对基准 -5.65%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。",
-    "- A股宽基/中国宏观：T+30 6次｜胜率 33%｜均值 -0.05%｜相对基准 +0.26%；T+60 样本不足；T+90 样本不足；结论：降权观察。"
+    "- 有色/黄金：T+30 6次｜胜率 0%｜均值 -5.96%｜相对基准 -5.65%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。"
   ],
-  "added_count": 35,
-  "signal_count": 291,
+  "added_count": 2,
+  "signal_count": 293,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
