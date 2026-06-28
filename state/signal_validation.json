@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-06-27T14:44:18",
+  "updated_at_utc": "2026-06-28T14:49:29",
   "signals": [
     {
       "id": "20260626152426-candidate_pool-dividend_lowvol-512890",
@@ -4336,7 +4336,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-helium_supply_chain-512480",
@@ -4352,7 +4366,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-tungsten_hexafluoride-512480",
@@ -4368,7 +4396,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-photoresist_materials-512480",
@@ -4384,7 +4426,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-advanced_packaging-512480",
@@ -4400,7 +4456,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-optical_interconnect-512480",
@@ -4416,7 +4486,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 2.747,
+          "return_pct": 19.747,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": 20.254,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260528165526-industry_radar-hk_tech-513010",
@@ -4432,7 +4516,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.932,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-06-28T14:49:29",
+          "elapsed_days": 30.91,
+          "price": 0.557,
+          "return_pct": -12.559,
+          "hit": false,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.907,
+          "benchmark_return_pct": -0.507,
+          "relative_return_pct": -12.052,
+          "relative_hit": false
+        }
+      }
     },
     {
       "id": "20260527163919-candidate_pool-ai_power_base-561560",
@@ -8236,16 +8334,16 @@
       "theme": "港股科技/互联网",
       "signals": 22,
       "t30": {
-        "samples": 7,
+        "samples": 8,
         "hits": 2,
-        "sum_return_pct": -20.306,
-        "relative_samples": 7,
+        "sum_return_pct": -32.865,
+        "relative_samples": 8,
         "relative_hits": 2,
-        "sum_relative_return_pct": -18.879,
-        "win_rate_pct": 28.6,
-        "avg_return_pct": -2.901,
-        "relative_win_rate_pct": 28.6,
-        "avg_relative_return_pct": -2.697
+        "sum_relative_return_pct": -30.930999999999994,
+        "win_rate_pct": 25.0,
+        "avg_return_pct": -4.108,
+        "relative_win_rate_pct": 25.0,
+        "avg_relative_return_pct": -3.866
       },
       "t60": {
         "samples": 0,
@@ -8291,6 +8389,231 @@
         "avg_return_pct": 2.618,
         "relative_win_rate_pct": 83.3,
         "avg_relative_return_pct": 3.094
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "semiconductor_materials",
+      "theme": "半导体材料/卡脖子链",
+      "signals": 16,
+      "t30": {
+        "samples": 4,
+        "hits": 4,
+        "sum_return_pct": 72.737,
+        "relative_samples": 4,
+        "relative_hits": 4,
+        "sum_relative_return_pct": 73.791,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 18.184,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 18.448
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "helium_supply_chain",
+      "theme": "氦气/电子特气",
+      "signals": 16,
+      "t30": {
+        "samples": 4,
+        "hits": 4,
+        "sum_return_pct": 72.737,
+        "relative_samples": 4,
+        "relative_hits": 4,
+        "sum_relative_return_pct": 73.791,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 18.184,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 18.448
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "tungsten_hexafluoride",
+      "theme": "六氟化钨/前驱体",
+      "signals": 16,
+      "t30": {
+        "samples": 4,
+        "hits": 4,
+        "sum_return_pct": 72.737,
+        "relative_samples": 4,
+        "relative_hits": 4,
+        "sum_relative_return_pct": 73.791,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 18.184,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 18.448
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "photoresist_materials",
+      "theme": "光刻胶/靶材",
+      "signals": 16,
+      "t30": {
+        "samples": 4,
+        "hits": 4,
+        "sum_return_pct": 72.737,
+        "relative_samples": 4,
+        "relative_hits": 4,
+        "sum_relative_return_pct": 73.791,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 18.184,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 18.448
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "advanced_packaging",
+      "theme": "先进封装/玻璃基板",
+      "signals": 16,
+      "t30": {
+        "samples": 4,
+        "hits": 4,
+        "sum_return_pct": 72.737,
+        "relative_samples": 4,
+        "relative_hits": 4,
+        "sum_relative_return_pct": 73.791,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 18.184,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 18.448
       },
       "t60": {
         "samples": 0,
@@ -8457,245 +8780,20 @@
       "adjustment_basis": "T30"
     },
     {
-      "theme_key": "semiconductor_materials",
-      "theme": "半导体材料/卡脖子链",
-      "signals": 16,
-      "t30": {
-        "samples": 3,
-        "hits": 3,
-        "sum_return_pct": 52.989999999999995,
-        "relative_samples": 3,
-        "relative_hits": 3,
-        "sum_relative_return_pct": 53.53699999999999,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "helium_supply_chain",
-      "theme": "氦气/电子特气",
-      "signals": 16,
-      "t30": {
-        "samples": 3,
-        "hits": 3,
-        "sum_return_pct": 52.989999999999995,
-        "relative_samples": 3,
-        "relative_hits": 3,
-        "sum_relative_return_pct": 53.53699999999999,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "tungsten_hexafluoride",
-      "theme": "六氟化钨/前驱体",
-      "signals": 16,
-      "t30": {
-        "samples": 3,
-        "hits": 3,
-        "sum_return_pct": 52.989999999999995,
-        "relative_samples": 3,
-        "relative_hits": 3,
-        "sum_relative_return_pct": 53.53699999999999,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "photoresist_materials",
-      "theme": "光刻胶/靶材",
-      "signals": 16,
-      "t30": {
-        "samples": 3,
-        "hits": 3,
-        "sum_return_pct": 52.989999999999995,
-        "relative_samples": 3,
-        "relative_hits": 3,
-        "sum_relative_return_pct": 53.53699999999999,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "advanced_packaging",
-      "theme": "先进封装/玻璃基板",
-      "signals": 16,
-      "t30": {
-        "samples": 3,
-        "hits": 3,
-        "sum_return_pct": 52.989999999999995,
-        "relative_samples": 3,
-        "relative_hits": 3,
-        "sum_relative_return_pct": 53.53699999999999,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "adjustment_basis": "T30"
-    },
-    {
       "theme_key": "optical_interconnect",
       "theme": "光通信/空心光纤/CPO",
       "signals": 14,
       "t30": {
-        "samples": 1,
-        "hits": 1,
-        "sum_return_pct": 17.986,
-        "relative_samples": 1,
-        "relative_hits": 1,
-        "sum_relative_return_pct": 18.533,
+        "samples": 2,
+        "hits": 2,
+        "sum_return_pct": 37.733000000000004,
+        "relative_samples": 2,
+        "relative_hits": 2,
+        "sum_relative_return_pct": 38.787000000000006,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.986,
+        "avg_return_pct": 18.867,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 18.533
+        "avg_relative_return_pct": 19.394
       },
       "t60": {
         "samples": 0,
@@ -8734,12 +8832,12 @@
         "theme": "半导体材料/卡脖子链",
         "signals": 16,
         "basis": "T30",
-        "samples": 3,
+        "samples": 4,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
+        "avg_return_pct": 18.184,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846,
-        "rank_score": 40.905,
+        "avg_relative_return_pct": 18.448,
+        "rank_score": 42.098,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
@@ -8748,12 +8846,12 @@
         "theme": "氦气/电子特气",
         "signals": 16,
         "basis": "T30",
-        "samples": 3,
+        "samples": 4,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
+        "avg_return_pct": 18.184,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846,
-        "rank_score": 40.905,
+        "avg_relative_return_pct": 18.448,
+        "rank_score": 42.098,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
@@ -8762,12 +8860,12 @@
         "theme": "六氟化钨/前驱体",
         "signals": 16,
         "basis": "T30",
-        "samples": 3,
+        "samples": 4,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
+        "avg_return_pct": 18.184,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846,
-        "rank_score": 40.905,
+        "avg_relative_return_pct": 18.448,
+        "rank_score": 42.098,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
@@ -8776,12 +8874,12 @@
         "theme": "光刻胶/靶材",
         "signals": 16,
         "basis": "T30",
-        "samples": 3,
+        "samples": 4,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
+        "avg_return_pct": 18.184,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846,
-        "rank_score": 40.905,
+        "avg_relative_return_pct": 18.448,
+        "rank_score": 42.098,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
@@ -8790,12 +8888,12 @@
         "theme": "先进封装/玻璃基板",
         "signals": 16,
         "basis": "T30",
-        "samples": 3,
+        "samples": 4,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.663,
+        "avg_return_pct": 18.184,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 17.846,
-        "rank_score": 40.905,
+        "avg_relative_return_pct": 18.448,
+        "rank_score": 42.098,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
@@ -8912,20 +9010,6 @@
         "action": "降权复盘"
       },
       {
-        "theme_key": "hk_tech",
-        "theme": "港股科技/互联网",
-        "signals": 22,
-        "basis": "T30",
-        "samples": 7,
-        "win_rate_pct": 28.6,
-        "avg_return_pct": -2.901,
-        "relative_win_rate_pct": 28.6,
-        "avg_relative_return_pct": -2.697,
-        "rank_score": -0.429,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
         "theme_key": "dividend_lowvol",
         "theme": "红利低波",
         "signals": 24,
@@ -8950,6 +9034,20 @@
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": -2.269,
         "rank_score": -2.724,
+        "verdict": "跑输基准降权",
+        "action": "降权复盘"
+      },
+      {
+        "theme_key": "hk_tech",
+        "theme": "港股科技/互联网",
+        "signals": 22,
+        "basis": "T30",
+        "samples": 8,
+        "win_rate_pct": 25.0,
+        "avg_return_pct": -4.108,
+        "relative_win_rate_pct": 25.0,
+        "avg_relative_return_pct": -3.866,
+        "rank_score": -2.814,
         "verdict": "跑输基准降权",
         "action": "降权复盘"
       },
@@ -9000,32 +9098,32 @@
         "theme": "光通信/空心光纤/CPO",
         "signals": 14,
         "basis": "T30",
-        "samples": 1,
+        "samples": 2,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 17.986,
+        "avg_return_pct": 18.867,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 18.533,
-        "rank_score": 41.209,
+        "avg_relative_return_pct": 19.394,
+        "rank_score": 42.943,
         "verdict": "继续积累",
         "action": "继续积累样本"
       }
     ],
     "lines": [
-      "- 半导体材料/卡脖子链：T30 样本 3，胜率 100%，均值 +17.66%，相对基准 +17.85%，动作：优先保留权重。",
-      "- 氦气/电子特气：T30 样本 3，胜率 100%，均值 +17.66%，相对基准 +17.85%，动作：优先保留权重。",
-      "- 六氟化钨/前驱体：T30 样本 3，胜率 100%，均值 +17.66%，相对基准 +17.85%，动作：优先保留权重。"
+      "- 半导体材料/卡脖子链：T30 样本 4，胜率 100%，均值 +18.18%，相对基准 +18.45%，动作：优先保留权重。",
+      "- 氦气/电子特气：T30 样本 4，胜率 100%，均值 +18.18%，相对基准 +18.45%，动作：优先保留权重。",
+      "- 六氟化钨/前驱体：T30 样本 4，胜率 100%，均值 +18.18%，相对基准 +18.45%，动作：优先保留权重。"
     ],
     "best": {
       "theme_key": "semiconductor_materials",
       "theme": "半导体材料/卡脖子链",
       "signals": 16,
       "basis": "T30",
-      "samples": 3,
+      "samples": 4,
       "win_rate_pct": 100.0,
-      "avg_return_pct": 17.663,
+      "avg_return_pct": 18.184,
       "relative_win_rate_pct": 100.0,
-      "avg_relative_return_pct": 17.846,
-      "rank_score": 40.905,
+      "avg_relative_return_pct": 18.448,
+      "rank_score": 42.098,
       "verdict": "保留加权",
       "action": "优先保留权重"
     },
@@ -9034,12 +9132,12 @@
       "theme": "光通信/空心光纤/CPO",
       "signals": 14,
       "basis": "T30",
-      "samples": 1,
+      "samples": 2,
       "win_rate_pct": 100.0,
-      "avg_return_pct": 17.986,
+      "avg_return_pct": 18.867,
       "relative_win_rate_pct": 100.0,
-      "avg_relative_return_pct": 18.533,
-      "rank_score": 41.209,
+      "avg_relative_return_pct": 19.394,
+      "rank_score": 42.943,
       "verdict": "继续积累",
       "action": "继续积累样本"
     }
@@ -9130,6 +9228,20 @@
       "status": "待复盘"
     },
     {
+      "theme_key": "hk_tech",
+      "theme": "港股科技/互联网",
+      "code": "513010",
+      "name": "港股科技ETF",
+      "created_at_utc": "2026-05-28T16:55:26",
+      "source": "industry_radar",
+      "horizon": "T30",
+      "return_pct": -12.559,
+      "relative_return_pct": -12.052,
+      "reason": "行业逻辑未兑现",
+      "lesson": "同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。",
+      "status": "待复盘"
+    },
+    {
       "theme_key": "metals_gold",
       "theme": "有色/黄金",
       "code": "512400",
@@ -9198,27 +9310,13 @@
       "reason": "行业逻辑未兑现",
       "lesson": "同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。",
       "status": "待复盘"
-    },
-    {
-      "theme_key": "metals_gold",
-      "theme": "有色/黄金",
-      "code": "512400",
-      "name": "有色ETF",
-      "created_at_utc": "2026-05-27T16:39:19",
-      "source": "candidate_pool",
-      "horizon": "T30",
-      "return_pct": -8.644,
-      "relative_return_pct": -8.137,
-      "reason": "信号升级过早",
-      "lesson": "先留在观察层，等价格和新闻复核后再提高权重。",
-      "status": "待复盘"
     }
   ],
   "mistake_summary": {
     "total": 12,
     "by_reason": {
-      "行业逻辑未兑现": 7,
-      "信号升级过早": 5
+      "行业逻辑未兑现": 8,
+      "信号升级过早": 4
     },
     "lines": [
       "- 错误复盘库记录 12 条负向样本；最多的问题是：行业逻辑未兑现。",
@@ -9304,20 +9402,6 @@
       "score_delta": 1,
       "basis": "T30"
     },
-    "gold_real_rates": {
-      "theme": "黄金/实际利率",
-      "verdict": "降权观察",
-      "adjustment": "自动降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
-    "new_energy_cycle": {
-      "theme": "新能源价格周期",
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
-      "basis": "T30"
-    },
     "semiconductor_materials": {
       "theme": "半导体材料/卡脖子链",
       "verdict": "保留加权",
@@ -9348,6 +9432,20 @@
     },
     "advanced_packaging": {
       "theme": "先进封装/玻璃基板",
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "basis": "T30"
+    },
+    "gold_real_rates": {
+      "theme": "黄金/实际利率",
+      "verdict": "降权观察",
+      "adjustment": "自动降权",
+      "score_delta": -2,
+      "basis": "T30"
+    },
+    "new_energy_cycle": {
+      "theme": "新能源价格周期",
       "verdict": "保留加权",
       "adjustment": "小幅加权",
       "score_delta": 1,
