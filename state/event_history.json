@@ -33475,5 +33475,253 @@
       "waiver",
       "关键词"
     ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "ukrainiandro",
+    "theme": "Ukraine hits major oil terminal in Russia's St Petersburg ｜ 关键词：president / infrastructure / ukraine / oil",
+    "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
+    "summary": "Ukrainian President Volodymyr Zelensky says the target is key infrastructure \"that generates revenue for Russia's war\".",
+    "tags": [
+      "geopolitics",
+      "energy"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 9.94,
+    "tokens": [
+      "generates",
+      "hits",
+      "in",
+      "infrastructure",
+      "is",
+      "key",
+      "major",
+      "oil",
+      "petersburg",
+      "president",
+      "revenue",
+      "russia",
+      "says",
+      "st",
+      "target",
+      "terminal",
+      "ukraine",
+      "ukrainian",
+      "volodymyr",
+      "war",
+      "zelensky",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "honeywellint",
+    "theme": "Honeywell International Inc. (HON): One of The Best Robotics Stocks to Buy Poised for Manufacturing Automation Opportunities ｜ 关键词：buy / robotics / inc / hon",
+    "title": "Honeywell International Inc. (HON): One of The Best Robotics Stocks to Buy Poised for Manufacturing Automation Opportunities",
+    "summary": "Honeywell International Inc. (NASDAQ: HON) is highlighted as a top robotics stock due to its recent unveiling of Experion Cognition, an AI-enabled control system designed to advance autonomous operations. This platform integrates AI models with Honeywell's process automation expertise to optimize production, resolve anomalies, and address industrial workforce shortages. The article positions Honeywell as a key player in manufacturing automation and the energy transition, offering critical hardware, software, and services.",
+    "tags": [
+      "energy",
+      "technology",
+      "markets"
+    ],
+    "direction": "偏利多",
+    "importance": "★★★★★",
+    "score": 9.77,
+    "tokens": [
+      "address",
+      "advance",
+      "ai",
+      "an",
+      "anomalies",
+      "article",
+      "as",
+      "automation",
+      "autonomous",
+      "best",
+      "buy",
+      "cognition",
+      "control",
+      "critical",
+      "designed",
+      "due",
+      "enabled",
+      "energy",
+      "experion",
+      "expertise",
+      "hardware",
+      "highlighted",
+      "hon",
+      "honeywell",
+      "in",
+      "inc",
+      "industrial",
+      "integrates",
+      "international",
+      "is",
+      "its",
+      "key",
+      "manufacturing",
+      "models",
+      "nasdaq",
+      "of",
+      "offering",
+      "one",
+      "operations",
+      "opportunities",
+      "optimize",
+      "platform",
+      "player",
+      "poised",
+      "positions",
+      "process",
+      "production",
+      "recent",
+      "resolve",
+      "robotics",
+      "services",
+      "shortages",
+      "software",
+      "system",
+      "to",
+      "top",
+      "transition",
+      "unveiling",
+      "workforce",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "20265",
+    "theme": "2026年5月金融市场运行情况 ｜ 关键词：2026",
+    "title": "2026年5月金融市场运行情况",
+    "summary": "官方网页抓取：2026年5月金融市场运行情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.77,
+    "tokens": [
+      "2026",
+      "2026年5月金融市场运行情况",
+      "关键词",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "5",
+    "theme": "中国人民银行、中国证监会有关部门负责人就香港近期推出5年期人民币国债期货...",
+    "title": "中国人民银行、中国证监会有关部门负责人就香港近期推出5年期人民币国债期货...",
+    "summary": "官方网页抓取：中国人民银行、中国证监会有关部门负责人就香港近期推出5年期人民币国债期货...",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.77,
+    "tokens": [
+      "中国人民银行",
+      "中国证监会有关部门负责人就香港近期推出5年期人民币国债期货",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "5",
+    "theme": "国家发展改革委举行5月份新闻发布会",
+    "title": "国家发展改革委举行5月份新闻发布会",
+    "summary": "官方网页抓取：国家发展改革委举行5月份新闻发布会",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.55,
+    "tokens": [
+      "国家发展改革委举行5月份新闻发布会",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "theworldcups",
+    "theme": "The World Cup sends prediction market volumes soaring to record highs ｜ 关键词：world / record / prediction / trading",
+    "title": "The World Cup sends prediction market volumes soaring to record highs",
+    "summary": "Trading volumes on Kalshi and Polymarket both hit record highs in June. Rothera, a new prediction market platform, was also able to manage $2 billion in volume.",
+    "tags": [
+      "markets",
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.38,
+    "tokens": [
+      "able",
+      "also",
+      "billion",
+      "both",
+      "cup",
+      "highs",
+      "hit",
+      "in",
+      "june",
+      "kalshi",
+      "manage",
+      "new",
+      "on",
+      "platform",
+      "polymarket",
+      "prediction",
+      "record",
+      "rothera",
+      "sends",
+      "soaring",
+      "to",
+      "trading",
+      "volume",
+      "volumes",
+      "was",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "5",
+    "theme": "5月份国民经济运行总体平稳、向新向优",
+    "title": "5月份国民经济运行总体平稳、向新向优",
+    "summary": "官方网页抓取：5月份国民经济运行总体平稳、向新向优",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.33,
+    "tokens": [
+      "5月份国民经济运行总体平稳",
+      "向新向优",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-04T14:39:48",
+    "cluster_id": "20265",
+    "theme": "2026年5月份能源生产情况 ｜ 关键词：2026",
+    "title": "2026年5月份能源生产情况",
+    "summary": "官方网页抓取：2026年5月份能源生产情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.33,
+    "tokens": [
+      "2026",
+      "2026年5月份能源生产情况",
+      "关键词",
+      "官方网页抓取"
+    ]
   }
 ]
