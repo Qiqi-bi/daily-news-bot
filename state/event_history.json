@@ -33723,5 +33723,268 @@
       "关键词",
       "官方网页抓取"
     ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "millionsatte",
+    "theme": "Iran leadership shows unity at ayatollah’s funeral, but successor absent ｜ 关键词：iran / funeral / khamenei / leader",
+    "title": "Iran leadership shows unity at ayatollah’s funeral, but successor absent",
+    "summary": "Mojtaba Khamenei does not join other top leaders and sons alongside coffin of slain supreme leader",
+    "tags": [
+      "geopolitics"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 11.02,
+    "tokens": [
+      "absent",
+      "alongside",
+      "at",
+      "ayatollah",
+      "but",
+      "coffin",
+      "does",
+      "funeral",
+      "iran",
+      "join",
+      "khamenei",
+      "leader",
+      "leaders",
+      "leadership",
+      "mojtaba",
+      "not",
+      "of",
+      "other",
+      "shows",
+      "slain",
+      "sons",
+      "successor",
+      "supreme",
+      "top",
+      "unity",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "opecpluspled",
+    "theme": "OPEC Plus Pledges to Pump More Even as Oil Prices Fall ｜ 关键词：iran / eased / even / plus",
+    "title": "OPEC Plus Pledges to Pump More Even as Oil Prices Fall",
+    "summary": "The cartel’s decision comes as U.S.-Iran talks to end the war have eased pressure on oil supplies, even as broader market and political volatility persists.",
+    "tags": [
+      "geopolitics",
+      "energy",
+      "markets",
+      "macro"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 10.76,
+    "tokens": [
+      "as",
+      "broader",
+      "cartel",
+      "comes",
+      "decision",
+      "eased",
+      "end",
+      "even",
+      "fall",
+      "have",
+      "iran",
+      "more",
+      "oil",
+      "on",
+      "opec",
+      "persists",
+      "pledges",
+      "plus",
+      "political",
+      "pressure",
+      "pump",
+      "supplies",
+      "talks",
+      "to",
+      "volatility",
+      "war",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "cargovesseli",
+    "theme": "Cargo vessel in Red Sea reports coming under attack, UK maritime body says ｜ 关键词：reported / world / vessel / cargo",
+    "title": "Cargo vessel in Red Sea reports coming under attack, UK maritime body says",
+    "summary": "The incident was reported in one of the world's most crucial trade transit routes amid a fragile ceasefire between Iran and the U.S.",
+    "tags": [
+      "geopolitics",
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.78,
+    "tokens": [
+      "attack",
+      "between",
+      "body",
+      "cargo",
+      "ceasefire",
+      "coming",
+      "crucial",
+      "fragile",
+      "in",
+      "incident",
+      "iran",
+      "maritime",
+      "most",
+      "of",
+      "one",
+      "red",
+      "reported",
+      "reports",
+      "routes",
+      "says",
+      "sea",
+      "trade",
+      "transit",
+      "uk",
+      "under",
+      "vessel",
+      "was",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "oilmarketope",
+    "theme": "Oil market opens up as retail traders pour in ｜ 关键词：barrel / retail / launch / cme",
+    "title": "Oil market opens up as retail traders pour in",
+    "summary": "CME Group to launch 10-barrel contract after Iran war triggers rush of bets on crude prices",
+    "tags": [
+      "geopolitics",
+      "energy",
+      "markets"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 8.69,
+    "tokens": [
+      "10",
+      "as",
+      "barrel",
+      "bets",
+      "cme",
+      "contract",
+      "crude",
+      "group",
+      "in",
+      "iran",
+      "launch",
+      "of",
+      "oil",
+      "on",
+      "opens",
+      "pour",
+      "retail",
+      "rush",
+      "to",
+      "traders",
+      "triggers",
+      "up",
+      "war",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "ukrainestrik",
+    "theme": "Ukraine striking Russian energy infrastructure at unprecedented rate ｜ 关键词：decades / infrastructure / campaign / rate",
+    "title": "Ukraine striking Russian energy infrastructure at unprecedented rate",
+    "summary": "Kyiv’s intensified drone campaign is spurring Russia’s worst fuel crisis in decades",
+    "tags": [
+      "geopolitics",
+      "energy"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.61,
+    "tokens": [
+      "at",
+      "campaign",
+      "crisis",
+      "decades",
+      "drone",
+      "energy",
+      "fuel",
+      "in",
+      "infrastructure",
+      "intensified",
+      "is",
+      "kyiv",
+      "rate",
+      "russia",
+      "russian",
+      "spurring",
+      "striking",
+      "ukraine",
+      "unprecedented",
+      "worst",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "6",
+    "theme": "国家发展改革委举行6月份新闻发布会",
+    "title": "国家发展改革委举行6月份新闻发布会",
+    "summary": "官方网页抓取：国家发展改革委举行6月份新闻发布会",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.55,
+    "tokens": [
+      "国家发展改革委举行6月份新闻发布会",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "20266",
+    "theme": "2026年6月下旬流通领域重要生产资料市场价格变动情况 ｜ 关键词：2026",
+    "title": "2026年6月下旬流通领域重要生产资料市场价格变动情况",
+    "summary": "官方网页抓取：2026年6月下旬流通领域重要生产资料市场价格变动情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.33,
+    "tokens": [
+      "2026",
+      "2026年6月下旬流通领域重要生产资料市场价格变动情况",
+      "关键词",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-07-05T14:45:55",
+    "cluster_id": "20266",
+    "theme": "2026年6月中国采购经理指数运行情况 ｜ 关键词：2026",
+    "title": "2026年6月中国采购经理指数运行情况",
+    "summary": "官方网页抓取：2026年6月中国采购经理指数运行情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.33,
+    "tokens": [
+      "2026",
+      "2026年6月中国采购经理指数运行情况",
+      "关键词",
+      "官方网页抓取"
+    ]
   }
 ]
