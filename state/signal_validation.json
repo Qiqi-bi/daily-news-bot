@@ -1,7 +1,71 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-08-12T14:21:15",
+  "updated_at_utc": "2026-08-13T14:22:29",
   "signals": [
+    {
+      "id": "20260813142229-candidate_pool-dividend_lowvol-515100",
+      "created_at_utc": "2026-08-13T14:22:29",
+      "source": "candidate_pool",
+      "theme": "红利低波",
+      "theme_key": "dividend_lowvol",
+      "priority": "高",
+      "score": 5.0,
+      "code": "515100",
+      "name": "红利100ETF",
+      "start_price": 1.411,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.729,
+      "observations": {}
+    },
+    {
+      "id": "20260813142229-candidate_pool-hk_tech-513010",
+      "created_at_utc": "2026-08-13T14:22:29",
+      "source": "candidate_pool",
+      "theme": "港股科技ETF",
+      "theme_key": "hk_tech",
+      "priority": "中",
+      "score": 3.0,
+      "code": "513010",
+      "name": "港股科技ETF",
+      "start_price": 0.624,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.729,
+      "observations": {}
+    },
+    {
+      "id": "20260813142229-industry_radar-china_broad_core-510310",
+      "created_at_utc": "2026-08-13T14:22:29",
+      "source": "industry_radar",
+      "theme": "A股宽基/中国宏观",
+      "theme_key": "china_broad_core",
+      "priority": "今日关注",
+      "score": 8.0,
+      "code": "510310",
+      "name": "沪深300ETF易方达",
+      "start_price": 4.589,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.729,
+      "observations": {}
+    },
+    {
+      "id": "20260813142229-industry_radar-dividend_defense-515100",
+      "created_at_utc": "2026-08-13T14:22:29",
+      "source": "industry_radar",
+      "theme": "红利低波/防御",
+      "theme_key": "dividend_defense",
+      "priority": "今日关注",
+      "score": 5.0,
+      "code": "515100",
+      "name": "红利100ETF",
+      "start_price": 1.411,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.729,
+      "observations": {}
+    },
     {
       "id": "20260811141959-candidate_pool-ai_power_base-561560",
       "created_at_utc": "2026-08-11T14:19:59",
@@ -4736,7 +4800,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.296,
+          "return_pct": 5.969,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 6.285,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-candidate_pool-power-561560",
@@ -4752,7 +4830,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.296,
+          "return_pct": 5.969,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 6.285,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-candidate_pool-dividend_lowvol-512890",
@@ -4768,7 +4860,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.157,
+          "return_pct": 2.753,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 3.069,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-candidate_pool-metals_gold-512400",
@@ -4784,7 +4890,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.869,
+          "return_pct": 11.316,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 11.632,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-candidate_pool-metals_gold-518880",
@@ -4800,7 +4920,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 9.042,
+          "return_pct": 7.4,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 7.716,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-gold_real_rates-518880",
@@ -4816,7 +4950,21 @@
       "benchmark_code": "518880",
       "benchmark_name": "黄金ETF",
       "benchmark_start_price": 8.419,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 9.042,
+          "return_pct": 7.4,
+          "hit": true,
+          "benchmark_code": "518880",
+          "benchmark_name": "黄金ETF",
+          "benchmark_price": 9.042,
+          "benchmark_return_pct": 7.4,
+          "relative_return_pct": 0.0,
+          "relative_hit": false
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-energy_power-561560",
@@ -4832,7 +4980,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.296,
+          "return_pct": 5.969,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 6.285,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-wind_power_aidc-561560",
@@ -4848,7 +5010,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.296,
+          "return_pct": 5.969,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 6.285,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-grid_storage_power-561560",
@@ -4864,7 +5040,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.296,
+          "return_pct": 5.969,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 6.285,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-resource_metals-512400",
@@ -4880,7 +5070,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.869,
+          "return_pct": 11.316,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 11.632,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-resource_metals-518880",
@@ -4896,7 +5100,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 9.042,
+          "return_pct": 7.4,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 7.716,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-hk_tech-513010",
@@ -4912,7 +5130,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 0.624,
+          "return_pct": 2.128,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 2.444,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-dividend_defense-512890",
@@ -4928,7 +5160,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.744,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 1.157,
+          "return_pct": 2.753,
+          "hit": true,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.729,
+          "benchmark_return_pct": -0.316,
+          "relative_return_pct": 3.069,
+          "relative_hit": true
+        }
+      }
     },
     {
       "id": "20260713154246-industry_radar-new_energy_cycle-159915",
@@ -4944,7 +5190,21 @@
       "benchmark_code": "159915",
       "benchmark_name": "创业板ETF",
       "benchmark_start_price": 3.751,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-08-13T14:22:29",
+          "elapsed_days": 30.94,
+          "price": 3.604,
+          "return_pct": -3.919,
+          "hit": false,
+          "benchmark_code": "159915",
+          "benchmark_name": "创业板ETF",
+          "benchmark_price": 3.604,
+          "benchmark_return_pct": -3.919,
+          "relative_return_pct": 0.0,
+          "relative_hit": false
+        }
+      }
     },
     {
       "id": "20260711142303-candidate_pool-ai_power_base-560390",
@@ -10555,144 +10815,24 @@
           "relative_hit": false
         }
       }
-    },
-    {
-      "id": "20260621151201-industry_radar-grid_storage_power-561560",
-      "created_at_utc": "2026-06-21T15:12:01",
-      "source": "industry_radar",
-      "theme": "电网/储能/火电调峰",
-      "theme_key": "grid_storage_power",
-      "priority": "今日关注",
-      "score": 3.0,
-      "code": "561560",
-      "name": "电力ETF",
-      "start_price": 1.324,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.984,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-07-22T15:06:21",
-          "elapsed_days": 31.0,
-          "price": 1.323,
-          "return_pct": -0.076,
-          "hit": false,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.765,
-          "benchmark_return_pct": -4.394,
-          "relative_return_pct": 4.318,
-          "relative_hit": true
-        }
-      }
-    },
-    {
-      "id": "20260621151201-industry_radar-grid_storage_power-560390",
-      "created_at_utc": "2026-06-21T15:12:01",
-      "source": "industry_radar",
-      "theme": "电网/储能/火电调峰",
-      "theme_key": "grid_storage_power",
-      "priority": "今日关注",
-      "score": 3.0,
-      "code": "560390",
-      "name": "电网设备ETF易方达",
-      "start_price": 1.102,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.984,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-07-22T15:06:21",
-          "elapsed_days": 31.0,
-          "price": 0.826,
-          "return_pct": -25.045,
-          "hit": false,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.765,
-          "benchmark_return_pct": -4.394,
-          "relative_return_pct": -20.651,
-          "relative_hit": false
-        }
-      }
-    },
-    {
-      "id": "20260621151201-industry_radar-resource_metals-512400",
-      "created_at_utc": "2026-06-21T15:12:01",
-      "source": "industry_radar",
-      "theme": "资源品/关键矿产",
-      "theme_key": "resource_metals",
-      "priority": "今日关注",
-      "score": 3.0,
-      "code": "512400",
-      "name": "有色ETF",
-      "start_price": 2.05,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.984,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-07-22T15:06:21",
-          "elapsed_days": 31.0,
-          "price": 1.768,
-          "return_pct": -13.756,
-          "hit": false,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.765,
-          "benchmark_return_pct": -4.394,
-          "relative_return_pct": -9.362,
-          "relative_hit": false
-        }
-      }
-    },
-    {
-      "id": "20260621151201-industry_radar-resource_metals-518880",
-      "created_at_utc": "2026-06-21T15:12:01",
-      "source": "industry_radar",
-      "theme": "资源品/关键矿产",
-      "theme_key": "resource_metals",
-      "priority": "今日关注",
-      "score": 3.0,
-      "code": "518880",
-      "name": "黄金ETF",
-      "start_price": 8.908,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.984,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-07-22T15:06:21",
-          "elapsed_days": 31.0,
-          "price": 8.56,
-          "return_pct": -3.907,
-          "hit": false,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.765,
-          "benchmark_return_pct": -4.394,
-          "relative_return_pct": 0.487,
-          "relative_hit": true
-        }
-      }
     }
   ],
   "rows": [
     {
-      "theme_key": "ai_power_base",
-      "theme": "AI电力底座",
+      "theme_key": "metals_gold",
+      "theme": "有色/黄金",
       "signals": 30,
       "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -84.356,
-        "relative_samples": 12,
-        "relative_hits": 6,
-        "sum_relative_return_pct": -31.961,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663
+        "samples": 14,
+        "hits": 7,
+        "sum_return_pct": 1.2530000000000001,
+        "relative_samples": 14,
+        "relative_hits": 11,
+        "sum_relative_return_pct": 52.961000000000006,
+        "win_rate_pct": 50.0,
+        "avg_return_pct": 0.09,
+        "relative_win_rate_pct": 78.6,
+        "avg_relative_return_pct": 3.783
       },
       "t60": {
         "samples": 0,
@@ -10718,9 +10858,144 @@
         "relative_win_rate_pct": null,
         "avg_relative_return_pct": null
       },
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "dividend_lowvol",
+      "theme": "红利低波",
+      "signals": 30,
+      "t30": {
+        "samples": 13,
+        "hits": 13,
+        "sum_return_pct": 87.41000000000001,
+        "relative_samples": 13,
+        "relative_hits": 13,
+        "sum_relative_return_pct": 137.41499999999996,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 6.724,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 10.57
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "dividend_defense",
+      "theme": "红利低波/防御",
+      "signals": 30,
+      "t30": {
+        "samples": 13,
+        "hits": 13,
+        "sum_return_pct": 87.41000000000001,
+        "relative_samples": 13,
+        "relative_hits": 13,
+        "sum_relative_return_pct": 137.41499999999996,
+        "win_rate_pct": 100.0,
+        "avg_return_pct": 6.724,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 10.57
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "保留加权",
+      "adjustment": "小幅加权",
+      "score_delta": 1,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "ai_power_base",
+      "theme": "AI电力底座",
+      "signals": 30,
+      "t30": {
+        "samples": 13,
+        "hits": 6,
+        "sum_return_pct": -78.387,
+        "relative_samples": 13,
+        "relative_hits": 7,
+        "sum_relative_return_pct": -25.676000000000002,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
       "adjustment_basis": "T30"
     },
     {
@@ -10728,61 +11003,16 @@
       "theme": "电力",
       "signals": 30,
       "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -84.356,
-        "relative_samples": 12,
-        "relative_hits": 6,
-        "sum_relative_return_pct": -31.961,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "metals_gold",
-      "theme": "有色/黄金",
-      "signals": 30,
-      "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -17.463000000000005,
-        "relative_samples": 12,
-        "relative_hits": 9,
-        "sum_relative_return_pct": 33.613,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -1.455,
-        "relative_win_rate_pct": 75.0,
-        "avg_relative_return_pct": 2.801
+        "samples": 13,
+        "hits": 6,
+        "sum_return_pct": -78.387,
+        "relative_samples": 13,
+        "relative_hits": 7,
+        "sum_relative_return_pct": -25.676000000000002,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975
       },
       "t60": {
         "samples": 0,
@@ -10818,151 +11048,16 @@
       "theme": "能源电力链",
       "signals": 30,
       "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -84.356,
-        "relative_samples": 12,
-        "relative_hits": 6,
-        "sum_relative_return_pct": -31.961,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "wind_power_aidc",
-      "theme": "风电/算力绿电",
-      "signals": 30,
-      "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -84.356,
-        "relative_samples": 12,
-        "relative_hits": 6,
-        "sum_relative_return_pct": -31.961,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "grid_storage_power",
-      "theme": "电网/储能/火电调峰",
-      "signals": 30,
-      "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -84.356,
-        "relative_samples": 12,
-        "relative_hits": 6,
-        "sum_relative_return_pct": -31.961,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "resource_metals",
-      "theme": "资源品/关键矿产",
-      "signals": 30,
-      "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": -17.463000000000005,
-        "relative_samples": 12,
-        "relative_hits": 9,
-        "sum_relative_return_pct": 33.613,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -1.455,
-        "relative_win_rate_pct": 75.0,
-        "avg_relative_return_pct": 2.801
+        "samples": 13,
+        "hits": 6,
+        "sum_return_pct": -78.387,
+        "relative_samples": 13,
+        "relative_hits": 7,
+        "sum_relative_return_pct": -25.676000000000002,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975
       },
       "t60": {
         "samples": 0,
@@ -10994,20 +11089,20 @@
       "adjustment_basis": "T30"
     },
     {
-      "theme_key": "dividend_lowvol",
-      "theme": "红利低波",
-      "signals": 29,
+      "theme_key": "wind_power_aidc",
+      "theme": "风电/算力绿电",
+      "signals": 30,
       "t30": {
-        "samples": 12,
-        "hits": 12,
-        "sum_return_pct": 84.65700000000001,
-        "relative_samples": 12,
-        "relative_hits": 12,
-        "sum_relative_return_pct": 134.346,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 7.055,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.196
+        "samples": 13,
+        "hits": 6,
+        "sum_return_pct": -78.387,
+        "relative_samples": 13,
+        "relative_hits": 7,
+        "sum_relative_return_pct": -25.676000000000002,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975
       },
       "t60": {
         "samples": 0,
@@ -11033,26 +11128,26 @@
         "relative_win_rate_pct": null,
         "avg_relative_return_pct": null
       },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
       "adjustment_basis": "T30"
     },
     {
-      "theme_key": "dividend_defense",
-      "theme": "红利低波/防御",
-      "signals": 29,
+      "theme_key": "resource_metals",
+      "theme": "资源品/关键矿产",
+      "signals": 28,
       "t30": {
         "samples": 12,
-        "hits": 12,
-        "sum_return_pct": 84.65700000000001,
+        "hits": 7,
+        "sum_return_pct": 18.916,
         "relative_samples": 12,
-        "relative_hits": 12,
-        "sum_relative_return_pct": 134.346,
-        "win_rate_pct": 100.0,
-        "avg_return_pct": 7.055,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.196
+        "relative_hits": 10,
+        "sum_relative_return_pct": 61.836000000000006,
+        "win_rate_pct": 58.3,
+        "avg_return_pct": 1.576,
+        "relative_win_rate_pct": 83.3,
+        "avg_relative_return_pct": 5.153
       },
       "t60": {
         "samples": 0,
@@ -11078,15 +11173,15 @@
         "relative_win_rate_pct": null,
         "avg_relative_return_pct": null
       },
-      "verdict": "保留加权",
-      "adjustment": "小幅加权",
-      "score_delta": 1,
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
       "adjustment_basis": "T30"
     },
     {
       "theme_key": "china_broad_core",
       "theme": "A股宽基/中国宏观",
-      "signals": 28,
+      "signals": 29,
       "t30": {
         "samples": 11,
         "hits": 0,
@@ -11129,20 +11224,65 @@
       "adjustment_basis": "T30"
     },
     {
+      "theme_key": "grid_storage_power",
+      "theme": "电网/储能/火电调峰",
+      "signals": 28,
+      "t30": {
+        "samples": 11,
+        "hits": 6,
+        "sum_return_pct": -53.266000000000005,
+        "relative_samples": 11,
+        "relative_hits": 6,
+        "sum_relative_return_pct": -9.343,
+        "win_rate_pct": 54.5,
+        "avg_return_pct": -4.842,
+        "relative_win_rate_pct": 54.5,
+        "avg_relative_return_pct": -0.849
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
+      "adjustment_basis": "T30"
+    },
+    {
       "theme_key": "hk_tech",
       "theme": "港股科技ETF",
-      "signals": 24,
+      "signals": 25,
       "t30": {
-        "samples": 8,
-        "hits": 8,
-        "sum_return_pct": 46.206,
-        "relative_samples": 8,
-        "relative_hits": 8,
-        "sum_relative_return_pct": 92.13499999999999,
+        "samples": 9,
+        "hits": 9,
+        "sum_return_pct": 48.334,
+        "relative_samples": 9,
+        "relative_hits": 9,
+        "sum_relative_return_pct": 94.57900000000001,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 5.776,
+        "avg_return_pct": 5.37,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.517
+        "avg_relative_return_pct": 10.509
       },
       "t60": {
         "samples": 0,
@@ -11448,14 +11588,14 @@
       "theme": "黄金/实际利率",
       "signals": 15,
       "t30": {
-        "samples": 6,
-        "hits": 3,
-        "sum_return_pct": 0.6160000000000005,
-        "relative_samples": 6,
+        "samples": 7,
+        "hits": 4,
+        "sum_return_pct": 8.016000000000002,
+        "relative_samples": 7,
         "relative_hits": 0,
         "sum_relative_return_pct": 0.0,
-        "win_rate_pct": 50.0,
-        "avg_return_pct": 0.103,
+        "win_rate_pct": 57.1,
+        "avg_return_pct": 1.145,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": 0.0
       },
@@ -11538,14 +11678,14 @@
       "theme": "新能源价格周期",
       "signals": 13,
       "t30": {
-        "samples": 4,
+        "samples": 5,
         "hits": 0,
-        "sum_return_pct": -66.241,
-        "relative_samples": 4,
+        "sum_return_pct": -70.16,
+        "relative_samples": 5,
         "relative_hits": 0,
         "sum_relative_return_pct": 0.0,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -16.56,
+        "avg_return_pct": -14.032,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": 0.0
       },
@@ -11629,56 +11769,56 @@
       {
         "theme_key": "dividend_lowvol",
         "theme": "红利低波",
-        "signals": 29,
+        "signals": 30,
         "basis": "T30",
-        "samples": 12,
+        "samples": 13,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 7.055,
+        "avg_return_pct": 6.724,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.196,
-        "rank_score": 26.392,
+        "avg_relative_return_pct": 10.57,
+        "rank_score": 25.623,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
       {
         "theme_key": "dividend_defense",
         "theme": "红利低波/防御",
-        "signals": 29,
+        "signals": 30,
         "basis": "T30",
-        "samples": 12,
+        "samples": 13,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 7.055,
+        "avg_return_pct": 6.724,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.196,
-        "rank_score": 26.392,
+        "avg_relative_return_pct": 10.57,
+        "rank_score": 25.623,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
       {
         "theme_key": "hk_tech",
         "theme": "港股科技ETF",
-        "signals": 24,
+        "signals": 25,
         "basis": "T30",
-        "samples": 8,
+        "samples": 9,
         "win_rate_pct": 100.0,
-        "avg_return_pct": 5.776,
+        "avg_return_pct": 5.37,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 11.517,
-        "rank_score": 25.338,
+        "avg_relative_return_pct": 10.509,
+        "rank_score": 24.226,
         "verdict": "保留加权",
         "action": "优先保留权重"
       },
       {
-        "theme_key": "gold_real_rates",
-        "theme": "黄金/实际利率",
-        "signals": 15,
+        "theme_key": "resource_metals",
+        "theme": "资源品/关键矿产",
+        "signals": 28,
         "basis": "T30",
-        "samples": 6,
-        "win_rate_pct": 50.0,
-        "avg_return_pct": 0.103,
-        "relative_win_rate_pct": 0.0,
-        "avg_relative_return_pct": 0.0,
-        "rank_score": 6.603,
+        "samples": 12,
+        "win_rate_pct": 58.3,
+        "avg_return_pct": 1.576,
+        "relative_win_rate_pct": 83.3,
+        "avg_relative_return_pct": 5.153,
+        "rank_score": 12.513,
         "verdict": "维持观察",
         "action": "等待二次确认"
       },
@@ -11687,33 +11827,103 @@
         "theme": "有色/黄金",
         "signals": 30,
         "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -1.455,
-        "relative_win_rate_pct": 75.0,
-        "avg_relative_return_pct": 2.801,
-        "rank_score": 6.176,
+        "samples": 14,
+        "win_rate_pct": 50.0,
+        "avg_return_pct": 0.09,
+        "relative_win_rate_pct": 78.6,
+        "avg_relative_return_pct": 3.783,
+        "rank_score": 9.238,
         "verdict": "维持观察",
         "action": "等待二次确认"
       },
       {
-        "theme_key": "resource_metals",
-        "theme": "资源品/关键矿产",
+        "theme_key": "gold_real_rates",
+        "theme": "黄金/实际利率",
+        "signals": 15,
+        "basis": "T30",
+        "samples": 7,
+        "win_rate_pct": 57.1,
+        "avg_return_pct": 1.145,
+        "relative_win_rate_pct": 0.0,
+        "avg_relative_return_pct": 0.0,
+        "rank_score": 8.355,
+        "verdict": "维持观察",
+        "action": "等待二次确认"
+      },
+      {
+        "theme_key": "grid_storage_power",
+        "theme": "电网/储能/火电调峰",
+        "signals": 28,
+        "basis": "T30",
+        "samples": 11,
+        "win_rate_pct": 54.5,
+        "avg_return_pct": -4.842,
+        "relative_win_rate_pct": 54.5,
+        "avg_relative_return_pct": -0.849,
+        "rank_score": 1.514,
+        "verdict": "维持观察",
+        "action": "等待二次确认"
+      },
+      {
+        "theme_key": "ai_power_base",
+        "theme": "AI电力底座",
         "signals": 30,
         "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -1.455,
-        "relative_win_rate_pct": 75.0,
-        "avg_relative_return_pct": 2.801,
-        "rank_score": 6.176,
+        "samples": 13,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975,
+        "rank_score": -1.293,
+        "verdict": "维持观察",
+        "action": "等待二次确认"
+      },
+      {
+        "theme_key": "power",
+        "theme": "电力",
+        "signals": 30,
+        "basis": "T30",
+        "samples": 13,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975,
+        "rank_score": -1.293,
+        "verdict": "维持观察",
+        "action": "等待二次确认"
+      },
+      {
+        "theme_key": "energy_power",
+        "theme": "能源电力链",
+        "signals": 30,
+        "basis": "T30",
+        "samples": 13,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975,
+        "rank_score": -1.293,
+        "verdict": "维持观察",
+        "action": "等待二次确认"
+      },
+      {
+        "theme_key": "wind_power_aidc",
+        "theme": "风电/算力绿电",
+        "signals": 30,
+        "basis": "T30",
+        "samples": 13,
+        "win_rate_pct": 46.2,
+        "avg_return_pct": -6.03,
+        "relative_win_rate_pct": 53.8,
+        "avg_relative_return_pct": -1.975,
+        "rank_score": -1.293,
         "verdict": "维持观察",
         "action": "等待二次确认"
       },
       {
         "theme_key": "china_broad_core",
         "theme": "A股宽基/中国宏观",
-        "signals": 28,
+        "signals": 29,
         "basis": "T30",
         "samples": 11,
         "win_rate_pct": 0.0,
@@ -11725,86 +11935,16 @@
         "action": "降权复盘"
       },
       {
-        "theme_key": "ai_power_base",
-        "theme": "AI电力底座",
-        "signals": 30,
-        "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663,
-        "rank_score": -3.224,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
-        "theme_key": "power",
-        "theme": "电力",
-        "signals": 30,
-        "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663,
-        "rank_score": -3.224,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
-        "theme_key": "energy_power",
-        "theme": "能源电力链",
-        "signals": 30,
-        "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663,
-        "rank_score": -3.224,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
-        "theme_key": "wind_power_aidc",
-        "theme": "风电/算力绿电",
-        "signals": 30,
-        "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663,
-        "rank_score": -3.224,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
-        "theme_key": "grid_storage_power",
-        "theme": "电网/储能/火电调峰",
-        "signals": 30,
-        "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": -7.03,
-        "relative_win_rate_pct": 50.0,
-        "avg_relative_return_pct": -2.663,
-        "rank_score": -3.224,
-        "verdict": "跑输基准降权",
-        "action": "降权复盘"
-      },
-      {
         "theme_key": "new_energy_cycle",
         "theme": "新能源价格周期",
         "signals": 13,
         "basis": "T30",
-        "samples": 4,
+        "samples": 5,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -16.56,
+        "avg_return_pct": -14.032,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": 0.0,
-        "rank_score": -15.56,
+        "rank_score": -12.782,
         "verdict": "降权观察",
         "action": "降权复盘"
       },
@@ -11908,21 +12048,21 @@
       }
     ],
     "lines": [
-      "- 红利低波：T30 样本 12，胜率 100%，均值 +7.05%，相对基准 +11.20%，动作：优先保留权重。",
-      "- 红利低波/防御：T30 样本 12，胜率 100%，均值 +7.05%，相对基准 +11.20%，动作：优先保留权重。",
-      "- 港股科技ETF：T30 样本 8，胜率 100%，均值 +5.78%，相对基准 +11.52%，动作：优先保留权重。"
+      "- 红利低波：T30 样本 13，胜率 100%，均值 +6.72%，相对基准 +10.57%，动作：优先保留权重。",
+      "- 红利低波/防御：T30 样本 13，胜率 100%，均值 +6.72%，相对基准 +10.57%，动作：优先保留权重。",
+      "- 港股科技ETF：T30 样本 9，胜率 100%，均值 +5.37%，相对基准 +10.51%，动作：优先保留权重。"
     ],
     "best": {
       "theme_key": "dividend_lowvol",
       "theme": "红利低波",
-      "signals": 29,
+      "signals": 30,
       "basis": "T30",
-      "samples": 12,
+      "samples": 13,
       "win_rate_pct": 100.0,
-      "avg_return_pct": 7.055,
+      "avg_return_pct": 6.724,
       "relative_win_rate_pct": 100.0,
-      "avg_relative_return_pct": 11.196,
-      "rank_score": 26.392,
+      "avg_relative_return_pct": 10.57,
+      "rank_score": 25.623,
       "verdict": "保留加权",
       "action": "优先保留权重"
     },
@@ -12123,41 +12263,6 @@
     ]
   },
   "adjustments": {
-    "ai_power_base": {
-      "theme": "AI电力底座",
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
-    "power": {
-      "theme": "电力",
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
-    "energy_power": {
-      "theme": "能源电力链",
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
-    "wind_power_aidc": {
-      "theme": "风电/算力绿电",
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
-    "grid_storage_power": {
-      "theme": "电网/储能/火电调峰",
-      "verdict": "跑输基准降权",
-      "adjustment": "相对收益降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
     "dividend_lowvol": {
       "theme": "红利低波",
       "verdict": "保留加权",
@@ -12244,13 +12349,13 @@
     }
   },
   "lines": [
-    "- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
-    "- AI电力底座：T+30 12次｜胜率 42%｜均值 -7.03%｜相对基准 -2.66%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。",
-    "- 电力：T+30 12次｜胜率 42%｜均值 -7.03%｜相对基准 -2.66%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。",
-    "- 有色/黄金：T+30 12次｜胜率 42%｜均值 -1.46%｜相对基准 +2.80%；T+60 样本不足；T+90 样本不足；结论：维持观察。",
-    "- 能源电力链：T+30 12次｜胜率 42%｜均值 -7.03%｜相对基准 -2.66%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。"
+    "- 本次新增待验证信号 4 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 有色/黄金：T+30 14次｜胜率 50%｜均值 +0.09%｜相对基准 +3.78%；T+60 样本不足；T+90 样本不足；结论：维持观察。",
+    "- 红利低波：T+30 13次｜胜率 100%｜均值 +6.72%｜相对基准 +10.57%；T+60 样本不足；T+90 样本不足；结论：保留加权。",
+    "- 红利低波/防御：T+30 13次｜胜率 100%｜均值 +6.72%｜相对基准 +10.57%；T+60 样本不足；T+90 样本不足；结论：保留加权。",
+    "- AI电力底座：T+30 13次｜胜率 46%｜均值 -6.03%｜相对基准 -1.98%；T+60 样本不足；T+90 样本不足；结论：维持观察。"
   ],
-  "added_count": 0,
+  "added_count": 4,
   "signal_count": 500,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
