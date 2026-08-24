@@ -1,26 +1,27 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-08-23T13:34:06",
+  "updated_at_utc": "2026-08-24T13:53:44",
   "items": {
     "china_broad_core": {
       "id": "china_broad_core",
       "name": "A股宽基/中国宏观",
-      "hit_streak": 5,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 6,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
-      "last_hits": [],
+      "last_hits": [
+        "china"
+      ],
       "last_missed_date": "2026-08-18"
     },
     "gold_real_rates": {
       "id": "gold_real_rates",
       "name": "黄金/实际利率",
-      "hit_streak": 13,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 14,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
         "treasury",
-        "dollar",
-        "fed"
+        "inflation"
       ],
       "last_missed_date": "2026-08-10",
       "last_weekly_review_date": "2026-08-19",
@@ -30,8 +31,8 @@
     "ai_infra": {
       "id": "ai_infra",
       "name": "AI基础设施链",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
         "ai"
@@ -43,8 +44,8 @@
     "ai_power_base": {
       "id": "ai_power_base",
       "name": "AI电力底座/算电协同",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -54,8 +55,8 @@
     "data_center_power_cooling": {
       "id": "data_center_power_cooling",
       "name": "AIDC电源/液冷/800V",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -65,8 +66,8 @@
     "power_trading_vpp": {
       "id": "power_trading_vpp",
       "name": "电力交易/虚拟电厂/绿证",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -76,11 +77,11 @@
     "energy_power": {
       "id": "energy_power",
       "name": "能源电力链",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
-        "power"
+        "oil"
       ],
       "last_weekly_review_date": "2026-08-19",
       "weekly_review_cooldown_until": "2026-08-25",
@@ -89,8 +90,8 @@
     "wind_power_aidc": {
       "id": "wind_power_aidc",
       "name": "风电/算力绿电",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -100,8 +101,8 @@
     "grid_storage_power": {
       "id": "grid_storage_power",
       "name": "电网/储能/火电调峰",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -111,8 +112,8 @@
     "resource_metals": {
       "id": "resource_metals",
       "name": "资源品/关键矿产",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-21",
@@ -122,8 +123,8 @@
     "embodied_robotics": {
       "id": "embodied_robotics",
       "name": "机器人/具身智能",
-      "hit_streak": 5,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 6,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_missed_date": "2026-08-18"
@@ -131,35 +132,33 @@
     "defense_low_altitude": {
       "id": "defense_low_altitude",
       "name": "军工/低空/无人机",
-      "hit_streak": 5,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 6,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
-      "last_hits": [
-        "drone"
-      ],
+      "last_hits": [],
       "last_missed_date": "2026-08-18"
     },
     "chemicals_fertilizer": {
       "id": "chemicals_fertilizer",
       "name": "化工/化肥/农药",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": []
     },
     "coal_power_security": {
       "id": "coal_power_security",
       "name": "煤炭/火电/电力安全",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": []
     },
     "anti_involution_policy": {
       "id": "anti_involution_policy",
       "name": "政策/反内卷链",
-      "hit_streak": 5,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 6,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
         "tariff"
@@ -169,10 +168,12 @@
     "hk_tech": {
       "id": "hk_tech",
       "name": "港股科技/互联网",
-      "hit_streak": 5,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 6,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
-      "last_hits": [],
+      "last_hits": [
+        "hong kong"
+      ],
       "last_missed_date": "2026-08-18",
       "last_weekly_review_date": "2026-07-28",
       "weekly_review_cooldown_until": "2026-08-03",
@@ -181,8 +182,8 @@
     "dividend_defense": {
       "id": "dividend_defense",
       "name": "红利低波/防御",
-      "hit_streak": 34,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 35,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-08-19",
@@ -194,7 +195,7 @@
       "id": "semiconductor_materials",
       "name": "半导体材料/卡脖子链",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -206,7 +207,7 @@
       "id": "helium_supply_chain",
       "name": "氦气/电子特气",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -218,7 +219,7 @@
       "id": "tungsten_hexafluoride",
       "name": "六氟化钨/前驱体",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -230,7 +231,7 @@
       "id": "photoresist_materials",
       "name": "光刻胶/靶材",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -242,7 +243,7 @@
       "id": "advanced_packaging",
       "name": "先进封装/玻璃基板",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -254,7 +255,7 @@
       "id": "optical_interconnect",
       "name": "光通信/空心光纤/CPO",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "静默观察",
       "last_hits": [],
       "last_hit_date": "2026-08-20",
@@ -265,26 +266,29 @@
     "shipping_routes": {
       "id": "shipping_routes",
       "name": "航运/通道风险",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
-      "last_hits": []
+      "last_hits": [
+        "hormuz"
+      ]
     },
     "sanctions_tariffs": {
       "id": "sanctions_tariffs",
       "name": "制裁/关税/结算规则",
-      "hit_streak": 89,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 90,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
+        "sanction",
         "tariff"
       ]
     },
     "new_energy_cycle": {
       "id": "new_energy_cycle",
       "name": "新能源价格周期",
-      "hit_streak": 7,
-      "last_hit_date": "2026-08-23",
+      "hit_streak": 8,
+      "last_hit_date": "2026-08-24",
       "last_status": "今日关注",
       "last_hits": [
         "ev"
@@ -298,7 +302,7 @@
       "id": "story_only",
       "name": "纯题材小作文",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "降噪",
       "last_hits": []
     },
@@ -306,7 +310,7 @@
       "id": "crowded_right_side",
       "name": "高拥挤右侧追涨",
       "hit_streak": 0,
-      "last_missed_date": "2026-08-23",
+      "last_missed_date": "2026-08-24",
       "last_status": "降噪",
       "last_hits": []
     }
