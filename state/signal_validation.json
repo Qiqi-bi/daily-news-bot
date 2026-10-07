@@ -1,7 +1,39 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-10-06T18:49:46",
+  "updated_at_utc": "2026-10-07T19:14:58",
   "signals": [
+    {
+      "id": "20261007191458-candidate_pool-hk_tech-513010",
+      "created_at_utc": "2026-10-07T19:14:58",
+      "source": "candidate_pool",
+      "theme": "港股科技ETF",
+      "theme_key": "hk_tech",
+      "priority": "中",
+      "score": 3.0,
+      "code": "513010",
+      "name": "港股科技ETF",
+      "start_price": 0.552,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.432,
+      "observations": {}
+    },
+    {
+      "id": "20261007191458-candidate_pool-hk_tech-513180",
+      "created_at_utc": "2026-10-07T19:14:58",
+      "source": "candidate_pool",
+      "theme": "港股科技ETF",
+      "theme_key": "hk_tech",
+      "priority": "中",
+      "score": 3.0,
+      "code": "513180",
+      "name": "恒生科技指数ETF",
+      "start_price": 0.534,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.432,
+      "observations": {}
+    },
     {
       "id": "20261005211035-candidate_pool-ai_power_base-561560",
       "created_at_utc": "2026-10-05T21:10:35",
@@ -10825,66 +10857,6 @@
           "relative_hit": true
         }
       }
-    },
-    {
-      "id": "20260815133230-industry_radar-dividend_defense-512890",
-      "created_at_utc": "2026-08-15T13:32:30",
-      "source": "industry_radar",
-      "theme": "红利低波/防御",
-      "theme_key": "dividend_defense",
-      "priority": "今日关注",
-      "score": 3.0,
-      "code": "512890",
-      "name": "红利低波ETF",
-      "start_price": 1.155,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.726,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-09-14T18:26:00",
-          "elapsed_days": 30.2,
-          "price": 1.208,
-          "return_pct": 4.589,
-          "hit": true,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.552,
-          "benchmark_return_pct": -3.682,
-          "relative_return_pct": 8.271,
-          "relative_hit": true
-        }
-      }
-    },
-    {
-      "id": "20260815133230-industry_radar-new_energy_cycle-159915",
-      "created_at_utc": "2026-08-15T13:32:30",
-      "source": "industry_radar",
-      "theme": "新能源价格周期",
-      "theme_key": "new_energy_cycle",
-      "priority": "今日关注",
-      "score": 2.0,
-      "code": "159915",
-      "name": "创业板ETF易方达",
-      "start_price": 3.645,
-      "benchmark_code": "159915",
-      "benchmark_name": "创业板ETF",
-      "benchmark_start_price": 3.645,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-09-14T18:26:00",
-          "elapsed_days": 30.2,
-          "price": 3.304,
-          "return_pct": -9.355,
-          "hit": false,
-          "benchmark_code": "159915",
-          "benchmark_name": "创业板ETF",
-          "benchmark_price": 3.304,
-          "benchmark_return_pct": -9.355,
-          "relative_return_pct": 0.0,
-          "relative_hit": false
-        }
-      }
     }
   ],
   "rows": [
@@ -11294,54 +11266,9 @@
       "adjustment_basis": "T30"
     },
     {
-      "theme_key": "dividend_defense",
-      "theme": "红利低波/防御",
-      "signals": 28,
-      "t30": {
-        "samples": 12,
-        "hits": 2,
-        "sum_return_pct": -3.9349999999999987,
-        "relative_samples": 12,
-        "relative_hits": 11,
-        "sum_relative_return_pct": 39.732,
-        "win_rate_pct": 16.7,
-        "avg_return_pct": -0.328,
-        "relative_win_rate_pct": 91.7,
-        "avg_relative_return_pct": 3.311
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "降权观察",
-      "adjustment": "自动降权",
-      "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
       "theme_key": "hk_tech",
       "theme": "港股科技ETF",
-      "signals": 24,
+      "signals": 26,
       "t30": {
         "samples": 12,
         "hits": 0,
@@ -11380,6 +11307,51 @@
       },
       "verdict": "跑输基准降权",
       "adjustment": "相对收益降权",
+      "score_delta": -2,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "dividend_defense",
+      "theme": "红利低波/防御",
+      "signals": 27,
+      "t30": {
+        "samples": 11,
+        "hits": 1,
+        "sum_return_pct": -8.524,
+        "relative_samples": 11,
+        "relative_hits": 10,
+        "sum_relative_return_pct": 31.460999999999995,
+        "win_rate_pct": 9.1,
+        "avg_return_pct": -0.775,
+        "relative_win_rate_pct": 90.9,
+        "avg_relative_return_pct": 2.86
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "降权观察",
+      "adjustment": "自动降权",
       "score_delta": -2,
       "adjustment_basis": "T30"
     },
@@ -11791,16 +11763,16 @@
     {
       "theme_key": "new_energy_cycle",
       "theme": "新能源价格周期",
-      "signals": 14,
+      "signals": 13,
       "t30": {
-        "samples": 6,
+        "samples": 5,
         "hits": 0,
-        "sum_return_pct": -33.789,
-        "relative_samples": 6,
+        "sum_return_pct": -24.433999999999997,
+        "relative_samples": 5,
         "relative_hits": 0,
         "sum_relative_return_pct": 0.0,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -5.631,
+        "avg_return_pct": -4.887,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": 0.0
       },
@@ -11853,14 +11825,14 @@
       {
         "theme_key": "dividend_defense",
         "theme": "红利低波/防御",
-        "signals": 28,
+        "signals": 27,
         "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 16.7,
-        "avg_return_pct": -0.328,
-        "relative_win_rate_pct": 91.7,
-        "avg_relative_return_pct": 3.311,
-        "rank_score": 5.16,
+        "samples": 11,
+        "win_rate_pct": 9.1,
+        "avg_return_pct": -0.775,
+        "relative_win_rate_pct": 90.9,
+        "avg_relative_return_pct": 2.86,
+        "rank_score": 3.637,
         "verdict": "降权观察",
         "action": "降权复盘"
       },
@@ -12077,21 +12049,21 @@
       {
         "theme_key": "new_energy_cycle",
         "theme": "新能源价格周期",
-        "signals": 14,
+        "signals": 13,
         "basis": "T30",
-        "samples": 6,
+        "samples": 5,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -5.631,
+        "avg_return_pct": -4.887,
         "relative_win_rate_pct": 0.0,
         "avg_relative_return_pct": 0.0,
-        "rank_score": -4.131,
+        "rank_score": -3.637,
         "verdict": "降权观察",
         "action": "降权复盘"
       },
       {
         "theme_key": "hk_tech",
         "theme": "港股科技ETF",
-        "signals": 24,
+        "signals": 26,
         "basis": "T30",
         "samples": 12,
         "win_rate_pct": 0.0,
@@ -12133,7 +12105,7 @@
     ],
     "lines": [
       "- 红利低波：T30 样本 12，胜率 17%，均值 -0.33%，相对基准 +3.31%，动作：降权复盘。",
-      "- 红利低波/防御：T30 样本 12，胜率 17%，均值 -0.33%，相对基准 +3.31%，动作：降权复盘。",
+      "- 红利低波/防御：T30 样本 11，胜率 9%，均值 -0.78%，相对基准 +2.86%，动作：降权复盘。",
       "- A股宽基/中国宏观：T30 样本 12，胜率 17%，均值 -2.29%，相对基准 +1.35%，动作：降权复盘。"
     ],
     "best": {
@@ -12412,17 +12384,17 @@
       "score_delta": -2,
       "basis": "T30"
     },
-    "dividend_defense": {
-      "theme": "红利低波/防御",
-      "verdict": "降权观察",
-      "adjustment": "自动降权",
-      "score_delta": -2,
-      "basis": "T30"
-    },
     "hk_tech": {
       "theme": "港股科技ETF",
       "verdict": "跑输基准降权",
       "adjustment": "相对收益降权",
+      "score_delta": -2,
+      "basis": "T30"
+    },
+    "dividend_defense": {
+      "theme": "红利低波/防御",
+      "verdict": "降权观察",
+      "adjustment": "自动降权",
       "score_delta": -2,
       "basis": "T30"
     },
@@ -12498,13 +12470,13 @@
     }
   },
   "lines": [
-    "- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 本次新增待验证信号 2 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
     "- AI电力底座：T+30 12次｜胜率 17%｜均值 -2.73%｜相对基准 +0.78%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
     "- 电力：T+30 12次｜胜率 17%｜均值 -2.73%｜相对基准 +0.78%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
     "- 有色/黄金：T+30 12次｜胜率 8%｜均值 -8.49%｜相对基准 -4.98%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。",
     "- 红利低波：T+30 12次｜胜率 17%｜均值 -0.33%｜相对基准 +3.31%；T+60 样本不足；T+90 样本不足；结论：降权观察。"
   ],
-  "added_count": 0,
+  "added_count": 2,
   "signal_count": 500,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }
