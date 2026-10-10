@@ -4,113 +4,113 @@
 
 ## 30 秒总览
 
-- Trump launches committee to investigate Fed governor Lisa Cook；主要影响：macro；方向：中性。
-- Iran attacks tankers beyond Strait of Hormuz；主要影响：geopolitics, energy, markets；方向：分化。
-- Navi Pillay, former UN human rights chief, wins Nobel Peace Prize；主要影响：geopolitics；方向：分化。
-- China and Europe Step Back From Trade War With Limits on Chinese Car Exports；主要影响：geopolitics, macro；方向：分化。
-- Hurricane Isaias disrupts U.S. oil production in Gulf of Mexico, threatens refineries；主要影响：energy, markets, macro；方向：中性。
+- Trump agrees deal with Putin for Russia to release diesel；主要影响：geopolitics, energy, markets；方向：分化。
+- 中国人民银行行长潘功胜会见法国总统外事顾问博纳；主要影响：macro；方向：中性。
+- AI borrowing slows as investors grow wary of debt binge；主要影响：macro, technology, markets；方向：偏利多。
+- 'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal；主要影响：geopolitics；方向：分化。
+- 郑栅洁主任主持召开民营企业座谈会 围绕准确把握三季度经济形势、积极应对国际供需情况变化听取意见建议；主要影响：macro；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：90.610 USD | 日变动 -0.962% | 下跌
-- 布伦特原油：103.33 USD | 日变动 -0.911% | 下跌
-- 黄金：4,227.80 USD | 日变动 +1.703% | 上涨
-- 美元指数：102.20 USD | 日变动 +0.060% | 震荡
-- 美国10Y国债收益率：5.248 USD | 日变动 +0.325% | 震荡
-- VIX：14.860 USD | 日变动 -3.569% | 下跌
-- 标普500期货：7,868.75 USD | 日变动 +0.672% | 上涨
-- 纳斯达克100期货：31,142.25 USD | 日变动 +0.558% | 上涨
+- WTI原油：91.850 USD | 日变动 +0.393% | 上涨
+- 布伦特原油：104.72 USD | 日变动 +0.422% | 上涨
+- 黄金：4,216.30 USD | 日变动 +1.427% | 上涨
+- 美元指数：102.23 USD | 日变动 +0.089% | 震荡
+- 美国10Y国债收益率：5.244 USD | 日变动 +0.249% | 震荡
+- VIX：14.840 USD | 日变动 -3.699% | 下跌
+- 标普500期货：7,859.75 USD | 日变动 +0.557% | 上涨
+- 纳斯达克100期货：31,108.75 USD | 日变动 +0.450% | 上涨
 
 ## 今日最重要的事件
 
-### 1. Trump launches committee to investigate Fed governor Lisa Cook
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 5 家；官方确认：否。
-**发生了什么：** Move comes after Supreme Court in June rebuffed president’s attempt to sack central banker
-**为什么重要：** 该事件被 6 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. Iran attacks tankers beyond Strait of Hormuz
+### 1. Trump agrees deal with Putin for Russia to release diesel
 **一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Escalation comes as Tehran tries to maintain leverage over strait crucial for global energy supplies
+**发生了什么：** Pact between Washington and Moscow comes just weeks before critical US midterm elections
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Burst of Attacks in Gulf Heightens Fears Over Fragile Energy Trade / More tankers struck in the Middle East as Iran reiterates conditions for reopening the Strait of Hormuz。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Navi Pillay, former UN human rights chief, wins Nobel Peace Prize
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** Pillay is recognised for her "efforts to promote peace and international law", the Norwegian Nobel Committee says.
-**为什么重要：** 该事件被 4 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. China and Europe Step Back From Trade War With Limits on Chinese Car Exports
-**一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** The European Union said the deal could roughly halve shipments of hybrid vehicles from China in the next four years. But it also could lead to an even stronger Chinese auto industry.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
+### 2. 中国人民银行行长潘功胜会见法国总统外事顾问博纳
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：中国人民银行行长潘功胜会见法国总统外事顾问博纳
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：investingLive Americas FX news wrap 5 Oct: Nasdaq close at record as the dollar firms/yields higher。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜会见高盛集团总裁兼首席运营官温泽恩 / 国家发展改革委举行8月份新闻发布会 / 国家发展改革委举行7月份新闻发布会。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. Hurricane Isaias disrupts U.S. oil production in Gulf of Mexico, threatens refineries
-**一句话结论：** 这是一个与 energy, markets, macro 相关的重要事件，市场方向偏向 中性。
+### 3. AI borrowing slows as investors grow wary of debt binge
+**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 偏利多。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The hurricane could tighten a fuel market that is already facing big disruptions from the wars in Eastern Europe and the Middle East.
+**发生了什么：** Appetite for financing infrastructure boom is tested after months of record-breaking bond issuance
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy, markets, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Former Deutsche Bank star trader has rate-rigging conviction quashed
-**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Christian Bittar pleaded guilty in 2018 to manipulating the Euribor rate
+### 4. 'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Ukraine's leader had said the deal with Russia to release diesel into the US would help Moscow fund the war.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
+### 5. 郑栅洁主任主持召开民营企业座谈会 围绕准确把握三季度经济形势、积极应对国际供需情况变化听取意见建议
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：郑栅洁主任主持召开民营企业座谈会 围绕准确把握三季度经济形势、积极应对国际供需情况变化听取意见建议
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜会见高盛集团总裁兼首席运营官温泽恩 / 国家发展改革委举行8月份新闻发布会 / 国家发展改革委举行7月份新闻发布会。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. India’s central bank tries to shore up rupee as it nears record lows
+**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Rise in energy costs due to US-Israel war on Iran has put downward pressure on the currency of the world’s fastest-growing major economy
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：investingLive Americas FX news wrap 5 Oct: Nasdaq close at record as the dollar firms/yields higher。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
 ## 连续事件追踪
 
-- Trump launches committee to investigate Fed governor Lisa Cook ｜ 关键词：fed / trump / lisa / cook | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Iran attacks tankers beyond Strait of Hormuz ｜ 关键词：iran / strait / attacks / tries | 近 7 天出现 2 次 | 上次出现：2026-10-05T21:10:35 | 近期标题：Burst of Attacks in Gulf Heightens Fears Over Fragile Energy Trade / More tankers struck in the Middle East as Iran reiterates conditions for reopening the Strait of Hormuz
-- Navi Pillay, former UN human rights chief, wins Nobel Peace Prize ｜ 关键词：navi / international / prize / nobel | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- China and Europe Step Back From Trade War With Limits on Chinese Car Exports ｜ 关键词：europe / trade / hybrid / china | 近 7 天出现 1 次 | 上次出现：2026-10-05T21:10:35 | 近期标题：investingLive Americas FX news wrap 5 Oct: Nasdaq close at record as the dollar firms/yields higher
-- Hurricane Isaias disrupts U.S. oil production in Gulf of Mexico, threatens refineries ｜ 关键词：production / mexico / gulf / hurricane | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Former Deutsche Bank star trader has rate-rigging conviction quashed ｜ 关键词：rigging / christian / conviction / deutsche | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump agrees deal with Putin for Russia to release diesel ｜ 关键词：comes / trump / putin / deal | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 中国人民银行行长潘功胜会见法国总统外事顾问博纳 | 近 7 天出现 5 次 | 上次出现：2026-10-09T18:41:44 | 近期标题：中国人民银行行长潘功胜会见高盛集团总裁兼首席运营官温泽恩 / 2026年8月金融市场运行情况 / 2026年8月金融统计数据报告
+- AI borrowing slows as investors grow wary of debt binge ｜ 关键词：record / appetite / borrowing / debt | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal ｜ 关键词：trump / ukraine / zelensky / diesel | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 郑栅洁主任主持召开民营企业座谈会 围绕准确把握三季度经济形势、积极应对国际供需情况变化听取意见建议 | 近 7 天出现 3 次 | 上次出现：2026-10-09T18:41:44 | 近期标题：中国人民银行行长潘功胜会见高盛集团总裁兼首席运营官温泽恩 / 国家发展改革委举行8月份新闻发布会 / 国家发展改革委举行7月份新闻发布会
+- India’s central bank tries to shore up rupee as it nears record lows ｜ 关键词：central / rupee / costs / lows | 近 7 天出现 1 次 | 上次出现：2026-10-05T21:10:35 | 近期标题：investingLive Americas FX news wrap 5 Oct: Nasdaq close at record as the dollar firms/yields higher
 
 ## 明天最该盯的 5 个信号
 
-1. Trump launches committee to investigate Fed governor Lisa Cook 是否获得更多官方确认或实质性进展。
-2. Iran attacks tankers beyond Strait of Hormuz 是否获得更多官方确认或实质性进展。
-3. Navi Pillay, former UN human rights chief, wins Nobel Peace Prize 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
-5. 布伦特原油 是否延续当前 下跌 方向。
+1. Trump agrees deal with Putin for Russia to release diesel 是否获得更多官方确认或实质性进展。
+2. 中国人民银行行长潘功胜会见法国总统外事顾问博纳 是否获得更多官方确认或实质性进展。
+3. AI borrowing slows as investors grow wary of debt binge 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 上涨 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,30 +126,30 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
-- 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
+- 宏观爆破风险低：暂未看到政策换挡、油价、美元、VIX和高估值资产形成共振。
+- 纪律：继续观察，不自动买卖。
 
-| 风险线 | 事实 | 推测 | 验证 | 失效 |
-|---|---|---|---|---|
-| 美联储/政策换挡 | 新闻命中：fed / federal reserve / powell / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
-| 能源/通道冲击 | 新闻命中：oil / crude / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+### 固定框架
+
+- 先问谁被迫交易：谁要补保证金、谁现金流紧、谁必须卖资产换美元。
+- 再问谁有现金等打折：现金方只需要等，缺钱方才会被迫接受折价。
+- 政策只看传导链：降息、缩表、油价、美元、美债和VIX必须放在一起看。
+- 黄金短跌不等于避险失效：美元荒时，黄金可能先被卖掉换现金。
+- 用途是风险闸门：只决定追不追、等不等、留不留现金，不自动生成买卖。
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：航运/港口通道｜通道成本会不会变成全产业链成本？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Iran attacks tankers beyond Strait of Hormuz | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -0.96% 下跌；布伦特原油 -0.91% 下跌；黄金 +1.70% 上涨；美元指数 +0.06% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| China and Europe Step Back From Trade War With Limits on Chinese Car Exports | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.96% 下跌；布伦特原油 -0.91% 下跌；黄金 +1.70% 上涨；美元指数 +0.06% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
-| Hurricane Isaias disrupts U.S. oil production in Gulf of Mexico, threatens refineries | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -0.96% 下跌；布伦特原油 -0.91% 下跌；黄金 +1.70% 上涨；美元指数 +0.06% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Trump launches committee to investigate Fed governor Lisa Cook | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 +0.06% 震荡；美国10Y国债收益率 +0.33% 震荡；VIX -3.57% 下跌；标普500期货 +0.67% 上涨。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
+| Trump agrees deal with Putin for Russia to release diesel | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；美元指数 +0.09% 震荡；VIX -3.70% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| India’s central bank tries to shore up rupee as it nears record lows | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；黄金 +1.43% 上涨；美元指数 +0.09% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -161,8 +161,8 @@
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 -0.96% 下跌；布伦特原油 -0.91% 下跌；黄金 +1.70% 上涨；美元指数 +0.06% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
-| 政策压价/格局行业（中） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 -0.96% 下跌；布伦特原油 -0.91% 下跌；美元指数 +0.06% 震荡；美国10Y国债收益率 +0.33% 震荡。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；黄金 +1.43% 上涨；美元指数 +0.09% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
+| 政策压价/格局行业（低） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；美元指数 +0.09% 震荡；美国10Y国债收益率 +0.25% 震荡。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -188,7 +188,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 23 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 14 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 12次｜胜率 8%｜均值 -3.07%｜相对基准 +0.74%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 12次｜胜率 8%｜均值 -3.07%｜相对基准 +0.74%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 有色/黄金：T+30 12次｜胜率 8%｜均值 -9.10%｜相对基准 -5.29%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
@@ -200,27 +200,27 @@
 | 电力 | 28 | 12次｜胜率 8%｜均值 -3.07%｜相对基准 +0.74% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 有色/黄金 | 28 | 12次｜胜率 8%｜均值 -9.10%｜相对基准 -5.29% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
 | 红利低波 | 28 | 12次｜胜率 17%｜均值 -0.67%｜相对基准 +3.13% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 12次｜胜率 17%｜均值 -2.47%｜相对基准 +1.33% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 12次｜胜率 8%｜均值 -3.07%｜相对基准 +0.74% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 红利低波/防御 | 28 | 12次｜胜率 17%｜均值 -0.67%｜相对基准 +3.13% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 风电/算力绿电 | 28 | 12次｜胜率 8%｜均值 -3.07%｜相对基准 +0.74% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| A股宽基/中国宏观 | 27 | 11次｜胜率 9%｜均值 -2.77%｜相对基准 +1.24% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 红利低波/防御 | 27 | 11次｜胜率 9%｜均值 -0.80%｜相对基准 +3.20% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 能源电力链 | 26 | 10次｜胜率 0%｜均值 -3.72%｜相对基准 +0.53% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 风电/算力绿电 | 26 | 10次｜胜率 0%｜均值 -3.72%｜相对基准 +0.53% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
 - 红利低波：T30 样本 12，胜率 17%，均值 -0.67%，相对基准 +3.13%，动作：降权复盘。
-- 红利低波/防御：T30 样本 12，胜率 17%，均值 -0.67%，相对基准 +3.13%，动作：降权复盘。
-- AI基础设施链：T30 样本 6，胜率 17%，均值 -2.04%，相对基准 +1.77%，动作：降权复盘。
+- 红利低波/防御：T30 样本 11，胜率 9%，均值 -0.80%，相对基准 +3.20%，动作：降权复盘。
+- AI基础设施链：T30 样本 5，胜率 20%，均值 -2.22%，相对基准 +2.03%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
 | 红利低波 | T30 | 12 | 17% | -0.67% | +3.13% | 降权复盘 |
-| 红利低波/防御 | T30 | 12 | 17% | -0.67% | +3.13% | 降权复盘 |
-| AI基础设施链 | T30 | 6 | 17% | -2.04% | +1.77% | 降权复盘 |
-| A股宽基/中国宏观 | T30 | 12 | 17% | -2.47% | +1.33% | 降权复盘 |
+| 红利低波/防御 | T30 | 11 | 9% | -0.80% | +3.20% | 降权复盘 |
+| AI基础设施链 | T30 | 5 | 20% | -2.22% | +2.03% | 降权复盘 |
+| A股宽基/中国宏观 | T30 | 11 | 9% | -2.77% | +1.24% | 降权复盘 |
 | AI电力底座 | T30 | 12 | 8% | -3.07% | +0.74% | 降权复盘 |
 | 电力 | T30 | 12 | 8% | -3.07% | +0.74% | 降权复盘 |
-| 能源电力链 | T30 | 12 | 8% | -3.07% | +0.74% | 降权复盘 |
-| 风电/算力绿电 | T30 | 12 | 8% | -3.07% | +0.74% | 降权复盘 |
+| 能源电力链 | T30 | 10 | 0% | -3.72% | +0.53% | 降权复盘 |
+| 风电/算力绿电 | T30 | 10 | 0% | -3.72% | +0.53% | 降权复盘 |
 
 ## 错误复盘库
 
@@ -243,13 +243,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-09T18:41:44 UTC / 2026-10-10T02:41:44 BJT。
-- 抓取窗口：2026-10-08T18:41:44 UTC → 2026-10-09T18:41:44 UTC。
-- 实际新闻：共 148 条；最早 2026-10-08T19:00:04，最新 2026-10-09T18:50:21；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 10 条。
+- 生成时间：2026-10-10T17:41:33 UTC / 2026-10-11T01:41:33 BJT。
+- 抓取窗口：2026-10-09T17:41:33 UTC → 2026-10-10T17:41:33 UTC。
+- 实际新闻：共 118 条；最早 2026-10-09T17:41:41，最新 2026-10-10T17:41:33；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 3/28；官方网页 5 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 12｜中 103｜低 33。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：31 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 3 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 5｜中 84｜低 29。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
