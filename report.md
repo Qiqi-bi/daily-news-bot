@@ -4,78 +4,54 @@
 
 ## 30 秒总览
 
-- Ukraine’s allies vow to pressure Moscow as Trump claims ‘energy ceasefire’ in place；主要影响：geopolitics, energy；方向：中性。
-- Oil chiefs pull out of Riyadh energy congress after airport missile strike；主要影响：geopolitics, energy；方向：分化。
-- Saudi Arabia Has Few Options as Houthis Aim at Heart of Its Ambitions；主要影响：geopolitics；方向：中性。
-- AI’s quiet safety gatekeepers are stepping into the spotlight；主要影响：technology, markets, macro；方向：偏利多。
-- Ukraine Shrugs Off Trump Call to Ditch Zelensky for Energy Strikes；主要影响：geopolitics, energy；方向：中性。
+- Riyadh defiant as Houthis launch new missile strikes on Saudi Arabia；主要影响：geopolitics, energy；方向：分化。
+- Oil prices rise as Trump’s ‘energy ceasefire’ frays；主要影响：geopolitics, energy, markets；方向：中性。
+- Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says；主要影响：geopolitics, energy；方向：中性。
+- World’s Energy Order Tested Again as Iran War’s Reach Extends Further；主要影响：geopolitics, energy, macro；方向：分化。
+- Meta is back on the AI leaderboard with its new family of Wonder models；主要影响：technology, markets；方向：偏利多。
 
 ## 市场价格快照
 
-- WTI原油：91.850 USD | 日变动 +0.393% | 上涨
-- 布伦特原油：104.72 USD | 日变动 +0.422% | 上涨
-- 黄金：4,216.30 USD | 日变动 +1.427% | 上涨
-- 美元指数：102.23 USD | 日变动 +0.089% | 震荡
-- 美国10Y国债收益率：5.244 USD | 日变动 +0.249% | 震荡
-- VIX：14.840 USD | 日变动 -3.699% | 下跌
-- 标普500期货：7,859.75 USD | 日变动 +0.557% | 上涨
-- 纳斯达克100期货：31,108.75 USD | 日变动 +0.450% | 上涨
+- WTI原油：93.160 USD | 日变动 +1.426% | 上涨
+- 布伦特原油：105.92 USD | 日变动 +1.146% | 上涨
+- 黄金：4,195.90 USD | 日变动 -0.484% | 下跌
+- 美元指数：102.58 USD | 日变动 +0.362% | 上涨
+- 美国10Y国债收益率：5.240 USD | 日变动 -0.076% | 震荡
+- VIX：15.210 USD | 日变动 +2.493% | 上涨
+- 标普500期货：7,857.00 USD | 日变动 -0.035% | 震荡
+- 纳斯达克100期货：30,877.50 USD | 日变动 -0.743% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Ukraine’s allies vow to pressure Moscow as Trump claims ‘energy ceasefire’ in place
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** US president’s suggestion that Zelenskyy should be replaced shocked Kyiv and European nations
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. Oil chiefs pull out of Riyadh energy congress after airport missile strike
+### 1. Riyadh defiant as Houthis launch new missile strikes on Saudi Arabia
 **一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** BP and others skip World Petroleum Council meeting after 12 killed in Houthi attack
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** International oil company chiefs stay away from energy congress after airport attacks
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. Saudi Arabia Has Few Options as Houthis Aim at Heart of Its Ambitions
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
+### 2. Oil prices rise as Trump’s ‘energy ceasefire’ frays
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Three deadly attacks by the Iran-backed Houthis in Yemen on an airport in the Saudi capital underscored the asymmetrical nature of their conflict with the kingdom.
+**发生了什么：** Announcement followed deal with Putin as US president tries to contain impact of higher fuel costs ahead of midterm elections
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. AI’s quiet safety gatekeepers are stepping into the spotlight
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The intensifying AI safety debate is bringing a small group of third-party evaluators into the center of a multitrillion-dollar industry.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Ukraine Shrugs Off Trump Call to Ditch Zelensky for Energy Strikes
+### 3. Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says
 **一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** President Trump lashed out at President Volodymyr Zelensky for striking Russian oil refineries. Mr. Zelensky said he’ll stop — if Russia does too.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**发生了什么：** Despite the US president announcing energy infrastructure would not be targeted strikes have continued, Ukraine says.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
@@ -83,32 +59,56 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Saudi capital airport hit by second Houthi strike in two days
-**一句话结论：** 这是一个与 energy 相关的重要事件，市场方向偏向 中性。
+### 4. World’s Energy Order Tested Again as Iran War’s Reach Extends Further
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** “We are entering an age of prolonged insecurity,” one former U.S. energy official said of what have become chronic threats on the Middle East’s energy core.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Meta is back on the AI leaderboard with its new family of Wonder models
+**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** The Yemeni group says it carried out attacks that killed 13 people in Riyadh over the weekend and targeted two airports and oil facilities.
+**发生了什么：** The company’s stock was up more than 3% following the release of Muse Wonder and Muse Wonder Full, which analysts expect to drive new business opportunities.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy 重新定价。
+**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. FirstFT: Diesel prices slip after Trump announces ‘energy ceasefire’
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Also in today’s newsletter: EU-China ‘understanding’ and bank results fears
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Ukraine’s allies vow to pressure Moscow as Trump claims ‘energy ceasefire’ in place ｜ 关键词：ceasefire / energy / president / trump | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Oil chiefs pull out of Riyadh energy congress after airport missile strike ｜ 关键词：riyadh / energy / killed / meeting | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Saudi Arabia Has Few Options as Houthis Aim at Heart of Its Ambitions ｜ 关键词：arabia / houthis / saudi / deadly | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- AI’s quiet safety gatekeepers are stepping into the spotlight ｜ 关键词：third / small / center / quiet | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Ukraine Shrugs Off Trump Call to Ditch Zelensky for Energy Strikes ｜ 关键词：lashed / off / striking / energy | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Saudi capital airport hit by second Houthi strike in two days ｜ 关键词：yemeni / strike / airport / houthi | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Riyadh defiant as Houthis launch new missile strikes on Saudi Arabia ｜ 关键词：saudi / attacks / arabia / airport | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Oil prices rise as Trump’s ‘energy ceasefire’ frays ｜ 关键词：fuel / energy / trump / ceasefire | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says ｜ 关键词：energy / zelensky / would / ukraine | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- World’s Energy Order Tested Again as Iran War’s Reach Extends Further ｜ 关键词：energy / world / entering / again | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Meta is back on the AI leaderboard with its new family of Wonder models ｜ 关键词：full / new / wonder / meta | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- FirstFT: Diesel prices slip after Trump announces ‘energy ceasefire’ ｜ 关键词：bank / results / announces / energy | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Ukraine’s allies vow to pressure Moscow as Trump claims ‘energy ceasefire’ in place 是否获得更多官方确认或实质性进展。
-2. Oil chiefs pull out of Riyadh energy congress after airport missile strike 是否获得更多官方确认或实质性进展。
-3. Saudi Arabia Has Few Options as Houthis Aim at Heart of Its Ambitions 是否获得更多官方确认或实质性进展。
+1. Riyadh defiant as Houthis launch new missile strikes on Saudi Arabia 是否获得更多官方确认或实质性进展。
+2. Oil prices rise as Trump’s ‘energy ceasefire’ frays 是否获得更多官方确认或实质性进展。
+3. Six Ukrainian energy sites hit by Russia since Trump announced ceasefire, Zelensky says 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 上涨 方向。
 5. 布伦特原油 是否延续当前 上涨 方向。
 
@@ -126,44 +126,42 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
+- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 7：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
 | 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 油价/美元压力 | 布伦特原油 +1.15% 上涨；美元指数 +0.36% 上涨 | 油价和美元同步走强时，小国、企业融资和风险资产会先承压。 | 看油价、美元指数和通胀预期是否继续同步上行。 | 油价回落或美元转弱，VIX没有继续放大。 |
+| 美元荒/被迫卖出 | 美元指数 +0.36% 上涨；美国10Y国债收益率 -0.08% 震荡；VIX +2.49% 上涨；黄金 -0.48% 下跌 | 美元、利率和VIX一起上行时，黄金短跌可能是换现金，不一定是避险逻辑失效。 | 看DXY、VIX、美债收益率继续上行，黄金和股指是否同步承压。 | 美元和VIX回落，黄金重新走强，股指企稳。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
 - 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Oil chiefs pull out of Riyadh energy congress after airport missile strike | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；黄金 +1.43% 上涨；美元指数 +0.09% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Ukraine Shrugs Off Trump Call to Ditch Zelensky for Energy Strikes | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；黄金 +1.43% 上涨；美元指数 +0.09% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Saudi Arabia Has Few Options as Houthis Aim at Heart of Its Ambitions | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；美元指数 +0.09% 震荡；VIX -3.70% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| AI’s quiet safety gatekeepers are stepping into the spotlight | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.39% 上涨；布伦特原油 +0.42% 上涨；黄金 +1.43% 上涨；美元指数 +0.09% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Riyadh defiant as Houthis launch new missile strikes on Saudi Arabia | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.43% 上涨；布伦特原油 +1.15% 上涨；黄金 -0.48% 下跌；美元指数 +0.36% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Oil prices rise as Trump’s ‘energy ceasefire’ frays | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.43% 上涨；布伦特原油 +1.15% 上涨；黄金 -0.48% 下跌；美元指数 +0.36% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Meta is back on the AI leaderboard with its new family of Wonder models | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +1.43% 上涨；布伦特原油 +1.15% 上涨；美元指数 +0.36% 上涨；VIX +2.49% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天没有生成强发酵预警卡；继续按核心事件、资源博弈和纪律面板观察。
-- 如果只有单一叙事，没有政策、订单或价格确认，先不升级。
+- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：政策压价/格局行业｜立即-1个季度｜置信度 低。
+- 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
-### 固定框架
-
-- 左侧线索：先找约束变化，不等所有人都确认后再追。
-- 预测对象：只预测可能发酵的主线和验证条件，不预测必涨必跌。
-- 验证顺序：政策/订单/产能/价格/相对强弱，至少两项同向才升级。
-- 失效条件：如果核心约束被解除，或价格不确认，就降级观察。
-- 组合纪律：预测卡片只提醒你看什么，不直接替你买卖。
+| 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
+|---|---|---|---|---|---|
+| 政策压价/格局行业（低） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 +1.43% 上涨；布伦特原油 +1.15% 上涨；美元指数 +0.36% 上涨；美国10Y国债收益率 -0.08% 震荡。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -244,13 +242,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-11T17:56:00 UTC / 2026-10-12T01:56:00 BJT。
-- 抓取窗口：2026-10-10T17:56:00 UTC → 2026-10-11T17:56:00 UTC。
-- 实际新闻：共 88 条；最早 2026-10-10T18:01:21，最新 2026-10-11T17:45:25；最新距生成约 0.18小时，状态：新鲜。
-- 来源覆盖：RSS 15/39；API 3/5；官方源 2/28；官方网页 2 条。
+- 生成时间：2026-10-12T21:37:58 UTC / 2026-10-13T05:37:58 BJT。
+- 抓取窗口：2026-10-11T21:37:58 UTC → 2026-10-12T21:37:58 UTC。
+- 实际新闻：共 121 条；最早 2026-10-11T21:40:04，最新 2026-10-12T21:37:58；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 1/28；官方网页 1 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：33 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 2｜中 66｜低 20。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 抓取失败样例：CSRC Official Page、SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：31 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 10 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 1｜中 91｜低 29。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
