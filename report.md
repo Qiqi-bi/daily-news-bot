@@ -4,91 +4,91 @@
 
 ## 30 秒总览
 
-- Trump Hands Victories to Putin, Who Offers More War in Return；主要影响：geopolitics, energy；方向：分化。
-- European gas hits Iran wartime high；主要影响：geopolitics, energy, markets；方向：分化。
-- Gulf oil production rebounds ahead of increase in Iran war hostilities；主要影响：geopolitics, energy, markets；方向：分化。
-- Ships in Hormuz strait hit by worst spate of attacks since start of war；主要影响：geopolitics, energy, markets；方向：分化。
-- Philip R. Lane: The AI opportunity for Europe；主要影响：technology, macro；方向：偏利多。
+- US inflation jumps to 3.7% as Iran war drives up prices；主要影响：macro, geopolitics, energy；方向：分化。
+- Container ship sinks in Strait of Hormuz as Iran steps up attacks；主要影响：geopolitics, energy, macro；方向：中性。
+- Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation；主要影响：macro, geopolitics, energy；方向：偏利空。
+- Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters；主要影响：geopolitics, energy, markets；方向：中性。
+- Your Social Security check will rise an average of $75 a month — will it be able to keep up with inflation?；主要影响：macro, markets；方向：偏利空。
 
 ## 市场价格快照
 
-- WTI原油：94.510 USD | 日变动 +0.821% | 上涨
-- 布伦特原油：105.98 USD | 日变动 -0.628% | 下跌
-- 黄金：4,187.90 USD | 日变动 -0.064% | 震荡
-- 美元指数：102.19 USD | 日变动 -0.385% | 下跌
-- 美国10Y国债收益率：5.217 USD | 日变动 -0.439% | 下跌
-- VIX：15.330 USD | 日变动 +0.789% | 上涨
-- 标普500期货：7,858.75 USD | 日变动 +0.010% | 震荡
-- 纳斯达克100期货：30,776.25 USD | 日变动 -0.395% | 下跌
+- WTI原油：95.670 USD | 日变动 +1.625% | 上涨
+- 布伦特原油：106.56 USD | 日变动 +0.823% | 上涨
+- 黄金：4,104.70 USD | 日变动 -1.738% | 下跌
+- 美元指数：102.70 USD | 日变动 +0.506% | 上涨
+- 美国10Y国债收益率：5.211 USD | 日变动 -0.115% | 震荡
+- VIX：17.070 USD | 日变动 +11.788% | 上涨
+- 标普500期货：7,749.00 USD | 日变动 -1.359% | 下跌
+- 纳斯达克100期货：30,142.25 USD | 日变动 -2.109% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Trump Hands Victories to Putin, Who Offers More War in Return
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 分化。
+### 1. US inflation jumps to 3.7% as Iran war drives up prices
+**一句话结论：** 这是一个与 macro, geopolitics, energy 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Rebound in fuel costs has piled pressure on voters ahead of midterm elections
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：India’s central bank tries to shore up rupee as it nears record lows。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 2. Container ship sinks in Strait of Hormuz as Iran steps up attacks
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Iran has escalated its strikes on commercial ships transiting Hormuz in recent weeks, as it tries to choke off a rebound in crude oil exports.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Iran attacks tankers beyond Strait of Hormuz。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation
+**一句话结论：** 这是一个与 macro, geopolitics, energy 相关的重要事件，市场方向偏向 偏利空。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Inflation and economic frustrations have expanded the map of competitive midterm election districts deep into Republican territory.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Two ships sink near Hormuz after being hit by projectiles amid surge in attacks Reuters
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Ships in Hormuz strait hit by worst spate of attacks since start of war。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Your Social Security check will rise an average of $75 a month — will it be able to keep up with inflation?
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Russia has reaped a diesel deal and an increase in U.S. pressure on Ukraine as President Trump’s political needs align with his longstanding inclinations toward Russia.
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
+**发生了什么：** The 3.6% COLA for 2027 is aimed at helping more than 68 million beneficiaries keep pace with the cost of living
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. European gas hits Iran wartime high
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+### 6. 3 things that are driving inflation higher
+**一句话结论：** 这是一个与 macro, energy, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Stand-off between Washington and Kyiv over Russian diesel and approach of cold weather boost prices
+**发生了什么：** Struggling with elevated prices? You don’t have to look much further than your local gas station.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Gulf oil production rebounds ahead of increase in Iran war hostilities
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Saudi Arabia says output in September hit highest level since start of conflict, though revival now at risk from renewed attacks on shipping this month
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Ships in Hormuz strait hit by worst spate of attacks since start of war
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Twenty-four tankers and other vessels targeted by Iran in two weeks, including six on Sunday alone
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Philip R. Lane: The AI opportunity for Europe
-**一句话结论：** 这是一个与 technology, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** Philip R. Lane: The AI opportunity for Europe
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. Chip Stocks Tumble on A.I. Spending Fears and Rising Chinese Competition
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** South Korean stocks tumbled in particular, as reports of a breakthrough by a Chinese chip rival heightened concerns about competition.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, energy, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,20 +97,20 @@
 
 ## 连续事件追踪
 
-- Trump Hands Victories to Putin, Who Offers More War in Return ｜ 关键词：trump / diesel / russia / deal | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- European gas hits Iran wartime high ｜ 关键词：washington / diesel / gas / weather | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Gulf oil production rebounds ahead of increase in Iran war hostilities ｜ 关键词：rebounds / gulf / level / iran | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Ships in Hormuz strait hit by worst spate of attacks since start of war ｜ 关键词：attacks / two / ships / spate | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Philip R. Lane: The AI opportunity for Europe ｜ 关键词：europe / lane / philip / opportunity | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Chip Stocks Tumble on A.I. Spending Fears and Rising Chinese Competition ｜ 关键词：spending / rising / competition / tumbled | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- US inflation jumps to 3.7% as Iran war drives up prices ｜ 关键词：rebound / midterm / inflation / elections | 近 7 天出现 1 次 | 上次出现：2026-10-10T17:41:33 | 近期标题：India’s central bank tries to shore up rupee as it nears record lows
+- Container ship sinks in Strait of Hormuz as Iran steps up attacks ｜ 关键词：strikes / tries / attacks / sinks | 近 7 天出现 1 次 | 上次出现：2026-10-09T18:41:44 | 近期标题：Iran attacks tankers beyond Strait of Hormuz
+- Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation ｜ 关键词：competitive / districts / midterm / inflation | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters ｜ 关键词：sink / two / attacks / hit | 近 7 天出现 1 次 | 上次出现：2026-10-13T19:46:55 | 近期标题：Ships in Hormuz strait hit by worst spate of attacks since start of war
+- Your Social Security check will rise an average of $75 a month — will it be able to keep up with inflation? ｜ 关键词：2027 / security / living / cost | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 3 things that are driving inflation higher ｜ 关键词：further / local / don / inflation | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Trump Hands Victories to Putin, Who Offers More War in Return 是否获得更多官方确认或实质性进展。
-2. European gas hits Iran wartime high 是否获得更多官方确认或实质性进展。
-3. Gulf oil production rebounds ahead of increase in Iran war hostilities 是否获得更多官方确认或实质性进展。
+1. US inflation jumps to 3.7% as Iran war drives up prices 是否获得更多官方确认或实质性进展。
+2. Container ship sinks in Strait of Hormuz as Iran steps up attacks 是否获得更多官方确认或实质性进展。
+3. Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 上涨 方向。
-5. 布伦特原油 是否延续当前 下跌 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,41 +126,42 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
+- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 7：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 能源/通道冲击 | 新闻命中：oil / crude / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 美元荒/被迫卖出 | 美元指数 +0.51% 上涨；美国10Y国债收益率 -0.12% 震荡；VIX +11.79% 上涨；黄金 -1.74% 下跌 | 美元、利率和VIX一起上行时，黄金短跌可能是换现金，不一定是避险逻辑失效。 | 看DXY、VIX、美债收益率继续上行，黄金和股指是否同步承压。 | 美元和VIX回落，黄金重新走强，股指企稳。 |
+| 美股去杠杆 | 纳斯达克100期货 -2.11% 下跌；VIX +11.79% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
 - 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Trump Hands Victories to Putin, Who Offers More War in Return | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.82% 上涨；布伦特原油 -0.63% 下跌；黄金 -0.06% 震荡；美元指数 -0.39% 下跌。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| European gas hits Iran wartime high | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.82% 上涨；布伦特原油 -0.63% 下跌；黄金 -0.06% 震荡；美元指数 -0.39% 下跌。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Chip Stocks Tumble on A.I. Spending Fears and Rising Chinese Competition | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.39% 下跌；美国10Y国债收益率 -0.44% 下跌；VIX +0.79% 上涨；标普500期货 +0.01% 震荡。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Philip R. Lane: The AI opportunity for Europe | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.82% 上涨；布伦特原油 -0.63% 下跌；美元指数 -0.39% 下跌；VIX +0.79% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Container ship sinks in Strait of Hormuz as Iran steps up attacks | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.62% 上涨；布伦特原油 +0.82% 上涨；黄金 -1.74% 下跌；美元指数 +0.51% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +1.62% 上涨；布伦特原油 +0.82% 上涨；美元指数 +0.51% 上涨；VIX +11.79% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.62% 上涨；布伦特原油 +0.82% 上涨；黄金 -1.74% 下跌；美元指数 +0.51% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
 - 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：政策压价/格局行业｜立即-1个季度｜置信度 低。
+- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 中。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 政策压价/格局行业（低） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 +0.82% 上涨；布伦特原油 -0.63% 下跌；美元指数 -0.39% 下跌；美国10Y国债收益率 -0.44% 下跌。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +1.62% 上涨；布伦特原油 +0.82% 上涨；黄金 -1.74% 下跌；美元指数 +0.51% 上涨。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -186,43 +187,43 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 31 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
-- AI电力底座：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 电力：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- A股宽基/中国宏观：T+30 12次｜胜率 8%｜均值 -2.98%｜相对基准 +1.37%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 能源电力链：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 本次新增待验证信号 7 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 有色/黄金：T+30 12次｜胜率 0%｜均值 -9.73%｜相对基准 -5.15%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
+- 红利低波：T+30 12次｜胜率 25%｜均值 -0.15%｜相对基准 +4.43%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- AI电力底座：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.59%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 电力：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.59%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
-| AI电力底座 | 28 | 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电力 | 28 | 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 12次｜胜率 8%｜均值 -2.98%｜相对基准 +1.37% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.53% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 有色/黄金 | 27 | 11次｜胜率 0%｜均值 -9.66%｜相对基准 -5.99% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
-| 风电/算力绿电 | 27 | 11次｜胜率 0%｜均值 -4.04%｜相对基准 +0.73% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电网/储能/火电调峰 | 26 | 10次｜胜率 0%｜均值 -4.37%｜相对基准 +0.65% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 红利低波 | 26 | 10次｜胜率 10%｜均值 -0.71%｜相对基准 +3.54% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -9.73%｜相对基准 -5.15% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波 | 28 | 12次｜胜率 25%｜均值 -0.15%｜相对基准 +4.43% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| AI电力底座 | 28 | 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.59% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 电力 | 28 | 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.59% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| A股宽基/中国宏观 | 27 | 11次｜胜率 0%｜均值 -3.30%｜相对基准 +1.50% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 资源品/关键矿产 | 26 | 10次｜胜率 0%｜均值 -9.64%｜相对基准 -4.58% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波/防御 | 26 | 10次｜胜率 30%｜均值 -0.01%｜相对基准 +5.05% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 能源电力链 | 26 | 10次｜胜率 0%｜均值 -4.37%｜相对基准 +0.70% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
-- 红利低波：T30 样本 10，胜率 10%，均值 -0.71%，相对基准 +3.54%，动作：降权复盘。
-- 红利低波/防御：T30 样本 10，胜率 10%，均值 -0.71%，相对基准 +3.54%，动作：降权复盘。
-- AI基础设施链：T30 样本 6，胜率 17%，均值 -2.77%，相对基准 +2.03%，动作：降权复盘。
+- 红利低波/防御：T30 样本 10，胜率 30%，均值 -0.01%，相对基准 +5.05%，动作：降权复盘。
+- 红利低波：T30 样本 12，胜率 25%，均值 -0.15%，相对基准 +4.43%，动作：降权复盘。
+- A股宽基/中国宏观：T30 样本 11，胜率 0%，均值 -3.30%，相对基准 +1.50%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
-| 红利低波 | T30 | 10 | 10% | -0.71% | +3.54% | 降权复盘 |
-| 红利低波/防御 | T30 | 10 | 10% | -0.71% | +3.54% | 降权复盘 |
-| AI基础设施链 | T30 | 6 | 17% | -2.77% | +2.03% | 降权复盘 |
-| A股宽基/中国宏观 | T30 | 12 | 8% | -2.98% | +1.37% | 降权复盘 |
-| 风电/算力绿电 | T30 | 11 | 0% | -4.04% | +0.73% | 降权复盘 |
-| AI电力底座 | T30 | 12 | 0% | -3.99% | +0.53% | 降权复盘 |
-| 电力 | T30 | 12 | 0% | -3.99% | +0.53% | 降权复盘 |
-| 能源电力链 | T30 | 12 | 0% | -3.99% | +0.53% | 降权复盘 |
+| 红利低波/防御 | T30 | 10 | 30% | -0.01% | +5.05% | 降权复盘 |
+| 红利低波 | T30 | 12 | 25% | -0.15% | +4.43% | 降权复盘 |
+| A股宽基/中国宏观 | T30 | 11 | 0% | -3.30% | +1.50% | 降权复盘 |
+| AI电力底座 | T30 | 12 | 0% | -3.99% | +0.59% | 降权复盘 |
+| 电力 | T30 | 12 | 0% | -3.99% | +0.59% | 降权复盘 |
+| 能源电力链 | T30 | 10 | 0% | -4.37% | +0.70% | 降权复盘 |
+| 风电/算力绿电 | T30 | 10 | 0% | -4.37% | +0.70% | 降权复盘 |
+| 电网/储能/火电调峰 | T30 | 10 | 0% | -4.37% | +0.70% | 降权复盘 |
 
 ## 错误复盘库
 
-- 错误复盘库记录 12 条负向样本；最多的问题是：行业逻辑未兑现。
+- 错误复盘库记录 12 条负向样本；最多的问题是：信号升级过早。
 - 有色/黄金 / 有色ETF：T30 -19.63%，相对基准 -14.03%，信号升级过早；先留在观察层，等价格和新闻复核后再提高权重。
 - 资源品/关键矿产 / 有色ETF：T30 -19.63%，相对基准 -14.03%，行业逻辑未兑现；同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。
 
@@ -234,20 +235,20 @@
 | 资源品/关键矿产 | 有色ETF | T30 | -14.05% | -9.98% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
 | 有色/黄金 | 有色ETF | T30 | -13.96% | -9.97% | 信号升级过早 | 先留在观察层，等价格和新闻复核后再提高权重。 |
 | 资源品/关键矿产 | 有色ETF | T30 | -13.96% | -9.97% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 新能源价格周期 | 创业板ETF易方达 | T30 | -13.47% | +0.00% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
 | 有色/黄金 | 有色ETF | T30 | -12.55% | -10.37% | 信号升级过早 | 先留在观察层，等价格和新闻复核后再提高权重。 |
-| 有色/黄金 | 有色ETF | T30 | -11.39% | -5.95% | 信号升级过早 | 先留在观察层，等价格和新闻复核后再提高权重。 |
 
 > 这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-13T19:46:55 UTC / 2026-10-14T03:46:55 BJT。
-- 抓取窗口：2026-10-12T19:46:55 UTC → 2026-10-13T19:46:55 UTC。
-- 实际新闻：共 122 条；最早 2026-10-12T19:47:00，最新 2026-10-13T19:46:55；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 18/39；API 4/5；官方源 5/28；官方网页 3 条。
+- 生成时间：2026-10-14T17:50:17 UTC / 2026-10-15T01:50:17 BJT。
+- 抓取窗口：2026-10-13T17:50:17 UTC → 2026-10-14T17:50:17 UTC。
+- 实际新闻：共 137 条；最早 2026-10-13T18:00:00，最新 2026-10-14T18:00:24；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 18/39；API 4/5；官方源 6/28；官方网页 5 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 5｜中 93｜低 24。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 8｜中 98｜低 31。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
