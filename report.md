@@ -4,29 +4,29 @@
 
 ## 30 秒总览
 
-- Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume；主要影响：geopolitics, energy；方向：中性。
-- Houthis attack presidential palace complex in Yemen's Aden, PM unharmed, officials say - Reuters；主要影响：geopolitics, markets；方向：分化。
-- International Energy Agency to release more than 20 million barrels of diesel as soon as possible；主要影响：energy, markets, macro；方向：中性。
-- Data Centers Become Targets in Wars in Ukraine, Russia and the Middle East；主要影响：geopolitics, technology, macro；方向：分化。
-- Memory stocks are getting hammered. China and a 2029 oversupply are the big worries；主要影响：geopolitics, markets, macro；方向：中性。
+- EU eyes more support for Ukraine after US pivot；主要影响：geopolitics, energy；方向：中性。
+- Why Trump and the GOP's billion-dollar midterm blitz isn’t working；主要影响：geopolitics, markets, macro；方向：中性。
+- U.S. presses China on Mastercard, Citigroup market access in bilateral Bangkok talks, official says；主要影响：macro, geopolitics, markets；方向：中性。
+- Here’s how the Fed should reveal its outlook for the economy；主要影响：macro, markets；方向：偏利空。
+- The once-obscure tech at the heart of the green energy trade war；主要影响：geopolitics, energy, markets；方向：分化。
 
 ## 市场价格快照
 
-- WTI原油：96.500 USD | 日变动 +1.483% | 上涨
-- 布伦特原油：105.86 USD | 日变动 -0.189% | 震荡
-- 黄金：4,169.30 USD | 日变动 +1.495% | 上涨
-- 美元指数：102.08 USD | 日变动 -0.459% | 下跌
-- 美国10Y国债收益率：5.089 USD | 日变动 -1.946% | 下跌
-- VIX：16.740 USD | 日变动 -0.771% | 下跌
-- 标普500期货：7,776.50 USD | 日变动 +0.080% | 震荡
-- 纳斯达克100期货：30,000.75 USD | 日变动 -0.603% | 下跌
+- WTI原油：98.600 USD | 日变动 +0.643% | 上涨
+- 布伦特原油：109.25 USD | 日变动 +3.144% | 上涨
+- 黄金：4,178.80 USD | 日变动 +0.209% | 震荡
+- 美元指数：101.95 USD | 日变动 -0.049% | 震荡
+- 美国10Y国债收益率：5.119 USD | 日变动 +0.590% | 上涨
+- VIX：18.690 USD | 日变动 +13.548% | 上涨
+- 标普500期货：7,716.50 USD | 日变动 -0.956% | 下跌
+- 纳斯达克100期货：29,532.25 USD | 日变动 -2.029% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume
+### 1. EU eyes more support for Ukraine after US pivot
 **一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Ukraine's president says a pause on striking energy sites is over following fresh Russian attacks.
+**发生了什么：** European leaders close ranks around Volodymyr Zelenskyy following Donald Trump’s fuel deal with Moscow
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -35,46 +35,10 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Houthis attack presidential palace complex in Yemen's Aden, PM unharmed, officials say - Reuters
-**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Houthis attack presidential palace complex in Yemen's Aden, PM unharmed, officials say Reuters
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. International Energy Agency to release more than 20 million barrels of diesel as soon as possible
-**一句话结论：** 这是一个与 energy, markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The Trump administration pushed Europe to release diesel stocks as prices in the U.S. surged to record highs in September.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy, markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Data Centers Become Targets in Wars in Ukraine, Russia and the Middle East
-**一句话结论：** 这是一个与 geopolitics, technology, macro 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Military forces have sought to damage the computing hubs that power online services and artificial intelligence systems.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Memory stocks are getting hammered. China and a 2029 oversupply are the big worries
+### 2. Why Trump and the GOP's billion-dollar midterm blitz isn’t working
 **一句话结论：** 这是一个与 geopolitics, markets, macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** SK Hynix, Samsung and Micron have been some of the hardest-hit names in the latest tech sell-off.
+**发生了什么：** Trump-aligned groups and Elon Musk have poured hundreds of millions into the midterm election, but the GOP spending surge has barely moved polls or the map.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, markets, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -83,12 +47,48 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Tech Stocks Drop Further Amid Doubts Over AI Spending
-**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 偏利空。
+### 3. U.S. presses China on Mastercard, Citigroup market access in bilateral Bangkok talks, official says
+**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Tech stocks plunged, led by a steep drop in South Korea’s benchmark index, as concerns over soaring A.I. spending and stubborn inflation fueled a sell-off.
+**发生了什么：** The U.S. raised market access issues for Mastercard and Citigroup in China during bilateral meetings in Bangkok this week, a U.S. Treasury official says.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Here’s how the Fed should reveal its outlook for the economy
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** As Chairman Kevin Warsh looks to revamp the central bank’s communication strategy, the dot plot is ripe for change.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. The once-obscure tech at the heart of the green energy trade war
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Power inverters are central to the global clean electricity boom but reliance on China is triggering security fears
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Ukraine is seeking winter energy and air-defense support as Russian strikes intensify and Starlink limits disrupt military operations.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,20 +97,20 @@
 
 ## 连续事件追踪
 
-- Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume ｜ 关键词：resume / strikes / zelensky / ukraine | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Houthis attack presidential palace complex in Yemen's Aden, PM unharmed, officials say - Reuters ｜ 关键词：houthis / yemen / palace / presidential | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- International Energy Agency to release more than 20 million barrels of diesel as soon as possible ｜ 关键词：energy / international / million / pushed | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Data Centers Become Targets in Wars in Ukraine, Russia and the Middle East ｜ 关键词：east / damage / russia / middle | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Memory stocks are getting hammered. China and a 2029 oversupply are the big worries ｜ 关键词：memory / micron / hynix / 2029 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Tech Stocks Drop Further Amid Doubts Over AI Spending ｜ 关键词：spending / south / korea / index | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- EU eyes more support for Ukraine after US pivot ｜ 关键词：support / volodymyr / leaders / ukraine | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Why Trump and the GOP's billion-dollar midterm blitz isn’t working ｜ 关键词：gop / working / billion / blitz | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- U.S. presses China on Mastercard, Citigroup market access in bilateral Bangkok talks, official says ｜ 关键词：bangkok / issues / access / citigroup | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Here’s how the Fed should reveal its outlook for the economy ｜ 关键词：kevin / central / warsh / chairman | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- The once-obscure tech at the heart of the green energy trade war ｜ 关键词：green / central / trade / heart | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC ｜ 关键词：winter / air / minister / support | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume 是否获得更多官方确认或实质性进展。
-2. Houthis attack presidential palace complex in Yemen's Aden, PM unharmed, officials say - Reuters 是否获得更多官方确认或实质性进展。
-3. International Energy Agency to release more than 20 million barrels of diesel as soon as possible 是否获得更多官方确认或实质性进展。
+1. EU eyes more support for Ukraine after US pivot 是否获得更多官方确认或实质性进展。
+2. Why Trump and the GOP's billion-dollar midterm blitz isn’t working 是否获得更多官方确认或实质性进展。
+3. U.S. presses China on Mastercard, Citigroup market access in bilateral Bangkok talks, official says 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 上涨 方向。
-5. 布伦特原油 是否延续当前 震荡 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,42 +126,43 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
+- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
-| AI资本开支压力 | 新闻命中：data center | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
+| 美联储/政策换挡 | 新闻命中：fed / warsh | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
+| 油价/美元压力 | 布伦特原油 +3.14% 上涨；美元指数 -0.05% 震荡 | 油价和美元同步走强时，小国、企业融资和风险资产会先承压。 | 看油价、美元指数和通胀预期是否继续同步上行。 | 油价回落或美元转弱，VIX没有继续放大。 |
+| 美股去杠杆 | 纳斯达克100期货 -2.03% 下跌；VIX +13.55% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：航运/港口通道｜通道成本会不会变成全产业链成本？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.48% 上涨；布伦特原油 -0.19% 震荡；黄金 +1.50% 上涨；美元指数 -0.46% 下跌。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Data Centers Become Targets in Wars in Ukraine, Russia and the Middle East | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.46% 下跌；美国10Y国债收益率 -1.95% 下跌；VIX -0.77% 下跌；标普500期货 +0.08% 震荡。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Memory stocks are getting hammered. China and a 2029 oversupply are the big worries | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +1.48% 上涨；布伦特原油 -0.19% 震荡；黄金 +1.50% 上涨；美元指数 -0.46% 下跌。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| EU eyes more support for Ukraine after US pivot | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.64% 上涨；布伦特原油 +3.14% 上涨；美元指数 -0.05% 震荡；VIX +13.55% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Why Trump and the GOP's billion-dollar midterm blitz isn’t working | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.64% 上涨；布伦特原油 +3.14% 上涨；黄金 +0.21% 震荡；美元指数 -0.05% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.64% 上涨；布伦特原油 +3.14% 上涨；美元指数 -0.05% 震荡；VIX +13.55% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| The once-obscure tech at the heart of the green energy trade war | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.64% 上涨；布伦特原油 +3.14% 上涨；黄金 +0.21% 震荡；美元指数 -0.05% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 2 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：政策压价/格局行业｜立即-1个季度｜置信度 中。
+- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 低。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 政策压价/格局行业（中） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 +1.48% 上涨；布伦特原油 -0.19% 震荡；美元指数 -0.46% 下跌；美国10Y国债收益率 -1.95% 下跌。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
-| 绿电算力：风电相对光伏（低） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 +1.48% 上涨；布伦特原油 -0.19% 震荡；美国10Y国债收益率 -1.95% 下跌；标普500期货 +0.08% 震荡。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
+| 汇率+反内卷：涨价权（低） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +0.64% 上涨；布伦特原油 +3.14% 上涨；黄金 +0.21% 震荡；美元指数 -0.05% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -187,7 +188,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 1 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - 有色/黄金：T+30 12次｜胜率 0%｜均值 -9.73%｜相对基准 -5.15%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
 - 红利低波：T+30 12次｜胜率 25%｜均值 -0.15%｜相对基准 +4.43%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - AI电力底座：T+30 12次｜胜率 0%｜均值 -3.99%｜相对基准 +0.59%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -242,13 +243,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-15T17:39:49 UTC / 2026-10-16T01:39:49 BJT。
-- 抓取窗口：2026-10-14T17:39:49 UTC → 2026-10-15T17:39:49 UTC。
-- 实际新闻：共 128 条；最早 2026-10-14T17:40:03，最新 2026-10-15T17:39:52；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 4/28；官方网页 7 条。
+- 生成时间：2026-10-16T17:13:23 UTC / 2026-10-17T01:13:23 BJT。
+- 抓取窗口：2026-10-15T17:13:23 UTC → 2026-10-16T17:13:23 UTC。
+- 实际新闻：共 127 条；最早 2026-10-15T17:13:42，最新 2026-10-16T17:13:23；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 9 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：30 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
 - 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 8｜中 94｜低 26。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 剩余文章可信度分布：高 10｜中 88｜低 29。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
