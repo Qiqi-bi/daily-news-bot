@@ -1,7 +1,23 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-10-18T16:24:19",
+  "updated_at_utc": "2026-10-19T19:07:54",
   "signals": [
+    {
+      "id": "20261019190754-candidate_pool-hk_tech-513180",
+      "created_at_utc": "2026-10-19T19:07:54",
+      "source": "candidate_pool",
+      "theme": "港股科技ETF",
+      "theme_key": "hk_tech",
+      "priority": "中",
+      "score": 3.0,
+      "code": "513180",
+      "name": "恒生科技指数ETF",
+      "start_price": 0.513,
+      "benchmark_code": "510300",
+      "benchmark_name": "沪深300ETF",
+      "benchmark_start_price": 4.24,
+      "observations": {}
+    },
     {
       "id": "20261018162419-candidate_pool-metals_gold-512400",
       "created_at_utc": "2026-10-18T16:24:19",
@@ -10841,36 +10857,6 @@
           "relative_hit": true
         }
       }
-    },
-    {
-      "id": "20260828225700-candidate_pool-dividend_lowvol-515100",
-      "created_at_utc": "2026-08-28T22:57:00",
-      "source": "candidate_pool",
-      "theme": "红利低波",
-      "theme_key": "dividend_lowvol",
-      "priority": "高",
-      "score": 5.0,
-      "code": "515100",
-      "name": "红利100ETF",
-      "start_price": 1.413,
-      "benchmark_code": "510300",
-      "benchmark_name": "沪深300ETF",
-      "benchmark_start_price": 4.679,
-      "observations": {
-        "t30": {
-          "observed_at_utc": "2026-09-28T20:02:06",
-          "elapsed_days": 30.88,
-          "price": 1.388,
-          "return_pct": -1.769,
-          "hit": false,
-          "benchmark_code": "510300",
-          "benchmark_name": "沪深300ETF",
-          "benchmark_price": 4.417,
-          "benchmark_return_pct": -5.599,
-          "relative_return_pct": 3.83,
-          "relative_hit": true
-        }
-      }
     }
   ],
   "rows": [
@@ -10917,51 +10903,6 @@
       "verdict": "跑输基准降权",
       "adjustment": "相对收益降权",
       "score_delta": -2,
-      "adjustment_basis": "T30"
-    },
-    {
-      "theme_key": "dividend_lowvol",
-      "theme": "红利低波",
-      "signals": 28,
-      "t30": {
-        "samples": 12,
-        "hits": 5,
-        "sum_return_pct": 5.391000000000001,
-        "relative_samples": 12,
-        "relative_hits": 12,
-        "sum_relative_return_pct": 69.819,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": 0.449,
-        "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 5.818
-      },
-      "t60": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "t90": {
-        "samples": 0,
-        "hits": 0,
-        "sum_return_pct": 0.0,
-        "relative_samples": 0,
-        "relative_hits": 0,
-        "sum_relative_return_pct": 0.0,
-        "win_rate_pct": null,
-        "avg_return_pct": null,
-        "relative_win_rate_pct": null,
-        "avg_relative_return_pct": null
-      },
-      "verdict": "维持观察",
-      "adjustment": "不调整",
-      "score_delta": 0,
       "adjustment_basis": "T30"
     },
     {
@@ -11142,6 +11083,51 @@
       "verdict": "降权观察",
       "adjustment": "自动降权",
       "score_delta": -2,
+      "adjustment_basis": "T30"
+    },
+    {
+      "theme_key": "dividend_lowvol",
+      "theme": "红利低波",
+      "signals": 27,
+      "t30": {
+        "samples": 11,
+        "hits": 5,
+        "sum_return_pct": 7.160000000000001,
+        "relative_samples": 11,
+        "relative_hits": 11,
+        "sum_relative_return_pct": 65.989,
+        "win_rate_pct": 45.5,
+        "avg_return_pct": 0.651,
+        "relative_win_rate_pct": 100.0,
+        "avg_relative_return_pct": 5.999
+      },
+      "t60": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "t90": {
+        "samples": 0,
+        "hits": 0,
+        "sum_return_pct": 0.0,
+        "relative_samples": 0,
+        "relative_hits": 0,
+        "sum_relative_return_pct": 0.0,
+        "win_rate_pct": null,
+        "avg_return_pct": null,
+        "relative_win_rate_pct": null,
+        "avg_relative_return_pct": null
+      },
+      "verdict": "维持观察",
+      "adjustment": "不调整",
+      "score_delta": 0,
       "adjustment_basis": "T30"
     },
     {
@@ -11642,7 +11628,7 @@
     {
       "theme_key": "hk_tech",
       "theme": "港股科技ETF",
-      "signals": 21,
+      "signals": 22,
       "t30": {
         "samples": 8,
         "hits": 0,
@@ -11839,14 +11825,14 @@
       {
         "theme_key": "dividend_lowvol",
         "theme": "红利低波",
-        "signals": 28,
+        "signals": 27,
         "basis": "T30",
-        "samples": 12,
-        "win_rate_pct": 41.7,
-        "avg_return_pct": 0.449,
+        "samples": 11,
+        "win_rate_pct": 45.5,
+        "avg_return_pct": 0.651,
         "relative_win_rate_pct": 100.0,
-        "avg_relative_return_pct": 5.818,
-        "rank_score": 10.192,
+        "avg_relative_return_pct": 5.999,
+        "rank_score": 10.9,
         "verdict": "维持观察",
         "action": "等待二次确认"
       },
@@ -11951,7 +11937,7 @@
       {
         "theme_key": "hk_tech",
         "theme": "港股科技ETF",
-        "signals": 21,
+        "signals": 22,
         "basis": "T30",
         "samples": 8,
         "win_rate_pct": 0.0,
@@ -12119,7 +12105,7 @@
     ],
     "lines": [
       "- 红利低波/防御：T30 样本 10，胜率 50%，均值 +0.75%，相对基准 +6.07%，动作：等待二次确认。",
-      "- 红利低波：T30 样本 12，胜率 42%，均值 +0.45%，相对基准 +5.82%，动作：等待二次确认。",
+      "- 红利低波：T30 样本 11，胜率 46%，均值 +0.65%，相对基准 +6.00%，动作：等待二次确认。",
       "- A股宽基/中国宏观：T30 样本 10，胜率 0%，均值 -3.73%，相对基准 +1.59%，动作：降权复盘。"
     ],
     "best": {
@@ -12470,13 +12456,13 @@
     }
   },
   "lines": [
-    "- 本次新增待验证信号 21 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
+    "- 本次新增待验证信号 1 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。",
     "- 有色/黄金：T+30 12次｜胜率 0%｜均值 -9.45%｜相对基准 -4.08%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。",
-    "- 红利低波：T+30 12次｜胜率 42%｜均值 +0.45%｜相对基准 +5.82%；T+60 样本不足；T+90 样本不足；结论：维持观察。",
     "- AI电力底座：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
-    "- 能源电力链：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。"
+    "- 能源电力链：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。",
+    "- 风电/算力绿电：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。"
   ],
-  "added_count": 21,
+  "added_count": 1,
   "signal_count": 500,
   "note": "这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。"
 }

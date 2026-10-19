@@ -4,65 +4,65 @@
 
 ## 30 秒总览
 
-- Several dead and injured in fire at Alberta military base；主要影响：geopolitics；方向：中性。
-- Semiconductor market to remain solid ‘at least through next year,’ South Korea finance minister says；主要影响：technology, markets, macro；方向：偏利多。
-- Treasury introduces new security measures in bid to stop UK Budget leaks；主要影响：macro, geopolitics；方向：中性。
-- Bessent warns Zelenskyy to 'be very careful' about claims U.S. is throttling Starlink；主要影响：geopolitics, macro；方向：分化。
-- St Petersburg endures biggest Ukrainian drone attack；主要影响：geopolitics, energy；方向：中性。
+- Elon Musk says he'll give a SpaceX share to every child in America next year；主要影响：markets, macro；方向：中性。
+- BOJ Signals Policy Pivot as Iran Seeks Regional Dialogue; U.S. Weighs “Dark Tanker” Sanction Waivers；主要影响：macro, geopolitics, technology；方向：偏利空。
+- Saudi Arabia to postpone ‘Davos in the desert’ after Houthi attacks；主要影响：energy；方向：中性。
+- Jon Stewart to Stay at ‘The Daily Show’ Through the 2028 Election；主要影响：geopolitics, macro；方向：分化。
+- Anthropic is AI trade's last big hope for a major IPO this year；主要影响：technology, markets, macro；方向：偏利多。
 
 ## 市场价格快照
 
-- WTI原油：99.020 USD | 日变动 +1.072% | 上涨
-- 布伦特原油：109.86 USD | 日变动 +3.720% | 上涨
-- 黄金：4,181.10 USD | 日变动 +0.264% | 震荡
-- 美元指数：101.78 USD | 日变动 -0.217% | 震荡
-- 美国10Y国债收益率：5.098 USD | 日变动 +0.177% | 震荡
-- VIX：19.990 USD | 日变动 +21.446% | 上涨
-- 标普500期货：7,704.25 USD | 日变动 -1.113% | 下跌
-- 纳斯达克100期货：29,391.50 USD | 日变动 -2.496% | 下跌
+- WTI原油：98.210 USD | 日变动 -3.156% | 下跌
+- 布伦特原油：109.12 USD | 日变动 -0.674% | 下跌
+- 黄金：4,165.70 USD | 日变动 -0.368% | 下跌
+- 美元指数：101.97 USD | 日变动 +0.131% | 震荡
+- 美国10Y国债收益率：5.129 USD | 日变动 +0.608% | 上涨
+- VIX：18.290 USD | 日变动 -8.504% | 下跌
+- 标普500期货：7,744.75 USD | 日变动 +0.526% | 上涨
+- 纳斯达克100期货：29,772.25 USD | 日变动 +1.295% | 上涨
 
 ## 今日最重要的事件
 
-### 1. Several dead and injured in fire at Alberta military base
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** Authorities respond to ‘tragic incident’ at Canadian Forces Base Wainwright, the country’s defence minister says
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. Semiconductor market to remain solid ‘at least through next year,’ South Korea finance minister says
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** South Korea's finance minister said semiconductor growth can last at least through 2027 as supply remains tight despite a global chip sell-off.
+### 1. Elon Musk says he'll give a SpaceX share to every child in America next year
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** The SpaceX boss said Monday that he'll give one of his company shares to every child in the U.S. next year. He didn't say how the share giveaway would happen.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. Treasury introduces new security measures in bid to stop UK Budget leaks
-**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 中性。
+### 2. BOJ Signals Policy Pivot as Iran Seeks Regional Dialogue; U.S. Weighs “Dark Tanker” Sanction Waivers
+**一句话结论：** 这是一个与 macro, geopolitics, technology 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Chancellor John Healey deploys ‘military-style’ security protocols to restrict flow of sensitive information
+**发生了什么：** Bank of Japan (8301) Governor Kazuo Ueda stated on Monday that Japan’s underlying inflation is approaching the central bank's 2% stability goal. This
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, technology 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. Bessent warns Zelenskyy to 'be very careful' about claims U.S. is throttling Starlink
+### 3. Saudi Arabia to postpone ‘Davos in the desert’ after Houthi attacks
+**一句话结论：** 这是一个与 energy 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** Flagship Future Investment Initiative was scheduled to begin next week in Riyadh but will now take place next year
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Jon Stewart to Stay at ‘The Daily Show’ Through the 2028 Election
 **一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Starlink, high-speed satellite internet provided by Elon Musk's SpaceX, is critical to Ukraine's defense.
+**发生了什么：** Ratings have surged since Mr. Stewart returned over two years ago to host the show on Monday nights.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -71,46 +71,46 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. St Petersburg endures biggest Ukrainian drone attack
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
+### 5. Anthropic is AI trade's last big hope for a major IPO this year
+**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Strikes hit tech infrastructure after Russia targets electricity substations in Ukraine
+**发生了什么：** On Kalshi, Anthropic is seen as the last major IPO in 2026 after OpenAI delayed its public market debut. Others have postponed too.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
+**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Egypt’s Defense Chiefs Pledge to Support Saudi Arabia After Houthi Attacks
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** President Abdel Fattah el-Sisi had called on Egyptian lawmakers to authorize military assistance to the kingdom, saying any support would be defensive.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+### 6. 中国人民银行行长潘功胜在2026金融街论坛年会上的主题演讲
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：中国人民银行行长潘功胜在2026金融街论坛年会上的主题演讲
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜出席第54届国际货币与金融委员会会议 / 中国人民银行行长潘功胜会见相关国家央行行长 / 中国人民银行行长潘功胜会见国际货币基金组织总裁格奥尔基耶娃。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Several dead and injured in fire at Alberta military base ｜ 关键词：wainwright / alberta / base / injured | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Semiconductor market to remain solid ‘at least through next year,’ South Korea finance minister says ｜ 关键词：south / last / finance / korea | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Treasury introduces new security measures in bid to stop UK Budget leaks ｜ 关键词：stop / leaks / john / deploys | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Bessent warns Zelenskyy to 'be very careful' about claims U.S. is throttling Starlink ｜ 关键词：spacex / musk / bessent / provided | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- St Petersburg endures biggest Ukrainian drone attack ｜ 关键词：petersburg / russia / targets / ukrainian | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Egypt’s Defense Chiefs Pledge to Support Saudi Arabia After Houthi Attacks ｜ 关键词：houthi / saudi / support / egypt | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Elon Musk says he'll give a SpaceX share to every child in America next year ｜ 关键词：said / america / musk / spacex | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- BOJ Signals Policy Pivot as Iran Seeks Regional Dialogue; U.S. Weighs “Dark Tanker” Sanction Waivers ｜ 关键词：monday / bank / weighs / waivers | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Saudi Arabia to postpone ‘Davos in the desert’ after Houthi attacks ｜ 关键词：saudi / arabia / attacks / initiative | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Jon Stewart to Stay at ‘The Daily Show’ Through the 2028 Election ｜ 关键词：jon / daily / show / years | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Anthropic is AI trade's last big hope for a major IPO this year ｜ 关键词：2026 / hope / seen / last | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 中国人民银行行长潘功胜在2026金融街论坛年会上的主题演讲 ｜ 关键词：2026 | 近 7 天出现 5 次 | 上次出现：2026-10-17T16:11:19 | 近期标题：中国人民银行行长潘功胜出席第54届国际货币与金融委员会会议 / 中国人民银行行长潘功胜会见相关国家央行行长 / 中国人民银行行长潘功胜会见国际货币基金组织总裁格奥尔基耶娃
 
 ## 明天最该盯的 5 个信号
 
-1. Several dead and injured in fire at Alberta military base 是否获得更多官方确认或实质性进展。
-2. Semiconductor market to remain solid ‘at least through next year,’ South Korea finance minister says 是否获得更多官方确认或实质性进展。
-3. Treasury introduces new security measures in bid to stop UK Budget leaks 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 上涨 方向。
-5. 布伦特原油 是否延续当前 上涨 方向。
+1. Elon Musk says he'll give a SpaceX share to every child in America next year 是否获得更多官方确认或实质性进展。
+2. BOJ Signals Policy Pivot as Iran Seeks Regional Dialogue; U.S. Weighs “Dark Tanker” Sanction Waivers 是否获得更多官方确认或实质性进展。
+3. Saudi Arabia to postpone ‘Davos in the desert’ after Houthi attacks 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 下跌 方向。
+5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,31 +126,30 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
-- 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
+- 宏观爆破风险低：暂未看到政策换挡、油价、美元、VIX和高估值资产形成共振。
+- 纪律：继续观察，不自动买卖。
 
-| 风险线 | 事实 | 推测 | 验证 | 失效 |
-|---|---|---|---|---|
-| 油价/美元压力 | 布伦特原油 +3.72% 上涨；美元指数 -0.22% 震荡 | 油价和美元同步走强时，小国、企业融资和风险资产会先承压。 | 看油价、美元指数和通胀预期是否继续同步上行。 | 油价回落或美元转弱，VIX没有继续放大。 |
-| 美股去杠杆 | 纳斯达克100期货 -2.50% 下跌；VIX +21.45% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
+### 固定框架
+
+- 先问谁被迫交易：谁要补保证金、谁现金流紧、谁必须卖资产换美元。
+- 再问谁有现金等打折：现金方只需要等，缺钱方才会被迫接受折价。
+- 政策只看传导链：降息、缩表、油价、美元、美债和VIX必须放在一起看。
+- 黄金短跌不等于避险失效：美元荒时，黄金可能先被卖掉换现金。
+- 用途是风险闸门：只决定追不追、等不等、留不留现金，不自动生成买卖。
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
 - 最先看：半导体供应链｜这条新闻卡住的是技术、设备、材料还是客户需求？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Semiconductor market to remain solid ‘at least through next year,’ South Korea finance minister says | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.22% 震荡；美国10Y国债收益率 +0.18% 震荡；VIX +21.45% 上涨；标普500期货 -1.11% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Several dead and injured in fire at Alberta military base | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +1.07% 上涨；布伦特原油 +3.72% 上涨；美元指数 -0.22% 震荡；VIX +21.45% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Egypt’s Defense Chiefs Pledge to Support Saudi Arabia After Houthi Attacks | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +1.07% 上涨；布伦特原油 +3.72% 上涨；美元指数 -0.22% 震荡；VIX +21.45% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Treasury introduces new security measures in bid to stop UK Budget leaks | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +1.07% 上涨；布伦特原油 +3.72% 上涨；黄金 +0.26% 震荡；美元指数 -0.22% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
-| Bessent warns Zelenskyy to 'be very careful' about claims U.S. is throttling Starlink | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +1.07% 上涨；布伦特原油 +3.72% 上涨；黄金 +0.26% 震荡；美元指数 -0.22% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| BOJ Signals Policy Pivot as Iran Seeks Regional Dialogue; U.S. Weighs “Dark Tanker” Sanction Waivers | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.13% 震荡；美国10Y国债收益率 +0.61% 上涨；VIX -8.50% 下跌；标普500期货 +0.53% 上涨。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| Jon Stewart to Stay at ‘The Daily Show’ Through the 2028 Election | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -3.16% 下跌；布伦特原油 -0.67% 下跌；黄金 -0.37% 下跌；美元指数 +0.13% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -191,33 +190,33 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 21 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 1 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - 有色/黄金：T+30 12次｜胜率 0%｜均值 -9.45%｜相对基准 -4.08%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
-- 红利低波：T+30 12次｜胜率 42%｜均值 +0.45%｜相对基准 +5.82%；T+60 样本不足；T+90 样本不足；结论：维持观察。
 - AI电力底座：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 能源电力链：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 风电/算力绿电：T+30 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
 | 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -9.45%｜相对基准 -4.08% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
-| 红利低波 | 28 | 12次｜胜率 42%｜均值 +0.45%｜相对基准 +5.82% | 样本不足 | 样本不足 | 维持观察 | 不调整 |
 | AI电力底座 | 28 | 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 能源电力链 | 28 | 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 风电/算力绿电 | 28 | 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 电网/储能/火电调峰 | 28 | 12次｜胜率 0%｜均值 -4.83%｜相对基准 +0.54% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 红利低波 | 27 | 11次｜胜率 46%｜均值 +0.65%｜相对基准 +6.00% | 样本不足 | 样本不足 | 维持观察 | 不调整 |
 | 资源品/关键矿产 | 26 | 10次｜胜率 0%｜均值 -8.42%｜相对基准 -3.10% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
 | 红利低波/防御 | 26 | 10次｜胜率 50%｜均值 +0.75%｜相对基准 +6.07% | 样本不足 | 样本不足 | 维持观察 | 不调整 |
 
 ## 行业雷达命中率榜
 
 - 红利低波/防御：T30 样本 10，胜率 50%，均值 +0.75%，相对基准 +6.07%，动作：等待二次确认。
-- 红利低波：T30 样本 12，胜率 42%，均值 +0.45%，相对基准 +5.82%，动作：等待二次确认。
+- 红利低波：T30 样本 11，胜率 46%，均值 +0.65%，相对基准 +6.00%，动作：等待二次确认。
 - A股宽基/中国宏观：T30 样本 10，胜率 0%，均值 -3.73%，相对基准 +1.59%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
 | 红利低波/防御 | T30 | 10 | 50% | +0.75% | +6.07% | 等待二次确认 |
-| 红利低波 | T30 | 12 | 42% | +0.45% | +5.82% | 等待二次确认 |
+| 红利低波 | T30 | 11 | 46% | +0.65% | +6.00% | 等待二次确认 |
 | A股宽基/中国宏观 | T30 | 10 | 0% | -3.73% | +1.59% | 降权复盘 |
 | AI电力底座 | T30 | 12 | 0% | -4.83% | +0.54% | 降权复盘 |
 | 能源电力链 | T30 | 12 | 0% | -4.83% | +0.54% | 降权复盘 |
@@ -246,13 +245,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-18T16:24:19 UTC / 2026-10-19T00:24:19 BJT。
-- 抓取窗口：2026-10-17T16:24:19 UTC → 2026-10-18T16:24:19 UTC。
-- 实际新闻：共 99 条；最早 2026-10-17T16:27:48，最新 2026-10-18T16:25:19；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 12/39；API 4/5；官方源 1/28；官方网页 3 条。
+- 生成时间：2026-10-19T19:07:54 UTC / 2026-10-20T03:07:54 BJT。
+- 抓取窗口：2026-10-18T19:07:54 UTC → 2026-10-19T19:07:54 UTC。
+- 实际新闻：共 133 条；最早 2026-10-18T19:08:09，最新 2026-10-19T19:07:54；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 16/39；API 4/5；官方源 4/28；官方网页 7 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：CSRC Official Page、SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：34 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 9 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 3｜中 71｜低 25。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 抓取失败样例：SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 2 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 8｜中 95｜低 30。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
