@@ -4,91 +4,91 @@
 
 ## 30 秒总览
 
-- Trump envoy floats Ukraine talks and summit with Putin and Xi；主要影响：geopolitics；方向：偏利多。
-- Elon Musk Says SpaceX and Tesla Are Exploring a Merger；主要影响：technology, markets, macro；方向：偏利多。
-- SpaceX stock jumps 10% after earnings beat and Musk hints at Tesla tie-up；主要影响：markets, macro；方向：中性。
-- Musk's SpaceX stock gift is 'tip of the iceberg' for Trump Accounts, Altimeter's Gerstner says；主要影响：macro, markets；方向：中性。
-- Iran war sparks heating crisis in US north-east as winter approaches；主要影响：geopolitics, energy, markets；方向：分化。
+- Under-the-radar stocks to play the next leg of the energy trade with oil prices jumping again；主要影响：geopolitics, energy, markets, macro；方向：中性。
+- Race to update services' computer systems after cyber-security flaw found；主要影响：technology；方向：偏利多。
+- ‘AI is on trial’: Bond yields sink below 5% as investors look for safety；主要影响：macro, technology, markets；方向：偏利空。
+- Meta agrees deal to keep Zuckerberg in California despite wealth tax proposal；主要影响：markets；方向：中性。
+- Too little, too late: Trump takes on gas prices as fuel costs hamper his midterm hopes；主要影响：geopolitics, energy, macro；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：96.940 USD | 日变动 -4.765% | 下跌
-- 布伦特原油：108.68 USD | 日变动 -0.101% | 震荡
-- 黄金：4,157.50 USD | 日变动 +0.360% | 上涨
-- 美元指数：101.65 USD | 日变动 -0.078% | 震荡
-- 美国10Y国债收益率：5.106 USD | 日变动 -0.215% | 震荡
-- VIX：16.620 USD | 日变动 -3.986% | 下跌
-- 标普500期货：7,805.00 USD | 日变动 +0.642% | 上涨
-- 纳斯达克100期货：30,052.75 USD | 日变动 +1.272% | 上涨
+- WTI原油：99.630 USD | 日变动 +2.553% | 上涨
+- 布伦特原油：112.74 USD | 日变动 +3.602% | 上涨
+- 黄金：4,063.30 USD | 日变动 -2.089% | 下跌
+- 美元指数：101.61 USD | 日变动 -0.166% | 震荡
+- 美国10Y国债收益率：4.963 USD | 日变动 -3.556% | 下跌
+- VIX：18.960 USD | 日变动 +13.669% | 上涨
+- 标普500期货：7,698.00 USD | 日变动 -1.311% | 下跌
+- 纳斯达克100期货：29,211.75 USD | 日变动 -2.650% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Trump envoy floats Ukraine talks and summit with Putin and Xi
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** Steve Witkoff discusses resumption of peace dialogue with Russian president, followed by US-China-Russia meeting next month
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. Elon Musk Says SpaceX and Tesla Are Exploring a Merger
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** A deal would consolidate Elon Musk’s holdings in rockets, cars and artificial intelligence into a company worth well over $3 trillion.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. SpaceX stock jumps 10% after earnings beat and Musk hints at Tesla tie-up
-**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** SpaceX shares jumped after the company reported surging revenue growth in its third quarter, and owner Elon Musk floated a potential SpaceX-Tesla merger.
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Musk's SpaceX stock gift is 'tip of the iceberg' for Trump Accounts, Altimeter's Gerstner says
-**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 中性。
+### 1. Under-the-radar stocks to play the next leg of the energy trade with oil prices jumping again
+**一句话结论：** 这是一个与 geopolitics, energy, markets, macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Elon Musk’s planned SpaceX share gift through Trump Accounts could be the start of a broader philanthropic push, says Altimeter Capital CEO Brad Gerstner.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Iran war sparks heating crisis in US north-east as winter approaches
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Record heating oil prices are forcing the region to rethink prior opposition to natural gas pipelines
+**发生了什么：** Iran is going to grow more desperate as oil money dries up, which makes the country even more dangerous.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. UK's FTSE 100 ticks higher on energy boost; hot inflation report limits gains - Reuters
-**一句话结论：** 这是一个与 macro, energy, technology 相关的重要事件，市场方向偏向 偏利空。
+### 2. Race to update services' computer systems after cyber-security flaw found
+**一句话结论：** 这是一个与 technology 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** Websites were taken offline after the developers of programming language PHP said "critical vulnerabilities" had been discovered.
+**为什么重要：** 该事件被 4 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. ‘AI is on trial’: Bond yields sink below 5% as investors look for safety
+**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** UK's FTSE 100 ticks higher on energy boost; hot inflation report limits gains Reuters
+**发生了什么：** Investors are flooding back into Treasurys for safety to hedge the risks of more AI fallout in stock and credit markets.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, energy, technology 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Meta agrees deal to keep Zuckerberg in California despite wealth tax proposal
+**一句话结论：** 这是一个与 markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** Group to create new class of non-voting shares to allow stock sales without diluting founder’s control
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Too little, too late: Trump takes on gas prices as fuel costs hamper his midterm hopes
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Polls show US voters are deeply upset by high gas prices and are likely to punish Republicans in the midterms as a result How will Trump’s mass deportation agenda shape the US midterm elections? Our reporters answer your questions With fewer than two weeks until the midterm s, US voters are unlikely to see relief on one of this election cycle’s main issues: gas prices. Airing up her car’s tires at a Speedway in Perrysburg, Ohio , Toledo resident Sharie Smith, 41, says soaring costs are having a direct impact on her life. Continue reading...
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. Musk's clash with Ukraine accelerates demand for Starlink alternatives. Few exist
+**一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Governments or companies looking for an alternative to SpaceX's Starlink are faced with few options, as Amazon, Eutelsat and others are far behind.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,20 +97,20 @@
 
 ## 连续事件追踪
 
-- Trump envoy floats Ukraine talks and summit with Putin and Xi ｜ 关键词：talks / ukraine / putin / president | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Elon Musk Says SpaceX and Tesla Are Exploring a Merger ｜ 关键词：merger / spacex / tesla / exploring | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- SpaceX stock jumps 10% after earnings beat and Musk hints at Tesla tie-up ｜ 关键词：earnings / spacex / musk / company | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Musk's SpaceX stock gift is 'tip of the iceberg' for Trump Accounts, Altimeter's Gerstner says ｜ 关键词：planned / through / spacex / could | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Iran war sparks heating crisis in US north-east as winter approaches ｜ 关键词：forcing / approaches / east / record | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- UK's FTSE 100 ticks higher on energy boost; hot inflation report limits gains - Reuters ｜ 关键词：ftse / gains / limits / reuters | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Under-the-radar stocks to play the next leg of the energy trade with oil prices jumping again ｜ 关键词：radar / play / again / jumping | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Race to update services' computer systems after cyber-security flaw found ｜ 关键词：critical / security / php / websites | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- ‘AI is on trial’: Bond yields sink below 5% as investors look for safety ｜ 关键词：back / trial / hedge / fallout | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Meta agrees deal to keep Zuckerberg in California despite wealth tax proposal ｜ 关键词：deal / zuckerberg / meta / california | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Too little, too late: Trump takes on gas prices as fuel costs hamper his midterm hopes ｜ 关键词：likely / his / republicans / hopes | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Musk's clash with Ukraine accelerates demand for Starlink alternatives. Few exist ｜ 关键词：demand / amazon / options / accelerates | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Trump envoy floats Ukraine talks and summit with Putin and Xi 是否获得更多官方确认或实质性进展。
-2. Elon Musk Says SpaceX and Tesla Are Exploring a Merger 是否获得更多官方确认或实质性进展。
-3. SpaceX stock jumps 10% after earnings beat and Musk hints at Tesla tie-up 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
-5. 布伦特原油 是否延续当前 震荡 方向。
+1. Under-the-radar stocks to play the next leg of the energy trade with oil prices jumping again 是否获得更多官方确认或实质性进展。
+2. Race to update services' computer systems after cyber-security flaw found 是否获得更多官方确认或实质性进展。
+3. ‘AI is on trial’: Bond yields sink below 5% as investors look for safety 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 上涨 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,44 +126,42 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
+- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
 | 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 油价/美元压力 | 布伦特原油 +3.60% 上涨；美元指数 -0.17% 震荡 | 油价和美元同步走强时，小国、企业融资和风险资产会先承压。 | 看油价、美元指数和通胀预期是否继续同步上行。 | 油价回落或美元转弱，VIX没有继续放大。 |
+| 美股去杠杆 | 纳斯达克100期货 -2.65% 下跌；VIX +13.67% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
 - 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Iran war sparks heating crisis in US north-east as winter approaches | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -4.76% 下跌；布伦特原油 -0.10% 震荡；黄金 +0.36% 上涨；美元指数 -0.08% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| UK's FTSE 100 ticks higher on energy boost; hot inflation report limits gains - Reuters | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -4.76% 下跌；布伦特原油 -0.10% 震荡；美元指数 -0.08% 震荡；VIX -3.99% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Trump envoy floats Ukraine talks and summit with Putin and Xi | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 -0.08% 震荡；美国10Y国债收益率 -0.21% 震荡；VIX -3.99% 下跌；标普500期货 +0.64% 上涨。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
-| Elon Musk Says SpaceX and Tesla Are Exploring a Merger | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -4.76% 下跌；布伦特原油 -0.10% 震荡；美元指数 -0.08% 震荡；VIX -3.99% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Under-the-radar stocks to play the next leg of the energy trade with oil prices jumping again | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.55% 上涨；布伦特原油 +3.60% 上涨；黄金 -2.09% 下跌；美元指数 -0.17% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Too little, too late: Trump takes on gas prices as fuel costs hamper his midterm hopes | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.55% 上涨；布伦特原油 +3.60% 上涨；黄金 -2.09% 下跌；美元指数 -0.17% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Musk's clash with Ukraine accelerates demand for Starlink alternatives. Few exist | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +2.55% 上涨；布伦特原油 +3.60% 上涨；黄金 -2.09% 下跌；美元指数 -0.17% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天没有生成强发酵预警卡；继续按核心事件、资源博弈和纪律面板观察。
-- 如果只有单一叙事，没有政策、订单或价格确认，先不升级。
+- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：绿电算力：风电相对光伏｜2-8周｜置信度 低。
+- 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
-### 固定框架
-
-- 左侧线索：先找约束变化，不等所有人都确认后再追。
-- 预测对象：只预测可能发酵的主线和验证条件，不预测必涨必跌。
-- 验证顺序：政策/订单/产能/价格/相对强弱，至少两项同向才升级。
-- 失效条件：如果核心约束被解除，或价格不确认，就降级观察。
-- 组合纪律：预测卡片只提醒你看什么，不直接替你买卖。
+| 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
+|---|---|---|---|---|---|
+| 绿电算力：风电相对光伏（低） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 +2.55% 上涨；布伦特原油 +3.60% 上涨；美国10Y国债收益率 -3.56% 下跌；标普500期货 -1.31% 下跌。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -189,7 +187,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 21 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - 有色/黄金：T+30 12次｜胜率 0%｜均值 -8.61%｜相对基准 -4.18%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
 - 红利低波：T+30 12次｜胜率 58%｜均值 +1.19%｜相对基准 +5.62%；T+60 样本不足；T+90 样本不足；结论：维持观察。
 - AI电力底座：T+30 12次｜胜率 0%｜均值 -5.15%｜相对基准 -0.71%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -226,31 +224,31 @@
 ## 错误复盘库
 
 - 错误复盘库记录 12 条负向样本；最多的问题是：行业逻辑未兑现。
-- 半导体 / 科创芯片ETF：T30 -18.40%，相对基准 -11.49%，价格确认失败；降低该主题权重，避免把短期叙事当作趋势。
-- 半导体材料/卡脖子链 / 科创芯片ETF：T30 -18.40%，相对基准 -11.49%，行业逻辑未兑现；同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。
+- 半导体 / 科创芯片ETF：T30 -25.11%，相对基准 -14.23%，价格确认失败；降低该主题权重，避免把短期叙事当作趋势。
+- 半导体材料/卡脖子链 / 科创芯片ETF：T30 -25.11%，相对基准 -14.23%，行业逻辑未兑现；同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。
 
 | 主题 | 标的 | 窗口 | 结果 | 相对基准 | 原因 | 下次规则 |
 |---|---|---|---:|---:|---|---|
-| 半导体 | 科创芯片ETF | T30 | -18.40% | -11.49% | 价格确认失败 | 降低该主题权重，避免把短期叙事当作趋势。 |
-| 半导体材料/卡脖子链 | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 氦气/电子特气 | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 六氟化钨/前驱体 | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 光刻胶/靶材 | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 先进封装/玻璃基板 | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 光通信/空心光纤/CPO | 科创芯片ETF | T30 | -18.40% | -11.49% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 半导体 | 半导体ETF | T30 | -17.26% | -10.36% | 价格确认失败 | 降低该主题权重，避免把短期叙事当作趋势。 |
+| 半导体 | 科创芯片ETF | T30 | -25.11% | -14.23% | 价格确认失败 | 降低该主题权重，避免把短期叙事当作趋势。 |
+| 半导体材料/卡脖子链 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 氦气/电子特气 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 六氟化钨/前驱体 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 光刻胶/靶材 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 先进封装/玻璃基板 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 光通信/空心光纤/CPO | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 新能源价格周期 | 创业板ETF易方达 | T30 | -24.17% | +0.00% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
 
 > 这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-21T17:56:28 UTC / 2026-10-22T01:56:28 BJT。
-- 抓取窗口：2026-10-20T17:56:28 UTC → 2026-10-21T17:56:28 UTC。
-- 实际新闻：共 136 条；最早 2026-10-20T18:12:42，最新 2026-10-21T18:14:25；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 4/28；官方网页 5 条。
+- 生成时间：2026-10-22T17:52:47 UTC / 2026-10-23T01:52:47 BJT。
+- 抓取窗口：2026-10-21T17:52:47 UTC → 2026-10-22T17:52:47 UTC。
+- 实际新闻：共 125 条；最早 2026-10-21T17:54:51，最新 2026-10-22T17:52:47；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 1/28；官方网页 2 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：30 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 7｜中 94｜低 35。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 抓取失败样例：CSRC Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：32 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 10 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 2｜中 92｜低 31。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
