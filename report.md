@@ -4,50 +4,62 @@
 
 ## 30 秒总览
 
-- Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil；主要影响：geopolitics；方向：中性。
-- ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions；主要影响：macro, geopolitics, markets；方向：中性。
+- Fed holds rates as expected and upgrades view on economy；主要影响：macro, geopolitics, markets；方向：偏利空。
+- European gas prices jump above €100 on fears of Iran war escalation；主要影响：geopolitics, energy, markets；方向：分化。
+- The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget；主要影响：geopolitics, energy, macro；方向：分化。
 - Iran threatens South Korean shipping group over Hormuz transits；主要影响：geopolitics, energy, markets；方向：中性。
-- China Steps In to Rescue Stocks, But the Market Continues to Fall；主要影响：geopolitics, markets, macro；方向：中性。
-- Russia and Ukraine begin local ceasefire in frontline city；主要影响：geopolitics；方向：中性。
+- Federal Reserve issues FOMC statement；主要影响：macro；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：99.930 USD | 日变动 -1.798% | 下跌
-- 布伦特原油：109.43 USD | 日变动 -5.509% | 下跌
-- 黄金：4,069.30 USD | 日变动 +0.765% | 上涨
-- 美元指数：102.32 USD | 日变动 +0.353% | 上涨
-- 美国10Y国债收益率：4.993 USD | 日变动 +0.140% | 震荡
-- VIX：17.760 USD | 日变动 -3.426% | 下跌
-- 标普500期货：7,755.00 USD | 日变动 +0.525% | 上涨
-- 纳斯达克100期货：29,790.25 USD | 日变动 +1.199% | 上涨
+- WTI原油：102.79 USD | 日变动 +2.893% | 上涨
+- 布伦特原油：111.70 USD | 日变动 -1.914% | 下跌
+- 黄金：4,044.70 USD | 日变动 -0.734% | 下跌
+- 美元指数：102.39 USD | 日变动 +0.069% | 震荡
+- 美国10Y国债收益率：5.036 USD | 日变动 +0.861% | 上涨
+- VIX：17.270 USD | 日变动 -1.427% | 下跌
+- 标普500期货：7,762.25 USD | 日变动 +0.052% | 震荡
+- 纳斯达克100期货：29,823.50 USD | 日变动 +0.039% | 震荡
 
 ## 今日最重要的事件
 
-### 1. Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
+### 1. Fed holds rates as expected and upgrades view on economy
+**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** Defeated rightwing presidential candidate is under investigation by federal police over alleged corruption and money laundering
+**发生了什么：** The decision to hold rates at the October meeting was less contested than we expected
 **为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions
-**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 中性。
+### 2. European gas prices jump above €100 on fears of Iran war escalation
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Having lost the first round of Brazil’s presidential election to far right rival Flávio Bolsonaro, incumbent Luiz Inácio Lula da Silva spectacularly triumphed in the second. The Guardian’s Latin America corrrespondent Tom Phillips answered your questions on what’s next for Brazil. Jeremy Hurley asks: Why did the Brazil stock market tank after the election result, and will it recover? Tom: Basically, because the markets had been convinced that Flávio Bolsonaro was going to win and that after taking power he would implement a “chainsaw” style austerity programme inspired by Javier Milei’s government in Argentina, deal with Brazil’s budget deficit, and bring down interest rates. Lula’s victory came as a shock to investors who believe his fourth presidency will see increased and unsustainable public spending. Yes, I’m sure things will stabilise at some point soon after the initial panic – during Lula’s previous administrations investors made a lot of money, particularly during his first two terms. There is talk of Lula naming his vice-president, the centre-right politician Geraldo Alckmin, as finance minister in order to calm markets down. Another possible name Rafael Fonteles, a mathematician who is the governor of Piauí and used to run that state’s finances. Tom: That’s a really good question and, as someone who lives in Rio de Janeiro, it is one that has been on my mind a lot. The far right has been very good at blaming “soft” left wing policies and federal government incompetence for the failure to control armed violence. It was a huge part of the campaign against Lula in the run up to this election. But public security is a state matter and Rio state has largely been governed by the right for years now. Their hard-line, shoot first ask questions later approach has not worked - in fact many believe it has made the violence even worse and led to massacres such as the one I covered in the Complexo da Penha almost exactly one year ago. It must be said that similar tactics have been used in Bahia state, which has a huge problem with violence and is governed by the Worker’s party (PT). My colleague Tiago Rogero has written about this . Continue reading...
+**发生了什么：** Traders are also concerned by forecasts of cold winter at a time when gas storage levels are low
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Lula wins fourth term in dramatic Brazil election comeback / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right / What to Know About Brazil’s Election as Bolsonaro Faces Off With Lula。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：European gas prices soar to four-year high over winter supply fears。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. Iran threatens South Korean shipping group over Hormuz transits
+### 3. The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The U.K. budget cuts household energy costs, raises taxes on banks and directs billions toward defense, Ukraine and artificial intelligence
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Iran threatens South Korean shipping group over Hormuz transits
 **一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
 **发生了什么：** Sinokor accused of repeated ‘crossing violations’ by regime that has only enforced its rules through military action
@@ -56,25 +68,25 @@
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Iran threatens South Korean shipping group over Hormuz transits。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. China Steps In to Rescue Stocks, But the Market Continues to Fall
-**一句话结论：** 这是一个与 geopolitics, markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The Communist Party uses a “national team” of state-owned investment funds to stem the market rout. But this time, investors are not sure it will work.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets, macro 重新定价。
+### 5. Federal Reserve issues FOMC statement
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：是。
+**发生了什么：** Federal Reserve issues FOMC statement
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. Russia and Ukraine begin local ceasefire in frontline city
+### 6. Netanyahu ahead but no clear winner in Israeli election
 **一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Humanitarian truce aims to evacuate residents stuck in Oleshky, who have been cut off from food and medicine
+**发生了什么：** Prime minister urges rivals to join Jewish coalition and shun Arab parties as neither bloc set for majority
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -83,33 +95,21 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Bond investors are starting to say ‘anything but tech.’ What that means for the AI boom.
-**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** AI financing has been harder and more expensive to come by as the capital-spending boom comes under more scrutiny.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
 ## 连续事件追踪
 
-- Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil ｜ 关键词：vio / presidential / bolsonaro / passport | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions ｜ 关键词：right / our / presidential / round | 近 7 天出现 3 次 | 上次出现：2026-10-26T19:04:05 | 近期标题：Lula wins fourth term in dramatic Brazil election comeback / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right / What to Know About Brazil’s Election as Bolsonaro Faces Off With Lula
-- Iran threatens South Korean shipping group over Hormuz transits ｜ 关键词：sinokor / iran / south / rules | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- China Steps In to Rescue Stocks, But the Market Continues to Fall ｜ 关键词：but / party / team / stem | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Russia and Ukraine begin local ceasefire in frontline city ｜ 关键词：ceasefire / oleshky / ukraine / truce | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Bond investors are starting to say ‘anything but tech.’ What that means for the AI boom. ｜ 关键词：but / come / say / means | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Fed holds rates as expected and upgrades view on economy ｜ 关键词：rates / holds / decision / fed | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- European gas prices jump above €100 on fears of Iran war escalation ｜ 关键词：storage / fears / concerned / jump | 近 7 天出现 1 次 | 上次出现：2026-10-26T19:04:05 | 近期标题：European gas prices soar to four-year high over winter supply fears
+- The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget ｜ 关键词：bills / cuts / household / budget | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Iran threatens South Korean shipping group over Hormuz transits ｜ 关键词：violations / accused / sinokor / repeated | 近 7 天出现 1 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：Iran threatens South Korean shipping group over Hormuz transits
+- Federal Reserve issues FOMC statement ｜ 关键词：reserve / federal / cards / interest | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Netanyahu ahead but no clear winner in Israeli election ｜ 关键词：clear / prime / election / netanyahu | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil 是否获得更多官方确认或实质性进展。
-2. ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions 是否获得更多官方确认或实质性进展。
-3. Iran threatens South Korean shipping group over Hormuz transits 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
+1. Fed holds rates as expected and upgrades view on economy 是否获得更多官方确认或实质性进展。
+2. European gas prices jump above €100 on fears of Iran war escalation 是否获得更多官方确认或实质性进展。
+3. The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 上涨 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -132,7 +132,7 @@
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 美联储/政策换挡 | 新闻命中：fed / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
+| 美联储/政策换挡 | 新闻命中：fed / federal reserve / fomc / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
 | 能源/通道冲击 | 新闻命中：hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
@@ -146,10 +146,10 @@
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Iran threatens South Korean shipping group over Hormuz transits | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -1.80% 下跌；布伦特原油 -5.51% 下跌；黄金 +0.77% 上涨；美元指数 +0.35% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -1.80% 下跌；布伦特原油 -5.51% 下跌；美元指数 +0.35% 上涨；VIX -3.43% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 +0.35% 上涨；美国10Y国债收益率 +0.14% 震荡；VIX -3.43% 下跌；标普500期货 +0.53% 上涨。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
-| China Steps In to Rescue Stocks, But the Market Continues to Fall | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -1.80% 下跌；布伦特原油 -5.51% 下跌；黄金 +0.77% 上涨；美元指数 +0.35% 上涨。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| European gas prices jump above €100 on fears of Iran war escalation | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；黄金 -0.73% 下跌；美元指数 +0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Iran threatens South Korean shipping group over Hormuz transits | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；黄金 -0.73% 下跌；美元指数 +0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Netanyahu ahead but no clear winner in Israeli election | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；美元指数 +0.07% 震荡；VIX -1.43% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Fed holds rates as expected and upgrades view on economy | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 +0.07% 震荡；美国10Y国债收益率 +0.86% 上涨；VIX -1.43% 下跌；标普500期货 +0.05% 震荡。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -190,7 +190,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 16 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.26%｜相对基准 +0.24%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -245,13 +245,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-27T18:35:17 UTC / 2026-10-28T02:35:17 BJT。
-- 抓取窗口：2026-10-26T18:35:17 UTC → 2026-10-27T18:35:17 UTC。
-- 实际新闻：共 137 条；最早 2026-10-26T18:35:20，最新 2026-10-27T18:35:17；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 17/39；API 4/5；官方源 5/28；官方网页 6 条。
+- 生成时间：2026-10-28T18:41:39 UTC / 2026-10-29T02:41:39 BJT。
+- 抓取窗口：2026-10-27T18:41:39 UTC → 2026-10-28T18:41:39 UTC。
+- 实际新闻：共 122 条；最早 2026-10-27T18:41:41，最新 2026-10-28T18:41:39；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 18/39；API 4/5；官方源 6/28；官方网页 5 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 8 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 8｜中 96｜低 33。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 抓取失败样例：SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：27 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 9 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 7｜中 93｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
