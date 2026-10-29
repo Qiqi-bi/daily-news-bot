@@ -4,78 +4,66 @@
 
 ## 30 秒总览
 
-- Fed holds rates as expected and upgrades view on economy；主要影响：macro, geopolitics, markets；方向：偏利空。
-- European gas prices jump above €100 on fears of Iran war escalation；主要影响：geopolitics, energy, markets；方向：分化。
-- The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget；主要影响：geopolitics, energy, macro；方向：分化。
-- Iran threatens South Korean shipping group over Hormuz transits；主要影响：geopolitics, energy, markets；方向：中性。
-- Federal Reserve issues FOMC statement；主要影响：macro；方向：中性。
+- Flávio Bolsonaro calls himself 'leader of Brazil' after election loss；主要影响：geopolitics；方向：中性。
+- U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’；主要影响：macro, geopolitics；方向：分化。
+- ECB President Lagarde to step down on 7 February 2027；主要影响：macro；方向：中性。
+- 中智（利）两国央行续签双边本币互换协议；主要影响：macro；方向：中性。
+- Some investors have midterm election jitters. Here’s what history shows about stocks；主要影响：geopolitics, markets；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：102.79 USD | 日变动 +2.893% | 上涨
-- 布伦特原油：111.70 USD | 日变动 -1.914% | 下跌
-- 黄金：4,044.70 USD | 日变动 -0.734% | 下跌
-- 美元指数：102.39 USD | 日变动 +0.069% | 震荡
-- 美国10Y国债收益率：5.036 USD | 日变动 +0.861% | 上涨
-- VIX：17.270 USD | 日变动 -1.427% | 下跌
-- 标普500期货：7,762.25 USD | 日变动 +0.052% | 震荡
-- 纳斯达克100期货：29,823.50 USD | 日变动 +0.039% | 震荡
+- WTI原油：102.15 USD | 日变动 -0.613% | 下跌
+- 布伦特原油：110.84 USD | 日变动 -3.885% | 下跌
+- 黄金：4,019.50 USD | 日变动 -0.792% | 下跌
+- 美元指数：102.03 USD | 日变动 -0.158% | 震荡
+- 美国10Y国债收益率：4.989 USD | 日变动 -1.110% | 下跌
+- VIX：17.050 USD | 日变动 +0.828% | 上涨
+- 标普500期货：7,729.50 USD | 日变动 -0.691% | 下跌
+- 纳斯达克100期货：29,436.75 USD | 日变动 -1.810% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Fed holds rates as expected and upgrades view on economy
-**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 偏利空。
+### 1. Flávio Bolsonaro calls himself 'leader of Brazil' after election loss
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** The decision to hold rates at the October meeting was less contested than we expected
+**发生了什么：** The defeated presidential candidate says he will lead the opposition from the US.
 **为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil / ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. European gas prices jump above €100 on fears of Iran war escalation
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+### 2. U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’
+**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Traders are also concerned by forecasts of cold winter at a time when gas storage levels are low
+**发生了什么：** The Treasury Department accused Rwanda of undermining a U.S.-brokered peace agreement by supporting a rebel group in the eastern Democratic Republic of Congo.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：European gas prices soar to four-year high over winter supply fears。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget
-**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The U.K. budget cuts household energy costs, raises taxes on banks and directs billions toward defense, Ukraine and artificial intelligence
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. Iran threatens South Korean shipping group over Hormuz transits
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Sinokor accused of repeated ‘crossing violations’ by regime that has only enforced its rules through military action
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Iran threatens South Korean shipping group over Hormuz transits。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Federal Reserve issues FOMC statement
+### 3. ECB President Lagarde to step down on 7 February 2027
 **一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：是。
-**发生了什么：** Federal Reserve issues FOMC statement
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：是。
+**发生了什么：** ECB President Lagarde to step down on 7 February 2027
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. 中智（利）两国央行续签双边本币互换协议
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：中智（利）两国央行续签双边本币互换协议
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
@@ -83,33 +71,45 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Netanyahu ahead but no clear winner in Israeli election
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Prime minister urges rivals to join Jewish coalition and shun Arab parties as neither bloc set for majority
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+### 5. Some investors have midterm election jitters. Here’s what history shows about stocks
+**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Investors are anxious about the 2026 midterms. Here's what historical S&P 500 data shows happened before and after past elections.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. Banks and healthcare firms are outbidding tech for software talent, major recruiter says
+**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Banks and healthcare firms are paying more than tech companies for AI talent as demand rises and layoffs reshape the talent market, per Randstad research.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Fed holds rates as expected and upgrades view on economy ｜ 关键词：rates / holds / decision / fed | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- European gas prices jump above €100 on fears of Iran war escalation ｜ 关键词：storage / fears / concerned / jump | 近 7 天出现 1 次 | 上次出现：2026-10-26T19:04:05 | 近期标题：European gas prices soar to four-year high over winter supply fears
-- The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget ｜ 关键词：bills / cuts / household / budget | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Iran threatens South Korean shipping group over Hormuz transits ｜ 关键词：violations / accused / sinokor / repeated | 近 7 天出现 1 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：Iran threatens South Korean shipping group over Hormuz transits
-- Federal Reserve issues FOMC statement ｜ 关键词：reserve / federal / cards / interest | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Netanyahu ahead but no clear winner in Israeli election ｜ 关键词：clear / prime / election / netanyahu | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Flávio Bolsonaro calls himself 'leader of Brazil' after election loss ｜ 关键词：bolsonaro / brazil / vio / election | 近 7 天出现 3 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil / ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right
+- U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ ｜ 关键词：accused / declared / sanctions / trump | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- ECB President Lagarde to step down on 7 February 2027 ｜ 关键词：lagarde / president / step / down | 近 7 天出现 1 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions
+- 中智（利）两国央行续签双边本币互换协议 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Some investors have midterm election jitters. Here’s what history shows about stocks ｜ 关键词：history / anxious / some / midterm | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Banks and healthcare firms are outbidding tech for software talent, major recruiter says ｜ 关键词：talent / recruiter / major / software | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Fed holds rates as expected and upgrades view on economy 是否获得更多官方确认或实质性进展。
-2. European gas prices jump above €100 on fears of Iran war escalation 是否获得更多官方确认或实质性进展。
-3. The UK cuts energy bills, taxes banks and boosts defense in high-stakes budget 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 上涨 方向。
+1. Flávio Bolsonaro calls himself 'leader of Brazil' after election loss 是否获得更多官方确认或实质性进展。
+2. U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ 是否获得更多官方确认或实质性进展。
+3. ECB President Lagarde to step down on 7 February 2027 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 下跌 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -126,30 +126,29 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
-- 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
+- 宏观爆破风险低：暂未看到政策换挡、油价、美元、VIX和高估值资产形成共振。
+- 纪律：继续观察，不自动买卖。
 
-| 风险线 | 事实 | 推测 | 验证 | 失效 |
-|---|---|---|---|---|
-| 美联储/政策换挡 | 新闻命中：fed / federal reserve / fomc / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
-| 能源/通道冲击 | 新闻命中：hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+### 固定框架
+
+- 先问谁被迫交易：谁要补保证金、谁现金流紧、谁必须卖资产换美元。
+- 再问谁有现金等打折：现金方只需要等，缺钱方才会被迫接受折价。
+- 政策只看传导链：降息、缩表、油价、美元、美债和VIX必须放在一起看。
+- 黄金短跌不等于避险失效：美元荒时，黄金可能先被卖掉换现金。
+- 用途是风险闸门：只决定追不追、等不等、留不留现金，不自动生成买卖。
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 1 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| European gas prices jump above €100 on fears of Iran war escalation | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；黄金 -0.73% 下跌；美元指数 +0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Iran threatens South Korean shipping group over Hormuz transits | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；黄金 -0.73% 下跌；美元指数 +0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Netanyahu ahead but no clear winner in Israeli election | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +2.89% 上涨；布伦特原油 -1.91% 下跌；美元指数 +0.07% 震荡；VIX -1.43% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Fed holds rates as expected and upgrades view on economy | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 +0.07% 震荡；美国10Y国债收益率 +0.86% 上涨；VIX -1.43% 下跌；标普500期货 +0.05% 震荡。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
+| U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.61% 下跌；布伦特原油 -3.88% 下跌；黄金 -0.79% 下跌；美元指数 -0.16% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -190,68 +189,68 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
-- AI电力底座：T+30 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 电力：T+30 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.26%｜相对基准 +0.24%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 能源电力链：T+30 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 本次新增待验证信号 9 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 有色/黄金：T+30 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
+- 红利低波：T+30 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02%；T+60 样本不足；T+90 样本不足；结论：保留加权。
+- 红利低波/防御：T+30 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02%；T+60 样本不足；T+90 样本不足；结论：保留加权。
+- 资源品/关键矿产：T+30 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
-| AI电力底座 | 28 | 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电力 | 28 | 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 10次｜胜率 0%｜均值 -5.26%｜相对基准 +0.24% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 风电/算力绿电 | 28 | 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电网/储能/火电调峰 | 28 | 10次｜胜率 0%｜均值 -6.05%｜相对基准 -0.55% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 有色/黄金 | 27 | 10次｜胜率 0%｜均值 -8.66%｜相对基准 -3.31% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
-| 资源品/关键矿产 | 27 | 10次｜胜率 0%｜均值 -8.66%｜相对基准 -3.31% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波 | 28 | 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| 红利低波/防御 | 28 | 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| 资源品/关键矿产 | 28 | 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| AI电力底座 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 电力 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| A股宽基/中国宏观 | 28 | 12次｜胜率 0%｜均值 -5.27%｜相对基准 +0.47% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 能源电力链 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
-- 红利低波：T30 样本 10，胜率 90%，均值 +2.05%，相对基准 +7.40%，动作：优先保留权重。
-- 红利低波/防御：T30 样本 10，胜率 90%，均值 +2.05%，相对基准 +7.40%，动作：优先保留权重。
-- A股宽基/中国宏观：T30 样本 10，胜率 0%，均值 -5.26%，相对基准 +0.24%，动作：降权复盘。
+- 红利低波：T30 样本 12，胜率 92%，均值 +2.41%，相对基准 +8.02%，动作：优先保留权重。
+- 红利低波/防御：T30 样本 12，胜率 92%，均值 +2.41%，相对基准 +8.02%，动作：优先保留权重。
+- 黄金/实际利率：T30 样本 6，胜率 0%，均值 -4.89%，相对基准 +0.00%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
-| 红利低波 | T30 | 10 | 90% | +2.05% | +7.40% | 优先保留权重 |
-| 红利低波/防御 | T30 | 10 | 90% | +2.05% | +7.40% | 优先保留权重 |
-| A股宽基/中国宏观 | T30 | 10 | 0% | -5.26% | +0.24% | 降权复盘 |
-| 黄金/实际利率 | T30 | 5 | 0% | -5.06% | +0.00% | 降权复盘 |
-| AI电力底座 | T30 | 10 | 0% | -6.05% | -0.55% | 降权复盘 |
-| 电力 | T30 | 10 | 0% | -6.05% | -0.55% | 降权复盘 |
-| 能源电力链 | T30 | 10 | 0% | -6.05% | -0.55% | 降权复盘 |
-| 风电/算力绿电 | T30 | 10 | 0% | -6.05% | -0.55% | 降权复盘 |
+| 红利低波 | T30 | 12 | 92% | +2.41% | +8.02% | 优先保留权重 |
+| 红利低波/防御 | T30 | 12 | 92% | +2.41% | +8.02% | 优先保留权重 |
+| 黄金/实际利率 | T30 | 6 | 0% | -4.89% | +0.00% | 降权复盘 |
+| A股宽基/中国宏观 | T30 | 12 | 0% | -5.27% | +0.47% | 降权复盘 |
+| AI电力底座 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
+| 电力 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
+| 能源电力链 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
+| 风电/算力绿电 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
 
 ## 错误复盘库
 
 - 错误复盘库记录 12 条负向样本；最多的问题是：行业逻辑未兑现。
-- 半导体 / 科创芯片ETF：T30 -25.11%，相对基准 -14.23%，价格确认失败；降低该主题权重，避免把短期叙事当作趋势。
-- 半导体材料/卡脖子链 / 科创芯片ETF：T30 -25.11%，相对基准 -14.23%，行业逻辑未兑现；同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。
+- 半导体 / 科创芯片ETF：T30 -25.95%，相对基准 -19.02%，价格确认失败；降低该主题权重，避免把短期叙事当作趋势。
+- 半导体材料/卡脖子链 / 科创芯片ETF：T30 -25.95%，相对基准 -19.02%，行业逻辑未兑现；同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。
 
 | 主题 | 标的 | 窗口 | 结果 | 相对基准 | 原因 | 下次规则 |
 |---|---|---|---:|---:|---|---|
+| 半导体 | 科创芯片ETF | T30 | -25.95% | -19.02% | 价格确认失败 | 降低该主题权重，避免把短期叙事当作趋势。 |
+| 半导体材料/卡脖子链 | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 氦气/电子特气 | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 六氟化钨/前驱体 | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 光刻胶/靶材 | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 先进封装/玻璃基板 | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
+| 光通信/空心光纤/CPO | 科创芯片ETF | T30 | -25.95% | -19.02% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
 | 半导体 | 科创芯片ETF | T30 | -25.11% | -14.23% | 价格确认失败 | 降低该主题权重，避免把短期叙事当作趋势。 |
-| 半导体材料/卡脖子链 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 氦气/电子特气 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 六氟化钨/前驱体 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 光刻胶/靶材 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 先进封装/玻璃基板 | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 光通信/空心光纤/CPO | 科创芯片ETF | T30 | -25.11% | -14.23% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
-| 新能源价格周期 | 创业板ETF易方达 | T30 | -24.17% | +0.00% | 行业逻辑未兑现 | 同类行业先确认政策、订单和价格三项，不让故事直接升级成交易。 |
 
 > 这是基于系统每日候选信号和后续价格表现的事后验算，不是收益保证，也不是自动交易指令；样本满足后会对长期低命中的主题自动降权。
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-28T18:41:39 UTC / 2026-10-29T02:41:39 BJT。
-- 抓取窗口：2026-10-27T18:41:39 UTC → 2026-10-28T18:41:39 UTC。
-- 实际新闻：共 122 条；最早 2026-10-27T18:41:41，最新 2026-10-28T18:41:39；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 18/39；API 4/5；官方源 6/28；官方网页 5 条。
+- 生成时间：2026-10-29T18:50:08 UTC / 2026-10-30T02:50:08 BJT。
+- 抓取窗口：2026-10-28T18:50:08 UTC → 2026-10-29T18:50:08 UTC。
+- 实际新闻：共 137 条；最早 2026-10-28T18:50:26，最新 2026-10-29T18:50:08；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 6 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：27 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 9 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 7｜中 93｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 10｜中 99｜低 28。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
