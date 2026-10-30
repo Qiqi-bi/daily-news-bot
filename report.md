@@ -4,77 +4,53 @@
 
 ## 30 秒总览
 
-- Flávio Bolsonaro calls himself 'leader of Brazil' after election loss；主要影响：geopolitics；方向：中性。
-- U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’；主要影响：macro, geopolitics；方向：分化。
-- ECB President Lagarde to step down on 7 February 2027；主要影响：macro；方向：中性。
-- 中智（利）两国央行续签双边本币互换协议；主要影响：macro；方向：中性。
-- Some investors have midterm election jitters. Here’s what history shows about stocks；主要影响：geopolitics, markets；方向：中性。
+- Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz；主要影响：macro, geopolitics, energy；方向：中性。
+- Binance rushes to recover customer money after $6.3bn heist；主要影响：markets；方向：中性。
+- Alaska Senate: Judge fast tracks new bids to dismiss DOJ lawsuit over 2nd Sullivan candidacy；主要影响：geopolitics, markets；方向：中性。
+- Intel stock heads for worst day in more than 50 years, wiping $12 billion off government's stake；主要影响：technology, markets；方向：偏利多。
+- Philip R. Lane: AI adoption in Europe；主要影响：technology, macro；方向：偏利多。
 
 ## 市场价格快照
 
-- WTI原油：102.15 USD | 日变动 -0.613% | 下跌
-- 布伦特原油：110.84 USD | 日变动 -3.885% | 下跌
-- 黄金：4,019.50 USD | 日变动 -0.792% | 下跌
-- 美元指数：102.03 USD | 日变动 -0.158% | 震荡
-- 美国10Y国债收益率：4.989 USD | 日变动 -1.110% | 下跌
-- VIX：17.050 USD | 日变动 +0.828% | 上涨
-- 标普500期货：7,729.50 USD | 日变动 -0.691% | 下跌
-- 纳斯达克100期货：29,436.75 USD | 日变动 -1.810% | 下跌
+- WTI原油：104.74 USD | 日变动 +2.686% | 上涨
+- 布伦特原油：113.66 USD | 日变动 -1.062% | 下跌
+- 黄金：3,888.70 USD | 日变动 -3.540% | 下跌
+- 美元指数：101.94 USD | 日变动 -0.096% | 震荡
+- 美国10Y国债收益率：4.935 USD | 日变动 -1.082% | 下跌
+- VIX：22.020 USD | 日变动 +28.023% | 上涨
+- 标普500期货：7,581.25 USD | 日变动 -2.231% | 下跌
+- 纳斯达克100期货：28,387.50 USD | 日变动 -3.973% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Flávio Bolsonaro calls himself 'leader of Brazil' after election loss
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** The defeated presidential candidate says he will lead the opposition from the US.
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil / ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’
-**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 分化。
+### 1. Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz
+**一句话结论：** 这是一个与 macro, geopolitics, energy 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The Treasury Department accused Rwanda of undermining a U.S.-brokered peace agreement by supporting a rebel group in the eastern Democratic Republic of Congo.
+**发生了什么：** Soaring freight rates are giving tankers a big financial incentive to run the gauntlet through the Strait of Hormuz.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. ECB President Lagarde to step down on 7 February 2027
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 3 家；官方确认：是。
-**发生了什么：** ECB President Lagarde to step down on 7 February 2027
+### 2. Binance rushes to recover customer money after $6.3bn heist
+**一句话结论：** 这是一个与 markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** World’s largest crypto exchange says an engineer’s laptop was compromised in major security breach
 **为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. 中智（利）两国央行续签双边本币互换协议
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** 官方网页抓取：中智（利）两国央行续签双边本币互换协议
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. Some investors have midterm election jitters. Here’s what history shows about stocks
+### 3. Alaska Senate: Judge fast tracks new bids to dismiss DOJ lawsuit over 2nd Sullivan candidacy
 **一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Investors are anxious about the 2026 midterms. Here's what historical S&P 500 data shows happened before and after past elections.
+**发生了什么：** The winner of the Alaska election could determine whether Republicans retain their majority in the U.S. Senate or if Democrats take control of the chamber.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -83,12 +59,36 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Banks and healthcare firms are outbidding tech for software talent, major recruiter says
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Banks and healthcare firms are paying more than tech companies for AI talent as demand rises and layoffs reshape the talent market, per Randstad research.
+### 4. Intel stock heads for worst day in more than 50 years, wiping $12 billion off government's stake
+**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Investors are nervous about the massive AI spending from the tech giants and whether that will pay off.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Philip R. Lane: AI adoption in Europe
+**一句话结论：** 这是一个与 technology, macro 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** Philip R. Lane: AI adoption in Europe
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → technology, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. Fed officials are already saying they’ll need to get back to hiking rates
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The comments from Federal Reserve Presidents Alberto Musalem and Lorie Logan offer the first morsels of insight into what leaders at the Fed see happening next.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,19 +97,19 @@
 
 ## 连续事件追踪
 
-- Flávio Bolsonaro calls himself 'leader of Brazil' after election loss ｜ 关键词：bolsonaro / brazil / vio / election | 近 7 天出现 3 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：Flávio Bolsonaro’s passport cancelled as reports say he has fled Brazil / ‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions / Lula Defeats Bolsonaro for Brazil Presidency, in Blow to Latin America’s Right
-- U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ ｜ 关键词：accused / declared / sanctions / trump | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- ECB President Lagarde to step down on 7 February 2027 ｜ 关键词：lagarde / president / step / down | 近 7 天出现 1 次 | 上次出现：2026-10-27T18:35:17 | 近期标题：‘Will Lula’s win end Latin America’s far right turn?’: Our correspondent in Brazil answered your questions
-- 中智（利）两国央行续签双边本币互换协议 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Some investors have midterm election jitters. Here’s what history shows about stocks ｜ 关键词：history / anxious / some / midterm | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Banks and healthcare firms are outbidding tech for software talent, major recruiter says ｜ 关键词：talent / recruiter / major / software | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz ｜ 关键词：financial / escalation / incentive / iranian | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Binance rushes to recover customer money after $6.3bn heist ｜ 关键词：crypto / heist / binance / exchange | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Alaska Senate: Judge fast tracks new bids to dismiss DOJ lawsuit over 2nd Sullivan candidacy ｜ 关键词：fast / alaska / election / dismiss | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Intel stock heads for worst day in more than 50 years, wiping $12 billion off government's stake ｜ 关键词：tech / investors / nervous / spending | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Philip R. Lane: AI adoption in Europe ｜ 关键词：lane / philip / adoption / europe | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Fed officials are already saying they’ll need to get back to hiking rates ｜ 关键词：presidents / back / they / get | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Flávio Bolsonaro calls himself 'leader of Brazil' after election loss 是否获得更多官方确认或实质性进展。
-2. U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ 是否获得更多官方确认或实质性进展。
-3. ECB President Lagarde to step down on 7 February 2027 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
+1. Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz 是否获得更多官方确认或实质性进展。
+2. Binance rushes to recover customer money after $6.3bn heist 是否获得更多官方确认或实质性进展。
+3. Alaska Senate: Judge fast tracks new bids to dismiss DOJ lawsuit over 2nd Sullivan candidacy 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 上涨 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -126,29 +126,29 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：暂未看到政策换挡、油价、美元、VIX和高估值资产形成共振。
-- 纪律：继续观察，不自动买卖。
+- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
+- 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
-### 固定框架
-
-- 先问谁被迫交易：谁要补保证金、谁现金流紧、谁必须卖资产换美元。
-- 再问谁有现金等打折：现金方只需要等，缺钱方才会被迫接受折价。
-- 政策只看传导链：降息、缩表、油价、美元、美债和VIX必须放在一起看。
-- 黄金短跌不等于避险失效：美元荒时，黄金可能先被卖掉换现金。
-- 用途是风险闸门：只决定追不追、等不等、留不留现金，不自动生成买卖。
+| 风险线 | 事实 | 推测 | 验证 | 失效 |
+|---|---|---|---|---|
+| 美联储/政策换挡 | 新闻命中：fed / federal reserve | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
+| 能源/通道冲击 | 新闻命中：oil / crude / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 美股去杠杆 | 纳斯达克100期货 -3.97% 下跌；VIX +28.02% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 1 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
+- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| U.S. Hits Rwanda With New Sanctions Over a Conflict Trump Declared ‘Ended’ | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.61% 下跌；布伦特原油 -3.88% 下跌；黄金 -0.79% 下跌；美元指数 -0.16% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.69% 上涨；布伦特原油 -1.06% 下跌；黄金 -3.54% 下跌；美元指数 -0.10% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Binance rushes to recover customer money after $6.3bn heist | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +2.69% 上涨；布伦特原油 -1.06% 下跌；黄金 -3.54% 下跌；美元指数 -0.10% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -189,39 +189,39 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 9 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 14 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - 有色/黄金：T+30 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
 - 红利低波：T+30 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02%；T+60 样本不足；T+90 样本不足；结论：保留加权。
-- 红利低波/防御：T+30 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02%；T+60 样本不足；T+90 样本不足；结论：保留加权。
-- 资源品/关键矿产：T+30 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
+- AI电力底座：T+30 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 电力：T+30 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
 | 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
 | 红利低波 | 28 | 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
-| 红利低波/防御 | 28 | 12次｜胜率 92%｜均值 +2.41%｜相对基准 +8.02% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
-| 资源品/关键矿产 | 28 | 12次｜胜率 0%｜均值 -8.44%｜相对基准 -2.83% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
 | AI电力底座 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 电力 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 12次｜胜率 0%｜均值 -5.27%｜相对基准 +0.47% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 12次｜胜率 8%｜均值 -6.00%｜相对基准 -0.26% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 红利低波/防御 | 26 | 10次｜胜率 100%｜均值 +2.86%｜相对基准 +8.52% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| 资源品/关键矿产 | 26 | 10次｜胜率 0%｜均值 -8.52%｜相对基准 -2.87% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| A股宽基/中国宏观 | 26 | 10次｜胜率 0%｜均值 -5.52%｜相对基准 +0.29% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 能源电力链 | 26 | 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
+- 红利低波/防御：T30 样本 10，胜率 100%，均值 +2.86%，相对基准 +8.52%，动作：优先保留权重。
 - 红利低波：T30 样本 12，胜率 92%，均值 +2.41%，相对基准 +8.02%，动作：优先保留权重。
-- 红利低波/防御：T30 样本 12，胜率 92%，均值 +2.41%，相对基准 +8.02%，动作：优先保留权重。
 - 黄金/实际利率：T30 样本 6，胜率 0%，均值 -4.89%，相对基准 +0.00%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
+| 红利低波/防御 | T30 | 10 | 100% | +2.86% | +8.52% | 优先保留权重 |
 | 红利低波 | T30 | 12 | 92% | +2.41% | +8.02% | 优先保留权重 |
-| 红利低波/防御 | T30 | 12 | 92% | +2.41% | +8.02% | 优先保留权重 |
 | 黄金/实际利率 | T30 | 6 | 0% | -4.89% | +0.00% | 降权复盘 |
-| A股宽基/中国宏观 | T30 | 12 | 0% | -5.27% | +0.47% | 降权复盘 |
+| A股宽基/中国宏观 | T30 | 10 | 0% | -5.52% | +0.29% | 降权复盘 |
 | AI电力底座 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
 | 电力 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
-| 能源电力链 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
-| 风电/算力绿电 | T30 | 12 | 8% | -6.00% | -0.26% | 降权复盘 |
+| 能源电力链 | T30 | 10 | 10% | -6.29% | -0.49% | 降权复盘 |
+| 风电/算力绿电 | T30 | 10 | 10% | -6.29% | -0.49% | 降权复盘 |
 
 ## 错误复盘库
 
@@ -244,13 +244,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-10-29T18:50:08 UTC / 2026-10-30T02:50:08 BJT。
-- 抓取窗口：2026-10-28T18:50:08 UTC → 2026-10-29T18:50:08 UTC。
-- 实际新闻：共 137 条；最早 2026-10-28T18:50:26，最新 2026-10-29T18:50:08；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 6 条。
+- 生成时间：2026-10-30T18:27:52 UTC / 2026-10-31T02:27:52 BJT。
+- 抓取窗口：2026-10-29T18:27:52 UTC → 2026-10-30T18:27:52 UTC。
+- 实际新闻：共 132 条；最早 2026-10-29T18:28:00，最新 2026-10-30T18:27:52；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 17/39；API 4/5；官方源 8/28；官方网页 10 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：SSE Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：26 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
 - 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 10｜中 99｜低 28。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 剩余文章可信度分布：高 14｜中 91｜低 27。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
