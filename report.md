@@ -4,65 +4,29 @@
 
 ## 30 秒总览
 
-- Everything changed for the oil, AI and bond trades over the past month；主要影响：macro, energy, technology, markets；方向：偏利空。
-- The midterm election could reshape the muni bond market. Here’s what investors need to know；主要影响：macro, geopolitics, markets；方向：中性。
-- Michigan Democrat Haley Stevens endorses Republican instead of Abdul El-Sayed；主要影响：geopolitics；方向：分化。
-- How a Little-Known Company Dominated the Persian Gulf Oil Trade；主要影响：geopolitics, energy, macro；方向：分化。
-- Alaska Sen. Sullivan says he'll accept election results, slams Peltola campaign’s reported recruitment of 2nd Sullivan；主要影响：geopolitics, markets；方向：中性。
+- Crude oil prices sell off more than 7% on Iran peace talk hopes ahead of U.S. midterms；主要影响：geopolitics, energy, macro；方向：中性。
+- Oil tumbles on hopes for US-Iran talks；主要影响：geopolitics, energy；方向：中性。
+- Trump to remove Rwanda and South Africa from US trade deal；主要影响：macro, geopolitics；方向：分化。
+- Ryanair says it may freeze workers' pay and raise airfares；主要影响：geopolitics, energy, macro；方向：分化。
+- Trump focuses on Reflecting Pool in final public speech before midterms；主要影响：geopolitics, markets；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：104.12 USD | 日变动 +2.078% | 上涨
-- 布伦特原油：113.43 USD | 日变动 -1.262% | 下跌
-- 黄金：3,898.90 USD | 日变动 -3.287% | 下跌
-- 美元指数：101.96 USD | 日变动 -0.074% | 震荡
-- 美国10Y国债收益率：4.929 USD | 日变动 -1.203% | 下跌
-- VIX：19.420 USD | 日变动 +12.907% | 上涨
-- 标普500期货：7,614.00 USD | 日变动 -1.809% | 下跌
-- 纳斯达克100期货：28,534.00 USD | 日变动 -3.477% | 下跌
+- WTI原油：96.260 USD | 日变动 -7.549% | 下跌
+- 布伦特原油：104.23 USD | 日变动 -11.399% | 下跌
+- 黄金：3,956.60 USD | 日变动 +1.480% | 上涨
+- 美元指数：101.78 USD | 日变动 -0.103% | 震荡
+- 美国10Y国债收益率：4.894 USD | 日变动 -0.710% | 下跌
+- VIX：21.150 USD | 日变动 +8.908% | 上涨
+- 标普500期货：7,587.25 USD | 日变动 -0.351% | 下跌
+- 纳斯达克100期货：28,223.75 USD | 日变动 -1.087% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Everything changed for the oil, AI and bond trades over the past month
-**一句话结论：** 这是一个与 macro, energy, technology, markets 相关的重要事件，市场方向偏向 偏利空。
+### 1. Crude oil prices sell off more than 7% on Iran peace talk hopes ahead of U.S. midterms
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The market expects oil to keep rising, but treasury yields have declined, a warning traders and investors may be more worried about an AI crash than inflation.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, energy, technology, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 2. The midterm election could reshape the muni bond market. Here’s what investors need to know
-**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The 2026 election could affect municipal bonds through state tax measures, new bond supply and the makeup of Congress.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Michigan Democrat Haley Stevens endorses Republican instead of Abdul El-Sayed
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Unity between Democratic progressives and moderates in key Senate race collapses in war of words over Israel
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. How a Little-Known Company Dominated the Persian Gulf Oil Trade
-**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** South Korea’s Sinokor controls about half the tanker transits through the Strait of Hormuz, benefiting from a big bet just before the war in Iran started.
+**发生了什么：** Oil fell Monday, amid news that both the U.S. and Iran are pursuing diplomacy amid ongoing Mideast tensions
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -71,10 +35,46 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. Alaska Sen. Sullivan says he'll accept election results, slams Peltola campaign’s reported recruitment of 2nd Sullivan
+### 2. Oil tumbles on hopes for US-Iran talks
+**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Prices extend decline after Iran’s president says supreme leader has given officials certain authority over talks
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. Trump to remove Rwanda and South Africa from US trade deal
+**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The move comes barely a week after Rwanda's defence ministry was hit with sanctions by the US Treasury.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Ryanair says it may freeze workers' pay and raise airfares
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The airline says fuel prices may rise by €2bn in 2028 unless there is an end to the US-Israel war with Iran.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Trump focuses on Reflecting Pool in final public speech before midterms
 **一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** President Donald Trump's Department of Justice has sued Alaska, demanding the state not certify the election if the incumbent Republican loses.
+**发生了什么：** Trump seemed to acknowledge that Democrats had an advantage heading into Election Day. "But we gave this a very strong shot," he said.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -83,33 +83,33 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. The US-China trade war seems to have subsided – but the sense of calm is misleading
-**一句话结论：** 这是一个与 macro, geopolitics, technology 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** A truce has cooled the trade conflict, but neither country has done anything to limit the outbreak of new hostilities Donald Trump ’s trade wars have largely fallen off the headlines. Fears of new tariffs flare up from time to time when the US president goes off the rails – for instance, threatening to end US trade with countries with which it has a deficit unless the Federal Reserve cuts interest rates. But the sense that the world’s two largest economies are plowing ahead into an overt economic conflagration has taken a back seat to other, more salient fears, about Trump ending American democracy, AI killing us all and stuff like that. The sense of calm is misleading. Under the radar, the world is marching toward an economic war of potentially epic proportions, one that, history suggests, could well spill over into the real thing. Continue reading...
+### 6. 中国人民银行 金融监管总局 中国证监会召开支持资本市场两项工具座谈会
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：中国人民银行 金融监管总局 中国证监会召开支持资本市场两项工具座谈会
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, technology 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Federal Reserve issues FOMC statement。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Everything changed for the oil, AI and bond trades over the past month ｜ 关键词：keep / but / declined / expects | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- The midterm election could reshape the muni bond market. Here’s what investors need to know ｜ 关键词：know / 2026 / midterm / affect | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Michigan Democrat Haley Stevens endorses Republican instead of Abdul El-Sayed ｜ 关键词：abdul / stevens / sayed / senate | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- How a Little-Known Company Dominated the Persian Gulf Oil Trade ｜ 关键词：sinokor / dominated / hormuz / persian | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Alaska Sen. Sullivan says he'll accept election results, slams Peltola campaign’s reported recruitment of 2nd Sullivan ｜ 关键词：campaign / trump / sullivan / department | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- The US-China trade war seems to have subsided – but the sense of calm is misleading ｜ 关键词：sense / truce / but / cooled | 近 7 天出现 1 次 | 上次出现：2026-10-28T18:41:39 | 近期标题：Federal Reserve issues FOMC statement
+- Crude oil prices sell off more than 7% on Iran peace talk hopes ahead of U.S. midterms ｜ 关键词：diplomacy / peace / fell / sell | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Oil tumbles on hopes for US-Iran talks ｜ 关键词：decline / tumbles / president / extend | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump to remove Rwanda and South Africa from US trade deal ｜ 关键词：trump / remove / move / ministry | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Ryanair says it may freeze workers' pay and raise airfares ｜ 关键词：workers / raise / airfares / may | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump focuses on Reflecting Pool in final public speech before midterms ｜ 关键词：trump / advantage / focuses / heading | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 中国人民银行 金融监管总局 中国证监会召开支持资本市场两项工具座谈会 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Everything changed for the oil, AI and bond trades over the past month 是否获得更多官方确认或实质性进展。
-2. The midterm election could reshape the muni bond market. Here’s what investors need to know 是否获得更多官方确认或实质性进展。
-3. Michigan Democrat Haley Stevens endorses Republican instead of Abdul El-Sayed 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 上涨 方向。
+1. Crude oil prices sell off more than 7% on Iran peace talk hopes ahead of U.S. midterms 是否获得更多官方确认或实质性进展。
+2. Oil tumbles on hopes for US-Iran talks 是否获得更多官方确认或实质性进展。
+3. Trump to remove Rwanda and South Africa from US trade deal 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 下跌 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -126,44 +126,44 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
+- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 美联储/政策换挡 | 新闻命中：fed / federal reserve / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
-| 能源/通道冲击 | 新闻命中：oil / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
-| 美股去杠杆 | 纳斯达克100期货 -3.48% 下跌；VIX +12.91% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
+| 能源/通道冲击 | 新闻命中：oil / crude | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 美股去杠杆 | 纳斯达克100期货 -1.09% 下跌；VIX +8.91% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
 - 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| How a Little-Known Company Dominated the Persian Gulf Oil Trade | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；黄金 -3.29% 下跌；美元指数 -0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| The US-China trade war seems to have subsided – but the sense of calm is misleading | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；黄金 -3.29% 下跌；美元指数 -0.07% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
-| Everything changed for the oil, AI and bond trades over the past month | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；黄金 -3.29% 下跌；美元指数 -0.07% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Alaska Sen. Sullivan says he'll accept election results, slams Peltola campaign’s reported recruitment of 2nd Sullivan | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；美元指数 -0.07% 震荡；VIX +12.91% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| The midterm election could reshape the muni bond market. Here’s what investors need to know | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；黄金 -3.29% 下跌；美元指数 -0.07% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Crude oil prices sell off more than 7% on Iran peace talk hopes ahead of U.S. midterms | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -7.55% 下跌；布伦特原油 -11.40% 下跌；黄金 +1.48% 上涨；美元指数 -0.10% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Oil tumbles on hopes for US-Iran talks | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -7.55% 下跌；布伦特原油 -11.40% 下跌；黄金 +1.48% 上涨；美元指数 -0.10% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Trump to remove Rwanda and South Africa from US trade deal | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -7.55% 下跌；布伦特原油 -11.40% 下跌；黄金 +1.48% 上涨；美元指数 -0.10% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 中。
-- 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
+- 今天没有生成强发酵预警卡；继续按核心事件、资源博弈和纪律面板观察。
+- 如果只有单一叙事，没有政策、订单或价格确认，先不升级。
 
-| 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
-|---|---|---|---|---|---|
-| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +2.08% 上涨；布伦特原油 -1.26% 下跌；黄金 -3.29% 下跌；美元指数 -0.07% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
+### 固定框架
+
+- 左侧线索：先找约束变化，不等所有人都确认后再追。
+- 预测对象：只预测可能发酵的主线和验证条件，不预测必涨必跌。
+- 验证顺序：政策/订单/产能/价格/相对强弱，至少两项同向才升级。
+- 失效条件：如果核心约束被解除，或价格不确认，就降级观察。
+- 组合纪律：预测卡片只提醒你看什么，不直接替你买卖。
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -189,39 +189,39 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
-- AI电力底座：T+30 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 电力：T+30 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.52%｜相对基准 +0.29%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 能源电力链：T+30 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 本次新增待验证信号 8 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 有色/黄金：T+30 12次｜胜率 0%｜均值 -8.98%｜相对基准 -2.97%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
+- 红利低波：T+30 12次｜胜率 100%｜均值 +2.97%｜相对基准 +8.99%；T+60 样本不足；T+90 样本不足；结论：保留加权。
+- AI电力底座：T+30 12次｜胜率 8%｜均值 -6.33%｜相对基准 -0.19%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 电力：T+30 12次｜胜率 8%｜均值 -6.33%｜相对基准 -0.19%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
-| AI电力底座 | 28 | 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电力 | 28 | 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 10次｜胜率 0%｜均值 -5.52%｜相对基准 +0.29% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 风电/算力绿电 | 28 | 10次｜胜率 10%｜均值 -6.29%｜相对基准 -0.49% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 有色/黄金 | 27 | 10次｜胜率 0%｜均值 -8.52%｜相对基准 -2.87% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
-| 红利低波 | 26 | 10次｜胜率 100%｜均值 +2.86%｜相对基准 +8.52% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
-| 半导体 | 24 | 10次｜胜率 0%｜均值 -19.40%｜相对基准 -11.72% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -8.98%｜相对基准 -2.97% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波 | 28 | 12次｜胜率 100%｜均值 +2.97%｜相对基准 +8.99% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| AI电力底座 | 28 | 12次｜胜率 8%｜均值 -6.33%｜相对基准 -0.19% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 电力 | 28 | 12次｜胜率 8%｜均值 -6.33%｜相对基准 -0.19% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| A股宽基/中国宏观 | 28 | 12次｜胜率 0%｜均值 -5.64%｜相对基准 +0.50% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 红利低波/防御 | 26 | 10次｜胜率 100%｜均值 +3.04%｜相对基准 +9.01% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| 资源品/关键矿产 | 26 | 10次｜胜率 0%｜均值 -9.35%｜相对基准 -3.37% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 能源电力链 | 26 | 10次｜胜率 10%｜均值 -6.54%｜相对基准 -0.41% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
-- 红利低波：T30 样本 10，胜率 100%，均值 +2.86%，相对基准 +8.52%，动作：优先保留权重。
-- 红利低波/防御：T30 样本 8，胜率 100%，均值 +2.92%，相对基准 +8.43%，动作：优先保留权重。
-- 电网/储能/火电调峰：T30 样本 9，胜率 11%，均值 -5.96%，相对基准 -0.20%，动作：降权复盘。
+- 红利低波/防御：T30 样本 10，胜率 100%，均值 +3.04%，相对基准 +9.01%，动作：优先保留权重。
+- 红利低波：T30 样本 12，胜率 100%，均值 +2.97%，相对基准 +8.99%，动作：优先保留权重。
+- A股宽基/中国宏观：T30 样本 12，胜率 0%，均值 -5.64%，相对基准 +0.50%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
-| 红利低波 | T30 | 10 | 100% | +2.86% | +8.52% | 优先保留权重 |
-| 红利低波/防御 | T30 | 8 | 100% | +2.92% | +8.43% | 优先保留权重 |
-| 电网/储能/火电调峰 | T30 | 9 | 11% | -5.96% | -0.20% | 降权复盘 |
-| 黄金/实际利率 | T30 | 5 | 0% | -4.93% | +0.00% | 降权复盘 |
-| A股宽基/中国宏观 | T30 | 10 | 0% | -5.52% | +0.29% | 降权复盘 |
-| AI电力底座 | T30 | 10 | 10% | -6.29% | -0.49% | 降权复盘 |
-| 电力 | T30 | 10 | 10% | -6.29% | -0.49% | 降权复盘 |
-| 能源电力链 | T30 | 10 | 10% | -6.29% | -0.49% | 降权复盘 |
+| 红利低波/防御 | T30 | 10 | 100% | +3.04% | +9.01% | 优先保留权重 |
+| 红利低波 | T30 | 12 | 100% | +2.97% | +8.99% | 优先保留权重 |
+| A股宽基/中国宏观 | T30 | 12 | 0% | -5.64% | +0.50% | 降权复盘 |
+| 黄金/实际利率 | T30 | 6 | 0% | -5.44% | +0.00% | 降权复盘 |
+| AI电力底座 | T30 | 12 | 8% | -6.33% | -0.19% | 降权复盘 |
+| 电力 | T30 | 12 | 8% | -6.33% | -0.19% | 降权复盘 |
+| 能源电力链 | T30 | 10 | 10% | -6.54% | -0.41% | 降权复盘 |
+| 电网/储能/火电调峰 | T30 | 10 | 10% | -6.54% | -0.41% | 降权复盘 |
 
 ## 错误复盘库
 
@@ -244,13 +244,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-01T18:17:43 UTC / 2026-11-02T02:17:43 BJT。
-- 抓取窗口：2026-10-31T18:17:43 UTC → 2026-11-01T18:17:43 UTC。
-- 实际新闻：共 103 条；最早 2026-10-31T18:18:04，最新 2026-11-01T18:17:43；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 14/39；API 4/5；官方源 1/28；官方网页 2 条。
+- 生成时间：2026-11-02T22:12:35 UTC / 2026-11-03T06:12:35 BJT。
+- 抓取窗口：2026-11-01T22:12:35 UTC → 2026-11-02T22:12:35 UTC。
+- 实际新闻：共 127 条；最早 2026-11-01T22:12:37，最新 2026-11-02T22:12:35；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 17/39；API 4/5；官方源 6/28；官方网页 6 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：34 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 2｜中 79｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 8｜中 91｜低 28。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
