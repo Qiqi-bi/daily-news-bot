@@ -4,77 +4,89 @@
 
 ## 30 秒总览
 
-- Binance co-CEO Richard Teng says hackers used fake job interviews, AI tool to steal $6.3 billion in crypto；主要影响：technology, macro；方向：偏利多。
-- Marshall Wace and Millennium hit as hedge funds suffer in October’s AI rout；主要影响：macro, technology, markets；方向：偏利多。
-- An overlooked energy source could solve AI’s power crunch — and these 2 stocks are prime plays；主要影响：energy, technology, markets；方向：偏利多。
-- Options traders are betting heavily on these stocks ahead of election results；主要影响：geopolitics, markets；方向：中性。
-- U.S. strikes Iran’s Qeshm Island as Vance hopes for ‘negotiated settlement’ with Tehran；主要影响：geopolitics, macro；方向：分化。
+- Oil tumbles below $100 on post-election peace hopes；主要影响：geopolitics, energy；方向：分化。
+- How Trump’s Energy Policies Helped Trigger Midterm Rout；主要影响：geopolitics, energy, macro；方向：分化。
+- Voters rebuff data centers in every ballot measure except one during the 2026 midterms；主要影响：geopolitics, technology, markets；方向：偏利多。
+- US stocks rise, dollar slides as investors digest Democrats’ midterm victories；主要影响：macro, geopolitics, markets；方向：偏利空。
+- The post-election rally masks a sharp split in the AI trade. Who stands to win?；主要影响：geopolitics, technology, markets；方向：偏利多。
 
 ## 市场价格快照
 
-- WTI原油：96.240 USD | 日变动 -0.228% | 震荡
-- 布伦特原油：103.81 USD | 日变动 -0.916% | 下跌
-- 黄金：3,934.30 USD | 日变动 -0.889% | 下跌
-- 美元指数：101.85 USD | 日变动 +0.102% | 震荡
-- 美国10Y国债收益率：4.948 USD | 日变动 +1.103% | 上涨
-- VIX：20.740 USD | 日变动 -1.939% | 下跌
-- 标普500期货：7,598.25 USD | 日变动 +0.314% | 震荡
-- 纳斯达克100期货：28,287.75 USD | 日变动 +0.570% | 上涨
+- WTI原油：88.730 USD | 日变动 -7.659% | 下跌
+- 布伦特原油：95.350 USD | 日变动 -7.963% | 下跌
+- 黄金：4,075.60 USD | 日变动 +3.431% | 上涨
+- 美元指数：101.53 USD | 日变动 -0.335% | 震荡
+- 美国10Y国债收益率：4.894 USD | 日变动 -1.171% | 下跌
+- VIX：16.840 USD | 日变动 -19.155% | 下跌
+- 标普500期货：7,727.50 USD | 日变动 +1.721% | 上涨
+- 纳斯达克100期货：28,582.75 USD | 日变动 +0.979% | 上涨
 
 ## 今日最重要的事件
 
-### 1. Binance co-CEO Richard Teng says hackers used fake job interviews, AI tool to steal $6.3 billion in crypto
-**一句话结论：** 这是一个与 technology, macro 相关的重要事件，市场方向偏向 偏利多。
+### 1. Oil tumbles below $100 on post-election peace hopes
+**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Binance has replenished 98% of $6.34 billion in affected assets, according to a security report the crypto exchange issued Tuesday.
+**发生了什么：** US vice-president JD Vance blames Republicans’ midterm defeat on anger over Iran war
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Oil tumbles on hopes for US-Iran talks。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Marshall Wace and Millennium hit as hedge funds suffer in October’s AI rout
-**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 偏利多。
+### 2. How Trump’s Energy Policies Helped Trigger Midterm Rout
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Wall Street’s tech correction and bond market turbulence spark losses for sector
+**发生了什么：** The war in Iran, efforts to promote fossil fuels and attacks on renewable energy contributed to higher prices for gas and electricity that drove voter discontent.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. An overlooked energy source could solve AI’s power crunch — and these 2 stocks are prime plays
-**一句话结论：** 这是一个与 energy, technology, markets 相关的重要事件，市场方向偏向 偏利多。
+### 3. Voters rebuff data centers in every ballot measure except one during the 2026 midterms
+**一句话结论：** 这是一个与 geopolitics, technology, markets 相关的重要事件，市场方向偏向 偏利多。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Geothermal technology is in the early stages of its own shale revolution, Morgan Stanley says.
+**发生了什么：** Voters in the states at the heart of the AI data center boom pushed back on the buildout on Election Night.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy, technology, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. Options traders are betting heavily on these stocks ahead of election results
-**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
+### 4. US stocks rise, dollar slides as investors digest Democrats’ midterm victories
+**一句话结论：** 这是一个与 macro, geopolitics, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Solar stocks see heavy call activity as voting gets underway
+**发生了什么：** Government bond yields fall while initial fears ease over impact of election results on world’s biggest economy Business live – latest updates US midterm elections – live updates After US midterms, what will lame duck Trump mean for global economy? US stocks have surged as investors digest the Democrats’ victories in the midterm elections, lifted by hopes that Donald Trump’s turbulent policymaking would be restrained and shaking off initial fears about the impact on growth in the world’s largest economy. The Dow Jones rose close to 3%, while the tech-heavy Nasdaq and the benchmark S&P 500 gained close to 2% each by midday in New York, turning around overnight falls in US stock futures after the news that the Democratic party won control of the Senate and the House of Representatives . Continue reading...
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Chart of the Week: Bond investors may cheer gridlock。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. The post-election rally masks a sharp split in the AI trade. Who stands to win?
+**一句话结论：** 这是一个与 geopolitics, technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Investors are making divergent bets on AI stocks Wednesday.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. U.S. strikes Iran’s Qeshm Island as Vance hopes for ‘negotiated settlement’ with Tehran
+### 6. What Republicans' huge loss means for Trump
 **一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** U.S. military carried out attacks on Iran's Qeshm Island on Monday, even as the Trump administration has been underplaying war risks.
+**发生了什么：** Trump's handling of tariffs, the Iran war and an array of Washington-area construction projects are sure to face sudden pushback from newly empowered Democrats.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -83,33 +95,21 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. 中国人民银行行长潘功胜会见阿曼中央银行行长艾哈迈德·穆萨米
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** 官方网页抓取：中国人民银行行长潘功胜会见阿曼中央银行行长艾哈迈德·穆萨米
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
 ## 连续事件追踪
 
-- Binance co-CEO Richard Teng says hackers used fake job interviews, AI tool to steal $6.3 billion in crypto ｜ 关键词：binance / fake / job / hackers | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Marshall Wace and Millennium hit as hedge funds suffer in October’s AI rout ｜ 关键词：hedge / tech / hit / sector | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- An overlooked energy source could solve AI’s power crunch — and these 2 stocks are prime plays ｜ 关键词：overlooked / technology / revolution / source | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Options traders are betting heavily on these stocks ahead of election results ｜ 关键词：gets / heavily / ahead / options | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- U.S. strikes Iran’s Qeshm Island as Vance hopes for ‘negotiated settlement’ with Tehran ｜ 关键词：settlement / military / negotiated / iran | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- 中国人民银行行长潘功胜会见阿曼中央银行行长艾哈迈德·穆萨米 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Oil tumbles below $100 on post-election peace hopes ｜ 关键词：oil / defeat / iran / president | 近 7 天出现 1 次 | 上次出现：2026-11-02T22:12:35 | 近期标题：Oil tumbles on hopes for US-Iran talks
+- How Trump’s Energy Policies Helped Trigger Midterm Rout ｜ 关键词：how / iran / attacks / fuels | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Voters rebuff data centers in every ballot measure except one during the 2026 midterms ｜ 关键词：election / rebuff / states / except | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- US stocks rise, dollar slides as investors digest Democrats’ midterm victories ｜ 关键词：election / yields / government / digest | 近 7 天出现 1 次 | 上次出现：2026-10-31T17:32:34 | 近期标题：Chart of the Week: Bond investors may cheer gridlock
+- The post-election rally masks a sharp split in the AI trade. Who stands to win? ｜ 关键词：trade / election / rally / stands | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- What Republicans' huge loss means for Trump ｜ 关键词：tariffs / iran / area / array | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Binance co-CEO Richard Teng says hackers used fake job interviews, AI tool to steal $6.3 billion in crypto 是否获得更多官方确认或实质性进展。
-2. Marshall Wace and Millennium hit as hedge funds suffer in October’s AI rout 是否获得更多官方确认或实质性进展。
-3. An overlooked energy source could solve AI’s power crunch — and these 2 stocks are prime plays 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 震荡 方向。
+1. Oil tumbles below $100 on post-election peace hopes 是否获得更多官方确认或实质性进展。
+2. How Trump’s Energy Policies Helped Trigger Midterm Rout 是否获得更多官方确认或实质性进展。
+3. Voters rebuff data centers in every ballot measure except one during the 2026 midterms 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 下跌 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -126,43 +126,44 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：暂未看到政策换挡、油价、美元、VIX和高估值资产形成共振。
-- 纪律：继续观察，不自动买卖。
+- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
+- 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
-### 固定框架
-
-- 先问谁被迫交易：谁要补保证金、谁现金流紧、谁必须卖资产换美元。
-- 再问谁有现金等打折：现金方只需要等，缺钱方才会被迫接受折价。
-- 政策只看传导链：降息、缩表、油价、美元、美债和VIX必须放在一起看。
-- 黄金短跌不等于避险失效：美元荒时，黄金可能先被卖掉换现金。
-- 用途是风险闸门：只决定追不追、等不等、留不留现金，不自动生成买卖。
+| 风险线 | 事实 | 推测 | 验证 | 失效 |
+|---|---|---|---|---|
+| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| AI资本开支压力 | 新闻命中：data center / nasdaq | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
+- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Binance co-CEO Richard Teng says hackers used fake job interviews, AI tool to steal $6.3 billion in crypto | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.23% 震荡；布伦特原油 -0.92% 下跌；黄金 -0.89% 下跌；美元指数 +0.10% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
-| An overlooked energy source could solve AI’s power crunch — and these 2 stocks are prime plays | 氦气/工业气体 | 这件事是在解决谁的供给约束？ 如果扩产只是为了保住关键产线，它的价值可能是稳定供应和谈判筹码，而不是马上赚大钱。 | 价格确认看：黄金 -0.89% 下跌；美元指数 +0.10% 震荡；标普500期货 +0.31% 震荡；纳斯达克100期货 +0.57% 上涨。 | 只把它升级为资源安全观察线；没有价格和订单确认前，不因为概念单独加仓。 |
-| U.S. strikes Iran’s Qeshm Island as Vance hopes for ‘negotiated settlement’ with Tehran | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.23% 震荡；布伦特原油 -0.92% 下跌；黄金 -0.89% 下跌；美元指数 +0.10% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Oil tumbles below $100 on post-election peace hopes | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；黄金 +3.43% 上涨；美元指数 -0.34% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| How Trump’s Energy Policies Helped Trigger Midterm Rout | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；黄金 +3.43% 上涨；美元指数 -0.34% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Voters rebuff data centers in every ballot measure except one during the 2026 midterms | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.34% 震荡；美国10Y国债收益率 -1.17% 下跌；VIX -19.16% 下跌；标普500期货 +1.72% 上涨。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| US stocks rise, dollar slides as investors digest Democrats’ midterm victories | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；黄金 +3.43% 上涨；美元指数 -0.34% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| What Republicans' huge loss means for Trump | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；黄金 +3.43% 上涨；美元指数 -0.34% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：绿电算力：风电相对光伏｜2-8周｜置信度 低。
+- 今天生成 2 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：绿电算力：风电相对光伏｜2-8周｜置信度 中。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 绿电算力：风电相对光伏（低） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 -0.23% 震荡；布伦特原油 -0.92% 下跌；美国10Y国债收益率 +1.10% 上涨；标普500期货 +0.31% 震荡。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
+| 绿电算力：风电相对光伏（中） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；美国10Y国债收益率 -1.17% 下跌；标普500期货 +1.72% 上涨。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 -7.66% 下跌；布伦特原油 -7.96% 下跌；黄金 +3.43% 上涨；美元指数 -0.34% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -188,7 +189,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 31 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 10%｜均值 -6.54%｜相对基准 -0.41%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 10%｜均值 -6.54%｜相对基准 -0.41%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -6.07%｜相对基准 +0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -243,13 +244,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-03T19:59:07 UTC / 2026-11-04T03:59:07 BJT。
-- 抓取窗口：2026-11-02T19:59:07 UTC → 2026-11-03T19:59:07 UTC。
-- 实际新闻：共 132 条；最早 2026-11-02T20:00:00，最新 2026-11-03T19:59:07；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 15/39；API 3/5；官方源 4/28；官方网页 9 条。
+- 生成时间：2026-11-04T20:19:18 UTC / 2026-11-05T04:19:18 BJT。
+- 抓取窗口：2026-11-03T20:19:18 UTC → 2026-11-04T20:19:18 UTC。
+- 实际新闻：共 121 条；最早 2026-11-03T20:19:49，最新 2026-11-04T20:19:18；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 5/28；官方网页 8 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：Alpha Vantage、Marketaux；失败不会中断报告，但会降低覆盖度。
+- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
 - 时间窗内无新内容的来源：30 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 4 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 9｜中 88｜低 35。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 真实性过滤：已在聚类前拦截 8 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 9｜中 96｜低 16。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
