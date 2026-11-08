@@ -77624,5 +77624,258 @@
       "war",
       "关键词"
     ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "whytheiranwa",
+    "theme": "Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels ｜ 关键词：clean / surge / energy / propelling",
+    "title": "Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels",
+    "summary": "The shock to global oil prices has caused a surge in demand for electric vehicles while propelling a race for immediate, secure power supplies.",
+    "tags": [
+      "geopolitics",
+      "energy",
+      "macro"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 9.68,
+    "tokens": [
+      "both",
+      "caused",
+      "clean",
+      "demand",
+      "electric",
+      "energy",
+      "fossil",
+      "fuels",
+      "has",
+      "immediate",
+      "in",
+      "iran",
+      "oil",
+      "power",
+      "propelling",
+      "race",
+      "secure",
+      "shock",
+      "spurred",
+      "supplies",
+      "surge",
+      "to",
+      "vehicles",
+      "war",
+      "while",
+      "why",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "whoisgadieis",
+    "theme": "Who Is Gadi Eisenkot, Israel’s Opposition Leader? ｜ 关键词：benjamin / gadi / netanyahu / israel",
+    "title": "Who Is Gadi Eisenkot, Israel’s Opposition Leader?",
+    "summary": "Mr. Eisenkot, a career general and the leading rival of Prime Minister Benjamin Netanyahu of Israel, will now have up to six weeks to form a coalition.",
+    "tags": [
+      "geopolitics"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 9.17,
+    "tokens": [
+      "benjamin",
+      "career",
+      "coalition",
+      "eisenkot",
+      "form",
+      "gadi",
+      "general",
+      "have",
+      "is",
+      "israel",
+      "leader",
+      "leading",
+      "minister",
+      "mr",
+      "netanyahu",
+      "now",
+      "of",
+      "opposition",
+      "prime",
+      "rival",
+      "six",
+      "to",
+      "up",
+      "weeks",
+      "who",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "saudiaramcot",
+    "theme": "Saudi Aramco office in Riyadh damaged in latest Houthi strikes ｜ 关键词：shrapnel / tower / riyadh / hit",
+    "title": "Saudi Aramco office in Riyadh damaged in latest Houthi strikes",
+    "summary": "Tower hosting Saudi Arabia’s state-owned oil major hit by shrapnel in King Abdullah Financial District on Sunday",
+    "tags": [
+      "energy",
+      "markets"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 9.05,
+    "tokens": [
+      "abdullah",
+      "arabia",
+      "aramco",
+      "by",
+      "damaged",
+      "district",
+      "financial",
+      "hit",
+      "hosting",
+      "houthi",
+      "in",
+      "king",
+      "latest",
+      "major",
+      "office",
+      "oil",
+      "on",
+      "owned",
+      "riyadh",
+      "saudi",
+      "shrapnel",
+      "state",
+      "strikes",
+      "sunday",
+      "tower",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "israelioppos",
+    "theme": "Israel’s president gives Gadi Eisenkot first chance at forming government ｜ 关键词：isaac / gadi / president / opposition",
+    "title": "Israel’s president gives Gadi Eisenkot first chance at forming government",
+    "summary": "Isaac Herzog’s decision means opposition politician has 28 days to attempt to put together a ruling coalition",
+    "tags": [
+      "geopolitics"
+    ],
+    "direction": "分化",
+    "importance": "★★★★★",
+    "score": 8.9,
+    "tokens": [
+      "28",
+      "at",
+      "attempt",
+      "chance",
+      "coalition",
+      "days",
+      "decision",
+      "eisenkot",
+      "first",
+      "forming",
+      "gadi",
+      "gives",
+      "government",
+      "has",
+      "herzog",
+      "isaac",
+      "israel",
+      "means",
+      "opposition",
+      "politician",
+      "president",
+      "put",
+      "ruling",
+      "to",
+      "together",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "20269",
+    "theme": "2026年9月金融市场运行情况 ｜ 关键词：2026",
+    "title": "2026年9月金融市场运行情况",
+    "summary": "官方网页抓取：2026年9月金融市场运行情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.77,
+    "tokens": [
+      "2026",
+      "2026年9月金融市场运行情况",
+      "关键词",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "willusinflat",
+    "theme": "Will US inflation data ease affordability concerns? ｜ 关键词：concerns / guide / questions / inflation",
+    "title": "Will US inflation data ease affordability concerns?",
+    "summary": "Market Questions is the FT’s guide to the week ahead",
+    "tags": [
+      "macro",
+      "markets"
+    ],
+    "direction": "偏利空",
+    "importance": "★★★★★",
+    "score": 8.69,
+    "tokens": [
+      "affordability",
+      "ahead",
+      "concerns",
+      "data",
+      "ease",
+      "ft",
+      "guide",
+      "inflation",
+      "is",
+      "questions",
+      "to",
+      "us",
+      "week",
+      "关键词"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "9",
+    "theme": "国家发展改革委举行9月份新闻发布会",
+    "title": "国家发展改革委举行9月份新闻发布会",
+    "summary": "官方网页抓取：国家发展改革委举行9月份新闻发布会",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.55,
+    "tokens": [
+      "国家发展改革委举行9月份新闻发布会",
+      "官方网页抓取"
+    ]
+  },
+  {
+    "generated_at_utc": "2026-11-08T18:14:54",
+    "cluster_id": "20269",
+    "theme": "2026年9月份能源生产情况 ｜ 关键词：2026",
+    "title": "2026年9月份能源生产情况",
+    "summary": "官方网页抓取：2026年9月份能源生产情况",
+    "tags": [
+      "macro"
+    ],
+    "direction": "中性",
+    "importance": "★★★★★",
+    "score": 8.33,
+    "tokens": [
+      "2026",
+      "2026年9月份能源生产情况",
+      "关键词",
+      "官方网页抓取"
+    ]
   }
 ]

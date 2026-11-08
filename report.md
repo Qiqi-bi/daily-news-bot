@@ -4,11 +4,11 @@
 
 ## 30 秒总览
 
-- What midterm election blue wave rebuke of Trump means for renewable energy；主要影响：geopolitics, energy, markets；方向：分化。
-- Researchers Identify Suspicious Activity on Kalshi and Polymarket Before Times/Siena Poll Release；主要影响：geopolitics, markets, macro；方向：中性。
-- Democrats’ big election win revives a difficult Social Security question: Who pays?；主要影响：geopolitics, markets；方向：中性。
-- Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers；主要影响：technology, markets, macro；方向：偏利多。
-- Gunman Opens Fire in Krakow, Killing at Least 5, Polish Police Say；主要影响：markets；方向：中性。
+- Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels；主要影响：geopolitics, energy, macro；方向：分化。
+- Who Is Gadi Eisenkot, Israel’s Opposition Leader?；主要影响：geopolitics；方向：中性。
+- Saudi Aramco office in Riyadh damaged in latest Houthi strikes；主要影响：energy, markets；方向：中性。
+- Israel’s president gives Gadi Eisenkot first chance at forming government；主要影响：geopolitics；方向：分化。
+- 2026年9月金融市场运行情况；主要影响：macro；方向：中性。
 
 ## 市场价格快照
 
@@ -23,72 +23,72 @@
 
 ## 今日最重要的事件
 
-### 1. What midterm election blue wave rebuke of Trump means for renewable energy
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+### 1. Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The conservative war on renewable energy suffered a big loss in the rout of President Trump and the GOP in midterm elections. Investors should pay attention.
+**发生了什么：** The shock to global oil prices has caused a surge in demand for electric vehicles while propelling a race for immediate, secure power supplies.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Researchers Identify Suspicious Activity on Kalshi and Polymarket Before Times/Siena Poll Release
-**一句话结论：** 这是一个与 geopolitics, markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** A trader placed well-timed bets on Polymarket and Kalshi in two Senate races. It was unclear if the person had access to inside information or simply made good trades.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Democrats’ big election win revives a difficult Social Security question: Who pays?
-**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** There are many ideas for saving Social Security. All of them will hurt.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers
-**一句话结论：** 这是一个与 technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Anthropic is poised to become the first pure-play AI company to hit the public market at a time when the public is increasingly leary of the industry.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Gunman Opens Fire in Krakow, Killing at Least 5, Polish Police Say
-**一句话结论：** 这是一个与 markets 相关的重要事件，市场方向偏向 中性。
+### 2. Who Is Gadi Eisenkot, Israel’s Opposition Leader?
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** The authorities said that the gunman, who began shooting from a car near a market square, was shot and taken to a hospital.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → markets 重新定价。
+**发生了什么：** Mr. Eisenkot, a career general and the leading rival of Prime Minister Benjamin Netanyahu of Israel, will now have up to six weeks to form a coalition.
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Will this week's blue wave election usher in a Democratic president in 2028?
-**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** A CNBC analysis of historical election data finds wave elections don't necessarily spell trouble for the party in power during the next presidential year.
+### 3. Saudi Aramco office in Riyadh damaged in latest Houthi strikes
+**一句话结论：** 这是一个与 energy, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Tower hosting Saudi Arabia’s state-owned oil major hit by shrapnel in King Abdullah Financial District on Sunday
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → energy, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Israel’s president gives Gadi Eisenkot first chance at forming government
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Isaac Herzog’s decision means opposition politician has 28 days to attempt to put together a ruling coalition
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. 2026年9月金融市场运行情况
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** 官方网页抓取：2026年9月金融市场运行情况
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜会见摩根士丹利集团董事长彭泰德 / 中国人民银行副行长邹澜出席第五届国际金融领袖投资峰会 / 中国人民银行与印度尼西亚银行举行联合工作机制工作会议。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. Will US inflation data ease affordability concerns?
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Market Questions is the FT’s guide to the week ahead
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,18 +97,18 @@
 
 ## 连续事件追踪
 
-- What midterm election blue wave rebuke of Trump means for renewable energy ｜ 关键词：renewable / blue / midterm / war | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Researchers Identify Suspicious Activity on Kalshi and Polymarket Before Times/Siena Poll Release ｜ 关键词：times / activity / bets / placed | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Democrats’ big election win revives a difficult Social Security question: Who pays? ｜ 关键词：who / all / question / social | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers ｜ 关键词：first / become / anthropic / company | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Gunman Opens Fire in Krakow, Killing at Least 5, Polish Police Say ｜ 关键词：square / krakow / near / shooting | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Will this week's blue wave election usher in a Democratic president in 2028? ｜ 关键词：analysis / blue / don / 2028 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels ｜ 关键词：clean / surge / energy / propelling | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Who Is Gadi Eisenkot, Israel’s Opposition Leader? ｜ 关键词：benjamin / gadi / netanyahu / israel | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Saudi Aramco office in Riyadh damaged in latest Houthi strikes ｜ 关键词：shrapnel / tower / riyadh / hit | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Israel’s president gives Gadi Eisenkot first chance at forming government ｜ 关键词：isaac / gadi / president / opposition | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 2026年9月金融市场运行情况 ｜ 关键词：2026 | 近 7 天出现 7 次 | 上次出现：2026-11-05T20:29:41 | 近期标题：中国人民银行行长潘功胜会见摩根士丹利集团董事长彭泰德 / 中国人民银行副行长邹澜出席第五届国际金融领袖投资峰会 / 中国人民银行与印度尼西亚银行举行联合工作机制工作会议
+- Will US inflation data ease affordability concerns? ｜ 关键词：concerns / guide / questions / inflation | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. What midterm election blue wave rebuke of Trump means for renewable energy 是否获得更多官方确认或实质性进展。
-2. Researchers Identify Suspicious Activity on Kalshi and Polymarket Before Times/Siena Poll Release 是否获得更多官方确认或实质性进展。
-3. Democrats’ big election win revives a difficult Social Security question: Who pays? 是否获得更多官方确认或实质性进展。
+1. Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels 是否获得更多官方确认或实质性进展。
+2. Who Is Gadi Eisenkot, Israel’s Opposition Leader? 是否获得更多官方确认或实质性进展。
+3. Saudi Aramco office in Riyadh damaged in latest Houthi strikes 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 震荡 方向。
 5. 布伦特原油 是否延续当前 震荡 方向。
 
@@ -132,34 +132,36 @@
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| AI资本开支压力 | 新闻命中：data center | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
+| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：航运/港口通道｜通道成本会不会变成全产业链成本？
+- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Researchers Identify Suspicious Activity on Kalshi and Polymarket Before Times/Siena Poll Release | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；美元指数 +0.72% 上涨；VIX -9.01% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Anthropic IPO meets AI backlash after midterms show stinging rebuke of data centers | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.72% 上涨；美国10Y国债收益率 +0.46% 上涨；VIX -9.01% 下跌；标普500期货 +0.26% 震荡。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| What midterm election blue wave rebuke of Trump means for renewable energy | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；黄金 -0.94% 下跌；美元指数 +0.72% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；黄金 -0.94% 下跌；美元指数 +0.72% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Saudi Aramco office in Riyadh damaged in latest Houthi strikes | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；黄金 -0.94% 下跌；美元指数 +0.72% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：绿电算力：风电相对光伏｜2-8周｜置信度 低。
-- 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
+- 今天没有生成强发酵预警卡；继续按核心事件、资源博弈和纪律面板观察。
+- 如果只有单一叙事，没有政策、订单或价格确认，先不升级。
 
-| 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
-|---|---|---|---|---|---|
-| 绿电算力：风电相对光伏（低） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；美国10Y国债收益率 +0.46% 上涨；标普500期货 +0.26% 震荡。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
+### 固定框架
+
+- 左侧线索：先找约束变化，不等所有人都确认后再追。
+- 预测对象：只预测可能发酵的主线和验证条件，不预测必涨必跌。
+- 验证顺序：政策/订单/产能/价格/相对强弱，至少两项同向才升级。
+- 失效条件：如果核心约束被解除，或价格不确认，就降级观察。
+- 组合纪律：预测卡片只提醒你看什么，不直接替你买卖。
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -185,7 +187,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 31 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.86%｜相对基准 -0.04%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -240,13 +242,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-07T17:57:46 UTC / 2026-11-08T01:57:46 BJT。
-- 抓取窗口：2026-11-06T17:57:46 UTC → 2026-11-07T17:57:46 UTC。
-- 实际新闻：共 123 条；最早 2026-11-06T18:14:42，最新 2026-11-07T18:03:36；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 3/28；官方网页 4 条。
+- 生成时间：2026-11-08T18:14:54 UTC / 2026-11-09T02:14:54 BJT。
+- 抓取窗口：2026-11-07T18:14:54 UTC → 2026-11-08T18:14:54 UTC。
+- 实际新闻：共 99 条；最早 2026-11-07T18:15:27，最新 2026-11-08T18:14:54；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 13/39；API 4/5；官方源 3/28；官方网页 3 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：31 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 4 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 5｜中 87｜低 31。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：33 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 3｜中 74｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
