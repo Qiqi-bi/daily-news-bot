@@ -4,29 +4,53 @@
 
 ## 30 秒总览
 
-- Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels；主要影响：geopolitics, energy, macro；方向：分化。
-- Who Is Gadi Eisenkot, Israel’s Opposition Leader?；主要影响：geopolitics；方向：中性。
-- Saudi Aramco office in Riyadh damaged in latest Houthi strikes；主要影响：energy, markets；方向：中性。
-- Israel’s president gives Gadi Eisenkot first chance at forming government；主要影响：geopolitics；方向：分化。
-- 2026年9月金融市场运行情况；主要影响：macro；方向：中性。
+- Nvidia’s Stock Price Drops After Investigation Into CEO Jensen Huang；主要影响：geopolitics, technology, markets, macro；方向：偏利多。
+- Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang；主要影响：technology, markets；方向：偏利多。
+- Oil Prices Fall on Hopes for Peace Between U.S. and Iran；主要影响：geopolitics, energy, macro；方向：中性。
+- Trump hails ‘positive momentum’ towards ending Iran war；主要影响：geopolitics；方向：分化。
+- Boeing Will Cut 5% of Commercial Plane Employees；主要影响：macro；方向：偏利多。
 
 ## 市场价格快照
 
-- WTI原油：90.830 USD | 日变动 +0.342% | 震荡
-- 布伦特原油：98.320 USD | 日变动 +0.031% | 震荡
-- 黄金：4,074.90 USD | 日变动 -0.938% | 下跌
-- 美元指数：102.28 USD | 日变动 +0.718% | 上涨
-- 美国10Y国债收益率：4.859 USD | 日变动 +0.455% | 上涨
-- VIX：25.640 USD | 日变动 -9.013% | 下跌
-- 标普500期货：7,402.00 USD | 日变动 +0.257% | 震荡
-- 纳斯达克100期货：27,085.25 USD | 日变动 +1.246% | 上涨
+- WTI原油：86.380 USD | 日变动 -4.899% | 下跌
+- 布伦特原油：92.170 USD | 日变动 -6.255% | 下跌
+- 黄金：4,149.50 USD | 日变动 +1.831% | 上涨
+- 美元指数：101.69 USD | 日变动 -0.592% | 下跌
+- 美国10Y国债收益率：4.864 USD | 日变动 +0.103% | 震荡
+- VIX：19.920 USD | 日变动 -22.309% | 下跌
+- 标普500期货：7,580.25 USD | 日变动 +2.408% | 上涨
+- 纳斯达克100期货：28,073.25 USD | 日变动 +3.648% | 上涨
 
 ## 今日最重要的事件
 
-### 1. Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels
-**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
+### 1. Nvidia’s Stock Price Drops After Investigation Into CEO Jensen Huang
+**一句话结论：** 这是一个与 geopolitics, technology, markets, macro 相关的重要事件，市场方向偏向 偏利多。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The shock to global oil prices has caused a surge in demand for electric vehicles while propelling a race for immediate, secure power supplies.
+**发生了什么：** The chip maker’s shares fell sharply after its C.E.O., Jensen Huang, admitted to a relationship with a businesswoman suspected of spying for China.
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 2. Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang
+**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** US company has been rocked by allegations its chief executive had an affair with a Chinese spy
+**为什么重要：** 该事件被 6 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. Oil Prices Fall on Hopes for Peace Between U.S. and Iran
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The global benchmark price is down roughly $20 a barrel since late October, when it traded for around $113.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -35,34 +59,10 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Who Is Gadi Eisenkot, Israel’s Opposition Leader?
-**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Mr. Eisenkot, a career general and the leading rival of Prime Minister Benjamin Netanyahu of Israel, will now have up to six weeks to form a coalition.
-**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Saudi Aramco office in Riyadh damaged in latest Houthi strikes
-**一句话结论：** 这是一个与 energy, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Tower hosting Saudi Arabia’s state-owned oil major hit by shrapnel in King Abdullah Financial District on Sunday
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Israel’s president gives Gadi Eisenkot first chance at forming government
+### 4. Trump hails ‘positive momentum’ towards ending Iran war
 **一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Isaac Herzog’s decision means opposition politician has 28 days to attempt to put together a ruling coalition
+**发生了什么：** Comments by US president come after calls with regional leaders and a meeting with the Qatari prime minister
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -71,46 +71,46 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. 2026年9月金融市场运行情况
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** 官方网页抓取：2026年9月金融市场运行情况
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+### 5. Boeing Will Cut 5% of Commercial Plane Employees
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** The company said it needed fewer workers because production was increasing more slowly than previously expected.
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜会见摩根士丹利集团董事长彭泰德 / 中国人民银行副行长邹澜出席第五届国际金融领袖投资峰会 / 中国人民银行与印度尼西亚银行举行联合工作机制工作会议。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 6. Will US inflation data ease affordability concerns?
-**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Market Questions is the FT’s guide to the week ahead
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
+### 6. Nvidia shares tumble over investigation into Huang's affair with alleged Chinese spy
+**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 中；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** The share price dropped wiped hundreds of billions of dollars from the value of Nvidia.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels ｜ 关键词：clean / surge / energy / propelling | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Who Is Gadi Eisenkot, Israel’s Opposition Leader? ｜ 关键词：benjamin / gadi / netanyahu / israel | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Saudi Aramco office in Riyadh damaged in latest Houthi strikes ｜ 关键词：shrapnel / tower / riyadh / hit | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Israel’s president gives Gadi Eisenkot first chance at forming government ｜ 关键词：isaac / gadi / president / opposition | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- 2026年9月金融市场运行情况 ｜ 关键词：2026 | 近 7 天出现 7 次 | 上次出现：2026-11-05T20:29:41 | 近期标题：中国人民银行行长潘功胜会见摩根士丹利集团董事长彭泰德 / 中国人民银行副行长邹澜出席第五届国际金融领袖投资峰会 / 中国人民银行与印度尼西亚银行举行联合工作机制工作会议
-- Will US inflation data ease affordability concerns? ｜ 关键词：concerns / guide / questions / inflation | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Nvidia’s Stock Price Drops After Investigation Into CEO Jensen Huang ｜ 关键词：nvidia / ceo / relationship / jensen | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang ｜ 关键词：nvidia / jensen / huang / chinese | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Oil Prices Fall on Hopes for Peace Between U.S. and Iran ｜ 关键词：late / october / traded / since | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump hails ‘positive momentum’ towards ending Iran war ｜ 关键词：war / calls / prime / minister | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Boeing Will Cut 5% of Commercial Plane Employees ｜ 关键词：boeing / cut / commercial / company | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Nvidia shares tumble over investigation into Huang's affair with alleged Chinese spy ｜ 关键词：spy / nvidia / chinese / alleged | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels 是否获得更多官方确认或实质性进展。
-2. Who Is Gadi Eisenkot, Israel’s Opposition Leader? 是否获得更多官方确认或实质性进展。
-3. Saudi Aramco office in Riyadh damaged in latest Houthi strikes 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 震荡 方向。
-5. 布伦特原油 是否延续当前 震荡 方向。
+1. Nvidia’s Stock Price Drops After Investigation Into CEO Jensen Huang 是否获得更多官方确认或实质性进展。
+2. Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang 是否获得更多官方确认或实质性进展。
+3. Oil Prices Fall on Hopes for Peace Between U.S. and Iran 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 下跌 方向。
+5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
 
@@ -138,15 +138,17 @@
 
 ## 资源博弈视角
 
-- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：半导体供应链｜这条新闻卡住的是技术、设备、材料还是客户需求？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Why the Iran War Has Spurred Both Clean Energy and Fossil Fuels | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；黄金 -0.94% 下跌；美元指数 +0.72% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Saudi Aramco office in Riyadh damaged in latest Houthi strikes | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.34% 震荡；布伦特原油 +0.03% 震荡；黄金 -0.94% 下跌；美元指数 +0.72% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Nvidia’s Stock Price Drops After Investigation Into CEO Jensen Huang | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.59% 下跌；美国10Y国债收益率 +0.10% 震荡；VIX -22.31% 下跌；标普500期货 +2.41% 上涨。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| Oil Prices Fall on Hopes for Peace Between U.S. and Iran | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -4.90% 下跌；布伦特原油 -6.25% 下跌；黄金 +1.83% 上涨；美元指数 -0.59% 下跌。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| Trump says FBI is ‘looking into’ Nvidia’s Jensen Huang | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.59% 下跌；美国10Y国债收益率 +0.10% 震荡；VIX -22.31% 下跌；标普500期货 +2.41% 上涨。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| Nvidia shares tumble over investigation into Huang's affair with alleged Chinese spy | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -4.90% 下跌；布伦特原油 -6.25% 下跌；美元指数 -0.59% 下跌；VIX -22.31% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
@@ -187,39 +189,39 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
-- AI电力底座：T+30 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 电力：T+30 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.86%｜相对基准 -0.04%；T+60 样本不足；T+90 样本不足；结论：降权观察。
-- 能源电力链：T+30 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 本次新增待验证信号 8 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 有色/黄金：T+30 12次｜胜率 0%｜均值 -8.40%｜相对基准 -2.71%；T+60 样本不足；T+90 样本不足；结论：跑输基准降权。
+- 红利低波：T+30 12次｜胜率 100%｜均值 +3.09%｜相对基准 +8.78%；T+60 样本不足；T+90 样本不足；结论：保留加权。
+- AI电力底座：T+30 12次｜胜率 8%｜均值 -5.68%｜相对基准 +0.13%；T+60 样本不足；T+90 样本不足；结论：降权观察。
+- 电力：T+30 12次｜胜率 8%｜均值 -5.68%｜相对基准 +0.13%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 
 | 主题 | 信号数 | T+30 | T+60 | T+90 | 结论 | 权重 |
 |---|---:|---|---|---|---|---|
-| AI电力底座 | 28 | 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 电力 | 28 | 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| A股宽基/中国宏观 | 28 | 10次｜胜率 0%｜均值 -5.86%｜相对基准 -0.04% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 能源电力链 | 28 | 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 风电/算力绿电 | 28 | 10次｜胜率 10%｜均值 -5.86%｜相对基准 -0.05% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 有色/黄金 | 27 | 10次｜胜率 0%｜均值 -8.67%｜相对基准 -3.01% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
-| 红利低波 | 26 | 10次｜胜率 100%｜均值 +3.09%｜相对基准 +8.76% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
-| 港股科技ETF | 23 | 10次｜胜率 0%｜均值 -10.85%｜相对基准 -2.88% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 有色/黄金 | 28 | 12次｜胜率 0%｜均值 -8.40%｜相对基准 -2.71% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波 | 28 | 12次｜胜率 100%｜均值 +3.09%｜相对基准 +8.78% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| AI电力底座 | 28 | 12次｜胜率 8%｜均值 -5.68%｜相对基准 +0.13% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 电力 | 28 | 12次｜胜率 8%｜均值 -5.68%｜相对基准 +0.13% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 资源品/关键矿产 | 26 | 10次｜胜率 0%｜均值 -8.16%｜相对基准 -1.33% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 红利低波/防御 | 26 | 10次｜胜率 100%｜均值 +3.03%｜相对基准 +9.86% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| A股宽基/中国宏观 | 26 | 10次｜胜率 0%｜均值 -5.61%｜相对基准 +1.37% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
+| 能源电力链 | 26 | 10次｜胜率 10%｜均值 -5.51%｜相对基准 +1.47% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
-- 红利低波/防御：T30 样本 8，胜率 100%，均值 +3.02%，相对基准 +10.10%，动作：优先保留权重。
-- 红利低波：T30 样本 10，胜率 100%，均值 +3.09%，相对基准 +8.76%，动作：优先保留权重。
-- 电网/储能/火电调峰：T30 样本 8，胜率 12%，均值 -5.69%，相对基准 +1.58%，动作：降权复盘。
+- 红利低波/防御：T30 样本 10，胜率 100%，均值 +3.03%，相对基准 +9.86%，动作：优先保留权重。
+- 红利低波：T30 样本 12，胜率 100%，均值 +3.09%，相对基准 +8.78%，动作：优先保留权重。
+- 能源电力链：T30 样本 10，胜率 10%，均值 -5.51%，相对基准 +1.47%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
-| 红利低波/防御 | T30 | 8 | 100% | +3.02% | +10.10% | 优先保留权重 |
-| 红利低波 | T30 | 10 | 100% | +3.09% | +8.76% | 优先保留权重 |
-| 电网/储能/火电调峰 | T30 | 8 | 12% | -5.69% | +1.58% | 降权复盘 |
-| AI电力底座 | T30 | 10 | 10% | -5.86% | -0.05% | 降权复盘 |
-| 电力 | T30 | 10 | 10% | -5.86% | -0.05% | 降权复盘 |
-| 能源电力链 | T30 | 10 | 10% | -5.86% | -0.05% | 降权复盘 |
-| 风电/算力绿电 | T30 | 10 | 10% | -5.86% | -0.05% | 降权复盘 |
-| 黄金/实际利率 | T30 | 5 | 0% | -5.46% | +0.00% | 降权复盘 |
+| 红利低波/防御 | T30 | 10 | 100% | +3.03% | +9.86% | 优先保留权重 |
+| 红利低波 | T30 | 12 | 100% | +3.09% | +8.78% | 优先保留权重 |
+| 能源电力链 | T30 | 10 | 10% | -5.51% | +1.47% | 降权复盘 |
+| 风电/算力绿电 | T30 | 10 | 10% | -5.51% | +1.47% | 降权复盘 |
+| 电网/储能/火电调峰 | T30 | 10 | 10% | -5.51% | +1.47% | 降权复盘 |
+| A股宽基/中国宏观 | T30 | 10 | 0% | -5.61% | +1.37% | 降权复盘 |
+| AI电力底座 | T30 | 12 | 8% | -5.68% | +0.13% | 降权复盘 |
+| 电力 | T30 | 12 | 8% | -5.68% | +0.13% | 降权复盘 |
 
 ## 错误复盘库
 
@@ -242,13 +244,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-08T18:14:54 UTC / 2026-11-09T02:14:54 BJT。
-- 抓取窗口：2026-11-07T18:14:54 UTC → 2026-11-08T18:14:54 UTC。
-- 实际新闻：共 99 条；最早 2026-11-07T18:15:27，最新 2026-11-08T18:14:54；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 13/39；API 4/5；官方源 3/28；官方网页 3 条。
+- 生成时间：2026-11-09T22:54:35 UTC / 2026-11-10T06:54:35 BJT。
+- 抓取窗口：2026-11-08T22:54:35 UTC → 2026-11-09T22:54:35 UTC。
+- 实际新闻：共 123 条；最早 2026-11-08T22:54:50，最新 2026-11-09T22:54:35；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 9 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：33 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 6 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 3｜中 74｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：29 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 9 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 10｜中 92｜低 21。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
