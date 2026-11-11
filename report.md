@@ -4,65 +4,77 @@
 
 ## 30 秒总览
 
-- Nvidia hires major New York law firm to investigate Jensen Huang affair；主要影响：geopolitics, technology, macro；方向：偏利多。
-- Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security；主要影响：geopolitics, technology, macro；方向：偏利多。
-- Jim Jordan elected House GOP leader；主要影响：geopolitics, markets；方向：中性。
-- Oil falls below $90 as Trump pulls back from threat to strike Iran；主要影响：geopolitics, energy, markets；方向：中性。
-- 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations；主要影响：macro, markets；方向：偏利空。
+- US Treasury Secretary Scott Bessent relocated after alleged Iranian threats；主要影响：macro, geopolitics, technology；方向：分化。
+- Healey says Treasury discussing ‘worst-case’ energy support for UK households；主要影响：macro, geopolitics, energy；方向：分化。
+- Heating Costs Will Rise 7% on Average This Winter；主要影响：geopolitics, energy, macro；方向：分化。
+- CoreWeave wants to sit with the credit-market grown-ups；主要影响：macro, technology, markets；方向：中性。
+- Saudi oil production rebounds close to prewar levels；主要影响：geopolitics, energy, markets；方向：分化。
 
 ## 市场价格快照
 
-- WTI原油：86.310 USD | 日变动 -0.622% | 下跌
-- 布伦特原油：91.870 USD | 日变动 -0.756% | 下跌
-- 黄金：4,038.00 USD | 日变动 -1.859% | 下跌
-- 美元指数：102.26 USD | 日变动 +0.600% | 上涨
-- 美国10Y国债收益率：4.983 USD | 日变动 +2.447% | 上涨
-- VIX：20.120 USD | 日变动 +1.004% | 上涨
-- 标普500期货：7,531.50 USD | 日变动 -0.564% | 下跌
-- 纳斯达克100期货：27,754.75 USD | 日变动 -0.927% | 下跌
+- WTI原油：86.260 USD | 日变动 +0.256% | 震荡
+- 布伦特原油：92.380 USD | 日变动 +0.973% | 上涨
+- 黄金：3,994.40 USD | 日变动 -0.888% | 下跌
+- 美元指数：102.92 USD | 日变动 +0.672% | 上涨
+- 美国10Y国债收益率：4.998 USD | 日变动 +0.301% | 震荡
+- VIX：17.460 USD | 日变动 -10.277% | 下跌
+- 标普500期货：7,654.25 USD | 日变动 +1.458% | 上涨
+- 纳斯达克100期货：28,582.75 USD | 日变动 +2.685% | 上涨
 
 ## 今日最重要的事件
 
-### 1. Nvidia hires major New York law firm to investigate Jensen Huang affair
-**一句话结论：** 这是一个与 geopolitics, technology, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** The appointment was made after it emerged Jensen Huang had an affair with a woman believed to be a spy for China.
+### 1. US Treasury Secretary Scott Bessent relocated after alleged Iranian threats
+**一句话结论：** 这是一个与 macro, geopolitics, technology 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Bessent is now one of several Trump administration officials to live on military bases due to safety concerns.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, technology 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security
-**一句话结论：** 这是一个与 geopolitics, technology, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 3 家；官方确认：否。
-**发生了什么：** Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.
-**为什么重要：** 该事件被 4 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Nvidia shares tumble over investigation into Huang's affair with alleged Chinese spy。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Jim Jordan elected House GOP leader
-**一句话结论：** 这是一个与 geopolitics, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** House Speaker Mike Johnson, R-La., announced the day after Election Day he would not run for minority leader in the 120th Congress.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Oil falls below $90 as Trump pulls back from threat to strike Iran
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 中性。
+### 2. Healey says Treasury discussing ‘worst-case’ energy support for UK households
+**一句话结论：** 这是一个与 macro, geopolitics, energy 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Falling crude prices have supported recovery in global stocks from last week’s sell-off
+**发生了什么：** Chancellor prepares for deepening energy crisis and says end to Iran war would be biggest boost to Britain’s economy
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. Heating Costs Will Rise 7% on Average This Winter
+**一句话结论：** 这是一个与 geopolitics, energy, macro 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** People who use heating oil will see increases of around 70 percent because the war in Iran has greatly reduced supply of that fuel.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. CoreWeave wants to sit with the credit-market grown-ups
+**一句话结论：** 这是一个与 macro, technology, markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The cloud computing group has benefited from a hitherto forgiving junk bond market
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, technology, markets 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Saudi oil production rebounds close to prewar levels
+**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Output higher than average before Iran conflict as kingdom keeps exports flowing despite attacks on shipping and energy infrastructure
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -71,24 +83,12 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 5. 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations
-**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
+### 6. Russia-Ukraine talks turn to post-war security but end without breakthrough
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Treasury yields moved higher after a hotter-than-expected CPI report.
+**发生了什么：** Talks in Abu Dhabi centred around Europe's security framework, with US envoys due to meet Putin and Zelensky on Thursday.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. US inflation higher than expected in October - here's what is happening with prices
-**一句话结论：** 这是一个与 macro, energy 相关的重要事件，市场方向偏向 偏利空。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Prices rose by 0.4% over the month, driven by increases in shelter, food and energy costs.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, energy 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,20 +97,20 @@
 
 ## 连续事件追踪
 
-- Nvidia hires major New York law firm to investigate Jensen Huang affair ｜ 关键词：jensen / affair / law / woman | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security ｜ 关键词：affair / spy / nvidia / chinese | 近 7 天出现 1 次 | 上次出现：2026-11-09T22:54:35 | 近期标题：Nvidia shares tumble over investigation into Huang's affair with alleged Chinese spy
-- Jim Jordan elected House GOP leader ｜ 关键词：leader / mike / gop / house | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Oil falls below $90 as Trump pulls back from threat to strike Iran ｜ 关键词：crude / iran / off / last | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations ｜ 关键词：hike / data / rate / inflation | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- US inflation higher than expected in October - here's what is happening with prices ｜ 关键词：rose / increases / costs / october | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- US Treasury Secretary Scott Bessent relocated after alleged Iranian threats ｜ 关键词：bessent / treasury / trump / officials | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Healey says Treasury discussing ‘worst-case’ energy support for UK households ｜ 关键词：worst / households / energy / would | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Heating Costs Will Rise 7% on Average This Winter ｜ 关键词：oil / heating / around / winter | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- CoreWeave wants to sit with the credit-market grown-ups ｜ 关键词：grown / benefited / ups / sit | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Saudi oil production rebounds close to prewar levels ｜ 关键词：oil / before / attacks / average | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Russia-Ukraine talks turn to post-war security but end without breakthrough ｜ 关键词：europe / envoys / russia / ukraine | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Nvidia hires major New York law firm to investigate Jensen Huang affair 是否获得更多官方确认或实质性进展。
-2. Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security 是否获得更多官方确认或实质性进展。
-3. Jim Jordan elected House GOP leader 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
-5. 布伦特原油 是否延续当前 下跌 方向。
+1. US Treasury Secretary Scott Bessent relocated after alleged Iranian threats 是否获得更多官方确认或实质性进展。
+2. Healey says Treasury discussing ‘worst-case’ energy support for UK households 是否获得更多官方确认或实质性进展。
+3. Heating Costs Will Rise 7% on Average This Winter 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 震荡 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -127,42 +127,41 @@
 ## 宏观爆破风险
 
 - 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
+- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil / crude | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| AI资本开支压力 | 新闻命中：cloud | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：航运/港口通道｜通道成本会不会变成全产业链成本？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Oil falls below $90 as Trump pulls back from threat to strike Iran | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -0.62% 下跌；布伦特原油 -0.76% 下跌；黄金 -1.86% 下跌；美元指数 +0.60% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Nvidia hires major New York law firm to investigate Jensen Huang affair | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.62% 下跌；布伦特原油 -0.76% 下跌；美元指数 +0.60% 上涨；VIX +1.00% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
-| Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 +0.60% 上涨；美国10Y国债收益率 +2.45% 上涨；VIX +1.00% 上涨；标普500期货 -0.56% 下跌。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
-| US inflation higher than expected in October - here's what is happening with prices | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -0.62% 下跌；布伦特原油 -0.76% 下跌；黄金 -1.86% 下跌；美元指数 +0.60% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| 10-year Treasury yield races back to 5% as inflation data, Waller comments drive rate hike expectations | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.62% 下跌；布伦特原油 -0.76% 下跌；美元指数 +0.60% 上涨；VIX +1.00% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Saudi oil production rebounds close to prewar levels | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.26% 震荡；布伦特原油 +0.97% 上涨；美元指数 +0.67% 上涨；VIX -10.28% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| US Treasury Secretary Scott Bessent relocated after alleged Iranian threats | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.67% 上涨；美国10Y国债收益率 +0.30% 震荡；VIX -10.28% 下跌；标普500期货 +1.46% 上涨。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| Healey says Treasury discussing ‘worst-case’ energy support for UK households | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.26% 震荡；布伦特原油 +0.97% 上涨；美元指数 +0.67% 上涨；VIX -10.28% 下跌。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Heating Costs Will Rise 7% on Average This Winter | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.26% 震荡；布伦特原油 +0.97% 上涨；黄金 -0.89% 下跌；美元指数 +0.67% 上涨。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 2 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：政策压价/格局行业｜立即-1个季度｜置信度 中。
+- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 低。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 政策压价/格局行业（中） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 -0.62% 下跌；布伦特原油 -0.76% 下跌；美元指数 +0.60% 上涨；美国10Y国债收益率 +2.45% 上涨。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
-| 六氟化钨/WF6：半导体前驱体卡点（低） | 数周到数月 | 如果WF6高纯产能、出口规则和先进存储/逻辑需求同时收紧，电子特气可能从小品种变成半导体卡点主线。 它的总市场规模不大，但若不可替代且停线成本远高于材料成本，价格上行和长协重定价会更容易传导给下游。 | 看WF6报价和交期、钨/氟原料、出口管制、客户认证、长协价格、库存周数、龙头产能爬坡和毛利率。 价格验证：美元指数 +0.60% 上涨；美国10Y国债收益率 +2.45% 上涨；VIX +1.00% 上涨；标普500期货 -0.56% 下跌。 | 如果客户库存充足、替代工艺可行、海外产能快速补上，或新增产能无需认证直接放量，这条线降级。 | 只把它放入电子特气/半导体材料观察；至少等价格、订单、毛利率或客户认证两项确认。 |
+| 汇率+反内卷：涨价权（低） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +0.26% 震荡；布伦特原油 +0.97% 上涨；黄金 -0.89% 下跌；美元指数 +0.67% 上涨。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -188,7 +187,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 31 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 10%｜均值 -5.51%｜相对基准 +1.47%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 10%｜均值 -5.51%｜相对基准 +1.47%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -5.61%｜相对基准 +1.37%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -243,13 +242,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-10T20:19:45 UTC / 2026-11-11T04:19:45 BJT。
-- 抓取窗口：2026-11-09T20:19:45 UTC → 2026-11-10T20:19:45 UTC。
-- 实际新闻：共 136 条；最早 2026-11-09T20:20:00，最新 2026-11-10T20:19:45；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 19/39；API 4/5；官方源 7/28；官方网页 9 条。
+- 生成时间：2026-11-11T20:03:02 UTC / 2026-11-12T04:03:02 BJT。
+- 抓取窗口：2026-11-10T20:03:02 UTC → 2026-11-11T20:03:02 UTC。
+- 实际新闻：共 115 条；最早 2026-11-10T20:03:03，最新 2026-11-11T20:03:02；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 4/28；官方网页 7 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：27 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 10 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 14｜中 94｜低 28。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：31 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 7 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 8｜中 89｜低 18。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
