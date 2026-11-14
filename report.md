@@ -4,91 +4,91 @@
 
 ## 30 秒总览
 
-- Nvidia scandal fallout widens as Trump's treasury secretary blames cabinet colleague；主要影响：macro, geopolitics, technology；方向：分化。
-- Lutnick faces questions over Nvidia spy scandal. His sons’ firm has deep ties to the chipmaker；主要影响：geopolitics, technology, markets；方向：分化。
-- Why Jensen Huang Was Essential to Nvidia’s Rise；主要影响：technology, macro；方向：偏利多。
-- Global oil markets swing to surplus as Gulf shipments rebound；主要影响：geopolitics, energy；方向：分化。
-- IRGC says tanker caught fire after hitting mines in Strait of Hormuz；主要影响：geopolitics, energy；方向：中性。
+- Nationwide ground stop followed contractor upgrade to L3Harris telecommunication system: DOT’s Duffy；主要影响：macro；方向：中性。
+- Wall Street Makes Its Pitch for Anthropic’s I.P.O.；主要影响：markets, macro；方向：中性。
+- US floats Nato membership for Donbas withdrawal deal, Zelenskyy says；主要影响：geopolitics；方向：分化。
+- 5 Big Questions as C.E.O.s Meet in China；主要影响：geopolitics, macro；方向：分化。
+- This Man Stole $9 Million in Gold Bars on the Upper West Side, Police Say；主要影响：markets, macro；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：88.780 USD | 日变动 +0.045% | 震荡
-- 布伦特原油：95.980 USD | 日变动 +0.167% | 震荡
-- 黄金：3,882.50 USD | 日变动 -0.072% | 震荡
-- 美元指数：103.40 USD | 日变动 +0.226% | 震荡
+- WTI原油：88.560 USD | 日变动 -0.203% | 震荡
+- 布伦特原油：95.840 USD | 日变动 +0.021% | 震荡
+- 黄金：3,886.30 USD | 日变动 +0.026% | 震荡
+- 美元指数：103.41 USD | 日变动 +0.234% | 震荡
 - 美国10Y国债收益率：5.154 USD | 日变动 +0.999% | 上涨
-- VIX：19.040 USD | 日变动 +1.818% | 上涨
-- 标普500期货：7,567.50 USD | 日变动 -0.627% | 下跌
-- 纳斯达克100期货：27,982.50 USD | 日变动 -1.416% | 下跌
+- VIX：19.300 USD | 日变动 +3.209% | 上涨
+- 标普500期货：7,583.00 USD | 日变动 -0.423% | 下跌
+- 纳斯达克100期货：28,034.75 USD | 日变动 -1.232% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Nvidia scandal fallout widens as Trump's treasury secretary blames cabinet colleague
-**一句话结论：** 这是一个与 macro, geopolitics, technology 相关的重要事件，市场方向偏向 分化。
+### 1. Nationwide ground stop followed contractor upgrade to L3Harris telecommunication system: DOT’s Duffy
+**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Scott Bessent suggests Howard Lutnick’s commerce department failed to ban exports of Nvidia's chips to a firm thought to have links with China.
+**发生了什么：** The FAA ground stop came after updates to an older communication system managed by L3Harris Technologies, Transportation Secretary Sean Duffy said Saturday.
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, technology 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Lutnick faces questions over Nvidia spy scandal. His sons’ firm has deep ties to the chipmaker
-**一句话结论：** 这是一个与 geopolitics, technology, markets 相关的重要事件，市场方向偏向 分化。
+### 2. Wall Street Makes Its Pitch for Anthropic’s I.P.O.
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Jensen Huang’s resignation as Nvidia CEO has brought renewed scrutiny to Commerce Secretary Howard Lutnick and his family’s financial ties to the chipmaker.
+**发生了什么：** As market uncertainty deepens, investment banks are on a roadshow to sell investors on what could be the largest public offering ever.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. US floats Nato membership for Donbas withdrawal deal, Zelenskyy says
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** President says he will take proposal to Ukrainian people as Washington explores terms for ending war
 **为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. 5 Big Questions as C.E.O.s Meet in China
+**一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** President Trump and U.S. tech executives are expected to gather for a major summit in Shenzhen next week. On the agenda: a stalled trade war, expanding export controls, and suspected spy games.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. This Man Stole $9 Million in Gold Bars on the Upper West Side, Police Say
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The victim, who believed his financial assets had been compromised, was the target of an online fraud scheme and believed he had to buy the precious metal, the authorities said.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. China’s beaten-down tech stocks could offer AI with a little less drama
+**一句话结论：** 这是一个与 geopolitics, technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Opportunities in China lie as much in the picks and shovels of the AI supply chain
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics, technology, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 3. Why Jensen Huang Was Essential to Nvidia’s Rise
-**一句话结论：** 这是一个与 technology, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Jensen Huang was the driving force at Nvidia, with 60 direct reports and no clear succession plan. Tripp Mickle, one of our technology reporters, examines Mr. Huang’s central role in the company and the artificial intelligence industry.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. Global oil markets swing to surplus as Gulf shipments rebound
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 分化。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** IEA analysts warn it will take months to rebuild stockpiles depleted by US-Iran war
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. IRGC says tanker caught fire after hitting mines in Strait of Hormuz
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** A liquefied gas carrier caught fire in the Strait of Hormuz after hitting naval mines, according to the IRGC.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. Anthropic’s Amodei ‘not super fussed’ about market turmoil ahead of IPO
-**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** AI lab’s chief executive brushes off tech stock turbulence less than a week before planned $1.5tn listing
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,18 +97,18 @@
 
 ## 连续事件追踪
 
-- Nvidia scandal fallout widens as Trump's treasury secretary blames cabinet colleague ｜ 关键词：nvidia / secretary / bessent / treasury | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Lutnick faces questions over Nvidia spy scandal. His sons’ firm has deep ties to the chipmaker ｜ 关键词：nvidia / lutnick / scrutiny / jensen | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Why Jensen Huang Was Essential to Nvidia’s Rise ｜ 关键词：was / rise / huang / nvidia | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Global oil markets swing to surplus as Gulf shipments rebound ｜ 关键词：analysts / shipments / stockpiles / iran | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- IRGC says tanker caught fire after hitting mines in Strait of Hormuz ｜ 关键词：gas / carrier / caught / fire | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Anthropic’s Amodei ‘not super fussed’ about market turmoil ahead of IPO ｜ 关键词：tech / turbulence / turmoil / planned | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Nationwide ground stop followed contractor upgrade to L3Harris telecommunication system: DOT’s Duffy ｜ 关键词：ground / faa / duffy / nationwide | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Wall Street Makes Its Pitch for Anthropic’s I.P.O. ｜ 关键词：wall / largest / deepens / uncertainty | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- US floats Nato membership for Donbas withdrawal deal, Zelenskyy says ｜ 关键词：donbas / president / ukrainian / war | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 5 Big Questions as C.E.O.s Meet in China ｜ 关键词：trump / president / meet / gather | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- This Man Stole $9 Million in Gold Bars on the Upper West Side, Police Say ｜ 关键词：assets / believed / stole / man | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- China’s beaten-down tech stocks could offer AI with a little less drama ｜ 关键词：beaten / lie / shovels / offer | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Nvidia scandal fallout widens as Trump's treasury secretary blames cabinet colleague 是否获得更多官方确认或实质性进展。
-2. Lutnick faces questions over Nvidia spy scandal. His sons’ firm has deep ties to the chipmaker 是否获得更多官方确认或实质性进展。
-3. Why Jensen Huang Was Essential to Nvidia’s Rise 是否获得更多官方确认或实质性进展。
+1. Nationwide ground stop followed contractor upgrade to L3Harris telecommunication system: DOT’s Duffy 是否获得更多官方确认或实质性进展。
+2. Wall Street Makes Its Pitch for Anthropic’s I.P.O. 是否获得更多官方确认或实质性进展。
+3. US floats Nato membership for Donbas withdrawal deal, Zelenskyy says 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 震荡 方向。
 5. 布伦特原油 是否延续当前 震荡 方向。
 
@@ -127,42 +127,40 @@
 ## 宏观爆破风险
 
 - 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 4：正常观察；该框架只做风险提示，不自动买卖。
+- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil / hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
-| AI资本开支压力 | 新闻命中：valuation | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
+| 美股去杠杆 | 纳斯达克100期货 -1.23% 下跌；VIX +3.21% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| IRGC says tanker caught fire after hitting mines in Strait of Hormuz | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.04% 震荡；布伦特原油 +0.17% 震荡；黄金 -0.07% 震荡；美元指数 +0.23% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Nvidia scandal fallout widens as Trump's treasury secretary blames cabinet colleague | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.23% 震荡；美国10Y国债收益率 +1.00% 上涨；VIX +1.82% 上涨；标普500期货 -0.63% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Lutnick faces questions over Nvidia spy scandal. His sons’ firm has deep ties to the chipmaker | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.23% 震荡；美国10Y国债收益率 +1.00% 上涨；VIX +1.82% 上涨；标普500期货 -0.63% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Global oil markets swing to surplus as Gulf shipments rebound | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.04% 震荡；布伦特原油 +0.17% 震荡；黄金 -0.07% 震荡；美元指数 +0.23% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Why Jensen Huang Was Essential to Nvidia’s Rise | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.04% 震荡；布伦特原油 +0.17% 震荡；美元指数 +0.23% 震荡；VIX +1.82% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| 5 Big Questions as C.E.O.s Meet in China | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.20% 震荡；布伦特原油 +0.02% 震荡；黄金 +0.03% 震荡；美元指数 +0.23% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| China’s beaten-down tech stocks could offer AI with a little less drama | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.20% 震荡；布伦特原油 +0.02% 震荡；美元指数 +0.23% 震荡；VIX +3.21% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Nationwide ground stop followed contractor upgrade to L3Harris telecommunication system: DOT’s Duffy | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.20% 震荡；布伦特原油 +0.02% 震荡；美元指数 +0.23% 震荡；VIX +3.21% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
+- 今天生成 2 张发酵预警卡，只提示可能的主线和验证条件。
 - 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 中。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +0.04% 震荡；布伦特原油 +0.17% 震荡；黄金 -0.07% 震荡；美元指数 +0.23% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 -0.20% 震荡；布伦特原油 +0.02% 震荡；黄金 +0.03% 震荡；美元指数 +0.23% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
+| 右侧拥挤/普通人劣势（中） | 立即 | 当好消息已经变成大众确定性，普通投资者通常很难拿到真正便宜的筹码。 资金、信息和准入有层级；等所有人都看见右侧，优势资金可能已经完成抢筹或抬价。 | 看成交放量、估值分位、融资/杠杆、情绪指标、政策放松后是否被快速抢筹。 价格验证：美国10Y国债收益率 +1.00% 上涨；VIX +3.21% 上涨；标普500期货 -0.42% 下跌；纳斯达克100期货 -1.23% 下跌。 | 如果价格仍低、成交未放量、政策还未被充分交易，仍可保持观察。 | 这是追高刹车：系统应提前建观察线，右侧确认后只做纪律复核，不盲目补仓。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -188,7 +186,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 39 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 10%｜均值 -4.98%｜相对基准 +0.21%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 10%｜均值 -4.98%｜相对基准 +0.21%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -4.98%｜相对基准 +0.20%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -243,13 +241,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-13T20:22:57 UTC / 2026-11-14T04:22:57 BJT。
-- 抓取窗口：2026-11-12T20:22:57 UTC → 2026-11-13T20:22:57 UTC。
-- 实际新闻：共 131 条；最早 2026-11-12T20:41:22，最新 2026-11-13T20:22:57；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 16/39；API 4/5；官方源 5/28；官方网页 8 条。
+- 生成时间：2026-11-14T18:40:17 UTC / 2026-11-15T02:40:17 BJT。
+- 抓取窗口：2026-11-13T18:40:17 UTC → 2026-11-14T18:40:17 UTC。
+- 实际新闻：共 116 条；最早 2026-11-13T18:52:43，最新 2026-11-14T18:45:02；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 17/39；API 4/5；官方源 3/28；官方网页 1 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：CSRC Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 4 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 9｜中 87｜低 35。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：30 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 1 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 3｜中 82｜低 31。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
