@@ -4,41 +4,77 @@
 
 ## 30 秒总览
 
-- Warsh, Opening Remarks；主要影响：macro, markets；方向：中性。
-- Bessent Takes Hawkish Turn in White House Debate on China；主要影响：macro, geopolitics；方向：分化。
-- Diamondback strikes $5bn deal to expand drilling in oil-rich Permian Basin；主要影响：geopolitics, energy, markets；方向：分化。
-- United Airlines reports system outage affecting departing flights；主要影响：macro；方向：中性。
-- Anthropic’s Wall Street whisperer: Meet CFO Krishna Rao；主要影响：markets, macro；方向：中性。
+- Nvidia closes lower ahead of earnings as company reels from Huang resignation；主要影响：technology, markets；方向：偏利多。
+- US strikes Qeshm Island after Iran targets American base in Bahrain；主要影响：geopolitics, energy；方向：中性。
+- How new US chip restrictions on South East Asia will hit China；主要影响：geopolitics, technology, macro；方向：中性。
+- Ukraine Attacks Kerch Bridge Linking Russia to Occupied Crimea；主要影响：geopolitics；方向：分化。
+- China, Canada expand tariff relief after Carney-Xi meeting；主要影响：macro, geopolitics；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：85.060 USD | 日变动 -3.952% | 下跌
-- 布伦特原油：91.840 USD | 日变动 -4.174% | 下跌
-- 黄金：3,859.00 USD | 日变动 -0.702% | 下跌
-- 美元指数：103.58 USD | 日变动 +0.169% | 震荡
-- 美国10Y国债收益率：5.121 USD | 日变动 -0.640% | 下跌
-- VIX：22.910 USD | 日变动 +18.705% | 上涨
-- 标普500期货：7,438.50 USD | 日变动 -1.906% | 下跌
-- 纳斯达克100期货：27,285.25 USD | 日变动 -2.673% | 下跌
+- WTI原油：85.720 USD | 日变动 -0.000% | 震荡
+- 布伦特原油：92.970 USD | 日变动 +0.573% | 上涨
+- 黄金：3,855.60 USD | 日变动 +0.067% | 震荡
+- 美元指数：103.53 USD | 日变动 -0.024% | 震荡
+- 美国10Y国债收益率：5.103 USD | 日变动 -0.351% | 下跌
+- VIX：25.460 USD | 日变动 +11.131% | 上涨
+- 标普500期货：7,374.75 USD | 日变动 -0.864% | 下跌
+- 纳斯达克100期货：27,167.25 USD | 日变动 -0.429% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Warsh, Opening Remarks
-**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：是。
-**发生了什么：** Speech At the Productivity and Jobs Task Force Conference, hosted by the Federal Reserve Board and the Federal Reserve Bank of San Francisco, San Francisco, California
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
+### 1. Nvidia closes lower ahead of earnings as company reels from Huang resignation
+**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Investors have been weighing the fallout from former CEO Jensen Huang's resignation.
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Bessent Takes Hawkish Turn in White House Debate on China
-**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 分化。
+### 2. US strikes Qeshm Island after Iran targets American base in Bahrain
+**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** The Treasury secretary who sought to de-escalate tariff wars is taking a tougher approach to exports of sensitive U.S. technology.
+**发生了什么：** Two fuel tankers also struck in the Strait of Hormuz, according to Revolutionary Guards
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. How new US chip restrictions on South East Asia will hit China
+**一句话结论：** 这是一个与 geopolitics, technology, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** The new rules restrict chip exports and also access to their computing power, which China relies on heavily.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Ukraine Attacks Kerch Bridge Linking Russia to Occupied Crimea
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Destroying the structure, the only one connecting Russia to the occupied Crimean Peninsula, has long been a top objective for Kyiv.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. China, Canada expand tariff relief after Carney-Xi meeting
+**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** China offers tariff cuts on Canadian pork and seafood, as Canada extends exemptions for Chinese steel and aluminium.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
@@ -47,48 +83,12 @@
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. Diamondback strikes $5bn deal to expand drilling in oil-rich Permian Basin
-**一句话结论：** 这是一个与 geopolitics, energy, markets 相关的重要事件，市场方向偏向 分化。
+### 6. Trump has arrived in Asia. Here’s what he said about Iran and Deutsche Bank
+**一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Acquisition is latest in the heartland of the US shale boom amid volatile energy prices caused by Iran war
+**发生了什么：** Trump threatens Iran and responds to a tax leak report as his Asia trip begins.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy, markets 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Diamondback nears $5bn deal to expand drilling in oil-rich Permian Basin。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 4. United Airlines reports system outage affecting departing flights
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** United Airlines said Monday that a widespread system outage was affecting departing flights.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Anthropic’s Wall Street whisperer: Meet CFO Krishna Rao
-**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Anthropic's upcoming IPO is putting finance chief Krishna Rao into the limelight.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. 10 Numbers That Might Change How You See Asia
-**一句话结论：** 这是一个与 geopolitics, technology 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** From semiconductor dominance to new power grids, defense deals and K-pop, the region — beyond China — is becoming increasingly interconnected and self-reliant.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, technology 重新定价。
+**影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
@@ -97,20 +97,20 @@
 
 ## 连续事件追踪
 
-- Warsh, Opening Remarks ｜ 关键词：reserve / task / force / federal | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Bessent Takes Hawkish Turn in White House Debate on China ｜ 关键词：debate / secretary / white / escalate | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Diamondback strikes $5bn deal to expand drilling in oil-rich Permian Basin ｜ 关键词：permian / volatile / deal / war | 近 7 天出现 1 次 | 上次出现：2026-11-15T19:17:10 | 近期标题：Diamondback nears $5bn deal to expand drilling in oil-rich Permian Basin
-- United Airlines reports system outage affecting departing flights ｜ 关键词：system / widespread / united / flights | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Anthropic’s Wall Street whisperer: Meet CFO Krishna Rao ｜ 关键词：putting / whisperer / krishna / meet | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- 10 Numbers That Might Change How You See Asia ｜ 关键词：might / power / pop / you | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Nvidia closes lower ahead of earnings as company reels from Huang resignation ｜ 关键词：nvidia / ahead / lower / huang | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- US strikes Qeshm Island after Iran targets American base in Bahrain ｜ 关键词：revolutionary / also / fuel / tankers | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- How new US chip restrictions on South East Asia will hit China ｜ 关键词：also / computing / south / east | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Ukraine Attacks Kerch Bridge Linking Russia to Occupied Crimea ｜ 关键词：occupied / russia / linking / crimea | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- China, Canada expand tariff relief after Carney-Xi meeting ｜ 关键词：offers / cuts / carney / tariff | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Trump has arrived in Asia. Here’s what he said about Iran and Deutsche Bank ｜ 关键词：deutsche / threatens / report / trip | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Warsh, Opening Remarks 是否获得更多官方确认或实质性进展。
-2. Bessent Takes Hawkish Turn in White House Debate on China 是否获得更多官方确认或实质性进展。
-3. Diamondback strikes $5bn deal to expand drilling in oil-rich Permian Basin 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 下跌 方向。
-5. 布伦特原油 是否延续当前 下跌 方向。
+1. Nvidia closes lower ahead of earnings as company reels from Huang resignation 是否获得更多官方确认或实质性进展。
+2. US strikes Qeshm Island after Iran targets American base in Bahrain 是否获得更多官方确认或实质性进展。
+3. How new US chip restrictions on South East Asia will hit China 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 震荡 方向。
+5. 布伦特原油 是否延续当前 上涨 方向。
 
 ## 哪些消息不要过度解读
 
@@ -126,45 +126,42 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
+- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 美联储/政策换挡 | 新闻命中：fed / federal reserve / warsh | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
-| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
-| 美股去杠杆 | 纳斯达克100期货 -2.67% 下跌；VIX +18.70% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
+| 能源/通道冲击 | 新闻命中：hormuz | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
+- 今天识别到 5 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Bessent Takes Hawkish Turn in White House Debate on China | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -3.95% 下跌；布伦特原油 -4.17% 下跌；黄金 -0.70% 下跌；美元指数 +0.17% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
-| Diamondback strikes $5bn deal to expand drilling in oil-rich Permian Basin | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -3.95% 下跌；布伦特原油 -4.17% 下跌；黄金 -0.70% 下跌；美元指数 +0.17% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| 10 Numbers That Might Change How You See Asia | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 +0.17% 震荡；美国10Y国债收益率 -0.64% 下跌；VIX +18.70% 上涨；标普500期货 -1.91% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| United Airlines reports system outage affecting departing flights | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -3.95% 下跌；布伦特原油 -4.17% 下跌；美元指数 +0.17% 震荡；VIX +18.70% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| US strikes Qeshm Island after Iran targets American base in Bahrain | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 -0.00% 震荡；布伦特原油 +0.57% 上涨；黄金 +0.07% 震荡；美元指数 -0.02% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| How new US chip restrictions on South East Asia will hit China | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.02% 震荡；美国10Y国债收益率 -0.35% 下跌；VIX +11.13% 上涨；标普500期货 -0.86% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
+| China, Canada expand tariff relief after Carney-Xi meeting | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 -0.00% 震荡；布伦特原油 +0.57% 上涨；黄金 +0.07% 震荡；美元指数 -0.02% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Trump has arrived in Asia. Here’s what he said about Iran and Deutsche Bank | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.00% 震荡；布伦特原油 +0.57% 上涨；美元指数 -0.02% 震荡；VIX +11.13% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Nvidia closes lower ahead of earnings as company reels from Huang resignation | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 -0.00% 震荡；布伦特原油 +0.57% 上涨；美元指数 -0.02% 震荡；VIX +11.13% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 3 张发酵预警卡，只提示可能的主线和验证条件。
+- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
 - 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 中。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 -3.95% 下跌；布伦特原油 -4.17% 下跌；黄金 -0.70% 下跌；美元指数 +0.17% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
-| 右侧拥挤/普通人劣势（中） | 立即 | 当好消息已经变成大众确定性，普通投资者通常很难拿到真正便宜的筹码。 资金、信息和准入有层级；等所有人都看见右侧，优势资金可能已经完成抢筹或抬价。 | 看成交放量、估值分位、融资/杠杆、情绪指标、政策放松后是否被快速抢筹。 价格验证：美国10Y国债收益率 -0.64% 下跌；VIX +18.70% 上涨；标普500期货 -1.91% 下跌；纳斯达克100期货 -2.67% 下跌。 | 如果价格仍低、成交未放量、政策还未被充分交易，仍可保持观察。 | 这是追高刹车：系统应提前建观察线，右侧确认后只做纪律复核，不盲目补仓。 |
-| AI电力底座：算电协同（低） | 1-5年，周度复核 | 如果AI算力继续高增，约束会从芯片扩散到绿电、电网设备、储能、液冷和数据中心电源，形成1-5年长期主线。 算力中心不是只买服务器，还要长期稳定电力、并网、调度、散热和电源架构；这些环节可能成为AI产业链新的利润分配入口。 | 看算电协同政策、数据中心项目/PPA、绿电占比、电网设备订单、储能招标、液冷/电源订单和板块相对沪深300强弱。 价格验证：WTI原油 -3.95% 下跌；布伦特原油 -4.17% 下跌；美国10Y国债收益率 -0.64% 下跌；标普500期货 -1.91% 下跌。 | 如果只有概念传播，没有项目、订单、价格或利润兑现，或者板块明显跑输宽基，这条线只保留观察。 | 首次只允许2%-3%观察底仓；连续确认后才考虑5%-8%，不把长期主线当成短线重仓理由。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 -0.00% 震荡；布伦特原油 +0.57% 上涨；黄金 +0.07% 震荡；美元指数 -0.02% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -190,7 +187,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 39 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 10%｜均值 -4.51%｜相对基准 +0.15%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 10%｜均值 -4.51%｜相对基准 +0.15%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -4.57%｜相对基准 +0.08%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -202,21 +199,21 @@
 | 电力 | 28 | 10次｜胜率 10%｜均值 -4.51%｜相对基准 +0.15% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | A股宽基/中国宏观 | 28 | 10次｜胜率 0%｜均值 -4.57%｜相对基准 +0.08% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 | 能源电力链 | 28 | 10次｜胜率 10%｜均值 -4.51%｜相对基准 +0.15% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 有色/黄金 | 27 | 9次｜胜率 0%｜均值 -8.16%｜相对基准 -2.92% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 有色/黄金 | 27 | 10次｜胜率 0%｜均值 -8.62%｜相对基准 -3.44% | 样本不足 | 样本不足 | 跑输基准降权 | 相对收益降权 |
+| 红利低波 | 26 | 10次｜胜率 100%｜均值 +2.83%｜相对基准 +8.53% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
+| 红利低波/防御 | 26 | 10次｜胜率 100%｜均值 +2.83%｜相对基准 +8.53% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
 | 风电/算力绿电 | 27 | 9次｜胜率 11%｜均值 -3.66%｜相对基准 +0.65% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
-| 红利低波 | 26 | 8次｜胜率 100%｜均值 +2.63%｜相对基准 +8.61% | 样本不足 | 样本不足 | 保留加权 | 小幅加权 |
-| 电网/储能/火电调峰 | 26 | 8次｜胜率 12%｜均值 -4.00%｜相对基准 -0.14% | 样本不足 | 样本不足 | 降权观察 | 自动降权 |
 
 ## 行业雷达命中率榜
 
-- 红利低波：T30 样本 8，胜率 100%，均值 +2.63%，相对基准 +8.61%，动作：优先保留权重。
-- 红利低波/防御：T30 样本 8，胜率 100%，均值 +2.63%，相对基准 +8.61%，动作：优先保留权重。
+- 红利低波：T30 样本 10，胜率 100%，均值 +2.83%，相对基准 +8.53%，动作：优先保留权重。
+- 红利低波/防御：T30 样本 10，胜率 100%，均值 +2.83%，相对基准 +8.53%，动作：优先保留权重。
 - 风电/算力绿电：T30 样本 9，胜率 11%，均值 -3.66%，相对基准 +0.65%，动作：降权复盘。
 
 | 行业 | 窗口 | 样本 | 胜率 | 均值 | 相对基准 | 动作 |
 |---|---|---:|---:|---:|---:|---|
-| 红利低波 | T30 | 8 | 100% | +2.63% | +8.61% | 优先保留权重 |
-| 红利低波/防御 | T30 | 8 | 100% | +2.63% | +8.61% | 优先保留权重 |
+| 红利低波 | T30 | 10 | 100% | +2.83% | +8.53% | 优先保留权重 |
+| 红利低波/防御 | T30 | 10 | 100% | +2.83% | +8.53% | 优先保留权重 |
 | 风电/算力绿电 | T30 | 9 | 11% | -3.66% | +0.65% | 降权复盘 |
 | 电网/储能/火电调峰 | T30 | 8 | 12% | -4.00% | -0.14% | 降权复盘 |
 | AI基础设施链 | T30 | 5 | 20% | -4.88% | -0.23% | 降权复盘 |
@@ -245,13 +242,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-16T22:46:31 UTC / 2026-11-17T06:46:31 BJT。
-- 抓取窗口：2026-11-15T22:46:31 UTC → 2026-11-16T22:46:31 UTC。
-- 实际新闻：共 118 条；最早 2026-11-15T22:53:53，最新 2026-11-16T22:46:31；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 17/39；API 3/5；官方源 3/28；官方网页 1 条。
+- 生成时间：2026-11-17T21:33:38 UTC / 2026-11-18T05:33:38 BJT。
+- 抓取窗口：2026-11-16T21:33:38 UTC → 2026-11-17T21:33:38 UTC。
+- 实际新闻：共 122 条；最早 2026-11-16T21:33:56，最新 2026-11-17T21:33:38；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 17/39；API 4/5；官方源 4/28；官方网页 3 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：32 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 时间窗内无新内容的来源：30 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
 - 真实性过滤：已在聚类前拦截 8 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 5｜中 92｜低 21。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 剩余文章可信度分布：高 5｜中 95｜低 22。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
