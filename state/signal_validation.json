@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-11-17T21:33:38",
+  "updated_at_utc": "2026-11-18T21:09:53",
   "signals": [
     {
       "id": "20261116224631-candidate_pool-ai_power_base-561560",
@@ -5248,7 +5248,21 @@
       "benchmark_code": "510300",
       "benchmark_name": "沪深300ETF",
       "benchmark_start_price": 4.24,
-      "observations": {}
+      "observations": {
+        "t30": {
+          "observed_at_utc": "2026-11-18T21:09:53",
+          "elapsed_days": 30.08,
+          "price": 0.467,
+          "return_pct": -8.967,
+          "hit": false,
+          "benchmark_code": "510300",
+          "benchmark_name": "沪深300ETF",
+          "benchmark_price": 4.058,
+          "benchmark_return_pct": -4.292,
+          "relative_return_pct": -4.675,
+          "relative_hit": false
+        }
+      }
     },
     {
       "id": "20261018162419-candidate_pool-metals_gold-512400",
@@ -11182,16 +11196,16 @@
       "theme": "港股科技ETF",
       "signals": 23,
       "t30": {
-        "samples": 7,
+        "samples": 8,
         "hits": 0,
-        "sum_return_pct": -47.785,
-        "relative_samples": 7,
+        "sum_return_pct": -56.751999999999995,
+        "relative_samples": 8,
         "relative_hits": 2,
-        "sum_relative_return_pct": -10.5,
+        "sum_relative_return_pct": -15.174999999999997,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -6.826,
-        "relative_win_rate_pct": 28.6,
-        "avg_relative_return_pct": -1.5
+        "avg_return_pct": -7.094,
+        "relative_win_rate_pct": 25.0,
+        "avg_relative_return_pct": -1.897
       },
       "t60": {
         "samples": 0,
@@ -11505,12 +11519,12 @@
         "theme": "港股科技ETF",
         "signals": 23,
         "basis": "T30",
-        "samples": 7,
+        "samples": 8,
         "win_rate_pct": 0.0,
-        "avg_return_pct": -6.826,
-        "relative_win_rate_pct": 28.6,
-        "avg_relative_return_pct": -1.5,
-        "rank_score": -6.376,
+        "avg_return_pct": -7.094,
+        "relative_win_rate_pct": 25.0,
+        "avg_relative_return_pct": -1.897,
+        "rank_score": -6.922,
         "verdict": "降权观察",
         "action": "降权复盘"
       },
