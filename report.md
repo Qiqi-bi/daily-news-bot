@@ -4,112 +4,112 @@
 
 ## 30 秒总览
 
-- Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax'；主要影响：geopolitics, technology, macro；方向：中性。
-- 中国人民银行行长潘功胜会见万事达卡首席执行官孟轲；主要影响：macro；方向：中性。
-- U.S.-China trade, Taiwan and tech tensions remain unresolved as Trump returns from Asia；主要影响：geopolitics, macro；方向：中性。
-- 上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单；主要影响：markets；方向：中性。
-- A wave of 'pent-up quits' could boost turnover in the job market, expert says: 'The labor market is a bit like a coiled spring'；主要影响：markets, energy；方向：中性。
+- Violence erupts in Sinaloa after Mexico captures alleged drug trafficker；主要影响：geopolitics；方向：中性。
+- 中国人民银行召开党的二十届五中全会精神宣讲报告会；主要影响：macro；方向：中性。
+- ‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots；主要影响：macro, markets；方向：中性。
+- The Used Car Industry Is Booming. This N.J. Campus Is Setting the Price.；主要影响：markets, macro；方向：中性。
+- Traders start to move US copper to China as Trump tariff fears ease；主要影响：macro, geopolitics；方向：中性。
 
 ## 市场价格快照
 
-- WTI原油：84.020 USD | 日变动 +0.973% | 上涨
-- 布伦特原油：90.380 USD | 日变动 -1.740% | 下跌
-- 黄金：3,517.60 USD | 日变动 -4.556% | 下跌
-- 美元指数：103.87 USD | 日变动 -0.026% | 震荡
+- WTI原油：83.410 USD | 日变动 +0.240% | 震荡
+- 布伦特原油：89.950 USD | 日变动 -2.207% | 下跌
+- 黄金：3,515.40 USD | 日变动 -4.615% | 下跌
+- 美元指数：103.84 USD | 日变动 -0.058% | 震荡
 - 美国10Y国债收益率：4.912 USD | 日变动 -2.771% | 下跌
-- VIX：37.870 USD | 日变动 +33.158% | 上涨
-- 标普500期货：6,967.00 USD | 日变动 -3.199% | 下跌
-- 纳斯达克100期货：25,264.75 USD | 日变动 -5.021% | 下跌
+- VIX：35.890 USD | 日变动 +26.195% | 上涨
+- 标普500期货：6,935.00 USD | 日变动 -3.644% | 下跌
+- 纳斯达克100期货：25,126.50 USD | 日变动 -5.540% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax'
-**一句话结论：** 这是一个与 geopolitics, technology, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Trump spoke at the White House after meeting with Chinese President Xi Jinping and Russian President Vladimir Putin for a historic trilateral summit in China.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, technology, macro 重新定价。
+### 1. Violence erupts in Sinaloa after Mexico captures alleged drug trafficker
+**一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 4 家；官方确认：否。
+**发生了什么：** Fausto Isidro Meza-Flores, known as “El Chapo Isidro”, is on the FBI’s most-wanted list for trafficking drugs into the US
+**为什么重要：** 该事件被 5 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：I watched Trump, Xi and Putin gather in China. Here are my top takeaways。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. 中国人民银行行长潘功胜会见万事达卡首席执行官孟轲
+### 2. 中国人民银行召开党的二十届五中全会精神宣讲报告会
 **一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** 官方网页抓取：中国人民银行行长潘功胜会见万事达卡首席执行官孟轲
+**发生了什么：** 官方网页抓取：中国人民银行召开党的二十届五中全会精神宣讲报告会
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → macro 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：沈竹林副主任会见宝马集团董事长聂科维。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：中国人民银行行长潘功胜会见万事达卡首席执行官孟轲 / 上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单 / 中国人民银行与加拿大财政部、加拿大央行共同签署《中加金融工作组工作规范...。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. U.S.-China trade, Taiwan and tech tensions remain unresolved as Trump returns from Asia
-**一句话结论：** 这是一个与 geopolitics, macro 相关的重要事件，市场方向偏向 中性。
+### 3. ‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 中性。
 **真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Analysts note few concrete outcomes from the high-profile trilateral and other meetings for APEC in Shenzhen this week.
+**发生了什么：** The few buyers left in the market braving record-high home prices and 7% mortgage rates are starting to call the shots, real-estate agents say.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, macro 重新定价。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. 上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单
-**一句话结论：** 这是一个与 markets 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** 官方网页抓取：上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单
+### 4. The Used Car Industry Is Booming. This N.J. Campus Is Setting the Price.
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** As new car prices rise beyond the means of most buyers, the used market has become much more important for consumers and the auto industry.
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 5. Traders start to move US copper to China as Trump tariff fears ease
+**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Acute Chinese shortage and high local premium create lucrative arbitrage
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 6. Israeli strike on vehicle in Gaza kills three, Gaza Health Ministry says - Reuters
+**一句话结论：** 这是一个与 markets 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
+**发生了什么：** Israeli strike on vehicle in Gaza kills three, Gaza Health Ministry says Reuters
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：沈竹林副主任会见宝马集团董事长聂科维。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. A wave of 'pent-up quits' could boost turnover in the job market, expert says: 'The labor market is a bit like a coiled spring'
-**一句话结论：** 这是一个与 markets, energy 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Unhappy workers are staying put at their jobs as anxiety around the job market looms. If conditions improve, these workers could be the first to quit, according to experts.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → markets, energy 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. Cook, The U.S. Economy in Global Context
-**一句话结论：** 这是一个与 macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
-**发生了什么：** Speech At the XXIX Annual Conference of the Central Bank of Chile, Santiago, Chile
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
 **连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax' ｜ 关键词：data / trump / building / tax | 近 7 天出现 1 次 | 上次出现：2026-11-18T21:09:53 | 近期标题：I watched Trump, Xi and Putin gather in China. Here are my top takeaways
-- 中国人民银行行长潘功胜会见万事达卡首席执行官孟轲 | 近 7 天出现 2 次 | 上次出现：2026-11-18T21:09:53 | 近期标题：中国人民银行与加拿大财政部、加拿大央行共同签署《中加金融工作组工作规范... / 沈竹林副主任会见宝马集团董事长聂科维
-- U.S.-China trade, Taiwan and tech tensions remain unresolved as Trump returns from Asia ｜ 关键词：trade / apec / other / asia | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- 上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单 | 近 7 天出现 1 次 | 上次出现：2026-11-17T21:33:38 | 近期标题：沈竹林副主任会见宝马集团董事长聂科维
-- A wave of 'pent-up quits' could boost turnover in the job market, expert says: 'The labor market is a bit like a coiled spring' ｜ 关键词：conditions / pent / job / boost | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Cook, The U.S. Economy in Global Context ｜ 关键词：santiago / xxix / context / chile | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Violence erupts in Sinaloa after Mexico captures alleged drug trafficker ｜ 关键词：isidro / meza / fausto / chapo | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- 中国人民银行召开党的二十届五中全会精神宣讲报告会 | 近 7 天出现 4 次 | 上次出现：2026-11-20T20:57:27 | 近期标题：中国人民银行行长潘功胜会见万事达卡首席执行官孟轲 / 上交所发布符合《可持续金融共同分类目录》标准的存量绿色债券清单 / 中国人民银行与加拿大财政部、加拿大央行共同签署《中加金融工作组工作规范...
+- ‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots ｜ 关键词：braving / home / out / calling | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- The Used Car Industry Is Booming. This N.J. Campus Is Setting the Price. ｜ 关键词：campus / new / means / much | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Traders start to move US copper to China as Trump tariff fears ease ｜ 关键词：lucrative / start / shortage / create | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Israeli strike on vehicle in Gaza kills three, Gaza Health Ministry says - Reuters ｜ 关键词：israeli / three / gaza / vehicle | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
 
 ## 明天最该盯的 5 个信号
 
-1. Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax' 是否获得更多官方确认或实质性进展。
-2. 中国人民银行行长潘功胜会见万事达卡首席执行官孟轲 是否获得更多官方确认或实质性进展。
-3. U.S.-China trade, Taiwan and tech tensions remain unresolved as Trump returns from Asia 是否获得更多官方确认或实质性进展。
-4. WTI原油 是否延续当前 上涨 方向。
+1. Violence erupts in Sinaloa after Mexico captures alleged drug trafficker 是否获得更多官方确认或实质性进展。
+2. 中国人民银行召开党的二十届五中全会精神宣讲报告会 是否获得更多官方确认或实质性进展。
+3. ‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots 是否获得更多官方确认或实质性进展。
+4. WTI原油 是否延续当前 震荡 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
 ## 哪些消息不要过度解读
@@ -126,42 +126,39 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险中：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 6：不追涨，降低单次动作，等美元、VIX、油价和股指至少两项缓和。
+- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
-| AI资本开支压力 | 新闻命中：data center | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
-| 美股去杠杆 | 纳斯达克100期货 -5.02% 下跌；VIX +33.16% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
+| 美股去杠杆 | 纳斯达克100期货 -5.54% 下跌；VIX +26.20% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
-- 今天识别到 3 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：半导体供应链｜这条新闻卡住的是技术、设备、材料还是客户需求？
+- 今天识别到 2 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
+- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax' | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.03% 震荡；美国10Y国债收益率 -2.77% 下跌；VIX +33.16% 上涨；标普500期货 -3.20% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| A wave of 'pent-up quits' could boost turnover in the job market, expert says: 'The labor market is a bit like a coiled spring' | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +0.97% 上涨；布伦特原油 -1.74% 下跌；黄金 -4.56% 下跌；美元指数 -0.03% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| U.S.-China trade, Taiwan and tech tensions remain unresolved as Trump returns from Asia | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.97% 上涨；布伦特原油 -1.74% 下跌；黄金 -4.56% 下跌；美元指数 -0.03% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Traders start to move US copper to China as Trump tariff fears ease | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +0.24% 震荡；布伦特原油 -2.21% 下跌；黄金 -4.62% 下跌；美元指数 -0.06% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| The Used Car Industry Is Booming. This N.J. Campus Is Setting the Price. | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +0.24% 震荡；布伦特原油 -2.21% 下跌；美元指数 -0.06% 震荡；VIX +26.20% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
 - 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：绿电算力：风电相对光伏｜2-8周｜置信度 低。
+- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 中。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 绿电算力：风电相对光伏（低） | 2-8周 | 如果算力中心新增负荷继续绑定高比例绿电，风电、电网和储能可能比单纯光伏更先反应。 算力负荷需要稳定电力，风电在部分北方/西北场景具备夜间出力优势；真正的约束是电源、并网、负荷和储能能否闭环。 | 看数据中心审批/投产、绿电PPA、风电利用小时、电网设备订单、储能配置和风电相对光伏的价格强弱。 价格验证：WTI原油 +0.97% 上涨；布伦特原油 -1.74% 下跌；美国10Y国债收益率 -2.77% 下跌；标普500期货 -3.20% 下跌。 | 如果新增算力项目放缓、并网/消纳受限，或光伏+储能成本明显胜出，这条线降级。 | 只做左侧预警；等项目、订单和相对强弱确认，不因为“绿电”二字直接追高。 |
+| 汇率+反内卷：涨价权（中） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +0.24% 震荡；布伦特原油 -2.21% 下跌；黄金 -4.62% 下跌；美元指数 -0.06% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -187,7 +184,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 22 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - AI电力底座：T+30 10次｜胜率 20%｜均值 -4.37%｜相对基准 -0.32%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 20%｜均值 -4.37%｜相对基准 -0.32%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - A股宽基/中国宏观：T+30 10次｜胜率 0%｜均值 -4.29%｜相对基准 -0.24%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -242,13 +239,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-20T20:57:27 UTC / 2026-11-21T04:57:27 BJT。
-- 抓取窗口：2026-11-19T20:57:27 UTC → 2026-11-20T20:57:27 UTC。
-- 实际新闻：共 124 条；最早 2026-11-19T20:57:30，最新 2026-11-20T20:57:27；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 18/39；API 4/5；官方源 6/28；官方网页 4 条。
+- 生成时间：2026-11-21T19:58:53 UTC / 2026-11-22T03:58:53 BJT。
+- 抓取窗口：2026-11-20T19:58:53 UTC → 2026-11-21T19:58:53 UTC。
+- 实际新闻：共 110 条；最早 2026-11-20T19:59:00，最新 2026-11-21T19:58:53；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 15/39；API 4/5；官方源 4/28；官方网页 4 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
 - 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 5 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 8｜中 93｜低 23。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 时间窗内无新内容的来源：31 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 1 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 5｜中 86｜低 19。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
