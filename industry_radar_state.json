@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_utc": "2026-11-24T00:37:56",
+  "updated_at_utc": "2026-11-24T22:56:23",
   "items": {
     "china_broad_core": {
       "id": "china_broad_core",
@@ -9,8 +9,7 @@
       "last_hit_date": "2026-11-24",
       "last_status": "今日关注",
       "last_hits": [
-        "china",
-        "央行"
+        "china"
       ],
       "last_missed_date": "2026-11-11"
     },
@@ -21,7 +20,6 @@
       "last_hit_date": "2026-11-24",
       "last_status": "今日关注",
       "last_hits": [
-        "fed",
         "inflation"
       ],
       "last_missed_date": "2026-11-21",
@@ -87,6 +85,7 @@
       "last_hit_date": "2026-11-24",
       "last_status": "今日关注",
       "last_hits": [
+        "oil",
         "power"
       ],
       "last_weekly_review_date": "2026-11-13",
@@ -97,9 +96,9 @@
     "wind_power_aidc": {
       "id": "wind_power_aidc",
       "name": "风电/算力绿电",
-      "hit_streak": 0,
-      "last_hit_date": "2026-11-22",
-      "last_status": "静默观察",
+      "hit_streak": 1,
+      "last_hit_date": "2026-11-24",
+      "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-11-13",
       "weekly_review_cooldown_until": "2026-11-19",
@@ -109,9 +108,9 @@
     "grid_storage_power": {
       "id": "grid_storage_power",
       "name": "电网/储能/火电调峰",
-      "hit_streak": 0,
-      "last_hit_date": "2026-11-22",
-      "last_status": "静默观察",
+      "hit_streak": 1,
+      "last_hit_date": "2026-11-24",
+      "last_status": "今日关注",
       "last_hits": [],
       "last_weekly_review_date": "2026-11-13",
       "weekly_review_cooldown_until": "2026-11-19",
@@ -160,9 +159,9 @@
     "coal_power_security": {
       "id": "coal_power_security",
       "name": "煤炭/火电/电力安全",
-      "hit_streak": 0,
-      "last_hit_date": "2026-11-22",
-      "last_status": "静默观察",
+      "hit_streak": 1,
+      "last_hit_date": "2026-11-24",
+      "last_status": "今日关注",
       "last_hits": [],
       "last_missed_date": "2026-11-24"
     },
@@ -193,9 +192,7 @@
       "hit_streak": 1,
       "last_hit_date": "2026-11-24",
       "last_status": "今日关注",
-      "last_hits": [
-        "bank"
-      ],
+      "last_hits": [],
       "last_weekly_review_date": "2026-11-20",
       "weekly_review_cooldown_until": "2026-11-26",
       "last_weekly_review_gate": "周报评估",
@@ -276,9 +273,9 @@
     "shipping_routes": {
       "id": "shipping_routes",
       "name": "航运/通道风险",
-      "hit_streak": 0,
-      "last_hit_date": "2026-11-22",
-      "last_status": "静默观察",
+      "hit_streak": 1,
+      "last_hit_date": "2026-11-24",
+      "last_status": "今日关注",
       "last_hits": [],
       "last_missed_date": "2026-11-24"
     },
