@@ -4,111 +4,111 @@
 
 ## 30 秒总览
 
-- Trump wanted Jensen Huang back. Now, the president is all alone in Washington；主要影响：technology, markets；方向：偏利多。
-- Argentina expected to suffer technical recession in blow to Milei；主要影响：macro, geopolitics；方向：偏利空。
-- Jensen Huang tells staff that Nvidia doesn't need a succession plan；主要影响：technology, macro；方向：偏利多。
-- China's Huawei convicted in sprawling US criminal trial over Iran business - Reuters；主要影响：geopolitics；方向：中性。
-- Iraq’s Prime Minister Aims to Wrest More Power from Kurdistan Region；主要影响：geopolitics, energy；方向：中性。
+- The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates；主要影响：macro, markets；方向：偏利空。
+- Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions；主要影响：markets, macro；方向：偏利多。
+- Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans；主要影响：markets, macro；方向：中性。
+- Even the price of toys is on the rise. How Americans are scaling back holiday plans；主要影响：macro, geopolitics, energy；方向：分化。
+- US inflation hits highest since May after prices climb 3.8% over the last year；主要影响：macro, energy, technology, markets；方向：偏利空。
 
 ## 市场价格快照
 
-- WTI原油：81.530 USD | 日变动 +1.696% | 上涨
-- 布伦特原油：88.500 USD | 日变动 -0.973% | 下跌
-- 黄金：3,557.20 USD | 日变动 -2.580% | 下跌
-- 美元指数：103.85 USD | 日变动 -0.452% | 下跌
-- 美国10Y国债收益率：4.904 USD | 日变动 -0.285% | 震荡
-- VIX：26.360 USD | 日变动 -0.977% | 下跌
-- 标普500期货：7,222.50 USD | 日变动 -0.441% | 下跌
-- 纳斯达克100期货：26,333.00 USD | 日变动 -1.772% | 下跌
+- WTI原油：84.150 USD | 日变动 +2.559% | 上涨
+- 布伦特原油：90.820 USD | 日变动 -0.635% | 下跌
+- 黄金：3,617.80 USD | 日变动 +1.569% | 上涨
+- 美元指数：103.70 USD | 日变动 -0.102% | 震荡
+- 美国10Y国债收益率：4.848 USD | 日变动 -1.142% | 下跌
+- VIX：28.290 USD | 日变动 +7.322% | 上涨
+- 标普500期货：7,187.50 USD | 日变动 -0.416% | 下跌
+- 纳斯达克100期货：26,000.50 USD | 日变动 -1.048% | 下跌
 
 ## 今日最重要的事件
 
-### 1. Trump wanted Jensen Huang back. Now, the president is all alone in Washington
-**一句话结论：** 这是一个与 technology, markets 相关的重要事件，市场方向偏向 偏利多。
+### 1. The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates
+**一句话结论：** 这是一个与 macro, markets 相关的重要事件，市场方向偏向 偏利空。
 **真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Republicans worry Nvidia CEO Jensen Huang's affairs with a suspected Chinese spy jeopardized U.S. national security.
-**为什么重要：** 该事件被 4 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, markets 重新定价。
+**发生了什么：** Just ahead of pivotal December vote to raise U.S. interest rates, the Federal Reserve on Wednesday said stubborn inflation remains a thorn in the side of an expanding economy.
+**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：Nvidia's Stock Surges More Than 30% on Jensen Huang's Return. Will It Get Back to $200?。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 2. Argentina expected to suffer technical recession in blow to Milei
-**一句话结论：** 这是一个与 macro, geopolitics 相关的重要事件，市场方向偏向 偏利空。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** President’s crusade against inflation weighs down economy as he prepares to mount re-election bid next year
+### 2. Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 偏利多。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions
 **为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → macro, geopolitics 重新定价。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 3. Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans
+**一句话结论：** 这是一个与 markets, macro 相关的重要事件，市场方向偏向 中性。
+**真实性状态：** 高；交叉验证来源 1 家；官方确认：是。
+**发生了什么：** Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → markets, macro 重新定价。
+**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
+**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
+
+### 4. Even the price of toys is on the rise. How Americans are scaling back holiday plans
+**一句话结论：** 这是一个与 macro, geopolitics, energy 相关的重要事件，市场方向偏向 分化。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** U.S. consumers face higher food, travel and gift costs in 2026 as inflation and Iran-war energy shocks pressure holiday budgets.
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, geopolitics, energy 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
 **对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 3. Jensen Huang tells staff that Nvidia doesn't need a succession plan
-**一句话结论：** 这是一个与 technology, macro 相关的重要事件，市场方向偏向 偏利多。
-**真实性状态：** 中；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** Nvidia CEO Jensen Huang resigned after multiple reported affairs, including one with a Chinese businesswoman who is alleged to be a spy for Beijing.
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → technology, macro 重新定价。
+### 5. US inflation hits highest since May after prices climb 3.8% over the last year
+**一句话结论：** 这是一个与 macro, energy, technology, markets 相关的重要事件，市场方向偏向 偏利空。
+**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
+**发生了什么：** Rise occurs amid soaring energy prices, according to last inflation reading before a crucial Fed board meeting The sell-off in the US tech stocks continued Wednesday as investors reacted to continued concern over the AI trade and fresh data that showed inflation jumped in October. The tech-heavy Nasdaq index was down over 4% Wednesday morning, while the S&P 500 had lost over 2.5% and the Dow had dropped about 2%. By the end of the day the tech-heavy was down 0.6%, the S&P had lost 0.25% and the Dow managed a small gain of 0.33%. Continue reading...
+**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
+**影响链条：** 事件发生 → 预期变化 → macro, energy, technology, markets 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
-### 4. China's Huawei convicted in sprawling US criminal trial over Iran business - Reuters
+### 6. US announces new tariffs on host of countries including China
 **一句话结论：** 这是一个与 geopolitics 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 高；交叉验证来源 2 家；官方确认：否。
-**发生了什么：** China's Huawei convicted in sprawling US criminal trial over Iran business Reuters
-**为什么重要：** 该事件被 2 条报道覆盖，重要性为 ★★★★★。
+**真实性状态：** 高；交叉验证来源 3 家；官方确认：否。
+**发生了什么：** The new levies would hit many of America's biggest trading partners, including China and the EU.
+**为什么重要：** 该事件被 3 条报道覆盖，重要性为 ★★★★★。
 **影响链条：** 事件发生 → 预期变化 → geopolitics 重新定价。
 **受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
 **受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 中，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 5. Iraq’s Prime Minister Aims to Wrest More Power from Kurdistan Region
-**一句话结论：** 这是一个与 geopolitics, energy 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Ali al-Zaidi, who just scored a symbolic victory against a powerful Iran-backed militia, has now moved to assert control over Kurdish border crossings and oil resources.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → geopolitics, energy 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
-**接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
-
-### 6. Will I get the £100 energy payment and when will I receive it?
-**一句话结论：** 这是一个与 energy, macro 相关的重要事件，市场方向偏向 中性。
-**真实性状态：** 中；交叉验证来源 1 家；官方确认：否。
-**发生了什么：** Here is what you need to know about the payment that millions will receive from January.
-**为什么重要：** 该事件被 1 条报道覆盖，重要性为 ★★★★★。
-**影响链条：** 事件发生 → 预期变化 → energy, macro 重新定价。
-**受益方：** 素材未提供足够细节时，以直接受主题推动的资产与行业为主。
-**受损方：** 素材未提供足够细节时，以直接受主题冲击的资产与行业为主。
-**对市场的含义：** 当前确定性为 低，需要结合价格、交叉验证和后续官方确认一起看。
-**连续事件追踪：** 近 7 天连续出现：否；近期相似标题：无。
+**对市场的含义：** 当前确定性为 高，需要结合价格、交叉验证和后续官方确认一起看。
+**连续事件追踪：** 近 7 天连续出现：是；近期相似标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.。
 **接下来 24～72 小时盯什么：** 后续政策表态、关键价格变化，以及是否出现更多官方源或主流媒体交叉确认。
 
 ## 连续事件追踪
 
-- Trump wanted Jensen Huang back. Now, the president is all alone in Washington ｜ 关键词：nvidia / jensen / back / huang | 近 7 天出现 1 次 | 上次出现：2026-11-24T00:37:56 | 近期标题：Nvidia's Stock Surges More Than 30% on Jensen Huang's Return. Will It Get Back to $200?
-- Argentina expected to suffer technical recession in blow to Milei ｜ 关键词：down / prepares / election / weighs | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Jensen Huang tells staff that Nvidia doesn't need a succession plan ｜ 关键词：nvidia / jensen / ceo / huang | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- China's Huawei convicted in sprawling US criminal trial over Iran business - Reuters ｜ 关键词：huawei / criminal / trial / china | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Iraq’s Prime Minister Aims to Wrest More Power from Kurdistan Region ｜ 关键词：power / who / scored / powerful | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
-- Will I get the £100 energy payment and when will I receive it? ｜ 关键词：energy / millions / you / 100 | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates ｜ 关键词：rates / federal / raise / fed | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions ｜ 关键词：credit / lease / applicability / announce | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans ｜ 关键词：priced / loans / announce / dollar | 近 7 天出现 0 次 | 上次出现：无 | 近期标题：无
+- Even the price of toys is on the rise. How Americans are scaling back holiday plans ｜ 关键词：even / iran / war / face | 近 7 天出现 1 次 | 上次出现：2026-11-24T22:56:23 | 近期标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.
+- US inflation hits highest since May after prices climb 3.8% over the last year ｜ 关键词：since / may / highest / occurs | 近 7 天出现 1 次 | 上次出现：2026-11-24T22:56:23 | 近期标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.
+- US announces new tariffs on host of countries including China ｜ 关键词：tariffs / including / china / new | 近 7 天出现 1 次 | 上次出现：2026-11-24T22:56:23 | 近期标题：investingLive Americas FX news wrap 24 Nov: It’s a Wrap. Chip stocks slide. Anthropic breaks IPO price. USD lower.
 
 ## 明天最该盯的 5 个信号
 
-1. Trump wanted Jensen Huang back. Now, the president is all alone in Washington 是否获得更多官方确认或实质性进展。
-2. Argentina expected to suffer technical recession in blow to Milei 是否获得更多官方确认或实质性进展。
-3. Jensen Huang tells staff that Nvidia doesn't need a succession plan 是否获得更多官方确认或实质性进展。
+1. The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates 是否获得更多官方确认或实质性进展。
+2. Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions 是否获得更多官方确认或实质性进展。
+3. Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans 是否获得更多官方确认或实质性进展。
 4. WTI原油 是否延续当前 上涨 方向。
 5. 布伦特原油 是否延续当前 下跌 方向。
 
@@ -126,41 +126,45 @@
 
 ## 宏观爆破风险
 
-- 宏观爆破风险低：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
-- 当前分数 2：正常观察；该框架只做风险提示，不自动买卖。
+- 宏观爆破风险高：事实和推测分开看，先确认谁被迫交易、谁有现金等打折、谁承担油价和美元压力。
+- 当前分数 8：暂停新增进攻仓，保留现金，等价格确认。
 - 纪律：必须等验证信号，看到失效条件就降级；不把具体日期、人物或单一观点当成买卖指令。
 
 | 风险线 | 事实 | 推测 | 验证 | 失效 |
 |---|---|---|---|---|
-| 能源/通道冲击 | 新闻命中：oil | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| 美联储/政策换挡 | 新闻命中：fed / federal reserve / interest rate | 政策换挡会改变流动性和估值锚，先看降息和缩表谁先落地。 | 看美联储声明、利率期货、美元指数和美债收益率是否同向确认。 | 政策表述转温和，长端利率、美元和VIX没有继续跟随。 |
+| 能源/通道冲击 | 新闻命中：energy shock | 油价上行会推高美元需求和通胀压力，先看是否压迫小国和高杠杆资产。 | 看Brent/WTI、库存、航运通道和美元指数是否继续共振。 | 油价回落、通道风险缓和，美元指数和通胀预期没有继续上行。 |
+| AI资本开支压力 | 新闻命中：nasdaq | AI方向可以长期成立，但高估值叠加现金流压力时，好资产也可能先打折。 | 看云厂商资本开支、自由现金流、信用利差和纳指是否一起承压。 | 业绩和现金流继续兑现，纳指相对强势，信用利差没有扩大。 |
+| 美股去杠杆 | 纳斯达克100期货 -1.05% 下跌；VIX +7.32% 上涨 | 高估值资产放量下跌时，先看去杠杆和保证金压力，不急着抄底。 | 看纳指/标普继续下行，VIX和信用利差是否扩大。 | 股指收复跌幅，VIX回落，成交没有继续放大。 |
 
 > 宏观爆破风险框架只用于识别流动性和被迫交易压力，不构成投资建议，也不保证收益。
 
 ## 资源博弈视角
 
 - 今天识别到 4 条资源/产业约束线，先看它们是否改变供给、通道、技术或结算筹码。
-- 最先看：能源/通道约束｜这件事改变的是供给、运输通道还是风险溢价？
+- 最先看：制裁/关税/结算｜规则改变后，谁的交易成本上升？
 - 固定五问：谁被卡、谁拿筹码、钱在办什么事、价格有没有确认、是否触发你的纪律。
 - 中长期纪律：这只是研究框架，先升级观察和确认条件，不自动给买卖指令。
 
 | 事件 | 视角 | 先问什么 | 价格确认 | 组合纪律 |
 |---|---|---|---|---|
-| Iraq’s Prime Minister Aims to Wrest More Power from Kurdistan Region | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +1.70% 上涨；布伦特原油 -0.97% 下跌；黄金 -2.58% 下跌；美元指数 -0.45% 下跌。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
-| Trump wanted Jensen Huang back. Now, the president is all alone in Washington | 半导体供应链 | 这条新闻卡住的是技术、设备、材料还是客户需求？ 真正的筹码是不可替代环节；扩产、补贴和限制出口都可能是在抢时间和保底线。 | 价格确认看：美元指数 -0.45% 下跌；美国10Y国债收益率 -0.28% 震荡；VIX -0.98% 下跌；标普500期货 -0.44% 下跌。 | 对AI/芯片仓位只做复核，不自动加仓；先检查直接AI和科技成长是否已经超上限。 |
-| Jensen Huang tells staff that Nvidia doesn't need a succession plan | 半导体前驱体/电子特气 | 这是关键制程不可替代材料，还是普通化工品？ 如果材料成本占比低但停线成本极高，议价权来自不可替代和客户安全库存，而不是总市场规模。 | 价格确认看：美元指数 -0.45% 下跌；美国10Y国债收益率 -0.28% 震荡；VIX -0.98% 下跌；标普500期货 -0.44% 下跌。 | 升级为电子特气/半导体材料观察线；只在价格、订单和业绩确认后影响候选池，不因小作文追高。 |
-| Argentina expected to suffer technical recession in blow to Milei | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +1.70% 上涨；布伦特原油 -0.97% 下跌；黄金 -2.58% 下跌；美元指数 -0.45% 下跌。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions | 制裁/关税/结算 | 规则改变后，谁的交易成本上升？ 这类新闻的筹码不在标题，而在谁能让对方付出更高成本、谁能更快找到替代方案。 | 价格确认看：WTI原油 +2.56% 上涨；布伦特原油 -0.64% 下跌；黄金 +1.57% 上涨；美元指数 -0.10% 震荡。 | 先影响宽基风险偏好和资源链，不直接变成买卖；等政策细则和价格确认。 |
+| US announces new tariffs on host of countries including China | 航运/港口通道 | 通道成本会不会变成全产业链成本？ 通道被卡时，谁有可替代路线、船队和保险能力，谁就多一张筹码。 | 价格确认看：WTI原油 +2.56% 上涨；布伦特原油 -0.64% 下跌；美元指数 -0.10% 震荡；VIX +7.32% 上涨。 | 作为能源/航运链观察，不直接推导到新能源或科技仓位。 |
+| Even the price of toys is on the rise. How Americans are scaling back holiday plans | 能源/通道约束 | 这件事改变的是供给、运输通道还是风险溢价？ 能源不是单纯商品价格，它常常是谈判和制裁的杠杆，价格会先反映供给安全边界。 | 价格确认看：WTI原油 +2.56% 上涨；布伦特原油 -0.64% 下跌；黄金 +1.57% 上涨；美元指数 -0.10% 震荡。 | 对你这种中长期组合，先升级能源链观察；不把单日油价波动当成换仓理由。 |
+| US inflation hits highest since May after prices climb 3.8% over the last year | 氦气/工业气体 | 这件事是在解决谁的供给约束？ 如果扩产只是为了保住关键产线，它的价值可能是稳定供应和谈判筹码，而不是马上赚大钱。 | 价格确认看：黄金 +1.57% 上涨；美元指数 -0.10% 震荡；标普500期货 -0.42% 下跌；纳斯达克100期货 -1.05% 下跌。 | 只把它升级为资源安全观察线；没有价格和订单确认前，不因为概念单独加仓。 |
 
 > 资源博弈视角用于理解产业约束和筹码变化，不构成投资建议，也不保证盈利。
 
 ## 发酵预警卡片
 
-- 今天生成 1 张发酵预警卡，只提示可能的主线和验证条件。
-- 最先盯：六氟化钨/WF6：半导体前驱体卡点｜数周到数月｜置信度 低。
+- 今天生成 2 张发酵预警卡，只提示可能的主线和验证条件。
+- 最先盯：汇率+反内卷：涨价权｜1-3个月｜置信度 高。
 - 预测不是交易指令；至少等政策/订单/价格/相对强弱中两项确认。
 
 | 主线 | 窗口 | 预警逻辑 | 验证条件 | 失效条件 | 纪律 |
 |---|---|---|---|---|---|
-| 六氟化钨/WF6：半导体前驱体卡点（低） | 数周到数月 | 如果WF6高纯产能、出口规则和先进存储/逻辑需求同时收紧，电子特气可能从小品种变成半导体卡点主线。 它的总市场规模不大，但若不可替代且停线成本远高于材料成本，价格上行和长协重定价会更容易传导给下游。 | 看WF6报价和交期、钨/氟原料、出口管制、客户认证、长协价格、库存周数、龙头产能爬坡和毛利率。 价格验证：美元指数 -0.45% 下跌；美国10Y国债收益率 -0.28% 震荡；VIX -0.98% 下跌；标普500期货 -0.44% 下跌。 | 如果客户库存充足、替代工艺可行、海外产能快速补上，或新增产能无需认证直接放量，这条线降级。 | 只把它放入电子特气/半导体材料观察；至少等价格、订单、毛利率或客户认证两项确认。 |
+| 汇率+反内卷：涨价权（高） | 1-3个月 | 如果外部竞争对手被关税/成本打掉，同时国内反内卷约束低价倾销，部分中国优势行业可能获得涨价权。 本币升值不一定只压出口；当外部对手退出、进口成本下降、内部产能纪律加强时，企业可能从拼价格转向修复利润。 | 看人民币、油价/原料进口成本、出口报价、行业协会/政策反内卷文件、PPI和龙头毛利率。 价格验证：WTI原油 +2.56% 上涨；布伦特原油 -0.64% 下跌；黄金 +1.57% 上涨；美元指数 -0.10% 震荡。 | 如果外部竞争仍强、国内继续低价抢单，或人民币升值直接压缩订单，这条线降级。 | 优先找行业级利润修复证据，不把汇率单因子当买入理由。 |
+| 政策压价/格局行业（中） | 立即-1个季度 | 有些行业看起来成本上涨、海外涨价，但利润可能被政策压价或保供任务吃掉。 当行业承担民生、农业、运输或保供任务时，价格传导不一定完整；商品涨价不等于相关资产一定受益。 | 看官方定价/限价、出口限制、补贴兑现、库存、企业毛利率和现金流。 价格验证：WTI原油 +2.56% 上涨；布伦特原油 -0.64% 下跌；美元指数 -0.10% 震荡；美国10Y国债收益率 -1.14% 下跌。 | 如果政策允许涨价、补贴覆盖成本，或出口限制解除，行业利润弹性重新上修。 | 这是负面过滤器：先排除“该涨但不能涨”的行业，避免被表面涨价误导。 |
 
 > 发酵预警是研究辅助，不构成投资建议，不保证准确或盈利。
 
@@ -186,7 +190,7 @@
 
 ## 事后验算与命中率复盘
 
-- 本次新增待验证信号 2 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
+- 本次新增待验证信号 0 条；30/60/90天成绩单只用于校准系统，不直接触发买卖。
 - 风电/算力绿电：T+30 10次｜胜率 30%｜均值 -4.49%｜相对基准 -0.77%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - AI电力底座：T+30 10次｜胜率 30%｜均值 -4.49%｜相对基准 -0.77%；T+60 样本不足；T+90 样本不足；结论：降权观察。
 - 电力：T+30 10次｜胜率 30%｜均值 -4.49%｜相对基准 -0.77%；T+60 样本不足；T+90 样本不足；结论：降权观察。
@@ -241,13 +245,13 @@
 
 ## 数据覆盖与时效
 
-- 生成时间：2026-11-24T22:56:23 UTC / 2026-11-25T06:56:23 BJT。
-- 抓取窗口：2026-11-23T22:56:23 UTC → 2026-11-24T22:56:23 UTC。
-- 实际新闻：共 131 条；最早 2026-11-23T23:11:54，最新 2026-11-24T22:58:42；最新距生成约 0.00小时，状态：新鲜。
-- 来源覆盖：RSS 18/39；API 4/5；官方源 7/28；官方网页 5 条。
+- 生成时间：2026-11-25T22:11:42 UTC / 2026-11-26T06:11:42 BJT。
+- 抓取窗口：2026-11-24T22:11:42 UTC → 2026-11-25T22:11:42 UTC。
+- 实际新闻：共 136 条；最早 2026-11-24T22:30:00，最新 2026-11-25T22:23:07；最新距生成约 0.00小时，状态：新鲜。
+- 来源覆盖：RSS 18/39；API 4/5；官方源 5/28；官方网页 4 条。
 - 市场价格：9/9 个资产返回；用于验证新闻是否被价格确认，不等同于实时交易终端。
-- 抓取失败样例：Alpha Vantage；失败不会中断报告，但会降低覆盖度。
-- 时间窗内无新内容的来源：27 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
-- 真实性过滤：已在聚类前拦截 10 条低可信/疑似传闻/疑似伪造内容。
-- 剩余文章可信度分布：高 7｜中 98｜低 26。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
+- 抓取失败样例：CSRC Official Page、Alpha Vantage；失败不会中断报告，但会降低覆盖度。
+- 时间窗内无新内容的来源：28 个；这通常不代表源失效，只代表窗口内没有新稿或发布时间不可识别。
+- 真实性过滤：已在聚类前拦截 5 条低可信/疑似传闻/疑似伪造内容。
+- 剩余文章可信度分布：高 9｜中 93｜低 34。低可信文章默认会被降权，即使未被拦截也不会优先进入核心事件。
 > 边界：公开RSS/API/官方网页抓取，不保证100%全网、付费终端专有快讯或全球第一时间；重大交易前仍需二次确认。
